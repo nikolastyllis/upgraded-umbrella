@@ -14,6 +14,11 @@ var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 var use_cam_1 := true
 var target_origin_pos : Vector3
 
+@onready var interact_ray := $CameraOrigin/SpringArm3D/Camera3D/RayCast3D
+@onready var interact_label := $CameraOrigin/SpringArm3D/Camera3D/Control/Interact/Action
+@onready var intercat_control := $CameraOrigin/SpringArm3D/Camera3D/Control/Interact
+
+var current_interactable: Interactable = null
 
 func _ready():
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
@@ -27,6 +32,21 @@ func _input(event):
 		rotate_y(deg_to_rad(-event.relative.x * sens))
 		pivot.rotate_x(deg_to_rad(-event.relative.y * sens))
 		pivot.rotation.x = clamp(pivot.rotation.x, deg_to_rad(-90), deg_to_rad(45))
+		
+func _process(_delta):
+	update_interactable()
+	
+func update_interactable():
+	current_interactable = null
+	intercat_control.visible = false
+
+	if interact_ray.is_colliding():
+		var collider = interact_ray.get_collider()
+
+		if collider is Interactable and collider.can_interact(self):
+			current_interactable = collider
+			interact_label.text = collider.action_text
+			intercat_control.visible = true
 		
 func _physics_process(delta):
 	
@@ -49,6 +69,9 @@ func _physics_process(delta):
 	
 	if Input.is_action_just_pressed("quit"):
 		get_tree().quit()
+		
+	if Input.is_action_just_pressed("interact") and current_interactable:
+		current_interactable.on_interact(self)
 	
 	var input_dir = Input.get_vector("left", "right", "up", "down")
 	var direction = (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
