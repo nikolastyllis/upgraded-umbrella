@@ -13,6 +13,7 @@ data = PackedVector3Array(-0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_u0d2a"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_myya0"]
+radius = 0.5834961
 
 [sub_resource type="BoxMesh" id="BoxMesh_p6kl7"]
 
@@ -42,10 +43,10 @@ mesh = SubResource("CapsuleMesh_u0d2a")
 shape = SubResource("CapsuleShape3D_myya0")
 
 [node name="CameraPosition1" type="Node3D" parent="Player" unique_id=1064045627]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.25, 0.6, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 0.6, 0)
 
 [node name="CameraPosition2" type="Node3D" parent="Player" unique_id=1722601413]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.25, 0.6, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 0.6, 0)
 
 [node name="CameraOrigin" type="Node3D" parent="Player" unique_id=1694108831]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 0.6, 0)
@@ -56,6 +57,37 @@ margin = 0.5
 
 [node name="Camera3D" type="Camera3D" parent="Player/CameraOrigin/SpringArm3D" unique_id=1779981953]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2)
+
+[node name="Control" type="Control" parent="Player/CameraOrigin/SpringArm3D/Camera3D" unique_id=1335738755]
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Player/CameraOrigin/SpringArm3D/Camera3D/Control" unique_id=1176087892]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -19.0
+offset_top = -21.0
+offset_right = 21.0
+offset_bottom = 19.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "•"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=167602176]
 transform = Transform3D(1, 0, 0, 0, 0.2874441, 0.9577974, 0, -0.9577974, 0.2874441, 0, 5.70224, 0)
