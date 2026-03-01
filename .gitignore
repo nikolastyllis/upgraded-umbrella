@@ -7,7 +7,7 @@
 export.cfg
 export_credentials.cfg
 
-# Imported translations (automatically generated from CSV files)
+# Imported translations
 *.translation
 
 # Mono-specific ignores
