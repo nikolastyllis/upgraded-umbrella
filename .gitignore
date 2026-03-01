@@ -14,3 +14,24 @@ export_credentials.cfg
 .mono/
 data_*/
 mono_crash.*.json
+
+# Godot cache and editor state
+.editorconfig
+.godot/editor/
+.godot/mono/
+
+# Temporary editor files
+*.tmp
+*.temp
+*.swp
+*.bak
+
+# Blender backups and autosaves
+*.blend1
+*.blend2
+*.blend3
+*.blend@
+*.blend.lock
+
+# Blender cache
+__pycache__/
