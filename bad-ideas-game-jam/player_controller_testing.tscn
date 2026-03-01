@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://e2fx3nusope6"]
 
 [ext_resource type="Script" uid="uid://sxdqvxq4t8ow" path="res://Player.gd" id="1_p6kl7"]
+[ext_resource type="Texture2D" uid="uid://g8g413indqd7" path="res://Assets/UI/Crosshair.png" id="2_cggdu"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_cggdu"]
 
@@ -63,36 +64,29 @@ margin = 0.5
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 3)
 fov = 50.5
 
-[node name="Control" type="Control" parent="Player/CameraOrigin/SpringArm3D/Camera3D" unique_id=1335738755]
+[node name="Control" type="Control" parent="Player/CameraOrigin/SpringArm3D/Camera3D" unique_id=100599275]
 layout_mode = 3
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -20.0
-offset_top = -20.0
-offset_right = 20.0
-offset_bottom = 20.0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="RichTextLabel" type="RichTextLabel" parent="Player/CameraOrigin/SpringArm3D/Camera3D/Control" unique_id=1176087892]
+[node name="Crosshair" type="TextureRect" parent="Player/CameraOrigin/SpringArm3D/Camera3D/Control" unique_id=96348820]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -19.0
-offset_top = -21.0
-offset_right = 21.0
-offset_bottom = 19.0
+offset_left = -2.0
+offset_top = -3.0
+offset_right = 348.0
+offset_bottom = 347.0
 grow_horizontal = 2
 grow_vertical = 2
-text = "•"
-horizontal_alignment = 1
-vertical_alignment = 1
+scale = Vector2(0.02, 0.02)
+texture = ExtResource("2_cggdu")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=167602176]
 transform = Transform3D(1, 0, 0, 0, 0.2874441, 0.9577974, 0, -0.9577974, 0.2874441, 0, 5.70224, 0)
