@@ -1,7 +1,6 @@
 [gd_scene format=3 uid="uid://e2fx3nusope6"]
 
 [ext_resource type="Script" uid="uid://sxdqvxq4t8ow" path="res://Player.gd" id="1_p6kl7"]
-[ext_resource type="Texture2D" uid="uid://fb1fo1422p68" path="res://Assets/Textures/T_Example_Model_col.png" id="2_cggdu"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_cggdu"]
 
@@ -12,7 +11,6 @@ albedo_color = Color(0.083392, 0.083392, 0.08339202, 1)
 data = PackedVector3Array(-0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, -0.5, -0.5, -0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5, -0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, -0.5, 0.5, 0.5, -0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, 0.5, 0.5, -0.5, 0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, 0.5, -0.5, 0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, -0.5, -0.5)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ahmia"]
-albedo_texture = ExtResource("2_cggdu")
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_u0d2a"]
 
@@ -49,16 +47,16 @@ mesh = SubResource("CapsuleMesh_u0d2a")
 shape = SubResource("CapsuleShape3D_myya0")
 
 [node name="CameraPosition1" type="Node3D" parent="Player" unique_id=1064045627]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.84467125, 0.6, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.55, 0.6, 0)
 
 [node name="CameraPosition2" type="Node3D" parent="Player" unique_id=1722601413]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.55704707, 0.6, 0)
 
 [node name="CameraOrigin" type="Node3D" parent="Player" unique_id=1694108831]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.64690757, 0.6, 0.021027207)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.55, 0.6, 0)
 
 [node name="SpringArm3D" type="SpringArm3D" parent="Player/CameraOrigin" unique_id=2018105628]
-spring_length = 3.0
+spring_length = 2.0
 margin = 0.5
 
 [node name="Camera3D" type="Camera3D" parent="Player/CameraOrigin/SpringArm3D" unique_id=1779981953]
