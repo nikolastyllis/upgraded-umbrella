@@ -54,7 +54,7 @@ func _physics_process(delta):
 	pivot.position = pivot.position.lerp(target_origin_pos, t)
 	
 	if not is_on_floor():
-		velocity.y -= gravity * delta
+		velocity.y -= gravity * delta * 2
 		
 	if Input.is_action_just_pressed("camera"):
 		use_cam_1 = !use_cam_1
