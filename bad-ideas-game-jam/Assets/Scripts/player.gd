@@ -15,8 +15,8 @@ var use_cam_1 := true
 var target_origin_pos : Vector3
 
 @onready var interact_ray := $CameraOrigin/SpringArm3D/Camera3D/RayCast3D
-@onready var interact_label := $CameraOrigin/SpringArm3D/Camera3D/Control/Interact/Action
-@onready var intercat_control := $CameraOrigin/SpringArm3D/Camera3D/Control/Interact
+@onready var interact_label := $CameraOrigin/SpringArm3D/Camera3D/CrosshairUI/Interact/Action
+@onready var intercat_control := $CameraOrigin/SpringArm3D/Camera3D/CrosshairUI/Interact
 
 var current_interactable: Interactable = null
 
