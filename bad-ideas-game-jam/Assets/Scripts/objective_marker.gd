@@ -1,4 +1,4 @@
-extends Node3D
+extends Highlightable
 
 @export var marker_ui_scene: PackedScene
 @export var edge_padding: float = 40.0
@@ -16,10 +16,10 @@ var target_rotation: float = 0.0
 
 func _ready():
 	camera = get_viewport().get_camera_3d()
-	get_tree().root.add_child.call_deferred(marker_ui)
 	icon = marker_ui.get_node("Icon")
 	distance = marker_ui.get_node("Distance")
 	target_pos = marker_ui.position
+	self.add_highlight()
 
 func _process(delta: float):
 	if camera == null or marker_ui == null:
@@ -86,3 +86,7 @@ func _set_marker_edge(screen_pos: Vector2, viewport_size: Vector2):
 
 	target_pos = center + dir * t
 	marker_ui.visible = true
+
+func _remove():
+	self.remove_highlight()
+	queue_free()

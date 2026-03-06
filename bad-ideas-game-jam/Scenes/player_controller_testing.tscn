@@ -1,8 +1,8 @@
 [gd_scene format=3 uid="uid://e2fx3nusope6"]
 
 [ext_resource type="PackedScene" uid="uid://btg75au461yd7" path="res://Prefabs/player.tscn" id="1_0thiu"]
+[ext_resource type="Script" uid="uid://dlon4jykp3tcp" path="res://Assets/Scripts/door.gd" id="2_vo2hj"]
 [ext_resource type="PackedScene" uid="uid://cg27h6m4wwam0" path="res://Prefabs/objective_marker_ui.tscn" id="3_glfbx"]
-[ext_resource type="Script" uid="uid://dlon4jykp3tcp" path="res://Assets/Scripts/door.gd" id="4_ahmia"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_cggdu"]
 
@@ -21,7 +21,13 @@ material = SubResource("StandardMaterial3D_u0d2a")
 [sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_cggdu"]
 data = PackedVector3Array(-0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, -0.5, -0.5, -0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5, -0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, -0.5, 0.5, 0.5, -0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, 0.5, 0.5, -0.5, 0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, 0.5, -0.5, 0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, -0.5, -0.5)
 
+[sub_resource type="BoxMesh" id="BoxMesh_jleko"]
+material = SubResource("StandardMaterial3D_u0d2a")
+
 [sub_resource type="BoxMesh" id="BoxMesh_0thiu"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vo2hj"]
+albedo_color = Color(0.06469653, 0.06469653, 0.06469653, 1)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_vo2hj"]
 
@@ -63,11 +69,10 @@ shape = SubResource("ConcavePolygonShape3D_cggdu")
 
 [node name="MeshInstance3D4" type="MeshInstance3D" parent="." unique_id=1110319317]
 transform = Transform3D(0.011850311, -0.0014221744, -1.185318, 0.0035484808, 2.4393442, 0, 0.26830062, -0.032199226, 0.05235316, 0.6764941, 1.2472199, -3.9667454)
-mesh = SubResource("BoxMesh_p6kl7")
+mesh = SubResource("BoxMesh_jleko")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="MeshInstance3D4" unique_id=1583088338]
-script = ExtResource("4_ahmia")
-action_text = "open"
+script = ExtResource("2_vo2hj")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="MeshInstance3D4/StaticBody3D" unique_id=1505782614]
 shape = SubResource("ConcavePolygonShape3D_cggdu")
@@ -75,10 +80,11 @@ shape = SubResource("ConcavePolygonShape3D_cggdu")
 [node name="MeshInstance3D5" type="MeshInstance3D" parent="." unique_id=1992988483]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.848681, 1.0226078, -3.2775946)
 mesh = SubResource("BoxMesh_0thiu")
+surface_material_override/0 = SubResource("StandardMaterial3D_vo2hj")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="MeshInstance3D5" unique_id=1583993109]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="MeshInstance3D5/StaticBody3D" unique_id=1689379070]
 shape = SubResource("BoxShape3D_vo2hj")
 
-[node name="ObjectiveMarker" parent="MeshInstance3D5" unique_id=2030661204 instance=ExtResource("3_glfbx")]
+[node name="ObjectiveMarker" parent="MeshInstance3D5/StaticBody3D" unique_id=2030661204 instance=ExtResource("3_glfbx")]
