@@ -19,6 +19,12 @@ var target_origin_pos : Vector3
 @onready var intercat_control := $CameraOrigin/SpringArm3D/Camera3D/CrosshairUI/Interact
 @onready var interact_progress_bar := $CameraOrigin/SpringArm3D/Camera3D/CrosshairUI/Interact/Progress
 
+@onready var anim_tree: AnimationTree = $test_character/AnimationTree
+@onready var anim_player: AnimationPlayer = $test_character/AnimationPlayer
+
+var anim_blend := Vector2.ZERO
+@export var anim_blend_smooth := 3
+
 var interact_hold_timer := 0.0
 var interact_locked: bool = false
 
@@ -129,3 +135,7 @@ func _physics_process(delta):
 		velocity.z = move_toward(velocity.z, 0, SPEED)
 
 	move_and_slide()
+	
+	var target_blend: Vector2 = input_dir
+	anim_blend = anim_blend.lerp(target_blend, 1.0 - exp(-anim_blend_smooth * delta))
+	anim_tree.set("parameters/blend_position", anim_blend)
