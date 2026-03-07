@@ -8,10 +8,8 @@ var highlight_shader = load("res://Shaders/interactable.gdshader")
 var original_materials = {}
 
 func add_highlight() -> void:
-	print("Adding highlight")
 	var mesh_instance = get_mesh_instance()
 	
-	print(mesh_instance)
 	if mesh_instance == null:
 		return
 	
@@ -35,7 +33,6 @@ func add_highlight() -> void:
 	original_materials[mesh_instance] = active_material
 
 func remove_highlight() -> void:
-	print("Removing highlight")
 	var mesh_instance = get_mesh_instance()
 	if mesh_instance == null:
 		return
