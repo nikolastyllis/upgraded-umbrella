@@ -5,6 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://cg27h6m4wwam0" path="res://Prefabs/objective_marker_ui.tscn" id="3_glfbx"]
 [ext_resource type="Texture2D" uid="uid://ct4ar4qgohuli" path="res://Assets/Textures/HDRI/MyDesk_01_2K.hdr" id="4_glfbx"]
 [ext_resource type="PackedScene" uid="uid://3vvbcad7503f" path="res://Scenes/bigj_ladder_test_01.tscn" id="5_r2yqc"]
+[ext_resource type="PackedScene" uid="uid://dpl2uefq7xuhu" path="res://Prefabs/npc.tscn" id="6_jleko"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_cggdu"]
 
@@ -109,3 +110,6 @@ environment = SubResource("Environment_2sgug")
 
 [node name="BIGJ_Ladder_test_01" parent="." unique_id=1503290428 instance=ExtResource("5_r2yqc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17.579533, 0.5628269, -27.816809)
+
+[node name="Npc" parent="." unique_id=1777061317 instance=ExtResource("6_jleko")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.103774, 1.0018973, 0.25531006)
