@@ -137,8 +137,12 @@ text = "Interact
 target_position = Vector3(0, 0, -5)
 
 [node name="test_character" parent="." unique_id=1931483700 instance=ExtResource("4_2nftw")]
-transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, -1, 0)
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, -0.95, 0)
 
-[node name="ClimbRay" type="RayCast3D" parent="test_character" unique_id=1016217046]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+[node name="FeetRay" type="RayCast3D" parent="test_character" unique_id=1016217046]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.1, 0)
 target_position = Vector3(0, 0, 0.5)
+
+[node name="ClimbFinishedRay" type="RayCast3D" parent="test_character" unique_id=1348388004]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.7, 0.85)
+target_position = Vector3(0, -0.8, 0)
