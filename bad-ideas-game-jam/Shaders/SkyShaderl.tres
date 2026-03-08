@@ -1,6 +1,6 @@
 [gd_resource type="ShaderMaterial" format=3 uid="uid://eb5djxh4js65"]
 
-[ext_resource type="Shader" uid="uid://dbfwmpsps6ds6" path="res://Shaders/SkyShader.gdshader" id="1_cd6vg"]
+[ext_resource type="Shader" path="res://Shaders/SkyShader.gdshader" id="1_cd6vg"]
 
 [resource]
 shader = ExtResource("1_cd6vg")
