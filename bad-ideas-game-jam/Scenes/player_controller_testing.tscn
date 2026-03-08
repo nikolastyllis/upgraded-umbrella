@@ -4,6 +4,7 @@
 [ext_resource type="Script" uid="uid://dlon4jykp3tcp" path="res://Assets/Scripts/door.gd" id="2_vo2hj"]
 [ext_resource type="PackedScene" uid="uid://cg27h6m4wwam0" path="res://Prefabs/objective_marker_ui.tscn" id="3_glfbx"]
 [ext_resource type="Texture2D" uid="uid://ct4ar4qgohuli" path="res://Assets/Textures/HDRI/MyDesk_01_2K.hdr" id="4_glfbx"]
+[ext_resource type="PackedScene" uid="uid://3vvbcad7503f" path="res://Scenes/bigj_ladder_test_01.tscn" id="5_r2yqc"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_cggdu"]
 
@@ -105,3 +106,6 @@ shape = SubResource("BoxShape3D_vo2hj")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1422801402]
 environment = SubResource("Environment_2sgug")
+
+[node name="BIGJ_Ladder_test_01" parent="." unique_id=1503290428 instance=ExtResource("5_r2yqc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17.579533, 0.5628269, -27.816809)
