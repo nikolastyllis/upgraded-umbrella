@@ -2,34 +2,23 @@ shader_type spatial;
 render_mode cull_back, diffuse_toon, specular_toon;
 
 varying vec3 v_world_pos;
+varying float v_wave; // macro wave height (stable crest driver)
 
-varying float v_wave; // NEW: wave height at this vertex
-
-uniform sampler2D foam_noise; // NEW: grayscale tiling noise
-uniform float foam_scale = 0.03;
-uniform vec2 foam_speed = vec2(0.02, 0.01);
-
-uniform vec3 foam_color : source_color = vec3(0.9, 0.95, 1.0);
-uniform float foam_amount = 1.0;
-
-// Crest foam controls
-uniform sampler2D crest_noise;
-uniform float crest_scale = 0.03;
-uniform float crest_start = 0.25;  // where foam begins (wave height)
-uniform float crest_end   = 0.55;  // where foam is strong
-
-// Random foam controls
-uniform float patch_threshold = 0.65; // higher = fewer patches
-uniform float patch_softness  = 0.08; // edge softness
 uniform float time_scale = 1.0;
 
-uniform float wave_amp = 0.35;
-uniform float wave_freq = 0.08;
-uniform float wave_speed = 1.2;
+// ------------------- WAVES (macro + micro) -------------------
+uniform float macro_amp   = 0.55;
+uniform float macro_freq  = 0.035;   // big swells
+uniform float macro_speed = 0.9;
+
+uniform float micro_amp   = 0.10;
+uniform float micro_freq  = 0.22;    // small chop
+uniform float micro_speed = 1.8;
 
 uniform vec2 wave_dir1 = vec2(1.0, 0.2);
 uniform vec2 wave_dir2 = vec2(0.2, 1.0);
 
+// ------------------- NORMALS / COLOUR (yours) -------------------
 uniform sampler2D normal_map1 : hint_normal;
 uniform sampler2D normal_map2 : hint_normal;
 uniform float normal_strength = 0.8;
@@ -48,127 +37,117 @@ uniform float fresnel_power = 5.0;
 uniform float horizon_start = 200.0;
 uniform float horizon_end   = 800.0;
 
-// --- Better procedural noise (gradient noise + fbm + mild domain warp) ---
-mat2 rot2(float a) {
-	float s = sin(a);
-	float c = cos(a);
-	// mat2 takes columns as vec2 in Godot shaders
-	return mat2(vec2(c, s), vec2(-s, c));
-}
+// ------------------- FOAM (two noises + interaction) -------------------
+uniform sampler2D foam_noise;   // patch islands (tileable grayscale)
+uniform sampler2D crest_noise;  // large screening (tileable grayscale)
 
-vec2 hash22(vec2 p) {
-	// returns repeatable pseudo-random vec2 in [0,1)
-	p = vec2(dot(p, vec2(127.1, 311.7)),
-			 dot(p, vec2(269.5, 183.3)));
-	return fract(sin(p) * 43758.5453123);
-}
+uniform vec3 foam_color : source_color = vec3(0.9, 0.95, 1.0);
+uniform float foam_amount = 1.0;
 
-float grad_noise(vec2 p) {
-	vec2 i = floor(p);
-	vec2 f = fract(p);
+// Patch foam
+uniform float foam_scale = 0.03;
+uniform vec2  foam_speed = vec2(0.02, 0.01);
+uniform float patch_threshold = 0.65;
+uniform float patch_softness  = 0.08;
+uniform float patch_strength  = 0.55;   // how visible the patch layer is
 
-	// gradient vectors (mapped to [-1,1])
-	vec2 g00 = hash22(i + vec2(0.0, 0.0)) * 2.0 - 1.0;
-	vec2 g10 = hash22(i + vec2(1.0, 0.0)) * 2.0 - 1.0;
-	vec2 g01 = hash22(i + vec2(0.0, 1.0)) * 2.0 - 1.0;
-	vec2 g11 = hash22(i + vec2(1.0, 1.0)) * 2.0 - 1.0;
+// Crest screening (large subtle bands)
+uniform float crest_scale = 0.008;      // larger features
+uniform vec2  crest_speed = vec2(0.006, 0.003);
+uniform float crest_screen_strength = 0.40; // how much screening affects crest
 
-	// dot with distance vectors
-	float d00 = dot(g00, f - vec2(0.0, 0.0));
-	float d10 = dot(g10, f - vec2(1.0, 0.0));
-	float d01 = dot(g01, f - vec2(0.0, 1.0));
-	float d11 = dot(g11, f - vec2(1.0, 1.0));
+// Crest from waves (where foam should *tend* to appear)
+uniform float crest_start = 0.12;  // lower than before (macro waves are bigger now)
+uniform float crest_end   = 0.45;
 
-	// smootherstep fade
-	vec2 u = f * f * f * (f * (f * 6.0 - 15.0) + 10.0);
-
-	float x1 = mix(d00, d10, u.x);
-	float x2 = mix(d01, d11, u.x);
-	return mix(x1, x2, u.y) * 0.5 + 0.5; // map to ~[0,1]
-}
-
-float fbm(vec2 p) {
-	float v = 0.0;
-	float a = 0.55;
-	mat2 r = rot2(0.55); // rotate each octave to kill axis artifacts
-
-	for (int i = 0; i < 6; i++) {
-		v += a * grad_noise(p);
-		p = r * p * 2.02;
-		a *= 0.5;
-	}
-	return v;
-}
-
-float foam_noise2(vec2 p) {
-	// Mild domain warp = removes remaining “cell” hints
-	float w = fbm(p * 0.6);
-	vec2 warped = p + vec2(w, fbm(p + 11.7)) * 0.35;
-	return fbm(warped);
-}
+// Wind-break overlay (small breakup on top of crests)
+uniform float wind_scale = 0.07;
+uniform vec2  wind_speed = vec2(0.05, 0.02);
+uniform float wind_threshold = 0.55;
+uniform float wind_softness  = 0.12;
+uniform float wind_strength  = 0.65;
 
 void vertex() {
 	float t = TIME * time_scale;
 
 	vec2 p = VERTEX.xz;
-	float w1 = sin(dot(normalize(wave_dir1), p) * wave_freq + t * wave_speed);
-	float w2 = cos(dot(normalize(wave_dir2), p) * (wave_freq * 1.6) + t * (wave_speed * 0.75));
-	float w3 = sin(dot(normalize(wave_dir1), p) * (wave_freq * 0.1) + t * wave_speed);
-	float wave = (w1 + (w2 - w3)) * wave_amp;
+
+	// Macro swells (stable)
+	float m1 = sin(dot(normalize(wave_dir1), p) * macro_freq + t * macro_speed);
+	float m2 = cos(dot(normalize(wave_dir2), p) * (macro_freq * 1.35) + t * (macro_speed * 0.85));
+	float macro = (m1 + m2) * 0.5 * macro_amp;
+
+	// Micro chop (adds life, but shouldn't drive crests much)
+	float c1 = sin(dot(normalize(wave_dir1), p) * micro_freq + t * micro_speed);
+	float c2 = cos(dot(normalize(wave_dir2), p) * (micro_freq * 1.7) + t * (micro_speed * 1.15));
+	float micro = (c1 + c2) * 0.5 * micro_amp;
+
+	float wave = macro + micro;
 	VERTEX.y += wave;
 
-	v_wave = wave; // NEW
+	v_wave = macro; // IMPORTANT: crests based on macro only (prevents noisy popping)
 
 	v_world_pos = (MODEL_MATRIX * vec4(VERTEX, 1.0)).xyz;
 }
 
 void fragment() {
-	// Camera distance for horizon fade (use v_world_pos instead of WORLD_POSITION)
+	// Distance for horizon fade
 	float dist = length(CAMERA_POSITION_WORLD.xz - v_world_pos.xz);
 	float horizon_t = smoothstep(horizon_start, horizon_end, dist);
 
-	// Animated normal detail
+	// Animated normal detail (your setup)
 	vec2 uv = UV * (1.0 / max(normal_tiling, 0.0001));
 	vec2 t1 = uv + TIME * normal_speed1;
 	vec2 t2 = uv + TIME * normal_speed2;
 
 	vec3 n1 = texture(normal_map1, t1).xyz * 2.0 - 1.0;
 	vec3 n2 = texture(normal_map2, t2).xyz * 2.0 - 1.0;
-	vec3 nrm_detail  = normalize(mix(n1, n2, 0.5));
+	vec3 nrm_detail = normalize(mix(n1, n2, 0.5));
 	NORMAL = normalize(mix(NORMAL, nrm_detail, normal_strength));
 
 	// Fresnel
 	float ndv = clamp(dot(normalize(NORMAL), normalize(VIEW)), 0.0, 1.0);
 	float fres = pow(1.0 - ndv, fresnel_power);
 
-	// Base water colour (simple deepening with distance)
+	// Base colour (yours)
 	vec3 base_col = mix(shallow_color, deep_color, clamp(dist / 600.0, 0.0, 1.0));
-
-	// Horizon blend (kills tiling + sells infinity)
 	base_col = mix(base_col, horizon_color, horizon_t);
-	
-	// --- FOAM ---
-	vec2 crest_uv = v_world_pos.xz * crest_scale;
-	float crest_n = texture(crest_noise, crest_uv).r;
-	float crest = smoothstep(crest_start, crest_end, v_wave);
-	float steep = 1.0 - clamp(NORMAL.y, 0.0, 1.0);
-	float crest_foam = crest * crest_n * steep;
 
-	// Procedural foam patches (world-space FBM)
+	// ------------------- FOAM LAYERS -------------------
+
+	// 1) Patch islands (existing behaviour)
 	vec2 foam_uv = v_world_pos.xz * foam_scale + TIME * foam_speed;
-	float foam_n = texture(foam_noise, foam_uv).r;
+	float foam_tex = texture(foam_noise, foam_uv).r;
+	float patches = smoothstep(patch_threshold, patch_threshold + patch_softness, foam_tex);
+	float foam_patches = patches * patch_strength;
 
-	// Turn noise into patch islands
-	float patches = smoothstep(patch_threshold, patch_threshold + patch_softness, foam_n);
+	// 2) Crest mask from macro wave height + steepness
+	float crest_height = smoothstep(crest_start, crest_end, v_wave);
+	float steep = 1.0 - clamp(NORMAL.y, 0.0, 1.0);
+	float crest_base = crest_height * steep;
 
-	// Combine masks
-	float foam_mask = clamp((crest_foam * 0.9 + patches * 0.1) * foam_amount, 0.0, 1.0);
-	
+	// 3) Crest screening (large subtle “bands” that modulate where crests show)
+	vec2 crest_uv = v_world_pos.xz * crest_scale + TIME * crest_speed;
+	float crest_screen = texture(crest_noise, crest_uv).r;          // 0..1
+	crest_screen = smoothstep(0.35, 0.85, crest_screen);            // make it bandier
+	float crest_screened = crest_base * mix(1.0, crest_screen, crest_screen_strength);
+
+	// 4) Wind-break overlay (small noisy breakup ONLY on screened crests)
+	vec2 wind_uv = v_world_pos.xz * wind_scale + TIME * wind_speed;
+	float wind_tex = texture(foam_noise, wind_uv).r;                // reuse foam noise for breakup
+	float wind = smoothstep(wind_threshold, wind_threshold + wind_softness, wind_tex);
+
+	// Wind should only appear where crest is already present + screened
+	float wind_break = crest_screened * wind * wind_strength;
+
+	// Combine: base patches everywhere + crest foam where waves peak + wind breakup on top
+	float foam_mask = clamp((foam_patches + crest_screened * 0.75 + wind_break) * foam_amount, 0.0, 1.0);
 
 	ALBEDO = mix(base_col, foam_color, foam_mask);
 	METALLIC = metallic;
 	ROUGHNESS = roughness;
 
-	// Fake reflection boost via fresnel
-	EMISSION = horizon_color * fres * 0.35 + (foam_mask * 0.2);
+	// Reflection-ish boost + a touch of foam lift (keep subtle)
+	EMISSION = horizon_color * fres * 0.35 + foam_color * foam_mask * 0.08;
+
 }
