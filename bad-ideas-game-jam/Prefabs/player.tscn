@@ -10,6 +10,8 @@
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_u0d2a"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_myya0"]
+radius = 0.3
+height = 1.7
 
 [node name="Player" type="CharacterBody3D" unique_id=1647912674]
 script = ExtResource("1_y5hcb")
@@ -21,6 +23,7 @@ material_override = SubResource("StandardMaterial3D_ahmia")
 mesh = SubResource("CapsuleMesh_u0d2a")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1768347194]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.11376953, 0)
 shape = SubResource("CapsuleShape3D_myya0")
 
 [node name="CameraPosition1" type="Node3D" parent="." unique_id=694239538]
@@ -133,5 +136,9 @@ text = "Interact
 [node name="RayCast3D" type="RayCast3D" parent="CameraOrigin/SpringArm3D/Camera3D" unique_id=1701017775]
 target_position = Vector3(0, 0, -5)
 
-[node name="test_character" parent="." unique_id=507360411 instance=ExtResource("4_2nftw")]
+[node name="test_character" parent="." unique_id=1931483700 instance=ExtResource("4_2nftw")]
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, -1, 0)
+
+[node name="ClimbRay" type="RayCast3D" parent="test_character" unique_id=1016217046]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+target_position = Vector3(0, 0, 0.5)

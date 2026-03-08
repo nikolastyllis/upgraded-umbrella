@@ -1,55 +1,80 @@
 extends CharacterBody3D
 
-const SPEED = 5.0
-const JUMP_VELOCITY = 4.5
+@export var sens = 0.5
+@export var camera_lerp_speed := 8.0
+@export var anim_blend_smooth := 3
+@export var idle_blend_smooth := 3
+@export var mouse_idle_threshold := 0.1
 
 @onready var pivot = $CameraOrigin
 @onready var camera_position_1 = $CameraPosition1
 @onready var camera_position_2 = $CameraPosition2
-@export var sens = 0.5
-
-var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
-
-@export var camera_lerp_speed := 8.0
-var use_cam_1 := true
-var target_origin_pos : Vector3
-
 @onready var interact_ray := $CameraOrigin/SpringArm3D/Camera3D/RayCast3D
 @onready var interact_label := $CameraOrigin/SpringArm3D/Camera3D/CrosshairUI/Interact/Action
 @onready var intercat_control := $CameraOrigin/SpringArm3D/Camera3D/CrosshairUI/Interact
 @onready var interact_progress_bar := $CameraOrigin/SpringArm3D/Camera3D/CrosshairUI/Interact/Progress
-
+@onready var climb_ray := $test_character/ClimbRay
 @onready var anim_tree: AnimationTree = $test_character/AnimationTree
 @onready var anim_player: AnimationPlayer = $test_character/AnimationPlayer
+@onready var character := $test_character
+
+const SPEED = 5.0
+const JUMP_VELOCITY = 4.5
 
 var anim_blend := Vector2.ZERO
-@export var anim_blend_smooth := 3
-
+var idle_blend := 0.0
+var idle_blend_target := 0.0
 var interact_hold_timer := 0.0
 var interact_locked: bool = false
-
-# can set progress value with interact_progress_bar.set_value_no_signal()
 var current_interactable: Interactable = null
+var mouse_idle_time := 0.0
+var current_state = State.NORMAL
+var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
+var use_cam_1 := true
+var target_origin_pos : Vector3
+
+enum State {
+	CLIMBING,
+	NORMAL
+}
 
 func _ready():
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
-	
 	use_cam_1 = true
 	target_origin_pos = camera_position_1.position
 	pivot.position = target_origin_pos
 	
 func _input(event):
 	if event is InputEventMouseMotion:
+		mouse_idle_time = 0.0
 		rotate_y(deg_to_rad(-event.relative.x * sens))
 		pivot.rotate_x(deg_to_rad(-event.relative.y * sens))
 		pivot.rotation.x = clamp(pivot.rotation.x, deg_to_rad(-90), deg_to_rad(45))
 
+		if abs(event.relative.x) > 10:
+			if event.relative.x > 0:
+				idle_blend_target = 0.5
+			elif event.relative.x < 0:
+				idle_blend_target = -0.5
+
 func _process(delta):
 	update_interactable()
+	
+	mouse_idle_time += delta
+	
+	if mouse_idle_time > mouse_idle_threshold:
+		idle_blend_target = 0
+
+	idle_blend = lerp(idle_blend, idle_blend_target, 1.0 - exp(-idle_blend_smooth * delta))
+	anim_tree.set("parameters/Idle/blend_position", idle_blend)
+	
+	var state_machine = anim_tree["parameters/playback"]
 
 	if current_interactable:
 		if Input.is_action_pressed("interact") and !interact_locked:
 			interact_hold_timer += delta
+			
+			state_machine.travel("Interact")
 			
 			var progress = interact_hold_timer / current_interactable.interact_hold_time()
 			interact_progress_bar.value = progress * 100
@@ -60,7 +85,6 @@ func _process(delta):
 				interact_hold_timer = 0.0
 				interact_progress_bar.value = 0
 
-		# Reset if player releases the button
 		if Input.is_action_just_released("interact"):
 			interact_hold_timer = 0.0
 			interact_progress_bar.value = 0
@@ -73,6 +97,7 @@ func _process(delta):
 
 
 func update_interactable():
+	
 	var new_interactable: Interactable = null
 
 	if interact_ray.is_colliding():
@@ -104,12 +129,15 @@ func update_interactable():
 		intercat_control.visible = false
 		
 func _physics_process(delta):
+			
+	var input_dir = Input.get_vector("left", "right", "up", "down")
+	var direction = (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
 	
 	var t := 1.0 - exp(-camera_lerp_speed * delta)
 	pivot.position = pivot.position.lerp(target_origin_pos, t)
 	
 	if not is_on_floor():
-		velocity.y -= gravity * delta * 2
+		velocity.y -= gravity * delta
 		
 	if Input.is_action_just_pressed("camera"):
 		use_cam_1 = !use_cam_1
@@ -125,8 +153,6 @@ func _physics_process(delta):
 	if Input.is_action_just_pressed("quit"):
 		get_tree().quit()
 	
-	var input_dir = Input.get_vector("left", "right", "up", "down")
-	var direction = (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
 	if direction:
 		velocity.x = direction.x * SPEED
 		velocity.z = direction.z * SPEED
@@ -136,6 +162,19 @@ func _physics_process(delta):
 
 	move_and_slide()
 	
-	var target_blend: Vector2 = input_dir
-	anim_blend = anim_blend.lerp(target_blend, 1.0 - exp(-anim_blend_smooth * delta))
-	anim_tree.set("parameters/blend_position", anim_blend)
+	var state_machine = anim_tree["parameters/playback"]
+	
+	if current_state == State.CLIMBING:
+		state_machine.travel("Climb")
+	elif not is_on_floor():
+		state_machine.travel("Fall")
+	elif input_dir != Vector2.ZERO:
+		state_machine.travel("Move")
+		var target_blend: Vector2 = input_dir
+		anim_blend = anim_blend.lerp(target_blend, 1.0 - exp(-anim_blend_smooth * delta))
+		anim_tree.set("parameters/Move/blend_position", anim_blend)
+	else:
+		state_machine.travel("Idle")
+		
+	
+	
