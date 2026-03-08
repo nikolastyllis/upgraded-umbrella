@@ -140,6 +140,14 @@ func climb_ladder():
 	
 	var climb_input = -direction.z
 	
+	if is_on_floor() and climb_input < 0:
+		var launch_normal = feet_ray.get_collision_normal()
+		velocity = launch_normal * 2.0
+		velocity.y = 1.0
+		use_ladder = false
+		near_ladder = false
+		return
+	
 	if climb_input != 0:
 		velocity.y = climb_input
 		state_machine.travel("Climb")
