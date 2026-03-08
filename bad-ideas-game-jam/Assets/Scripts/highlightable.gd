@@ -4,7 +4,6 @@ class_name Highlightable
 
 var highlight_shader = load("res://Shaders/interactable.gdshader")
 
-# Store the original material so we can restore it later
 var original_materials = {}
 
 func add_highlight() -> void:
@@ -17,19 +16,15 @@ func add_highlight() -> void:
 	if active_material == null:
 		return
 	
-	# Duplicate the material for this instance only
 	var instance_material = active_material.duplicate() as Material
 	
-	# Wrap the shader in a ShaderMaterial for the next_pass
 	var highlight_material = ShaderMaterial.new()
 	highlight_material.shader = highlight_shader
 	
 	instance_material.set_next_pass(highlight_material)
 	
-	# Apply only to this MeshInstance
 	mesh_instance.set_surface_override_material(0, instance_material)
 	
-	# Save the original for removal
 	original_materials[mesh_instance] = active_material
 
 func remove_highlight() -> void:
@@ -40,7 +35,6 @@ func remove_highlight() -> void:
 	if not original_materials.has(mesh_instance):
 		return
 	
-	# Restore the original material
 	mesh_instance.set_surface_override_material(0, original_materials[mesh_instance])
 	original_materials.erase(mesh_instance)
 
