@@ -32,7 +32,7 @@ var current_interactable: Interactable = null
 var mouse_idle_time := 0.0
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 var use_cam_1 := true
-var target_origin_pos : Vector3
+var target_origin_pos: Vector3
 var near_ladder = false
 var use_ladder = false
 
@@ -41,80 +41,104 @@ func _ready():
 	use_cam_1 = true
 	target_origin_pos = camera_position_1.position
 	pivot.position = target_origin_pos
-	
-func _input(event):
-	if event is InputEventMouseMotion:
-		mouse_idle_time = 0.0
-		rotate_y(deg_to_rad(-event.relative.x))
-		pivot.rotate_x(deg_to_rad(-event.relative.y))
-		pivot.rotation.x = clamp(pivot.rotation.x, deg_to_rad(-90), deg_to_rad(45))
 
-		if abs(event.relative.x) > 10:
-			if event.relative.x > 0:
-				idle_blend_target = 0.5
-			elif event.relative.x < 0:
-				idle_blend_target = -0.5
+func _input(event):
+	if not event is InputEventMouseMotion:
+		return
+	handle_mouse_look(event)
 
 func _process(delta):
 	update_interactable()
-	
+	update_idle_blend(delta)
+	handle_interact(delta)
+
+func _physics_process(delta):
+	var input_dir = Input.get_vector("left", "right", "up", "down")
+	var direction = (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
+
+	update_camera(delta)
+	handle_quit()
+	check_ladder()
+
+	if near_ladder:
+		use_ladder = true
+		climb_ladder()
+		handle_ladder_jump()
+	else:
+		handle_ground_movement(input_dir, direction, delta)
+
+	move_and_slide()
+
+func handle_mouse_look(event):
+	mouse_idle_time = 0.0
+	rotate_y(deg_to_rad(-event.relative.x))
+	pivot.rotate_x(deg_to_rad(-event.relative.y))
+	pivot.rotation.x = clamp(pivot.rotation.x, deg_to_rad(-90), deg_to_rad(45))
+
+	if abs(event.relative.x) > 10:
+		if event.relative.x > 0:
+			idle_blend_target = 0.5
+		elif event.relative.x < 0:
+			idle_blend_target = -0.5
+
+func update_idle_blend(delta):
 	mouse_idle_time += delta
-	
+
 	if mouse_idle_time > mouse_idle_threshold:
 		idle_blend_target = 0
 
 	idle_blend = lerp(idle_blend, idle_blend_target, 1.0 - exp(-idle_blend_smooth * delta))
 	anim_tree.set("parameters/Idle/blend_position", idle_blend)
-	
+
+func handle_interact(delta):
 	var state_machine = anim_tree["parameters/playback"]
 
 	if current_interactable:
-		if Input.is_action_pressed("interact") and !interact_locked:
-			interact_hold_timer += delta
-			
-			state_machine.travel("Interact")
-			
-			var progress = interact_hold_timer / current_interactable.interact_hold_time()
-			interact_progress_bar.value = progress * 100
-
-			if interact_hold_timer >= current_interactable.interact_hold_time():
-				current_interactable.on_interact(self)
-				interact_locked = true
-				interact_hold_timer = 0.0
-				interact_progress_bar.value = 0
-
+		if Input.is_action_pressed("interact") and not interact_locked:
+			advance_interact_timer(delta, state_machine)
 		if Input.is_action_just_released("interact"):
-			interact_hold_timer = 0.0
-			interact_progress_bar.value = 0
-			interact_locked = false
-
+			reset_interact_timer()
 	else:
-		interact_hold_timer = 0.0
-		interact_progress_bar.set_value_no_signal(0)
-		interact_locked = false
+		reset_interact_state()
 
+func advance_interact_timer(delta, state_machine):
+	interact_hold_timer += delta
+	state_machine.travel("Interact")
+
+	var progress = interact_hold_timer / current_interactable.interact_hold_time()
+	interact_progress_bar.value = progress * 100
+
+	if interact_hold_timer >= current_interactable.interact_hold_time():
+		current_interactable.on_interact(self)
+		interact_locked = true
+		interact_hold_timer = 0.0
+		interact_progress_bar.value = 0
+
+func reset_interact_timer():
+	interact_hold_timer = 0.0
+	interact_progress_bar.value = 0
+	interact_locked = false
+
+func reset_interact_state():
+	interact_hold_timer = 0.0
+	interact_progress_bar.set_value_no_signal(0)
+	interact_locked = false
 
 func update_interactable():
-	
 	var new_interactable: Interactable = null
 
 	if interact_ray.is_colliding():
 		var collider = interact_ray.get_collider()
-
 		if collider is Interactable and collider.can_interact(self):
 			new_interactable = collider
 
 	if new_interactable != current_interactable:
-
 		if current_interactable:
 			current_interactable.remove_highlight()
-		
-		current_interactable = new_interactable
 
-		interact_hold_timer = 0.0
-		interact_progress_bar.value = 0
-		interact_locked = false
-		
+		current_interactable = new_interactable
+		reset_interact_timer()
+
 		if current_interactable:
 			current_interactable.add_highlight()
 
@@ -126,108 +150,104 @@ func update_interactable():
 	else:
 		intercat_control.visible = false
 
+func update_camera(delta):
+	var t := 1.0 - exp(-camera_lerp_speed * delta)
+	pivot.position = pivot.position.lerp(target_origin_pos, t)
+
+	if Input.is_action_just_pressed("camera"):
+		use_cam_1 = !use_cam_1
+		target_origin_pos = camera_position_1.position if use_cam_1 else camera_position_2.position
+
+func handle_quit():
+	if Input.is_action_just_pressed("quit"):
+		get_tree().quit()
+
+func check_ladder():
+	if not feet_ray.is_colliding():
+		near_ladder = false
+		use_ladder = false
+	near_ladder = feet_ray.is_colliding()
+
+func handle_ladder_jump():
+	if Input.is_action_just_pressed("ui_accept"):
+		var launch_normal = feet_ray.get_collision_normal()
+		velocity = launch_normal * JUMP_VELOCITY * 2.0
+		velocity.y = JUMP_VELOCITY
+		use_ladder = false
+		near_ladder = false
+
 func climb_ladder():
 	var state_machine = anim_tree["parameters/playback"]
-	
 	var normal = feet_ray.get_collision_normal()
+
 	character.look_at(global_position + normal, Vector3.UP)
 	character.rotation.x = 0
 	character.rotation.z = 0
 	velocity = Vector3.ZERO
-	
+
 	var input_dir = Input.get_vector("left", "right", "up", "down")
 	var direction = Vector3(input_dir.x, 0, input_dir.y).normalized()
-	
 	var climb_input = -direction.z
-	
+
 	if is_on_floor() and climb_input < 0:
-		var launch_normal = feet_ray.get_collision_normal()
-		velocity = launch_normal * 2.0
-		velocity.y = 1.0
-		use_ladder = false
-		near_ladder = false
+		dismount_ladder()
 		return
-	
+
 	if climb_input != 0:
 		velocity.y = climb_input
 		state_machine.travel("Climb")
-		if climb_input > 0:
-			anim_tree.set("parameters/Climb/Climb Direction/scale", 1)
-		else:
-			anim_tree.set("parameters/Climb/Climb Direction/scale", -1)
+		anim_tree.set("parameters/Climb/Climb Direction/scale", sign(climb_input))
 	else:
 		anim_tree.set("parameters/Climb/Climb Direction/scale", 0)
-	
+
 	if climb_finished_ray.is_colliding():
-		var target_pos = climb_finished_ray.get_collision_point()
-		global_position = global_position.lerp(target_pos, 0.15)
-		state_machine.travel("Finish Climbing")
+		finish_climbing()
 
-func _physics_process(delta):
-	
-	var input_dir = Input.get_vector("left", "right", "up", "down")
-	var direction = (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
-	
-	var t := 1.0 - exp(-camera_lerp_speed * delta)
-	pivot.position = pivot.position.lerp(target_origin_pos, t)
-	
-	if Input.is_action_just_pressed("camera"):
-		use_cam_1 = !use_cam_1
-		target_origin_pos = (
-			camera_position_1.position
-			if use_cam_1
-			else camera_position_2.position
-		)
-		
-	if Input.is_action_just_pressed("quit"):
-		get_tree().quit()
-	
-	if not feet_ray.is_colliding():
-		near_ladder = false
-		use_ladder = false
-		
-	near_ladder = feet_ray.is_colliding()
-	
-	if near_ladder:
-		use_ladder = true;
-		climb_ladder()
-		
-		if Input.is_action_just_pressed("ui_accept"):
-			var launch_normal = feet_ray.get_collision_normal()
-			velocity = launch_normal * JUMP_VELOCITY * 2.0
-			velocity.y = JUMP_VELOCITY
-			use_ladder = false
-			near_ladder = false
+func dismount_ladder():
+	var launch_normal = feet_ray.get_collision_normal()
+	velocity = launch_normal * 2.0
+	velocity.y = 1.0
+	use_ladder = false
+	near_ladder = false
+
+func finish_climbing():
+	var target_pos = climb_finished_ray.get_collision_point()
+	global_position = global_position.lerp(target_pos, 0.15)
+	anim_tree["parameters/playback"].travel("Finish Climbing")
+
+func handle_ground_movement(input_dir, direction, delta):
+	character.rotation.y = lerp_angle(character.rotation.y, character_anchor.rotation.y, 3 * delta)
+
+	handle_jump()
+	apply_gravity(delta)
+	apply_movement(direction)
+	update_movement_anim(input_dir, delta)
+
+func handle_jump():
+	if Input.is_action_just_pressed("ui_accept") and is_on_floor():
+		velocity.y = JUMP_VELOCITY
+
+func apply_gravity(delta):
+	if not is_on_floor():
+		velocity.y -= gravity * delta
+
+func apply_movement(direction):
+	if direction:
+		velocity.x = direction.x * SPEED
+		velocity.z = direction.z * SPEED
 	else:
-		character.rotation.y = lerp_angle(character.rotation.y, character_anchor.rotation.y, 3 * delta)
-		
-		if Input.is_action_just_pressed("ui_accept") and is_on_floor():
-			velocity.y = JUMP_VELOCITY
-			
-		
-		if not is_on_floor():
-			velocity.y -= gravity * delta
-	
-		if direction:
-			velocity.x = direction.x * SPEED
-			velocity.z = direction.z * SPEED
-		else:
-			velocity.x = move_toward(velocity.x, 0, SPEED)
-			velocity.z = move_toward(velocity.z, 0, SPEED)
-			
-		var state_machine = anim_tree["parameters/playback"]
-	
-		if not is_on_floor():
-			state_machine.travel("Fall")
-		elif input_dir != Vector2.ZERO:
-			state_machine.travel("Move")
-			var target_blend: Vector2 = input_dir
-			anim_blend = anim_blend.lerp(target_blend, 1.0 - exp(-anim_blend_smooth * delta))
-			anim_tree.set("parameters/Move/blend_position", anim_blend)
-		else:
-			state_machine.travel("Idle")
+		velocity.x = move_toward(velocity.x, 0, SPEED)
+		velocity.z = move_toward(velocity.z, 0, SPEED)
 
-	move_and_slide()
-		
-	
-	
+func update_movement_anim(input_dir, delta):
+	var state_machine = anim_tree["parameters/playback"]
+
+	if not is_on_floor():
+		state_machine.travel("Fall")
+	elif input_dir != Vector2.ZERO:
+		state_machine.travel("Move")
+		var target_blend: Vector2 = input_dir
+		anim_blend = anim_blend.lerp(target_blend, 1.0 - exp(-anim_blend_smooth * delta))
+		anim_tree.set("parameters/Move/blend_position", anim_blend)
+	else:
+		state_machine.travel("Idle")
