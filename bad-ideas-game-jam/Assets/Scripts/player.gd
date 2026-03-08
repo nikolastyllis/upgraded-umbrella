@@ -37,7 +37,7 @@ var near_ladder = false
 var use_ladder = false
 
 func _ready():
-	#Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
+	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 	use_cam_1 = true
 	target_origin_pos = camera_position_1.position
 	pivot.position = target_origin_pos
