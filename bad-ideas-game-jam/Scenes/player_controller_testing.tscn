@@ -34,6 +34,7 @@ albedo_color = Color(0.06469653, 0.06469653, 0.06469653, 1)
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_r2yqc"]
 panorama = ExtResource("4_glfbx")
+energy_multiplier = 4.5
 
 [sub_resource type="Sky" id="Sky_jleko"]
 sky_material = SubResource("PanoramaSkyMaterial_r2yqc")

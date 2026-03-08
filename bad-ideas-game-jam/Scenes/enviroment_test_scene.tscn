@@ -1,23 +1,14 @@
 [gd_scene format=3 uid="uid://ngjrfjr7sul5"]
 
 [ext_resource type="PackedScene" uid="uid://dd2w57kmuv36q" path="res://Assets/Models/Enviroment/BIGJ_ShipBlockout_01.glb" id="1_esi01"]
+[ext_resource type="Material" uid="uid://eb5djxh4js65" path="res://Shaders/SkyShaderl.tres" id="1_to28j"]
 [ext_resource type="Script" uid="uid://d1icg8locw87l" path="res://Scenes/water_camera.gd" id="2_bh83g"]
 [ext_resource type="Shader" uid="uid://ossjmoq6orf1" path="res://Scenes/shader_ocean_calm.gdshader" id="2_exjqg"]
 [ext_resource type="Texture2D" uid="uid://bw3728lre125f" path="res://Assets/Textures/Ocean/0001.jpg" id="2_jd51y"]
 [ext_resource type="Texture2D" uid="uid://bal1s5p7lfes2" path="res://Assets/Textures/Ocean/0258.jpg" id="3_to28j"]
 
-[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_bh83g"]
-sky_top_color = Color(0.25292057, 0.5038705, 0.6162833, 1)
-sky_horizon_color = Color(0.98302203, 0.9892406, 0.9951919, 1)
-sky_curve = 0.044595324
-ground_bottom_color = Color(0.030138826, 0.2468692, 0.41990456, 1)
-ground_horizon_color = Color(0.85824233, 0.7726206, 0.69791377, 1)
-sun_angle_max = 28.76
-sun_curve = 0.21961324
-energy_multiplier = 0.85
-
 [sub_resource type="Sky" id="Sky_jvqja"]
-sky_material = SubResource("ProceduralSkyMaterial_bh83g")
+sky_material = ExtResource("1_to28j")
 
 [sub_resource type="Environment" id="Environment_jd51y"]
 background_mode = 2
@@ -39,42 +30,84 @@ volumetric_fog_detail_spread = 2.5491216
 
 [sub_resource type="Compositor" id="Compositor_4n1t5"]
 
+[sub_resource type="Gradient" id="Gradient_to28j"]
+interpolation_mode = 1
+offsets = PackedFloat32Array(0, 0.39442232, 0.76095617)
+colors = PackedColorArray(0, 0, 0, 1, 1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_4n1t5"]
+noise_type = 2
+frequency = 0.0053
+domain_warp_enabled = true
+domain_warp_amplitude = 38.92
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_ti2qv"]
+noise = SubResource("FastNoiseLite_4n1t5")
+color_ramp = SubResource("Gradient_to28j")
+seamless = true
+
+[sub_resource type="Gradient" id="Gradient_4n1t5"]
+interpolation_mode = 1
+offsets = PackedFloat32Array(0, 0.42031872, 0.47609562, 0.689243, 0.8306773)
+colors = PackedColorArray(0, 0, 0, 1, 0.10872076, 0.10872085, 0.10872034, 1, 0.4765783, 0.4765783, 0.4765771, 1, 0.52378094, 0.5237806, 0.52377945, 1, 1, 1, 1, 1)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_ti2qv"]
+noise_type = 3
+seed = 5
+frequency = 0.0125
+fractal_type = 2
+fractal_octaves = 3
+fractal_lacunarity = 3.035
+fractal_gain = 0.51
+domain_warp_amplitude = 22.525
+domain_warp_frequency = 5.975
+domain_warp_fractal_octaves = 3
+domain_warp_fractal_lacunarity = 8.73
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_7xckk"]
+noise = SubResource("FastNoiseLite_ti2qv")
+color_ramp = SubResource("Gradient_4n1t5")
+seamless = true
+
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ti2qv"]
 render_priority = 0
 shader = ExtResource("2_exjqg")
-shader_parameter/foam_scale = 0.12
+shader_parameter/foam_noise = SubResource("NoiseTexture2D_7xckk")
+shader_parameter/foam_scale = 0.025
 shader_parameter/foam_speed = Vector2(0.05, -0.1)
 shader_parameter/foam_color = Color(1, 1, 1, 1)
-shader_parameter/foam_amount = 1.445
-shader_parameter/crest_start = 1.0
-shader_parameter/crest_end = 4.0
-shader_parameter/patch_threshold = 0.585
-shader_parameter/patch_softness = 0.305
-shader_parameter/time_scale = 1.125
-shader_parameter/wave_amp = 0.69
-shader_parameter/wave_freq = -2.93
-shader_parameter/wave_speed = 1.545
-shader_parameter/wave_dir1 = Vector2(1, 0.2)
-shader_parameter/wave_dir2 = Vector2(0.2, 1)
+shader_parameter/foam_amount = 8.295
+shader_parameter/crest_noise = SubResource("NoiseTexture2D_ti2qv")
+shader_parameter/crest_scale = 0.315
+shader_parameter/crest_start = 1.185
+shader_parameter/crest_end = 2.875
+shader_parameter/patch_threshold = 0.175
+shader_parameter/patch_softness = 14.77
+shader_parameter/time_scale = 2.565
+shader_parameter/wave_amp = 0.96
+shader_parameter/wave_freq = 20.0
+shader_parameter/wave_speed = 0.575
+shader_parameter/wave_dir1 = Vector2(-0.185, 0.1)
+shader_parameter/wave_dir2 = Vector2(-0.245, 0.05)
 shader_parameter/normal_map1 = ExtResource("2_jd51y")
 shader_parameter/normal_map2 = ExtResource("3_to28j")
 shader_parameter/normal_strength = 0.1
-shader_parameter/normal_speed1 = Vector2(0.03, 0.02)
-shader_parameter/normal_speed2 = Vector2(-0.02, 0.04)
-shader_parameter/normal_tiling = 0.065
-shader_parameter/shallow_color = Color(0.027702533, 0.2539582, 0.25395462, 1)
+shader_parameter/normal_speed1 = Vector2(0.001, 0.002)
+shader_parameter/normal_speed2 = Vector2(0.001, 0.001)
+shader_parameter/normal_tiling = 2.14
+shader_parameter/shallow_color = Color(0.089087926, 0.22036067, 0.26154977, 1)
 shader_parameter/deep_color = Color(0.01, 0.08, 0.18, 1)
 shader_parameter/horizon_color = Color(0.50259936, 0.7275042, 0.8843616, 1)
 shader_parameter/metallic = 0.0
-shader_parameter/roughness = 0.04
-shader_parameter/fresnel_power = 2.115
-shader_parameter/horizon_start = 3.575
-shader_parameter/horizon_end = 800.0
+shader_parameter/roughness = 0.32
+shader_parameter/fresnel_power = 2.895
+shader_parameter/horizon_start = 20.0
+shader_parameter/horizon_end = 187.68
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_7xckk"]
 size = Vector2(600, 600)
-subdivide_width = 50
-subdivide_depth = 50
+subdivide_width = 150
+subdivide_depth = 150
 
 [node name="EnviromentTestScene" type="Node3D" unique_id=1795795939]
 
@@ -83,12 +116,10 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.0927014, 0, 0.60878706)
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="Lighting" unique_id=1333050787]
 transform = Transform3D(-0.6349024, 0.6508326, 0.4163124, 0.09654337, -0.4677935, 0.8785493, 0.76653665, 0.59798515, 0.23416963, 3.0927014, 0, -0.60878706)
-light_energy = 1.355
+light_energy = 1.143
 light_indirect_energy = 0.0
-light_volumetric_fog_energy = 0.504
-light_angular_distance = 4.62
+light_volumetric_fog_energy = 0.729
 shadow_enabled = true
-shadow_bias = 0.29
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="Lighting" unique_id=972673621]
 environment = SubResource("Environment_jd51y")
@@ -118,5 +149,6 @@ light_energy = 9.462
 light_size = 0.087
 
 [node name="Camera3D" type="Camera3D" parent="node3D" unique_id=1057833585]
-transform = Transform3D(-0.39693975, 0, -0.91784465, 0, 1, 0, 0.91784465, 0, -0.39693975, -37.512634, 13.2271, 30.507275)
-fov = 80.1
+transform = Transform3D(-0.39693975, 0, -0.91784465, 0, 1, 0, 0.91784465, 0, -0.39693975, 5.262295, 10.367025, -47.838177)
+fov = 106.0
+near = 0.028

@@ -126,7 +126,7 @@ text = "Interact
 [node name="RayCast3D" type="RayCast3D" parent="CameraOrigin/SpringArm3D/Camera3D" unique_id=1701017775]
 target_position = Vector3(0, 0, -5)
 
-[node name="test_character" parent="." unique_id=1931483700 instance=ExtResource("4_2nftw")]
+[node name="test_character" parent="." unique_id=384786348 instance=ExtResource("4_2nftw")]
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, -0.95, 0)
 
 [node name="FeetRay" type="RayCast3D" parent="test_character" unique_id=1016217046]

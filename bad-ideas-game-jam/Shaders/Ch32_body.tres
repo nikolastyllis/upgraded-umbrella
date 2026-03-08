@@ -1,0 +1,34 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://daas38w03ipp7"]
+
+[ext_resource type="Texture2D" uid="uid://brnuowb4e4gvx" path="res://Assets/Models/test_character_Ch32_1001_Diffuse.png" id="1_igd16"]
+[ext_resource type="Texture2D" uid="uid://ca1qel51y37tq" path="res://Assets/Models/test_character_Ch32_1001_Glossiness.png" id="2_dr7r3"]
+[ext_resource type="Texture2D" uid="uid://bcx1v2wtw6fao" path="res://Assets/Models/test_character_Ch32_1001_Normal.png" id="3_g7q5i"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_igd16"]
+render_priority = 1
+transparency = 1
+shading_mode = 0
+albedo_color = Color(0, 0, 0, 1)
+grow = true
+grow_amount = 0.473
+stencil_mode = 3
+stencil_flags = 1
+stencil_compare = 5
+metadata/_stencil_owned = true
+
+[resource]
+resource_name = "Ch32_body"
+next_pass = SubResource("StandardMaterial3D_igd16")
+cull_mode = 2
+specular_mode = 1
+albedo_texture = ExtResource("1_igd16")
+metallic_specular = 0.0
+metallic_texture_channel = 2
+roughness_texture = ExtResource("2_dr7r3")
+normal_enabled = true
+normal_scale = 0.62
+normal_texture = ExtResource("3_g7q5i")
+rim_tint = 1.0
+stencil_mode = 1
+stencil_flags = 2
+stencil_outline_thickness = 0.473

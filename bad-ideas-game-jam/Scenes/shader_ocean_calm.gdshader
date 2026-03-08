@@ -1,5 +1,5 @@
 shader_type spatial;
-render_mode cull_back, diffuse_burley, specular_schlick_ggx;
+render_mode cull_back, diffuse_toon, specular_toon;
 
 varying vec3 v_world_pos;
 
@@ -13,6 +13,8 @@ uniform vec3 foam_color : source_color = vec3(0.9, 0.95, 1.0);
 uniform float foam_amount = 1.0;
 
 // Crest foam controls
+uniform sampler2D crest_noise;
+uniform float crest_scale = 0.03;
 uniform float crest_start = 0.25;  // where foam begins (wave height)
 uniform float crest_end   = 0.55;  // where foam is strong
 
@@ -111,8 +113,8 @@ void vertex() {
 	vec2 p = VERTEX.xz;
 	float w1 = sin(dot(normalize(wave_dir1), p) * wave_freq + t * wave_speed);
 	float w2 = cos(dot(normalize(wave_dir2), p) * (wave_freq * 1.6) + t * (wave_speed * 0.75));
-
-	float wave = (w1 + w2) * wave_amp;
+	float w3 = sin(dot(normalize(wave_dir1), p) * (wave_freq * 0.1) + t * wave_speed);
+	float wave = (w1 + (w2 - w3)) * wave_amp;
 	VERTEX.y += wave;
 
 	v_wave = wave; // NEW
@@ -146,20 +148,22 @@ void fragment() {
 	base_col = mix(base_col, horizon_color, horizon_t);
 	
 	// --- FOAM ---
-	// Crest foam: peaks + steepness
+	vec2 crest_uv = v_world_pos.xz * crest_scale;
+	float crest_n = texture(crest_noise, crest_uv).r;
 	float crest = smoothstep(crest_start, crest_end, v_wave);
 	float steep = 1.0 - clamp(NORMAL.y, 0.0, 1.0);
-	float crest_foam = crest * steep;
+	float crest_foam = crest * crest_n * steep;
 
 	// Procedural foam patches (world-space FBM)
 	vec2 foam_uv = v_world_pos.xz * foam_scale + TIME * foam_speed;
-	float foam_n = foam_noise2(foam_uv);
+	float foam_n = texture(foam_noise, foam_uv).r;
 
 	// Turn noise into patch islands
 	float patches = smoothstep(patch_threshold, patch_threshold + patch_softness, foam_n);
 
 	// Combine masks
-	float foam_mask = clamp((crest_foam * 1.2 + patches * 0.6) * foam_amount, 0.0, 1.0);
+	float foam_mask = clamp((crest_foam * 0.9 + patches * 0.1) * foam_amount, 0.0, 1.0);
+	
 
 	ALBEDO = mix(base_col, foam_color, foam_mask);
 	METALLIC = metallic;
