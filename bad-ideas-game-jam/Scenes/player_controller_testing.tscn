@@ -3,6 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://btg75au461yd7" path="res://Prefabs/player.tscn" id="1_0thiu"]
 [ext_resource type="Script" uid="uid://dlon4jykp3tcp" path="res://Assets/Scripts/door.gd" id="2_vo2hj"]
 [ext_resource type="PackedScene" uid="uid://cg27h6m4wwam0" path="res://Prefabs/objective_marker_ui.tscn" id="3_glfbx"]
+[ext_resource type="Texture2D" uid="uid://ct4ar4qgohuli" path="res://Assets/Textures/HDRI/MyDesk_01_2K.hdr" id="4_glfbx"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_cggdu"]
 
@@ -30,6 +31,16 @@ material = SubResource("StandardMaterial3D_u0d2a")
 albedo_color = Color(0.06469653, 0.06469653, 0.06469653, 1)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_vo2hj"]
+
+[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_r2yqc"]
+panorama = ExtResource("4_glfbx")
+
+[sub_resource type="Sky" id="Sky_jleko"]
+sky_material = SubResource("PanoramaSkyMaterial_r2yqc")
+
+[sub_resource type="Environment" id="Environment_2sgug"]
+background_mode = 2
+sky = SubResource("Sky_jleko")
 
 [node name="PlayerControllerTesting" type="Node3D" unique_id=1347062166]
 
@@ -93,3 +104,6 @@ surface_material_override/0 = SubResource("StandardMaterial3D_vo2hj")
 shape = SubResource("BoxShape3D_vo2hj")
 
 [node name="ObjectiveMarker" parent="MeshInstance3D5/StaticBody3D" unique_id=2030661204 instance=ExtResource("3_glfbx")]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1422801402]
+environment = SubResource("Environment_2sgug")
