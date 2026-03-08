@@ -18,6 +18,7 @@ extends CharacterBody3D
 @onready var anim_tree: AnimationTree = $test_character/AnimationTree
 @onready var anim_player: AnimationPlayer = $test_character/AnimationPlayer
 @onready var character := $test_character
+@onready var character_anchor := $CharacterAnchor
 
 const SPEED = 5.0
 const JUMP_VELOCITY = 4.5
@@ -36,7 +37,7 @@ var near_ladder = false
 var use_ladder = false
 
 func _ready():
-	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
+	#Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 	use_cam_1 = true
 	target_origin_pos = camera_position_1.position
 	pivot.position = target_origin_pos
@@ -154,11 +155,6 @@ func climb_ladder():
 		global_position = global_position.lerp(target_pos, 0.15)
 		state_machine.travel("Finish Climbing")
 
-		if global_position.distance_to(target_pos) < 0.05:
-			use_ladder = false
-			velocity = Vector3.ZERO
-			state_machine.travel("Idle")
-
 func _physics_process(delta):
 	
 	var input_dir = Input.get_vector("left", "right", "up", "down")
@@ -187,9 +183,19 @@ func _physics_process(delta):
 	if near_ladder:
 		use_ladder = true;
 		climb_ladder()
+		
+		if Input.is_action_just_pressed("ui_accept"):
+			var launch_normal = feet_ray.get_collision_normal()
+			velocity = launch_normal * JUMP_VELOCITY * 2.0
+			velocity.y = JUMP_VELOCITY
+			use_ladder = false
+			near_ladder = false
 	else:
+		character.rotation.y = lerp_angle(character.rotation.y, character_anchor.rotation.y, 3 * delta)
+		
 		if Input.is_action_just_pressed("ui_accept") and is_on_floor():
 			velocity.y = JUMP_VELOCITY
+			
 		
 		if not is_on_floor():
 			velocity.y -= gravity * delta

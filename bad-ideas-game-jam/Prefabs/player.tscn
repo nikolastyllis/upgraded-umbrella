@@ -5,22 +5,12 @@
 [ext_resource type="Texture2D" uid="uid://cbybhx6l006lm" path="res://Assets/UI/E.png" id="3_knrd4"]
 [ext_resource type="PackedScene" uid="uid://dsldfu4e5vo6t" path="res://Scenes/player_character.tscn" id="4_2nftw"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ahmia"]
-
-[sub_resource type="CapsuleMesh" id="CapsuleMesh_u0d2a"]
-
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_myya0"]
 radius = 0.3
 height = 1.7
 
 [node name="Player" type="CharacterBody3D" unique_id=1647912674]
 script = ExtResource("1_y5hcb")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1772696278]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, 0, 0)
-visible = false
-material_override = SubResource("StandardMaterial3D_ahmia")
-mesh = SubResource("CapsuleMesh_u0d2a")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1768347194]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.11376953, 0)
@@ -142,7 +132,11 @@ transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, -
 [node name="FeetRay" type="RayCast3D" parent="test_character" unique_id=1016217046]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.1, 0)
 target_position = Vector3(0, 0, 0.5)
+collision_mask = 2
 
 [node name="ClimbFinishedRay" type="RayCast3D" parent="test_character" unique_id=1348388004]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.7, 0.85)
 target_position = Vector3(0, -0.8, 0)
+
+[node name="CharacterAnchor" type="Node3D" parent="." unique_id=669950866]
+transform = Transform3D(-1, 0, -1.509958e-07, 0, 1, 0, 1.509958e-07, 0, -1, 0, 0, 0)

@@ -56,11 +56,6 @@ shape = SubResource("ConcavePolygonShape3D_ahmia")
 
 [node name="Player" parent="." unique_id=1647912674 instance=ExtResource("1_0thiu")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.9886923, 0)
-sens = null
-camera_lerp_speed = null
-anim_blend_smooth = null
-idle_blend_smooth = null
-mouse_idle_threshold = null
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=167602176]
 transform = Transform3D(1, 0, 0, 0, 0.2874441, 0.9577974, 0, -0.9577974, 0.2874441, 0, 5.70224, 0)
@@ -70,6 +65,7 @@ transform = Transform3D(1, 0, 0, 0, 5.7393255, 0, 0, 0, 4.857139, -3.3582983, 1.
 mesh = SubResource("BoxMesh_p6kl7")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="MeshInstance3D2" unique_id=417568308]
+collision_layer = 2
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="MeshInstance3D2/StaticBody3D" unique_id=553442637]
 shape = SubResource("ConcavePolygonShape3D_cggdu")
