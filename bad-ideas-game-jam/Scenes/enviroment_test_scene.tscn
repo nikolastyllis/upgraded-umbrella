@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://bw3728lre125f" path="res://Assets/Textures/Ocean/0001.jpg" id="2_jd51y"]
 [ext_resource type="Texture2D" uid="uid://bal1s5p7lfes2" path="res://Assets/Textures/Ocean/0258.jpg" id="3_to28j"]
 [ext_resource type="PackedScene" uid="uid://2ql0j7aimqtd" path="res://Assets/Models/Enviroment/BIGJ_ShipBlockout_02.glb" id="6_to28j"]
+[ext_resource type="Material" uid="uid://dxu2lgyle53xn" path="res://Shaders/Base_Material_Shader.tres" id="7_7xckk"]
 [ext_resource type="PackedScene" uid="uid://btg75au461yd7" path="res://Prefabs/player.tscn" id="7_ti2qv"]
 [ext_resource type="PackedScene" uid="uid://dpl2uefq7xuhu" path="res://Prefabs/npc.tscn" id="8_7xckk"]
 
@@ -76,7 +77,7 @@ seamless = true
 render_priority = 0
 shader = ExtResource("2_exjqg")
 shader_parameter/time_scale = 1.0
-shader_parameter/macro_amp = 3.5949999999999998
+shader_parameter/macro_amp = 3.595
 shader_parameter/macro_freq = 0.035
 shader_parameter/macro_speed = 0.9
 shader_parameter/micro_amp = 0.595
@@ -111,7 +112,7 @@ shader_parameter/crest_scale = 0.05
 shader_parameter/crest_speed = Vector2(0.006, 0.003)
 shader_parameter/crest_screen_strength = 0.425
 shader_parameter/crest_start = 0.21
-shader_parameter/crest_end = 3.3449999999999998
+shader_parameter/crest_end = 3.345
 shader_parameter/wind_scale = 0.38
 shader_parameter/wind_speed = Vector2(0.05, 0.02)
 shader_parameter/wind_threshold = 0.55
@@ -151,6 +152,9 @@ script = ExtResource("2_bh83g")
 
 [node name="BIGJ_ShipBlockout_02" parent="." unique_id=1667667348 instance=ExtResource("6_to28j")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 23.843134, 7.656372, -42.012955)
+
+[node name="Cube_001" parent="BIGJ_ShipBlockout_02" index="37" unique_id=2054643278]
+surface_material_override/0 = ExtResource("7_7xckk")
 
 [node name="Player" parent="." unique_id=1647912674 instance=ExtResource("7_ti2qv")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16.022945, 8.852002, 10.284115)
