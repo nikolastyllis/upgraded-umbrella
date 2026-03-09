@@ -153,7 +153,7 @@ script = ExtResource("2_bh83g")
 [node name="BIGJ_ShipBlockout_02" parent="." unique_id=1145848944 instance=ExtResource("6_to28j")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 23.843134, 4.1656265, -42.012955)
 
-[node name="Hull Complete Shape" parent="BIGJ_ShipBlockout_02" index="58" unique_id=276040700]
+[node name="Hull Complete Shape" parent="BIGJ_ShipBlockout_02" index="58" unique_id=879640384]
 surface_material_override/0 = ExtResource("7_m4sqq")
 
 [node name="Player" parent="." unique_id=1647912674 instance=ExtResource("7_ti2qv")]

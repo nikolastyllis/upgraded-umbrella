@@ -1,0 +1,17 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://bgo7ghb6hktda"]
+
+[ext_resource type="Texture2D" uid="uid://brnuowb4e4gvx" path="res://Assets/Models/test_character_Ch32_1001_Diffuse.png" id="1_igd16"]
+[ext_resource type="Texture2D" uid="uid://ca1qel51y37tq" path="res://Assets/Models/test_character_Ch32_1001_Glossiness.png" id="2_dr7r3"]
+[ext_resource type="Texture2D" uid="uid://bcx1v2wtw6fao" path="res://Assets/Models/test_character_Ch32_1001_Normal.png" id="3_g7q5i"]
+
+[resource]
+resource_name = "Ch32_body"
+cull_mode = 2
+albedo_texture = ExtResource("1_igd16")
+metallic = 0.5
+metallic_texture = ExtResource("2_dr7r3")
+metallic_texture_channel = 2
+roughness_texture = ExtResource("2_dr7r3")
+roughness_texture_channel = 1
+normal_enabled = true
+normal_texture = ExtResource("3_g7q5i")
