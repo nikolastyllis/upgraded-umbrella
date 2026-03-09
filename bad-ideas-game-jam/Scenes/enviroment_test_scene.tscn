@@ -6,7 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://bw3728lre125f" path="res://Assets/Textures/Ocean/0001.jpg" id="2_jd51y"]
 [ext_resource type="Texture2D" uid="uid://bal1s5p7lfes2" path="res://Assets/Textures/Ocean/0258.jpg" id="3_to28j"]
 [ext_resource type="PackedScene" uid="uid://2ql0j7aimqtd" path="res://Assets/Models/Enviroment/BIGJ_ShipBlockout_02.glb" id="6_to28j"]
-[ext_resource type="Material" uid="uid://dxu2lgyle53xn" path="res://Shaders/Base_Material_Shader.tres" id="7_7xckk"]
+[ext_resource type="Material" uid="uid://mjsmyyrpxybk" path="res://Shaders/Old/Red Steel Hotspot.tres" id="7_m4sqq"]
 [ext_resource type="PackedScene" uid="uid://btg75au461yd7" path="res://Prefabs/player.tscn" id="7_ti2qv"]
 [ext_resource type="PackedScene" uid="uid://dpl2uefq7xuhu" path="res://Prefabs/npc.tscn" id="8_7xckk"]
 
@@ -143,23 +143,23 @@ camera_attributes = SubResource("CameraAttributesPhysical_to28j")
 compositor = SubResource("Compositor_4n1t5")
 
 [node name="ocean_mesh" type="MeshInstance3D" parent="." unique_id=977819256]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.977684, 1.1515465, -2.2316055)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.977684, 0.62191963, -2.2316055)
 material_override = SubResource("ShaderMaterial_ti2qv")
 mesh = SubResource("PlaneMesh_7xckk")
 script = ExtResource("2_bh83g")
 
 [node name="node3D" type="Node3D" parent="." unique_id=1483757596]
 
-[node name="BIGJ_ShipBlockout_02" parent="." unique_id=1667667348 instance=ExtResource("6_to28j")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 23.843134, 7.656372, -42.012955)
+[node name="BIGJ_ShipBlockout_02" parent="." unique_id=1145848944 instance=ExtResource("6_to28j")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 23.843134, 4.1656265, -42.012955)
 
-[node name="Cube_001" parent="BIGJ_ShipBlockout_02" index="37" unique_id=2054643278]
-surface_material_override/0 = ExtResource("7_7xckk")
+[node name="Hull Complete Shape" parent="BIGJ_ShipBlockout_02" index="58" unique_id=276040700]
+surface_material_override/0 = ExtResource("7_m4sqq")
 
 [node name="Player" parent="." unique_id=1647912674 instance=ExtResource("7_ti2qv")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16.022945, 8.852002, 10.284115)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18.23421, 24.426123, 18.98018)
 
 [node name="Npc" parent="." unique_id=618460424 instance=ExtResource("8_7xckk")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.884084, 7.924694, 4.412608)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.843243, 11.249982, 17.476843)
 
 [editable path="BIGJ_ShipBlockout_02"]
