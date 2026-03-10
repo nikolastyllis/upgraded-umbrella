@@ -25,11 +25,11 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.4, 0.6, 0)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.55, 0.6, 0)
 
 [node name="SpringArm3D" type="SpringArm3D" parent="CameraOrigin" unique_id=1606133364]
-spring_length = 2.0
+spring_length = 1.5
 margin = 0.5
 
 [node name="Camera3D" type="Camera3D" parent="CameraOrigin/SpringArm3D" unique_id=284577362]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.5)
 fov = 50.0
 
 [node name="CrosshairUI" type="Control" parent="CameraOrigin/SpringArm3D/Camera3D" unique_id=612996285]

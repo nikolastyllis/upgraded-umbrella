@@ -11,8 +11,8 @@ extends CharacterBody3D
 @onready var character := $test_character
 @onready var character_anchor := $CharacterAnchor
 
-const SPEED = 5.0
-const JUMP_VELOCITY = 4.5
+const SPEED = 2.5
+const JUMP_VELOCITY = 3
 
 var anim_blend := Vector2.ZERO
 var near_ladder = false

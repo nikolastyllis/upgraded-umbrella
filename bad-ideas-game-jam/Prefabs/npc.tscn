@@ -4,7 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://dsldfu4e5vo6t" path="res://Scenes/player_character.tscn" id="3_wvgss"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_myya0"]
-radius = 0.3
+radius = 0.2
 height = 1.7
 
 [node name="Npc" type="CharacterBody3D" unique_id=1647912674]
@@ -28,3 +28,5 @@ collision_mask = 3
 
 [node name="CharacterAnchor" type="Node3D" parent="." unique_id=669950866]
 transform = Transform3D(-1, 0, -1.509958e-07, 0, 1, 0, 1.509958e-07, 0, -1, 0, 0, 0)
+
+[node name="NavigationAgent3D" type="NavigationAgent3D" parent="." unique_id=663394382]
