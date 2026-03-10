@@ -70,3 +70,26 @@ jump={
 [rendering]
 
 rendering_device/driver.windows="d3d12"
+
+[shader_globals]
+
+specular_smoothness={
+"type": "float",
+"value": 0.05
+}
+fresnel_smoothness={
+"type": "float",
+"value": 0.01
+}
+outline_width={
+"type": "float",
+"value": 6.0
+}
+outline_color={
+"type": "color",
+"value": Color(0, 0, 0, 1)
+}
+diffuse_curve={
+"type": "sampler2D",
+"value": "::0y40n"
+}

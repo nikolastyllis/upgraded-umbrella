@@ -1,0 +1,22 @@
+[gd_resource type="ShaderMaterial" format=3 uid="uid://d0msgscrjx5pm"]
+
+[ext_resource type="Shader" uid="uid://d266trvxphdyu" path="res://Shaders/cel-shader-base.gdshader" id="1_h2uun"]
+[ext_resource type="Material" uid="uid://sgetjvg177mb" path="res://Shaders/outline.tres" id="1_hmyoy"]
+[ext_resource type="Texture2D" uid="uid://cbt6d8e7ucbuk" path="res://Assets/Textures/ChrisTest/BaseColor.png" id="1_hp8ij"]
+[ext_resource type="Texture2D" uid="uid://b8pephrebaikt" path="res://Assets/Textures/ChrisTest/Normal.png" id="2_4trx5"]
+[ext_resource type="Texture2D" uid="uid://bbtsrrd6ap34y" path="res://Assets/Textures/ChrisTest/AORoughMetal.png" id="3_h2uun"]
+
+[resource]
+render_priority = 0
+next_pass = ExtResource("1_hmyoy")
+shader = ExtResource("1_h2uun")
+shader_parameter/normal_scale = 1.0
+shader_parameter/normal_map = ExtResource("2_4trx5")
+shader_parameter/ao_light_affect = 0.0
+shader_parameter/ao_map = ExtResource("3_h2uun")
+shader_parameter/color = Color(1, 1, 1, 1)
+shader_parameter/base_texture = ExtResource("1_hp8ij")
+shader_parameter/specular = Color(0.045405723, 0.015191243, 0, 0.45882353)
+shader_parameter/fresnel = Color(0.27285552, 0.2114625, 0.026411725, 0.7019608)
+shader_parameter/uv_scale = Vector2(1, 1)
+shader_parameter/uv_offset = Vector2(0, 0)

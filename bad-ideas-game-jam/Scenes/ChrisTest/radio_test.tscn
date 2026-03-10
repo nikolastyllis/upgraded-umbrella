@@ -1,0 +1,24 @@
+[gd_scene format=3 uid="uid://ba7gobqwm533a"]
+
+[ext_resource type="PackedScene" uid="uid://b8oqfdahcku0" path="res://Assets/Models/Chris/radioTest.fbx" id="1_8ck5m"]
+[ext_resource type="Material" uid="uid://d0msgscrjx5pm" path="res://Materials/RadioTest.tres" id="2_io5xu"]
+
+[node name="radioTest" unique_id=67342358 instance=ExtResource("1_8ck5m")]
+
+[node name="Antenna_low" parent="." index="0" unique_id=43028581]
+material_overlay = ExtResource("2_io5xu")
+
+[node name="BackPlate_low" parent="." index="1" unique_id=1323127989]
+material_overlay = ExtResource("2_io5xu")
+
+[node name="FrontGrille_low" parent="." index="2" unique_id=1535961086]
+surface_material_override/0 = ExtResource("2_io5xu")
+
+[node name="Knobs_low" parent="." index="3" unique_id=2066539795]
+material_overlay = ExtResource("2_io5xu")
+
+[node name="Radio_low" parent="." index="4" unique_id=528382069]
+material_overlay = ExtResource("2_io5xu")
+
+[node name="Switch_low" parent="." index="5" unique_id=1188590546]
+material_overlay = ExtResource("2_io5xu")
