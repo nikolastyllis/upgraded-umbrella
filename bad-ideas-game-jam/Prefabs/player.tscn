@@ -30,6 +30,7 @@ margin = 0.5
 
 [node name="Camera3D" type="Camera3D" parent="CameraOrigin/SpringArm3D" unique_id=284577362]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.5)
+cull_mask = 1048571
 fov = 50.0
 
 [node name="CrosshairUI" type="Control" parent="CameraOrigin/SpringArm3D/Camera3D" unique_id=612996285]

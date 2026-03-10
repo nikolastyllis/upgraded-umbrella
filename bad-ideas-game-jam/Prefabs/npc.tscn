@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://dpl2uefq7xuhu"]
 
 [ext_resource type="Script" uid="uid://dhd3ayrrkl2rn" path="res://Assets/Scripts/npc.gd" id="1_nrg37"]
-[ext_resource type="PackedScene" uid="uid://dsldfu4e5vo6t" path="res://Scenes/player_character.tscn" id="3_wvgss"]
+[ext_resource type="PackedScene" uid="uid://cpju2kewehe31" path="res://Assets/Models/Characters/Twin 2/twin_2_model_01.tscn" id="2_nrg37"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_myya0"]
 radius = 0.2
@@ -14,17 +14,18 @@ script = ExtResource("1_nrg37")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.11376953, 0)
 shape = SubResource("CapsuleShape3D_myya0")
 
-[node name="test_character" parent="." unique_id=384786348 instance=ExtResource("3_wvgss")]
-transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, -0.95, 0)
+[node name="Twin_2_Model_01" parent="." unique_id=1100896801 instance=ExtResource("2_nrg37")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.9742596, 0)
 
-[node name="FeetRay" type="RayCast3D" parent="test_character" unique_id=1016217046]
-target_position = Vector3(0, 0, 0.5)
-collision_mask = 2
-
-[node name="ClimbFinishedRay" type="RayCast3D" parent="test_character" unique_id=1348388004]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.7, 0.85)
+[node name="ClimbFinishedRay" type="RayCast3D" parent="Twin_2_Model_01" unique_id=1348388004]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -7.430936e-08, 0.75000006, -0.85)
 target_position = Vector3(0, -0.3, 0)
 collision_mask = 3
+
+[node name="FeetRay" type="RayCast3D" parent="Twin_2_Model_01" unique_id=1016217046]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, -0.95, 0)
+target_position = Vector3(0, 0, 0.5)
+collision_mask = 2
 
 [node name="CharacterAnchor" type="Node3D" parent="." unique_id=669950866]
 transform = Transform3D(-1, 0, -1.509958e-07, 0, 1, 0, 1.509958e-07, 0, -1, 0, 0, 0)
