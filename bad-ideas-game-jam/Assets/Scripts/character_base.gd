@@ -4,11 +4,11 @@ extends CharacterBody3D
 @export var anim_blend_smooth := 3
 @export var rotation_speed := 5.0
 
-@onready var feet_ray := $test_character/FeetRay
-@onready var climb_finished_ray := $test_character/ClimbFinishedRay
-@onready var anim_tree: AnimationTree = $test_character/AnimationTree
-@onready var anim_player: AnimationPlayer = $test_character/AnimationPlayer
-@onready var character := $test_character
+@onready var feet_ray := $Character/FeetRay
+@onready var climb_finished_ray := $Character/ClimbFinishedRay
+@onready var anim_tree: AnimationTree = $Character/Armature/AnimationTree
+@onready var anim_player: AnimationPlayer = $Character/Armature/AnimationPlayer
+@onready var character := $Character
 @onready var character_anchor := $CharacterAnchor
 
 const SPEED = 2.5

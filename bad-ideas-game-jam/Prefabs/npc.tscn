@@ -14,16 +14,21 @@ script = ExtResource("1_nrg37")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.11376953, 0)
 shape = SubResource("CapsuleShape3D_myya0")
 
-[node name="Twin_2_Model_01" parent="." unique_id=1100896801 instance=ExtResource("2_nrg37")]
+[node name="Character" parent="." unique_id=1100896801 instance=ExtResource("2_nrg37")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.9742596, 0)
 
-[node name="ClimbFinishedRay" type="RayCast3D" parent="Twin_2_Model_01" unique_id=1348388004]
-transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -7.430936e-08, 0.75000006, -0.85)
-target_position = Vector3(0, -0.3, 0)
+[node name="ClimbFinishedRay" type="RayCast3D" parent="Character" unique_id=2077527608]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.815, 0.85)
+target_position = Vector3(0, -0.7, 0)
 collision_mask = 3
 
-[node name="FeetRay" type="RayCast3D" parent="Twin_2_Model_01" unique_id=1016217046]
-transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, -0.95, 0)
+[node name="FeetRay" type="RayCast3D" parent="Character" unique_id=1786987186]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.1, 0)
+target_position = Vector3(0, 0, 0.5)
+collision_mask = 2
+
+[node name="LadderCheck" type="RayCast3D" parent="Character" unique_id=910707641]
+transform = Transform3D(1, 0, 0, 0, -4.3711385e-08, -0.99999994, 0, 0.99999994, -4.3711385e-08, 0, 0.1, -0.2)
 target_position = Vector3(0, 0, 0.5)
 collision_mask = 2
 

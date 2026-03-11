@@ -2,17 +2,22 @@
 
 [ext_resource type="Script" uid="uid://sxdqvxq4t8ow" path="res://Assets/Scripts/player.gd" id="1_y5hcb"]
 [ext_resource type="Texture2D" uid="uid://g8g413indqd7" path="res://Assets/UI/Crosshair.png" id="2_2nftw"]
-[ext_resource type="PackedScene" uid="uid://dsldfu4e5vo6t" path="res://Scenes/player_character.tscn" id="4_2nftw"]
+[ext_resource type="PackedScene" uid="uid://cpju2kewehe31" path="res://Assets/Models/Characters/Twin 2/twin_2_model_01.tscn" id="3_y5hcb"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_myya0"]
 radius = 0.3
-height = 1.7
+height = 1.8607422
 
 [node name="Player" type="CharacterBody3D" unique_id=1647912674]
 script = ExtResource("1_y5hcb")
+sensitivity = null
+view_toggle_lerp_speed = null
+idle_animation_blend_smooth = null
+mouse_idle_threshold = null
+movement_animation_blend_smooth = null
+rotation_speed = null
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1768347194]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.11376953, 0)
 shape = SubResource("CapsuleShape3D_myya0")
 
 [node name="CameraPosition1" type="Node3D" parent="." unique_id=694239538]
@@ -130,17 +135,18 @@ text = "E
 [node name="RayCast3D" type="RayCast3D" parent="CameraOrigin/SpringArm3D/Camera3D" unique_id=1701017775]
 target_position = Vector3(0, 0, -4)
 
-[node name="test_character" parent="." unique_id=384786348 instance=ExtResource("4_2nftw")]
-transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, -0.95, 0)
+[node name="CharacterAnchor" type="Node3D" parent="." unique_id=669950866]
+transform = Transform3D(-1, 0, -1.509958e-07, 0, 1, 0, 1.509958e-07, 0, -1, 0, 0, 0)
 
-[node name="FeetRay" type="RayCast3D" parent="test_character" unique_id=1016217046]
-target_position = Vector3(0, 0, 0.5)
-collision_mask = 2
+[node name="Character" parent="." unique_id=1100896801 instance=ExtResource("3_y5hcb")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, -0.94238436, 0)
 
-[node name="ClimbFinishedRay" type="RayCast3D" parent="test_character" unique_id=1348388004]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.7, 0.85)
+[node name="ClimbFinishedRay" type="RayCast3D" parent="Character" unique_id=972750169]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.815, 0.85)
 target_position = Vector3(0, -0.3, 0)
 collision_mask = 3
 
-[node name="CharacterAnchor" type="Node3D" parent="." unique_id=669950866]
-transform = Transform3D(-1, 0, -1.509958e-07, 0, 1, 0, 1.509958e-07, 0, -1, 0, 0, 0)
+[node name="FeetRay" type="RayCast3D" parent="Character" unique_id=1430197843]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.1, 0)
+target_position = Vector3(0, 0, 0.5)
+collision_mask = 2
