@@ -1,0 +1,23 @@
+[gd_scene format=3 uid="uid://bhun3l1dxxlwo"]
+
+[ext_resource type="PackedScene" uid="uid://bocyb7fq47msb" path="res://Assets/Models/Enviroment/BIGJ_Ladder_02.glb" id="1_2guuy"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_rmtat"]
+
+[node name="BIGJ_Ladder_02" unique_id=172315957 instance=ExtResource("1_2guuy")]
+
+[node name="ladder_mesh" parent="." index="0" unique_id=54888443]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0)
+layers = 3
+
+[node name="StaticBody3D" type="StaticBody3D" parent="ladder_mesh" index="0" unique_id=1165828078]
+transform = Transform3D(-9.1793915e-09, 0, 0.452, -0.21, -9.559681e-08, -1.9757547e-08, 9.1793915e-09, -2.187, 8.636298e-16, 0.005910456, 0.08257919, -0.1)
+collision_layer = 3
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="ladder_mesh/StaticBody3D" index="0" unique_id=765776408]
+shape = SubResource("BoxShape3D_rmtat")
+
+[node name="NavigationLink3D" type="NavigationLink3D" parent="ladder_mesh" index="1" unique_id=1331797024]
+transform = Transform3D(-9.1793915e-09, 0, 0.452, -0.21, -9.559681e-08, -1.9757547e-08, 9.1793915e-09, -2.187, 8.636298e-16, 0.005910456, 0.08257919, -0.1)
+start_position = Vector3(5, -0.5, 0)
+end_position = Vector3(-1, 0.5, 0)
