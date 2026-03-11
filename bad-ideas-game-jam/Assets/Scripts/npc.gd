@@ -14,10 +14,10 @@ extends CharacterBody3D
 @onready var navigation_agent_3d := $NavigationAgent3D
 @onready var player := $"../Player"
 
-const SPEED = 2.5
+const SPEED = 2
 const JUMP_VELOCITY = 3
 const STOP_DISTANCE = 1.0
-const WAIT_DISTANCE = 8.0
+const WAIT_DISTANCE = 4
 
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 var movement_animation_blend := Vector2.ZERO
