@@ -48,7 +48,7 @@ void fragment() {
 resource_name = "Ship Paint 2"
 render_priority = 0
 shader = SubResource("Shader_bxwqj")
-shader_parameter/albedo = Color(1, 0.8478439, 0.56382555, 1)
+shader_parameter/albedo = Color(0.86969906, 0.8795703, 0.79098856, 1)
 shader_parameter/albedo_texture_size = Vector2i(0, 0)
 shader_parameter/point_size = 1.0
 shader_parameter/roughness = 0.597973

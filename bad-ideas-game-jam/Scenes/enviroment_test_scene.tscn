@@ -9,7 +9,10 @@
 [ext_resource type="Material" uid="uid://mjsmyyrpxybk" path="res://Shaders/Old/Red Steel Hotspot.tres" id="7_m4sqq"]
 [ext_resource type="PackedScene" uid="uid://btg75au461yd7" path="res://Prefabs/player.tscn" id="7_ti2qv"]
 [ext_resource type="PackedScene" uid="uid://dpl2uefq7xuhu" path="res://Prefabs/npc.tscn" id="8_7xckk"]
+[ext_resource type="Material" uid="uid://6w4m67fqps62" path="res://Shaders/Old/Standard_material_3d.tres" id="8_leg6t"]
+[ext_resource type="PackedScene" uid="uid://badmu68nhhg1h" path="res://Assets/Models/Enviroment/BIGJ_Level_Col_Mesh_01.glb" id="9_wo51v"]
 [ext_resource type="PackedScene" uid="uid://cg27h6m4wwam0" path="res://Prefabs/objective_marker_ui.tscn" id="10_m4sqq"]
+[ext_resource type="Material" uid="uid://c5wcg0evlwxis" path="res://Shaders/Collision.tres" id="10_wo51v"]
 
 [sub_resource type="Sky" id="Sky_jvqja"]
 sky_material = ExtResource("1_to28j")
@@ -162,17 +165,89 @@ script = ExtResource("2_bh83g")
 
 [node name="node3D" type="Node3D" parent="." unique_id=1483757596]
 
+[node name="BIGJ_ShipBlockout_02" parent="." unique_id=995103134 instance=ExtResource("6_to28j")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 23.843134, 4.1656265, -42.012955)
+
+[node name="Walls Below Poop Deck" parent="BIGJ_ShipBlockout_02" index="1" unique_id=598297426]
+visible = false
+
+[node name="Back Air_Power" parent="BIGJ_ShipBlockout_02" index="2" unique_id=2021006068]
+visible = false
+
+[node name="Back Air_Power_001" parent="BIGJ_ShipBlockout_02" index="9" unique_id=454208731]
+visible = false
+
+[node name="Back Air_Power_002" parent="BIGJ_ShipBlockout_02" index="10" unique_id=207170807]
+visible = false
+
+[node name="Hull Complete Shape" parent="BIGJ_ShipBlockout_02" index="59" unique_id=1439087218]
+material_override = ExtResource("7_m4sqq")
+
+[node name="Hull Complete Shape_001" parent="BIGJ_ShipBlockout_02" index="61" unique_id=1034498275]
+material_override = ExtResource("7_m4sqq")
+
+[node name="Cube_009" parent="BIGJ_ShipBlockout_02" index="114" unique_id=64315177]
+material_override = ExtResource("8_leg6t")
+
+[node name="Cube_010" parent="BIGJ_ShipBlockout_02" index="115" unique_id=1677063473]
+material_override = ExtResource("8_leg6t")
+
+[node name="Cube_011" parent="BIGJ_ShipBlockout_02" index="116" unique_id=51548243]
+material_override = ExtResource("8_leg6t")
+
+[node name="Cube_013" parent="BIGJ_ShipBlockout_02" index="118" unique_id=1142274498]
+material_override = ExtResource("8_leg6t")
+
+[node name="Cube_009_001" parent="BIGJ_ShipBlockout_02" index="120" unique_id=913242616]
+material_override = ExtResource("8_leg6t")
+
 [node name="NavigationRegion3D" type="NavigationRegion3D" parent="." unique_id=1550709819]
 navigation_mesh = SubResource("NavigationMesh_7xckk")
 
-[node name="BIGJ_ShipBlockout_02" parent="NavigationRegion3D" unique_id=1145848944 instance=ExtResource("6_to28j")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 23.843134, 4.1656265, -42.012955)
+[node name="BIGJ_Level_Col_Mesh_01" parent="NavigationRegion3D" unique_id=460495287 instance=ExtResource("9_wo51v")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 23.843, 4.166, -42.013)
 
-[node name="CollisionShape3D" parent="NavigationRegion3D/BIGJ_ShipBlockout_02/Container Posts_007/StaticBody3D" parent_id_path=PackedInt32Array(1145848944, 963585569) index="0" unique_id=164587381]
-disabled = true
+[node name="Pathing " parent="NavigationRegion3D/BIGJ_Level_Col_Mesh_01" index="0" unique_id=888038949]
+surface_material_override/0 = ExtResource("10_wo51v")
 
-[node name="Hull Complete Shape" parent="NavigationRegion3D/BIGJ_ShipBlockout_02" index="58" unique_id=879640384]
-surface_material_override/0 = ExtResource("7_m4sqq")
+[node name="Pathing_001 " parent="NavigationRegion3D/BIGJ_Level_Col_Mesh_01" index="1" unique_id=141468084]
+material_override = ExtResource("10_wo51v")
+
+[node name="Pathing_002 " parent="NavigationRegion3D/BIGJ_Level_Col_Mesh_01" index="2" unique_id=1822852786]
+material_override = ExtResource("10_wo51v")
+
+[node name="Pathing_003 " parent="NavigationRegion3D/BIGJ_Level_Col_Mesh_01" index="3" unique_id=1250138401]
+material_override = ExtResource("10_wo51v")
+
+[node name="Pathing_004 " parent="NavigationRegion3D/BIGJ_Level_Col_Mesh_01" index="4" unique_id=542509788]
+material_override = ExtResource("10_wo51v")
+
+[node name="Pathing_005 " parent="NavigationRegion3D/BIGJ_Level_Col_Mesh_01" index="5" unique_id=1598462878]
+material_override = ExtResource("10_wo51v")
+
+[node name="Pathing_006 " parent="NavigationRegion3D/BIGJ_Level_Col_Mesh_01" index="6" unique_id=1987309207]
+material_override = ExtResource("10_wo51v")
+
+[node name="Pathing_007 " parent="NavigationRegion3D/BIGJ_Level_Col_Mesh_01" index="7" unique_id=432775816]
+material_override = ExtResource("10_wo51v")
+
+[node name="Pathing_008 " parent="NavigationRegion3D/BIGJ_Level_Col_Mesh_01" index="8" unique_id=1871321222]
+material_override = ExtResource("10_wo51v")
+
+[node name="Pathing_009 " parent="NavigationRegion3D/BIGJ_Level_Col_Mesh_01" index="9" unique_id=301491850]
+surface_material_override/0 = ExtResource("10_wo51v")
+
+[node name="Pathing_010 " parent="NavigationRegion3D/BIGJ_Level_Col_Mesh_01" index="10" unique_id=1324689834]
+surface_material_override/0 = ExtResource("10_wo51v")
+
+[node name="Pathing_011 " parent="NavigationRegion3D/BIGJ_Level_Col_Mesh_01" index="11" unique_id=1046625844]
+surface_material_override/0 = ExtResource("10_wo51v")
+
+[node name="Pathing_012 " parent="NavigationRegion3D/BIGJ_Level_Col_Mesh_01" index="12" unique_id=1685011706]
+surface_material_override/0 = ExtResource("10_wo51v")
+
+[node name="Pathing_013 " parent="NavigationRegion3D/BIGJ_Level_Col_Mesh_01" index="13" unique_id=1885133432]
+surface_material_override/0 = ExtResource("10_wo51v")
 
 [node name="Player" parent="." unique_id=1647912674 instance=ExtResource("7_ti2qv")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18.23421, 24.426123, 18.98018)
@@ -185,4 +260,5 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.843243, 24.45517, 20.04621
 [node name="Target" type="Node3D" parent="." unique_id=2145291984]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16.93113, 4.6296844, -89.16287)
 
-[editable path="NavigationRegion3D/BIGJ_ShipBlockout_02"]
+[editable path="BIGJ_ShipBlockout_02"]
+[editable path="NavigationRegion3D/BIGJ_Level_Col_Mesh_01"]
