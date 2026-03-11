@@ -1,0 +1,310 @@
+[gd_scene format=3 uid="uid://cnab0waxuwnf6"]
+
+[ext_resource type="Material" uid="uid://eb5djxh4js65" path="res://Shaders/SkyShaderl.tres" id="1_16hvj"]
+[ext_resource type="Script" uid="uid://b70tkggwsddx6" path="res://Scenes/menu_camera.gd" id="1_yhxw7"]
+[ext_resource type="Shader" uid="uid://ossjmoq6orf1" path="res://Shaders/shader_ocean_calm.gdshader" id="2_vr1f0"]
+[ext_resource type="Texture2D" uid="uid://bw3728lre125f" path="res://Assets/Textures/Ocean/0001.jpg" id="3_t1dhk"]
+[ext_resource type="Texture2D" uid="uid://bal1s5p7lfes2" path="res://Assets/Textures/Ocean/0258.jpg" id="4_5egv6"]
+[ext_resource type="Script" uid="uid://d1icg8locw87l" path="res://Scenes/water_camera.gd" id="5_vtepg"]
+[ext_resource type="PackedScene" uid="uid://2ql0j7aimqtd" path="res://Assets/Models/Enviroment/BIGJ_ShipBlockout_02.glb" id="6_8dnnj"]
+[ext_resource type="Material" uid="uid://mjsmyyrpxybk" path="res://Shaders/Old/Red Steel Hotspot.tres" id="7_m3bi6"]
+[ext_resource type="AudioStream" uid="uid://10aeh86cf48d" path="res://Music/MainMenu.wav" id="9_trj04"]
+[ext_resource type="FontFile" uid="uid://b34cfkje0l4ob" path="res://Fonts/KronaOne-Regular.ttf" id="10_16hvj"]
+
+[sub_resource type="Sky" id="Sky_jvqja"]
+sky_material = ExtResource("1_16hvj")
+
+[sub_resource type="Environment" id="Environment_jd51y"]
+background_mode = 2
+sky = SubResource("Sky_jvqja")
+ambient_light_source = 3
+ambient_light_color = Color(0.7287288, 0.9650108, 0.9063259, 1)
+ssao_enabled = true
+ssil_enabled = true
+ssil_radius = 8.15
+ssil_intensity = 0.42
+ssil_sharpness = 1.0
+glow_enabled = true
+fog_enabled = true
+fog_mode = 1
+fog_light_color = Color(0.50912184, 0.81885624, 0.9925038, 1)
+fog_density = 0.385
+fog_sky_affect = 0.01
+fog_depth_curve = 3.4822025
+fog_depth_end = 248.6
+volumetric_fog_density = 0.0
+volumetric_fog_albedo = Color(0.9596279, 0.98852295, 0.9998115, 1)
+volumetric_fog_length = 91.1
+volumetric_fog_detail_spread = 2.5491216
+
+[sub_resource type="CameraAttributesPhysical" id="CameraAttributesPhysical_to28j"]
+
+[sub_resource type="Compositor" id="Compositor_4n1t5"]
+
+[sub_resource type="Gradient" id="Gradient_to28j"]
+offsets = PackedFloat32Array(0, 0.5458167, 0.7729084, 0.9501992)
+colors = PackedColorArray(0, 0, 0, 1, 0.050314467, 0.050314467, 0.050314467, 1, 0.87836546, 0.87836546, 0.87836546, 1, 1, 1, 1, 1)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_4n1t5"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_ti2qv"]
+noise = SubResource("FastNoiseLite_4n1t5")
+color_ramp = SubResource("Gradient_to28j")
+
+[sub_resource type="Gradient" id="Gradient_4n1t5"]
+interpolation_mode = 1
+offsets = PackedFloat32Array(0, 0.7629482, 0.7808765, 0.8047809, 0.8984064)
+colors = PackedColorArray(0, 0, 0, 1, 0.10872076, 0.10872085, 0.10872034, 1, 0.4765783, 0.4765783, 0.4765771, 1, 0.52378094, 0.5237806, 0.52377945, 1, 1, 1, 1, 1)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_ti2qv"]
+noise_type = 3
+seed = 5
+frequency = 0.0125
+fractal_type = 2
+fractal_octaves = 3
+fractal_lacunarity = 3.035
+fractal_gain = 0.51
+domain_warp_amplitude = 22.525
+domain_warp_frequency = 5.975
+domain_warp_fractal_octaves = 3
+domain_warp_fractal_lacunarity = 8.73
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_7xckk"]
+noise = SubResource("FastNoiseLite_ti2qv")
+color_ramp = SubResource("Gradient_4n1t5")
+seamless = true
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ti2qv"]
+render_priority = 0
+shader = ExtResource("2_vr1f0")
+shader_parameter/time_scale = 1.0
+shader_parameter/macro_amp = 3.595
+shader_parameter/macro_freq = 0.035
+shader_parameter/macro_speed = 0.9
+shader_parameter/micro_amp = 0.595
+shader_parameter/micro_freq = 0.22
+shader_parameter/micro_speed = 1.8
+shader_parameter/wave_dir1 = Vector2(-0.545, 1.56)
+shader_parameter/wave_dir2 = Vector2(-0.21, 0.27)
+shader_parameter/normal_map1 = ExtResource("3_t1dhk")
+shader_parameter/normal_map2 = ExtResource("4_5egv6")
+shader_parameter/normal_strength = 0.225
+shader_parameter/normal_speed1 = Vector2(0.02, 0.002)
+shader_parameter/normal_speed2 = Vector2(0.001, -0.2)
+shader_parameter/normal_tiling = 0.04
+shader_parameter/shallow_color = Color(0.025293708, 0.22265589, 0.28968284, 1)
+shader_parameter/deep_color = Color(0.12066177, 0.3543017, 0.46124762, 1)
+shader_parameter/horizon_color = Color(0.4108484, 0.5533609, 0.7091514, 1)
+shader_parameter/metallic = 0.0
+shader_parameter/roughness = 0.04
+shader_parameter/fresnel_power = 5.0
+shader_parameter/horizon_start = 206.575
+shader_parameter/horizon_end = 800.0
+shader_parameter/foam_noise = SubResource("NoiseTexture2D_7xckk")
+shader_parameter/crest_noise = SubResource("NoiseTexture2D_ti2qv")
+shader_parameter/foam_color = Color(1, 1, 1, 1)
+shader_parameter/foam_amount = 1.495
+shader_parameter/foam_scale = 0.03
+shader_parameter/foam_speed = Vector2(0.05, -0.1)
+shader_parameter/patch_threshold = 0.1
+shader_parameter/patch_softness = 9.6
+shader_parameter/patch_strength = 0.55
+shader_parameter/crest_scale = 0.05
+shader_parameter/crest_speed = Vector2(0.006, 0.003)
+shader_parameter/crest_screen_strength = 0.425
+shader_parameter/crest_start = 0.21
+shader_parameter/crest_end = 3.345
+shader_parameter/wind_scale = 0.38
+shader_parameter/wind_speed = Vector2(0.05, 0.02)
+shader_parameter/wind_threshold = 0.55
+shader_parameter/wind_softness = 3.15
+shader_parameter/wind_strength = 4.185
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_7xckk"]
+size = Vector2(1000, 1000)
+subdivide_width = 150
+subdivide_depth = 150
+
+[sub_resource type="NavigationMesh" id="NavigationMesh_trj04"]
+vertices = PackedVector3Array(25.498753, 10.270172, -114.29788, 23.998753, 10.520172, -115.04788, 21.998753, 10.270172, -114.04788, 25.748753, 11.270172, -103.79788, 26.248753, 11.270172, -103.04788, 31.498753, 9.770172, -102.54788, 28.498753, 10.020172, -110.04788, 15.998753, 9.770172, -102.79788, 21.498753, 11.270172, -103.04788, 21.998753, 11.270172, -103.79788, 19.248753, 10.020172, -110.04788, 25.223873, 11.020172, -109.31301, 22.253849, 11.020172, -109.28499, 23.753971, 11.520172, -104.775116, 21.998753, 14.270172, -94.54788, 21.998753, 14.270172, -97.29788, 17.498753, 14.270172, -97.29788, 17.498753, 14.270172, -87.04788, 21.748753, 14.270172, -87.04788, 25.998753, 14.270172, -87.04788, 30.498753, 14.270172, -87.04788, 30.498753, 14.270172, -97.29788, 25.748753, 14.270172, -97.29788, 23.498753, 22.520172, -83.79788, 23.748753, 21.770172, -72.04788, 24.248753, 22.520172, -77.04788, 23.998753, 22.520172, -91.54788, 23.655003, 22.520172, -76.45413, 14.248753, 4.5201726, -87.29788, 15.498753, 4.5201726, -87.29788, 15.248753, 4.5201726, -91.29788, 32.498753, 4.5201726, -90.04788, 32.498753, 4.5201726, -87.04788, 33.248753, 4.5201726, -87.04788, 13.498753, 16.770172, -73.04788, 21.748753, 16.770172, -73.04788, 21.498753, 16.770172, -83.04788, 13.498753, 16.770172, -83.04788, 25.998753, 16.770172, -83.04788, 25.998753, 16.770172, -73.04788, 33.998753, 16.770172, -73.04788, 33.998753, 16.770172, -83.04788, 15.748753, 6.5201726, -69.04788, 21.998753, 6.5201726, -69.04788, 21.498753, 6.5201726, -70.54788, 15.498753, 6.5201726, -70.54788, 32.248753, 6.5201726, -69.04788, 32.248753, 6.5201726, -70.54788, 26.248753, 6.5201726, -70.54788, 25.748753, 6.5201726, -69.29788, 13.498753, 19.270172, -67.04788, 13.498753, 19.270172, -57.047882, 33.998753, 19.270172, -57.047882, 33.998753, 19.270172, -67.04788, 13.498753, 19.270172, -54.047882, 13.498753, 19.270172, -43.797882, 33.998753, 19.270172, -43.797882, 33.998753, 19.270172, -54.047882, 12.748753, 4.5201726, -41.047882, 13.748753, 4.5201726, -40.797882, 13.498753, 4.5201726, -41.797882, 12.748753, 4.5201726, -41.547882, 34.248753, 4.5201726, -41.547882, 34.248753, 4.5201726, -41.047882, 34.998753, 4.5201726, -41.047882, 34.998753, 4.5201726, -41.547882, 13.498753, 19.270172, -38.797882, 13.498753, 19.270172, -28.547882, 33.998753, 19.270172, -28.547882, 33.998753, 19.270172, -38.797882, 13.498753, 19.270172, -26.047882, 13.498753, 19.270172, -15.797882, 33.998753, 19.270172, -15.797882, 33.998753, 19.270172, -26.047882, 12.998753, 4.5201726, -13.547882, 12.998753, 4.5201726, -12.547882, 13.498753, 4.5201726, -12.547882, 13.498753, 4.5201726, -13.547882, 23.498753, 24.770172, -7.297882, 23.748753, 24.770172, 7.452118, 24.248753, 24.770172, -2.797882, 23.998753, 24.020172, -12.047882, 24.105896, 24.770172, -8.083595, 21.748753, 19.270172, -7.797882, 21.748753, 19.270172, -10.047882, 13.498753, 19.270172, -10.047882, 13.498753, 19.270172, 0.20211792, 21.498753, 19.270172, 0.20211792, 25.998753, 19.270172, -10.047882, 25.998753, 19.270172, 0.20211792, 33.998753, 19.270172, 0.20211792, 33.998753, 19.270172, -10.047882, 13.498753, 17.270172, 13.702118, 21.998753, 17.270172, 13.702118, 21.748753, 17.270172, 3.452118, 13.498753, 17.270172, 3.452118, 33.998753, 17.270172, 3.452118, 25.998753, 17.270172, 3.452118, 25.748753, 17.270172, 7.952118, 25.748753, 17.270172, 13.702118, 33.998753, 17.270172, 13.702118, 15.748753, 13.270172, 16.452118, 15.748753, 13.270172, 17.202118, 16.748753, 13.270172, 17.202118, 16.748753, 13.270172, 16.452118, 30.998753, 10.770172, 16.452118, 30.998753, 10.770172, 17.202118, 34.248753, 10.770172, 17.202118, 34.248753, 10.770172, 16.452118, 27.498753, 26.770172, 18.452118, 27.498753, 26.770172, 17.202118, 26.998753, 26.770172, 16.702118, 20.748753, 26.770172, 16.702118, 20.248753, 26.770172, 17.202118, 20.248753, 26.770172, 18.452118, 13.498753, 26.020172, 19.202118, 13.498753, 26.020172, 21.202118, 19.498753, 26.770172, 21.202118, 19.498753, 26.770172, 19.202118, 28.248753, 26.770172, 19.202118, 19.748753, 26.770172, 21.702118, 34.248753, 26.020172, 21.202118, 34.248753, 26.020172, 19.202118, 28.448753, 26.770172, 21.402115, 32.498753, 10.770172, 24.452118, 33.998753, 10.770172, 24.452118, 33.998753, 10.770172, 23.202118, 31.998753, 10.770172, 23.202118, 13.248753, 7.2701726, 24.952118, 13.748753, 7.2701726, 28.202118, 13.748753, 7.2701726, 24.952118, 29.498753, 7.2701726, 29.202118, 27.998753, 7.2701726, 29.202118, 27.748753, 7.2701726, 29.702118, 33.748753, 7.2701726, 29.952118, 31.248753, 7.2701726, 26.452118, 30.248753, 7.2701726, 24.952118, 30.248753, 7.2701726, 28.452118, 34.248753, 7.2701726, 27.702118, 34.248753, 7.2701726, 26.452118, 18.998753, 7.2701726, 29.952118, 19.998753, 7.2701726, 29.952118, 19.748753, 7.2701726, 27.202118, 18.998753, 7.2701726, 27.202118)
+polygons = [PackedInt32Array(2, 1, 0), PackedInt32Array(4, 3, 5), PackedInt32Array(5, 3, 6), PackedInt32Array(8, 7, 9), PackedInt32Array(9, 7, 10), PackedInt32Array(3, 11, 6), PackedInt32Array(6, 11, 0), PackedInt32Array(0, 11, 2), PackedInt32Array(2, 12, 10), PackedInt32Array(10, 12, 9), PackedInt32Array(9, 13, 3), PackedInt32Array(3, 13, 11), PackedInt32Array(11, 12, 2), PackedInt32Array(12, 13, 9), PackedInt32Array(13, 12, 11), PackedInt32Array(15, 14, 16), PackedInt32Array(16, 14, 18), PackedInt32Array(16, 18, 17), PackedInt32Array(20, 19, 21), PackedInt32Array(21, 19, 22), PackedInt32Array(24, 27, 25), PackedInt32Array(25, 27, 23), PackedInt32Array(25, 23, 26), PackedInt32Array(30, 29, 28), PackedInt32Array(33, 32, 31), PackedInt32Array(37, 36, 34), PackedInt32Array(34, 36, 35), PackedInt32Array(41, 40, 38), PackedInt32Array(38, 40, 39), PackedInt32Array(45, 44, 42), PackedInt32Array(42, 44, 43), PackedInt32Array(47, 46, 48), PackedInt32Array(48, 46, 49), PackedInt32Array(53, 52, 50), PackedInt32Array(50, 52, 51), PackedInt32Array(57, 56, 54), PackedInt32Array(54, 56, 55), PackedInt32Array(61, 60, 58), PackedInt32Array(58, 60, 59), PackedInt32Array(65, 64, 62), PackedInt32Array(62, 64, 63), PackedInt32Array(69, 68, 66), PackedInt32Array(66, 68, 67), PackedInt32Array(73, 72, 70), PackedInt32Array(70, 72, 71), PackedInt32Array(77, 76, 74), PackedInt32Array(74, 76, 75), PackedInt32Array(81, 82, 78), PackedInt32Array(78, 82, 80), PackedInt32Array(78, 80, 79), PackedInt32Array(84, 83, 85), PackedInt32Array(85, 83, 87), PackedInt32Array(85, 87, 86), PackedInt32Array(91, 90, 88), PackedInt32Array(88, 90, 89), PackedInt32Array(95, 94, 92), PackedInt32Array(92, 94, 93), PackedInt32Array(98, 97, 99), PackedInt32Array(99, 97, 96), PackedInt32Array(99, 96, 100), PackedInt32Array(104, 103, 101), PackedInt32Array(101, 103, 102), PackedInt32Array(108, 107, 105), PackedInt32Array(105, 107, 106), PackedInt32Array(110, 109, 111), PackedInt32Array(111, 109, 112), PackedInt32Array(114, 113, 112), PackedInt32Array(118, 117, 115), PackedInt32Array(115, 117, 116), PackedInt32Array(121, 123, 122), PackedInt32Array(122, 123, 119), PackedInt32Array(119, 123, 120), PackedInt32Array(117, 118, 120), PackedInt32Array(120, 118, 114), PackedInt32Array(114, 112, 120), PackedInt32Array(120, 112, 109), PackedInt32Array(120, 109, 119), PackedInt32Array(125, 124, 126), PackedInt32Array(126, 124, 127), PackedInt32Array(130, 129, 128), PackedInt32Array(132, 131, 133), PackedInt32Array(133, 131, 134), PackedInt32Array(137, 136, 135), PackedInt32Array(138, 134, 139), PackedInt32Array(139, 134, 135), PackedInt32Array(135, 134, 137), PackedInt32Array(131, 137, 134), PackedInt32Array(143, 142, 140), PackedInt32Array(140, 142, 141)]
+agent_height = 20.0
+agent_radius = 1.0
+
+[node name="EnviromentTestScene" type="Node3D" unique_id=1795795939]
+
+[node name="Camera3D" type="Camera3D" parent="." unique_id=238692534]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 23.81532, 0, -36.48841)
+current = true
+script = ExtResource("1_yhxw7")
+fade_overlay = NodePath("../Control/CanvasLayer/ColorRect")
+fade_duration = 0.9
+fov_lerp_speed = 0.4
+
+[node name="MainMenu" type="AudioStreamPlayer" parent="Camera3D" unique_id=2013368671]
+stream = ExtResource("9_trj04")
+volume_db = 12.0
+autoplay = true
+
+[node name="Lighting" type="Node3D" parent="." unique_id=1156227915]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.0927014, 0, 0.60878706)
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="Lighting" unique_id=1333050787]
+transform = Transform3D(-0.6349025, 0.6623415, -0.39774725, 0.0965434, 0.5788023, 0.80973303, 0.7665367, 0.4757015, -0.43142754, 3.0927014, 0, -0.60878706)
+light_energy = 0.6
+light_indirect_energy = 0.0
+light_volumetric_fog_energy = 0.411
+light_angular_distance = 1.19
+shadow_enabled = true
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="Lighting" unique_id=972673621]
+environment = SubResource("Environment_jd51y")
+camera_attributes = SubResource("CameraAttributesPhysical_to28j")
+compositor = SubResource("Compositor_4n1t5")
+
+[node name="ocean_mesh" type="MeshInstance3D" parent="." unique_id=977819256]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.977684, 0.62191963, -2.2316055)
+layers = 2
+material_override = SubResource("ShaderMaterial_ti2qv")
+mesh = SubResource("PlaneMesh_7xckk")
+script = ExtResource("5_vtepg")
+
+[node name="node3D" type="Node3D" parent="." unique_id=1483757596]
+
+[node name="NavigationRegion3D" type="NavigationRegion3D" parent="." unique_id=1550709819]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -9.536743e-07, 0)
+navigation_mesh = SubResource("NavigationMesh_trj04")
+
+[node name="BIGJ_ShipBlockout_02" parent="NavigationRegion3D" unique_id=1145848944 instance=ExtResource("6_8dnnj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 23.843134, 4.1656275, -42.012955)
+
+[node name="CollisionShape3D" parent="NavigationRegion3D/BIGJ_ShipBlockout_02/Container Posts_007/StaticBody3D" parent_id_path=PackedInt32Array(1145848944, 963585569) index="0" unique_id=164587381]
+disabled = true
+
+[node name="Hull Complete Shape" parent="NavigationRegion3D/BIGJ_ShipBlockout_02" index="58" unique_id=879640384]
+surface_material_override/0 = ExtResource("7_m3bi6")
+
+[node name="Cube_009" parent="NavigationRegion3D/BIGJ_ShipBlockout_02" index="112" unique_id=651475360]
+layers = 2
+
+[node name="Cube_010" parent="NavigationRegion3D/BIGJ_ShipBlockout_02" index="113" unique_id=48885072]
+layers = 2
+
+[node name="Cube_011" parent="NavigationRegion3D/BIGJ_ShipBlockout_02" index="114" unique_id=1598969673]
+layers = 2
+
+[node name="Cube_012" parent="NavigationRegion3D/BIGJ_ShipBlockout_02" index="115" unique_id=478493333]
+layers = 2
+
+[node name="Cube_013" parent="NavigationRegion3D/BIGJ_ShipBlockout_02" index="116" unique_id=710978126]
+layers = 2
+
+[node name="Cube_009_001" parent="NavigationRegion3D/BIGJ_ShipBlockout_02" index="118" unique_id=679151985]
+layers = 2
+
+[node name="Control" type="Control" parent="." unique_id=1403653531]
+z_index = -1
+z_as_relative = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(960, 540)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="Control" unique_id=1662271621]
+layer = 0
+
+[node name="Title" type="RichTextLabel" parent="Control/CanvasLayer" unique_id=1904649825]
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -960.0
+offset_top = -536.0
+offset_right = 960.0
+offset_bottom = 139.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/outline_size = 10
+theme_override_fonts/normal_font = ExtResource("10_16hvj")
+theme_override_font_sizes/normal_font_size = 100
+text = "THE LORETTO PARADOX
+
+
+"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="New" type="RichTextLabel" parent="Control/CanvasLayer" unique_id=1844071069]
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -960.0
+offset_top = -590.0
+offset_right = 960.0
+offset_bottom = 486.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/outline_size = 10
+theme_override_fonts/normal_font = ExtResource("10_16hvj")
+theme_override_font_sizes/normal_font_size = 50
+text = "NEW GAME"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Load" type="RichTextLabel" parent="Control/CanvasLayer" unique_id=1141021764]
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -960.0
+offset_top = -490.0
+offset_right = 960.0
+offset_bottom = 586.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/outline_size = 10
+theme_override_fonts/normal_font = ExtResource("10_16hvj")
+theme_override_font_sizes/normal_font_size = 50
+text = "LOAD GAME"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Settings" type="RichTextLabel" parent="Control/CanvasLayer" unique_id=1983129202]
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -960.0
+offset_top = -390.0
+offset_right = 960.0
+offset_bottom = 686.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/outline_size = 10
+theme_override_fonts/normal_font = ExtResource("10_16hvj")
+theme_override_font_sizes/normal_font_size = 50
+text = "SETTINGS
+"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ColorRect" type="ColorRect" parent="Control/CanvasLayer" unique_id=682903752]
+z_index = -1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 4.0
+offset_bottom = 4.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[editable path="NavigationRegion3D/BIGJ_ShipBlockout_02"]

@@ -17,7 +17,7 @@ extends CharacterBody3D
 const SPEED = 2
 const JUMP_VELOCITY = 3
 const STOP_DISTANCE = 1.0
-const WAIT_DISTANCE = 4
+const WAIT_DISTANCE = 10
 
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 var movement_animation_blend := Vector2.ZERO
