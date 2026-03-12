@@ -78,10 +78,23 @@ noise = SubResource("FastNoiseLite_ti2qv")
 color_ramp = SubResource("Gradient_4n1t5")
 seamless = true
 
+[sub_resource type="Gradient" id="Gradient_h3qab"]
+offsets = PackedFloat32Array(0, 0.067729086, 0.94621515, 1)
+colors = PackedColorArray(0, 0, 0, 1, 0.030320821, 0.030320821, 0.030320821, 1, 0.96015936, 0.96015936, 0.96015936, 1, 1, 1, 1, 1)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_3fxhi"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_m206l"]
+noise = SubResource("FastNoiseLite_3fxhi")
+color_ramp = SubResource("Gradient_h3qab")
+seamless = true
+
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ti2qv"]
 render_priority = 0
 shader = ExtResource("2_exjqg")
 shader_parameter/time_scale = 1.0
+shader_parameter/ocean_speed = 4.09
+shader_parameter/ocean_dir = Vector3(0, 0, 1)
 shader_parameter/macro_amp = 3.595
 shader_parameter/macro_freq = 0.035
 shader_parameter/macro_speed = 0.9
@@ -105,14 +118,14 @@ shader_parameter/fresnel_power = 5.0
 shader_parameter/horizon_start = 206.575
 shader_parameter/horizon_end = 800.0
 shader_parameter/foam_noise = SubResource("NoiseTexture2D_7xckk")
-shader_parameter/crest_noise = SubResource("NoiseTexture2D_ti2qv")
 shader_parameter/foam_color = Color(1, 1, 1, 1)
 shader_parameter/foam_amount = 1.495
 shader_parameter/foam_scale = 0.03
 shader_parameter/foam_speed = Vector2(0.05, -0.1)
-shader_parameter/patch_threshold = 0.1
+shader_parameter/patch_threshold = 7.54
 shader_parameter/patch_softness = 9.6
 shader_parameter/patch_strength = 0.55
+shader_parameter/crest_noise = SubResource("NoiseTexture2D_ti2qv")
 shader_parameter/crest_scale = 0.05
 shader_parameter/crest_speed = Vector2(0.006, 0.003)
 shader_parameter/crest_screen_strength = 0.425
@@ -123,6 +136,22 @@ shader_parameter/wind_speed = Vector2(0.05, 0.02)
 shader_parameter/wind_threshold = 0.55
 shader_parameter/wind_softness = 3.15
 shader_parameter/wind_strength = 4.185
+shader_parameter/ship_pos = Vector3(0, 0, -54.79)
+shader_parameter/ship_fwd = Vector3(0, 0, -1)
+shader_parameter/wake_length = 170.805
+shader_parameter/wake_width_start = 5.91
+shader_parameter/wake_width_end = 58.36
+shader_parameter/wake_edge_soft = 4.57
+shader_parameter/wake_strength = 0.69
+shader_parameter/wake_edge_noise = SubResource("NoiseTexture2D_m206l")
+shader_parameter/wake_edge_noise_scale = 0.07
+shader_parameter/wake_edge_noise_speed = Vector2(0, -1.075)
+shader_parameter/wake_edge_band = 0.425
+shader_parameter/wake_edge_churn = 9.71
+shader_parameter/wake_noise_scale = 0.1
+shader_parameter/wake_noise_speed = Vector2(0, -0.5)
+shader_parameter/wake_centerline = 2.07
+shader_parameter/wake_falloff_pow = 1.595
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_7xckk"]
 size = Vector2(1000, 1000)
@@ -161,7 +190,7 @@ camera_attributes = SubResource("CameraAttributesPhysical_to28j")
 compositor = SubResource("Compositor_4n1t5")
 
 [node name="ocean_mesh" type="MeshInstance3D" parent="." unique_id=977819256]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.977684, 0.62191963, -2.2316055)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.0745773, 0.62191963, -2.1108856)
 layers = 2
 material_override = SubResource("ShaderMaterial_ti2qv")
 mesh = SubResource("PlaneMesh_7xckk")
@@ -170,67 +199,88 @@ script = ExtResource("2_bh83g")
 [node name="node3D" type="Node3D" parent="." unique_id=1483757596]
 
 [node name="BIGJ_ShipBlockout_02" parent="." unique_id=995103134 instance=ExtResource("6_to28j")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 23.843134, 4.1656265, -42.012955)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.61961174, 4.1656265, 6.5372734)
 
-[node name="Walls Below Poop Deck" parent="BIGJ_ShipBlockout_02" index="1" unique_id=2145185092]
+[node name="Walls Below Poop Deck" parent="BIGJ_ShipBlockout_02" index="1" unique_id=598297426]
 visible = false
 
-[node name="Back Air_Power" parent="BIGJ_ShipBlockout_02" index="2" unique_id=203134115]
+[node name="Back Air_Power" parent="BIGJ_ShipBlockout_02" index="2" unique_id=2021006068]
 visible = false
 
-[node name="Back Air_Power_001" parent="BIGJ_ShipBlockout_02" index="9" unique_id=1563150688]
+[node name="Back Air_Power_001" parent="BIGJ_ShipBlockout_02" index="9" unique_id=454208731]
 visible = false
 
-[node name="Back Air_Power_002" parent="BIGJ_ShipBlockout_02" index="10" unique_id=308314265]
+[node name="Back Air_Power_002" parent="BIGJ_ShipBlockout_02" index="10" unique_id=207170807]
 visible = false
 
-[node name="Hull Complete Shape" parent="BIGJ_ShipBlockout_02" index="59" unique_id=1595472209]
+[node name="Hull Complete Shape" parent="BIGJ_ShipBlockout_02" index="59" unique_id=1439087218]
 material_override = ExtResource("7_m4sqq")
 
-[node name="Hull Complete Shape_001" parent="BIGJ_ShipBlockout_02" index="61" unique_id=1955061606]
+[node name="Hull Complete Shape_001" parent="BIGJ_ShipBlockout_02" index="61" unique_id=1034498275]
 material_override = ExtResource("7_m4sqq")
 
-[node name="Cube_009" parent="BIGJ_ShipBlockout_02" index="114" unique_id=158201528]
+[node name="Cube_009" parent="BIGJ_ShipBlockout_02" index="114" unique_id=64315177]
 material_override = ExtResource("8_leg6t")
 
-[node name="Cube_010" parent="BIGJ_ShipBlockout_02" index="115" unique_id=928243945]
+[node name="Cube_010" parent="BIGJ_ShipBlockout_02" index="115" unique_id=1677063473]
 material_override = ExtResource("8_leg6t")
 
-[node name="Cube_011" parent="BIGJ_ShipBlockout_02" index="116" unique_id=1885476924]
+[node name="Cube_011" parent="BIGJ_ShipBlockout_02" index="116" unique_id=51548243]
 material_override = ExtResource("8_leg6t")
 
-[node name="Cube_013" parent="BIGJ_ShipBlockout_02" index="118" unique_id=1621299926]
+[node name="Cube_013" parent="BIGJ_ShipBlockout_02" index="118" unique_id=1142274498]
 material_override = ExtResource("8_leg6t")
 
-[node name="Cube_009_001" parent="BIGJ_ShipBlockout_02" index="120" unique_id=334162480]
+[node name="Cube_009_001" parent="BIGJ_ShipBlockout_02" index="120" unique_id=913242616]
 material_override = ExtResource("8_leg6t")
 
 [node name="NavigationRegion3D" type="NavigationRegion3D" parent="." unique_id=1550709819]
 navigation_mesh = SubResource("NavigationMesh_7xckk")
 
 [node name="BIGJ_Level_Col_Mesh_01" parent="NavigationRegion3D" unique_id=460495287 instance=ExtResource("9_wo51v")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 23.843, 4.166, -42.013)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.6194782, 4.166, 6.5372276)
 
-[node name="Pathing " parent="NavigationRegion3D/BIGJ_Level_Col_Mesh_01" index="0" unique_id=1043148984]
+[node name="Pathing " parent="NavigationRegion3D/BIGJ_Level_Col_Mesh_01" index="0" unique_id=888038949]
 surface_material_override/0 = ExtResource("10_wo51v")
 
-[node name="Pathing_001 " parent="NavigationRegion3D/BIGJ_Level_Col_Mesh_01" index="1" unique_id=2137643135]
+[node name="Pathing_001 " parent="NavigationRegion3D/BIGJ_Level_Col_Mesh_01" index="1" unique_id=141468084]
 material_override = ExtResource("10_wo51v")
 
-[node name="Pathing_002 " parent="NavigationRegion3D/BIGJ_Level_Col_Mesh_01" index="2" unique_id=782382039]
+[node name="Pathing_002 " parent="NavigationRegion3D/BIGJ_Level_Col_Mesh_01" index="2" unique_id=1822852786]
 material_override = ExtResource("10_wo51v")
 
-[node name="Pathing_003 " parent="NavigationRegion3D/BIGJ_Level_Col_Mesh_01" index="3" unique_id=1316635746]
+[node name="Pathing_003 " parent="NavigationRegion3D/BIGJ_Level_Col_Mesh_01" index="3" unique_id=1250138401]
 material_override = ExtResource("10_wo51v")
 
-[node name="Pathing_004 " parent="NavigationRegion3D/BIGJ_Level_Col_Mesh_01" index="4" unique_id=670138562]
+[node name="Pathing_004 " parent="NavigationRegion3D/BIGJ_Level_Col_Mesh_01" index="4" unique_id=542509788]
 material_override = ExtResource("10_wo51v")
 
-[node name="Pathing_005 " parent="NavigationRegion3D/BIGJ_Level_Col_Mesh_01" index="5" unique_id=1722041446]
+[node name="Pathing_005 " parent="NavigationRegion3D/BIGJ_Level_Col_Mesh_01" index="5" unique_id=1598462878]
 material_override = ExtResource("10_wo51v")
 
-[node name="Pathing_006 " parent="NavigationRegion3D/BIGJ_Level_Col_Mesh_01" index="6" unique_id=1045231539]
+[node name="Pathing_006 " parent="NavigationRegion3D/BIGJ_Level_Col_Mesh_01" index="6" unique_id=1987309207]
 material_override = ExtResource("10_wo51v")
+
+[node name="Pathing_007 " parent="NavigationRegion3D/BIGJ_Level_Col_Mesh_01" index="7" unique_id=432775816]
+material_override = ExtResource("10_wo51v")
+
+[node name="Pathing_008 " parent="NavigationRegion3D/BIGJ_Level_Col_Mesh_01" index="8" unique_id=1871321222]
+material_override = ExtResource("10_wo51v")
+
+[node name="Pathing_009 " parent="NavigationRegion3D/BIGJ_Level_Col_Mesh_01" index="9" unique_id=301491850]
+surface_material_override/0 = ExtResource("10_wo51v")
+
+[node name="Pathing_010 " parent="NavigationRegion3D/BIGJ_Level_Col_Mesh_01" index="10" unique_id=1324689834]
+surface_material_override/0 = ExtResource("10_wo51v")
+
+[node name="Pathing_011 " parent="NavigationRegion3D/BIGJ_Level_Col_Mesh_01" index="11" unique_id=1046625844]
+surface_material_override/0 = ExtResource("10_wo51v")
+
+[node name="Pathing_012 " parent="NavigationRegion3D/BIGJ_Level_Col_Mesh_01" index="12" unique_id=1685011706]
+surface_material_override/0 = ExtResource("10_wo51v")
+
+[node name="Pathing_013 " parent="NavigationRegion3D/BIGJ_Level_Col_Mesh_01" index="13" unique_id=1885133432]
+surface_material_override/0 = ExtResource("10_wo51v")
 
 [node name="w" type="MeshInstance3D" parent="NavigationRegion3D/BIGJ_Level_Col_Mesh_01" unique_id=1196042201]
 transform = Transform3D(0.15999998, 0, 0, 0, -1.3113424e-08, -23.360321, 0, 0.30000013, -1.021112e-06, -3.959671, 12.341196, 67.38993)
@@ -244,32 +294,11 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, -2.9802322e-08, 1, 0, 0, 0)
 [node name="CollisionShape3D" type="CollisionShape3D" parent="NavigationRegion3D/BIGJ_Level_Col_Mesh_01/w/StaticBody3D2" unique_id=2093849691]
 shape = SubResource("BoxShape3D_3fxhi")
 
-[node name="Pathing_007 " parent="NavigationRegion3D/BIGJ_Level_Col_Mesh_01" index="8" unique_id=2119820162]
-material_override = ExtResource("10_wo51v")
-
-[node name="Pathing_008 " parent="NavigationRegion3D/BIGJ_Level_Col_Mesh_01" index="9" unique_id=337806194]
-material_override = ExtResource("10_wo51v")
-
-[node name="Pathing_009 " parent="NavigationRegion3D/BIGJ_Level_Col_Mesh_01" index="10" unique_id=1891845184]
-surface_material_override/0 = ExtResource("10_wo51v")
-
-[node name="Pathing_010 " parent="NavigationRegion3D/BIGJ_Level_Col_Mesh_01" index="11" unique_id=2040798626]
-surface_material_override/0 = ExtResource("10_wo51v")
-
-[node name="Pathing_011 " parent="NavigationRegion3D/BIGJ_Level_Col_Mesh_01" index="12" unique_id=1197499108]
-surface_material_override/0 = ExtResource("10_wo51v")
-
-[node name="Pathing_012 " parent="NavigationRegion3D/BIGJ_Level_Col_Mesh_01" index="13" unique_id=1708472860]
-surface_material_override/0 = ExtResource("10_wo51v")
-
-[node name="Pathing_013 " parent="NavigationRegion3D/BIGJ_Level_Col_Mesh_01" index="14" unique_id=1997139350]
-surface_material_override/0 = ExtResource("10_wo51v")
-
 [node name="Player" parent="." unique_id=1647912674 instance=ExtResource("7_ti2qv")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.634209, 24.526123, 19.980179)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.017325, 24.526123, 68.42156)
 
 [node name="Npc" parent="." unique_id=1476610220 instance=ExtResource("8_7xckk")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17.843243, 24.755169, 20.046219)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.8082914, 24.755169, 68.4876)
 floor_max_angle = 1.0471976
 
 [node name="ObjectiveMarker" parent="Npc" unique_id=2030661204 instance=ExtResource("10_m4sqq")]
