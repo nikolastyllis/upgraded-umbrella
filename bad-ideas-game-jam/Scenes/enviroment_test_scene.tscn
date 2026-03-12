@@ -13,6 +13,7 @@
 [ext_resource type="PackedScene" uid="uid://badmu68nhhg1h" path="res://Assets/Models/Enviroment/BIGJ_Level_Col_Mesh_01.glb" id="9_wo51v"]
 [ext_resource type="PackedScene" uid="uid://cg27h6m4wwam0" path="res://Prefabs/objective_marker_ui.tscn" id="10_m4sqq"]
 [ext_resource type="Material" uid="uid://c5wcg0evlwxis" path="res://Shaders/Collision.tres" id="10_wo51v"]
+[ext_resource type="PackedScene" uid="uid://bhun3l1dxxlwo" path="res://Prefabs/ladder.tscn" id="14_h3qab"]
 
 [sub_resource type="Sky" id="Sky_jvqja"]
 sky_material = ExtResource("1_to28j")
@@ -247,16 +248,19 @@ surface_material_override/0 = ExtResource("10_wo51v")
 surface_material_override/0 = ExtResource("10_wo51v")
 
 [node name="Player" parent="." unique_id=1647912674 instance=ExtResource("7_ti2qv")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18.23421, 24.426123, 18.98018)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.234209, 5.4261227, -68.01982)
 
 [node name="Npc" parent="." unique_id=1476610220 instance=ExtResource("8_7xckk")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.843243, 24.45517, 20.046219)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.843243, 5.4551697, -70.95378)
 floor_max_angle = 1.0471976
 
 [node name="ObjectiveMarker" parent="Npc" unique_id=2030661204 instance=ExtResource("10_m4sqq")]
 
 [node name="Target" type="Node3D" parent="." unique_id=2145291984]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16.93113, 4.6296844, -89.16287)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.931129, 6.6296844, -85.16287)
+
+[node name="Ladder" parent="." unique_id=1732391426 instance=ExtResource("14_h3qab")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.400001, 5, -85)
 
 [editable path="BIGJ_ShipBlockout_02"]
 [editable path="NavigationRegion3D/BIGJ_Level_Col_Mesh_01"]
