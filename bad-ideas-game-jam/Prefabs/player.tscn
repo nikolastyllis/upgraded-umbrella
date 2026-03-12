@@ -12,11 +12,6 @@ height = 1.8607422
 [node name="Player" type="CharacterBody3D" unique_id=1647912674]
 floor_max_angle = 1.0471976
 script = ExtResource("1_y5hcb")
-view_toggle_lerp_speed = null
-idle_animation_blend_smooth = null
-mouse_idle_threshold = null
-movement_animation_blend_smooth = null
-rotation_speed = null
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1768347194]
 shape = SubResource("CapsuleShape3D_myya0")
@@ -143,13 +138,3 @@ transform = Transform3D(-1, 0, -1.509958e-07, 0, 1, 0, 1.509958e-07, 0, -1, 0, 0
 
 [node name="Character" parent="." unique_id=1100896801 instance=ExtResource("3_y5hcb")]
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, -0.94238436, 0)
-
-[node name="ClimbFinishedRay" type="RayCast3D" parent="Character" unique_id=972750169]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.815, 0.85)
-target_position = Vector3(0, -0.3, 0)
-collision_mask = 3
-
-[node name="FeetRay" type="RayCast3D" parent="Character" unique_id=1430197843]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.1, 0)
-target_position = Vector3(0, 0, 0.5)
-collision_mask = 2
