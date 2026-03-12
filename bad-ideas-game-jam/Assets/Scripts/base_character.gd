@@ -27,7 +27,7 @@ func stop_climbing() -> void:
 	if current_ladder:
 		current_ladder = null
 		is_climbing = false
-		climb_cooldown = 1.0
+		climb_cooldown = 0.5
 
 func update_climb_position() -> void:
 	if not current_ladder:
@@ -54,7 +54,7 @@ func apply_gravity(delta: float) -> void:
 func update_movement_animation(input_dir: Vector2, delta: float) -> void:
 	var state_machine = animation_tree["parameters/playback"]
 	
-	if current_ladder and current_ladder.end_y() < global_position.y:
+	if current_ladder and current_ladder.end_y() < global_position.y and get_climb_input() > 0:
 			animation_tree["parameters/playback"].travel("Finish Climbing")
 			is_finishing_climb = true
 			

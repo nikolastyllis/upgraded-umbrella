@@ -24,6 +24,7 @@ var mouse_idle_timer := 0.0
 var use_camera_position_right := true
 var current_camera_position: Vector3
 var reset_camera_y := false
+var is_free_looking := false
 
 func _ready() -> void:
 	super._ready()
@@ -42,6 +43,13 @@ func _process(delta: float) -> void:
 	update_idle_animation_blend(delta)
 	handle_interact(delta)
 
+func _apply_free_look():
+	if Input.is_action_pressed("free_look"):
+		is_free_looking = true
+	else:
+		is_free_looking = false
+		reset_camera_y = true
+
 func _physics_process(delta: float) -> void:
 	update_camera(delta)
 	handle_quit()
@@ -57,6 +65,7 @@ func _physics_process(delta: float) -> void:
 	reset_camera()
 	dismount_ladder()
 	update_climb_position()
+	_apply_free_look()
 	if climb_cooldown > 0:
 		climb_cooldown -= delta
 		
@@ -68,7 +77,6 @@ func get_climb_input() -> float:
 
 func stop_climbing() -> void:
 	super.stop_climbing()
-	reset_camera_y = true
 
 func get_raw_input_dir() -> Vector2:
 	return Input.get_vector("left", "right", "up", "down")
@@ -109,15 +117,18 @@ func update_camera(delta: float) -> void:
 
 func handle_mouse_look(event: InputEventMouseMotion) -> void:
 	mouse_idle_timer = 0.0
-	camera_origin.rotate_x(deg_to_rad(-event.relative.y))
-	camera_origin.rotation.x = clamp(camera_origin.rotation.x, deg_to_rad(-90), deg_to_rad(45))
+	var y_flip = cos(camera_origin.rotation.y)
+	camera_origin.rotate_x(deg_to_rad(-event.relative.y) * sign(y_flip) if abs(y_flip) > 0.01 else deg_to_rad(-event.relative.y))
+	camera_origin.rotation.x = clamp(camera_origin.rotation.x, deg_to_rad(-80), deg_to_rad(80))
 	camera_origin.rotation.z = 0
-	if not is_climbing:
-		rotate_y(deg_to_rad(-event.relative.x))
+	
+	if is_free_looking:
+		camera_origin.rotate_y(deg_to_rad(-event.relative.x))
+	else:
+		if not is_climbing: 
+			rotate_y(deg_to_rad(-event.relative.x))
 		if abs(event.relative.x) > 10:
 			idle_animation_blend_target = 0.5 if event.relative.x > 0 else -0.5
-	else:
-		camera_origin.rotate_y(deg_to_rad(-event.relative.x))
 
 func update_idle_animation_blend(delta: float) -> void:
 	mouse_idle_timer += delta

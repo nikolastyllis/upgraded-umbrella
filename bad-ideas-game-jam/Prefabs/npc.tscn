@@ -4,7 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://cpju2kewehe31" path="res://Assets/Models/Characters/Twin 2/twin_2_model_01.tscn" id="2_nrg37"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_myya0"]
-radius = 0.25
+radius = 0.2
 height = 1.7
 
 [node name="Npc" type="CharacterBody3D" unique_id=1647912674]
