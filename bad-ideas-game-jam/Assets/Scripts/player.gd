@@ -77,7 +77,7 @@ func get_move_direction() -> Vector3:
 	var dir = get_raw_input_dir()
 	return (transform.basis * Vector3(dir.x, 0, dir.y)).normalized()
 
-func apply_movement(input_dir: Vector2) -> void:
+func apply_movement(_input_dir: Vector2) -> void:
 	if is_climbing:
 		apply_climbing_movement()
 		return
