@@ -7,14 +7,31 @@ extends "base_character.gd"
 const NPC_SPEED = 1.5
 const STOP_DISTANCE = 1.0
 const WAIT_DISTANCE = 10.0
+const STUCK_TIME_THRESHOLD = 2.5
+const STUCK_DISTANCE_THRESHOLD = 0.3
+const STUCK_SAMPLE_INTERVAL = 0.5
+const UNSTICK_DETOUR_DISTANCE = 3.0
+const UNSTICK_DETOUR_DURATION = 2.0
+
+var climb_target_y := 0.0
+var stuck_timer := 0.0
+var stuck_sample_timer := 0.0
+var last_sampled_position := Vector3.ZERO
+var unstick_timer := 0.0
+var unstick_target := Vector3.ZERO
 
 func _ready() -> void:
 	super._ready()
+	last_sampled_position = global_position
 
 func _physics_process(delta: float) -> void:
 	if not target:
 		return
-	navigation_agent_3d.set_target_position(target.global_position)
+	if unstick_timer > 0:
+		unstick_timer -= delta
+		navigation_agent_3d.set_target_position(unstick_target)
+	else:
+		navigation_agent_3d.set_target_position(target.global_position)
 	apply_gravity(delta)
 	apply_movement()
 	update_movement_animation(get_input_dir(), delta)
@@ -22,17 +39,15 @@ func _physics_process(delta: float) -> void:
 	move_and_slide()
 	update_climb_position()
 	dismount_ladder()
+	check_stuck(delta)
 	if climb_cooldown > 0:
 		climb_cooldown -= delta
 
 func get_speed() -> float:
 	return NPC_SPEED
 
-var climb_target_y := 0.0
-
 func start_climbing(ladder: Node3D) -> void:
 	super.start_climbing(ladder)
-	# Commit to the opposite end from where we entered
 	var mid_y = (ladder.start_y() + ladder.end_y()) / 2.0
 	climb_target_y = ladder.end_y() + 2 if global_position.y < mid_y else ladder.start_y() - 2
 
@@ -43,6 +58,37 @@ func get_climb_input() -> float:
 	if abs(diff) < 0.1:
 		return 0.0
 	return sign(diff)
+
+func check_stuck(delta: float) -> void:
+	if is_climbing or _is_near_destination() or _is_too_far() or unstick_timer > 0:
+		stuck_timer = 0.0
+		stuck_sample_timer = 0.0
+		last_sampled_position = global_position
+		return
+	stuck_sample_timer += delta
+	if stuck_sample_timer >= STUCK_SAMPLE_INTERVAL:
+		var moved = global_position.distance_to(last_sampled_position)
+		var should_be_moving = not _is_near_destination() and not _is_too_far()
+		if should_be_moving and moved < STUCK_DISTANCE_THRESHOLD:
+			stuck_timer += STUCK_SAMPLE_INTERVAL
+			if stuck_timer >= STUCK_TIME_THRESHOLD:
+				unstick()
+				stuck_timer = 0.0
+		else:
+			stuck_timer = 0.0
+		last_sampled_position = global_position
+		stuck_sample_timer = 0.0
+
+func unstick() -> void:
+	var move_dir = get_move_direction()
+	if move_dir.length() < 0.01:
+		move_dir = (target.global_position - global_position).normalized()
+		move_dir.y = 0
+	var perp = Vector3(-move_dir.z, 0, move_dir.x)
+	if randi() % 2 == 0:
+		perp = -perp
+	unstick_target = global_position + perp * UNSTICK_DETOUR_DISTANCE
+	unstick_timer = UNSTICK_DETOUR_DURATION
 
 func get_move_direction() -> Vector3:
 	if _is_near_destination() or _is_too_far():
@@ -72,7 +118,6 @@ func apply_movement() -> void:
 		velocity.x = move_toward(velocity.x, 0, NPC_SPEED)
 		velocity.z = move_toward(velocity.z, 0, NPC_SPEED)
 
-		
 func dismount_ladder() -> void:
 	if is_climbing and is_on_floor() and get_climb_input() < 0 and current_ladder.end_y() > global_position.y:
 		stop_climbing()

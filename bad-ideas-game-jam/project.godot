@@ -93,7 +93,3 @@ outline_color={
 "type": "color",
 "value": Color(0, 0, 0, 1)
 }
-diffuse_curve={
-"type": "sampler2D",
-"value": "::0y40n"
-}

@@ -5,20 +5,20 @@
 
 [node name="radioTest" unique_id=67342358 instance=ExtResource("1_8ck5m")]
 
-[node name="Antenna_low" parent="." index="0" unique_id=43028581]
+[node name="Antenna_low" parent="." index="0" unique_id=1082534477]
 material_overlay = ExtResource("2_io5xu")
 
-[node name="BackPlate_low" parent="." index="1" unique_id=1323127989]
+[node name="BackPlate_low" parent="." index="1" unique_id=468446585]
 material_overlay = ExtResource("2_io5xu")
 
-[node name="FrontGrille_low" parent="." index="2" unique_id=1535961086]
+[node name="FrontGrille_low" parent="." index="2" unique_id=1889909729]
 surface_material_override/0 = ExtResource("2_io5xu")
 
-[node name="Knobs_low" parent="." index="3" unique_id=2066539795]
+[node name="Knobs_low" parent="." index="3" unique_id=424408828]
 material_overlay = ExtResource("2_io5xu")
 
-[node name="Radio_low" parent="." index="4" unique_id=528382069]
+[node name="Radio_low" parent="." index="4" unique_id=1028131627]
 material_overlay = ExtResource("2_io5xu")
 
-[node name="Switch_low" parent="." index="5" unique_id=1188590546]
+[node name="Switch_low" parent="." index="5" unique_id=316918994]
 material_overlay = ExtResource("2_io5xu")

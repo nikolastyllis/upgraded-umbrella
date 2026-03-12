@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://bhun3l1dxxlwo"]
 
 [ext_resource type="PackedScene" uid="uid://bocyb7fq47msb" path="res://Assets/Models/Enviroment/BIGJ_Ladder_02.glb" id="1_2guuy"]
-[ext_resource type="Script" uid="uid://415q51ya5s0a" path="res://Prefabs/ladder.gd" id="2_rmtat"]
+[ext_resource type="Script" uid="uid://415q51ya5s0a" path="res://Assets/Scripts/ladder.gd" id="2_rmtat"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_rmtat"]
 size = Vector3(0.60860384, 0.5, 2.6000001)
