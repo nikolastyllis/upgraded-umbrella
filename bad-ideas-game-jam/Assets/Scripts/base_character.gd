@@ -1,3 +1,4 @@
+class_name BaseCharacter
 extends CharacterBody3D
 
 @export var movement_animation_blend_smooth := 3

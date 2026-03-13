@@ -1,0 +1,18 @@
+[gd_scene format=3 uid="uid://clai2jixo1u8q"]
+
+[ext_resource type="Script" uid="uid://bnuuo1duu134y" path="res://Assets/Scripts/oxy_torch.gd" id="1_l3b1r"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_3fxhi"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_h3qab"]
+
+[node name="StaticBody3D" type="StaticBody3D" unique_id=1699781538]
+transform = Transform3D(0.20000002, 0, 0, 0, 0.2, 0, 0, 0, 0.20000002, 0, 0, 0)
+collision_layer = 3
+script = ExtResource("1_l3b1r")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=2094434477]
+shape = SubResource("BoxShape3D_3fxhi")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1403250740]
+mesh = SubResource("BoxMesh_h3qab")

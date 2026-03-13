@@ -1,4 +1,4 @@
-extends "base_character.gd"
+extends BaseCharacter
 
 @export var view_toggle_lerp_speed := 8.0
 @export var idle_animation_blend_smooth := 3
@@ -11,6 +11,7 @@ extends "base_character.gd"
 @onready var interact_action_text := $CameraOrigin/SpringArm3D/Camera3D/CrosshairUI/Interact/Action
 @onready var interact_ui_control := $CameraOrigin/SpringArm3D/Camera3D/CrosshairUI/Interact
 @onready var interact_progress_bar := $CameraOrigin/SpringArm3D/Camera3D/CrosshairUI/Interact/Progress
+@onready var objective_text := $CameraOrigin/SpringArm3D/Camera3D/Objective/ObjectiveText
 
 const PLAYER_SPEED = 2.5
 const JUMP_VELOCITY = 3
@@ -42,6 +43,9 @@ func _process(delta: float) -> void:
 	update_interactable()
 	update_idle_animation_blend(delta)
 	handle_interact(delta)
+	
+func set_objective_text(text: String) -> void:
+	objective_text.text = text
 
 func _apply_free_look():
 	if Input.is_action_pressed("free_look"):
@@ -180,12 +184,8 @@ func update_interactable() -> void:
 		if collider is Interactable and collider.can_interact(self):
 			new_interactable = collider
 	if new_interactable != interactable:
-		if interactable:
-			interactable.remove_highlight()
 		interactable = new_interactable
 		reset_interact_timer()
-		if interactable:
-			interactable.add_highlight()
 	interactable = new_interactable
 	if interactable:
 		interact_action_text.text = interactable.action_text

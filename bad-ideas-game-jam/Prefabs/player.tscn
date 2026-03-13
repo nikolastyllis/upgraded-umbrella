@@ -136,6 +136,30 @@ text = "E
 [node name="RayCast3D" type="RayCast3D" parent="CameraOrigin/SpringArm3D/Camera3D" unique_id=1701017775]
 target_position = Vector3(0, 0, -4)
 
+[node name="Objective" type="Control" parent="CameraOrigin/SpringArm3D/Camera3D" unique_id=2047345453]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="ObjectiveText" type="RichTextLabel" parent="CameraOrigin/SpringArm3D/Camera3D/Objective" unique_id=784413414]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 28.0
+offset_top = 21.0
+offset_right = 1587.0
+offset_bottom = 60.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/outline_size = 15
+theme_override_fonts/normal_font = ExtResource("3_2nftw")
+theme_override_font_sizes/normal_font_size = 27
+text = "! Objective Text"
+
 [node name="CharacterAnchor" type="Node3D" parent="." unique_id=669950866]
 transform = Transform3D(-1, 0, -1.509958e-07, 0, 1, 0, 1.509958e-07, 0, -1, 0, 0, 0)
 

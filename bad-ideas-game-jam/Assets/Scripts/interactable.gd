@@ -1,4 +1,5 @@
-extends Highlightable
+extends Node3D
+
 class_name Interactable
 
 @export var action_text: String = "Interact"

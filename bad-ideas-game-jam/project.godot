@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Bad Ideas Game Jam"
-run/main_scene="uid://e2fx3nusope6"
+run/main_scene="uid://ngjrfjr7sul5"
 config/features=PackedStringArray("4.6", "Forward Plus")
 config/icon="res://icon.svg"
 

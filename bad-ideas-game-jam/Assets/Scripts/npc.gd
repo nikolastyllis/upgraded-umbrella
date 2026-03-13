@@ -1,6 +1,6 @@
-extends "base_character.gd"
+class_name NPC
+extends BaseCharacter
 
-@onready var target := $"../Target"
 @onready var navigation_agent_3d := $NavigationAgent3D
 @onready var player := $"../Player"
 
@@ -13,6 +13,9 @@ const STUCK_SAMPLE_INTERVAL = 0.5
 const UNSTICK_DETOUR_DISTANCE = 3.0
 const UNSTICK_DETOUR_DURATION = 2.0
 
+var target_position := Vector3.ZERO
+var _has_target := false
+
 var climb_target_y := 0.0
 var stuck_timer := 0.0
 var stuck_sample_timer := 0.0
@@ -24,15 +27,19 @@ func _ready() -> void:
 	super._ready()
 	last_sampled_position = global_position
 
+func set_target_position(pos: Vector3) -> void:
+	target_position = pos
+	_has_target = true
+
 func _physics_process(delta: float) -> void:
 	super._physics_process(delta)
-	if not target:
+	if not _has_target:
 		return
 	if unstick_timer > 0:
 		unstick_timer -= delta
 		navigation_agent_3d.set_target_position(unstick_target)
 	else:
-		navigation_agent_3d.set_target_position(target.global_position)
+		navigation_agent_3d.set_target_position(target_position)
 	apply_gravity(delta)
 	apply_movement()
 	update_movement_animation(get_input_dir(), delta)
@@ -83,7 +90,7 @@ func check_stuck(delta: float) -> void:
 func unstick() -> void:
 	var move_dir = get_move_direction()
 	if move_dir.length() < 0.01:
-		move_dir = (target.global_position - global_position).normalized()
+		move_dir = (target_position - global_position).normalized()
 		move_dir.y = 0
 	var perp = Vector3(-move_dir.z, 0, move_dir.x)
 	if randi() % 2 == 0:
@@ -132,7 +139,7 @@ func get_target_rotation_y() -> float:
 		if to_player.length() > 0.01:
 			return atan2(-to_player.x, -to_player.z)
 	elif _is_near_destination():
-		var to_target = target.global_position - global_position
+		var to_target = target_position - global_position
 		to_target.y = 0
 		if to_target.length() > 0.01:
 			return atan2(-to_target.x, -to_target.z)
@@ -143,12 +150,12 @@ func get_target_rotation_y() -> float:
 	return rotation.y
 
 func _to_target_distance() -> float:
-	var to_target = target.global_position - global_position
+	var to_target = target_position - global_position
 	to_target.y = 0
 	return to_target.length()
 
 func _is_near_destination() -> bool:
-	return _to_target_distance() < STOP_DISTANCE
+	return _has_target and _to_target_distance() < STOP_DISTANCE
 
 func _is_too_far() -> bool:
 	var to_player = player.global_position - global_position

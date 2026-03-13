@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://bhun3l1dxxlwo" path="res://Prefabs/ladder.tscn" id="5_2sgug"]
 [ext_resource type="PackedScene" uid="uid://3vvbcad7503f" path="res://Scenes/bigj_ladder_test_01.tscn" id="5_r2yqc"]
 [ext_resource type="PackedScene" uid="uid://dpl2uefq7xuhu" path="res://Prefabs/npc.tscn" id="6_jleko"]
+[ext_resource type="PackedScene" uid="uid://clai2jixo1u8q" path="res://Prefabs/oxy_torch.tscn" id="8_pihcs"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_r2yqc"]
 panorama = ExtResource("4_glfbx")
@@ -136,3 +137,6 @@ collision_layer = 3
 shape = SubResource("BoxShape3D_vo2hj")
 
 [node name="ObjectiveMarker" parent="NavigationRegion3D/MeshInstance3D5/StaticBody3D" unique_id=2030661204 instance=ExtResource("3_glfbx")]
+
+[node name="OxyTorch" parent="." unique_id=2067964585 instance=ExtResource("8_pihcs")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.842082, 1.1500002, -1.4276133)

@@ -1,5 +1,6 @@
 [gd_scene format=3 uid="uid://ngjrfjr7sul5"]
 
+[ext_resource type="Script" uid="uid://22j5lmp1ifp1" path="res://Scenes/game_manager.gd" id="1_h3qab"]
 [ext_resource type="Material" uid="uid://eb5djxh4js65" path="res://Shaders/SkyShaderl.tres" id="1_to28j"]
 [ext_resource type="Script" uid="uid://d1icg8locw87l" path="res://Scenes/water_camera.gd" id="2_bh83g"]
 [ext_resource type="Shader" uid="uid://ossjmoq6orf1" path="res://Shaders/shader_ocean_calm.gdshader" id="2_exjqg"]
@@ -11,7 +12,7 @@
 [ext_resource type="PackedScene" uid="uid://dpl2uefq7xuhu" path="res://Prefabs/npc.tscn" id="8_7xckk"]
 [ext_resource type="Material" uid="uid://6w4m67fqps62" path="res://Shaders/Old/Standard_material_3d.tres" id="8_leg6t"]
 [ext_resource type="PackedScene" uid="uid://badmu68nhhg1h" path="res://Assets/Models/Enviroment/BIGJ_Level_Col_Mesh_01.glb" id="9_wo51v"]
-[ext_resource type="PackedScene" uid="uid://cg27h6m4wwam0" path="res://Prefabs/objective_marker_ui.tscn" id="10_m4sqq"]
+[ext_resource type="PackedScene" uid="uid://clai2jixo1u8q" path="res://Prefabs/oxy_torch.tscn" id="14_3fxhi"]
 [ext_resource type="PackedScene" uid="uid://bhun3l1dxxlwo" path="res://Prefabs/ladder.tscn" id="14_h3qab"]
 
 [sub_resource type="Sky" id="Sky_jvqja"]
@@ -108,13 +109,13 @@ shader_parameter/normal_strength = 0.225
 shader_parameter/normal_speed1 = Vector2(0.02, 0.002)
 shader_parameter/normal_speed2 = Vector2(0.001, -0.2)
 shader_parameter/normal_tiling = 0.04
-shader_parameter/shallow_color = Color(0.025293708, 0.22265589, 0.28968284, 1)
-shader_parameter/deep_color = Color(0.12066177, 0.3543017, 0.46124762, 1)
-shader_parameter/horizon_color = Color(0.4108484, 0.5533609, 0.7091514, 1)
+shader_parameter/shallow_color = Color(0.007808733, 0.12047333, 0.16245773, 1)
+shader_parameter/deep_color = Color(0.08689641, 0.2750822, 0.36422148, 1)
+shader_parameter/horizon_color = Color(0.25373662, 0.36892554, 0.49596834, 1)
 shader_parameter/metallic = 0.0
 shader_parameter/roughness = 0.04
 shader_parameter/fresnel_power = 5.0
-shader_parameter/horizon_start = 206.575
+shader_parameter/horizon_start = 200.0
 shader_parameter/horizon_end = 800.0
 shader_parameter/foam_noise = SubResource("NoiseTexture2D_7xckk")
 shader_parameter/foam_color = Color(1, 1, 1, 1)
@@ -197,6 +198,7 @@ script = ExtResource("2_bh83g")
 
 [node name="BIGJ_ShipBlockout_02" parent="." unique_id=995103134 instance=ExtResource("6_to28j")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.61961174, 4.1656265, 6.5372734)
+visible = false
 
 [node name="Walls Below Poop Deck" parent="BIGJ_ShipBlockout_02" index="1" unique_id=2145185092]
 visible = false
@@ -233,28 +235,41 @@ material_override = ExtResource("8_leg6t")
 
 [node name="NavigationRegion3D" type="NavigationRegion3D" parent="." unique_id=954165088]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
-visible = false
 navigation_mesh = SubResource("NavigationMesh_h3qab")
 
 [node name="BIGJ_Level_Col_Mesh_01" parent="NavigationRegion3D" unique_id=771792620 instance=ExtResource("9_wo51v")]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 1.2392235, 8.331253, 13.074547)
 
 [node name="Player" parent="." unique_id=1647912674 instance=ExtResource("7_ti2qv")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.0196166, 16.852236, 65.53934)
+transform = Transform3D(-0.99752617, 0, -0.07029611, 0, 1, 0, 0.07029611, 0, -0.99752617, 3.0196166, 16.558382, 65.53934)
 
-[node name="Npc" parent="." unique_id=1476610220 instance=ExtResource("8_7xckk")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.2286506, 17.081282, 65.60538)
+[node name="Billy" parent="." unique_id=1476610220 instance=ExtResource("8_7xckk")]
+transform = Transform3D(-0.9865266, 0, -0.16360143, 0, 1, 0, 0.16360143, 0, -0.9865266, 9.449347, 7.9717035, 77.72941)
 floor_max_angle = 1.0471976
 
-[node name="ObjectiveMarker" parent="Npc" unique_id=2030661204 instance=ExtResource("10_m4sqq")]
-
-[node name="Target" type="Node3D" parent="." unique_id=2145291984]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.703404, 6.3527546, -21.532589)
+[node name="Bob" parent="." unique_id=350917105 instance=ExtResource("8_7xckk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.938837, 5.2445498, -22.6538)
+floor_max_angle = 1.0471976
 
 [node name="Ladder" parent="." unique_id=1860599597 instance=ExtResource("14_h3qab")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.400001, 5, -85)
 
 [node name="Ladder2" parent="." unique_id=1732391426 instance=ExtResource("14_h3qab")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.872016, 5.092264, -21.485611)
+
+[node name="GameManager" type="Node3D" parent="." unique_id=1749829845]
+transform = Transform3D(-0.87114525, 0, 0.49102545, 0, 1, 0, -0.49102545, 0, -0.87114525, -8.530954, 7.9717035, 75.958336)
+script = ExtResource("1_h3qab")
+
+[node name="Locations" type="Node3D" parent="GameManager" unique_id=596146378]
+
+[node name="Container" type="Node3D" parent="GameManager/Locations" unique_id=2145291984]
+transform = Transform3D(-0.87114525, 0, -0.49102545, 0, 1, 0, 0.49102545, 0, -0.87114525, 42.79389, -1.6189489, 87.790245)
+
+[node name="BackRightCorner" type="Node3D" parent="GameManager/Locations" unique_id=2007653472]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.368204, 0, 7.581608)
+
+[node name="OxyTorch" parent="GameManager/Locations" unique_id=2067964585 instance=ExtResource("14_3fxhi")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.6783142, 0.29786015, 11.071705)
 
 [editable path="BIGJ_ShipBlockout_02"]
