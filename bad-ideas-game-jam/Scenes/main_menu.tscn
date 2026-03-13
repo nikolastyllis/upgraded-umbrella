@@ -78,6 +78,8 @@ seamless = true
 render_priority = 0
 shader = ExtResource("2_vr1f0")
 shader_parameter/time_scale = 1.0
+shader_parameter/ocean_speed = 6.0
+shader_parameter/ocean_dir = Vector3(0, 0, -1)
 shader_parameter/macro_amp = 3.595
 shader_parameter/macro_freq = 0.035
 shader_parameter/macro_speed = 0.9
@@ -101,7 +103,6 @@ shader_parameter/fresnel_power = 5.0
 shader_parameter/horizon_start = 206.575
 shader_parameter/horizon_end = 800.0
 shader_parameter/foam_noise = SubResource("NoiseTexture2D_7xckk")
-shader_parameter/crest_noise = SubResource("NoiseTexture2D_ti2qv")
 shader_parameter/foam_color = Color(1, 1, 1, 1)
 shader_parameter/foam_amount = 1.495
 shader_parameter/foam_scale = 0.03
@@ -109,6 +110,7 @@ shader_parameter/foam_speed = Vector2(0.05, -0.1)
 shader_parameter/patch_threshold = 0.1
 shader_parameter/patch_softness = 9.6
 shader_parameter/patch_strength = 0.55
+shader_parameter/crest_noise = SubResource("NoiseTexture2D_ti2qv")
 shader_parameter/crest_scale = 0.05
 shader_parameter/crest_speed = Vector2(0.006, 0.003)
 shader_parameter/crest_screen_strength = 0.425
@@ -119,6 +121,21 @@ shader_parameter/wind_speed = Vector2(0.05, 0.02)
 shader_parameter/wind_threshold = 0.55
 shader_parameter/wind_softness = 3.15
 shader_parameter/wind_strength = 4.185
+shader_parameter/ship_pos = Vector3(0, 0, 0)
+shader_parameter/ship_fwd = Vector3(0, 0, -1)
+shader_parameter/wake_length = 100.0
+shader_parameter/wake_width_start = 8.0
+shader_parameter/wake_width_end = 30.0
+shader_parameter/wake_edge_soft = 2.5
+shader_parameter/wake_strength = 1.0
+shader_parameter/wake_edge_noise_scale = 0.18
+shader_parameter/wake_edge_noise_speed = Vector2(0.12, 0.05)
+shader_parameter/wake_edge_band = 0.35
+shader_parameter/wake_edge_churn = 0.9
+shader_parameter/wake_noise_scale = 0.08
+shader_parameter/wake_noise_speed = Vector2(0.08, 0.03)
+shader_parameter/wake_centerline = 0.55
+shader_parameter/wake_falloff_pow = 1.2
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_7xckk"]
 size = Vector2(1000, 1000)
@@ -172,34 +189,31 @@ script = ExtResource("5_vtepg")
 [node name="node3D" type="Node3D" parent="." unique_id=1483757596]
 
 [node name="NavigationRegion3D" type="NavigationRegion3D" parent="." unique_id=1550709819]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -9.536743e-07, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -24.443083, -9.536743e-07, -0.929554)
 navigation_mesh = SubResource("NavigationMesh_trj04")
 
 [node name="BIGJ_ShipBlockout_02" parent="NavigationRegion3D" unique_id=1145848944 instance=ExtResource("6_8dnnj")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 23.843134, 4.1656275, -42.012955)
 
-[node name="CollisionShape3D" parent="NavigationRegion3D/BIGJ_ShipBlockout_02/Container Posts_007/StaticBody3D" parent_id_path=PackedInt32Array(1145848944, 963585569) index="0" unique_id=164587381]
-disabled = true
-
-[node name="Hull Complete Shape" parent="NavigationRegion3D/BIGJ_ShipBlockout_02" index="58" unique_id=879640384]
+[node name="Hull Complete Shape" parent="NavigationRegion3D/BIGJ_ShipBlockout_02" index="59" unique_id=1595472209]
 surface_material_override/0 = ExtResource("7_m3bi6")
 
-[node name="Cube_009" parent="NavigationRegion3D/BIGJ_ShipBlockout_02" index="112" unique_id=651475360]
+[node name="Cube_009" parent="NavigationRegion3D/BIGJ_ShipBlockout_02" index="114" unique_id=158201528]
 layers = 2
 
-[node name="Cube_010" parent="NavigationRegion3D/BIGJ_ShipBlockout_02" index="113" unique_id=48885072]
+[node name="Cube_010" parent="NavigationRegion3D/BIGJ_ShipBlockout_02" index="115" unique_id=928243945]
 layers = 2
 
-[node name="Cube_011" parent="NavigationRegion3D/BIGJ_ShipBlockout_02" index="114" unique_id=1598969673]
+[node name="Cube_011" parent="NavigationRegion3D/BIGJ_ShipBlockout_02" index="116" unique_id=1885476924]
 layers = 2
 
-[node name="Cube_012" parent="NavigationRegion3D/BIGJ_ShipBlockout_02" index="115" unique_id=478493333]
+[node name="Cube_012" parent="NavigationRegion3D/BIGJ_ShipBlockout_02" index="117" unique_id=1873995043]
 layers = 2
 
-[node name="Cube_013" parent="NavigationRegion3D/BIGJ_ShipBlockout_02" index="116" unique_id=710978126]
+[node name="Cube_013" parent="NavigationRegion3D/BIGJ_ShipBlockout_02" index="118" unique_id=1621299926]
 layers = 2
 
-[node name="Cube_009_001" parent="NavigationRegion3D/BIGJ_ShipBlockout_02" index="118" unique_id=679151985]
+[node name="Cube_009_001" parent="NavigationRegion3D/BIGJ_ShipBlockout_02" index="120" unique_id=334162480]
 layers = 2
 
 [node name="Control" type="Control" parent="." unique_id=1403653531]
@@ -217,7 +231,7 @@ pivot_offset = Vector2(960, 540)
 layer = 0
 
 [node name="Title" type="RichTextLabel" parent="Control/CanvasLayer" unique_id=1904649825]
-anchors_preset = -1
+anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
@@ -239,7 +253,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="New" type="RichTextLabel" parent="Control/CanvasLayer" unique_id=1844071069]
-anchors_preset = -1
+anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
@@ -258,7 +272,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Load" type="RichTextLabel" parent="Control/CanvasLayer" unique_id=1141021764]
-anchors_preset = -1
+anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
@@ -277,7 +291,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Settings" type="RichTextLabel" parent="Control/CanvasLayer" unique_id=1983129202]
-anchors_preset = -1
+anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
@@ -297,7 +311,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Settings2" type="RichTextLabel" parent="Control/CanvasLayer" unique_id=581132475]
-anchors_preset = -1
+anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
