@@ -13,6 +13,12 @@ var is_climbing := false
 var current_ladder: Node3D = null
 var climb_cooldown := 0.0
 var is_finishing_climb := false
+var finish_climb_animation_cooldown_timer = 0.0
+var finish_climb_animation_cooldown = 4.0
+
+
+func _physics_process(delta: float) -> void:
+	finish_climb_animation_cooldown_timer += delta
 
 func _ready() -> void:
 	animation_tree.animation_finished.connect(_on_animation_finished)
@@ -54,7 +60,8 @@ func apply_gravity(delta: float) -> void:
 func update_movement_animation(input_dir: Vector2, delta: float) -> void:
 	var state_machine = animation_tree["parameters/playback"]
 	
-	if current_ladder and current_ladder.end_y() < global_position.y and get_climb_input() > 0:
+	if current_ladder and current_ladder.end_y() < global_position.y and get_climb_input() > 0 and finish_climb_animation_cooldown_timer > finish_climb_animation_cooldown:
+			finish_climb_animation_cooldown_timer = 0
 			animation_tree["parameters/playback"].travel("Finish Climbing")
 			is_finishing_climb = true
 			

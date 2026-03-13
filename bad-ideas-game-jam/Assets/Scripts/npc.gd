@@ -25,6 +25,7 @@ func _ready() -> void:
 	last_sampled_position = global_position
 
 func _physics_process(delta: float) -> void:
+	super._physics_process(delta)
 	if not target:
 		return
 	if unstick_timer > 0:

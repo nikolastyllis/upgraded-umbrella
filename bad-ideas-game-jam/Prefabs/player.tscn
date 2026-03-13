@@ -6,10 +6,11 @@
 [ext_resource type="PackedScene" uid="uid://cpju2kewehe31" path="res://Assets/Models/Characters/Twin 2/twin_2_model_01.tscn" id="3_y5hcb"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_myya0"]
-radius = 0.2
+radius = 0.25
 height = 1.7
 
 [node name="Player" type="CharacterBody3D" unique_id=1647912674]
+collision_layer = 2
 floor_max_angle = 1.0471976
 script = ExtResource("1_y5hcb")
 
@@ -27,6 +28,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.23, 0.6, 0)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.23, 0.655, 0)
 
 [node name="SpringArm3D" type="SpringArm3D" parent="CameraOrigin" unique_id=1606133364]
+collision_mask = 2
 spring_length = 0.8
 margin = 0.5
 

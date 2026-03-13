@@ -51,6 +51,7 @@ func _apply_free_look():
 		reset_camera_y = true
 
 func _physics_process(delta: float) -> void:
+	super._physics_process(delta)
 	update_camera(delta)
 	handle_quit()
 	if Input.is_action_just_pressed("ui_accept") and (is_on_floor() or is_climbing):

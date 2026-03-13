@@ -82,6 +82,7 @@ mesh = SubResource("BoxMesh_cggdu")
 surface_material_override/0 = SubResource("StandardMaterial3D_ngoj7")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="NavigationRegion3D/MeshInstance3D" unique_id=1741502236]
+collision_layer = 3
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="NavigationRegion3D/MeshInstance3D/StaticBody3D" unique_id=2092475046]
 shape = SubResource("ConcavePolygonShape3D_ahmia")
@@ -91,6 +92,7 @@ transform = Transform3D(5.193, 0, 0, 0, 2.114574, 0, 0, 0, 4.857, -23.920893, 1.
 mesh = SubResource("BoxMesh_p6kl7")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="NavigationRegion3D/MeshInstance3D7" unique_id=550029660]
+collision_layer = 3
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="NavigationRegion3D/MeshInstance3D7/StaticBody3D" unique_id=2009212205]
 shape = SubResource("ConcavePolygonShape3D_cggdu")
@@ -103,6 +105,7 @@ transform = Transform3D(5.193, 0, 0, 0, 2.114574, 0, 0, 0, 4.857, -29.113892, 3.
 mesh = SubResource("BoxMesh_p6kl7")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="NavigationRegion3D/MeshInstance3D8" unique_id=1702508748]
+collision_layer = 3
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="NavigationRegion3D/MeshInstance3D8/StaticBody3D" unique_id=1343838050]
 shape = SubResource("ConcavePolygonShape3D_cggdu")
@@ -115,6 +118,7 @@ transform = Transform3D(0.011850311, -0.0014221744, -1.185318, 0.0035484808, 2.4
 mesh = SubResource("BoxMesh_jleko")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="NavigationRegion3D/MeshInstance3D4" unique_id=1583088338]
+collision_layer = 3
 script = ExtResource("2_vo2hj")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="NavigationRegion3D/MeshInstance3D4/StaticBody3D" unique_id=1505782614]
@@ -126,6 +130,7 @@ mesh = SubResource("BoxMesh_0thiu")
 surface_material_override/0 = SubResource("StandardMaterial3D_vo2hj")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="NavigationRegion3D/MeshInstance3D5" unique_id=1583993109]
+collision_layer = 3
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="NavigationRegion3D/MeshInstance3D5/StaticBody3D" unique_id=1689379070]
 shape = SubResource("BoxShape3D_vo2hj")
