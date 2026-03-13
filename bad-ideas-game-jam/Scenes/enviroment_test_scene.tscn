@@ -10,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://btg75au461yd7" path="res://Prefabs/player.tscn" id="7_ti2qv"]
 [ext_resource type="PackedScene" uid="uid://dpl2uefq7xuhu" path="res://Prefabs/npc.tscn" id="8_7xckk"]
 [ext_resource type="PackedScene" uid="uid://badmu68nhhg1h" path="res://Assets/Models/Enviroment/BIGJ_Level_Col_Mesh_01.glb" id="9_wo51v"]
+[ext_resource type="PackedScene" uid="uid://c8r715rxynb4u" path="res://Prefabs/container_door.tscn" id="13_wo51v"]
 [ext_resource type="PackedScene" uid="uid://clai2jixo1u8q" path="res://Prefabs/oxy_torch.tscn" id="14_3fxhi"]
 [ext_resource type="PackedScene" uid="uid://bhun3l1dxxlwo" path="res://Prefabs/ladder.tscn" id="14_h3qab"]
 
@@ -199,7 +200,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.61961174, 4.1656265, 6.5372
 
 [node name="NavigationRegion3D" type="NavigationRegion3D" parent="." unique_id=954165088]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
-visible = false
 navigation_mesh = SubResource("NavigationMesh_h3qab")
 
 [node name="BIGJ_Level_Col_Mesh_01" parent="NavigationRegion3D" unique_id=774214255 instance=ExtResource("9_wo51v")]
@@ -214,14 +214,14 @@ transform = Transform3D(-0.9865266, 0, -0.16360143, 0, 1, 0, 0.16360143, 0, -0.9
 floor_max_angle = 1.0471976
 
 [node name="Bob" parent="." unique_id=350917105 instance=ExtResource("8_7xckk")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.938837, 5.2445498, -22.6538)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.938837, 5.2445498, 34.900322)
 floor_max_angle = 1.0471976
 
 [node name="Ladder" parent="." unique_id=1860599597 instance=ExtResource("14_h3qab")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.400001, 5, -85)
 
 [node name="Ladder2" parent="." unique_id=1732391426 instance=ExtResource("14_h3qab")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.872016, 5.092264, -21.485611)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.763166, 5.092264, 35.66563)
 
 [node name="GameManager" type="Node3D" parent="." unique_id=1749829845]
 transform = Transform3D(-0.87114525, 0, 0.49102545, 0, 1, 0, -0.49102545, 0, -0.87114525, -8.530954, 7.9717035, 75.958336)
@@ -230,10 +230,13 @@ script = ExtResource("1_h3qab")
 [node name="Locations" type="Node3D" parent="GameManager" unique_id=596146378]
 
 [node name="Container" type="Node3D" parent="GameManager/Locations" unique_id=2145291984]
-transform = Transform3D(-0.87114525, 0, -0.49102545, 0, 1, 0, 0.49102545, 0, -0.87114525, 42.79389, -1.6189489, 87.790245)
+transform = Transform3D(-0.87114525, 0, -0.49102545, 0, 1, 0, 0.49102545, 0, -0.87114525, 14.753749, -1.6189489, 38.04326)
 
 [node name="BackRightCorner" type="Node3D" parent="GameManager/Locations" unique_id=2007653472]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.368204, 0, 7.581608)
+
+[node name="ContainerDoor" parent="GameManager/Locations" unique_id=1699781538 instance=ExtResource("13_wo51v")]
+transform = Transform3D(-0.1742291, 0, -0.098205134, 0, 0.2, 0, 0.098205134, 0, -0.1742291, 16.476543, -0.5707817, 37.565784)
 
 [node name="OxyTorch" parent="GameManager/Locations" unique_id=2067964585 instance=ExtResource("14_3fxhi")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.6783142, 0.29786015, 11.071705)

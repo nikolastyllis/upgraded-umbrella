@@ -119,12 +119,16 @@ func apply_movement() -> void:
 		apply_climbing_movement()
 		return
 	var move_direction = get_move_direction()
+	var desired_velocity := Vector3.ZERO
 	if move_direction.length() > 0.01:
-		velocity.x = move_direction.x * NPC_SPEED
-		velocity.z = move_direction.z * NPC_SPEED
-	else:
-		velocity.x = move_toward(velocity.x, 0, NPC_SPEED)
-		velocity.z = move_toward(velocity.z, 0, NPC_SPEED)
+		desired_velocity = move_direction * NPC_SPEED
+	navigation_agent_3d.set_velocity(desired_velocity)
+
+func _on_navigation_agent_3d_velocity_computed(safe_velocity: Vector3) -> void:
+	velocity.x = safe_velocity.x
+	velocity.z = safe_velocity.z
+	if not is_on_floor():
+		pass  # gravity is handled separately, don't overwrite y
 
 func dismount_ladder() -> void:
 	if is_climbing and is_on_floor() and get_climb_input() < 0 and current_ladder.end_y() > global_position.y:

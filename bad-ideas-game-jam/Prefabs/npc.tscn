@@ -24,4 +24,5 @@ transform = Transform3D(-1, 0, -1.509958e-07, 0, 1, 0, 1.509958e-07, 0, -1, 0, 0
 path_max_distance = 10.01
 path_postprocessing = 1
 avoidance_enabled = true
-radius = 2.0
+
+[connection signal="velocity_computed" from="NavigationAgent3D" to="." method="_on_navigation_agent_3d_velocity_computed"]
