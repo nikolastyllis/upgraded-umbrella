@@ -8,28 +8,32 @@
 [ext_resource type="Script" uid="uid://d1icg8locw87l" path="res://Scenes/water_camera.gd" id="5_vtepg"]
 [ext_resource type="PackedScene" uid="uid://2ql0j7aimqtd" path="res://Assets/Models/Enviroment/BIGJ_ShipBlockout_02.glb" id="6_8dnnj"]
 [ext_resource type="Material" uid="uid://mjsmyyrpxybk" path="res://Shaders/Old/Red Steel Hotspot.tres" id="7_m3bi6"]
+[ext_resource type="FontFile" uid="uid://13oicvg0h65k" path="res://Assets/UI/Fonts/Heavy Metal Box.ttf" id="8_vr1f0"]
 [ext_resource type="AudioStream" uid="uid://10aeh86cf48d" path="res://Music/MainMenu.wav" id="9_trj04"]
-[ext_resource type="FontFile" uid="uid://b34cfkje0l4ob" path="res://Fonts/KronaOne-Regular.ttf" id="10_16hvj"]
+[ext_resource type="Theme" uid="uid://dsnby6q1yhtnk" path="res://Assets/UI/Text_Theme_Main.tres" id="10_vr1f0"]
 
 [sub_resource type="Sky" id="Sky_jvqja"]
 sky_material = ExtResource("1_16hvj")
 
 [sub_resource type="Environment" id="Environment_jd51y"]
 background_mode = 2
+background_energy_multiplier = 2.24
 sky = SubResource("Sky_jvqja")
 ambient_light_source = 3
-ambient_light_color = Color(0.7287288, 0.9650108, 0.9063259, 1)
+ambient_light_color = Color(0.43013, 0.40275463, 0.57900447, 1)
 ssao_enabled = true
 ssil_enabled = true
-ssil_radius = 8.15
+ssil_radius = 7.7
 ssil_intensity = 0.42
 ssil_sharpness = 1.0
 glow_enabled = true
 fog_enabled = true
 fog_mode = 1
-fog_light_color = Color(0.50912184, 0.81885624, 0.9925038, 1)
-fog_density = 0.385
-fog_sky_affect = 0.01
+fog_light_color = Color(0.88943833, 0.4027167, 0.057460696, 1)
+fog_light_energy = 2.78
+fog_density = 0.3242
+fog_aerial_perspective = 0.285
+fog_sky_affect = 0.115
 fog_depth_curve = 3.4822025
 fog_depth_end = 248.6
 volumetric_fog_density = 0.0
@@ -96,7 +100,7 @@ shader_parameter/normal_speed2 = Vector2(0.001, -0.2)
 shader_parameter/normal_tiling = 0.04
 shader_parameter/shallow_color = Color(0.025293708, 0.22265589, 0.28968284, 1)
 shader_parameter/deep_color = Color(0.12066177, 0.3543017, 0.46124762, 1)
-shader_parameter/horizon_color = Color(0.4108484, 0.5533609, 0.7091514, 1)
+shader_parameter/horizon_color = Color(0.77373236, 0.42452124, 0.39519155, 1)
 shader_parameter/metallic = 0.0
 shader_parameter/roughness = 0.04
 shader_parameter/fresnel_power = 5.0
@@ -142,6 +146,10 @@ size = Vector2(1000, 1000)
 subdivide_width = 150
 subdivide_depth = 150
 
+[sub_resource type="LabelSettings" id="LabelSettings_t1dhk"]
+font = ExtResource("8_vr1f0")
+font_size = 83
+
 [sub_resource type="NavigationMesh" id="NavigationMesh_trj04"]
 vertices = PackedVector3Array(25.498753, 10.270172, -114.29788, 23.998753, 10.520172, -115.04788, 21.998753, 10.270172, -114.04788, 25.748753, 11.270172, -103.79788, 26.248753, 11.270172, -103.04788, 31.498753, 9.770172, -102.54788, 28.498753, 10.020172, -110.04788, 15.998753, 9.770172, -102.79788, 21.498753, 11.270172, -103.04788, 21.998753, 11.270172, -103.79788, 19.248753, 10.020172, -110.04788, 25.223873, 11.020172, -109.31301, 22.253849, 11.020172, -109.28499, 23.753971, 11.520172, -104.775116, 21.998753, 14.270172, -94.54788, 21.998753, 14.270172, -97.29788, 17.498753, 14.270172, -97.29788, 17.498753, 14.270172, -87.04788, 21.748753, 14.270172, -87.04788, 25.998753, 14.270172, -87.04788, 30.498753, 14.270172, -87.04788, 30.498753, 14.270172, -97.29788, 25.748753, 14.270172, -97.29788, 23.498753, 22.520172, -83.79788, 23.748753, 21.770172, -72.04788, 24.248753, 22.520172, -77.04788, 23.998753, 22.520172, -91.54788, 23.655003, 22.520172, -76.45413, 14.248753, 4.5201726, -87.29788, 15.498753, 4.5201726, -87.29788, 15.248753, 4.5201726, -91.29788, 32.498753, 4.5201726, -90.04788, 32.498753, 4.5201726, -87.04788, 33.248753, 4.5201726, -87.04788, 13.498753, 16.770172, -73.04788, 21.748753, 16.770172, -73.04788, 21.498753, 16.770172, -83.04788, 13.498753, 16.770172, -83.04788, 25.998753, 16.770172, -83.04788, 25.998753, 16.770172, -73.04788, 33.998753, 16.770172, -73.04788, 33.998753, 16.770172, -83.04788, 15.748753, 6.5201726, -69.04788, 21.998753, 6.5201726, -69.04788, 21.498753, 6.5201726, -70.54788, 15.498753, 6.5201726, -70.54788, 32.248753, 6.5201726, -69.04788, 32.248753, 6.5201726, -70.54788, 26.248753, 6.5201726, -70.54788, 25.748753, 6.5201726, -69.29788, 13.498753, 19.270172, -67.04788, 13.498753, 19.270172, -57.047882, 33.998753, 19.270172, -57.047882, 33.998753, 19.270172, -67.04788, 13.498753, 19.270172, -54.047882, 13.498753, 19.270172, -43.797882, 33.998753, 19.270172, -43.797882, 33.998753, 19.270172, -54.047882, 12.748753, 4.5201726, -41.047882, 13.748753, 4.5201726, -40.797882, 13.498753, 4.5201726, -41.797882, 12.748753, 4.5201726, -41.547882, 34.248753, 4.5201726, -41.547882, 34.248753, 4.5201726, -41.047882, 34.998753, 4.5201726, -41.047882, 34.998753, 4.5201726, -41.547882, 13.498753, 19.270172, -38.797882, 13.498753, 19.270172, -28.547882, 33.998753, 19.270172, -28.547882, 33.998753, 19.270172, -38.797882, 13.498753, 19.270172, -26.047882, 13.498753, 19.270172, -15.797882, 33.998753, 19.270172, -15.797882, 33.998753, 19.270172, -26.047882, 12.998753, 4.5201726, -13.547882, 12.998753, 4.5201726, -12.547882, 13.498753, 4.5201726, -12.547882, 13.498753, 4.5201726, -13.547882, 23.498753, 24.770172, -7.297882, 23.748753, 24.770172, 7.452118, 24.248753, 24.770172, -2.797882, 23.998753, 24.020172, -12.047882, 24.105896, 24.770172, -8.083595, 21.748753, 19.270172, -7.797882, 21.748753, 19.270172, -10.047882, 13.498753, 19.270172, -10.047882, 13.498753, 19.270172, 0.20211792, 21.498753, 19.270172, 0.20211792, 25.998753, 19.270172, -10.047882, 25.998753, 19.270172, 0.20211792, 33.998753, 19.270172, 0.20211792, 33.998753, 19.270172, -10.047882, 13.498753, 17.270172, 13.702118, 21.998753, 17.270172, 13.702118, 21.748753, 17.270172, 3.452118, 13.498753, 17.270172, 3.452118, 33.998753, 17.270172, 3.452118, 25.998753, 17.270172, 3.452118, 25.748753, 17.270172, 7.952118, 25.748753, 17.270172, 13.702118, 33.998753, 17.270172, 13.702118, 15.748753, 13.270172, 16.452118, 15.748753, 13.270172, 17.202118, 16.748753, 13.270172, 17.202118, 16.748753, 13.270172, 16.452118, 30.998753, 10.770172, 16.452118, 30.998753, 10.770172, 17.202118, 34.248753, 10.770172, 17.202118, 34.248753, 10.770172, 16.452118, 27.498753, 26.770172, 18.452118, 27.498753, 26.770172, 17.202118, 26.998753, 26.770172, 16.702118, 20.748753, 26.770172, 16.702118, 20.248753, 26.770172, 17.202118, 20.248753, 26.770172, 18.452118, 13.498753, 26.020172, 19.202118, 13.498753, 26.020172, 21.202118, 19.498753, 26.770172, 21.202118, 19.498753, 26.770172, 19.202118, 28.248753, 26.770172, 19.202118, 19.748753, 26.770172, 21.702118, 34.248753, 26.020172, 21.202118, 34.248753, 26.020172, 19.202118, 28.448753, 26.770172, 21.402115, 32.498753, 10.770172, 24.452118, 33.998753, 10.770172, 24.452118, 33.998753, 10.770172, 23.202118, 31.998753, 10.770172, 23.202118, 13.248753, 7.2701726, 24.952118, 13.748753, 7.2701726, 28.202118, 13.748753, 7.2701726, 24.952118, 29.498753, 7.2701726, 29.202118, 27.998753, 7.2701726, 29.202118, 27.748753, 7.2701726, 29.702118, 33.748753, 7.2701726, 29.952118, 31.248753, 7.2701726, 26.452118, 30.248753, 7.2701726, 24.952118, 30.248753, 7.2701726, 28.452118, 34.248753, 7.2701726, 27.702118, 34.248753, 7.2701726, 26.452118, 18.998753, 7.2701726, 29.952118, 19.998753, 7.2701726, 29.952118, 19.748753, 7.2701726, 27.202118, 18.998753, 7.2701726, 27.202118)
 polygons = [PackedInt32Array(2, 1, 0), PackedInt32Array(4, 3, 5), PackedInt32Array(5, 3, 6), PackedInt32Array(8, 7, 9), PackedInt32Array(9, 7, 10), PackedInt32Array(3, 11, 6), PackedInt32Array(6, 11, 0), PackedInt32Array(0, 11, 2), PackedInt32Array(2, 12, 10), PackedInt32Array(10, 12, 9), PackedInt32Array(9, 13, 3), PackedInt32Array(3, 13, 11), PackedInt32Array(11, 12, 2), PackedInt32Array(12, 13, 9), PackedInt32Array(13, 12, 11), PackedInt32Array(15, 14, 16), PackedInt32Array(16, 14, 18), PackedInt32Array(16, 18, 17), PackedInt32Array(20, 19, 21), PackedInt32Array(21, 19, 22), PackedInt32Array(24, 27, 25), PackedInt32Array(25, 27, 23), PackedInt32Array(25, 23, 26), PackedInt32Array(30, 29, 28), PackedInt32Array(33, 32, 31), PackedInt32Array(37, 36, 34), PackedInt32Array(34, 36, 35), PackedInt32Array(41, 40, 38), PackedInt32Array(38, 40, 39), PackedInt32Array(45, 44, 42), PackedInt32Array(42, 44, 43), PackedInt32Array(47, 46, 48), PackedInt32Array(48, 46, 49), PackedInt32Array(53, 52, 50), PackedInt32Array(50, 52, 51), PackedInt32Array(57, 56, 54), PackedInt32Array(54, 56, 55), PackedInt32Array(61, 60, 58), PackedInt32Array(58, 60, 59), PackedInt32Array(65, 64, 62), PackedInt32Array(62, 64, 63), PackedInt32Array(69, 68, 66), PackedInt32Array(66, 68, 67), PackedInt32Array(73, 72, 70), PackedInt32Array(70, 72, 71), PackedInt32Array(77, 76, 74), PackedInt32Array(74, 76, 75), PackedInt32Array(81, 82, 78), PackedInt32Array(78, 82, 80), PackedInt32Array(78, 80, 79), PackedInt32Array(84, 83, 85), PackedInt32Array(85, 83, 87), PackedInt32Array(85, 87, 86), PackedInt32Array(91, 90, 88), PackedInt32Array(88, 90, 89), PackedInt32Array(95, 94, 92), PackedInt32Array(92, 94, 93), PackedInt32Array(98, 97, 99), PackedInt32Array(99, 97, 96), PackedInt32Array(99, 96, 100), PackedInt32Array(104, 103, 101), PackedInt32Array(101, 103, 102), PackedInt32Array(108, 107, 105), PackedInt32Array(105, 107, 106), PackedInt32Array(110, 109, 111), PackedInt32Array(111, 109, 112), PackedInt32Array(114, 113, 112), PackedInt32Array(118, 117, 115), PackedInt32Array(115, 117, 116), PackedInt32Array(121, 123, 122), PackedInt32Array(122, 123, 119), PackedInt32Array(119, 123, 120), PackedInt32Array(117, 118, 120), PackedInt32Array(120, 118, 114), PackedInt32Array(114, 112, 120), PackedInt32Array(120, 112, 109), PackedInt32Array(120, 109, 119), PackedInt32Array(125, 124, 126), PackedInt32Array(126, 124, 127), PackedInt32Array(130, 129, 128), PackedInt32Array(132, 131, 133), PackedInt32Array(133, 131, 134), PackedInt32Array(137, 136, 135), PackedInt32Array(138, 134, 139), PackedInt32Array(139, 134, 135), PackedInt32Array(135, 134, 137), PackedInt32Array(131, 137, 134), PackedInt32Array(143, 142, 140), PackedInt32Array(140, 142, 141)]
@@ -168,7 +176,7 @@ mix_target = 1
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.0927014, 0, 0.60878706)
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="Lighting" unique_id=1333050787]
-transform = Transform3D(-0.6349025, 0.6623415, -0.39774725, 0.0965434, 0.5788023, 0.80973303, 0.7665367, 0.4757015, -0.43142754, 3.0927014, 0, -0.60878706)
+transform = Transform3D(-0.6349026, 0.14087957, -0.75963944, 0.09654342, 0.9899945, 0.102909885, 0.7665367, -0.008000523, -0.6421508, 3.0927014, 0, -0.60878706)
 light_energy = 0.6
 light_indirect_energy = 0.0
 light_volumetric_fog_energy = 0.411
@@ -189,36 +197,8 @@ script = ExtResource("5_vtepg")
 
 [node name="node3D" type="Node3D" parent="." unique_id=1483757596]
 
-[node name="NavigationRegion3D" type="NavigationRegion3D" parent="." unique_id=1550709819]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -24.443083, -9.536743e-07, -0.929554)
-navigation_mesh = SubResource("NavigationMesh_trj04")
-
-[node name="BIGJ_ShipBlockout_02" parent="NavigationRegion3D" unique_id=1145848944 instance=ExtResource("6_8dnnj")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 23.843134, 4.1656275, -42.012955)
-
-[node name="Hull Complete Shape" parent="NavigationRegion3D/BIGJ_ShipBlockout_02" index="59" unique_id=1595472209]
-surface_material_override/0 = ExtResource("7_m3bi6")
-
-[node name="Cube_009" parent="NavigationRegion3D/BIGJ_ShipBlockout_02" index="114" unique_id=158201528]
-layers = 2
-
-[node name="Cube_010" parent="NavigationRegion3D/BIGJ_ShipBlockout_02" index="115" unique_id=928243945]
-layers = 2
-
-[node name="Cube_011" parent="NavigationRegion3D/BIGJ_ShipBlockout_02" index="116" unique_id=1885476924]
-layers = 2
-
-[node name="Cube_012" parent="NavigationRegion3D/BIGJ_ShipBlockout_02" index="117" unique_id=1873995043]
-layers = 2
-
-[node name="Cube_013" parent="NavigationRegion3D/BIGJ_ShipBlockout_02" index="118" unique_id=1621299926]
-layers = 2
-
-[node name="Cube_009_001" parent="NavigationRegion3D/BIGJ_ShipBlockout_02" index="120" unique_id=334162480]
-layers = 2
-
 [node name="Control" type="Control" parent="." unique_id=1403653531]
-z_index = -1
+z_index = 1
 z_as_relative = false
 layout_mode = 3
 anchors_preset = 15
@@ -228,109 +208,54 @@ grow_horizontal = 2
 grow_vertical = 2
 pivot_offset = Vector2(960, 540)
 
+[node name="Label" type="Label" parent="Control" unique_id=2073826035]
+layout_mode = 0
+offset_left = -215.0
+offset_top = 167.0
+offset_right = 2227.0
+offset_bottom = 556.0
+text = "THE LORETTO PARADOX
+"
+label_settings = SubResource("LabelSettings_t1dhk")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ItemList" type="VBoxContainer" parent="Control" unique_id=1591464753]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -138.0
+offset_top = -99.0
+offset_right = 137.0
+offset_bottom = 99.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_stretch_ratio = 0.0
+theme = ExtResource("10_vr1f0")
+theme_type_variation = &"Main Menu"
+theme_override_constants/separation = 9
+
+[node name="Play" type="Button" parent="Control/ItemList" unique_id=1174216967]
+layout_mode = 2
+text = "Play"
+
+[node name="Settings" type="Button" parent="Control/ItemList" unique_id=1903898776]
+layout_mode = 2
+text = "Settings"
+
+[node name="Credits" type="Button" parent="Control/ItemList" unique_id=1011640117]
+layout_mode = 2
+text = "Credits"
+
 [node name="CanvasLayer" type="CanvasLayer" parent="Control" unique_id=1662271621]
 layer = 0
-
-[node name="Title" type="RichTextLabel" parent="Control/CanvasLayer" unique_id=1904649825]
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -960.0
-offset_top = -536.0
-offset_right = 960.0
-offset_bottom = 139.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_constants/outline_size = 10
-theme_override_fonts/normal_font = ExtResource("10_16hvj")
-theme_override_font_sizes/normal_font_size = 100
-text = "THE LORETTO PARADOX
-
-
-"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="New" type="RichTextLabel" parent="Control/CanvasLayer" unique_id=1844071069]
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -960.0
-offset_top = -590.0
-offset_right = 960.0
-offset_bottom = 486.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_constants/outline_size = 10
-theme_override_fonts/normal_font = ExtResource("10_16hvj")
-theme_override_font_sizes/normal_font_size = 50
-text = "NEW"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="Load" type="RichTextLabel" parent="Control/CanvasLayer" unique_id=1141021764]
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -960.0
-offset_top = -490.0
-offset_right = 960.0
-offset_bottom = 586.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_constants/outline_size = 10
-theme_override_fonts/normal_font = ExtResource("10_16hvj")
-theme_override_font_sizes/normal_font_size = 50
-text = "CONTINUE"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="Settings" type="RichTextLabel" parent="Control/CanvasLayer" unique_id=1983129202]
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -960.0
-offset_top = -390.0
-offset_right = 960.0
-offset_bottom = 686.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_constants/outline_size = 10
-theme_override_fonts/normal_font = ExtResource("10_16hvj")
-theme_override_font_sizes/normal_font_size = 50
-text = "SETTINGS
-"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="Settings2" type="RichTextLabel" parent="Control/CanvasLayer" unique_id=581132475]
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -960.0
-offset_top = -290.0
-offset_right = 960.0
-offset_bottom = 786.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_constants/outline_size = 10
-theme_override_fonts/normal_font = ExtResource("10_16hvj")
-theme_override_font_sizes/normal_font_size = 50
-text = "CREDITS"
-horizontal_alignment = 1
-vertical_alignment = 1
+visible = false
 
 [node name="ColorRect" type="ColorRect" parent="Control/CanvasLayer" unique_id=682903752]
+visible = false
 z_index = -1
 anchors_preset = 15
 anchor_right = 1.0
@@ -340,5 +265,33 @@ offset_bottom = 4.0
 grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 1)
+
+[node name="NavigationRegion3D" type="NavigationRegion3D" parent="." unique_id=1550709819]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -24.443083, -9.536743e-07, -0.929554)
+navigation_mesh = SubResource("NavigationMesh_trj04")
+
+[node name="BIGJ_ShipBlockout_02" parent="NavigationRegion3D" unique_id=1145848944 instance=ExtResource("6_8dnnj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 23.843134, 4.1656275, -42.012955)
+
+[node name="Hull Complete Shape" parent="NavigationRegion3D/BIGJ_ShipBlockout_02" index="59" unique_id=1439087218]
+surface_material_override/0 = ExtResource("7_m3bi6")
+
+[node name="Cube_009" parent="NavigationRegion3D/BIGJ_ShipBlockout_02" index="114" unique_id=64315177]
+layers = 2
+
+[node name="Cube_010" parent="NavigationRegion3D/BIGJ_ShipBlockout_02" index="115" unique_id=1677063473]
+layers = 2
+
+[node name="Cube_011" parent="NavigationRegion3D/BIGJ_ShipBlockout_02" index="116" unique_id=51548243]
+layers = 2
+
+[node name="Cube_012" parent="NavigationRegion3D/BIGJ_ShipBlockout_02" index="117" unique_id=1742709967]
+layers = 2
+
+[node name="Cube_013" parent="NavigationRegion3D/BIGJ_ShipBlockout_02" index="118" unique_id=1142274498]
+layers = 2
+
+[node name="Cube_009_001" parent="NavigationRegion3D/BIGJ_ShipBlockout_02" index="120" unique_id=913242616]
+layers = 2
 
 [editable path="NavigationRegion3D/BIGJ_ShipBlockout_02"]

@@ -1,0 +1,57 @@
+[gd_resource type="Theme" format=3 uid="uid://dsnby6q1yhtnk"]
+
+[ext_resource type="FontFile" uid="uid://cmykx5tfuuibq" path="res://Assets/UI/Fonts/Square.ttf" id="1_1rvd2"]
+[ext_resource type="StyleBox" uid="uid://ddaldinn0lg4v" path="res://Assets/UI/Basic_StyleBox.tres" id="2_3mcdn"]
+[ext_resource type="Texture2D" uid="uid://bwmyx4wqqr38a" path="res://Assets/Textures/Enviroment/Steel Red Test_Custom.png" id="3_3mcdn"]
+[ext_resource type="FontFile" uid="uid://13oicvg0h65k" path="res://Assets/UI/Fonts/Heavy Metal Box.ttf" id="3_sxnlr"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_agbxq"]
+bg_color = Color(0.37162217, 0.37162223, 0.37162206, 1)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_r6wkx"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_sxnlr"]
+texture = ExtResource("3_3mcdn")
+axis_stretch_horizontal = 1
+axis_stretch_vertical = 1
+
+[resource]
+Button/colors/font_color = Color(1, 1, 1, 1)
+Button/colors/font_hover_color = Color(0, 0.7475053, 0.8110659, 1)
+Button/colors/font_outline_color = Color(0, 0, 0, 1)
+Button/colors/font_pressed_color = Color(0.7323164, 0.99705154, 0.4373297, 1)
+Button/colors/font_shadow_color = Color(0, 0, 0, 1)
+Button/constants/line_spacing = 20
+Button/constants/outline_size = 10
+Button/constants/shadow_offset_x = 0
+Button/constants/shadow_offset_y = 0
+Button/constants/shadow_outline_size = 0
+Button/font_sizes/font_size = 49
+Button/fonts/font = ExtResource("1_1rvd2")
+Button/styles/focus = SubResource("StyleBoxFlat_agbxq")
+Button/styles/hover = ExtResource("2_3mcdn")
+Button/styles/normal = SubResource("StyleBoxEmpty_r6wkx")
+Button/styles/pressed = SubResource("StyleBoxTexture_sxnlr")
+FoldableContainer/font_sizes/font_size = 16
+ObjectiveMarkerTheme/colors/default_color = Color(1, 1, 1, 1)
+ObjectiveMarkerTheme/colors/font_outline_color = Color(0, 0, 0, 1)
+ObjectiveMarkerTheme/colors/font_shadow_color = Color(0, 0, 0, 1)
+ObjectiveMarkerTheme/colors/selection_color = Color(0, 0, 0, 1)
+ObjectiveMarkerTheme/constants/outline_size = 0
+ObjectiveMarkerTheme/constants/shadow_offset_x = 0
+ObjectiveMarkerTheme/constants/shadow_offset_y = 0
+ObjectiveMarkerTheme/constants/shadow_outline_size = 0
+ObjectiveMarkerTheme/font_sizes/font_size = 16
+ObjectiveMarkerTheme/fonts/bold_font = ExtResource("3_sxnlr")
+ObjectiveMarkerTheme/fonts/bold_italics_font = ExtResource("3_sxnlr")
+ObjectiveMarkerTheme/fonts/normal_font = ExtResource("3_sxnlr")
+ObjectiveMarkerTheme/styles/focus = null
+ObjectiveMarkerTheme/styles/normal = null
+RichTextLabel/constants/outline_size = 5
+RichTextLabel/constants/shadow_outline_size = 1
+RichTextLabel/font_sizes/bold_font_size = 16
+RichTextLabel/font_sizes/bold_italics_font_size = 16
+RichTextLabel/font_sizes/italics_font_size = 16
+RichTextLabel/font_sizes/mono_font_size = 16
+RichTextLabel/font_sizes/normal_font_size = 50
+RichTextLabel/fonts/normal_font = ExtResource("1_1rvd2")

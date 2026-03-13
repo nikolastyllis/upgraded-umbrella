@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://sxdqvxq4t8ow" path="res://Assets/Scripts/player.gd" id="1_y5hcb"]
 [ext_resource type="Texture2D" uid="uid://g8g413indqd7" path="res://Assets/UI/Crosshair.png" id="2_2nftw"]
-[ext_resource type="FontFile" uid="uid://b34cfkje0l4ob" path="res://Fonts/KronaOne-Regular.ttf" id="3_2nftw"]
+[ext_resource type="FontFile" uid="uid://b34cfkje0l4ob" path="res://Assets/UI/Fonts/KronaOne-Regular.ttf" id="3_2nftw"]
 [ext_resource type="PackedScene" uid="uid://cpju2kewehe31" path="res://Assets/Models/Characters/Twin 2/twin_2_model_01.tscn" id="3_y5hcb"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_myya0"]

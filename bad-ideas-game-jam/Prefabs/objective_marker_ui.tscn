@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://cml5ttx0x2bvc" path="res://Assets/Scripts/objective_marker.gd" id="1_2d8xp"]
 [ext_resource type="Texture2D" uid="uid://barr4fktxwmiq" path="res://Assets/Textures/Quest/location-dot-solid.png" id="1_r4eht"]
-[ext_resource type="FontFile" uid="uid://b34cfkje0l4ob" path="res://Fonts/KronaOne-Regular.ttf" id="3_ybrfr"]
+[ext_resource type="Theme" uid="uid://dsnby6q1yhtnk" path="res://Assets/UI/Text_Theme_Main.tres" id="3_ybrfr"]
 
 [node name="ObjectiveMarker" type="Node3D" unique_id=2030661204]
 script = ExtResource("1_2d8xp")
@@ -35,14 +35,11 @@ stretch_mode = 3
 
 [node name="Distance" type="RichTextLabel" parent="ObjectiveMarkerUI" unique_id=1712631114]
 layout_mode = 0
-offset_left = -51.0
-offset_top = -68.0
-offset_right = 51.0
-offset_bottom = -34.0
-theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
-theme_override_constants/outline_size = 10
-theme_override_fonts/normal_font = ExtResource("3_ybrfr")
-theme_override_font_sizes/normal_font_size = 18
+offset_left = -52.0
+offset_top = -82.0
+offset_right = 50.0
+offset_bottom = -29.0
+theme = ExtResource("3_ybrfr")
 text = "100m"
 fit_content = true
 horizontal_alignment = 1

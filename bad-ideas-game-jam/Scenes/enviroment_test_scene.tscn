@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://bw3728lre125f" path="res://Assets/Textures/Ocean/0001.jpg" id="2_jd51y"]
 [ext_resource type="Texture2D" uid="uid://bal1s5p7lfes2" path="res://Assets/Textures/Ocean/0258.jpg" id="3_to28j"]
 [ext_resource type="PackedScene" uid="uid://ce1yp6o3mvdtg" path="res://Assets/Models/Enviroment/BIGJ_ShipBlockout_03.glb" id="6_v7i32"]
+[ext_resource type="Material" uid="uid://dxu2lgyle53xn" path="res://Shaders/Base_Material_Shader.tres" id="7_h3qab"]
 [ext_resource type="PackedScene" uid="uid://btg75au461yd7" path="res://Prefabs/player.tscn" id="7_ti2qv"]
 [ext_resource type="PackedScene" uid="uid://dpl2uefq7xuhu" path="res://Prefabs/npc.tscn" id="8_7xckk"]
 [ext_resource type="PackedScene" uid="uid://badmu68nhhg1h" path="res://Assets/Models/Enviroment/BIGJ_Level_Col_Mesh_01.glb" id="9_wo51v"]
@@ -198,6 +199,12 @@ script = ExtResource("2_bh83g")
 [node name="BIGJ_ShipBlockout_03" parent="." unique_id=398086911 instance=ExtResource("6_v7i32")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.61961174, 4.1656265, 6.5372734)
 
+[node name="Interior Walls" parent="BIGJ_ShipBlockout_03" index="1" unique_id=1070593130]
+surface_material_override/0 = ExtResource("7_h3qab")
+
+[node name="Hull Complete Shape" parent="BIGJ_ShipBlockout_03" index="125" unique_id=813079985]
+surface_material_override/0 = ExtResource("7_h3qab")
+
 [node name="NavigationRegion3D" type="NavigationRegion3D" parent="." unique_id=954165088]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
 navigation_mesh = SubResource("NavigationMesh_h3qab")
@@ -240,3 +247,5 @@ transform = Transform3D(-0.1742291, 0, -0.098205134, 0, 0.2, 0, 0.098205134, 0, 
 
 [node name="OxyTorch" parent="GameManager/Locations" unique_id=2067964585 instance=ExtResource("14_3fxhi")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.6783142, 0.29786015, 11.071705)
+
+[editable path="BIGJ_ShipBlockout_03"]
