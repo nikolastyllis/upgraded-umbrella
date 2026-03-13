@@ -6,12 +6,9 @@
 [ext_resource type="Shader" uid="uid://ossjmoq6orf1" path="res://Shaders/shader_ocean_calm.gdshader" id="2_exjqg"]
 [ext_resource type="Texture2D" uid="uid://bw3728lre125f" path="res://Assets/Textures/Ocean/0001.jpg" id="2_jd51y"]
 [ext_resource type="Texture2D" uid="uid://bal1s5p7lfes2" path="res://Assets/Textures/Ocean/0258.jpg" id="3_to28j"]
-[ext_resource type="PackedScene" uid="uid://2ql0j7aimqtd" path="res://Assets/Models/Enviroment/BIGJ_ShipBlockout_02.glb" id="6_to28j"]
 [ext_resource type="PackedScene" uid="uid://ce1yp6o3mvdtg" path="res://Assets/Models/Enviroment/BIGJ_ShipBlockout_03.glb" id="6_v7i32"]
-[ext_resource type="Material" uid="uid://mjsmyyrpxybk" path="res://Shaders/Old/Red Steel Hotspot.tres" id="7_m4sqq"]
 [ext_resource type="PackedScene" uid="uid://btg75au461yd7" path="res://Prefabs/player.tscn" id="7_ti2qv"]
 [ext_resource type="PackedScene" uid="uid://dpl2uefq7xuhu" path="res://Prefabs/npc.tscn" id="8_7xckk"]
-[ext_resource type="Material" uid="uid://6w4m67fqps62" path="res://Shaders/Old/Standard_material_3d.tres" id="8_leg6t"]
 [ext_resource type="PackedScene" uid="uid://badmu68nhhg1h" path="res://Assets/Models/Enviroment/BIGJ_Level_Col_Mesh_01.glb" id="9_wo51v"]
 [ext_resource type="PackedScene" uid="uid://clai2jixo1u8q" path="res://Prefabs/oxy_torch.tscn" id="14_3fxhi"]
 [ext_resource type="PackedScene" uid="uid://bhun3l1dxxlwo" path="res://Prefabs/ladder.tscn" id="14_h3qab"]
@@ -197,48 +194,17 @@ script = ExtResource("2_bh83g")
 
 [node name="node3D" type="Node3D" parent="." unique_id=1483757596]
 
-[node name="BIGJ_ShipBlockout_02" parent="." unique_id=995103134 instance=ExtResource("6_to28j")]
+[node name="BIGJ_ShipBlockout_03" parent="." unique_id=398086911 instance=ExtResource("6_v7i32")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.61961174, 4.1656265, 6.5372734)
-
-[node name="Walls Below Poop Deck" parent="BIGJ_ShipBlockout_02" index="1" unique_id=2145185092]
-visible = false
-
-[node name="Back Air_Power" parent="BIGJ_ShipBlockout_02" index="2" unique_id=203134115]
-visible = false
-
-[node name="Back Air_Power_001" parent="BIGJ_ShipBlockout_02" index="9" unique_id=1563150688]
-visible = false
-
-[node name="Back Air_Power_002" parent="BIGJ_ShipBlockout_02" index="10" unique_id=308314265]
-visible = false
-
-[node name="Hull Complete Shape" parent="BIGJ_ShipBlockout_02" index="59" unique_id=1595472209]
-material_override = ExtResource("7_m4sqq")
-
-[node name="Hull Complete Shape_001" parent="BIGJ_ShipBlockout_02" index="61" unique_id=1955061606]
-material_override = ExtResource("7_m4sqq")
-
-[node name="Cube_009" parent="BIGJ_ShipBlockout_02" index="114" unique_id=158201528]
-material_override = ExtResource("8_leg6t")
-
-[node name="Cube_010" parent="BIGJ_ShipBlockout_02" index="115" unique_id=928243945]
-material_override = ExtResource("8_leg6t")
-
-[node name="Cube_011" parent="BIGJ_ShipBlockout_02" index="116" unique_id=1885476924]
-material_override = ExtResource("8_leg6t")
-
-[node name="Cube_013" parent="BIGJ_ShipBlockout_02" index="118" unique_id=1621299926]
-material_override = ExtResource("8_leg6t")
-
-[node name="Cube_009_001" parent="BIGJ_ShipBlockout_02" index="120" unique_id=334162480]
-material_override = ExtResource("8_leg6t")
 
 [node name="NavigationRegion3D" type="NavigationRegion3D" parent="." unique_id=954165088]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
+visible = false
 navigation_mesh = SubResource("NavigationMesh_h3qab")
 
-[node name="BIGJ_Level_Col_Mesh_01" parent="NavigationRegion3D" unique_id=771792620 instance=ExtResource("9_wo51v")]
+[node name="BIGJ_Level_Col_Mesh_01" parent="NavigationRegion3D" unique_id=774214255 instance=ExtResource("9_wo51v")]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 1.2392235, 8.331253, 13.074547)
+visible = false
 
 [node name="Player" parent="." unique_id=1647912674 instance=ExtResource("7_ti2qv")]
 transform = Transform3D(-0.99752617, 0, -0.07029611, 0, 1, 0, 0.07029611, 0, -0.99752617, 3.0196166, 16.558382, 65.53934)
@@ -271,8 +237,3 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.368204, 0, 7.581608)
 
 [node name="OxyTorch" parent="GameManager/Locations" unique_id=2067964585 instance=ExtResource("14_3fxhi")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.6783142, 0.29786015, 11.071705)
-
-[node name="BIGJ_ShipBlockout_03" parent="." unique_id=398086911 instance=ExtResource("6_v7i32")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.61961174, 4.1656265, 6.5372734)
-
-[editable path="BIGJ_ShipBlockout_02"]

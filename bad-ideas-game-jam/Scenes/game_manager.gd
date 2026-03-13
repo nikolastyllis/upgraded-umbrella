@@ -25,13 +25,19 @@ func _ready() -> void:
 	_spawn_objective_marker(billy)
 	
 func _player_is_near(position: Vector3) -> bool:
-	return (player.global_position - position).length() < 5
+	return (player.global_position - position).length() < 2
 
 func _process(_delta: float) -> void:
 	if story_increment == 1 and _player_is_near(back_right_corner.global_position):
 		_remove_objective()
 		player.set_objective_text("Retrieve the oxy-acetylene torch from the store room")
 		_spawn_objective_marker(oxy_torch)
+		story_increment += 1
+	if story_increment == 3 and _player_is_near(back_right_corner.global_position):
+		_remove_objective()
+		player.set_objective_text("Follow Billy to meet Bob at the suspicious container")
+		billy.set_target_position(container.global_position)
+		_spawn_objective_marker(billy)
 		story_increment += 1
 		
 func _spawn_objective_marker(parent: Node3D) -> void:
