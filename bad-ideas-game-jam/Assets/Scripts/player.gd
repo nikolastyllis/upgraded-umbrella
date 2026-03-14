@@ -26,14 +26,12 @@ var interactable: Interactable = null
 var mouse_idle_timer := 0.0
 var use_camera_position_right := true
 var current_camera_position: Vector3
-var reset_camera_y := false
-var is_free_looking := false
 
 func _ready() -> void:
 	super._ready()
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
-	use_camera_position_right = true
-	current_camera_position = camera_position_right.position
+	use_camera_position_right = false
+	current_camera_position = camera_position_left.position
 	camera_origin.position = current_camera_position
 
 func _input(event: InputEvent) -> void:
@@ -45,13 +43,6 @@ func _process(delta: float) -> void:
 	update_interactable()
 	update_idle_animation_blend(delta)
 	handle_interact(delta)
-
-func _apply_free_look():
-	if Input.is_action_pressed("free_look"):
-		is_free_looking = true
-	else:
-		is_free_looking = false
-		reset_camera_y = true
 
 func _physics_process(delta: float) -> void:
 	super._physics_process(delta)
@@ -66,13 +57,11 @@ func _physics_process(delta: float) -> void:
 	update_movement_animation(get_raw_input_dir(), delta)
 	update_character_rotation(rotation.y, delta)
 	move_and_slide()
-	reset_camera()
 	dismount_ladder()
 	update_climb_position()
-	_apply_free_look()
 	if climb_cooldown > 0:
 		climb_cooldown -= delta
-		
+
 func get_speed() -> float:
 	return PLAYER_SPEED
 
@@ -87,7 +76,14 @@ func get_raw_input_dir() -> Vector2:
 
 func get_move_direction() -> Vector3:
 	var dir = get_raw_input_dir()
-	return (transform.basis * Vector3(dir.x, 0, dir.y)).normalized()
+	if dir.length() < 0.01:
+		return Vector3.ZERO
+	# Movement is relative to where the camera is looking, not where the character faces
+	var cam_forward = -camera_origin.global_transform.basis.z
+	var cam_right = camera_origin.global_transform.basis.x
+	cam_forward.y = 0
+	cam_right.y = 0
+	return (cam_right * dir.x + cam_forward * -dir.y).normalized()
 
 func apply_movement(_input_dir: Vector2) -> void:
 	if is_climbing:
@@ -97,6 +93,13 @@ func apply_movement(_input_dir: Vector2) -> void:
 	if move_direction.length() > 0.01:
 		velocity.x = move_direction.x * PLAYER_SPEED
 		velocity.z = move_direction.z * PLAYER_SPEED
+		# Rotate character smoothly toward movement direction
+		var target_angle = atan2(move_direction.x, move_direction.z)
+		var old_y = rotation.y
+		var t = 1.0 - exp(-10.0 * get_physics_process_delta_time())
+		rotation.y = lerp_angle(rotation.y, target_angle, t)
+		# Counter-rotate camera_origin so it keeps pointing the same world direction
+		camera_origin.rotation.y += old_y - rotation.y
 	else:
 		velocity.x = move_toward(velocity.x, 0, PLAYER_SPEED)
 		velocity.z = move_toward(velocity.z, 0, PLAYER_SPEED)
@@ -104,13 +107,6 @@ func apply_movement(_input_dir: Vector2) -> void:
 func dismount_ladder() -> void:
 	if is_climbing and is_on_floor() and get_climb_input() < 0 and current_ladder.end_y() > global_position.y:
 		stop_climbing()
-
-func reset_camera() -> void:
-	if reset_camera_y:
-		camera_origin.rotation.y = lerp_angle(camera_origin.rotation.y, 0.0, 0.1)
-		if abs(camera_origin.rotation.y) < 0.001:
-			camera_origin.rotation.y = 0.0
-			reset_camera_y = false
 
 func update_camera(delta: float) -> void:
 	var t := 1.0 - exp(-view_toggle_lerp_speed * delta)
@@ -121,18 +117,13 @@ func update_camera(delta: float) -> void:
 
 func handle_mouse_look(event: InputEventMouseMotion) -> void:
 	mouse_idle_timer = 0.0
-	var y_flip = cos(camera_origin.rotation.y)
-	camera_origin.rotate_x(deg_to_rad(-event.relative.y) * sign(y_flip) if abs(y_flip) > 0.01 else deg_to_rad(-event.relative.y))
+	# Directly set euler angles so pitch and yaw never interfere with each other
+	camera_origin.rotation.x -= deg_to_rad(event.relative.y * 0.5)
 	camera_origin.rotation.x = clamp(camera_origin.rotation.x, deg_to_rad(-80), deg_to_rad(80))
+	camera_origin.rotation.y -= deg_to_rad(event.relative.x * 0.5)
 	camera_origin.rotation.z = 0
-	
-	if is_free_looking:
-		camera_origin.rotate_y(deg_to_rad(-event.relative.x))
-	else:
-		if not is_climbing: 
-			rotate_y(deg_to_rad(-event.relative.x))
-		if abs(event.relative.x) > 10:
-			idle_animation_blend_target = 0.5 if event.relative.x > 0 else -0.5
+	if abs(event.relative.x) > 10:
+		idle_animation_blend_target = 0.5 if event.relative.x > 0 else -0.5
 
 func update_idle_animation_blend(delta: float) -> void:
 	mouse_idle_timer += delta
@@ -180,13 +171,18 @@ func show_dialog_text(dialog: String) -> void:
 	dialog_control.visible = true
 	dialog_text.text = dialog
 	dialog_animation_player.play("Dialog")
-	
+
 func update_interactable() -> void:
 	var new_interactable: Interactable = null
 	if interact_raycast.is_colliding():
 		var collider = interact_raycast.get_collider()
 		if collider is Interactable and collider.can_interact(self):
 			new_interactable = collider
+	# While actively holding an interaction, keep the current interactable locked in
+	# so looking away doesn't cancel the hold progress
+	if interaction_hold_timer > 0 and interactable != null and Input.is_action_pressed("interact"):
+		interact_ui_control.visible = true
+		return
 	if new_interactable != interactable:
 		interactable = new_interactable
 		reset_interact_timer()

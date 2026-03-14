@@ -42,7 +42,7 @@ func update_climb_position() -> void:
 	var to_ladder = current_ladder.global_position - global_position
 	to_ladder.y = 0
 	if to_ladder.length() > 0.01:
-		rotation.y = lerp_angle(rotation.y, current_ladder.rotation.y - deg_to_rad(90), 0.15)
+		rotation.y = lerp_angle(rotation.y, current_ladder.rotation.y + deg_to_rad(90), 0.15)
 	var ladder_forward = current_ladder.global_transform.basis.x
 	var target_pos = current_ladder.global_position + ladder_forward * -0.4
 	var aligned = Vector3(target_pos.x, global_position.y, target_pos.z)
