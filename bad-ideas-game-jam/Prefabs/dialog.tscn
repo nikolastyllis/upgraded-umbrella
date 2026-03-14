@@ -38,7 +38,7 @@ _data = {
 }
 
 [node name="Dialog" type="Control" unique_id=1043329875]
-custom_minimum_size = Vector2(0, 100)
+custom_minimum_size = Vector2(0, 75)
 layout_mode = 3
 anchors_preset = 12
 anchor_top = 1.0
