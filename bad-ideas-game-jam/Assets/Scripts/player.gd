@@ -11,7 +11,9 @@ extends BaseCharacter
 @onready var interact_action_text := $CameraOrigin/SpringArm3D/Camera3D/CrosshairUI/Interact/Action
 @onready var interact_ui_control := $CameraOrigin/SpringArm3D/Camera3D/CrosshairUI/Interact
 @onready var interact_progress_bar := $CameraOrigin/SpringArm3D/Camera3D/CrosshairUI/Interact/Progress
-@onready var objective_text := $CameraOrigin/SpringArm3D/Camera3D/Objective/ObjectiveText
+@onready var dialog_text := $CameraOrigin/SpringArm3D/Camera3D/Dialog/DialogText
+@onready var dialog_control := $CameraOrigin/SpringArm3D/Camera3D/Dialog
+@onready var dialog_animation_player := $CameraOrigin/SpringArm3D/Camera3D/Dialog/AnimationPlayer
 
 const PLAYER_SPEED = 2.5
 const JUMP_VELOCITY = 3
@@ -43,9 +45,6 @@ func _process(delta: float) -> void:
 	update_interactable()
 	update_idle_animation_blend(delta)
 	handle_interact(delta)
-	
-func set_objective_text(text: String) -> void:
-	objective_text.text = text
 
 func _apply_free_look():
 	if Input.is_action_pressed("free_look"):
@@ -177,6 +176,11 @@ func reset_interact_state() -> void:
 	interact_progress_bar.set_value_no_signal(0)
 	interaction_disabled = false
 
+func show_dialog_text(dialog: String) -> void:
+	dialog_control.visible = true
+	dialog_text.text = dialog
+	dialog_animation_player.play("Dialog")
+	
 func update_interactable() -> void:
 	var new_interactable: Interactable = null
 	if interact_raycast.is_colliding():
@@ -192,3 +196,8 @@ func update_interactable() -> void:
 		interact_ui_control.visible = true
 	else:
 		interact_ui_control.visible = false
+
+func _on_animation_player_animation_finished(_anim_name: StringName) -> void:
+	await get_tree().create_timer(10.0).timeout
+	dialog_control.visible = false
+	dialog_text.text = ""

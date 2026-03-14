@@ -199,10 +199,10 @@ script = ExtResource("2_bh83g")
 [node name="BIGJ_ShipBlockout_03" parent="." unique_id=398086911 instance=ExtResource("6_v7i32")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.61961174, 4.1656265, 6.5372734)
 
-[node name="Interior Walls" parent="BIGJ_ShipBlockout_03" index="1" unique_id=1070593130]
+[node name="Interior Walls" parent="BIGJ_ShipBlockout_03" index="1" unique_id=1592472008]
 surface_material_override/0 = ExtResource("7_h3qab")
 
-[node name="Hull Complete Shape" parent="BIGJ_ShipBlockout_03" index="125" unique_id=813079985]
+[node name="Hull Complete Shape" parent="BIGJ_ShipBlockout_03" index="125" unique_id=1343122375]
 surface_material_override/0 = ExtResource("7_h3qab")
 
 [node name="NavigationRegion3D" type="NavigationRegion3D" parent="." unique_id=954165088]
@@ -216,11 +216,11 @@ visible = false
 [node name="Player" parent="." unique_id=1647912674 instance=ExtResource("7_ti2qv")]
 transform = Transform3D(-0.99752617, 0, -0.07029611, 0, 1, 0, 0.07029611, 0, -0.99752617, 3.0196166, 16.558382, 65.53934)
 
-[node name="Billy" parent="." unique_id=1476610220 instance=ExtResource("8_7xckk")]
+[node name="Twin1" parent="." unique_id=1476610220 instance=ExtResource("8_7xckk")]
 transform = Transform3D(-0.9865266, 0, -0.16360143, 0, 1, 0, 0.16360143, 0, -0.9865266, 9.449347, 7.9717035, 77.72941)
 floor_max_angle = 1.0471976
 
-[node name="Bob" parent="." unique_id=350917105 instance=ExtResource("8_7xckk")]
+[node name="Twin2" parent="." unique_id=350917105 instance=ExtResource("8_7xckk")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.938837, 5.2445498, 34.900322)
 floor_max_angle = 1.0471976
 

@@ -2,12 +2,48 @@
 
 [ext_resource type="Script" uid="uid://sxdqvxq4t8ow" path="res://Assets/Scripts/player.gd" id="1_y5hcb"]
 [ext_resource type="Texture2D" uid="uid://g8g413indqd7" path="res://Assets/UI/Crosshair.png" id="2_2nftw"]
-[ext_resource type="FontFile" uid="uid://b34cfkje0l4ob" path="res://Assets/UI/Fonts/KronaOne-Regular.ttf" id="3_2nftw"]
 [ext_resource type="PackedScene" uid="uid://cpju2kewehe31" path="res://Assets/Models/Characters/Twin 2/twin_2_model_01.tscn" id="3_y5hcb"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_myya0"]
 radius = 0.25
 height = 1.7
+
+[sub_resource type="Animation" id="Animation_y5hcb"]
+resource_name = "Dialog"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("DialogText:visible_ratio")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 1.0]
+}
+
+[sub_resource type="Animation" id="Animation_2nftw"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("DialogText:visible_ratio")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_knrd4"]
+_data = {
+&"Dialog": SubResource("Animation_y5hcb"),
+&"RESET": SubResource("Animation_2nftw")
+}
 
 [node name="Player" type="CharacterBody3D" unique_id=1647912674]
 collision_layer = 2
@@ -100,14 +136,13 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = 67.0
-offset_top = -12.0
-offset_right = 179.0
-offset_bottom = 12.0
+offset_top = -14.0
+offset_right = 269.0
+offset_bottom = 33.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 10
-theme_override_fonts/normal_font = ExtResource("3_2nftw")
 theme_override_font_sizes/normal_font_size = 18
 text = "Interact
 "
@@ -119,15 +154,14 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = 28.0
-offset_top = -11.0
-offset_right = 264.0
-offset_bottom = 92.0
+offset_left = 31.0
+offset_top = -13.0
+offset_right = 267.0
+offset_bottom = 50.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 10
-theme_override_fonts/normal_font = ExtResource("3_2nftw")
 theme_override_font_sizes/normal_font_size = 18
 text = "E
 
@@ -136,32 +170,45 @@ text = "E
 [node name="RayCast3D" type="RayCast3D" parent="CameraOrigin/SpringArm3D/Camera3D" unique_id=1701017775]
 target_position = Vector3(0, 0, -4)
 
-[node name="Objective" type="Control" parent="CameraOrigin/SpringArm3D/Camera3D" unique_id=2047345453]
+[node name="Dialog" type="Control" parent="CameraOrigin/SpringArm3D/Camera3D" unique_id=2047345453]
 layout_mode = 3
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -243.0
+grow_horizontal = 2
+grow_vertical = 0
 
-[node name="ObjectiveText" type="RichTextLabel" parent="CameraOrigin/SpringArm3D/Camera3D/Objective" unique_id=784413414]
+[node name="DialogText" type="RichTextLabel" parent="CameraOrigin/SpringArm3D/Camera3D/Dialog" unique_id=1203742311]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = 28.0
-offset_top = 21.0
-offset_right = 1587.0
-offset_bottom = 60.0
+offset_left = -691.0
+offset_top = -120.5
+offset_right = 644.1836
+offset_bottom = 103.57385
 grow_horizontal = 2
 grow_vertical = 2
+scale = Vector2(1.0800012, 1.0800012)
 theme_override_constants/outline_size = 15
-theme_override_fonts/normal_font = ExtResource("3_2nftw")
-theme_override_font_sizes/normal_font_size = 27
-text = "! Objective Text"
+theme_override_font_sizes/normal_font_size = 24
+text = "Billy: Wakey Wakey"
+horizontal_alignment = 1
+vertical_alignment = 1
+visible_characters = 0
+visible_ratio = 0.0
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="CameraOrigin/SpringArm3D/Camera3D/Dialog" unique_id=20947691]
+libraries/ = SubResource("AnimationLibrary_knrd4")
 
 [node name="CharacterAnchor" type="Node3D" parent="." unique_id=669950866]
 transform = Transform3D(-1, 0, -1.509958e-07, 0, 1, 0, 1.509958e-07, 0, -1, 0, 0, 0)
 
 [node name="Character" parent="." unique_id=1100896801 instance=ExtResource("3_y5hcb")]
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, -0.94238436, 0)
+
+[connection signal="animation_finished" from="CameraOrigin/SpringArm3D/Camera3D/Dialog/AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
