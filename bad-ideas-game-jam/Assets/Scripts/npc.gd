@@ -100,10 +100,6 @@ func unstick() -> void:
 func get_move_direction() -> Vector3:
 	if _is_near_destination():
 		return Vector3.ZERO
-	if navigation_agent_3d.is_navigation_finished():
-		return Vector3.ZERO
-	if not navigation_agent_3d.is_target_reachable():
-		return Vector3.ZERO
 	var dir = navigation_agent_3d.get_next_path_position() - global_position
 	dir.y = 0
 	return dir.normalized() if dir.length() > 0.01 else Vector3.ZERO
