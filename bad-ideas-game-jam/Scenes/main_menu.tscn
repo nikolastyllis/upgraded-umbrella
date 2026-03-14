@@ -1,11 +1,11 @@
 [gd_scene format=3 uid="uid://cnab0waxuwnf6"]
 
 [ext_resource type="Material" uid="uid://eb5djxh4js65" path="res://Shaders/SkyShaderl.tres" id="1_16hvj"]
-[ext_resource type="Script" uid="uid://b70tkggwsddx6" path="res://Scenes/menu_camera.gd" id="1_yhxw7"]
+[ext_resource type="Script" uid="uid://b70tkggwsddx6" path="res://Assets/Scripts/menu_camera.gd" id="1_yhxw7"]
 [ext_resource type="Shader" uid="uid://ossjmoq6orf1" path="res://Shaders/shader_ocean_calm.gdshader" id="2_vr1f0"]
 [ext_resource type="Texture2D" uid="uid://bw3728lre125f" path="res://Assets/Textures/Ocean/0001.jpg" id="3_t1dhk"]
 [ext_resource type="Texture2D" uid="uid://bal1s5p7lfes2" path="res://Assets/Textures/Ocean/0258.jpg" id="4_5egv6"]
-[ext_resource type="Script" uid="uid://d1icg8locw87l" path="res://Scenes/water_camera.gd" id="5_vtepg"]
+[ext_resource type="Script" uid="uid://d1icg8locw87l" path="res://Assets/Scripts/water_camera.gd" id="5_vtepg"]
 [ext_resource type="PackedScene" uid="uid://2ql0j7aimqtd" path="res://Assets/Models/Enviroment/BIGJ_ShipBlockout_02.glb" id="6_8dnnj"]
 [ext_resource type="Material" uid="uid://mjsmyyrpxybk" path="res://Shaders/Old/Red Steel Hotspot.tres" id="7_m3bi6"]
 [ext_resource type="FontFile" uid="uid://13oicvg0h65k" path="res://Assets/UI/Fonts/Heavy Metal Box.ttf" id="8_vr1f0"]

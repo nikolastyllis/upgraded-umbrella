@@ -1,8 +1,8 @@
 [gd_scene format=3 uid="uid://ngjrfjr7sul5"]
 
-[ext_resource type="Script" uid="uid://22j5lmp1ifp1" path="res://Scenes/game_manager.gd" id="1_h3qab"]
+[ext_resource type="Script" uid="uid://22j5lmp1ifp1" path="res://Assets/Scripts/game_manager.gd" id="1_h3qab"]
 [ext_resource type="Material" uid="uid://eb5djxh4js65" path="res://Shaders/SkyShaderl.tres" id="1_to28j"]
-[ext_resource type="Script" uid="uid://d1icg8locw87l" path="res://Scenes/water_camera.gd" id="2_bh83g"]
+[ext_resource type="Script" uid="uid://d1icg8locw87l" path="res://Assets/Scripts/water_camera.gd" id="2_bh83g"]
 [ext_resource type="Shader" uid="uid://ossjmoq6orf1" path="res://Shaders/shader_ocean_calm.gdshader" id="2_exjqg"]
 [ext_resource type="Texture2D" uid="uid://bw3728lre125f" path="res://Assets/Textures/Ocean/0001.jpg" id="2_jd51y"]
 [ext_resource type="Texture2D" uid="uid://bal1s5p7lfes2" path="res://Assets/Textures/Ocean/0258.jpg" id="3_to28j"]
