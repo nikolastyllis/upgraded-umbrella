@@ -182,6 +182,7 @@ light_indirect_energy = 0.0
 light_volumetric_fog_energy = 0.411
 light_angular_distance = 1.19
 shadow_enabled = true
+shadow_blur = 0.0
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="Lighting" unique_id=972673621]
 environment = SubResource("Environment_jd51y")
@@ -207,6 +208,20 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 pivot_offset = Vector2(960, 540)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="Control" unique_id=1662271621]
+layer = 0
+
+[node name="ColorRect" type="ColorRect" parent="Control/CanvasLayer" unique_id=682903752]
+z_index = -1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 4.0
+offset_bottom = 4.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
 
 [node name="Label" type="Label" parent="Control" unique_id=2073826035]
 layout_mode = 0
@@ -250,22 +265,6 @@ text = "Settings"
 layout_mode = 2
 text = "Credits"
 
-[node name="CanvasLayer" type="CanvasLayer" parent="Control" unique_id=1662271621]
-layer = 0
-visible = false
-
-[node name="ColorRect" type="ColorRect" parent="Control/CanvasLayer" unique_id=682903752]
-visible = false
-z_index = -1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_top = 4.0
-offset_bottom = 4.0
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(0, 0, 0, 1)
-
 [node name="NavigationRegion3D" type="NavigationRegion3D" parent="." unique_id=1550709819]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -24.443083, -9.536743e-07, -0.929554)
 navigation_mesh = SubResource("NavigationMesh_trj04")
@@ -273,25 +272,25 @@ navigation_mesh = SubResource("NavigationMesh_trj04")
 [node name="BIGJ_ShipBlockout_02" parent="NavigationRegion3D" unique_id=1145848944 instance=ExtResource("6_8dnnj")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 23.843134, 4.1656275, -42.012955)
 
-[node name="Hull Complete Shape" parent="NavigationRegion3D/BIGJ_ShipBlockout_02" index="59" unique_id=1439087218]
+[node name="Hull Complete Shape" parent="NavigationRegion3D/BIGJ_ShipBlockout_02" index="59" unique_id=1595472209]
 surface_material_override/0 = ExtResource("7_m3bi6")
 
-[node name="Cube_009" parent="NavigationRegion3D/BIGJ_ShipBlockout_02" index="114" unique_id=64315177]
+[node name="Cube_009" parent="NavigationRegion3D/BIGJ_ShipBlockout_02" index="114" unique_id=158201528]
 layers = 2
 
-[node name="Cube_010" parent="NavigationRegion3D/BIGJ_ShipBlockout_02" index="115" unique_id=1677063473]
+[node name="Cube_010" parent="NavigationRegion3D/BIGJ_ShipBlockout_02" index="115" unique_id=928243945]
 layers = 2
 
-[node name="Cube_011" parent="NavigationRegion3D/BIGJ_ShipBlockout_02" index="116" unique_id=51548243]
+[node name="Cube_011" parent="NavigationRegion3D/BIGJ_ShipBlockout_02" index="116" unique_id=1885476924]
 layers = 2
 
-[node name="Cube_012" parent="NavigationRegion3D/BIGJ_ShipBlockout_02" index="117" unique_id=1742709967]
+[node name="Cube_012" parent="NavigationRegion3D/BIGJ_ShipBlockout_02" index="117" unique_id=1873995043]
 layers = 2
 
-[node name="Cube_013" parent="NavigationRegion3D/BIGJ_ShipBlockout_02" index="118" unique_id=1142274498]
+[node name="Cube_013" parent="NavigationRegion3D/BIGJ_ShipBlockout_02" index="118" unique_id=1621299926]
 layers = 2
 
-[node name="Cube_009_001" parent="NavigationRegion3D/BIGJ_ShipBlockout_02" index="120" unique_id=913242616]
+[node name="Cube_009_001" parent="NavigationRegion3D/BIGJ_ShipBlockout_02" index="120" unique_id=334162480]
 layers = 2
 
 [editable path="NavigationRegion3D/BIGJ_ShipBlockout_02"]

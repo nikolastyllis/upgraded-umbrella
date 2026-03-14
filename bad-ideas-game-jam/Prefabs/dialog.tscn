@@ -1,0 +1,73 @@
+[gd_scene format=3 uid="uid://ctirf4ywjtowg"]
+
+[sub_resource type="Animation" id="Animation_y5hcb"]
+resource_name = "Dialog"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("DialogText:visible_ratio")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 1.0]
+}
+
+[sub_resource type="Animation" id="Animation_2nftw"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("DialogText:visible_ratio")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_knrd4"]
+_data = {
+&"Dialog": SubResource("Animation_y5hcb"),
+&"RESET": SubResource("Animation_2nftw")
+}
+
+[node name="Dialog" type="Control" unique_id=1043329875]
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 3
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -60.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="DialogText" type="RichTextLabel" parent="." unique_id=1447500533]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -691.0
+offset_top = -120.5
+offset_right = 644.1836
+offset_bottom = 103.57385
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(1.0800012, 1.0800012)
+theme_override_constants/outline_size = 15
+theme_override_font_sizes/normal_font_size = 24
+horizontal_alignment = 1
+vertical_alignment = 1
+visible_characters = 0
+visible_ratio = 0.0
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1790171596]
+libraries/ = SubResource("AnimationLibrary_knrd4")

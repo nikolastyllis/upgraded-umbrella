@@ -11,14 +11,14 @@ extends BaseCharacter
 @onready var interact_action_text := $CameraOrigin/SpringArm3D/Camera3D/CrosshairUI/Interact/Action
 @onready var interact_ui_control := $CameraOrigin/SpringArm3D/Camera3D/CrosshairUI/Interact
 @onready var interact_progress_bar := $CameraOrigin/SpringArm3D/Camera3D/CrosshairUI/Interact/Progress
-@onready var dialog_text := $CameraOrigin/SpringArm3D/Camera3D/Dialog/DialogText
-@onready var dialog_control := $CameraOrigin/SpringArm3D/Camera3D/Dialog
-@onready var dialog_animation_player := $CameraOrigin/SpringArm3D/Camera3D/Dialog/AnimationPlayer
+@onready var dialog_control := $CameraOrigin/SpringArm3D/Camera3D/DialogControl
 
 const PLAYER_SPEED = 2.5
 const JUMP_VELOCITY = 3
+const DIALOG_SCENE = preload("res://Prefabs/dialog.tscn")
 
 var idle_animation_blend := 0.0
+var sensitivity := 0.25
 var idle_animation_blend_target := 0.0
 var interaction_hold_timer := 0.0
 var interaction_disabled: bool = false
@@ -26,6 +26,7 @@ var interactable: Interactable = null
 var mouse_idle_timer := 0.0
 var use_camera_position_right := true
 var current_camera_position: Vector3
+var dialog_hide_timer: SceneTreeTimer = null
 
 func _ready() -> void:
 	super._ready()
@@ -118,9 +119,9 @@ func update_camera(delta: float) -> void:
 func handle_mouse_look(event: InputEventMouseMotion) -> void:
 	mouse_idle_timer = 0.0
 	# Directly set euler angles so pitch and yaw never interfere with each other
-	camera_origin.rotation.x -= deg_to_rad(event.relative.y * 0.5)
+	camera_origin.rotation.x -= deg_to_rad(event.relative.y * sensitivity)
 	camera_origin.rotation.x = clamp(camera_origin.rotation.x, deg_to_rad(-80), deg_to_rad(80))
-	camera_origin.rotation.y -= deg_to_rad(event.relative.x * 0.5)
+	camera_origin.rotation.y -= deg_to_rad(event.relative.x * sensitivity)
 	camera_origin.rotation.z = 0
 	if abs(event.relative.x) > 10:
 		idle_animation_blend_target = 0.5 if event.relative.x > 0 else -0.5
@@ -167,11 +168,6 @@ func reset_interact_state() -> void:
 	interact_progress_bar.set_value_no_signal(0)
 	interaction_disabled = false
 
-func show_dialog_text(dialog: String) -> void:
-	dialog_control.visible = true
-	dialog_text.text = dialog
-	dialog_animation_player.play("Dialog")
-
 func update_interactable() -> void:
 	var new_interactable: Interactable = null
 	if interact_raycast.is_colliding():
@@ -193,7 +189,12 @@ func update_interactable() -> void:
 	else:
 		interact_ui_control.visible = false
 
-func _on_animation_player_animation_finished(_anim_name: StringName) -> void:
-	await get_tree().create_timer(10.0).timeout
-	dialog_control.visible = false
-	dialog_text.text = ""
+func show_dialog_text(dialog: String) -> void:
+	var instance = DIALOG_SCENE.instantiate()
+	dialog_control.add_child(instance)
+	instance.get_node("DialogText").text = dialog
+	instance.get_node("AnimationPlayer").play("Dialog")
+	get_tree().create_timer(10.0).timeout.connect(func():
+		if is_instance_valid(instance):
+			instance.queue_free()
+	)

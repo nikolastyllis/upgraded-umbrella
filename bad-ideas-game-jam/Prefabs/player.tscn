@@ -8,43 +8,6 @@
 radius = 0.25
 height = 1.7
 
-[sub_resource type="Animation" id="Animation_y5hcb"]
-resource_name = "Dialog"
-length = 2.0
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("DialogText:visible_ratio")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 2),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [0.0, 1.0]
-}
-
-[sub_resource type="Animation" id="Animation_2nftw"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("DialogText:visible_ratio")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [0.0]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_knrd4"]
-_data = {
-&"Dialog": SubResource("Animation_y5hcb"),
-&"RESET": SubResource("Animation_2nftw")
-}
-
 [node name="Player" type="CharacterBody3D" unique_id=1647912674]
 collision_layer = 2
 floor_max_angle = 1.0471976
@@ -64,7 +27,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.23, 0.6, 0)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.23, 0.655, 0)
 
 [node name="SpringArm3D" type="SpringArm3D" parent="CameraOrigin" unique_id=1606133364]
-collision_mask = 2
 spring_length = 0.8
 margin = 0.5
 
@@ -170,44 +132,19 @@ text = "E
 [node name="RayCast3D" type="RayCast3D" parent="CameraOrigin/SpringArm3D/Camera3D" unique_id=1701017775]
 target_position = Vector3(0, 0, -4)
 
-[node name="Dialog" type="Control" parent="CameraOrigin/SpringArm3D/Camera3D" unique_id=2047345453]
-layout_mode = 3
-anchors_preset = 12
+[node name="DialogControl" type="VBoxContainer" parent="CameraOrigin/SpringArm3D/Camera3D" unique_id=540340939]
+anchors_preset = 7
+anchor_left = 0.5
 anchor_top = 1.0
-anchor_right = 1.0
+anchor_right = 0.5
 anchor_bottom = 1.0
-offset_top = -243.0
+offset_left = -960.0
+offset_top = -317.0
+offset_right = 960.0
 grow_horizontal = 2
 grow_vertical = 0
-
-[node name="DialogText" type="RichTextLabel" parent="CameraOrigin/SpringArm3D/Camera3D/Dialog" unique_id=1203742311]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -691.0
-offset_top = -120.5
-offset_right = 644.1836
-offset_bottom = 103.57385
-grow_horizontal = 2
-grow_vertical = 2
-scale = Vector2(1.0800012, 1.0800012)
-theme_override_constants/outline_size = 15
-theme_override_font_sizes/normal_font_size = 24
-text = "Billy: Wakey Wakey"
-horizontal_alignment = 1
-vertical_alignment = 1
-visible_characters = 0
-visible_ratio = 0.0
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="CameraOrigin/SpringArm3D/Camera3D/Dialog" unique_id=20947691]
-libraries/ = SubResource("AnimationLibrary_knrd4")
 
 [node name="CharacterAnchor" type="Node3D" parent="." unique_id=669950866]
 
 [node name="Character" parent="." unique_id=1100896801 instance=ExtResource("3_y5hcb")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.94238436, 0)
-
-[connection signal="animation_finished" from="CameraOrigin/SpringArm3D/Camera3D/Dialog/AnimationPlayer" to="." method="_on_animation_player_animation_finished"]

@@ -6,7 +6,6 @@ extends BaseCharacter
 
 const NPC_SPEED = 1.5
 const STOP_DISTANCE = 1.0
-const WAIT_DISTANCE = 10.0
 const STUCK_TIME_THRESHOLD = 2.5
 const STUCK_DISTANCE_THRESHOLD = 0.3
 const STUCK_SAMPLE_INTERVAL = 0.5
@@ -68,7 +67,7 @@ func get_climb_input() -> float:
 	return sign(diff)
 
 func check_stuck(delta: float) -> void:
-	if is_climbing or _is_near_destination() or _is_too_far() or unstick_timer > 0:
+	if is_climbing or _is_near_destination() or unstick_timer > 0:
 		stuck_timer = 0.0
 		stuck_sample_timer = 0.0
 		last_sampled_position = global_position
@@ -76,7 +75,7 @@ func check_stuck(delta: float) -> void:
 	stuck_sample_timer += delta
 	if stuck_sample_timer >= STUCK_SAMPLE_INTERVAL:
 		var moved = global_position.distance_to(last_sampled_position)
-		var should_be_moving = not _is_near_destination() and not _is_too_far()
+		var should_be_moving = not _is_near_destination()
 		if should_be_moving and moved < STUCK_DISTANCE_THRESHOLD:
 			stuck_timer += STUCK_SAMPLE_INTERVAL
 			if stuck_timer >= STUCK_TIME_THRESHOLD:
@@ -99,7 +98,11 @@ func unstick() -> void:
 	unstick_timer = UNSTICK_DETOUR_DURATION
 
 func get_move_direction() -> Vector3:
-	if _is_near_destination() or _is_too_far():
+	if _is_near_destination():
+		return Vector3.ZERO
+	if navigation_agent_3d.is_navigation_finished():
+		return Vector3.ZERO
+	if not navigation_agent_3d.is_target_reachable():
 		return Vector3.ZERO
 	var dir = navigation_agent_3d.get_next_path_position() - global_position
 	dir.y = 0
@@ -137,11 +140,6 @@ func dismount_ladder() -> void:
 func get_target_rotation_y() -> float:
 	if is_climbing and current_ladder:
 		return current_ladder.rotation.y - deg_to_rad(90)
-	if _is_too_far():
-		var to_player = player.global_position - global_position
-		to_player.y = 0
-		if to_player.length() > 0.01:
-			return atan2(-to_player.x, -to_player.z)
 	elif _is_near_destination():
 		var to_target = target_position - global_position
 		to_target.y = 0
@@ -160,8 +158,3 @@ func _to_target_distance() -> float:
 
 func _is_near_destination() -> bool:
 	return _has_target and _to_target_distance() < STOP_DISTANCE
-
-func _is_too_far() -> bool:
-	var to_player = player.global_position - global_position
-	to_player.y = 0
-	return to_player.length() > WAIT_DISTANCE
