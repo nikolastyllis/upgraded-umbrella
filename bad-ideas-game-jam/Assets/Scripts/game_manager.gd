@@ -28,7 +28,6 @@ var dialogue = {
 	# ── ACT 1 ──────────────────────────────────────────────────────────────
 
 	act1_player_wakeup     = "[Bubbles]: *yawn* ...What time is it.",
-
 	act1_wazza_wake        = "[Wazza]: Oi Bubbles, you're finally up. Get down here — we've got something for ya.",
 	act1_bazza_add         = "[Bazza]: Yeah, you're gonna love this one.",
 	act1_player_groan      = "[Bubbles]: ...I just got off shift.",
@@ -71,7 +70,6 @@ var dialogue = {
 	act1_player_disbelief  = "[Bubbles]: ...You're serious.",
 	act1_wazza_walkaway    = "[Wazza]: Dead serious. Come on Baz.",
 	act1_bazza_walkaway    = "[Bazza]: Don't lose that torch, Ricebubbles.",
-
 	act1_player_bed        = "[Bubbles]: ...I'm going back to bed.",
 
 	# ── ACT 2 ──────────────────────────────────────────────────────────────
@@ -80,10 +78,10 @@ var dialogue = {
 	act2_bazza_morning     = "[Bazza]: We're gonna finish cracking that container, fix the backup power, and have a crack at the lifeboat.",
 	act2_player_morning    = "[Bubbles]: ...It's barely light out.",
 	act2_wazza_plan        = "[Wazza]: Quit whinging. We'll head down and get that last bit cracked first.",
-	act2_bazza_redirect    = "[Bazza]: Actually — you head down to the storeroom and grab the gear we'll need for later. We've got the torch.",
+	act2_bazza_redirect    = "[Bazza]: Actually — you head down to the storeroom and grab the gear we'll need. We've got the torch.",
 	act2_wazza_list        = "[Wazza]: You'll need: three boxes of sky hooks, four tins of tartan paint, two spirit level bubbles, a box of sparks for the grinder, one long weight, a tub of elbow grease, and a reach around.",
 	act2_player_listq      = "[Bubbles]: ...Is that a real list?",
-	act2_bazza_serious     = "[Bazza]: Dead serious, mate. We'll be on the radio if you need anything. Chop chop.",
+	act2_bazza_serious     = "[Bazza]: Dead serious, mate. We'll be on the radio. Chop chop.",
 	act2_player_mutter     = "[Bubbles]: Sky hooks...",
 
 	act2_radio_longwait    = "[Bazza]: Oi! How ya going down there? You must've found that long wait by now. Heh heh.",
@@ -91,8 +89,64 @@ var dialogue = {
 	act2_player_piecostq   = "[Bubbles]: What's a pie cost?",
 	act2_bazza_tubby       = "[Bazza]: Like you don't know, tubby!",
 	act2_twins_laugh       = "[Wazza & Bazza]: HAHAHAHAHA!",
-	act2_bazza_getback     = "[Bazza]: Alright Einstein, stop mucking around and get your arse back up here.",
+	act2_bazza_getback     = "[Bazza]: Alright Einstein, stop mucking around. Get your arse back up here.",
 	act2_player_getback    = "[Bubbles]: Yeah yeah, I'm coming.",
+
+	# ── ACT 2 — ENGINE ROOM TASK ───────────────────────────────────────────
+
+	act2_engine_senddown   = "[Wazza]: Oi, before you come back up — pop down to the engine room and check the gauges for us.",
+	act2_engine_which      = "[Bubbles]: ...Which gauges?",
+	act2_bazza_gauges      = "[Bazza]: The gauges. You know. The important ones.",
+	act2_player_gauges     = "[Bubbles]: That doesn't narrow it down.",
+	act2_wazza_round       = "[Wazza]: Big round ones. Numbers on 'em.",
+	act2_player_all        = "[Bubbles]: ...That describes all of them.",
+	act2_bazza_wrong       = "[Bazza]: Just write down anything that looks wrong.",
+
+	act2_engine_arrive     = "[Bubbles]: Alright. I'm in the engine room.",
+	act2_engine_look       = "[Bubbles]: Everything looks... fine. Nothing looks wrong to me.",
+	act2_bazza_perfect     = "[Bazza]: Perfect. See? Easy.",
+	act2_wazza_fuel        = "[Wazza]: Fuel pressure's a bit low but she'll be right.",
+	act2_player_lowfuel    = "[Bubbles]: Should I be worried about that?",
+	act2_wazza_nah         = "[Wazza]: Nah. Probably.",
+	act2_player_probably   = "[Bubbles]: ...Probably.",
+
+	# ── ACT 2 — BRIDGE TASK ────────────────────────────────────────────────
+
+	act2_bridge_send       = "[Bazza]: While you're running around — head up to the bridge and let Captain Joyce know we're working on the backup power today.",
+	act2_player_bridge_q   = "[Bubbles]: Can't you just radio him?",
+	act2_wazza_bridge_why  = "[Wazza]: Yeah, but you need the exercise.",
+	act2_bazza_bridge_add  = "[Bazza]: And he doesn't like us.",
+	act2_player_bridge_ok  = "[Bubbles]: ...Why doesn't he like you.",
+	act2_wazza_bridge_shrug = "[Wazza]: Long story. Off you go.",
+
+	act2_bridge_arrive     = "[Bubbles]: Captain Joyce?",
+	act2_captain_response  = "[Captain Joyce]: What is it.",
+	act2_player_relay      = "[Bubbles]: Wazza and Bazza wanted me to let you know they're working on the backup power today. And the lifeboat.",
+	act2_captain_pause     = "[Captain Joyce]: ...Right.",
+	act2_player_bridge_ok2 = "[Bubbles]: That's it. That's the message.",
+	act2_captain_dismiss   = "[Captain Joyce]: Tell Warren and Barry I'd prefer they stayed off the bridge.",
+	act2_player_understood = "[Bubbles]: Understood. Yeah.",
+	act2_bazza_heard       = "[Bazza]: We heard that.",
+	act2_wazza_rude        = "[Wazza]: Bit rude.",
+
+	# ── ACT 2 — LIFEBOAT TASK ──────────────────────────────────────────────
+
+	act2_lifeboat_send     = "[Wazza]: Last thing — go have a look at the lifeboat and let us know what state it's in.",
+	act2_player_lifeboat_q = "[Bubbles]: What am I looking for?",
+	act2_bazza_lifeboat_a  = "[Bazza]: Holes. Rust. General... not-working-ness.",
+	act2_player_lifeboat_m = "[Bubbles]: Great. Very technical.",
+
+	act2_lifeboat_arrive   = "[Bubbles]: Alright. Lifeboat.",
+	act2_lifeboat_look     = "[Bubbles]: It's... not great. There's rust on the release mechanism and one of the brackets looks bent.",
+	act2_wazza_lifeboat    = "[Wazza]: Yeah she's seen better days.",
+	act2_player_fix        = "[Bubbles]: Are we going to fix it today?",
+	act2_bazza_lifeboat    = "[Bazza]: We're gonna have a crack at it.",
+	act2_player_crack      = "[Bubbles]: When?",
+	act2_twins_tomorrow    = "[Wazza & Bazza]: Tomorrow.",
+	act2_player_ofcourse   = "[Bubbles]: ...Of course.",
+	act2_wazza_backup      = "[Wazza]: Alright, we've nearly got this container open. Get back up here.",
+
+	# ── ACT 2 — CONTAINER RETURN ───────────────────────────────────────────
 
 	act2_container_open    = "[Bubbles]: ...The container's already open.",
 	act2_tools_on_deck     = "[Bubbles]: Tools just left on the deck. There's still a smoke burning on the ground.",
@@ -114,8 +168,8 @@ var dialogue = {
 	act3_bedroom_dark      = "[Bubbles]: Can't see a thing in here...",
 	act3_bedroom_find      = "[Bubbles]: There it is.",
 
-	act3_engine_arrive     = "[Bubbles]: Nothing's tripped the breakers... Backup power just kicked in by itself.",
-	act3_engine_noone      = "[Bubbles]: No one's been down here.",
+	act3_engine_arrive     = "[Bubbles]: The fuel pressure's dropped completely. That's why the engines stopped.",
+	act3_engine_noone      = "[Bubbles]: No one's been down here. Those gauges Wazza told me not to worry about...",
 	act3_engine_look       = "[Bubbles]: Where are you two...",
 
 	act3_bridge_arrive     = "[Bubbles]: Captain? Anyone up here?",
@@ -123,10 +177,10 @@ var dialogue = {
 	act3_bridge_radio_try  = "[Bubbles]: Main radio. Come on...",
 	act3_bridge_no_captain = "[Bubbles]: Captain Joyce, this is Bubbles. Is anyone reading me? Over.",
 	act3_bridge_static     = "[Radio]: *long static*",
-	act3_bridge_give_up    = "[Bubbles]: ...Nothing.",
+	act3_bridge_give_up    = "[Bubbles]: ...Nothing. He was right here this morning.",
+	act3_bridge_window     = "[Bubbles]: The deck looks clear from up here. Where the hell has everyone gone.",
 	act3_bridge_handheld   = "[Bubbles]: Wazza. Bazza. Come in. Where are you two?",
 	act3_bridge_silence    = "[Bubbles]: ...",
-	act3_bridge_window     = "[Bubbles]: The deck looks clear from up here. Where the hell have they gone.",
 
 	# -- Wazza's call comes through on the bridge main radio --
 	act3_radio_creepy      = "[Wazza]: ...At the lifeboat. Come help us out, mate.",
@@ -156,8 +210,6 @@ var dialogue = {
 func _ready() -> void:
 	# Act 1 — player wakes up in their bedroom
 	_teleport_player(bedroom)
-
-	# Both twins are outside waiting — they've already radioed in
 	twin_1.set_target_position(back_right_corner.global_position)
 	twin_2.set_target_position(back_right_corner.global_position)
 	_remove_objective()
@@ -184,19 +236,16 @@ func _process(_delta: float) -> void:
 
 	# ── ACT 1 ────────────────────────────────────────────────────────────────
 
-	# Player walks out to the twins
 	if story_increment == 1 and _player_is_near(back_right_corner.global_position):
 		story_increment += 1
 		_remove_objective()
 		_play_act1_meet_twins()
 
-	# Player picks up the oxy torch
 	if story_increment == 2 and _player_is_near(oxy_torch.global_position):
 		story_increment += 1
 		_remove_objective()
 		_play_act1_torch_pickup()
 
-	# Player follows twins to the container door — cutting scene + work bell
 	if story_increment == 3 and _player_is_near(container_door.global_position):
 		story_increment += 1
 		_remove_objective()
@@ -204,47 +253,64 @@ func _process(_delta: float) -> void:
 
 	# ── ACT 2 ────────────────────────────────────────────────────────────────
 
-	# Player heads down to the storeroom
+	# Storeroom run — fake items list
 	if story_increment == 4 and _player_is_near(store_room.global_position):
 		story_increment += 1
 		_play_act2_storeroom()
 
-	# Player returns to the container — twins are gone, lights go out
-	if story_increment == 5 and _player_is_near(container.global_position):
+	# Engine room — gauge check
+	if story_increment == 5 and _player_is_near(engine_room.global_position):
+		story_increment += 1
+		_remove_objective()
+		_play_act2_engine_room()
+
+	# Bridge — relay message to captain
+	if story_increment == 6 and _player_is_near(bridge.global_position):
+		story_increment += 1
+		_remove_objective()
+		_play_act2_bridge()
+
+	# Lifeboat — condition inspection
+	if story_increment == 7 and _player_is_near(lifeboat.global_position):
+		story_increment += 1
+		_remove_objective()
+		_play_act2_lifeboat()
+
+	# Container return — twins are gone, lights go out
+	if story_increment == 8 and _player_is_near(container.global_position):
 		story_increment += 1
 		_remove_objective()
 		_play_act2_return()
 
 	# ── ACT 3 ────────────────────────────────────────────────────────────────
 
-	# Player returns to bedroom to grab their torch
-	if story_increment == 6 and _player_is_near(bedroom.global_position):
+	# Bedroom — grab flashlight in the dark
+	if story_increment == 9 and _player_is_near(bedroom.global_position):
 		story_increment += 1
 		_remove_objective()
 		_play_act3_bedroom()
 
-	# Player reaches the engine room
-	if story_increment == 7 and _player_is_near(engine_room.global_position):
+	# Engine room — now dark, engines dead
+	if story_increment == 10 and _player_is_near(engine_room.global_position):
 		story_increment += 1
 		_remove_objective()
 		_play_act3_engine_room()
 
-	# Player reaches the bridge — tries the main radio
-	if story_increment == 8 and _player_is_near(bridge.global_position):
+	# Bridge — try the main radio, captain gone
+	if story_increment == 11 and _player_is_near(bridge.global_position):
 		story_increment += 1
 		_remove_objective()
 		_play_act3_bridge()
 
-	# Player reaches the lifeboat — aftermath, gets lured
-	if story_increment == 9 and _player_is_near(lifeboat.global_position):
+	# Lifeboat — aftermath, Bazza lures player to container
+	if story_increment == 12 and _player_is_near(lifeboat.global_position):
 		story_increment += 1
 		_remove_objective()
 		_play_act3_lifeboat()
 
 	# ── ACT 4 ────────────────────────────────────────────────────────────────
 
-	# Player reaches the infected container — creature reveal
-	if story_increment == 10 and _player_is_near(infected_container.global_position):
+	if story_increment == 13 and _player_is_near(infected_container.global_position):
 		story_increment += 1
 		_remove_objective()
 		_play_act4_reveal()
@@ -269,7 +335,6 @@ func _play_act1_meet_twins() -> void:
 
 
 func _play_act1_torch_pickup() -> void:
-	# Both twins lead the way to the container door — player follows
 	twin_1.set_target_position(container_door.global_position)
 	twin_2.set_target_position(container_door.global_position)
 	await _wait_for(1.5)
@@ -321,7 +386,7 @@ func _play_act1_container_cut() -> void:
 	await _wait_for(2.5)
 	player.show_dialog_text(dialogue.act1_wazza_backtowork)
 
-	# ── Work bell — twins immediately drop everything ────────────────────────
+	# ── Work bell ───────────────────────────────────────────────────────────
 	await _wait_for(7.0)
 
 	player.show_dialog_text(dialogue.act1_player_almostdone)
@@ -338,7 +403,7 @@ func _play_act1_container_cut() -> void:
 	await _wait_for(2.5)
 	player.show_dialog_text(dialogue.act1_bazza_walkaway)
 
-	# Twins head back to their quarters — night is over
+	# Twins head back to quarters — night over
 	twin_1.set_target_position(back_right_corner.global_position)
 	twin_2.set_target_position(back_right_corner.global_position)
 
@@ -346,7 +411,6 @@ func _play_act1_container_cut() -> void:
 	player.show_dialog_text(dialogue.act1_player_bed)
 
 	# ── Time skip to next morning — Act 2 ───────────────────────────────────
-	# Player snaps back to their bedroom; twins radio in with the day's plan
 	await _wait_for(3.5)
 	_teleport_player(bedroom)
 	twin_1.set_target_position(container.global_position)
@@ -377,7 +441,6 @@ func _play_act1_container_cut() -> void:
 # ── ACT 2 SEQUENCES ─────────────────────────────────────────────────────────
 
 func _play_act2_storeroom() -> void:
-	# Player hunts around — radio crackles in after a moment
 	await _wait_for(6.0)
 	player.show_dialog_text(dialogue.act2_radio_longwait)
 	await _wait_for(5.0)
@@ -392,8 +455,120 @@ func _play_act2_storeroom() -> void:
 	player.show_dialog_text(dialogue.act2_bazza_getback)
 	await _wait_for(3.0)
 	player.show_dialog_text(dialogue.act2_player_getback)
+	await _wait_for(3.5)
+
+	# Chain straight into the next task
+	player.show_dialog_text(dialogue.act2_engine_senddown)
+	await _wait_for(4.5)
+	player.show_dialog_text(dialogue.act2_engine_which)
+	await _wait_for(3.0)
+	player.show_dialog_text(dialogue.act2_bazza_gauges)
+	await _wait_for(3.5)
+	player.show_dialog_text(dialogue.act2_player_gauges)
+	await _wait_for(3.0)
+	player.show_dialog_text(dialogue.act2_wazza_round)
+	await _wait_for(3.5)
+	player.show_dialog_text(dialogue.act2_player_all)
+	await _wait_for(3.0)
+	player.show_dialog_text(dialogue.act2_bazza_wrong)
 	await _wait_for(3.0)
 	_remove_objective()
+	_spawn_objective_marker(engine_room)
+
+
+func _play_act2_engine_room() -> void:
+	# Twins are working the container — split slightly so they look active
+	twin_1.set_target_position(container_door.global_position)
+	twin_2.set_target_position(container.global_position)
+	player.show_dialog_text(dialogue.act2_engine_arrive)
+	await _wait_for(4.0)
+	player.show_dialog_text(dialogue.act2_engine_look)
+	await _wait_for(4.0)
+	player.show_dialog_text(dialogue.act2_bazza_perfect)
+	await _wait_for(3.0)
+	player.show_dialog_text(dialogue.act2_wazza_fuel)
+	await _wait_for(4.0)
+	player.show_dialog_text(dialogue.act2_player_lowfuel)
+	await _wait_for(3.0)
+	player.show_dialog_text(dialogue.act2_wazza_nah)
+	await _wait_for(2.5)
+	player.show_dialog_text(dialogue.act2_player_probably)
+	await _wait_for(4.0)
+
+	# Chain into bridge task
+	player.show_dialog_text(dialogue.act2_bridge_send)
+	await _wait_for(4.5)
+	player.show_dialog_text(dialogue.act2_player_bridge_q)
+	await _wait_for(3.0)
+	player.show_dialog_text(dialogue.act2_wazza_bridge_why)
+	await _wait_for(3.5)
+	player.show_dialog_text(dialogue.act2_bazza_bridge_add)
+	await _wait_for(3.0)
+	player.show_dialog_text(dialogue.act2_player_bridge_ok)
+	await _wait_for(3.0)
+	player.show_dialog_text(dialogue.act2_wazza_bridge_shrug)
+	await _wait_for(3.5)
+	_spawn_objective_marker(bridge)
+
+
+func _play_act2_bridge() -> void:
+	# Twins still working — Wazza moves toward the container door, Bazza back a bit
+	twin_1.set_target_position(container.global_position)
+	twin_2.set_target_position(back_right_corner.global_position)
+	# Player runs up to the bridge alone
+	player.show_dialog_text(dialogue.act2_bridge_arrive)
+	await _wait_for(3.5)
+	player.show_dialog_text(dialogue.act2_captain_response)
+	await _wait_for(2.5)
+	player.show_dialog_text(dialogue.act2_player_relay)
+	await _wait_for(5.0)
+	player.show_dialog_text(dialogue.act2_captain_pause)
+	await _wait_for(3.5)
+	player.show_dialog_text(dialogue.act2_player_bridge_ok2)
+	await _wait_for(3.0)
+	player.show_dialog_text(dialogue.act2_captain_dismiss)
+	await _wait_for(4.5)
+	player.show_dialog_text(dialogue.act2_player_understood)
+	await _wait_for(3.0)
+	player.show_dialog_text(dialogue.act2_bazza_heard)
+	await _wait_for(2.5)
+	player.show_dialog_text(dialogue.act2_wazza_rude)
+	await _wait_for(4.0)
+
+	# Chain into lifeboat task
+	player.show_dialog_text(dialogue.act2_lifeboat_send)
+	await _wait_for(4.5)
+	player.show_dialog_text(dialogue.act2_player_lifeboat_q)
+	await _wait_for(3.0)
+	player.show_dialog_text(dialogue.act2_bazza_lifeboat_a)
+	await _wait_for(4.0)
+	player.show_dialog_text(dialogue.act2_player_lifeboat_m)
+	await _wait_for(3.5)
+	_spawn_objective_marker(lifeboat)
+
+
+func _play_act2_lifeboat() -> void:
+	# Both twins converge back on the container door — nearly done
+	twin_1.set_target_position(container_door.global_position)
+	twin_2.set_target_position(container_door.global_position)
+	player.show_dialog_text(dialogue.act2_lifeboat_arrive)
+	await _wait_for(3.0)
+	player.show_dialog_text(dialogue.act2_lifeboat_look)
+	await _wait_for(5.0)
+	player.show_dialog_text(dialogue.act2_wazza_lifeboat)
+	await _wait_for(3.5)
+	player.show_dialog_text(dialogue.act2_player_fix)
+	await _wait_for(3.0)
+	player.show_dialog_text(dialogue.act2_bazza_lifeboat)
+	await _wait_for(2.5)
+	player.show_dialog_text(dialogue.act2_player_crack)
+	await _wait_for(2.0)
+	player.show_dialog_text(dialogue.act2_twins_tomorrow)
+	await _wait_for(2.5)
+	player.show_dialog_text(dialogue.act2_player_ofcourse)
+	await _wait_for(3.5)
+	player.show_dialog_text(dialogue.act2_wazza_backup)
+	await _wait_for(3.5)
 	_spawn_objective_marker(container)
 
 
@@ -402,7 +577,6 @@ func _play_act2_return() -> void:
 	twin_1.hide()
 	twin_2.hide()
 
-	# Player arrives and notices something is very wrong
 	player.show_dialog_text(dialogue.act2_container_open)
 	await _wait_for(4.0)
 	player.show_dialog_text(dialogue.act2_tools_on_deck)
@@ -437,7 +611,6 @@ func _play_act2_return() -> void:
 # ── ACT 3 SEQUENCES ─────────────────────────────────────────────────────────
 
 func _play_act3_bedroom() -> void:
-	# Player is back in their dark cabin grabbing the torch
 	player.show_dialog_text(dialogue.act3_bedroom_dark)
 	await _wait_for(4.0)
 	player.show_dialog_text(dialogue.act3_bedroom_find)
@@ -446,15 +619,15 @@ func _play_act3_bedroom() -> void:
 
 
 func _play_act3_engine_room() -> void:
-	# Wazza drifts toward the bridge — Bazza drifts back toward the store room.
-	# Twins are invisible but moving — player may hear footsteps ahead of them.
+	# Hidden twins drift around the ship — player may hear footsteps
 	twin_1.set_target_position(bridge.global_position)
 	twin_2.set_target_position(store_room.global_position)
 
+	# Player recognises this room — and now the gauges mean something
 	player.show_dialog_text(dialogue.act3_engine_arrive)
-	await _wait_for(4.5)
+	await _wait_for(5.0)
 	player.show_dialog_text(dialogue.act3_engine_noone)
-	await _wait_for(3.5)
+	await _wait_for(4.0)
 	player.show_dialog_text(dialogue.act3_engine_look)
 	await _wait_for(4.0)
 	_spawn_objective_marker(bridge)
@@ -465,6 +638,7 @@ func _play_act3_bridge() -> void:
 	twin_1.set_target_position(lifeboat.global_position)
 	twin_2.set_target_position(lifeboat.global_position)
 
+	# Player was just here this morning — now it's empty and the captain is gone
 	player.show_dialog_text(dialogue.act3_bridge_arrive)
 	await _wait_for(4.0)
 	player.show_dialog_text(dialogue.act3_bridge_empty)
@@ -476,14 +650,14 @@ func _play_act3_bridge() -> void:
 	player.show_dialog_text(dialogue.act3_bridge_static)
 	await _wait_for(4.5)
 	player.show_dialog_text(dialogue.act3_bridge_give_up)
-	await _wait_for(3.5)
+	await _wait_for(4.0)
 	player.show_dialog_text(dialogue.act3_bridge_window)
 	await _wait_for(5.0)
 	player.show_dialog_text(dialogue.act3_bridge_handheld)
 	await _wait_for(5.5)
 	player.show_dialog_text(dialogue.act3_bridge_silence)
 	await _wait_for(5.5)
-	# Wazza comes through the bridge main speakers — not the handheld
+	# Wazza comes through the bridge main speakers
 	player.show_dialog_text(dialogue.act3_radio_creepy)
 	await _wait_for(4.5)
 	player.show_dialog_text(dialogue.act3_player_concern)
@@ -496,7 +670,7 @@ func _play_act3_bridge() -> void:
 
 
 func _play_act3_lifeboat() -> void:
-	# Twins move to infected_container — they've already lured the player here
+	# Twins move to infected container — the lifeboat player just inspected is now a crime scene
 	twin_1.set_target_position(infected_container.global_position)
 	twin_2.set_target_position(infected_container.global_position)
 
