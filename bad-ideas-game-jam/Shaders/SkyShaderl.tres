@@ -4,8 +4,8 @@
 
 [resource]
 shader = ExtResource("1_cd6vg")
-shader_parameter/time_of_day = 0.50000002375
-shader_parameter/exposure = 0.9690000395077301
+shader_parameter/time_of_day = 0.3550000168625
+shader_parameter/exposure = 0.96900003950773
 shader_parameter/band_steps = 3.9130000908675
 shader_parameter/band_softness = 0.25
 shader_parameter/horizon_height = 0.05200000898977
@@ -28,7 +28,7 @@ shader_parameter/star_density = 1.2
 shader_parameter/day_zenith = Color(0.54901963, 0.69803923, 0.83137256, 1)
 shader_parameter/day_horizon = Color(0.6313726, 0.76862746, 0.90588236, 1)
 shader_parameter/dusk_zenith = Color(0.03430582, 0.17305031, 0.34587076, 1)
-shader_parameter/dusk_horizon = Color(0.95, 0.42, 0.22, 1)
+shader_parameter/dusk_horizon = Color(0.9690481, 0.5266502, 0.3798742, 1)
 shader_parameter/night_zenith = Color(0.02, 0.02, 0.06, 1)
 shader_parameter/night_horizon = Color(0.04, 0.05, 0.1, 1)
 shader_parameter/ground_tint = Color(0.065574296, 0.12904724, 0.17278427, 1)

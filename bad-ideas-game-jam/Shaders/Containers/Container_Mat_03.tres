@@ -1,0 +1,11 @@
+[gd_resource type="ORMMaterial3D" format=3 uid="uid://csmaghw50vkgm"]
+
+[ext_resource type="Texture2D" uid="uid://c66bqdettslxt" path="res://Shaders/Containers/Containers/Container_C_Col.png" id="1_oecdw"]
+[ext_resource type="Texture2D" uid="uid://bi1rhgk7sxsyg" path="res://Shaders/Containers/Containers/Container_C_Normal.png" id="2_ei5c4"]
+[ext_resource type="Texture2D" uid="uid://b0d88f6yn6iw7" path="res://Shaders/Containers/Containers/Container_C_ORM.png" id="3_p0nii"]
+
+[resource]
+albedo_texture = ExtResource("1_oecdw")
+orm_texture = ExtResource("3_p0nii")
+normal_enabled = true
+normal_texture = ExtResource("2_ei5c4")

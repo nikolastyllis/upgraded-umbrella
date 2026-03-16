@@ -1,17 +1,23 @@
 [gd_scene format=3 uid="uid://885tkw5jhvpp"]
 
 [ext_resource type="PackedScene" uid="uid://dc1d8hpvmhfbf" path="res://Assets/Models/Enviroment/Container_NoInterior_01.glb" id="1_q8usf"]
-[ext_resource type="Texture2D" uid="uid://cqpbp7xgc1rwy" path="res://Assets/Textures/Enviroment/Container Textures 4K/Container_C_Col.png" id="2_71otx"]
-[ext_resource type="Texture2D" uid="uid://dovg5ulbok4ho" path="res://Assets/Textures/Enviroment/Container Textures 4K/Container_C_Normal.png" id="3_v8t4a"]
-[ext_resource type="Texture2D" uid="uid://dn6tp0jknfr1h" path="res://Assets/Textures/Enviroment/Container Textures 4K/Container_C_ORM.png" id="4_g625q"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_q8usf"]
+load_path = "res://.godot/imported/Container_C_Col.png-37c9a4902de8fae15bb7654eb0a10d8d.s3tc.ctex"
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_r35hs"]
+load_path = "res://.godot/imported/Container_C_Normal.png-d098f93a1f702027ef83be3871e2846e.s3tc.ctex"
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_q8kte"]
+load_path = "res://.godot/imported/Container_C_ORM.png-d8a308c1cbb5b33545df3f08da94c50b.s3tc.ctex"
 
 [sub_resource type="ORMMaterial3D" id="ORMMaterial3D_gcp2e"]
 diffuse_mode = 3
 specular_mode = 1
-albedo_texture = ExtResource("2_71otx")
-orm_texture = ExtResource("4_g625q")
+albedo_texture = SubResource("CompressedTexture2D_q8usf")
+orm_texture = SubResource("CompressedTexture2D_q8kte")
 normal_enabled = true
-normal_texture = ExtResource("3_v8t4a")
+normal_texture = SubResource("CompressedTexture2D_r35hs")
 
 [node name="Container_NoInterior_01" unique_id=934294699 instance=ExtResource("1_q8usf")]
 

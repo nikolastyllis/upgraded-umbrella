@@ -250,7 +250,7 @@ var dialogue = {
 
 func _ready() -> void:
 	
-	set_time_of_day(TimeOfDay.NIGHT)
+	set_time_of_day(TimeOfDay.DAY)
 	# Act 1 — player wakes up in their bedroom
 	_teleport_player(bedroom)
 	twin_1.set_target_position(back_right_corner.global_position)
