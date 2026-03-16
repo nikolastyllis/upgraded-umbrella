@@ -4,7 +4,7 @@ extends CharacterBody3D
 @export var movement_animation_blend_smooth := 3
 @export var rotation_speed := 5.0
 
-@onready var animation_tree: AnimationTree = $Character/Armature/AnimationTree
+@onready var animation_tree: AnimationTree = $AnimationTree
 @onready var character := $Character
 @onready var character_anchor := $CharacterAnchor
 

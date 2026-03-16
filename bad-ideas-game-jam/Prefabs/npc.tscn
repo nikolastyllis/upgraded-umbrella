@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://dpl2uefq7xuhu"]
 
 [ext_resource type="Script" uid="uid://dhd3ayrrkl2rn" path="res://Assets/Scripts/npc.gd" id="1_nrg37"]
-[ext_resource type="PackedScene" uid="uid://cpju2kewehe31" path="res://Assets/Models/Characters/Twin 2/twin_2_model_01.tscn" id="2_nrg37"]
+[ext_resource type="PackedScene" uid="uid://cgb4t6ht3rhip" path="res://Scenes/NPC/npc_01_visual.tscn" id="2_nrg37"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_myya0"]
 radius = 0.15
@@ -14,8 +14,8 @@ script = ExtResource("1_nrg37")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.11376953, 0)
 shape = SubResource("CapsuleShape3D_myya0")
 
-[node name="Character" parent="." unique_id=1100896801 instance=ExtResource("2_nrg37")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.9742596, 0)
+[node name="Character" parent="." unique_id=1551470950 instance=ExtResource("2_nrg37")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.9983644, 0)
 
 [node name="CharacterAnchor" type="Node3D" parent="." unique_id=669950866]
 transform = Transform3D(-1, 0, -1.509958e-07, 0, 1, 0, 1.509958e-07, 0, -1, 0, 0, 0)
