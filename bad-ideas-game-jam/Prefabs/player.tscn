@@ -37,11 +37,14 @@ fov = 80.9
 
 [node name="CrosshairUI" type="Control" parent="CameraOrigin/SpringArm3D/Camera3D" unique_id=612996285]
 layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
 grow_horizontal = 2
 grow_vertical = 2
+scale = Vector2(0.5, 0.5)
 
 [node name="Crosshair" type="TextureRect" parent="CameraOrigin/SpringArm3D/Camera3D/CrosshairUI" unique_id=1451195160]
 layout_mode = 1
@@ -139,10 +142,12 @@ anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
 offset_left = -960.0
-offset_top = -317.0
-offset_right = 960.0
+offset_top = -185.0
+offset_right = 2880.0
+offset_bottom = 132.0
 grow_horizontal = 2
 grow_vertical = 0
+scale = Vector2(0.5, 0.5)
 
 [node name="CharacterAnchor" type="Node3D" parent="." unique_id=669950866]
 

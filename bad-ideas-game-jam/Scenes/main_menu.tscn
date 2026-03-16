@@ -345,10 +345,14 @@ theme_override_constants/separation = 20
 
 [node name="Label" type="Label" parent="Control/CenterContainer/Credits" unique_id=1971572403]
 layout_mode = 2
-text = "Orion Furbank-Meyer (Art)
+text = "Orion Furbank-Meyer - (Art)
+
 Zach Wyatt-Smith - (Art)
-Nico Wyatt-Smith - (Sound)
+
 Chris Lucas - (Art)
+
+Nico Wyatt-Smith - (Sound)
+
 Nikolas Tyllis - (Programming)"
 horizontal_alignment = 1
 vertical_alignment = 1

@@ -40,28 +40,19 @@ _data = {
 [node name="Dialog" type="Control" unique_id=1043329875]
 custom_minimum_size = Vector2(0, 75)
 layout_mode = 3
-anchors_preset = 12
-anchor_top = 1.0
+anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_top = -60.0
 grow_horizontal = 2
-grow_vertical = 0
+grow_vertical = 2
 
 [node name="DialogText" type="RichTextLabel" parent="." unique_id=1447500533]
 layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -691.0
-offset_top = -120.5
-offset_right = 644.1836
-offset_bottom = 103.57385
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-scale = Vector2(1.0800012, 1.0800012)
 theme_override_constants/outline_size = 15
 theme_override_font_sizes/normal_font_size = 24
 horizontal_alignment = 1

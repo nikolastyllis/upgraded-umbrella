@@ -7,8 +7,7 @@ extends Node3D
 @export var world_offset: Vector3 = Vector3(0, 1, 0)
 
 @onready var marker_ui := $ObjectiveMarkerUI
-var icon: TextureRect
-var distance: RichTextLabel
+@onready var icon := $ObjectiveMarkerUI/Icon 
 var camera: Camera3D
 
 var target_pos: Vector2
@@ -16,8 +15,6 @@ var target_rotation: float = 0.0
 
 func _ready():
 	camera = get_viewport().get_camera_3d()
-	icon = marker_ui.get_node("Icon")
-	distance = marker_ui.get_node("Distance")
 	target_pos = marker_ui.position
 
 func _process(delta: float):
@@ -37,12 +34,6 @@ func _process(delta: float):
 	)
 	
 	var distance_magnitude = (camera.global_position - global_position).length()
-
-	if distance_magnitude > 10:
-		distance.visible = true
-		distance.text = str(roundi(distance_magnitude)) + "m"
-	else:
-		distance.visible = false
 
 	var min_scale = 0.05
 	var max_scale = 0.1 

@@ -12,7 +12,7 @@ const STUCK_SAMPLE_INTERVAL = 0.5
 const UNSTICK_DETOUR_DISTANCE = 3.0
 const UNSTICK_DETOUR_DURATION = 2.0
 
-var target_position := Vector3.ZERO
+var target_position := Vector3.ZERO 
 var _has_target := false
 
 var climb_target_y := 0.0
