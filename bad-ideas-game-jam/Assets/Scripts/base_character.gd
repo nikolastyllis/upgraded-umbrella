@@ -76,7 +76,7 @@ func update_movement_animation(input_dir: Vector2, delta: float) -> void:
 		state_machine.travel("Fall")
 	elif input_dir != Vector2.ZERO:
 		state_machine.travel("Move")
-		movement_animation_blend = movement_animation_blend.lerp(input_dir, 1.0 - exp(-movement_animation_blend_smooth * delta))
+		movement_animation_blend = movement_animation_blend.lerp(Vector2(0, -1), 1.0 - exp(-movement_animation_blend_smooth * delta))
 		animation_tree.set("parameters/Move/blend_position", movement_animation_blend)
 	else:
 		state_machine.travel("Idle")
