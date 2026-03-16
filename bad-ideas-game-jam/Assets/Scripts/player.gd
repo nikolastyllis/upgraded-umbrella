@@ -49,8 +49,7 @@ func _physics_process(delta: float) -> void:
 	super._physics_process(delta)
 	update_camera(delta)
 	handle_quit()
-	if Input.is_action_just_pressed("ui_accept") and (is_on_floor() or is_climbing):
-		velocity.y = JUMP_VELOCITY
+	if Input.is_action_just_pressed("ui_accept") and is_climbing:
 		if is_climbing:
 			stop_climbing()
 	apply_gravity(delta)
