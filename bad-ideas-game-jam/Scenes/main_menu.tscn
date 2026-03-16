@@ -213,15 +213,13 @@ pivot_offset = Vector2(960, 540)
 script = ExtResource("8_t1dhk")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="Control" unique_id=1662271621]
-layer = 0
-visible = false
+layer = -1
 
 [node name="ColorRect" type="ColorRect" parent="Control/CanvasLayer" unique_id=682903752]
 z_index = -1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_top = 4.0
 offset_bottom = 4.0
 grow_horizontal = 2
 grow_vertical = 2
@@ -347,11 +345,11 @@ theme_override_constants/separation = 20
 
 [node name="Label" type="Label" parent="Control/CenterContainer/Credits" unique_id=1971572403]
 layout_mode = 2
-text = "Orion
-Nikolas
-ZAC
-CHRIS
-NICK"
+text = "Orion Furbank-Meyer (Art)
+Zach Wyatt-Smith - (Art)
+Nico Wyatt-Smith - (Sound)
+Chris Lucas - (Art)
+Nikolas Tyllis - (Programming)"
 horizontal_alignment = 1
 vertical_alignment = 1
 
