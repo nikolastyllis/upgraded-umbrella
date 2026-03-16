@@ -15,6 +15,47 @@ extends Node3D
 @onready var lifeboat            = $Locations/Lifeboat
 @onready var infected_container  = $Locations/InfectedContainer
 
+@onready var environment = $"../Lighting/WorldEnvironment"
+@onready var lighting = $"../Lighting/DirectionalLight3D"
+@onready var ocean = $"../ocean_mesh"
+
+# environment -> sky -> sky_material -> shader -> shader_parameter -> time_of_day
+const DAY_TIME_OF_DAY = 0.5
+const NIGHT_TIME_OF_DAY = 0
+const SUNSET_TIME_OF_DAY = 0.25
+
+# lighting -> light -> light_color
+const DAY_LIGHT_COLOR = Color(1, 1 ,1)
+const NIGHT_LIGHT_COLOR = Color(1, 1 ,1)
+const SUNSET_LIGHT_COLOR = Color(0.67, 0.31, 0.26)
+
+# lighting -> light -> light_energy
+const DAY_LIGHT_ENERGY = 0.6
+const NIGHT_LIGHT_ENERGY = 0.01
+const SUNSET_LIGHT_ENERGY = 0.4
+
+# environment -> fog -> fog_light_color
+const DAY_FOG_COLOR = Color(0.58, 0.71, 0.84)
+const NIGHT_FOG_COLOR = Color(0,0,0)
+const SUNSET_FOG_COLOR = Color(0.67, 0.31, 0.26)
+
+# ocean -> geometry -> material override -> shader_parameter -> shallow_color
+const DAY_SHALLOW_COLOR = Color(0.07, 0.19, 0.28)
+
+# ocean -> geometry -> material override -> shader_parameter -> deep_color
+const DAY_DEEP_COLOR = Color(0.35, 0.46, 0.58)
+
+# ocean -> geometry -> material override -> shader_parameter -> horizon_color
+const DAY_HORIZON_COLOR = Color(0.58, 0.71, 0.85)
+
+const NIGHT_SHALLOW_COLOR = Color(0.14, 0.2, 0.38)
+const NIGHT_DEEP_COLOR = Color(0.08, 0.13, 0.26)
+const NIGHT_HORIZON_COLOR = Color(0.08, 0.12, 0.24)
+
+const SUNSET_SHALLOW_COLOR = Color(0.07, 0.19, 0.28)
+const SUNSET_DEEP_COLOR = Color(0.35, 0.46, 0.58)
+const SUNSET_HORIZON_COLOR = Color(0.58, 0.71, 0.85)
+
 @onready var objective_marker_prefab = "res://Prefabs/objective_marker_ui.tscn"
 
 var current_objective = null
@@ -208,6 +249,8 @@ var dialogue = {
 # ── LIFECYCLE ───────────────────────────────────────────────────────────────
 
 func _ready() -> void:
+	
+	set_time_of_day(TimeOfDay.NIGHT)
 	# Act 1 — player wakes up in their bedroom
 	_teleport_player(bedroom)
 	twin_1.set_target_position(back_right_corner.global_position)
@@ -240,6 +283,7 @@ func _process(_delta: float) -> void:
 		story_increment += 1
 		_remove_objective()
 		_play_act1_meet_twins()
+		lightning_strike()
 
 	if story_increment == 2 and _player_is_near(oxy_torch.global_position):
 		story_increment += 1
@@ -730,3 +774,94 @@ func _remove_objective() -> void:
 
 func _wait_for(time: float):
 	return get_tree().create_timer(time).timeout
+	
+enum TimeOfDay { DAY, NIGHT, SUNSET }
+
+func set_time_of_day(time: TimeOfDay) -> void:
+	var sky_material = environment.environment.sky.sky_material
+	var ocean_material = ocean.get_active_material(0)
+
+	var time_of_day: float
+	var light_color: Color
+	var light_energy: float
+	var fog_color: Color
+	var shallow_color: Color
+	var deep_color: Color
+	var horizon_color: Color
+
+	match time:
+		TimeOfDay.DAY:
+			time_of_day = DAY_TIME_OF_DAY
+			light_color = DAY_LIGHT_COLOR
+			light_energy = DAY_LIGHT_ENERGY
+			fog_color = DAY_FOG_COLOR
+			shallow_color = DAY_SHALLOW_COLOR
+			deep_color = DAY_DEEP_COLOR
+			horizon_color = DAY_HORIZON_COLOR
+		TimeOfDay.NIGHT:
+			time_of_day = NIGHT_TIME_OF_DAY
+			light_color = NIGHT_LIGHT_COLOR
+			light_energy = NIGHT_LIGHT_ENERGY
+			fog_color = NIGHT_FOG_COLOR
+			shallow_color = NIGHT_SHALLOW_COLOR
+			deep_color = NIGHT_DEEP_COLOR
+			horizon_color = NIGHT_HORIZON_COLOR
+		TimeOfDay.SUNSET:
+			time_of_day = SUNSET_TIME_OF_DAY
+			light_color = SUNSET_LIGHT_COLOR
+			light_energy = SUNSET_LIGHT_ENERGY
+			fog_color = SUNSET_FOG_COLOR
+			shallow_color = SUNSET_SHALLOW_COLOR
+			deep_color = SUNSET_DEEP_COLOR
+			horizon_color = SUNSET_HORIZON_COLOR
+
+	sky_material.set_shader_parameter("time_of_day", time_of_day)
+	lighting.light_color = light_color
+	lighting.light_energy = light_energy
+	environment.environment.fog_light_color = fog_color
+	ocean_material.set_shader_parameter("shallow_color", shallow_color)
+	ocean_material.set_shader_parameter("deep_color", deep_color)
+	ocean_material.set_shader_parameter("horizon_color", horizon_color)
+	
+func lightning_strike() -> void:
+	var original_color = lighting.light_color
+	var original_energy = lighting.light_energy
+	var original_fog = environment.environment.fog_light_color
+	var original_rotation = lighting.rotation
+	var t := 0.0
+
+	# Flash up
+	while t < 1.0:
+		t += get_process_delta_time() * 20.0
+		lighting.light_color = original_color.lerp(Color.WHITE, t)
+		lighting.light_energy = lerp(original_energy, 5.0, t)
+		environment.environment.fog_light_color = original_fog.lerp(Color(0.8, 0.8, 1.0), t)
+		await get_tree().process_frame
+
+	# Snap straight down at peak
+	lighting.rotation = Vector3(-PI / 2, 0, 0)
+
+	# Quick flicker before fading
+	await _wait_for(0.04)
+	lighting.light_energy = original_energy
+	await get_tree().process_frame
+	await _wait_for(0.03)
+	lighting.light_energy = 4.0
+	await get_tree().process_frame
+
+	# Restore rotation before fading out
+	lighting.rotation = original_rotation
+
+	# Flash down
+	t = 1.0
+	while t > 0.0:
+		t -= get_process_delta_time() * 8.0
+		lighting.light_color = original_color.lerp(Color.WHITE, t)
+		lighting.light_energy = lerp(original_energy, 5.0, t)
+		environment.environment.fog_light_color = original_fog.lerp(Color(0.8, 0.8, 1.0), t)
+		await get_tree().process_frame
+
+	lighting.light_color = original_color
+	lighting.light_energy = original_energy
+	environment.environment.fog_light_color = original_fog
+	lighting.rotation = original_rotation
