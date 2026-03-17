@@ -242,7 +242,7 @@ visible = false
 transform = Transform3D(-0.99752617, 0, -0.07029611, 0, 1, 0, 0.07029611, 0, -0.99752617, 4.512328, 16.700089, 66.346306)
 
 [node name="Rain" type="GPUParticles3D" parent="Player" unique_id=645779901]
-transform = Transform3D(-0.99752617, 0, 0.07029611, 0, 1, 0, -0.07029611, 0, -0.99752617, 0, 0, 0)
+transform = Transform3D(-0.99752617, 0, 0.07029611, 0, 1, 0, -0.07029611, 0, -0.99752617, 0, 2.0065289, 0)
 amount = 2000
 lifetime = 2.0
 randomness = 1.0

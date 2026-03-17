@@ -67,7 +67,7 @@ const SUNSET_HORIZON_COLOR = Color(0.58, 0.71, 0.85)
 
 var current_objective = null
 var story_increment   = 1
-var _is_night := false
+var _is_night = false
 
 
 # ── DIALOGUE ────────────────────────────────────────────────────────────────
@@ -288,8 +288,7 @@ func _update_audio_and_rain() -> void:
 	audio_manager.set_target(audio_manager.Track.INSIDE,   -10.0   if inside                  else -40.0)
 	audio_manager.set_target(audio_manager.Track.OUTSIDE,  -10.0   if not inside              else -40.0)
 	audio_manager.set_target(audio_manager.Track.RAIN,     -10.0  if _is_night and not inside else -40.0)
-	rain.visible = not inside and _is_night
-	
+	rain.visible = _is_night and not inside
 
 func _process(_delta: float) -> void:
 	
@@ -803,14 +802,9 @@ const TRANSITION_DURATION := 180.0   # seconds — adjust to taste
 var _time_transition_active := false
 
 func set_time_of_day(time: TimeOfDay, duration: float = TRANSITION_DURATION) -> void:
-	match time:
-		TimeOfDay.NIGHT:
-			_start_night_lightning()
-		_:
-			_is_night = false
-
+	_is_night = false
 	var target := _get_time_of_day_params(time)
-	_transition_environment(target, duration)
+	_transition_environment(target, duration, time)
 
 
 func _get_time_of_day_params(time: TimeOfDay) -> Dictionary:
@@ -854,7 +848,7 @@ func _get_time_of_day_params(time: TimeOfDay) -> Dictionary:
 	return {}
 
 
-func _transition_environment(target: Dictionary, duration: float) -> void:
+func _transition_environment(target: Dictionary, duration: float, time: TimeOfDay) -> void:
 	# Cancel any running transition before starting a new one
 	_time_transition_active = false
 	await get_tree().process_frame
@@ -912,7 +906,10 @@ func _transition_environment(target: Dictionary, duration: float) -> void:
 		ocean_material.set_shader_parameter("shallow_color", target["shallow_color"])
 		ocean_material.set_shader_parameter("deep_color",    target["deep_color"])
 		ocean_material.set_shader_parameter("horizon_color", target["horizon_color"])
-
+	
+	if _time_transition_active and time == TimeOfDay.NIGHT:
+		_start_night_lightning()
+		
 	_time_transition_active = false
 	
 func lightning_strike() -> void:
