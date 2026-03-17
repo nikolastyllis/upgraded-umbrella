@@ -197,3 +197,22 @@ func show_dialog_text(dialog: String) -> void:
 		if is_instance_valid(instance):
 			instance.queue_free()
 	)
+	
+const INSIDE_RAY_COUNT  := 1000
+const INSIDE_RAY_LENGTH := 100
+
+func is_inside() -> bool:
+	var space := get_world_3d().direct_space_state
+	var origin := global_position
+	var hits := 0
+
+	for i in INSIDE_RAY_COUNT:
+		var theta := acos(1.0 - 2.0 * (i + 0.5) / INSIDE_RAY_COUNT)
+		var phi   := PI * (1.0 + sqrt(5.0)) * i
+		var dir   := Vector3(sin(theta) * cos(phi), sin(theta) * sin(phi), cos(theta))
+
+		var query := PhysicsRayQueryParameters3D.create(origin, origin + dir * INSIDE_RAY_LENGTH)
+		if space.intersect_ray(query):
+			hits += 1
+
+	return hits >= INSIDE_RAY_COUNT * 0.99

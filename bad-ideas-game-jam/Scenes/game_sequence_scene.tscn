@@ -13,6 +13,7 @@
 [ext_resource type="PackedScene" uid="uid://bhun3l1dxxlwo" path="res://Prefabs/ladder.tscn" id="11_n0oop"]
 [ext_resource type="Script" uid="uid://22j5lmp1ifp1" path="res://Assets/Scripts/game_manager.gd" id="12_vrw5k"]
 [ext_resource type="PackedScene" uid="uid://dc1d8hpvmhfbf" path="res://Assets/Models/Enviroment/Container_NoInterior_01.glb" id="13_u5hjn"]
+[ext_resource type="Script" uid="uid://bpgcgf8cu0yr" path="res://Assets/Scripts/audio_manager.gd" id="14_qcyk2"]
 
 [sub_resource type="Sky" id="Sky_jvqja"]
 sky_material = ExtResource("1_63acv")
@@ -263,3 +264,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 46.17041, -1.5620837, 103.313
 
 [node name="Container_NoInterior_01" parent="." unique_id=934294699 instance=ExtResource("13_u5hjn")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.7003717, 5.973839, 2.862595)
+
+[node name="AudioManager" type="Node3D" parent="." unique_id=1974886538]
+script = ExtResource("14_qcyk2")

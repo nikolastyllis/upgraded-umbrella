@@ -1,0 +1,8 @@
+[gd_scene format=3 uid="uid://crkncwl2ts655"]
+
+[ext_resource type="PackedScene" uid="uid://badmu68nhhg1h" path="res://Assets/Models/Enviroment/BIGJ_Level_Col_Mesh_01.glb" id="1_s3veb"]
+
+[node name="BIGJ_Level_Col_Mesh_01" unique_id=774214255 instance=ExtResource("1_s3veb")]
+
+[node name="collision_interior " parent="." index="1" unique_id=1801683700]
+layers = 9

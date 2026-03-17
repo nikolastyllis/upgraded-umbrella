@@ -18,6 +18,7 @@ extends Node3D
 @onready var environment = $"../Lighting/WorldEnvironment"
 @onready var lighting = $"../Lighting/DirectionalLight3D"
 @onready var ocean = $"../ocean_mesh"
+@onready var audio_manager = $"../AudioManager"
 
 # environment -> sky -> sky_material -> shader -> shader_parameter -> time_of_day
 const DAY_TIME_OF_DAY = 0.5
@@ -60,6 +61,7 @@ const SUNSET_HORIZON_COLOR = Color(0.58, 0.71, 0.85)
 
 var current_objective = null
 var story_increment   = 1
+var _is_night := false
 
 
 # ── DIALOGUE ────────────────────────────────────────────────────────────────
@@ -250,7 +252,7 @@ var dialogue = {
 
 func _ready() -> void:
 	
-	set_time_of_day(TimeOfDay.DAY)
+	set_time_of_day(TimeOfDay.NIGHT)
 	# Act 1 — player wakes up in their bedroom
 	_teleport_player(bedroom)
 	twin_1.set_target_position(back_right_corner.global_position)
@@ -274,8 +276,15 @@ func _ready() -> void:
 func _player_is_near(position: Vector3) -> bool:
 	return (player.global_position - position).length() < 2
 
+func _update_ambient_audio() -> void:
+	var inside = player.is_inside()
+	audio_manager.set_target(audio_manager.Track.INSIDE,   0.0   if inside                  else -30.0)
+	audio_manager.set_target(audio_manager.Track.OUTSIDE,  0.0   if not inside              else -30.0)
+	audio_manager.set_target(audio_manager.Track.RAIN,     0.0  if _is_night and not inside else -30.0)
 
 func _process(_delta: float) -> void:
+	
+	_update_ambient_audio()
 
 	# ── ACT 1 ────────────────────────────────────────────────────────────────
 
@@ -283,7 +292,6 @@ func _process(_delta: float) -> void:
 		story_increment += 1
 		_remove_objective()
 		_play_act1_meet_twins()
-		lightning_strike()
 
 	if story_increment == 2 and _player_is_near(oxy_torch.global_position):
 		story_increment += 1
@@ -791,6 +799,7 @@ func set_time_of_day(time: TimeOfDay) -> void:
 
 	match time:
 		TimeOfDay.DAY:
+			_is_night = false
 			time_of_day = DAY_TIME_OF_DAY
 			light_color = DAY_LIGHT_COLOR
 			light_energy = DAY_LIGHT_ENERGY
@@ -799,6 +808,7 @@ func set_time_of_day(time: TimeOfDay) -> void:
 			deep_color = DAY_DEEP_COLOR
 			horizon_color = DAY_HORIZON_COLOR
 		TimeOfDay.NIGHT:
+			_start_night_lightning()
 			time_of_day = NIGHT_TIME_OF_DAY
 			light_color = NIGHT_LIGHT_COLOR
 			light_energy = NIGHT_LIGHT_ENERGY
@@ -807,6 +817,7 @@ func set_time_of_day(time: TimeOfDay) -> void:
 			deep_color = NIGHT_DEEP_COLOR
 			horizon_color = NIGHT_HORIZON_COLOR
 		TimeOfDay.SUNSET:
+			_is_night = false
 			time_of_day = SUNSET_TIME_OF_DAY
 			light_color = SUNSET_LIGHT_COLOR
 			light_energy = SUNSET_LIGHT_ENERGY
@@ -865,3 +876,14 @@ func lightning_strike() -> void:
 	lighting.light_energy = original_energy
 	environment.environment.fog_light_color = original_fog
 	lighting.rotation = original_rotation
+	
+	await _wait_for(1.0)
+	audio_manager.play(audio_manager.Track.THUNDER, -15 if player.is_inside() else 6.0)
+	
+func _start_night_lightning() -> void:
+	_is_night = true
+	while _is_night:
+		var wait_time = randf_range(0.0, 200)
+		await _wait_for(wait_time)
+		if _is_night:
+			lightning_strike()

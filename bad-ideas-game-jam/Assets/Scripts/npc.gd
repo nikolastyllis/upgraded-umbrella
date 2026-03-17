@@ -2,7 +2,6 @@ class_name NPC
 extends BaseCharacter
 
 @onready var navigation_agent_3d := $NavigationAgent3D
-@onready var player := $"../Player"
 
 const NPC_SPEED = 1.5
 const STOP_DISTANCE = 1.0

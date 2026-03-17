@@ -56,7 +56,6 @@ func _do_fade_cut() -> void:
 		_tween.kill()
 
 	_tween = create_tween()
-
 	_tween.tween_method(_set_overlay_alpha, 0.0, 1.0, fade_duration).set_ease(Tween.EASE_IN).set_trans(Tween.TRANS_QUAD)
 	_tween.tween_callback(_cut_to_new_shot)
 	_tween.tween_method(_set_overlay_alpha, 1.0, 0.0, fade_duration).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_QUAD)
@@ -81,6 +80,7 @@ func _safe_nav_point(last_pos: Vector3) -> Vector3:
 	for _i in range(30):
 		var raw := _random_navmesh_point()
 		raw.y += camera_height + randf_range(0.0, height_jitter)
+		raw.y = maxf(raw.y, 15.0)
 		var dist_sq := raw.distance_squared_to(last_pos)
 
 		if dist_sq > best_dist:
@@ -118,6 +118,7 @@ func _collect_nav_regions(node: Node) -> void:
 
 func _push_clear(pos: Vector3) -> Vector3:
 	if _has_clearance(pos):
+		pos.y = maxf(pos.y, 15.0)
 		return pos
 
 	var dirs: Array[Vector3] = [
@@ -134,9 +135,12 @@ func _push_clear(pos: Vector3) -> Vector3:
 		for dir in dirs:
 			var candidate := pos + dir * (nudge_step * float(step))
 			if _has_clearance(candidate):
+				candidate.y = maxf(candidate.y, 15.0)
 				return candidate
 
-	return pos + Vector3.UP * (nudge_step * float(max_nudge_attempts))
+	var result := pos + Vector3.UP * (nudge_step * float(max_nudge_attempts))
+	result.y = maxf(result.y, 15.0)
+	return result
 
 func _has_clearance(pos: Vector3) -> bool:
 	var space := get_world_3d().direct_space_state
