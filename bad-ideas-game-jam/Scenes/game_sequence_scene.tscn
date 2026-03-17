@@ -6,7 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://bal1s5p7lfes2" path="res://Assets/Textures/Ocean/0258.jpg" id="4_t0b6u"]
 [ext_resource type="Script" uid="uid://d1icg8locw87l" path="res://Assets/Scripts/water_camera.gd" id="5_yiumw"]
 [ext_resource type="PackedScene" uid="uid://bkwpxm2ssdj8r" path="res://Scenes/main_enviroment_scene.tscn" id="6_63acv"]
-[ext_resource type="PackedScene" uid="uid://badmu68nhhg1h" path="res://Assets/Models/Enviroment/BIGJ_Level_Col_Mesh_01.glb" id="8_0ixb7"]
+[ext_resource type="PackedScene" uid="uid://boak8ifb7i70c" path="res://Scenes/bigj_level_col_mesh_01.tscn" id="7_63acv"]
 [ext_resource type="PackedScene" uid="uid://btg75au461yd7" path="res://Prefabs/player.tscn" id="9_r4e2n"]
 [ext_resource type="PackedScene" uid="uid://dpl2uefq7xuhu" path="res://Prefabs/npc.tscn" id="10_nr8gw"]
 [ext_resource type="PackedScene" uid="uid://bhun3l1dxxlwo" path="res://Prefabs/ladder.tscn" id="11_n0oop"]
@@ -201,7 +201,7 @@ script = ExtResource("5_yiumw")
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
 navigation_mesh = SubResource("NavigationMesh_h3qab")
 
-[node name="BIGJ_Level_Col_Mesh_01" parent="NavigationRegion3D" unique_id=774214255 instance=ExtResource("8_0ixb7")]
+[node name="BIGJ_Level_Col_Mesh_02" parent="NavigationRegion3D" unique_id=774214255 instance=ExtResource("7_63acv")]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 1.2392235, 8.331253, 13.074547)
 visible = false
 

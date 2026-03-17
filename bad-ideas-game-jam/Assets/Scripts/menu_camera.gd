@@ -80,7 +80,7 @@ func _safe_nav_point(last_pos: Vector3) -> Vector3:
 	for _i in range(30):
 		var raw := _random_navmesh_point()
 		raw.y += camera_height + randf_range(0.0, height_jitter)
-		raw.y = maxf(raw.y, 15.0)
+		raw.y = maxf(raw.y, 18.0)
 		var dist_sq := raw.distance_squared_to(last_pos)
 
 		if dist_sq > best_dist:

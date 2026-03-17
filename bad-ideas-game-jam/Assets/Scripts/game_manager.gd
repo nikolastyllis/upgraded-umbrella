@@ -252,7 +252,7 @@ var dialogue = {
 
 func _ready() -> void:
 	
-	set_time_of_day(TimeOfDay.DAY, 1)
+	set_time_of_day(TimeOfDay.NIGHT, 1)
 	# Act 1 — player wakes up in their bedroom
 	_teleport_player(bedroom)
 	twin_1.set_target_position(back_right_corner.global_position)
@@ -279,9 +279,9 @@ func _player_is_near(position: Vector3) -> bool:
 
 func _update_ambient_audio() -> void:
 	var inside = player.is_inside()
-	audio_manager.set_target(audio_manager.Track.INSIDE,   0.0   if inside                  else -30.0)
-	audio_manager.set_target(audio_manager.Track.OUTSIDE,  0.0   if not inside              else -30.0)
-	audio_manager.set_target(audio_manager.Track.RAIN,     0.0  if _is_night and not inside else -30.0)
+	audio_manager.set_target(audio_manager.Track.INSIDE,   0.0   if inside                  else -40.0)
+	audio_manager.set_target(audio_manager.Track.OUTSIDE,  0.0   if not inside              else -40.0)
+	audio_manager.set_target(audio_manager.Track.RAIN,     -10.0  if _is_night and not inside else -40.0)
 
 func _process(_delta: float) -> void:
 	
@@ -943,7 +943,7 @@ func lightning_strike() -> void:
 func _start_night_lightning() -> void:
 	_is_night = true
 	while _is_night:
-		var wait_time = randf_range(0.0, 200)
+		var wait_time = randf_range(0.0, 20)
 		await _wait_for(wait_time)
 		if _is_night:
 			lightning_strike()

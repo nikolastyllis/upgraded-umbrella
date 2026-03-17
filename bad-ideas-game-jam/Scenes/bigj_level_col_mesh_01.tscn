@@ -1,0 +1,8 @@
+[gd_scene format=3 uid="uid://boak8ifb7i70c"]
+
+[ext_resource type="PackedScene" uid="uid://badmu68nhhg1h" path="res://Assets/Models/Enviroment/BIGJ_Level_Col_Mesh_01.glb" id="1_x5qsj"]
+
+[node name="BIGJ_Level_Col_Mesh_01" unique_id=774214255 instance=ExtResource("1_x5qsj")]
+
+[node name="StaticBody3D" parent="collision_interior " parent_id_path=PackedInt32Array(1801683700) index="0" unique_id=816237683]
+collision_layer = 9
