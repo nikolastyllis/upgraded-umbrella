@@ -9,7 +9,6 @@
 [ext_resource type="PackedScene" uid="uid://badmu68nhhg1h" path="res://Assets/Models/Enviroment/BIGJ_Level_Col_Mesh_01.glb" id="8_0ixb7"]
 [ext_resource type="PackedScene" uid="uid://btg75au461yd7" path="res://Prefabs/player.tscn" id="9_r4e2n"]
 [ext_resource type="PackedScene" uid="uid://dpl2uefq7xuhu" path="res://Prefabs/npc.tscn" id="10_nr8gw"]
-[ext_resource type="PackedScene" uid="uid://dsnjlui251ykq" path="res://Prefabs/npc_1.tscn" id="10_qcyk2"]
 [ext_resource type="PackedScene" uid="uid://bhun3l1dxxlwo" path="res://Prefabs/ladder.tscn" id="11_n0oop"]
 [ext_resource type="Script" uid="uid://22j5lmp1ifp1" path="res://Assets/Scripts/game_manager.gd" id="12_vrw5k"]
 [ext_resource type="PackedScene" uid="uid://dc1d8hpvmhfbf" path="res://Assets/Models/Enviroment/Container_NoInterior_01.glb" id="13_u5hjn"]
@@ -207,15 +206,7 @@ transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 1.2392235, 8.331253, 13.07454
 visible = false
 
 [node name="Player" parent="." unique_id=1647912674 instance=ExtResource("9_r4e2n")]
-transform = Transform3D(-0.99752617, 0, -0.07029611, 0, 1, 0, 0.07029611, 0, -0.99752617, 7.643442, 16.700089, 70.1773)
-
-[node name="Twin1" parent="." unique_id=1582398899 instance=ExtResource("10_qcyk2")]
-transform = Transform3D(0.9953358, 0, -0.09647125, 0, 1, 0, 0.09647125, 0, 0.9953358, 7.554149, 8.069145, 76.723076)
-floor_max_angle = 1.0471976
-
-[node name="Twin2" parent="." unique_id=402930688 instance=ExtResource("10_nr8gw")]
-transform = Transform3D(-0.9865266, 0, -0.16360143, 0, 1, 0, 0.16360143, 0, -0.9865266, 7.9230404, 7.9717035, 77.72941)
-floor_max_angle = 1.0471976
+transform = Transform3D(-0.99752617, 0, -0.07029611, 0, 1, 0, 0.07029611, 0, -0.99752617, 4.512328, 16.700089, 66.346306)
 
 [node name="Ladder" parent="." unique_id=1860599597 instance=ExtResource("11_n0oop")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.400001, 5, -85)
@@ -267,3 +258,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.7003717, 5.973839, 2.86259
 
 [node name="AudioManager" type="Node3D" parent="." unique_id=1974886538]
 script = ExtResource("14_qcyk2")
+
+[node name="Twin1" parent="." unique_id=766421067 instance=ExtResource("10_nr8gw")]
+transform = Transform3D(-0.863096, 0, 0.5050399, 0, 1, 0, -0.5050399, 0, -0.863096, 7.5127554, 7.9472423, 77.26522)
+
+[node name="Twin2" parent="." unique_id=1046597753 instance=ExtResource("10_nr8gw")]
+transform = Transform3D(-0.9648149, 0, -0.26293007, 0, 1, 0, 0.26293007, 0, -0.9648149, 8.539104, 7.9472423, 77.26522)

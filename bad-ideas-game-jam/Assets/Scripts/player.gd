@@ -1,8 +1,6 @@
 extends BaseCharacter
 
 @export var view_toggle_lerp_speed := 8.0
-@export var idle_animation_blend_smooth := 3
-@export var mouse_idle_threshold := 0.1
 
 @onready var camera_origin = $CameraOrigin
 @onready var camera_position_right = $CameraPosition1
@@ -13,17 +11,14 @@ extends BaseCharacter
 @onready var interact_progress_bar := $CameraOrigin/SpringArm3D/Camera3D/CrosshairUI/Interact/Progress
 @onready var dialog_control := $CameraOrigin/SpringArm3D/Camera3D/DialogControl
 
-const PLAYER_SPEED = 2.5
+const PLAYER_SPEED = 1.5
 const JUMP_VELOCITY = 3
 const DIALOG_SCENE = preload("res://Prefabs/dialog.tscn")
 
-var idle_animation_blend := 0.0
 var sensitivity := 0.25
-var idle_animation_blend_target := 0.0
 var interaction_hold_timer := 0.0
 var interaction_disabled: bool = false
 var interactable: Interactable = null
-var mouse_idle_timer := 0.0
 var use_camera_position_right := true
 var current_camera_position: Vector3
 var dialog_hide_timer: SceneTreeTimer = null
@@ -42,7 +37,6 @@ func _input(event: InputEvent) -> void:
 
 func _process(delta: float) -> void:
 	update_interactable()
-	update_idle_animation_blend(delta)
 	handle_interact(delta)
 
 func _physics_process(delta: float) -> void:
@@ -54,7 +48,7 @@ func _physics_process(delta: float) -> void:
 			stop_climbing()
 	apply_gravity(delta)
 	apply_movement(get_raw_input_dir())
-	update_movement_animation(get_raw_input_dir(), delta)
+	update_movement_animation(get_raw_input_dir())
 	update_character_rotation(rotation.y, delta)
 	move_and_slide()
 	dismount_ladder()
@@ -116,21 +110,10 @@ func update_camera(delta: float) -> void:
 		current_camera_position = camera_position_right.position if use_camera_position_right else camera_position_left.position
 
 func handle_mouse_look(event: InputEventMouseMotion) -> void:
-	mouse_idle_timer = 0.0
-	# Directly set euler angles so pitch and yaw never interfere with each other
 	camera_origin.rotation.x -= deg_to_rad(event.relative.y * sensitivity)
 	camera_origin.rotation.x = clamp(camera_origin.rotation.x, deg_to_rad(-80), deg_to_rad(80))
 	camera_origin.rotation.y -= deg_to_rad(event.relative.x * sensitivity)
 	camera_origin.rotation.z = 0
-	if abs(event.relative.x) > 10:
-		idle_animation_blend_target = 0.5 if event.relative.x > 0 else -0.5
-
-func update_idle_animation_blend(delta: float) -> void:
-	mouse_idle_timer += delta
-	if mouse_idle_timer > mouse_idle_threshold:
-		idle_animation_blend_target = 0
-	idle_animation_blend = lerp(idle_animation_blend, idle_animation_blend_target, 1.0 - exp(-idle_animation_blend_smooth * delta))
-	animation_tree.set("parameters/Idle/blend_position", idle_animation_blend)
 
 func handle_quit() -> void:
 	if Input.is_action_just_pressed("quit"):

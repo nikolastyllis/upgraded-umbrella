@@ -252,7 +252,7 @@ var dialogue = {
 
 func _ready() -> void:
 	
-	set_time_of_day(TimeOfDay.NIGHT)
+	set_time_of_day(TimeOfDay.DAY, 1)
 	# Act 1 — player wakes up in their bedroom
 	_teleport_player(bedroom)
 	twin_1.set_target_position(back_right_corner.global_position)
@@ -273,6 +273,7 @@ func _ready() -> void:
 	_spawn_objective_marker(twin_1)
 
 
+@warning_ignore("shadowed_variable_base_class")
 func _player_is_near(position: Vector3) -> bool:
 	return (player.global_position - position).length() < 2
 
@@ -307,12 +308,14 @@ func _process(_delta: float) -> void:
 
 	# Storeroom run — fake items list
 	if story_increment == 4 and _player_is_near(store_room.global_position):
+		set_time_of_day(TimeOfDay.SUNSET)
 		story_increment += 1
 		_play_act2_storeroom()
 
 	# Engine room — gauge check
 	if story_increment == 5 and _player_is_near(engine_room.global_position):
 		story_increment += 1
+		set_time_of_day(TimeOfDay.NIGHT)
 		_remove_objective()
 		_play_act2_engine_room()
 
@@ -785,54 +788,111 @@ func _wait_for(time: float):
 	
 enum TimeOfDay { DAY, NIGHT, SUNSET }
 
-func set_time_of_day(time: TimeOfDay) -> void:
-	var sky_material = environment.environment.sky.sky_material
-	var ocean_material = ocean.get_active_material(0)
+# ── TIME OF DAY ──────────────────────────────────────────────────────────────
 
-	var time_of_day: float
-	var light_color: Color
-	var light_energy: float
-	var fog_color: Color
-	var shallow_color: Color
-	var deep_color: Color
-	var horizon_color: Color
+const TRANSITION_DURATION := 180.0   # seconds — adjust to taste
 
+var _time_transition_active := false
+
+func set_time_of_day(time: TimeOfDay, duration: float = TRANSITION_DURATION) -> void:
 	match time:
-		TimeOfDay.DAY:
-			_is_night = false
-			time_of_day = DAY_TIME_OF_DAY
-			light_color = DAY_LIGHT_COLOR
-			light_energy = DAY_LIGHT_ENERGY
-			fog_color = DAY_FOG_COLOR
-			shallow_color = DAY_SHALLOW_COLOR
-			deep_color = DAY_DEEP_COLOR
-			horizon_color = DAY_HORIZON_COLOR
 		TimeOfDay.NIGHT:
 			_start_night_lightning()
-			time_of_day = NIGHT_TIME_OF_DAY
-			light_color = NIGHT_LIGHT_COLOR
-			light_energy = NIGHT_LIGHT_ENERGY
-			fog_color = NIGHT_FOG_COLOR
-			shallow_color = NIGHT_SHALLOW_COLOR
-			deep_color = NIGHT_DEEP_COLOR
-			horizon_color = NIGHT_HORIZON_COLOR
-		TimeOfDay.SUNSET:
+		_:
 			_is_night = false
-			time_of_day = SUNSET_TIME_OF_DAY
-			light_color = SUNSET_LIGHT_COLOR
-			light_energy = SUNSET_LIGHT_ENERGY
-			fog_color = SUNSET_FOG_COLOR
-			shallow_color = SUNSET_SHALLOW_COLOR
-			deep_color = SUNSET_DEEP_COLOR
-			horizon_color = SUNSET_HORIZON_COLOR
 
-	sky_material.set_shader_parameter("time_of_day", time_of_day)
-	lighting.light_color = light_color
-	lighting.light_energy = light_energy
-	environment.environment.fog_light_color = fog_color
-	ocean_material.set_shader_parameter("shallow_color", shallow_color)
-	ocean_material.set_shader_parameter("deep_color", deep_color)
-	ocean_material.set_shader_parameter("horizon_color", horizon_color)
+	var target := _get_time_of_day_params(time)
+	_transition_environment(target, duration)
+
+
+func _get_time_of_day_params(time: TimeOfDay) -> Dictionary:
+	match time:
+		TimeOfDay.DAY:
+			return {
+				"time_of_day":   DAY_TIME_OF_DAY,
+				"light_color":   DAY_LIGHT_COLOR,
+				"light_energy":  DAY_LIGHT_ENERGY,
+				"fog_color":     DAY_FOG_COLOR,
+				"shallow_color": DAY_SHALLOW_COLOR,
+				"deep_color":    DAY_DEEP_COLOR,
+				"horizon_color": DAY_HORIZON_COLOR,
+			}
+		TimeOfDay.NIGHT:
+			return {
+				"time_of_day":   NIGHT_TIME_OF_DAY,
+				"light_color":   NIGHT_LIGHT_COLOR,
+				"light_energy":  NIGHT_LIGHT_ENERGY,
+				"fog_color":     NIGHT_FOG_COLOR,
+				"shallow_color": NIGHT_SHALLOW_COLOR,
+				"deep_color":    NIGHT_DEEP_COLOR,
+				"horizon_color": NIGHT_HORIZON_COLOR,
+			}
+		TimeOfDay.SUNSET:
+			return {
+				"time_of_day":   SUNSET_TIME_OF_DAY,
+				"light_color":   SUNSET_LIGHT_COLOR,
+				"light_energy":  SUNSET_LIGHT_ENERGY,
+				"fog_color":     SUNSET_FOG_COLOR,
+				"shallow_color": SUNSET_SHALLOW_COLOR,
+				"deep_color":    SUNSET_DEEP_COLOR,
+				"horizon_color": SUNSET_HORIZON_COLOR,
+			}
+	return {}
+
+
+func _transition_environment(target: Dictionary, duration: float) -> void:
+	# Cancel any running transition before starting a new one
+	_time_transition_active = false
+	await get_tree().process_frame
+
+	_time_transition_active = true
+
+	var sky_material   = environment.environment.sky.sky_material
+	var ocean_material = ocean.get_active_material(0)
+
+	# Snapshot current values as the lerp origin
+	var from := {
+		"time_of_day":   sky_material.get_shader_parameter("time_of_day"),
+		"light_color":   lighting.light_color,
+		"light_energy":  lighting.light_energy,
+		"fog_color":     environment.environment.fog_light_color,
+		"shallow_color": ocean_material.get_shader_parameter("shallow_color"),
+		"deep_color":    ocean_material.get_shader_parameter("deep_color"),
+		"horizon_color": ocean_material.get_shader_parameter("horizon_color"),
+	}
+
+	var elapsed := 0.0
+
+	while elapsed < duration and _time_transition_active:
+		elapsed += get_process_delta_time()
+		var t := clampf(elapsed / duration, 0.0, 1.0)
+
+		sky_material.set_shader_parameter("time_of_day",
+				lerpf(from["time_of_day"], target["time_of_day"], t))
+		lighting.light_color   = (from["light_color"]  as Color).lerp(target["light_color"],   t)
+		lighting.light_energy  = lerpf(from["light_energy"], target["light_energy"], t)
+		environment.environment.fog_light_color = \
+				(from["fog_color"] as Color).lerp(target["fog_color"], t)
+		ocean_material.set_shader_parameter("shallow_color",
+				(from["shallow_color"] as Color).lerp(target["shallow_color"], t))
+		ocean_material.set_shader_parameter("deep_color",
+				(from["deep_color"]   as Color).lerp(target["deep_color"],    t))
+		ocean_material.set_shader_parameter("horizon_color",
+				(from["horizon_color"] as Color).lerp(target["horizon_color"], t))
+
+		await get_tree().process_frame
+
+	# Snap to exact target values once complete (avoids floating-point drift)
+	if _time_transition_active:
+		sky_material.set_shader_parameter("time_of_day", target["time_of_day"])
+		lighting.light_color   = target["light_color"]
+		lighting.light_energy  = target["light_energy"]
+		environment.environment.fog_light_color = target["fog_color"]
+		ocean_material.set_shader_parameter("shallow_color", target["shallow_color"])
+		ocean_material.set_shader_parameter("deep_color",    target["deep_color"])
+		ocean_material.set_shader_parameter("horizon_color", target["horizon_color"])
+
+	_time_transition_active = false
 	
 func lightning_strike() -> void:
 	var original_color = lighting.light_color
@@ -878,7 +938,7 @@ func lightning_strike() -> void:
 	lighting.rotation = original_rotation
 	
 	await _wait_for(1.0)
-	audio_manager.play(audio_manager.Track.THUNDER, -15 if player.is_inside() else 6.0)
+	audio_manager.play(audio_manager.Track.THUNDER, -15.0 if player.is_inside() else 6.0)
 	
 func _start_night_lightning() -> void:
 	_is_night = true

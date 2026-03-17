@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://sxdqvxq4t8ow" path="res://Assets/Scripts/player.gd" id="1_y5hcb"]
 [ext_resource type="Texture2D" uid="uid://g8g413indqd7" path="res://Assets/UI/Crosshair.png" id="2_2nftw"]
-[ext_resource type="PackedScene" uid="uid://cpju2kewehe31" path="res://Assets/Models/Characters/Twin 2/twin_2_model_01.tscn" id="3_y5hcb"]
+[ext_resource type="PackedScene" uid="uid://ddbbla3ssy5fq" path="res://Scenes/Characters/player_visual.tscn" id="3_y5hcb"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_myya0"]
 radius = 0.25
@@ -18,20 +18,20 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.06479496, 0)
 shape = SubResource("CapsuleShape3D_myya0")
 
 [node name="CameraPosition1" type="Node3D" parent="." unique_id=694239538]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.23, 0.6, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.23, 0.9376967, 0)
 
 [node name="CameraPosition2" type="Node3D" parent="." unique_id=1020873654]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.23, 0.6, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.23, 0.9376967, 0)
 
 [node name="CameraOrigin" type="Node3D" parent="." unique_id=1371913287]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.23, 0.655, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.23, 0.99269664, 0)
 
 [node name="SpringArm3D" type="SpringArm3D" parent="CameraOrigin" unique_id=1606133364]
 spring_length = 0.8
 margin = 0.5
 
 [node name="Camera3D" type="Camera3D" parent="CameraOrigin/SpringArm3D" unique_id=284577362]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.5)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.8)
 cull_mask = 1048571
 fov = 80.9
 
@@ -149,7 +149,7 @@ grow_horizontal = 2
 grow_vertical = 0
 scale = Vector2(0.5, 0.5)
 
-[node name="CharacterAnchor" type="Node3D" parent="." unique_id=669950866]
+[node name="Character" parent="." unique_id=1489857556 instance=ExtResource("3_y5hcb")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, -0.9, 0)
 
-[node name="Character" parent="." unique_id=1100896801 instance=ExtResource("3_y5hcb")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.94238436, 0)
+[node name="CharacterAnchor" type="Node3D" parent="." unique_id=669950866]

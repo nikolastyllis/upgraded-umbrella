@@ -40,7 +40,7 @@ func _physics_process(delta: float) -> void:
 		navigation_agent_3d.set_target_position(target_position)
 	apply_gravity(delta)
 	apply_movement()
-	update_movement_animation(get_input_dir(), delta)
+	update_movement_animation(get_input_dir())
 	update_character_rotation(get_target_rotation_y(), delta)
 	move_and_slide()
 	update_climb_position()

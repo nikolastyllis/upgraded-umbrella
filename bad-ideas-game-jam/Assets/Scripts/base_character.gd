@@ -1,15 +1,13 @@
 class_name BaseCharacter
 extends CharacterBody3D
 
-@export var movement_animation_blend_smooth := 3
 @export var rotation_speed := 5.0
 
-@onready var animation_tree: AnimationTree = $Character/Armature/AnimationTree
+@onready var animation_tree: AnimationTree =  $Character/Armature/AnimationTree
 @onready var character := $Character
 @onready var character_anchor := $CharacterAnchor
 
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
-var movement_animation_blend := Vector2.ZERO
 var is_climbing := false
 var current_ladder: Node3D = null
 var climb_cooldown := 0.0
@@ -59,7 +57,7 @@ func apply_gravity(delta: float) -> void:
 	if not is_on_floor():
 		velocity.y -= gravity * delta
 
-func update_movement_animation(input_dir: Vector2, delta: float) -> void:
+func update_movement_animation(input_dir: Vector2) -> void:
 	var state_machine = animation_tree["parameters/playback"]
 	
 	if current_ladder and current_ladder.end_y() < global_position.y and get_climb_input() > 0 and finish_climb_animation_cooldown_timer > finish_climb_animation_cooldown:
@@ -76,8 +74,6 @@ func update_movement_animation(input_dir: Vector2, delta: float) -> void:
 		state_machine.travel("Fall")
 	elif input_dir != Vector2.ZERO:
 		state_machine.travel("Move")
-		movement_animation_blend = movement_animation_blend.lerp(Vector2(0, -1), 1.0 - exp(-movement_animation_blend_smooth * delta))
-		animation_tree.set("parameters/Move/blend_position", movement_animation_blend)
 	else:
 		state_machine.travel("Idle")
 
