@@ -8,7 +8,7 @@ var rain_stream:     AudioStream = preload("res://Assets/Sound/rain.ogg")
 var inside_stream:   AudioStream = preload("res://Assets/Sound/inside.ogg")
 var outside_stream:  AudioStream = preload("res://Assets/Sound/outside.ogg")
 
-const FADE_SPEED: float = 60
+const FADE_SPEED: float = 20
 
 const AMBIENT_TRACKS = [Track.RAIN, Track.INSIDE, Track.OUTSIDE]
 

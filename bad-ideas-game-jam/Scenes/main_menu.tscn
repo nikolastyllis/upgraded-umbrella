@@ -1,54 +1,16 @@
 [gd_scene format=3 uid="uid://cnab0waxuwnf6"]
 
-[ext_resource type="Material" uid="uid://eb5djxh4js65" path="res://Shaders/SkyShaderl.tres" id="1_16hvj"]
 [ext_resource type="Script" uid="uid://b70tkggwsddx6" path="res://Assets/Scripts/menu_camera.gd" id="1_yhxw7"]
 [ext_resource type="AudioStream" uid="uid://debvotnisyi1u" path="res://Music/MainMenu.ogg" id="2_t1dhk"]
 [ext_resource type="Shader" uid="uid://ossjmoq6orf1" path="res://Shaders/shader_ocean_calm.gdshader" id="2_vr1f0"]
 [ext_resource type="Texture2D" uid="uid://bw3728lre125f" path="res://Assets/Textures/Ocean/0001.jpg" id="3_t1dhk"]
+[ext_resource type="Environment" uid="uid://lnokunydxcko" path="res://Scenes/sunset.tres" id="3_vr1f0"]
 [ext_resource type="Texture2D" uid="uid://bal1s5p7lfes2" path="res://Assets/Textures/Ocean/0258.jpg" id="4_5egv6"]
 [ext_resource type="Script" uid="uid://d1icg8locw87l" path="res://Assets/Scripts/water_camera.gd" id="5_vtepg"]
 [ext_resource type="Script" uid="uid://dgv8ik7gx8igs" path="res://Assets/Scripts/main_menu.gd" id="8_t1dhk"]
 [ext_resource type="FontFile" uid="uid://13oicvg0h65k" path="res://Assets/UI/Fonts/Heavy Metal Box.ttf" id="8_vr1f0"]
 [ext_resource type="Theme" uid="uid://dsnby6q1yhtnk" path="res://Assets/UI/Text_Theme_Main.tres" id="10_vr1f0"]
 [ext_resource type="PackedScene" uid="uid://bkwpxm2ssdj8r" path="res://Scenes/main_enviroment_scene.tscn" id="11_vr1f0"]
-
-[sub_resource type="Sky" id="Sky_jvqja"]
-sky_material = ExtResource("1_16hvj")
-
-[sub_resource type="Environment" id="Environment_jd51y"]
-background_mode = 2
-background_energy_multiplier = 2.24
-sky = SubResource("Sky_jvqja")
-ambient_light_source = 3
-ambient_light_color = Color(0.43013, 0.40275463, 0.57900447, 1)
-ambient_light_sky_contribution = 0.1
-ssao_enabled = true
-ssil_enabled = true
-ssil_radius = 7.7
-ssil_intensity = 0.42
-ssil_sharpness = 1.0
-glow_enabled = true
-fog_enabled = true
-fog_mode = 1
-fog_light_color = Color(0.99557394, 0.6114239, 0.41234687, 1)
-fog_light_energy = 1.22
-fog_sun_scatter = 0.95
-fog_density = 0.995
-fog_aerial_perspective = 0.48
-fog_sky_affect = 0.805
-fog_height = -380.54
-fog_height_density = 5.1892
-fog_depth_curve = 0.6597539
-fog_depth_begin = 28.0
-fog_depth_end = 245.6
-volumetric_fog_density = 0.005
-volumetric_fog_albedo = Color(0.9596279, 0.98852295, 0.9998115, 1)
-volumetric_fog_length = 91.1
-volumetric_fog_detail_spread = 2.5491216
-adjustment_enabled = true
-adjustment_brightness = 1.13
-adjustment_contrast = 1.135
-adjustment_saturation = 0.93
 
 [sub_resource type="CameraAttributesPhysical" id="CameraAttributesPhysical_to28j"]
 
@@ -193,7 +155,7 @@ shadow_enabled = true
 shadow_blur = 0.0
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="Lighting" unique_id=972673621]
-environment = SubResource("Environment_jd51y")
+environment = ExtResource("3_vr1f0")
 camera_attributes = SubResource("CameraAttributesPhysical_to28j")
 compositor = SubResource("Compositor_4n1t5")
 

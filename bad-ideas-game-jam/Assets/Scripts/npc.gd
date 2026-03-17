@@ -26,6 +26,7 @@ func _ready() -> void:
 	last_sampled_position = global_position
 
 func set_target_position(pos: Vector3) -> void:
+	await get_tree().create_timer(randf() * 3).timeout
 	target_position = pos
 	_has_target = true
 

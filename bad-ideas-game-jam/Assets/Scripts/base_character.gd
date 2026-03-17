@@ -67,12 +67,12 @@ func _update_ladder_sounds(delta: float) -> void:
 
 func _play_footstep() -> void:
 	footstep_player.pitch_scale = randf_range(0.8, 1.2)
-	footstep_player.volume_db = randf_range(-20, -10)
+	footstep_player.volume_db = randf_range(-20, -15)
 	footstep_player.play()
 	
 func _play_ladder_step() -> void:
 	ladder_player.pitch_scale = randf_range(0.8, 1.2)
-	ladder_player.volume_db = randf_range(-20, -10)
+	ladder_player.volume_db = randf_range(-20, -15)
 	ladder_player.play()
 	
 func start_climbing(ladder: Node3D) -> void:

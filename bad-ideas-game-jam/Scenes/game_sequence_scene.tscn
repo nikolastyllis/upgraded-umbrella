@@ -35,7 +35,8 @@ fog_density = 0.385
 fog_sky_affect = 0.01
 fog_depth_curve = 3.4822025
 fog_depth_end = 248.6
-volumetric_fog_density = 0.0
+volumetric_fog_enabled = true
+volumetric_fog_density = 0.01
 volumetric_fog_albedo = Color(0.9596279, 0.98852295, 0.9998115, 1)
 volumetric_fog_length = 91.1
 volumetric_fog_detail_spread = 2.5491216
@@ -168,6 +169,38 @@ agent_max_climb = 0.75
 agent_max_slope = 60.0
 edge_max_length = 1.0
 
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_63acv"]
+emission_shape = 6
+emission_ring_axis = Vector3(0, 90, 1)
+emission_ring_height = 2.0
+emission_ring_radius = 10.0
+emission_ring_inner_radius = 2.5
+emission_ring_cone_angle = 90.0
+direction = Vector3(0, -1, 0)
+spread = 5.0
+initial_velocity_min = 10.65
+initial_velocity_max = 10.65
+color = Color(0.06666667, 0.08627451, 0.11372549, 0.1254902)
+collision_mode = 1
+collision_friction = 0.0
+collision_bounce = 0.0
+
+[sub_resource type="Curve" id="Curve_63acv"]
+_limits = [0.0, 0.1, 0.0, 1.0]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.2637644, 0.065135576), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qcyk2"]
+transparency = 1
+cull_mode = 2
+shading_mode = 0
+vertex_color_use_as_albedo = true
+use_particle_trails = true
+
+[sub_resource type="RibbonTrailMesh" id="RibbonTrailMesh_qcyk2"]
+material = SubResource("StandardMaterial3D_qcyk2")
+curve = SubResource("Curve_63acv")
+
 [node name="EnviromentTestScene" type="Node3D" unique_id=1795795939]
 
 [node name="Lighting" type="Node3D" parent="." unique_id=1156227915]
@@ -207,6 +240,17 @@ visible = false
 
 [node name="Player" parent="." unique_id=1647912674 instance=ExtResource("9_r4e2n")]
 transform = Transform3D(-0.99752617, 0, -0.07029611, 0, 1, 0, 0.07029611, 0, -0.99752617, 4.512328, 16.700089, 66.346306)
+
+[node name="Rain" type="GPUParticles3D" parent="Player" unique_id=645779901]
+transform = Transform3D(-0.99752617, 0, 0.07029611, 0, 1, 0, -0.07029611, 0, -0.99752617, 0, 0, 0)
+amount = 2000
+lifetime = 2.0
+randomness = 1.0
+visibility_aabb = AABB(-10, -4, -10, 20, 8, 20)
+trail_enabled = true
+trail_lifetime = 0.09999999999999999
+process_material = SubResource("ParticleProcessMaterial_63acv")
+draw_pass_1 = SubResource("RibbonTrailMesh_qcyk2")
 
 [node name="Ladder" parent="." unique_id=1860599597 instance=ExtResource("11_n0oop")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.400001, 5, -85)

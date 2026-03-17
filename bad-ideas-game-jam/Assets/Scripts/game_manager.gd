@@ -19,11 +19,12 @@ extends Node3D
 @onready var lighting = $"../Lighting/DirectionalLight3D"
 @onready var ocean = $"../ocean_mesh"
 @onready var audio_manager = $"../AudioManager"
+@onready var rain = $"../Player/Rain"
 
 # environment -> sky -> sky_material -> shader -> shader_parameter -> time_of_day
 const DAY_TIME_OF_DAY = 0.5
 const NIGHT_TIME_OF_DAY = 0
-const SUNSET_TIME_OF_DAY = 0.25
+const SUNSET_TIME_OF_DAY = 0.3
 
 # lighting -> light -> light_color
 const DAY_LIGHT_COLOR = Color(1, 1 ,1)
@@ -31,14 +32,19 @@ const NIGHT_LIGHT_COLOR = Color(1, 1 ,1)
 const SUNSET_LIGHT_COLOR = Color(0.67, 0.31, 0.26)
 
 # lighting -> light -> light_energy
-const DAY_LIGHT_ENERGY = 0.6
-const NIGHT_LIGHT_ENERGY = 0.01
-const SUNSET_LIGHT_ENERGY = 0.4
+const DAY_LIGHT_ENERGY = 1
+const NIGHT_LIGHT_ENERGY = 0.02
+const SUNSET_LIGHT_ENERGY = 0.8
 
 # environment -> fog -> fog_light_color
 const DAY_FOG_COLOR = Color(0.58, 0.71, 0.84)
 const NIGHT_FOG_COLOR = Color(0,0,0)
 const SUNSET_FOG_COLOR = Color(0.67, 0.31, 0.26)
+
+# environment -> volumetric fog -> volumetric_fog_density
+const DAY_FOG_DENSITY = 0.01
+const NIGHT_FOG_DENSITY = 0.02
+const SUNSET_FOG_DENSITY = 0.0
 
 # ocean -> geometry -> material override -> shader_parameter -> shallow_color
 const DAY_SHALLOW_COLOR = Color(0.07, 0.19, 0.28)
@@ -277,15 +283,17 @@ func _ready() -> void:
 func _player_is_near(position: Vector3) -> bool:
 	return (player.global_position - position).length() < 2
 
-func _update_ambient_audio() -> void:
+func _update_audio_and_rain() -> void:
 	var inside = player.is_inside()
-	audio_manager.set_target(audio_manager.Track.INSIDE,   0.0   if inside                  else -40.0)
-	audio_manager.set_target(audio_manager.Track.OUTSIDE,  0.0   if not inside              else -40.0)
+	audio_manager.set_target(audio_manager.Track.INSIDE,   -10.0   if inside                  else -40.0)
+	audio_manager.set_target(audio_manager.Track.OUTSIDE,  -10.0   if not inside              else -40.0)
 	audio_manager.set_target(audio_manager.Track.RAIN,     -10.0  if _is_night and not inside else -40.0)
+	rain.visible = not inside and _is_night
+	
 
 func _process(_delta: float) -> void:
 	
-	_update_ambient_audio()
+	_update_audio_and_rain()
 
 	# ── ACT 1 ────────────────────────────────────────────────────────────────
 
@@ -813,6 +821,8 @@ func _get_time_of_day_params(time: TimeOfDay) -> Dictionary:
 				"light_color":   DAY_LIGHT_COLOR,
 				"light_energy":  DAY_LIGHT_ENERGY,
 				"fog_color":     DAY_FOG_COLOR,
+				"volumetric_fog_density": DAY_FOG_DENSITY,
+				"volumetric_fog_albedo":      DAY_LIGHT_COLOR,
 				"shallow_color": DAY_SHALLOW_COLOR,
 				"deep_color":    DAY_DEEP_COLOR,
 				"horizon_color": DAY_HORIZON_COLOR,
@@ -823,6 +833,8 @@ func _get_time_of_day_params(time: TimeOfDay) -> Dictionary:
 				"light_color":   NIGHT_LIGHT_COLOR,
 				"light_energy":  NIGHT_LIGHT_ENERGY,
 				"fog_color":     NIGHT_FOG_COLOR,
+				"volumetric_fog_density": NIGHT_FOG_DENSITY,
+				"volumetric_fog_albedo":      NIGHT_LIGHT_COLOR,
 				"shallow_color": NIGHT_SHALLOW_COLOR,
 				"deep_color":    NIGHT_DEEP_COLOR,
 				"horizon_color": NIGHT_HORIZON_COLOR,
@@ -833,6 +845,8 @@ func _get_time_of_day_params(time: TimeOfDay) -> Dictionary:
 				"light_color":   SUNSET_LIGHT_COLOR,
 				"light_energy":  SUNSET_LIGHT_ENERGY,
 				"fog_color":     SUNSET_FOG_COLOR,
+				"volumetric_fog_density": SUNSET_FOG_DENSITY,
+				"volumetric_fog_albedo":      SUNSET_LIGHT_COLOR,
 				"shallow_color": SUNSET_SHALLOW_COLOR,
 				"deep_color":    SUNSET_DEEP_COLOR,
 				"horizon_color": SUNSET_HORIZON_COLOR,
@@ -856,6 +870,8 @@ func _transition_environment(target: Dictionary, duration: float) -> void:
 		"light_color":   lighting.light_color,
 		"light_energy":  lighting.light_energy,
 		"fog_color":     environment.environment.fog_light_color,
+		"volumetric_fog_density":     environment.environment.volumetric_fog_density,
+		"volumetric_fog_albedo":      environment.environment.volumetric_fog_albedo,
 		"shallow_color": ocean_material.get_shader_parameter("shallow_color"),
 		"deep_color":    ocean_material.get_shader_parameter("deep_color"),
 		"horizon_color": ocean_material.get_shader_parameter("horizon_color"),
@@ -873,6 +889,9 @@ func _transition_environment(target: Dictionary, duration: float) -> void:
 		lighting.light_energy  = lerpf(from["light_energy"], target["light_energy"], t)
 		environment.environment.fog_light_color = \
 				(from["fog_color"] as Color).lerp(target["fog_color"], t)
+		environment.environment.volumetric_fog_albedo = \
+				(from["light_color"] as Color).lerp(target["light_color"], t)
+		environment.environment.volumetric_fog_density = lerpf(from["volumetric_fog_density"], target["volumetric_fog_density"], t)
 		ocean_material.set_shader_parameter("shallow_color",
 				(from["shallow_color"] as Color).lerp(target["shallow_color"], t))
 		ocean_material.set_shader_parameter("deep_color",
@@ -888,6 +907,8 @@ func _transition_environment(target: Dictionary, duration: float) -> void:
 		lighting.light_color   = target["light_color"]
 		lighting.light_energy  = target["light_energy"]
 		environment.environment.fog_light_color = target["fog_color"]
+		environment.environment.volumetric_fog_density = target["volumetric_fog_density"]
+		environment.environment.volumetric_fog_albedo = target["light_color"]
 		ocean_material.set_shader_parameter("shallow_color", target["shallow_color"])
 		ocean_material.set_shader_parameter("deep_color",    target["deep_color"])
 		ocean_material.set_shader_parameter("horizon_color", target["horizon_color"])
@@ -943,7 +964,7 @@ func lightning_strike() -> void:
 func _start_night_lightning() -> void:
 	_is_night = true
 	while _is_night:
-		var wait_time = randf_range(0.0, 20)
+		var wait_time = randf_range(0.0, 200)
 		await _wait_for(wait_time)
 		if _is_night:
 			lightning_strike()
