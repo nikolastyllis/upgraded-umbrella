@@ -2,6 +2,7 @@ extends Interactable
 
 @onready var animation_player = $"../../../../AnimationPlayer"
 @onready var game_manager = get_tree().get_root().find_child("GameManager", true, false)
+@onready var mesh_instance = $".."
 
 var opened_act_1 = false
 var opened_act_2 = false
@@ -26,6 +27,12 @@ func on_interact(_player):
 	game_manager.player_has_interacted_with_container = true
 	opened_act_1 = true
 	_play_sound("door")
+	await animation_player.animation_finished
+	_rebuild_collision()
+	
+func _rebuild_collision() -> void:
+	var new_shape = mesh_instance.mesh.create_trimesh_shape()
+	$CollisionShape3D.shape = new_shape
 		
 func can_interact(_player: Node) -> bool:
 	return game_manager.story_increment == 2 and opened_act_1 == false

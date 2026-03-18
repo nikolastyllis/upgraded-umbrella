@@ -19,6 +19,8 @@ extends Node3D
 @onready var audio_manager = $"../AudioManager"
 @onready var rain = $"../Player/Rain"
 
+@onready var nav_region = $"../NavigationRegion3D"
+
 # environment -> sky -> sky_material -> shader -> shader_parameter -> time_of_day
 const DAY_TIME_OF_DAY = 0.5
 const NIGHT_TIME_OF_DAY = 0
@@ -89,6 +91,9 @@ func _player_is_near(position: Vector3) -> bool:
 	
 func _npcs_are_near(position: Vector3) -> bool:
 	return (twin_1.global_position - position).length() < 5 and (twin_2.global_position - position).length() < 5
+
+func rebake():
+	nav_region.bake_navigation_mesh()
 
 func _update_audio_and_rain() -> void:
 	var inside = player.is_inside()

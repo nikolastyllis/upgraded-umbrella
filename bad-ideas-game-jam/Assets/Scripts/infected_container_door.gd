@@ -1,6 +1,7 @@
 extends Interactable
 @onready var animation_player = $"../../../../AnimationPlayer"
 @onready var game_manager = get_tree().get_root().find_child("GameManager", true, false)
+@onready var mesh_instance = $".."
 
 var _banging_player: AudioStreamPlayer3D = null
 
@@ -36,17 +37,24 @@ func _stop_banging() -> void:
 		_banging_player = null
 
 func update_action_text():
-	action_text = "Cut open"
+	action_text = "Open"
 	
 func interact_hold_time() -> float:
-	return 10.0
+	return 3.0
 
 func on_interact(_player):
 	_stop_banging()
 	_play_sound("door3")
-	animation_player.play("Act_3_open")
+	animation_player.play("MonsterReveal")
 	game_manager.player_has_interacted_with_infected_container = true
-		
+	await animation_player.animation_finished
+	_rebuild_collision()
+	game_manager.rebake()
+	
+func _rebuild_collision() -> void:
+	var new_shape = mesh_instance.mesh.create_trimesh_shape()
+	$CollisionShape3D.shape = new_shape
+
 func can_interact(_player: Node) -> bool:
 	return game_manager.story_increment == 7 and not game_manager.player_has_interacted_with_infected_container
 	
