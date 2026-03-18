@@ -95,11 +95,13 @@ func _process(_delta: float) -> void:
 
 	if story_increment == 1 and _player_is_near(container.global_position):
 		story_increment += 1
-		_play_act1_meet_twins()
+		_play_act_1_start()
 
 # ── ACT 1 SEQUENCES ─────────────────────────────────────────────────────────
 
-func _play_act1_meet_twins() -> void:
+func _play_act_1_start() -> void:
+	player.fade_in_camera(10)
+	await _wait_for(3)
 	await twin_1.play_dialogue(1)
 	await player.play_dialogue(2)
 	await twin_2.play_dialogue(3)

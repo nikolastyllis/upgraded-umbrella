@@ -21,17 +21,41 @@ var last_sampled_position := Vector3.ZERO
 var unstick_timer := 0.0
 var unstick_target := Vector3.ZERO
 
+# At the top with other @onready vars
+@onready var skeleton := $Character/Armature/Skeleton3D
+@onready var _player := $"../Player"
+
+# New constants
+const HEAD_LOOK_DISTANCE = 10.0
+const HEAD_LOOK_FOV = 0.3        # dot product threshold (~70° cone in front)
+const HEAD_LOOK_SPEED = 5.0
+const HEAD_MAX_YAW = 60.0        # degrees left/right limit
+
+# New vars
+var _head_bone_idx := -1
+var _head_look_weight := 0.0     # 0 = neutral, 1 = fully tracking
+
 func _ready() -> void:
 	super._ready()
 	last_sampled_position = global_position
+	_head_bone_idx = skeleton.find_bone("mixamorig_Head")
+	print("Head bone index: ", _head_bone_idx)
+	skeleton.skeleton_updated.connect(_on_skeleton_updated)
 
 func set_target_position(pos: Vector3) -> void:
 	await get_tree().create_timer(randf() * 3).timeout
 	target_position = pos
 	_has_target = true
 
+func _process(delta: float) -> void:
+	_update_head_look_weight(delta)
+	
+func _on_skeleton_updated() -> void:
+	_apply_head_look()
+
 func _physics_process(delta: float) -> void:
 	super._physics_process(delta)
+	
 	if not _has_target:
 		return
 	if unstick_timer > 0:
@@ -154,3 +178,34 @@ func _to_target_distance() -> float:
 
 func _is_near_destination() -> bool:
 	return _has_target and _to_target_distance() < STOP_DISTANCE
+	
+func _update_head_look_weight(delta: float) -> void:
+	if not is_instance_valid(_player):
+		return
+	var to_player = _player.global_position - global_position
+	var dist = to_player.length()
+	var forward = global_transform.basis.z
+	var to_player_flat = Vector3(to_player.x, 0.0, to_player.z).normalized()
+	var dot = forward.dot(to_player_flat)
+	var target_weight = 1.0 if (dist <= HEAD_LOOK_DISTANCE and dot >= HEAD_LOOK_FOV) else 0.0
+	_head_look_weight = move_toward(_head_look_weight, target_weight, HEAD_LOOK_SPEED * delta)
+
+func _apply_head_look() -> void:
+	if _head_bone_idx == -1:
+		return
+
+	if _head_look_weight < 0.01:
+		skeleton.set_bone_global_pose_override(_head_bone_idx, Transform3D(), 0.0, false)
+		return
+
+	var to_player = _player.global_position - global_position
+	var forward = global_transform.basis.z
+	var to_player_flat = Vector3(to_player.x, 0.0, to_player.z).normalized()
+	var yaw_angle = forward.signed_angle_to(to_player_flat, Vector3.UP)
+	yaw_angle = clampf(yaw_angle, deg_to_rad(-HEAD_MAX_YAW), deg_to_rad(HEAD_MAX_YAW)) * _head_look_weight
+
+	var bone_pose = skeleton.get_bone_global_pose_no_override(_head_bone_idx)
+	var world_pose = skeleton.global_transform * bone_pose
+	world_pose.basis = Basis(Vector3.UP, yaw_angle) * world_pose.basis
+	var new_pose = skeleton.global_transform.affine_inverse() * world_pose
+	skeleton.set_bone_global_pose_override(_head_bone_idx, new_pose, 1.0, true)

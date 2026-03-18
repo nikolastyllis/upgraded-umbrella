@@ -200,3 +200,19 @@ func is_inside() -> bool:
 			hits += 1
 
 	return hits >= INSIDE_RAY_COUNT * 0.99
+
+func fade_in_camera(duration: float = 1.0) -> void:
+	var canvas_layer := CanvasLayer.new()
+	canvas_layer.layer = 128  # Render on top of everything
+	add_child(canvas_layer)
+
+	var overlay := ColorRect.new()
+	overlay.color = Color.BLACK
+	canvas_layer.add_child(overlay)
+	# Size must be set after adding to the tree so the viewport is accessible
+	overlay.position = Vector2.ZERO
+	overlay.size = get_viewport().get_visible_rect().size
+
+	var tween := create_tween()
+	tween.tween_property(overlay, "color:a", 0.0, duration).set_ease(Tween.EASE_IN_OUT)
+	tween.tween_callback(canvas_layer.queue_free)

@@ -239,7 +239,7 @@ transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 1.2392235, 8.331253, 13.07454
 visible = false
 
 [node name="Player" parent="." unique_id=1647912674 instance=ExtResource("9_r4e2n")]
-transform = Transform3D(0.7953995, 0, 0.60608554, 0, 1, 0, -0.60608554, 0, 0.7953995, -5.3060102, 6.9538407, -36.663544)
+transform = Transform3D(-0.99998623, 0, -0.0052360375, 0, 0.99999994, 0, 0.005236037, 0, -0.9999863, -2.985147, 6.9538407, -36.57491)
 
 [node name="Rain" type="GPUParticles3D" parent="Player" unique_id=645779901]
 transform = Transform3D(-0.99752617, 0, 0.07029611, 0, 1, 0, -0.07029611, 0, -0.99752617, 0, 2.0065289, 0)
@@ -268,7 +268,7 @@ script = ExtResource("12_vrw5k")
 [node name="Locations" type="Node3D" parent="GameManager" unique_id=596146378]
 
 [node name="Container" type="Node3D" parent="GameManager/Locations" unique_id=2145291984]
-transform = Transform3D(-0.87114525, 0, -0.49102545, 0, 1, 0, 0.49102545, 0, -0.87114525, 53.162716, -1.5197783, 100.19886)
+transform = Transform3D(-0.87114525, 0, -0.49102545, 0, 1, 0, 0.49102545, 0, -0.87114525, 50.97735, -1.5197783, 101.43066)
 
 [node name="StoreRoom" type="Node3D" parent="GameManager/Locations" unique_id=2049401470]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.8881474, 0, 10.120064)
@@ -289,7 +289,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.7003717, 5.973839, 2.86259
 script = ExtResource("14_qcyk2")
 
 [node name="Twin1" parent="." unique_id=766421067 instance=ExtResource("10_nr8gw")]
-transform = Transform3D(-0.3035342, 0, 0.9528205, 0, 1, 0, -0.9528205, 0, -0.3035342, -7.714991, 6.990505, -36.563984)
+transform = Transform3D(-0.3035342, 0, 0.9528205, 0, 1, 0, -0.9528205, 0, -0.3035342, -5.0433493, 6.990505, -36.555622)
 
 [node name="Twin2" parent="." unique_id=995915264 instance=ExtResource("10_nr8gw")]
-transform = Transform3D(-0.99240726, 0, 0.12299526, 0, 1, 0, -0.12299526, 0, -0.99240726, -6.414768, 6.990505, -36.407475)
+transform = Transform3D(-0.99240726, 0, 0.12299526, 0, 1, 0, -0.12299526, 0, -0.99240726, -4.2318025, 6.990505, -36.413074)
