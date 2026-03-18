@@ -16,7 +16,10 @@ extends BaseCharacter
 @onready var camera := $CameraOrigin/SpringArm3D/Camera3D
 
 const FOV_NORMAL := 80.0
-const FOV_DISABLED := 60.0
+const FOV_DISABLED := 50.0
+
+const SENSITIVITY_NORMAL = 0.25
+const SENSITIVITY_DISABLED = 0.1
 
 const PLAYER_SPEED = 1.5
 const JUMP_VELOCITY = 3
@@ -47,6 +50,7 @@ func toggle_movement_disabled():
 	movement_disabled = not movement_disabled
 	crosshair_ui.visible = not movement_disabled
 	tween_camera_fov(FOV_DISABLED if movement_disabled else FOV_NORMAL)
+	sensitivity = SENSITIVITY_DISABLED if movement_disabled else SENSITIVITY_NORMAL
 
 func tween_camera_fov(target_fov: float) -> void:
 	var tween = create_tween()

@@ -37,7 +37,7 @@ const NIGHT_FOG_COLOR = Color(0,0,0)
 const SUNSET_FOG_COLOR = Color(0.67, 0.31, 0.26)
 
 # environment -> volumetric fog -> volumetric_fog_density
-const DAY_FOG_DENSITY = 0.01
+const DAY_FOG_DENSITY = 0.0
 const NIGHT_FOG_DENSITY = 0.02
 const SUNSET_FOG_DENSITY = 0.0
 
