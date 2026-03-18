@@ -165,8 +165,9 @@ func _play_act1_shift_over():
 	await twin_2.play_dialogue(29)
 	await twin_2.play_dialogue(30)
 	await twin_1.play_dialogue(31)
-	twin_1.set_target_position(bedroom.global_position)
 	twin_2.set_target_position(bedroom.global_position)
+	await _wait_for(3.0)
+	twin_1.set_target_position(bedroom.global_position)
 	_spawn_objective_marker(bed)
 	
 func _play_act3_wake_up():
