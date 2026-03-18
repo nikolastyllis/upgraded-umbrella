@@ -157,6 +157,7 @@ func _play_act_1_start() -> void:
 	_play_container_reminders()
 	
 func _play_act1_shift_over():
+	await _wait_for(3.0)
 	await _play_sound("bell")
 	await twin_1.play_dialogue(25)
 	await player.play_dialogue(26)

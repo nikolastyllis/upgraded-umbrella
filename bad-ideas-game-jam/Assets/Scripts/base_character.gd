@@ -174,10 +174,16 @@ func play_dialogue(id: int) -> void:
 	if use_blip:
 		await _play_blip()
 
-	var dialogue_player := AudioStreamPlayer.new()
+	var dialogue_player = null
+	if use_radio:
+		dialogue_player = AudioStreamPlayer.new()
+		dialogue_player.volume_db = 5
+	else:
+		dialogue_player = AudioStreamPlayer3D.new()
+		dialogue_player.volume_db = 20
+		
 	dialogue_player.bus = "Radio" if use_radio else "Sound"
 	dialogue_player.stream = load(path)
-	dialogue_player.volume_db = 5
 	add_child(dialogue_player)
 	dialogue_player.play()
 	await dialogue_player.finished
