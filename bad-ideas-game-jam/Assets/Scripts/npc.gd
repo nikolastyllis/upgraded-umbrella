@@ -41,6 +41,7 @@ func _ready() -> void:
 	_head_bone_idx = skeleton.find_bone("mixamorig_Head")
 	print("Head bone index: ", _head_bone_idx)
 	skeleton.skeleton_updated.connect(_on_skeleton_updated)
+	add_to_group("npcs")
 
 func set_target_position(pos: Vector3) -> void:
 	await get_tree().create_timer(randf() * 3).timeout
@@ -50,6 +51,9 @@ func set_target_position(pos: Vector3) -> void:
 func _process(delta: float) -> void:
 	_update_head_look_weight(delta)
 	
+func get_player():
+	return _player	
+
 func _on_skeleton_updated() -> void:
 	_apply_head_look()
 

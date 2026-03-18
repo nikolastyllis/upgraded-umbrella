@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://ddbbla3ssy5fq" path="res://Scenes/Characters/player_visual.tscn" id="3_y5hcb"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_myya0"]
-radius = 0.25
+radius = 0.31884766
 height = 1.7
 
 [node name="Player" type="CharacterBody3D" unique_id=1647912674]
@@ -33,7 +33,7 @@ margin = 0.5
 [node name="Camera3D" type="Camera3D" parent="CameraOrigin/SpringArm3D" unique_id=284577362]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.8)
 cull_mask = 1048571
-fov = 80.9
+fov = 80.0
 
 [node name="CrosshairUI" type="Control" parent="CameraOrigin/SpringArm3D/Camera3D" unique_id=612996285]
 layout_mode = 3

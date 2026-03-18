@@ -1,3 +1,4 @@
+class_name Player
 extends BaseCharacter
 
 @export var view_toggle_lerp_speed := 8.0
@@ -10,6 +11,12 @@ extends BaseCharacter
 @onready var interact_ui_control := $CameraOrigin/SpringArm3D/Camera3D/CrosshairUI/Interact
 @onready var interact_progress_bar := $CameraOrigin/SpringArm3D/Camera3D/CrosshairUI/Interact/Progress
 @onready var dialog_control := $CameraOrigin/SpringArm3D/Camera3D/DialogControl
+@onready var crosshair_ui := $CameraOrigin/SpringArm3D/Camera3D/CrosshairUI
+
+@onready var camera := $CameraOrigin/SpringArm3D/Camera3D
+
+const FOV_NORMAL := 80.0
+const FOV_DISABLED := 60.0
 
 const PLAYER_SPEED = 1.5
 const JUMP_VELOCITY = 3
@@ -22,6 +29,7 @@ var interactable: Interactable = null
 var use_camera_position_right := true
 var current_camera_position: Vector3
 var dialog_hide_timer: SceneTreeTimer = null
+var movement_disabled = false
 
 func _ready() -> void:
 	super._ready()
@@ -35,6 +43,15 @@ func _input(event: InputEvent) -> void:
 		return
 	handle_mouse_look(event)
 
+func toggle_movement_disabled():
+	movement_disabled = not movement_disabled
+	crosshair_ui.visible = not movement_disabled
+	tween_camera_fov(FOV_DISABLED if movement_disabled else FOV_NORMAL)
+
+func tween_camera_fov(target_fov: float) -> void:
+	var tween = create_tween()
+	tween.tween_property(camera, "fov", target_fov, 0.4).set_ease(Tween.EASE_IN_OUT).set_trans(Tween.TRANS_QUAD)
+
 func _process(delta: float) -> void:
 	update_interactable()
 	handle_interact(delta)
@@ -47,9 +64,11 @@ func _physics_process(delta: float) -> void:
 		if is_climbing:
 			stop_climbing()
 	apply_gravity(delta)
-	apply_movement(get_raw_input_dir())
-	update_movement_animation(get_raw_input_dir())
-	update_character_rotation(rotation.y, delta)
+	if not movement_disabled:
+		apply_movement(get_raw_input_dir())
+		update_movement_animation(get_raw_input_dir())
+		update_character_rotation(rotation.y, delta)
+		
 	move_and_slide()
 	dismount_ladder()
 	update_climb_position()
@@ -61,6 +80,9 @@ func get_speed() -> float:
 
 func get_climb_input() -> float:
 	return -get_raw_input_dir().y
+
+func get_player():
+	return self
 
 func stop_climbing() -> void:
 	super.stop_climbing()

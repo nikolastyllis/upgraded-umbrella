@@ -64,6 +64,8 @@ var current_objective = null
 var story_increment   = 1
 var _is_night = false
 
+var player_has_interacted_with_container = false
+
 # ── DIALOGUE ────────────────────────────────────────────────────────────────
 
 var dialogue = {
@@ -73,8 +75,8 @@ var dialogue = {
 # ── LIFECYCLE ───────────────────────────────────────────────────────────────
 
 func _ready() -> void:
+	player.toggle_movement_disabled()
 	set_time_of_day(TimeOfDay.DAY, 0.1)
-	_spawn_objective_marker(container)
 
 @warning_ignore("shadowed_variable_base_class")
 func _player_is_near(position: Vector3) -> bool:
@@ -96,6 +98,10 @@ func _process(_delta: float) -> void:
 	if story_increment == 1 and _player_is_near(container.global_position):
 		story_increment += 1
 		_play_act_1_start()
+		
+	if story_increment == 2 and player_has_interacted_with_container:
+		story_increment += 1
+		_play_act1_shift_over()
 
 # ── ACT 1 SEQUENCES ─────────────────────────────────────────────────────────
 
@@ -128,7 +134,32 @@ func _play_act_1_start() -> void:
 	await _wait_for(3.0)
 	await twin_2.play_dialogue(23)
 	await twin_1.play_dialogue(24)
-	await _wait_for(10.0)
+	_spawn_objective_marker(container)
+	player.toggle_movement_disabled()
+	await twin_1.play_dialogue(32)
+	_play_container_reminders()
+	
+func _play_container_reminders() -> void:
+	# Reminder 1 — gentle nudge (audio 33), after 30 s
+	await _wait_for(30.0)
+	if story_increment != 2:
+		return
+	await twin_1.play_dialogue(33)
+
+	# Reminder 2 — more insistent (audio 34), after another 20 s
+	await _wait_for(20.0)
+	if story_increment != 2:
+		return
+	await twin_1.play_dialogue(34)
+
+	# Reminder 3 — urgent (audio 35), after another 15 s
+	while true:
+		await _wait_for(15.0)
+		if story_increment != 2:
+			return
+		await twin_1.play_dialogue(35)
+
+func _play_act1_shift_over():
 	await twin_1.play_dialogue(25)
 	await player.play_dialogue(26)
 	await twin_1.play_dialogue(27)

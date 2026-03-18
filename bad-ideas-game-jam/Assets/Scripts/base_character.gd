@@ -147,23 +147,93 @@ func get_speed() -> float:
 func get_climb_input() -> float:
 	return 0.0
 	
+func get_player():
+	pass
+
 func play_dialogue(id: int) -> void:
 	var path := "res://Assets/Dialogue/%d.ogg" % id
 	if not ResourceLoader.exists(path):
 		push_warning("Dialogue file not found: %s" % path)
 		return
 	
+	var player_node = self.get_player()
+	var use_radio = false
+	var use_blip = false
+	
+	if self is NPC:
+		use_radio = global_position.distance_to(player_node.global_position) > 15.0
+		
+	if self is Player:
+		var npcs = get_tree().get_nodes_in_group("npcs")
+		for npc in npcs:
+			use_blip = global_position.distance_to(npc.global_position) > 15.0 or use_blip
+	
+	if use_radio:
+		await _play_static()
+		
+	if use_blip:
+		await _play_blip()
+
 	var dialogue_player := AudioStreamPlayer.new()
-	dialogue_player.bus = "Sound"
+	dialogue_player.bus = "Radio" if use_radio else "Sound"
 	dialogue_player.stream = load(path)
 	dialogue_player.volume_db = 5
 	add_child(dialogue_player)
 	dialogue_player.play()
 	await dialogue_player.finished
-	
+
 	var tween := create_tween()
 	tween.tween_property(dialogue_player, "volume_db", -80.0, 0.1)
 	await tween.finished
 	dialogue_player.queue_free()
-	
+
+	if use_radio:
+		await _play_static()
+		
+	if use_blip:
+		await _play_end_blip()
+
 	await get_tree().create_timer(1.5).timeout
+
+
+func _play_static() -> void:
+	const STATIC_PATH := "res://Assets/Dialogue/static.ogg"
+	if not ResourceLoader.exists(STATIC_PATH):
+		push_warning("Static file not found: %s" % STATIC_PATH)
+		return
+	var static_player := AudioStreamPlayer.new()
+	static_player.bus = "Radio"
+	static_player.stream = load(STATIC_PATH)
+	static_player.volume_db = -10
+	add_child(static_player)
+	static_player.play()
+	await static_player.finished
+	static_player.queue_free()
+	
+func _play_blip() -> void:
+	const STATIC_PATH := "res://Assets/Dialogue/blip.ogg"
+	if not ResourceLoader.exists(STATIC_PATH):
+		push_warning("Static file not found: %s" % STATIC_PATH)
+		return
+	var static_player := AudioStreamPlayer.new()
+	static_player.bus = "Sound"
+	static_player.stream = load(STATIC_PATH)
+	static_player.volume_db = 0
+	add_child(static_player)
+	static_player.play()
+	await static_player.finished
+	static_player.queue_free()
+	
+func _play_end_blip() -> void:
+	const STATIC_PATH := "res://Assets/Dialogue/end_blip.ogg"
+	if not ResourceLoader.exists(STATIC_PATH):
+		push_warning("Static file not found: %s" % STATIC_PATH)
+		return
+	var static_player := AudioStreamPlayer.new()
+	static_player.bus = "Sound"
+	static_player.stream = load(STATIC_PATH)
+	static_player.volume_db = -5
+	add_child(static_player)
+	static_player.play()
+	await static_player.finished
+	static_player.queue_free()
