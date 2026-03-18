@@ -146,3 +146,24 @@ func get_speed() -> float:
 
 func get_climb_input() -> float:
 	return 0.0
+	
+func play_dialogue(id: int) -> void:
+	var path := "res://Assets/Dialogue/%d.ogg" % id
+	if not ResourceLoader.exists(path):
+		push_warning("Dialogue file not found: %s" % path)
+		return
+	
+	var dialogue_player := AudioStreamPlayer.new()
+	dialogue_player.bus = "Sound"
+	dialogue_player.stream = load(path)
+	dialogue_player.volume_db = 5
+	add_child(dialogue_player)
+	dialogue_player.play()
+	await dialogue_player.finished
+	
+	var tween := create_tween()
+	tween.tween_property(dialogue_player, "volume_db", -80.0, 0.1)
+	await tween.finished
+	dialogue_player.queue_free()
+	
+	await get_tree().create_timer(1.5).timeout
