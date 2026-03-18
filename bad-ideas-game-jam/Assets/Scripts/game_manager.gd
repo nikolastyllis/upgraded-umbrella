@@ -133,7 +133,7 @@ func _process(_delta: float) -> void:
 		set_time_of_day(TimeOfDay.NIGHT, 120)
 		_play_act_3_container()
 		
-	if story_increment == 5 and _player_is_near(lifeboat.global_position):
+	if story_increment == 6 and _player_is_near(lifeboat.global_position):
 		story_increment += 1
 		_remove_objective()
 		_play_act_4_search()

@@ -5,5 +5,11 @@
 
 [node name="BIGJ_HeroContainer_01" unique_id=1608144133 instance=ExtResource("1_0xlyr")]
 
+[node name="Skeleton3D" parent="rigged_container" parent_id_path=PackedInt32Array(2090150442) index="7" unique_id=715198747]
+bones/1/rotation = Quaternion(0.70707107, -0.70707107, -0.007107604, 0.00710755)
+bones/2/rotation = Quaternion(0.5911693, 0.3879668, 0.5911701, -0.3879674)
+bones/3/rotation = Quaternion(0.7068714, 0.7068714, 0.018244434, 0.018244382)
+bones/4/rotation = Quaternion(-0.6400693, 0.3476041, 0.5904691, 0.34760463)
+
 [node name="StaticBody3D" parent="rigged_container/Skeleton3D/mesh_container_model" parent_id_path=PackedInt32Array(388592567) index="0" unique_id=1158672977]
 script = ExtResource("2_uhrcu")
