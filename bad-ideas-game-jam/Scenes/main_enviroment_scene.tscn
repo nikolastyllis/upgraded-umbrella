@@ -1896,7 +1896,8 @@ material_override = ExtResource("9_22tk6")
 mesh = ExtResource("7_y3af7")
 
 [node name="@MeshInstance3D@30350" type="MeshInstance3D" parent="container_array 7" unique_id=1677001942]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.6560504, 0, 3.2602456)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17.783476, 0, 3.2602444)
+visible = false
 material_override = ExtResource("9_22tk6")
 mesh = ExtResource("7_y3af7")
 

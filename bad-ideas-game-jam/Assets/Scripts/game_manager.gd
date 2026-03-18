@@ -10,6 +10,8 @@ extends Node3D
 @onready var store_room          = $Locations/StoreRoom
 @onready var bridge              = $Locations/Bridge
 @onready var lifeboat            = $Locations/Lifeboat
+@onready var infected_spawn_1     = $Locations/InfectedSpawn1
+@onready var infected_spawn_2     = $Locations/InfectedSpawn2
 
 @onready var environment = $"../Lighting/WorldEnvironment"
 @onready var lighting = $"../Lighting/DirectionalLight3D"
@@ -20,7 +22,7 @@ extends Node3D
 # environment -> sky -> sky_material -> shader -> shader_parameter -> time_of_day
 const DAY_TIME_OF_DAY = 0.5
 const NIGHT_TIME_OF_DAY = 0
-const SUNSET_TIME_OF_DAY = 0.3
+const SUNSET_TIME_OF_DAY = 0.25
 
 # lighting -> light -> light_color
 const DAY_LIGHT_COLOR = Color(1, 1 ,1)
@@ -40,7 +42,7 @@ const SUNSET_FOG_COLOR = Color(0.67, 0.31, 0.26)
 # environment -> volumetric fog -> volumetric_fog_density
 const DAY_FOG_DENSITY = 0.0
 const NIGHT_FOG_DENSITY = 0.02
-const SUNSET_FOG_DENSITY = 0.0
+const SUNSET_FOG_DENSITY = 0.02
 
 # ocean -> geometry -> material override -> shader_parameter -> shallow_color
 const DAY_SHALLOW_COLOR = Color(0.07, 0.19, 0.28)
@@ -67,6 +69,7 @@ var _is_night = false
 
 var player_has_interacted_with_container = false
 var player_has_slept = false
+var player_has_interacted_with_infected_container = false
 
 # ── DIALOGUE ────────────────────────────────────────────────────────────────
 
@@ -83,6 +86,9 @@ func _ready() -> void:
 @warning_ignore("shadowed_variable_base_class")
 func _player_is_near(position: Vector3) -> bool:
 	return (player.global_position - position).length() < 2
+	
+func _npcs_are_near(position: Vector3) -> bool:
+	return (twin_1.global_position - position).length() < 5 and (twin_2.global_position - position).length() < 5
 
 func _update_audio_and_rain() -> void:
 	var inside = player.is_inside()
@@ -114,11 +120,23 @@ func _process(_delta: float) -> void:
 	if story_increment == 4 and _player_is_near(store_room.global_position):
 		story_increment += 1
 		_remove_objective()
+		set_time_of_day(TimeOfDay.SUNSET, 120)
 		_play_act_2_store_room()
+	
+	if story_increment == 5 and _npcs_are_near(container.global_position):
+		twin_1.global_position = infected_spawn_1.global_position
+		twin_2.global_position = infected_spawn_1.global_position
 		
 	if story_increment == 5 and _player_is_near(container.global_position):
 		story_increment += 1
-		pass
+		_remove_objective()
+		set_time_of_day(TimeOfDay.NIGHT, 120)
+		_play_act_3_container()
+		
+	if story_increment == 5 and _player_is_near(lifeboat.global_position):
+		story_increment += 1
+		_remove_objective()
+		_play_act_4_search()
 
 # ── ACT 1 SEQUENCES ─────────────────────────────────────────────────────────
 
@@ -204,6 +222,42 @@ func _play_act_2_store_room():
 	player.toggle_movement_disabled()
 	_spawn_objective_marker(container)
 	_play_back_to_container_reminders()
+	
+func _play_act_3_container():
+	await _wait_for(10.0)
+	await player.play_dialogue(70)
+	await _wait_for(10.0)
+	await player.play_dialogue(71)
+	await _wait_for(10.0)
+	await player.play_dialogue(72)
+	await _wait_for(10.0)
+	await player.play_dialogue(73)
+	await _wait_for(10.0)
+	await twin_1.play_dialogue(79)
+	await _wait_for(2.0)
+	await player.play_dialogue(74)
+	await _wait_for(1.0)
+	await player.play_dialogue(75)
+	await _wait_for(5.0)
+	await twin_1.play_dialogue(76)
+	await player.play_dialogue(77)
+	await twin_1.play_dialogue(78)
+	_spawn_objective_marker(lifeboat)
+	
+func _play_act_4_search():
+	await _wait_for(5.0)
+	await player.play_dialogue(74)
+	_play_search_noises()
+	
+func _play_search_noises() -> void:
+	var rng = RandomNumberGenerator.new()
+	rng.randomize()
+	while true:
+		var wait_time = rng.randf_range(1.0, 60.0)
+		await _wait_for(wait_time)
+		var dialogue_id = rng.randi_range(80, 91)
+		var speaker = twin_1 if rng.randi_range(0, 1) == 0 else twin_2
+		await speaker.play_dialogue(dialogue_id)
 
 func _play_store_room_reminders() -> void:
 	while true:

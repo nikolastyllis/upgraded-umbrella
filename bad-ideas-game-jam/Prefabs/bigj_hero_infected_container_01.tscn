@@ -1,0 +1,9 @@
+[gd_scene format=3 uid="uid://ctmky5y2swqpy"]
+
+[ext_resource type="PackedScene" uid="uid://c7cub65omxm73" path="res://Prefabs/bigj_hero_container_01.tscn" id="1_0xlyr"]
+[ext_resource type="Script" uid="uid://bshnfm5n7dcjp" path="res://Assets/Scripts/infected_container_door.gd" id="2_uhrcu"]
+
+[node name="BIGJ_HeroContainer_01" unique_id=1608144133 instance=ExtResource("1_0xlyr")]
+
+[node name="StaticBody3D" parent="rigged_container/Skeleton3D/mesh_container_model" parent_id_path=PackedInt32Array(388592567) index="0" unique_id=1158672977]
+script = ExtResource("2_uhrcu")
