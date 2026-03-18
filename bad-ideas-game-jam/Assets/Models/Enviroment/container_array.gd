@@ -196,7 +196,8 @@ func generate_containers() -> void:
 				add_child(container)
 
 				if Engine.is_editor_hint():
-					container.owner = get_tree().edited_scene_root
+					if get_tree() != null:
+						container.owner = get_tree().edited_scene_root
 
 	notify_property_list_changed()
 

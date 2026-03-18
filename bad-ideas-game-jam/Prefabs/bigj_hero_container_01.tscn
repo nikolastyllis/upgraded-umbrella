@@ -1,0 +1,22 @@
+[gd_scene format=3 uid="uid://c7cub65omxm73"]
+
+[ext_resource type="PackedScene" uid="uid://8fpxblujja2h" path="res://Assets/Models/BIGJ_HeroContainer_01.glb" id="1_te61h"]
+[ext_resource type="Script" uid="uid://d3xagsnt1fgaq" path="res://Assets/Scripts/container_door.gd" id="2_ot4lo"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ot4lo"]
+size = Vector3(2.6167486, 2.7541444, 6.5329328)
+
+[node name="BIGJ_HeroContainer_01" unique_id=1608144133 instance=ExtResource("1_te61h")]
+
+[node name="Skeleton3D" parent="rigged_container" parent_id_path=PackedInt32Array(2090150442) index="7" unique_id=715198747]
+bones/1/rotation = Quaternion(-2.6692543e-08, -2.6692543e-08, -0.7071068, 0.7071068)
+bones/2/rotation = Quaternion(0.7071063, -1.0536721e-08, 0.70710737, 1.0536705e-08)
+bones/3/rotation = Quaternion(-2.6692543e-08, 2.6692543e-08, 0.7071068, 0.7071068)
+bones/4/rotation = Quaternion(-0.7071063, 0, 0.70710737, 0)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="rigged_container/Skeleton3D/mesh_container_model" parent_id_path=PackedInt32Array(388592567) index="0" unique_id=1581912566]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.2858173, 0)
+script = ExtResource("2_ot4lo")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="rigged_container/Skeleton3D/mesh_container_model/StaticBody3D" index="0" unique_id=1494637675]
+shape = SubResource("BoxShape3D_ot4lo")

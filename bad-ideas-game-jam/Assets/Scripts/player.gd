@@ -28,6 +28,7 @@ const DIALOG_SCENE = preload("res://Prefabs/dialog.tscn")
 var sensitivity := 0.25
 var interaction_hold_timer := 0.0
 var interaction_disabled: bool = false
+var can_interact: bool = true
 var interactable: Interactable = null
 var use_camera_position_right := true
 var current_camera_position: Vector3
@@ -51,6 +52,7 @@ func toggle_movement_disabled():
 	crosshair_ui.visible = not movement_disabled
 	tween_camera_fov(FOV_DISABLED if movement_disabled else FOV_NORMAL)
 	sensitivity = SENSITIVITY_DISABLED if movement_disabled else SENSITIVITY_NORMAL
+	can_interact = false if movement_disabled else true
 
 func tween_camera_fov(target_fov: float) -> void:
 	var tween = create_tween()
@@ -146,6 +148,8 @@ func handle_quit() -> void:
 		get_tree().quit()
 
 func handle_interact(delta: float) -> void:
+	if not can_interact:
+		return
 	var state_machine = animation_tree["parameters/playback"]
 	if interactable:
 		if Input.is_action_pressed("interact") and not interaction_disabled:
@@ -177,6 +181,8 @@ func reset_interact_state() -> void:
 	interaction_disabled = false
 
 func update_interactable() -> void:
+	if not can_interact:
+		return
 	var new_interactable: Interactable = null
 	if interact_raycast.is_colliding():
 		var collider = interact_raycast.get_collider()
@@ -227,18 +233,40 @@ func is_inside() -> bool:
 
 	return hits >= INSIDE_RAY_COUNT * 0.99
 
-func fade_in_camera(duration: float = 1.0) -> void:
-	var canvas_layer := CanvasLayer.new()
-	canvas_layer.layer = 128  # Render on top of everything
-	add_child(canvas_layer)
+var _fade_layer: CanvasLayer = null
 
+func fade_out_camera(duration: float = 1.0) -> void:
+	_fade_layer = CanvasLayer.new()
+	_fade_layer.layer = 128
+	add_child(_fade_layer)
 	var overlay := ColorRect.new()
-	overlay.color = Color.BLACK
-	canvas_layer.add_child(overlay)
-	# Size must be set after adding to the tree so the viewport is accessible
+	overlay.color = Color(0, 0, 0, 0)
+	_fade_layer.add_child(overlay)
 	overlay.position = Vector2.ZERO
 	overlay.size = get_viewport().get_visible_rect().size
+	var tween := create_tween()
+	tween.tween_property(overlay, "color:a", 1.0, duration).set_ease(Tween.EASE_IN_OUT)
+	await tween.finished
 
+
+func fade_in_camera(duration: float = 1.0) -> void:
+	var canvas_layer: CanvasLayer
+	if _fade_layer:
+		canvas_layer = _fade_layer
+		_fade_layer = null
+	else:
+		canvas_layer = CanvasLayer.new()
+		canvas_layer.layer = 128
+		add_child(canvas_layer)
+		@warning_ignore("confusable_local_declaration")
+		var overlay := ColorRect.new()
+		overlay.color = Color.BLACK
+		canvas_layer.add_child(overlay)
+		overlay.position = Vector2.ZERO
+		overlay.size = get_viewport().get_visible_rect().size
+
+	var overlay := canvas_layer.get_child(0) as ColorRect
 	var tween := create_tween()
 	tween.tween_property(overlay, "color:a", 0.0, duration).set_ease(Tween.EASE_IN_OUT)
-	tween.tween_callback(canvas_layer.queue_free)
+	await tween.finished
+	canvas_layer.queue_free()

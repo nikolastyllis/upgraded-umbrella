@@ -5,6 +5,7 @@ extends Node3D
 @onready var player = $"../Player"
 
 @onready var bedroom             = $Locations/Bedroom
+@onready var bed             	 = $Locations/Bed
 @onready var container           = $Locations/Container
 @onready var store_room          = $Locations/StoreRoom
 @onready var bridge              = $Locations/Bridge
@@ -65,6 +66,7 @@ var story_increment   = 1
 var _is_night = false
 
 var player_has_interacted_with_container = false
+var player_has_slept = false
 
 # ── DIALOGUE ────────────────────────────────────────────────────────────────
 
@@ -101,7 +103,22 @@ func _process(_delta: float) -> void:
 		
 	if story_increment == 2 and player_has_interacted_with_container:
 		story_increment += 1
+		_remove_objective()
 		_play_act1_shift_over()
+		
+	if story_increment == 3 and player_has_slept:
+		story_increment += 1
+		_remove_objective()
+		_play_act3_wake_up()
+		
+	if story_increment == 4 and _player_is_near(store_room.global_position):
+		story_increment += 1
+		_remove_objective()
+		_play_act_2_store_room()
+		
+	if story_increment == 5 and _player_is_near(container.global_position):
+		story_increment += 1
+		pass
 
 # ── ACT 1 SEQUENCES ─────────────────────────────────────────────────────────
 
@@ -139,6 +156,143 @@ func _play_act_1_start() -> void:
 	await twin_1.play_dialogue(32)
 	_play_container_reminders()
 	
+func _play_act1_shift_over():
+	await _play_sound("bell")
+	await twin_1.play_dialogue(25)
+	await player.play_dialogue(26)
+	await twin_1.play_dialogue(27)
+	twin_1.play_dialogue(28)
+	await twin_2.play_dialogue(29)
+	await twin_2.play_dialogue(30)
+	await twin_1.play_dialogue(31)
+	twin_1.set_target_position(bedroom.global_position)
+	twin_2.set_target_position(bedroom.global_position)
+	_spawn_objective_marker(bed)
+	
+func _play_act3_wake_up():
+	await _wait_for(3.0)
+	twin_1.set_target_position(player.global_position)
+	twin_2.set_target_position(player.global_position)
+	player.toggle_movement_disabled()
+	await _play_sound("bell")
+	await twin_1.play_dialogue(36)
+	await player.play_dialogue(37)
+	await twin_2.play_dialogue(38)
+	await twin_2.play_dialogue(60)
+	await twin_1.play_dialogue(61)
+	await twin_2.play_dialogue(62)
+	await twin_1.play_dialogue(63)
+	await twin_1.play_dialogue(64)
+	await twin_2.play_dialogue(39)
+	twin_1.set_target_position(container.global_position)
+	twin_2.set_target_position(container.global_position)
+	player.toggle_movement_disabled()
+	_spawn_objective_marker(store_room)
+	_play_store_room_reminders()
+
+func _play_act_2_store_room():
+	await _wait_for(2.0)
+	player.toggle_movement_disabled()
+	await twin_1.play_dialogue(41)
+	await player.play_dialogue(42)
+	await twin_1.play_dialogue(43)
+	await twin_1.play_dialogue(44)
+	await _wait_for(3.0)
+	await twin_2.play_dialogue(45)
+	player.toggle_movement_disabled()
+	_spawn_objective_marker(container)
+	_play_back_to_container_reminders()
+
+func _play_store_room_reminders() -> void:
+	while true:
+		await _wait_for(20.0)
+		if story_increment != 4:
+			return
+		await twin_1.play_dialogue(65)
+		
+		await _wait_for(20.0)
+		if story_increment != 4:
+			return
+		await twin_1.play_dialogue(46)
+		
+		await _wait_for(20.0)
+		if story_increment != 4:
+			return
+		await twin_2.play_dialogue(47)
+		
+		await _wait_for(20.0)
+		if story_increment != 4:
+			return
+		await twin_1.play_dialogue(48)
+		
+		await _wait_for(20.0)
+		if story_increment != 4:
+			return
+		await twin_2.play_dialogue(49)
+		
+		await _wait_for(20.0)
+		if story_increment != 4:
+			return
+		await twin_2.play_dialogue(50)
+		
+		await _wait_for(20.0)
+		if story_increment != 4:
+			return
+		await twin_1.play_dialogue(66)
+		
+		await _wait_for(20.0)
+		if story_increment != 4:
+			return
+		await twin_2.play_dialogue(67)
+
+func _play_back_to_container_reminders() -> void:
+	while true:
+		
+		await _wait_for(20.0)
+		if story_increment != 5:
+			return
+		await twin_1.play_dialogue(54)
+		
+		await _wait_for(20.0)
+		if story_increment != 5:
+			return
+		await twin_1.play_dialogue(55)
+		
+		await _wait_for(20.0)
+		if story_increment != 5:
+			return
+		await twin_1.play_dialogue(56)
+		
+		await _wait_for(20.0)
+		if story_increment != 5:
+			return
+		await twin_1.play_dialogue(57)
+		
+		await _wait_for(20.0)
+		if story_increment != 5:
+			return
+		await twin_1.play_dialogue(58)
+		
+		await _wait_for(20.0)
+		if story_increment != 5:
+			return
+		await twin_1.play_dialogue(59)
+		
+		await _wait_for(20.0)
+		if story_increment != 5:
+			return
+		await twin_2.play_dialogue(51)
+		
+		await _wait_for(20.0)
+		if story_increment != 5:
+			return
+		await twin_1.play_dialogue(53)
+		
+		await _wait_for(20.0)
+		if story_increment != 5:
+			return
+		await twin_2.play_dialogue(52)
+		
 func _play_container_reminders() -> void:
 	# Reminder 1 — gentle nudge (audio 33), after 30 s
 	await _wait_for(30.0)
@@ -158,15 +312,6 @@ func _play_container_reminders() -> void:
 		if story_increment != 2:
 			return
 		await twin_1.play_dialogue(35)
-
-func _play_act1_shift_over():
-	await twin_1.play_dialogue(25)
-	await player.play_dialogue(26)
-	await twin_1.play_dialogue(27)
-	twin_1.play_dialogue(28)
-	await twin_2.play_dialogue(29)
-	await twin_2.play_dialogue(30)
-	await twin_1.play_dialogue(31)
 
 # ── HELPERS ─────────────────────────────────────────────────────────────────
 
@@ -362,3 +507,17 @@ func _start_night_lightning() -> void:
 		await _wait_for(wait_time)
 		if _is_night:
 			lightning_strike()
+
+func _play_sound(sound: String) -> void:
+	var STATIC_PATH := "res://Assets/Sound/%s.ogg" % sound
+	if not ResourceLoader.exists(STATIC_PATH):
+		push_warning("Static file not found: %s" % STATIC_PATH)
+		return
+	var static_player := AudioStreamPlayer.new()
+	static_player.bus = "Sound"
+	static_player.stream = load(STATIC_PATH)
+	static_player.volume_db = 0.0
+	add_child(static_player)
+	static_player.play()
+	await static_player.finished
+	static_player.queue_free()
