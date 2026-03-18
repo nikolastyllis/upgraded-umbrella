@@ -195,7 +195,6 @@ func play_dialogue(id: int) -> void:
 
 	await get_tree().create_timer(1.5).timeout
 
-
 func _play_static() -> void:
 	const STATIC_PATH := "res://Assets/Dialogue/static.ogg"
 	if not ResourceLoader.exists(STATIC_PATH):
@@ -218,7 +217,7 @@ func _play_blip() -> void:
 	var static_player := AudioStreamPlayer.new()
 	static_player.bus = "Sound"
 	static_player.stream = load(STATIC_PATH)
-	static_player.volume_db = 0
+	static_player.volume_db = -10
 	add_child(static_player)
 	static_player.play()
 	await static_player.finished
@@ -232,7 +231,7 @@ func _play_end_blip() -> void:
 	var static_player := AudioStreamPlayer.new()
 	static_player.bus = "Sound"
 	static_player.stream = load(STATIC_PATH)
-	static_player.volume_db = -5
+	static_player.volume_db = -10
 	add_child(static_player)
 	static_player.play()
 	await static_player.finished
