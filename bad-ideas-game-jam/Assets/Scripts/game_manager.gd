@@ -129,6 +129,8 @@ func _process(_delta: float) -> void:
 		_play_act_2_store_room()
 	
 	if story_increment == 5 and _npcs_are_near(container.global_position):
+		twin_1.set_target_position(null)
+		twin_2.set_target_position(null)
 		twin_1.global_position = infected_spawn_1.global_position
 		twin_2.global_position = infected_spawn_1.global_position
 		
@@ -142,6 +144,10 @@ func _process(_delta: float) -> void:
 		story_increment += 1
 		_remove_objective()
 		_play_act_4_search()
+		
+	if story_increment == 7 and player_has_interacted_with_infected_container:
+		twin_1.set_target_position(player.global_position)
+		twin_2.set_target_position(player.global_position)
 
 # ── ACT 1 SEQUENCES ─────────────────────────────────────────────────────────
 
