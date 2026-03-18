@@ -207,7 +207,7 @@ func _play_act_2_store_room():
 
 func _play_store_room_reminders() -> void:
 	while true:
-		await _wait_for(20.0)
+		await _wait_for(35.0)
 		if story_increment != 4:
 			return
 		await twin_1.play_dialogue(65)
