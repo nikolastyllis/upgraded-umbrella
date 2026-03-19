@@ -13,6 +13,8 @@ extends BaseCharacter
 @onready var dialog_control := $CameraOrigin/SpringArm3D/Camera3D/DialogControl
 @onready var crosshair_ui := $CameraOrigin/SpringArm3D/Camera3D/CrosshairUI
 
+@onready var torch = $SpotLight3D
+
 @onready var camera := $CameraOrigin/SpringArm3D/Camera3D
 
 const FOV_NORMAL := 80.0
@@ -41,6 +43,7 @@ func _ready() -> void:
 	use_camera_position_right = false
 	current_camera_position = camera_position_left.position
 	camera_origin.position = current_camera_position
+	torch.light_energy = 0.0
 
 func _input(event: InputEvent) -> void:
 	if not event is InputEventMouseMotion:
@@ -88,6 +91,14 @@ func _physics_process(delta: float) -> void:
 	if Input.is_action_just_pressed("ui_accept") and is_climbing:
 		if is_climbing:
 			stop_climbing()
+			
+	if Input.is_action_just_pressed("torch"):
+		await _play_torch()
+		if torch.light_energy == 2.0:
+			torch.light_energy = 0.0
+		else:
+			torch.light_energy = 2.0
+			
 	apply_gravity(delta)
 	if not movement_disabled:
 		apply_movement(get_raw_input_dir())

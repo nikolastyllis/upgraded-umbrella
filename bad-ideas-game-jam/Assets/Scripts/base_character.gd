@@ -1,7 +1,7 @@
 class_name BaseCharacter
 extends CharacterBody3D
 
-@export var rotation_speed := 5.0
+@export var rotation_speed := 0.5
 @onready var animation_tree: AnimationTree = $Character/Armature/AnimationTree
 @onready var character := $Character
 @onready var character_anchor := $CharacterAnchor
@@ -238,6 +238,20 @@ func _play_end_blip() -> void:
 	static_player.bus = "Sound"
 	static_player.stream = load(STATIC_PATH)
 	static_player.volume_db = -10
+	add_child(static_player)
+	static_player.play()
+	await static_player.finished
+	static_player.queue_free()
+
+func _play_torch() -> void:
+	const STATIC_PATH := "res://Assets/Sound/torch.ogg"
+	if not ResourceLoader.exists(STATIC_PATH):
+		push_warning("Static file not found: %s" % STATIC_PATH)
+		return
+	var static_player := AudioStreamPlayer.new()
+	static_player.bus = "Sound"
+	static_player.stream = load(STATIC_PATH)
+	static_player.volume_db = 5.0
 	add_child(static_player)
 	static_player.play()
 	await static_player.finished

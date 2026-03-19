@@ -355,17 +355,7 @@ func _play_back_to_container_reminders() -> void:
 		await _wait_for(20.0)
 		if story_increment != 5:
 			return
-		await twin_1.play_dialogue(54)
-		
-		await _wait_for(20.0)
-		if story_increment != 5:
-			return
 		await twin_1.play_dialogue(55)
-		
-		await _wait_for(20.0)
-		if story_increment != 5:
-			return
-		await twin_1.play_dialogue(56)
 		
 		await _wait_for(20.0)
 		if story_increment != 5:
