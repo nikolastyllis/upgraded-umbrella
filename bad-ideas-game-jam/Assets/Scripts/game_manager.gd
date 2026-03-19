@@ -219,6 +219,7 @@ func _play_act1_shift_over():
 	_dialogue_active = true
 	await _wait_for(3.0)
 	await _play_sound("bell")
+	player.toggle_movement_disabled()
 	await twin_1.play_dialogue(25)
 	await player.play_dialogue(26)
 	await twin_1.play_dialogue(27)
@@ -230,6 +231,7 @@ func _play_act1_shift_over():
 	await _wait_for(3.0)
 	twin_1.set_target_position(bedroom.global_position)
 	_spawn_objective_marker(bed)
+	player.toggle_movement_disabled()
 	_dialogue_active = false
 	
 func _play_act3_wake_up():

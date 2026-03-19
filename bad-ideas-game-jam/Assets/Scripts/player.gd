@@ -54,6 +54,11 @@ func toggle_movement_disabled():
 	sensitivity = SENSITIVITY_DISABLED if movement_disabled else SENSITIVITY_NORMAL
 	can_interact = false if movement_disabled else true
 	var npcs = get_tree().get_nodes_in_group("npcs")
+	if movement_disabled:
+		velocity.x = 0
+		velocity.z = 0
+		var state_machine = animation_tree["parameters/playback"]
+		state_machine.travel("Idle")
 	if movement_disabled and npcs.size() >= 2:
 		var midpoint = (npcs[0].global_position + npcs[1].global_position) * 0.5
 		var direction = (midpoint - global_position)
