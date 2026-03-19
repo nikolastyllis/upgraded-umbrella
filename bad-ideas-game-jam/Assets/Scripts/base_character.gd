@@ -1,7 +1,7 @@
 class_name BaseCharacter
 extends CharacterBody3D
 
-@export var rotation_speed := 0.5
+@export var rotation_speed := 5
 @onready var animation_tree: AnimationTree = $Character/Armature/AnimationTree
 @onready var character := $Character
 @onready var character_anchor := $CharacterAnchor
