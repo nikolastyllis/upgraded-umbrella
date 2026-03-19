@@ -248,7 +248,7 @@ visible = false
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -6.3336296, 11.94598, -80.99552)
 
 [node name="BIGJ_HeroContainer_02" parent="NavigationRegion3D" unique_id=2052502867 instance=ExtResource("15_gluub")]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -4.231069, 12.187472, -51.02711)
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -4.231069, 12.187472, -50.614513)
 
 [node name="Player" parent="." unique_id=1647912674 instance=ExtResource("9_r4e2n")]
 transform = Transform3D(0.028096199, 0, -0.99960524, 0, 0.99999994, 0, 0.9996052, 0, 0.028096229, -2.8794155, 6.9538407, -36.712555)
