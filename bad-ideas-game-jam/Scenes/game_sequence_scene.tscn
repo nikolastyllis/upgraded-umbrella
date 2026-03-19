@@ -53,7 +53,7 @@ colors = PackedColorArray(0, 0, 0, 1, 0.050314467, 0.050314467, 0.050314467, 1, 
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_4n1t5"]
 
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_ti2qv"]
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_gluub"]
 noise = SubResource("FastNoiseLite_4n1t5")
 color_ramp = SubResource("Gradient_to28j")
 
@@ -75,7 +75,7 @@ domain_warp_frequency = 5.975
 domain_warp_fractal_octaves = 3
 domain_warp_fractal_lacunarity = 8.73
 
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_7xckk"]
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_t0b6u"]
 noise = SubResource("FastNoiseLite_ti2qv")
 color_ramp = SubResource("Gradient_4n1t5")
 seamless = true
@@ -86,7 +86,7 @@ colors = PackedColorArray(0, 0, 0, 1, 0.030320821, 0.030320821, 0.030320821, 1, 
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_3fxhi"]
 
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_m206l"]
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_yiumw"]
 noise = SubResource("FastNoiseLite_3fxhi")
 color_ramp = SubResource("Gradient_h3qab")
 seamless = true
@@ -119,7 +119,7 @@ shader_parameter/roughness = 0.04
 shader_parameter/fresnel_power = 1.0
 shader_parameter/horizon_start = 200.0
 shader_parameter/horizon_end = 800.0
-shader_parameter/foam_noise = SubResource("NoiseTexture2D_7xckk")
+shader_parameter/foam_noise = SubResource("NoiseTexture2D_t0b6u")
 shader_parameter/foam_color = Color(1, 1, 1, 1)
 shader_parameter/foam_amount = 1.495
 shader_parameter/foam_scale = 0.03
@@ -127,7 +127,7 @@ shader_parameter/foam_speed = Vector2(0, -0.1)
 shader_parameter/patch_threshold = 13.94
 shader_parameter/patch_softness = 9.6
 shader_parameter/patch_strength = 0.55
-shader_parameter/crest_noise = SubResource("NoiseTexture2D_ti2qv")
+shader_parameter/crest_noise = SubResource("NoiseTexture2D_gluub")
 shader_parameter/crest_scale = 0.0
 shader_parameter/crest_speed = Vector2(0, 0)
 shader_parameter/crest_screen_strength = 1.0
@@ -145,7 +145,7 @@ shader_parameter/wake_width_start = 5.91
 shader_parameter/wake_width_end = 58.36
 shader_parameter/wake_edge_soft = 4.57
 shader_parameter/wake_strength = 0.69
-shader_parameter/wake_edge_noise = SubResource("NoiseTexture2D_m206l")
+shader_parameter/wake_edge_noise = SubResource("NoiseTexture2D_yiumw")
 shader_parameter/wake_edge_noise_scale = 0.07
 shader_parameter/wake_edge_noise_speed = Vector2(0, -0.9)
 shader_parameter/wake_edge_band = 0.285
@@ -251,7 +251,7 @@ transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -6.3336296, 11.94598, -80.995
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -4.231069, 12.187472, -50.614513)
 
 [node name="Player" parent="." unique_id=1647912674 instance=ExtResource("9_r4e2n")]
-transform = Transform3D(0.028096199, 0, -0.99960524, 0, 0.99999994, 0, 0.9996052, 0, 0.028096229, -2.8794155, 6.9538407, -36.712555)
+transform = Transform3D(0.028096199, 0, -0.99960524, 0, 0.99999994, 0, 0.9996052, 0, 0.028096229, -2.8794155, 6.942821, -36.712555)
 
 [node name="Rain" type="GPUParticles3D" parent="Player" unique_id=645779901]
 transform = Transform3D(-0.99752617, 0, 0.07029611, 0, 1, 0, -0.07029611, 0, -0.99752617, 0, 2.0065289, 0)

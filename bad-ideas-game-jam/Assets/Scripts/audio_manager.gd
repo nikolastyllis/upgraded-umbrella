@@ -1,7 +1,9 @@
 extends Node3D
 
-enum Track { THUNDER, THUNDER2, RAIN, INSIDE, OUTSIDE }
+enum Track { THUNDER, THUNDER2, RAIN, INSIDE, OUTSIDE, AMBIENT1, AMBIENT2 }
 
+var ambient1_stream: AudioStream = preload("res://Music/ambient1.ogg")
+var ambient2_stream: AudioStream = preload("res://Music/ambient2.ogg")
 var thunder_stream:  AudioStream = preload("res://Assets/Sound/thunder.ogg")
 var thunder2_stream: AudioStream = preload("res://Assets/Sound/thunder2.ogg")
 var rain_stream:     AudioStream = preload("res://Assets/Sound/rain.ogg")
@@ -11,6 +13,8 @@ var outside_stream:  AudioStream = preload("res://Assets/Sound/outside.ogg")
 const FADE_SPEED: float = 20
 
 const AMBIENT_TRACKS = [Track.RAIN, Track.INSIDE, Track.OUTSIDE]
+
+const MUSIC_TRACKS = [Track.AMBIENT1, Track.AMBIENT2]
 
 
 var _players: Dictionary = {}
@@ -22,6 +26,8 @@ func _ready() -> void:
 	_players[Track.RAIN]     = _create_player(rain_stream,    true)
 	_players[Track.INSIDE]   = _create_player(inside_stream,  true)
 	_players[Track.OUTSIDE]  = _create_player(outside_stream, true)
+	_players[Track.AMBIENT1] = _create_player(ambient1_stream, false, "Music")
+	_players[Track.AMBIENT2] = _create_player(ambient2_stream, false, "Music")
 
 	# Initialise all targets to silent
 	for track in _players:
@@ -38,9 +44,16 @@ func _process(delta: float) -> void:
 		p.volume_db = move_toward(p.volume_db, target, delta * FADE_SPEED)
 		if p.playing and target <= -80.0 and p.volume_db <= -79.0:
 			p.stop()
+			
+	for track in MUSIC_TRACKS:
+		var p: AudioStreamPlayer = _players[track]
+		var target: float = _targets[track]
+		p.volume_db = move_toward(p.volume_db, target, delta * FADE_SPEED)
+		if p.playing and target <= -80.0 and p.volume_db <= -79.0:
+			p.stop()
 
 
-func _create_player(stream: AudioStream, looping: bool = false) -> AudioStreamPlayer:
+func _create_player(stream: AudioStream, looping: bool = false, bus: String = "Sound") -> AudioStreamPlayer:
 	if looping:
 		if stream is AudioStreamOggVorbis:
 			stream.loop = true
@@ -49,7 +62,7 @@ func _create_player(stream: AudioStream, looping: bool = false) -> AudioStreamPl
 	var p := AudioStreamPlayer.new()
 	p.stream = stream
 	p.volume_db = -80.0
-	p.bus = "Sound"
+	p.bus = bus
 	add_child(p)
 	return p
 
@@ -60,6 +73,9 @@ func _create_player(stream: AudioStream, looping: bool = false) -> AudioStreamPl
 func set_target(track: Track, db: float) -> void:
 	_targets[track] = db
 
+func fade_out_music() -> void:
+	for track in MUSIC_TRACKS:
+		_targets[track] = -80.0
 
 # One-shot playback with randomisation for thunder variants
 func play(track: Track, target_db: float = 0.0) -> void:
@@ -68,6 +84,14 @@ func play(track: Track, target_db: float = 0.0) -> void:
 		p = _players[[Track.THUNDER, Track.THUNDER2].pick_random()]
 		p.pitch_scale = randf_range(0.8, 1.2)
 		p.volume_db   = target_db + randf_range(0.0, 3.0)
+	elif track == Track.AMBIENT1 or track == Track.AMBIENT2:
+		p = _players[track]
+		if p.playing:
+			return
+		p.pitch_scale = randf_range(0.95, 1.05)
+		p.volume_db   = -80.0
+		_targets[track] = target_db   # _process will fade it up
+		p.play()
 	else:
 		p = _players[track]
 		p.volume_db = target_db

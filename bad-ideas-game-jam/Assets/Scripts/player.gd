@@ -16,7 +16,7 @@ extends BaseCharacter
 @onready var camera := $CameraOrigin/SpringArm3D/Camera3D
 
 const FOV_NORMAL := 80.0
-const FOV_DISABLED := 50.0
+const FOV_DISABLED := 60.0
 
 const SENSITIVITY_NORMAL = 0.25
 const SENSITIVITY_DISABLED = 0.1
@@ -53,6 +53,20 @@ func toggle_movement_disabled():
 	tween_camera_fov(FOV_DISABLED if movement_disabled else FOV_NORMAL)
 	sensitivity = SENSITIVITY_DISABLED if movement_disabled else SENSITIVITY_NORMAL
 	can_interact = false if movement_disabled else true
+	var npcs = get_tree().get_nodes_in_group("npcs")
+	if movement_disabled and npcs.size() >= 2:
+		var midpoint = (npcs[0].global_position + npcs[1].global_position) * 0.5
+		var direction = (midpoint - global_position)
+		direction.y = 0
+		if direction.length() > 0.01:
+			var target_angle = atan2(direction.x, direction.z)
+			var tween = create_tween()
+			tween.tween_method(
+				func(angle: float): rotation.y = angle,
+				rotation.y,
+				target_angle,
+				0.4
+			).set_ease(Tween.EASE_IN_OUT).set_trans(Tween.TRANS_QUAD)
 
 func tween_camera_fov(target_fov: float) -> void:
 	var tween = create_tween()
@@ -74,8 +88,8 @@ func _physics_process(delta: float) -> void:
 		apply_movement(get_raw_input_dir())
 		update_movement_animation(get_raw_input_dir())
 		update_character_rotation(rotation.y, delta)
+		move_and_slide()
 		
-	move_and_slide()
 	dismount_ladder()
 	update_climb_position()
 	if climb_cooldown > 0:

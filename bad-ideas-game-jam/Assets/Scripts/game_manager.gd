@@ -68,6 +68,11 @@ const SUNSET_HORIZON_COLOR = Color(0.58, 0.71, 0.85)
 var current_objective = null
 var story_increment   = 1
 var _is_night = false
+var _dialogue_active := false:
+	set(value):              # runs every time you do _dialogue_active = something
+		_dialogue_active = value             # actually store the new value
+		if value:                            # if it was set to true...
+			audio_manager.fade_out_music()   # ...fade the music out immediately
 
 var player_has_interacted_with_container = false
 var player_has_slept = false
@@ -86,6 +91,7 @@ var dialogue = {
 func _ready() -> void:
 	player.toggle_movement_disabled()
 	set_time_of_day(TimeOfDay.DAY, 0.1)
+	_ambient_music_loop()
 
 @warning_ignore("shadowed_variable_base_class")
 func _player_is_near(position: Vector3) -> bool:
@@ -103,6 +109,18 @@ func _update_audio_and_rain() -> void:
 	audio_manager.set_target(audio_manager.Track.OUTSIDE,  -10.0   if not inside              else -40.0)
 	audio_manager.set_target(audio_manager.Track.RAIN,     -10.0  if _is_night and not inside else -40.0)
 	rain.visible = _is_night and not inside
+
+func _ambient_music_loop() -> void:
+	var rng := RandomNumberGenerator.new()
+	rng.randomize()
+	while story_increment <= 5:
+		var wait_time := rng.randf_range(40.0, 120.0)
+		await _wait_for(wait_time)
+		if story_increment > 5 or _dialogue_active:
+			continue
+		var track = audio_manager.Track.AMBIENT1 if rng.randi_range(0, 1) == 0 \
+				else audio_manager.Track.AMBIENT2
+		audio_manager.play(track, -12.0)
 
 func _process(_delta: float) -> void:
 	
@@ -162,6 +180,7 @@ func _process(_delta: float) -> void:
 # ── ACT 1 SEQUENCES ─────────────────────────────────────────────────────────
 
 func _play_act_1_start() -> void:
+	_dialogue_active = true
 	player.fade_in_camera(10)
 	await _wait_for(3)
 	await twin_1.play_dialogue(1)
@@ -194,8 +213,10 @@ func _play_act_1_start() -> void:
 	player.toggle_movement_disabled()
 	await twin_1.play_dialogue(32)
 	_play_container_reminders()
+	_dialogue_active = false
 	
 func _play_act1_shift_over():
+	_dialogue_active = true
 	await _wait_for(3.0)
 	await _play_sound("bell")
 	await twin_1.play_dialogue(25)
@@ -209,8 +230,10 @@ func _play_act1_shift_over():
 	await _wait_for(3.0)
 	twin_1.set_target_position(bedroom.global_position)
 	_spawn_objective_marker(bed)
+	_dialogue_active = false
 	
 func _play_act3_wake_up():
+	_dialogue_active = true
 	await _wait_for(3.0)
 	twin_1.set_target_position(player.global_position)
 	twin_2.set_target_position(player.global_position)
@@ -230,21 +253,23 @@ func _play_act3_wake_up():
 	player.toggle_movement_disabled()
 	_spawn_objective_marker(store_room)
 	_play_store_room_reminders()
+	_dialogue_active = false
 
 func _play_act_2_store_room():
+	_dialogue_active = true
 	await _wait_for(2.0)
-	player.toggle_movement_disabled()
 	await twin_1.play_dialogue(41)
 	await player.play_dialogue(42)
 	await twin_1.play_dialogue(43)
 	await twin_1.play_dialogue(44)
 	await _wait_for(3.0)
 	await twin_2.play_dialogue(45)
-	player.toggle_movement_disabled()
 	_spawn_objective_marker(container)
 	_play_back_to_container_reminders()
+	_dialogue_active = false
 	
 func _play_act_3_container():
+	_dialogue_active = true
 	await _wait_for(10.0)
 	await player.play_dialogue(70)
 	await _wait_for(10.0)
@@ -264,6 +289,7 @@ func _play_act_3_container():
 	await player.play_dialogue(77)
 	await twin_1.play_dialogue(78)
 	_spawn_objective_marker(lifeboat)
+	_dialogue_active = false
 	
 func _play_act_4_search():
 	await _wait_for(5.0)
