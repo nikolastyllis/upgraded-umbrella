@@ -161,12 +161,12 @@ func play_dialogue(id: int) -> void:
 	var use_blip = false
 	
 	if self is NPC:
-		use_radio = global_position.distance_to(player_node.global_position) > 10.0
+		use_radio = global_position.distance_to(player_node.global_position) > 7.0
 		
 	if self is Player:
 		var npcs = get_tree().get_nodes_in_group("npcs")
 		for npc in npcs:
-			use_blip = global_position.distance_to(npc.global_position) > 10.0 or use_blip
+			use_blip = global_position.distance_to(npc.global_position) > 7.0 or use_blip
 	
 	if use_radio:
 		await _play_static()

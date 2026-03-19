@@ -15,7 +15,15 @@ func _process(_delta: float) -> void:
 		_play_sound("door2")
 		animation_player.play("Act_2_open")
 		opened_act_2 = true
-
+		$ClosedCollision.disabled = true
+		$OpenCollision3.disabled = false
+		$OpenCollision4.disabled = false
+		$OpenCollision5.disabled = false
+		$OpenCollision6.disabled = false
+		$OpenCollision7.disabled = false
+		await animation_player.animation_finished
+		game_manager.rebake()
+		
 func update_action_text():
 	action_text = "Cut open"
 	
@@ -27,8 +35,6 @@ func on_interact(_player):
 	game_manager.player_has_interacted_with_container = true
 	opened_act_1 = true
 	_play_sound("door")
-	await animation_player.animation_finished
-	game_manager.rebake()
 		
 func can_interact(_player: Node) -> bool:
 	return game_manager.story_increment == 2 and opened_act_1 == false

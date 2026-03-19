@@ -46,6 +46,12 @@ func on_interact(_player):
 	_play_sound("door3")
 	animation_player.play("MonsterReveal")
 	game_manager.player_has_interacted_with_infected_container = true
+	$ClosedCollision.disabled = true
+	$OpenCollision3.disabled = false
+	$OpenCollision4.disabled = false
+	$OpenCollision5.disabled = false
+	$OpenCollision6.disabled = false
+	$OpenCollision7.disabled = false
 	await animation_player.animation_finished
 	game_manager.rebake()
 

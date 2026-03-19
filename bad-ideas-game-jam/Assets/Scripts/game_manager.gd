@@ -72,6 +72,8 @@ var _is_night = false
 var player_has_interacted_with_container = false
 var player_has_slept = false
 var player_has_interacted_with_infected_container = false
+var set_monster_pos_debug = false
+var played_impact_lightning = false
 
 # ── DIALOGUE ────────────────────────────────────────────────────────────────
 
@@ -129,10 +131,10 @@ func _process(_delta: float) -> void:
 		_play_act_2_store_room()
 	
 	if story_increment == 5 and _npcs_are_near(container.global_position):
-		twin_1.set_target_position(null)
-		twin_2.set_target_position(null)
+		twin_1.set_target_position(Vector3.ZERO)
+		twin_2.set_target_position(Vector3.ZERO)
 		twin_1.global_position = infected_spawn_1.global_position
-		twin_2.global_position = infected_spawn_1.global_position
+		twin_2.global_position = infected_spawn_2.global_position
 		
 	if story_increment == 5 and _player_is_near(container.global_position):
 		story_increment += 1
@@ -145,7 +147,15 @@ func _process(_delta: float) -> void:
 		_remove_objective()
 		_play_act_4_search()
 		
+	if player_has_interacted_with_infected_container and not set_monster_pos_debug:
+		twin_1.global_position = player.global_position
+		twin_2.global_position = player.global_position
+		set_monster_pos_debug = true
+		
 	if story_increment == 7 and player_has_interacted_with_infected_container:
+		if not played_impact_lightning:
+			lightning_strike()
+			played_impact_lightning = true
 		twin_1.set_target_position(player.global_position)
 		twin_2.set_target_position(player.global_position)
 
@@ -314,7 +324,6 @@ func _play_store_room_reminders() -> void:
 
 func _play_back_to_container_reminders() -> void:
 	while true:
-		
 		await _wait_for(20.0)
 		if story_increment != 5:
 			return
@@ -570,7 +579,7 @@ func lightning_strike() -> void:
 func _start_night_lightning() -> void:
 	_is_night = true
 	while _is_night:
-		var wait_time = randf_range(0.0, 200)
+		var wait_time = randf_range(0.0, 100)
 		await _wait_for(wait_time)
 		if _is_night:
 			lightning_strike()
