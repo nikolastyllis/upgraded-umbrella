@@ -14,8 +14,11 @@ var is_finishing_climb := false
 var finish_climb_animation_cooldown_timer = 0.0
 var finish_climb_animation_cooldown = 4.0
 
+var is_jogging: bool = false
+
 var footstep_timer := 0.0
 var footstep_interval := .78  # Seconds between steps
+var jog_footstep_interval := .39
 
 var ladder_step_timer := 0.0
 var ladder_step_interval := 0.8  # Slightly faster than footsteps
@@ -53,7 +56,10 @@ func _update_footsteps(delta: float) -> void:
 		footstep_timer -= delta
 		if footstep_timer <= 0.0:
 			_play_footstep()
-			footstep_timer = footstep_interval
+			if is_jogging: 
+				footstep_timer = jog_footstep_interval
+			else: 
+				footstep_timer = footstep_interval
 	else:
 		footstep_timer = 0.0  # Reset so next step plays immediately on movement
 
@@ -129,7 +135,10 @@ func update_movement_animation(input_dir: Vector2) -> void:
 	elif not is_on_floor():
 		state_machine.travel("Fall")
 	elif input_dir != Vector2.ZERO:
-		state_machine.travel("Move")
+		if is_jogging:
+			state_machine.travel("Jog")
+		else:
+			state_machine.travel("Move")
 	else:
 		state_machine.travel("Idle")
 
@@ -189,10 +198,20 @@ func play_dialogue(id: int) -> void:
 	dialogue_player.stream = load(path)
 	add_child(dialogue_player)
 	animation_tree.set("parameters/TalkAdd/add_amount", 1.0)
-	if use_radio: animation_tree.set("parameters/RadioBlend/blend_amount", 1.0)
+	if use_radio or use_blip:
+		var tween_in = create_tween()
+		tween_in.tween_method(
+			func(v): animation_tree.set("parameters/RadioBlend/blend_amount", v),
+			0.0, 1.0, 0.3
+		)
 	dialogue_player.play()
 	await dialogue_player.finished
-	if use_radio: animation_tree.set("parameters/RadioBlend/blend_amount", 0.0)
+	if use_radio or use_blip:
+		var tween_in = create_tween()
+		tween_in.tween_method(
+			func(v): animation_tree.set("parameters/RadioBlend/blend_amount", v),
+			1.0, 0.0, 0.3
+		)
 	animation_tree.set("parameters/TalkAdd/add_amount", 0.0)
 
 	var tween := create_tween()

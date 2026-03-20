@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://cfefyw1fbou02"
-path="res://.godot/imported/NPC_02_v02.glb-2654bf3621e007691c0bf6108531bf85.scn"
+uid="uid://sh12e0lmqsja"
+path="res://.godot/imported/Char_Bazza_01.glb-340f9369fb4b5584236fee178c88002f.scn"
 
 [deps]
 
-source_file="res://Assets/Models/Characters/Twin 2/NPC_02_v02.glb"
-dest_files=["res://.godot/imported/NPC_02_v02.glb-2654bf3621e007691c0bf6108531bf85.scn"]
+source_file="res://Assets/Models/Characters/Twin 1/Char_Bazza_01.glb"
+dest_files=["res://.godot/imported/Char_Bazza_01.glb-340f9369fb4b5584236fee178c88002f.scn"]
 
 [params]
 

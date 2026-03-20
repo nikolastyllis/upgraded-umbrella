@@ -253,7 +253,7 @@ transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -6.3336296, 11.94598, -80.995
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -4.231069, 12.187472, -50.614513)
 
 [node name="Player" parent="." unique_id=1647912674 instance=ExtResource("9_r4e2n")]
-transform = Transform3D(0.028096199, 0, -0.99960524, 0, 0.99999994, 0, 0.9996052, 0, 0.028096229, -2.8794155, 6.942821, -36.712555)
+transform = Transform3D(-4.3711385e-08, 0, -1, 0, 0.99999994, 0, 0.99999994, 0, -4.371139e-08, -2.8794155, 6.942821, -36.712555)
 
 [node name="Rain" type="GPUParticles3D" parent="Player" unique_id=645779901]
 transform = Transform3D(-0.99752617, 0, 0.07029611, 0, 1, 0, -0.07029611, 0, -0.99752617, 0, 2.0065289, 0)

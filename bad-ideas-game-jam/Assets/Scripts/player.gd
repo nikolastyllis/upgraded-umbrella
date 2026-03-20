@@ -73,7 +73,7 @@ func toggle_movement_disabled():
 	if movement_disabled:
 		velocity.x = 0
 		velocity.z = 0
-		var state_machine = animation_tree["parameters/playback"]
+		var state_machine = animation_tree["parameters/AnimationNodeStateMachine/playback"]
 		state_machine.travel("Idle")
 	if movement_disabled and npcs.size() >= 2:
 		var midpoint = (npcs[0].global_position + npcs[1].global_position) * 0.5
@@ -155,18 +155,19 @@ func apply_movement(_input_dir: Vector2) -> void:
 	if is_climbing:
 		apply_climbing_movement()
 		return
+	is_jogging = Input.is_action_pressed("shift") and get_move_direction().length() > 0.01
+	var speed = PLAYER_SPEED * (2.0 if is_jogging else 1.0)
 	var move_direction = get_move_direction()
 	if move_direction.length() > 0.01:
-		velocity.x = move_direction.x * PLAYER_SPEED
-		velocity.z = move_direction.z * PLAYER_SPEED
-		# Rotate character smoothly toward movement direction
+		velocity.x = move_direction.x * speed
+		velocity.z = move_direction.z * speed
 		var target_angle = atan2(move_direction.x, move_direction.z)
 		var old_y = rotation.y
 		var t = 1.0 - exp(-4.0 * get_physics_process_delta_time())
 		rotation.y = lerp_angle(rotation.y, target_angle, t)
-		# Counter-rotate camera_origin so it keeps pointing the same world direction
 		camera_origin.rotation.y += old_y - rotation.y
 	else:
+		is_jogging = false
 		velocity.x = move_toward(velocity.x, 0, PLAYER_SPEED)
 		velocity.z = move_toward(velocity.z, 0, PLAYER_SPEED)
 
@@ -200,7 +201,7 @@ func handle_quit() -> void:
 func handle_interact(delta: float) -> void:
 	if not can_interact:
 		return
-	var state_machine = animation_tree["parameters/playback"]
+	var state_machine = animation_tree["parameters/AnimationNodeStateMachine/playback"]
 	if interactable:
 		if Input.is_action_pressed("interact") and not interaction_disabled:
 			advance_interact_timer(delta, state_machine)

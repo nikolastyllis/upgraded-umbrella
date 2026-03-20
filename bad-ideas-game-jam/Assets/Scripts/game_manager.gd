@@ -88,8 +88,12 @@ var dialogue = {
 
 # ── LIFECYCLE ───────────────────────────────────────────────────────────────
 
+func play_from_act_3():
+	player_has_interacted_with_container = true
+	player_has_slept = true
+	story_increment = 3
+
 func _ready() -> void:
-	player.toggle_movement_disabled()
 	set_time_of_day(TimeOfDay.DAY, 0.1)
 	_ambient_music_loop()
 
@@ -180,6 +184,7 @@ func _process(_delta: float) -> void:
 # ── ACT 1 SEQUENCES ─────────────────────────────────────────────────────────
 
 func _play_act_1_start() -> void:
+	player.toggle_movement_disabled()
 	_dialogue_active = true
 	player.fade_in_camera(10)
 	await _wait_for(3)
@@ -190,7 +195,7 @@ func _play_act_1_start() -> void:
 	await twin_1.play_dialogue(5)
 	await twin_2.play_dialogue(6)
 	await player.play_dialogue(7)
-	await twin_1.play_dialogue(8)
+	await twin_2.play_dialogue(8)
 	twin_1.play_dialogue(9)
 	await twin_2.play_dialogue(10)
 	await player.play_dialogue(11)
