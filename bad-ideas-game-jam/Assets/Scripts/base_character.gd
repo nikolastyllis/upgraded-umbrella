@@ -114,11 +114,11 @@ func apply_gravity(delta: float) -> void:
 		velocity.y -= gravity * delta
 
 func update_movement_animation(input_dir: Vector2) -> void:
-	var state_machine = animation_tree["parameters/playback"]
+	var state_machine = animation_tree["parameters/AnimationNodeStateMachine/playback"]
 	
 	if current_ladder and current_ladder.end_y() < global_position.y and get_climb_input() > 0 and finish_climb_animation_cooldown_timer > finish_climb_animation_cooldown:
 			finish_climb_animation_cooldown_timer = 0
-			animation_tree["parameters/playback"].travel("Finish Climbing")
+			animation_tree["parameters/AnimationNodeStateMachine/playback"].travel("Finish Climbing")
 			is_finishing_climb = true
 			
 	if is_finishing_climb:
@@ -188,8 +188,12 @@ func play_dialogue(id: int) -> void:
 	dialogue_player.bus = "Radio" if use_radio else "Sound"
 	dialogue_player.stream = load(path)
 	add_child(dialogue_player)
+	animation_tree.set("parameters/TalkAdd/add_amount", 1.0)
+	if use_radio: animation_tree.set("parameters/RadioBlend/blend_amount", 1.0)
 	dialogue_player.play()
 	await dialogue_player.finished
+	if use_radio: animation_tree.set("parameters/RadioBlend/blend_amount", 0.0)
+	animation_tree.set("parameters/TalkAdd/add_amount", 0.0)
 
 	var tween := create_tween()
 	tween.tween_property(dialogue_player, "volume_db", -80.0, 0.1)

@@ -16,6 +16,7 @@
 [ext_resource type="Script" uid="uid://bpgcgf8cu0yr" path="res://Assets/Scripts/audio_manager.gd" id="14_qcyk2"]
 [ext_resource type="PackedScene" uid="uid://ctmky5y2swqpy" path="res://Prefabs/second_container.tscn" id="15_gluub"]
 [ext_resource type="PackedScene" uid="uid://clai2jixo1u8q" path="res://Prefabs/oxy_torch.tscn" id="16_t0b6u"]
+[ext_resource type="PackedScene" uid="uid://cxhfllg1iige5" path="res://Prefabs/npc_02.tscn" id="17_yiumw"]
 
 [sub_resource type="Sky" id="Sky_jvqja"]
 sky_material = ExtResource("1_63acv")
@@ -320,8 +321,8 @@ script = ExtResource("14_qcyk2")
 [node name="Twin1" parent="." unique_id=766421067 instance=ExtResource("10_nr8gw")]
 transform = Transform3D(0.5362246, 0, 0.8440753, 0, 1, 0, -0.8440753, 0, 0.5362246, -4.750394, 6.990505, -36.90217)
 
-[node name="Twin2" parent="." unique_id=995915264 instance=ExtResource("10_nr8gw")]
-transform = Transform3D(-0.6793004, 0, 0.7338602, 0, 1, 0, -0.7338602, 0, -0.6793004, -5.1769733, 6.990505, -36.391487)
-
 [node name="RigidBody3D" parent="." unique_id=232120823 instance=ExtResource("16_t0b6u")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.8656901, 6.133448, -36.608784)
+
+[node name="Twin2" parent="." unique_id=1596341678 instance=ExtResource("17_yiumw")]
+transform = Transform3D(-0.50000006, 0, 0.8660254, 0, 1, 0, -0.8660254, 0, -0.50000006, -5.250394, 6.990505, -36.302166)
