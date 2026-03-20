@@ -12,9 +12,10 @@
 [ext_resource type="PackedScene" uid="uid://bhun3l1dxxlwo" path="res://Prefabs/ladder.tscn" id="11_n0oop"]
 [ext_resource type="Script" uid="uid://bj53hstaryc7l" path="res://Assets/Scripts/bed.gd" id="11_qcyk2"]
 [ext_resource type="Script" uid="uid://22j5lmp1ifp1" path="res://Assets/Scripts/game_manager.gd" id="12_vrw5k"]
-[ext_resource type="PackedScene" uid="uid://c7cub65omxm73" path="res://Prefabs/bigj_hero_container_01.tscn" id="14_gluub"]
+[ext_resource type="PackedScene" uid="uid://c7cub65omxm73" path="res://Prefabs/first_container.tscn" id="14_gluub"]
 [ext_resource type="Script" uid="uid://bpgcgf8cu0yr" path="res://Assets/Scripts/audio_manager.gd" id="14_qcyk2"]
-[ext_resource type="PackedScene" uid="uid://ctmky5y2swqpy" path="res://Prefabs/bigj_hero_infected_container_01.tscn" id="15_gluub"]
+[ext_resource type="PackedScene" uid="uid://ctmky5y2swqpy" path="res://Prefabs/second_container.tscn" id="15_gluub"]
+[ext_resource type="PackedScene" uid="uid://clai2jixo1u8q" path="res://Prefabs/oxy_torch.tscn" id="16_t0b6u"]
 
 [sub_resource type="Sky" id="Sky_jvqja"]
 sky_material = ExtResource("1_63acv")
@@ -303,9 +304,9 @@ transform = Transform3D(0.74548763, 0, 0.66651946, 0, 1, 0, -0.66651946, 0, 0.74
 [node name="Bed" type="MeshInstance3D" parent="GameManager/Locations" unique_id=464638317]
 transform = Transform3D(0.6793314, 0, 0.73072296, 0, 0.29294226, 0, -0.3181064, 0, 1.5604937, -4.101734, 7.9982805, 14.074147)
 mesh = SubResource("BoxMesh_63acv")
+script = ExtResource("11_qcyk2")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="GameManager/Locations/Bed" unique_id=637987197]
-script = ExtResource("11_qcyk2")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="GameManager/Locations/Bed/StaticBody3D" unique_id=1276891746]
 shape = SubResource("BoxShape3D_63acv")
@@ -321,3 +322,6 @@ transform = Transform3D(0.5362246, 0, 0.8440753, 0, 1, 0, -0.8440753, 0, 0.53622
 
 [node name="Twin2" parent="." unique_id=995915264 instance=ExtResource("10_nr8gw")]
 transform = Transform3D(-0.6793004, 0, 0.7338602, 0, 1, 0, -0.7338602, 0, -0.6793004, -5.1769733, 6.990505, -36.391487)
+
+[node name="RigidBody3D" parent="." unique_id=232120823 instance=ExtResource("16_t0b6u")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.8656901, 6.133448, -36.608784)

@@ -27,10 +27,17 @@ const PLAYER_SPEED = 1.5
 const JUMP_VELOCITY = 3
 const DIALOG_SCENE = preload("res://Prefabs/dialog.tscn")
 
+var is_interacting: bool = false
+var _mouse_moved_this_frame := false
+var is_container_door_interaction: bool = false
+const SENSITIVITY_INTERACT = 0.005
+const FOV_INTERACT := 60.0
+
 var sensitivity := 0.25
 var interaction_hold_timer := 0.0
 var interaction_disabled: bool = false
 var can_interact: bool = true
+var has_oxy_torch: bool = false
 var interactable: Interactable = null
 var use_camera_position_right := true
 var current_camera_position: Vector3
@@ -48,6 +55,7 @@ func _ready() -> void:
 func _input(event: InputEvent) -> void:
 	if not event is InputEventMouseMotion:
 		return
+	_mouse_moved_this_frame = true
 	handle_mouse_look(event)
 
 func toggle_movement_disabled():
@@ -83,6 +91,7 @@ func tween_camera_fov(target_fov: float) -> void:
 func _process(delta: float) -> void:
 	update_interactable()
 	handle_interact(delta)
+	_mouse_moved_this_frame = false
 
 func _physics_process(delta: float) -> void:
 	super._physics_process(delta)
@@ -148,7 +157,7 @@ func apply_movement(_input_dir: Vector2) -> void:
 		# Rotate character smoothly toward movement direction
 		var target_angle = atan2(move_direction.x, move_direction.z)
 		var old_y = rotation.y
-		var t = 1.0 - exp(-10.0 * get_physics_process_delta_time())
+		var t = 1.0 - exp(-4.0 * get_physics_process_delta_time())
 		rotation.y = lerp_angle(rotation.y, target_angle, t)
 		# Counter-rotate camera_origin so it keeps pointing the same world direction
 		camera_origin.rotation.y += old_y - rotation.y
@@ -168,6 +177,12 @@ func update_camera(delta: float) -> void:
 		current_camera_position = camera_position_right.position if use_camera_position_right else camera_position_left.position
 
 func handle_mouse_look(event: InputEventMouseMotion) -> void:
+	if is_container_door_interaction:
+		rotation.y -= deg_to_rad(event.relative.x * SENSITIVITY_INTERACT)
+		camera_origin.rotation.x -= deg_to_rad(event.relative.y * SENSITIVITY_INTERACT)
+		camera_origin.rotation.x = clamp(camera_origin.rotation.x, deg_to_rad(-80), deg_to_rad(80))
+		return
+
 	camera_origin.rotation.x -= deg_to_rad(event.relative.y * sensitivity)
 	camera_origin.rotation.x = clamp(camera_origin.rotation.x, deg_to_rad(-80), deg_to_rad(80))
 	camera_origin.rotation.y -= deg_to_rad(event.relative.x * sensitivity)
@@ -190,6 +205,21 @@ func handle_interact(delta: float) -> void:
 		reset_interact_state()
 
 func advance_interact_timer(delta: float, state_machine: AnimationNodeStateMachinePlayback) -> void:
+	
+	if is_container_door_interaction and not _mouse_moved_this_frame:
+		return
+	
+	if is_container_door_interaction and (not interact_raycast.is_colliding() or interact_raycast.get_collider() != interactable):
+		reset_interact_timer()
+		return
+	
+	if not is_interacting:
+		is_interacting = true
+		movement_disabled = true
+		is_container_door_interaction = interactable is BaseContainerDoor
+		if is_container_door_interaction:
+			tween_camera_fov(FOV_INTERACT)
+
 	interaction_hold_timer += delta
 	state_machine.travel("Interact")
 	var progress = interaction_hold_timer / interactable.interact_hold_time()
@@ -199,25 +229,36 @@ func advance_interact_timer(delta: float, state_machine: AnimationNodeStateMachi
 		interaction_disabled = true
 		interaction_hold_timer = 0.0
 		interact_progress_bar.value = 0
+		reset_interaction_state()
+
+func reset_interaction_state() -> void:
+	if is_interacting:
+		is_interacting = false
+		movement_disabled = false
+		if is_container_door_interaction:
+			tween_camera_fov(FOV_NORMAL)
+		is_container_door_interaction = false
 
 func reset_interact_timer() -> void:
 	interaction_hold_timer = 0.0
 	interact_progress_bar.value = 0
 	interaction_disabled = false
+	reset_interaction_state()
 
 func reset_interact_state() -> void:
 	interaction_hold_timer = 0.0
 	interact_progress_bar.set_value_no_signal(0)
 	interaction_disabled = false
+	reset_interaction_state()
 
 func update_interactable() -> void:
 	if not can_interact:
 		return
 	var new_interactable: Interactable = null
 	if interact_raycast.is_colliding():
-		var collider = interact_raycast.get_collider()
-		if collider is Interactable and collider.can_interact(self):
-			new_interactable = collider
+		var collided_interactable = interact_raycast.get_collider()
+		if collided_interactable is Interactable and collided_interactable.can_interact(self):
+			new_interactable = collided_interactable
 	# While actively holding an interaction, keep the current interactable locked in
 	# so looking away doesn't cancel the hold progress
 	if interaction_hold_timer > 0 and interactable != null and Input.is_action_pressed("interact"):

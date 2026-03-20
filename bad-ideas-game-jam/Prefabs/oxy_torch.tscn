@@ -2,17 +2,21 @@
 
 [ext_resource type="Script" uid="uid://bnuuo1duu134y" path="res://Assets/Scripts/oxy_torch.gd" id="1_l3b1r"]
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_3fxhi"]
+[sub_resource type="BoxMesh" id="BoxMesh_o77m7"]
 
-[sub_resource type="BoxMesh" id="BoxMesh_h3qab"]
+[sub_resource type="BoxShape3D" id="BoxShape3D_o77m7"]
 
-[node name="StaticBody3D" type="StaticBody3D" unique_id=1699781538]
-transform = Transform3D(0.20000002, 0, 0, 0, 0.2, 0, 0, 0, 0.20000002, 0, 0, 0)
-collision_layer = 3
+[node name="RigidBody3D" type="RigidBody3D" unique_id=232120823]
 script = ExtResource("1_l3b1r")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=2094434477]
-shape = SubResource("BoxShape3D_3fxhi")
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1318450355]
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0, 0)
+mesh = SubResource("BoxMesh_o77m7")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1403250740]
-mesh = SubResource("BoxMesh_h3qab")
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="." unique_id=1914345575]
+transform = Transform3D(-2.1855695e-09, 0, 0.7, 0, 0.05, 0, -0.05, 0, -3.059797e-08, 0, 0, 0)
+mesh = SubResource("BoxMesh_o77m7")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=557810721]
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0, 0)
+shape = SubResource("BoxShape3D_o77m7")
