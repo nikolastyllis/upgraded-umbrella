@@ -34,7 +34,7 @@ var is_interacting: bool = false
 var _mouse_moved_this_frame := false
 var is_container_door_interaction: bool = false
 const SENSITIVITY_INTERACT = 0.005
-const FOV_INTERACT := 60.0
+const FOV_INTERACT := 70.0
 
 var sensitivity := 0.25
 var interaction_hold_timer := 0.0
@@ -237,7 +237,6 @@ func advance_interact_timer(delta: float, state_machine: AnimationNodeStateMachi
 		var z_axis = x_axis.cross(arbitrary).normalized()
 		var y_axis = z_axis.cross(x_axis).normalized()
 		sparks.global_transform = Transform3D(Basis(x_axis, y_axis, z_axis), hit_point)
-		await _play_oxy_torch()
 		# Guard after await - everything may have changed
 		if interactable == null or not is_interacting:
 			_stop_oxy_torch_loop()
