@@ -1,6 +1,6 @@
-[gd_scene format=3 uid="uid://c25gbvsej348x"]
+[gd_scene format=3 uid="uid://u5y10vhp7ytu"]
 
-[ext_resource type="PackedScene" uid="uid://fr4vgdltduc0" path="res://Assets/Models/Characters/Twin 1/Char_Bazza_01.glb" id="1_mkm1l"]
+[ext_resource type="PackedScene" uid="uid://fr4vgdltduc0" path="res://Assets/Models/Characters/Twin 1/Char_Bazza_01.glb" id="1_ohiqd"]
 
 [sub_resource type="AnimationNodeTimeScale" id="AnimationNodeTimeScale_i0ilm"]
 
@@ -97,7 +97,7 @@ states/Start/position = Vector2(-42.66666, -82.673065)
 transitions = ["Climb", "Fall", SubResource("AnimationNodeStateMachineTransition_i0ilm"), "Climb", "Finish Climbing", SubResource("AnimationNodeStateMachineTransition_a1rxb"), "Fall", "Climb", SubResource("AnimationNodeStateMachineTransition_flf3p"), "Interact", "Move", SubResource("AnimationNodeStateMachineTransition_b4rpi"), "Move", "Interact", SubResource("AnimationNodeStateMachineTransition_noq0r"), "Fall", "Move", SubResource("AnimationNodeStateMachineTransition_maw3l"), "Move", "Fall", SubResource("AnimationNodeStateMachineTransition_2nuhh"), "Move", "Climb", SubResource("AnimationNodeStateMachineTransition_rfvlc"), "Interact", "Idle", SubResource("AnimationNodeStateMachineTransition_e0llr"), "Idle", "Interact", SubResource("AnimationNodeStateMachineTransition_48yx5"), "Idle", "Move", SubResource("AnimationNodeStateMachineTransition_xf1pj"), "Move", "Idle", SubResource("AnimationNodeStateMachineTransition_t32vp"), "Idle", "Fall", SubResource("AnimationNodeStateMachineTransition_66ajp"), "Fall", "Idle", SubResource("AnimationNodeStateMachineTransition_hwr16"), "Start", "Idle", SubResource("AnimationNodeStateMachineTransition_rwqiu"), "Finish Climbing", "Idle", SubResource("AnimationNodeStateMachineTransition_n168f")]
 graph_offset = Vector2(-306, -375)
 
-[node name="Character" unique_id=1489857556 instance=ExtResource("1_mkm1l")]
+[node name="Character" unique_id=1489857556 instance=ExtResource("1_ohiqd")]
 
 [node name="AnimationTree" type="AnimationTree" parent="Armature" parent_id_path=PackedInt32Array(990980341) index="0" unique_id=325887521]
 root_node = NodePath("../..")
