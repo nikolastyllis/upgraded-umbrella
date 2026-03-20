@@ -8,7 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://bal1s5p7lfes2" path="res://Assets/Textures/Ocean/0258.jpg" id="3_to28j"]
 [ext_resource type="PackedScene" uid="uid://ce1yp6o3mvdtg" path="res://Assets/Models/Enviroment/BIGJ_ShipBlockout_03.glb" id="6_v7i32"]
 [ext_resource type="PackedScene" uid="uid://btg75au461yd7" path="res://Prefabs/player.tscn" id="7_ti2qv"]
-[ext_resource type="PackedScene" uid="uid://dpl2uefq7xuhu" path="res://Prefabs/npc.tscn" id="8_7xckk"]
+[ext_resource type="PackedScene" uid="uid://dpl2uefq7xuhu" path="res://Prefabs/npc_01.tscn" id="8_7xckk"]
 [ext_resource type="PackedScene" uid="uid://badmu68nhhg1h" path="res://Assets/Models/Enviroment/BIGJ_Level_Col_Mesh_01.glb" id="9_wo51v"]
 [ext_resource type="PackedScene" uid="uid://dc1d8hpvmhfbf" path="res://Assets/Models/Enviroment/Container_NoInterior_01.glb" id="13_wo51v"]
 [ext_resource type="PackedScene" uid="uid://bhun3l1dxxlwo" path="res://Prefabs/ladder.tscn" id="14_h3qab"]

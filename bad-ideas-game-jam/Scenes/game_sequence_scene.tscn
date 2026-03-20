@@ -8,7 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://bkwpxm2ssdj8r" path="res://Scenes/main_enviroment_scene.tscn" id="6_63acv"]
 [ext_resource type="PackedScene" uid="uid://boak8ifb7i70c" path="res://Scenes/bigj_level_col_mesh_01.tscn" id="7_63acv"]
 [ext_resource type="PackedScene" uid="uid://btg75au461yd7" path="res://Prefabs/player.tscn" id="9_r4e2n"]
-[ext_resource type="PackedScene" uid="uid://dpl2uefq7xuhu" path="res://Prefabs/npc.tscn" id="10_nr8gw"]
+[ext_resource type="PackedScene" uid="uid://dpl2uefq7xuhu" path="res://Prefabs/npc_01.tscn" id="10_nr8gw"]
 [ext_resource type="PackedScene" uid="uid://bhun3l1dxxlwo" path="res://Prefabs/ladder.tscn" id="11_n0oop"]
 [ext_resource type="Script" uid="uid://bj53hstaryc7l" path="res://Assets/Scripts/bed.gd" id="11_qcyk2"]
 [ext_resource type="Script" uid="uid://22j5lmp1ifp1" path="res://Assets/Scripts/game_manager.gd" id="12_vrw5k"]
