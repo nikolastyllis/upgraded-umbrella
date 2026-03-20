@@ -23,6 +23,9 @@ var ladder_player: AudioStreamPlayer3D
 
 var footstep_player: AudioStreamPlayer3D
 
+var _loop_player: AudioStreamPlayer = null
+var _oxy_torch_looping = false
+
 func _ready() -> void:
 	animation_tree.animation_finished.connect(_on_animation_finished)
 	_setup_footstep_player()
@@ -256,3 +259,48 @@ func _play_torch() -> void:
 	static_player.play()
 	await static_player.finished
 	static_player.queue_free()
+	
+func _play_oxy_torch_loop() -> void:
+	if _oxy_torch_looping:
+		return
+	const LOOP_PATH := "res://Assets/Sound/oxy_torch_loop.ogg"
+	if not ResourceLoader.exists(LOOP_PATH):
+		push_warning("Loop file not found: %s" % LOOP_PATH)
+		return
+	var loop_player := AudioStreamPlayer.new()
+	loop_player.bus = "Sound"
+	loop_player.stream = load(LOOP_PATH)
+	loop_player.volume_db = -30
+	add_child(loop_player)
+	loop_player.play()
+	_loop_player = loop_player
+	_oxy_torch_looping = true
+
+var _oxy_torch_start_player: AudioStreamPlayer = null
+
+func _play_oxy_torch() -> void:
+	const STATIC_PATH := "res://Assets/Sound/oxy_torch_start.ogg"
+	if not ResourceLoader.exists(STATIC_PATH):
+		push_warning("Static file not found: %s" % STATIC_PATH)
+		return
+	var static_player := AudioStreamPlayer.new()
+	static_player.bus = "Sound"
+	static_player.stream = load(STATIC_PATH)
+	static_player.volume_db = -30
+	add_child(static_player)
+	_oxy_torch_start_player = static_player
+	static_player.play()
+	await static_player.finished
+	_oxy_torch_start_player = null
+	static_player.queue_free()
+
+func _stop_oxy_torch_loop() -> void:
+	_oxy_torch_looping = false
+	if is_instance_valid(_oxy_torch_start_player):
+		_oxy_torch_start_player.stop()
+		_oxy_torch_start_player.queue_free()
+		_oxy_torch_start_player = null
+	if is_instance_valid(_loop_player):
+		_loop_player.stop()
+		_loop_player.queue_free()
+		_loop_player = null

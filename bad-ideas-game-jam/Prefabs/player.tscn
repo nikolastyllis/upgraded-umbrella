@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://sxdqvxq4t8ow" path="res://Assets/Scripts/player.gd" id="1_y5hcb"]
 [ext_resource type="Texture2D" uid="uid://g8g413indqd7" path="res://Assets/UI/Crosshair.png" id="2_2nftw"]
 [ext_resource type="PackedScene" uid="uid://ddbbla3ssy5fq" path="res://Scenes/Characters/player_visual.tscn" id="3_y5hcb"]
+[ext_resource type="PackedScene" uid="uid://cx3xgd26kwbxv" path="res://Prefabs/sparks.tscn" id="4_2nftw"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_myya0"]
 radius = 0.25
@@ -169,3 +170,5 @@ light_indirect_energy = 2.0
 light_volumetric_fog_energy = 6.0
 spot_range = 8.0
 spot_angle = 14.808052
+
+[node name="Sparks" parent="." unique_id=578062511 instance=ExtResource("4_2nftw")]

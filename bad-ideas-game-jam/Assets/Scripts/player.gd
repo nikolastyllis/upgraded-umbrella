@@ -13,6 +13,9 @@ extends BaseCharacter
 @onready var dialog_control := $CameraOrigin/SpringArm3D/Camera3D/DialogControl
 @onready var crosshair_ui := $CameraOrigin/SpringArm3D/Camera3D/CrosshairUI
 
+@onready var sparks := $Sparks
+@onready var spark_light := $Sparks/Light
+
 @onready var torch = $SpotLight3D
 
 @onready var camera := $CameraOrigin/SpringArm3D/Camera3D
@@ -51,6 +54,8 @@ func _ready() -> void:
 	current_camera_position = camera_position_left.position
 	camera_origin.position = current_camera_position
 	torch.light_energy = 0.0
+	sparks.visible = false
+	spark_light.visible = false
 
 func _input(event: InputEvent) -> void:
 	if not event is InputEventMouseMotion:
@@ -205,27 +210,54 @@ func handle_interact(delta: float) -> void:
 		reset_interact_state()
 
 func advance_interact_timer(delta: float, state_machine: AnimationNodeStateMachinePlayback) -> void:
-	
-	if is_container_door_interaction and not _mouse_moved_this_frame:
-		return
-	
-	if is_container_door_interaction and (not interact_raycast.is_colliding() or interact_raycast.get_collider() != interactable):
+	var current = interactable
+	if current == null:
 		reset_interact_timer()
 		return
-	
+
+	if is_container_door_interaction and not _mouse_moved_this_frame:
+		return
+
+	if is_container_door_interaction and (not interact_raycast.is_colliding() or interact_raycast.get_collider() != current):
+		reset_interact_timer()
+		return
+
 	if not is_interacting:
 		is_interacting = true
 		movement_disabled = true
-		is_container_door_interaction = interactable is BaseContainerDoor
+		is_container_door_interaction = current is BaseContainerDoor
 		if is_container_door_interaction:
 			tween_camera_fov(FOV_INTERACT)
 
+	if is_container_door_interaction and interact_raycast.is_colliding():
+		var hit_point = interact_raycast.get_collision_point()
+		var normal = interact_raycast.get_collision_normal()
+		var x_axis = normal
+		var arbitrary = Vector3.UP if abs(normal.dot(Vector3.UP)) < 0.99 else Vector3.RIGHT
+		var z_axis = x_axis.cross(arbitrary).normalized()
+		var y_axis = z_axis.cross(x_axis).normalized()
+		sparks.global_transform = Transform3D(Basis(x_axis, y_axis, z_axis), hit_point)
+		await _play_oxy_torch()
+		# Guard after await - everything may have changed
+		if interactable == null or not is_interacting:
+			_stop_oxy_torch_loop()
+			sparks.visible = false
+			spark_light.visible = false
+			return
+		_play_oxy_torch_loop()
+		sparks.visible = true
+		spark_light.visible = true
+	else:
+		_stop_oxy_torch_loop()
+		sparks.visible = false
+		spark_light.visible = false
+
 	interaction_hold_timer += delta
-	state_machine.travel("Interact")
-	var progress = interaction_hold_timer / interactable.interact_hold_time()
+	if not is_container_door_interaction: state_machine.travel("Interact")
+	var progress = interaction_hold_timer / current.interact_hold_time()
 	interact_progress_bar.value = progress * 100
-	if interaction_hold_timer >= interactable.interact_hold_time():
-		interactable.on_interact(self)
+	if interaction_hold_timer >= current.interact_hold_time():
+		current.on_interact(self)
 		interaction_disabled = true
 		interaction_hold_timer = 0.0
 		interact_progress_bar.value = 0
@@ -238,6 +270,9 @@ func reset_interaction_state() -> void:
 		if is_container_door_interaction:
 			tween_camera_fov(FOV_NORMAL)
 		is_container_door_interaction = false
+		sparks.visible = false
+		spark_light.visible = false
+		_stop_oxy_torch_loop()
 
 func reset_interact_timer() -> void:
 	interaction_hold_timer = 0.0
