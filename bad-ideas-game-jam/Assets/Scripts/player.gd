@@ -13,14 +13,11 @@ extends BaseCharacter
 @onready var dialog_control := $CameraOrigin/SpringArm3D/Camera3D/DialogControl
 @onready var crosshair_ui := $CameraOrigin/SpringArm3D/Camera3D/CrosshairUI
 
-# --- add to onready block ---
-@onready var skeleton: Skeleton3D = $Character/Armature/Skeleton3D
-@onready var hand_ik: SkeletonIK3D = $Character/Armature/Skeleton3D/RightHandIK
-@onready var hand_ik_target: Node3D = $Character/HandIKTarget
-
-const HAND_IK_SURFACE_OFFSET := 0.001   # metres in front of the surface
-
 @onready var tool_tip: Node3D = $Character/Armature/Skeleton3D/RightHandAttachment/ToolTip
+@onready var skeleton: Skeleton3D = $Character/Armature/Skeleton3D
+@onready var right_hand_ik: SkeletonIK3D = $Character/Armature/Skeleton3D/RightHandIK
+var _ik_target_node: Node3D = null
+var _ik_tool_local_offset: Vector3 = Vector3.ZERO
 
 @onready var sparks := $Sparks
 @onready var spark_light := $Sparks/Light
@@ -40,7 +37,6 @@ const JUMP_VELOCITY = 3
 const DIALOG_SCENE = preload("res://Prefabs/dialog.tscn")
 
 var is_interacting: bool = false
-var _mouse_moved_this_frame := false
 var is_container_door_interaction: bool = false
 const SENSITIVITY_INTERACT = 0.005
 const FOV_INTERACT := 70.0
@@ -56,10 +52,37 @@ var current_camera_position: Vector3
 var dialog_hide_timer: SceneTreeTimer = null
 var movement_disabled = false
 
-# replace the existing var _ik_tween line with both of these
-var _ik_tween: Tween = null
-var _ik_enabled := false         # tracks intended state, not tween progress
-var _tip_reach := 0.0            # precomputed fixed offset, set in _ready
+func _start_right_hand_ik(world_target: Vector3) -> void:
+	var tip_bone_idx    := skeleton.find_bone("mixamorig_RightHandIndex4")
+	var tip_bone_xform  := skeleton.global_transform * skeleton.get_bone_global_pose(tip_bone_idx)
+	var tool_world_pos  := tip_bone_xform * _ik_tool_local_offset
+	var tip_world_pos   := tip_bone_xform.origin
+	_ik_target_node.global_position = world_target + (tip_world_pos - tool_world_pos)
+	right_hand_ik.start()
+
+func _stop_right_hand_ik() -> void:
+	right_hand_ik.stop()
+	
+func _exit_tree() -> void:
+	if _ik_target_node:
+		_ik_target_node.queue_free()
+
+func _setup_right_hand_ik() -> void:
+	_ik_target_node = Node3D.new()
+	get_tree().root.add_child(_ik_target_node)
+
+	right_hand_ik.root_bone     = "mixamorig_RightArm"
+	right_hand_ik.tip_bone      = "mixamorig_RightHandIndex4"
+	right_hand_ik.interpolation = 1.0
+	right_hand_ik.use_magnet    = true
+	right_hand_ik.magnet        = Vector3(0.5, 0.0, 0.5)
+	right_hand_ik.target_node   = _ik_target_node.get_path()
+	right_hand_ik.stop()
+
+	# Snapshot offset in tip bone's LOCAL space — valid regardless of hand pose
+	var tip_bone_idx   := skeleton.find_bone("mixamorig_RightHandIndex4")
+	var tip_bone_xform := skeleton.global_transform * skeleton.get_bone_global_pose(tip_bone_idx)
+	_ik_tool_local_offset = tip_bone_xform.affine_inverse() * tool_tip.global_position
 
 func _ready() -> void:
 	super._ready()
@@ -70,14 +93,11 @@ func _ready() -> void:
 	torch.light_energy = 0.0
 	sparks.visible = false
 	spark_light.visible = false
-	# Precompute the fixed skeletal offset from IK target to tool tip.
-	# tool_tip is parented to the hand bone so this distance is constant.
-	_tip_reach = (tool_tip.global_position - hand_ik_target.global_position).length()
+	_setup_right_hand_ik()
 
 func _input(event: InputEvent) -> void:
 	if not event is InputEventMouseMotion:
 		return
-	_mouse_moved_this_frame = true
 	handle_mouse_look(event)
 
 func toggle_movement_disabled():
@@ -113,7 +133,6 @@ func tween_camera_fov(target_fov: float) -> void:
 func _process(delta: float) -> void:
 	update_interactable()
 	handle_interact(delta)
-	_mouse_moved_this_frame = false
 
 func _physics_process(delta: float) -> void:
 	super._physics_process(delta)
@@ -232,8 +251,6 @@ func advance_interact_timer(delta: float, state_machine: AnimationNodeStateMachi
 	if current == null:
 		reset_interact_timer()
 		return
-	if is_container_door_interaction and not _mouse_moved_this_frame:
-		return
 	if is_container_door_interaction and (not interact_raycast.is_colliding() or interact_raycast.get_collider() != current):
 		reset_interact_timer()
 		return
@@ -243,40 +260,34 @@ func advance_interact_timer(delta: float, state_machine: AnimationNodeStateMachi
 		is_container_door_interaction = current is BaseContainerDoor
 		if is_container_door_interaction:
 			tween_camera_fov(FOV_INTERACT)
+			_play_oxy_torch() 
 
 	if is_container_door_interaction and interact_raycast.is_colliding():
 		var hit_point: Vector3 = interact_raycast.get_collision_point()
-		var normal: Vector3 = interact_raycast.get_collision_normal()
+		var normal: Vector3    = interact_raycast.get_collision_normal()
 
-		var x_axis = normal
+		var x_axis   = normal
 		var arbitrary = Vector3.UP if abs(normal.dot(Vector3.UP)) < 0.99 else Vector3.RIGHT
-		var z_axis = x_axis.cross(arbitrary).normalized()
-		var y_axis = z_axis.cross(x_axis).normalized()
+		var z_axis   = x_axis.cross(arbitrary).normalized()
+		var y_axis   = z_axis.cross(x_axis).normalized()
 		sparks.global_transform = Transform3D(Basis(x_axis, y_axis, z_axis), hit_point)
 
 		if interactable == null or not is_interacting:
 			_stop_oxy_torch_loop()
-			sparks.visible = false
+			_stop_right_hand_ik()   # ← stop IK if interaction lost
+			sparks.visible      = false
 			spark_light.visible = false
-			_set_hand_ik(false)
 			return
 
 		_play_oxy_torch_loop()
-		sparks.visible = true
+		_start_right_hand_ik(hit_point)   # ← drive IK to the spark point
+		sparks.visible      = true
 		spark_light.visible = true
-
-		hand_ik_target.global_position = hit_point + normal * HAND_IK_SURFACE_OFFSET
-
-		# Pull the elbow forward relative to the character so it doesn't flip
-		var elbow_hint: Vector3 = global_position + (-global_transform.basis.z * 0.5) + (Vector3.UP * 0.3)
-		hand_ik.magnet = skeleton.to_local(elbow_hint)
-
-		_set_hand_ik(true)
 	else:
 		_stop_oxy_torch_loop()
-		sparks.visible = false
+		_stop_right_hand_ik()             # ← no collision, release IK
+		sparks.visible      = false
 		spark_light.visible = false
-		_set_hand_ik(false)
 
 	interaction_hold_timer += delta
 	if not is_container_door_interaction:
@@ -298,37 +309,16 @@ func reset_interaction_state() -> void:
 		if is_container_door_interaction:
 			tween_camera_fov(FOV_NORMAL)
 		is_container_door_interaction = false
-		sparks.visible    = false
+		sparks.visible      = false
 		spark_light.visible = false
 		_stop_oxy_torch_loop()
-		_set_hand_ik(false)          # ← new
+		_stop_right_hand_ik()
 
 func reset_interact_timer() -> void:
 	interaction_hold_timer = 0.0
 	interact_progress_bar.value = 0
 	interaction_disabled = false
 	reset_interaction_state()
-
-func _set_hand_ik(enabled: bool) -> void:
-	# Only act when the desired state actually changes.
-	# This prevents restarting the tween every frame.
-	if enabled == _ik_enabled:
-		return
-	_ik_enabled = enabled
-
-	if _ik_tween:
-		_ik_tween.kill()
-
-	if enabled:
-		hand_ik.start()  # must be running before interpolation tween begins
-
-	_ik_tween = create_tween()
-	_ik_tween.tween_property(hand_ik, "interpolation", 1.0 if enabled else 0.0, 0.25) \
-		.set_ease(Tween.EASE_IN_OUT) \
-		.set_trans(Tween.TRANS_CUBIC)
-
-	if not enabled:
-		_ik_tween.tween_callback(hand_ik.stop)
 
 func reset_interact_state() -> void:
 	interaction_hold_timer = 0.0

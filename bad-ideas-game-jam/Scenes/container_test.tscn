@@ -1,0 +1,23 @@
+[gd_scene format=3 uid="uid://502dld6t5gws"]
+
+[ext_resource type="PackedScene" uid="uid://ctj0n3n6mmc2r" path="res://Prefabs/container.tscn" id="1_iqq44"]
+[ext_resource type="PackedScene" uid="uid://btg75au461yd7" path="res://Prefabs/player.tscn" id="2_8o185"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_4g0os"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_iqq44"]
+
+[node name="StaticBody3D" type="StaticBody3D" unique_id=933739605]
+transform = Transform3D(39.89414, 0, 0, 0, 0.17917106, 0, 0, 0, 39.446537, 0, 0, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=2093218144]
+mesh = SubResource("BoxMesh_4g0os")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1675350172]
+shape = SubResource("BoxShape3D_iqq44")
+
+[node name="Container" parent="." unique_id=373595834 instance=ExtResource("1_iqq44")]
+transform = Transform3D(0.02506634, 0, 0, 0, 5.581259, 0, 0, 0, 0.025350774, -0.02506634, 1.1358922, 0.101403095)
+
+[node name="Player" parent="." unique_id=1647912674 instance=ExtResource("2_8o185")]
+transform = Transform3D(0.02506634, 0, 0, 0, 5.581259, 0, 0, 0, 0.02535077, -0.12175231, 23.585014, 0.111072764)

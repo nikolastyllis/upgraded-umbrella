@@ -29,9 +29,8 @@ func _set_open_collisions() -> void:
 	$"../StaticBody3D2/OpenCollision5".disabled = false
 	$"../StaticBody3D2/OpenCollision6".disabled = false
 	$"../StaticBody3D2/OpenCollision7".disabled = false
-	$"../StaticBody3D/CollisionShape3D3".disabled = true
-	$"../StaticBody3D/CollisionShape3D2".disabled = true
-	$"../StaticBody3D/CollisionShape3D".disabled = true
+	$"../StaticBody3D/Cuttable".disabled = true
+	$"../StaticBody3D/Critical".disabled = true
 
 # --- Shared animation helper ---
 func _play_animation_and_rebake(anim_name: String) -> void:
