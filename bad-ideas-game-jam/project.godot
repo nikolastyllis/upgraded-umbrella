@@ -119,3 +119,7 @@ outline_color={
 "type": "color",
 "value": Color(0, 0, 0, 1)
 }
+diffuse_curve={
+"type": "float",
+"value": 0.1
+}
