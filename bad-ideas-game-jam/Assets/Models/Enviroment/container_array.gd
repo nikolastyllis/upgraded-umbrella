@@ -2,14 +2,9 @@
 extends Node3D
 
 @export_group("Container Assets")
-@export var container_mesh: Mesh:
+@export var container_scene: PackedScene:
 	set(value):
-		container_mesh = value
-		_regen_in_editor()
-
-@export var container_materials: Array[Material] = []:
-	set(value):
-		container_materials = value
+		container_scene = value
 		_regen_in_editor()
 
 @export_group("Hold Grid")
@@ -58,11 +53,6 @@ extends Node3D
 @export_range(0.0, 1.0, 0.01) var outer_row_multiplier: float = 0.85:
 	set(value):
 		outer_row_multiplier = value
-		_regen_in_editor()
-
-@export_range(0.0, 1.0, 0.01) var dominant_material_strength: float = 0.82:
-	set(value):
-		dominant_material_strength = value
 		_regen_in_editor()
 
 @export_group("Stack Shape")
@@ -119,9 +109,9 @@ extends Node3D
 		random_offset_z = value
 		_regen_in_editor()
 
-@export_range(0.0, 1.0, 0.01) var flip_180_chance: float = 0.0:
+@export var flip_base_rotation: bool = false:
 	set(value):
-		flip_180_chance = value
+		flip_base_rotation = value
 		_regen_in_editor()
 
 @export_group("Debug")
@@ -144,6 +134,8 @@ extends Node3D
 			clear_containers()
 			notify_property_list_changed()
 
+const MESH_NODE_PATH := "rigged_container/Skeleton3D/mesh_container_model"
+
 var rng: RandomNumberGenerator = RandomNumberGenerator.new()
 
 func _ready() -> void:
@@ -154,9 +146,7 @@ func _ready() -> void:
 func _regen_in_editor() -> void:
 	if not Engine.is_editor_hint():
 		return
-	if container_mesh == null:
-		return
-	if container_materials.is_empty():
+	if container_scene == null:
 		return
 	generate_containers()
 
@@ -165,19 +155,30 @@ func clear_containers() -> void:
 		if child.is_in_group("generated_containers"):
 			child.queue_free()
 
-func generate_containers() -> void:
-	if container_mesh == null:
-		push_warning("No container_mesh assigned.")
-		return
+func _get_mesh_aabb() -> AABB:
+	var probe: Node = container_scene.instantiate()
+	var mesh_node := probe.get_node_or_null(MESH_NODE_PATH) as MeshInstance3D
+	var aabb := AABB()
+	if mesh_node and mesh_node.mesh:
+		aabb = mesh_node.mesh.get_aabb()
+	probe.queue_free()
+	return aabb
 
-	if container_materials.is_empty():
-		push_warning("No container_materials assigned.")
+func _get_facing(bay: int, row: int, tier: int) -> float:
+	var parity: int = (bay + row + tier) % 2
+	if flip_base_rotation:
+		parity = 1 - parity
+	return PI if parity == 1 else 0.0
+
+func generate_containers() -> void:
+	if container_scene == null:
+		push_warning("No container_scene assigned.")
 		return
 
 	clear_containers()
 	rng.seed = seed_value
 
-	var aabb: AABB = container_mesh.get_aabb()
+	var aabb: AABB = _get_mesh_aabb()
 	var mesh_size: Vector3 = aabb.size.abs()
 
 	measured_mesh_size = mesh_size
@@ -211,17 +212,8 @@ func generate_containers() -> void:
 			if stack_height <= 0:
 				continue
 
-			var dominant_index: int = rng.randi_range(0, container_materials.size() - 1)
-
 			for tier: int in range(stack_height):
-				var container: MeshInstance3D = MeshInstance3D.new()
-				container.mesh = container_mesh
-
-				var chosen_index: int = dominant_index
-				if rng.randf() > dominant_material_strength:
-					chosen_index = rng.randi_range(0, container_materials.size() - 1)
-
-				container.material_override = container_materials[chosen_index]
+				var container: Node3D = container_scene.instantiate() as Node3D
 
 				var pos: Vector3 = Vector3(
 					float(row) * step_x - x_origin,
@@ -237,8 +229,10 @@ func generate_containers() -> void:
 
 				container.position = pos
 
-				if rng.randf() < flip_180_chance:
-					container.rotation.y = PI
+				if tier == 0:
+					container.rotation.y = _get_facing(bay, row, 0)
+				else:
+					container.rotation.y = 0.0
 
 				container.add_to_group("generated_containers")
 				add_child(container)
@@ -258,23 +252,18 @@ func _generated_child_count() -> int:
 func _get_row_multiplier(row: int) -> float:
 	if rows <= 1:
 		return 1.0
-
 	var is_outer_row: bool = (row == 0 or row == rows - 1)
 	if is_outer_row:
 		return outer_row_multiplier
-
 	return 1.0
 
 func _get_stack_height() -> int:
 	var safe_min: int = mini(min_tiers, max_tiers)
 	var safe_max: int = maxi(min_tiers, max_tiers)
-
 	if safe_max <= 0:
 		return 0
-
 	if safe_min == safe_max:
 		return safe_min
-
 	var shaped: float = pow(rng.randf(), 1.0 + (1.0 - taller_stack_bias) * 3.0)
 	var result: int = safe_min + int(round((1.0 - shaped) * float(safe_max - safe_min)))
 	return clampi(result, safe_min, safe_max)

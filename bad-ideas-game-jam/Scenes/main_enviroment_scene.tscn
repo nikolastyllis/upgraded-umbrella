@@ -1,12 +1,7 @@
 [gd_scene format=3 uid="uid://bkwpxm2ssdj8r"]
 
 [ext_resource type="PackedScene" uid="uid://cw715p30txa6y" path="res://Assets/Models/Enviroment/BIGJ_Ship_03.glb" id="1_l8ged"]
-[ext_resource type="ArrayMesh" uid="uid://cojebbc0213ih" path="res://Assets/Models/Enviroment/container.mesh" id="7_y3af7"]
-[ext_resource type="Material" uid="uid://b6vuke4qqsysy" path="res://Shaders/Containers/Container_Mat_01.tres" id="8_22tk6"]
-[ext_resource type="Material" uid="uid://bp8f3scoa7bb4" path="res://Shaders/Containers/Container_Mat_02.tres" id="9_22tk6"]
-[ext_resource type="Material" uid="uid://cx6xgkuyx1o5y" path="res://Shaders/Containers/Container_Mat_04.tres" id="10_jn3ni"]
-[ext_resource type="Material" uid="uid://clj146mpo8fv7" path="res://Shaders/Containers/Container_Mat_05.tres" id="11_0qs2n"]
-[ext_resource type="Material" uid="uid://csmaghw50vkgm" path="res://Shaders/Containers/Container_Mat_03.tres" id="12_av35p"]
+[ext_resource type="PackedScene" uid="uid://ctj0n3n6mmc2r" path="res://Prefabs/container.tscn" id="2_4ftm2"]
 
 [node name="Ship Enviroment" type="Node3D" unique_id=1795795939]
 
@@ -16,823 +11,626 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.61961174, 4.1656265, 6.5372
 [node name="container_array 5" type="Node3D" parent="." unique_id=2021597639]
 transform = Transform3D(0.96, 0, 0, 0, 0.96, 0, 0, 0, 0.96, -1.2143016, 4.0577087, 56.155285)
 
-[node name="@MeshInstance3D@466631" type="MeshInstance3D" parent="container_array 5" unique_id=1367979935]
-transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -1.3450329, 0, 3.268096)
-material_override = ExtResource("8_22tk6")
-mesh = ExtResource("7_y3af7")
+[node name="Container" parent="container_array 5" unique_id=373595834 instance=ExtResource("2_4ftm2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.6653728, 0.09125495, 3.2643664)
 
-[node name="@MeshInstance3D@466632" type="MeshInstance3D" parent="container_array 5" unique_id=1759342654]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.3457153, 2.7541444, 3.2664392)
-material_override = ExtResource("8_22tk6")
-mesh = ExtResource("7_y3af7")
+[node name="@Node3D@169251" parent="container_array 5" unique_id=1211963344 instance=ExtResource("2_4ftm2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.6593688, 2.8453994, 3.2713387)
 
-[node name="@MeshInstance3D@466633" type="MeshInstance3D" parent="container_array 5" unique_id=36224585]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.3059582, 0, 3.268246)
-material_override = ExtResource("12_av35p")
-mesh = ExtResource("7_y3af7")
+[node name="@Node3D@169253" parent="container_array 5" unique_id=1432510172 instance=ExtResource("2_4ftm2")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -0.015025109, 0.09125495, 3.2682803)
 
-[node name="@MeshInstance3D@466634" type="MeshInstance3D" parent="container_array 5" unique_id=1262733639]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.3088017, 2.7541444, 3.2708638)
-material_override = ExtResource("11_0qs2n")
-mesh = ExtResource("7_y3af7")
+[node name="@Node3D@169255" parent="container_array 5" unique_id=1326464572 instance=ExtResource("2_4ftm2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.010038151, 2.8453994, 3.270505)
 
-[node name="@MeshInstance3D@466635" type="MeshInstance3D" parent="container_array 5" unique_id=1612575074]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.9652438, 0, 3.261271)
-material_override = ExtResource("9_22tk6")
-mesh = ExtResource("7_y3af7")
+[node name="@Node3D@169257" parent="container_array 5" unique_id=970906505 instance=ExtResource("2_4ftm2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.01615971, 5.5995436, 3.2699502)
 
-[node name="@MeshInstance3D@466636" type="MeshInstance3D" parent="container_array 5" unique_id=201926948]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.9644248, 2.7541444, 3.2726052)
-material_override = ExtResource("9_22tk6")
-mesh = ExtResource("7_y3af7")
+[node name="@Node3D@169259" parent="container_array 5" unique_id=2119645470 instance=ExtResource("2_4ftm2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.6297705, 0.09125495, 3.2616153)
 
-[node name="@MeshInstance3D@466637" type="MeshInstance3D" parent="container_array 5" unique_id=441827699]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.604275, 0, 3.274257)
-material_override = ExtResource("8_22tk6")
-mesh = ExtResource("7_y3af7")
+[node name="@Node3D@169261" parent="container_array 5" unique_id=1324785625 instance=ExtResource("2_4ftm2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.633625, 2.8453994, 3.2666488)
 
-[node name="@MeshInstance3D@466638" type="MeshInstance3D" parent="container_array 5" unique_id=1439444024]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.6118264, 2.7541444, 3.2568355)
-material_override = ExtResource("8_22tk6")
-mesh = ExtResource("7_y3af7")
+[node name="@Node3D@169263" parent="container_array 5" unique_id=1536578809 instance=ExtResource("2_4ftm2")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 5.283235, 0.09125495, 3.2697961)
+
+[node name="@Node3D@169265" parent="container_array 5" unique_id=585990073 instance=ExtResource("2_4ftm2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.2814355, 2.8453994, 3.2635763)
 
 [node name="container_array 1" type="Node3D" parent="." unique_id=1483757596]
-transform = Transform3D(0.96, 0, 0, 0, 0.96, 0, 0, 0, 0.96, -0.61954165, 6.062425, 43.57079)
+transform = Transform3D(0.96, 0, 0, 0, 0.96, 0, 0, 0, 0.96, -0.5826707, 6.062425, 40.432972)
 
-[node name="@MeshInstance3D@457431" type="MeshInstance3D" parent="container_array 1" unique_id=942344225]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.308176, 0, -3.2671874)
-material_override = ExtResource("8_22tk6")
-mesh = ExtResource("7_y3af7")
+[node name="@Node3D@212723" parent="container_array 1" unique_id=401195711 instance=ExtResource("2_4ftm2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.279607, 0.09125495, -0.019112376)
 
-[node name="@MeshInstance3D@457432" type="MeshInstance3D" parent="container_array 1" unique_id=798946835]
-transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -9.302984, 2.7541444, -3.2575498)
-material_override = ExtResource("8_22tk6")
-mesh = ExtResource("7_y3af7")
+[node name="@Node3D@212725" parent="container_array 1" unique_id=489944529 instance=ExtResource("2_4ftm2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.274407, 2.8453994, -0.017019266)
 
-[node name="@MeshInstance3D@457433" type="MeshInstance3D" parent="container_array 1" unique_id=855882171]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.6533675, 0, -3.272243)
-material_override = ExtResource("9_22tk6")
-mesh = ExtResource("7_y3af7")
+[node name="@Node3D@212727" parent="container_array 1" unique_id=478122204 instance=ExtResource("2_4ftm2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.277114, 5.5995436, -0.019681124)
 
-[node name="@MeshInstance3D@457434" type="MeshInstance3D" parent="container_array 1" unique_id=778712238]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.6385164, 2.7541444, -3.2679496)
-material_override = ExtResource("9_22tk6")
-mesh = ExtResource("7_y3af7")
+[node name="@Node3D@212729" parent="container_array 1" unique_id=284083046 instance=ExtResource("2_4ftm2")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -6.633905, 0.09125495, -0.017429134)
 
-[node name="@MeshInstance3D@457435" type="MeshInstance3D" parent="container_array 1" unique_id=1832977175]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.3338118, 0, -3.2634082)
-material_override = ExtResource("12_av35p")
-mesh = ExtResource("7_y3af7")
+[node name="@Node3D@212731" parent="container_array 1" unique_id=1171843709 instance=ExtResource("2_4ftm2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.6341686, 2.8453994, -0.010410492)
 
-[node name="@MeshInstance3D@457436" type="MeshInstance3D" parent="container_array 1" unique_id=966438176]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.3413264, 2.7541444, -3.2739153)
-material_override = ExtResource("11_0qs2n")
-mesh = ExtResource("7_y3af7")
+[node name="@Node3D@212733" parent="container_array 1" unique_id=1078372954 instance=ExtResource("2_4ftm2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.9814165, 0.09125495, -0.016319644)
 
-[node name="@MeshInstance3D@457437" type="MeshInstance3D" parent="container_array 1" unique_id=2144337433]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.3148289, 0, -3.265286)
-material_override = ExtResource("9_22tk6")
-mesh = ExtResource("7_y3af7")
+[node name="@Node3D@212735" parent="container_array 1" unique_id=1830513444 instance=ExtResource("2_4ftm2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.9895623, 2.8453994, -0.013115802)
 
-[node name="@MeshInstance3D@457438" type="MeshInstance3D" parent="container_array 1" unique_id=1126852478]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.9582276, 0, -3.2732272)
-material_override = ExtResource("10_jn3ni")
-mesh = ExtResource("7_y3af7")
+[node name="@Node3D@212737" parent="container_array 1" unique_id=1431942011 instance=ExtResource("2_4ftm2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.3055726, 0.09125495, -0.01214896)
 
-[node name="@MeshInstance3D@457439" type="MeshInstance3D" parent="container_array 1" unique_id=1949929756]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.966588, 2.7541444, -3.274242)
-material_override = ExtResource("10_jn3ni")
-mesh = ExtResource("7_y3af7")
+[node name="@Node3D@212739" parent="container_array 1" unique_id=799752942 instance=ExtResource("2_4ftm2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.3044666, 2.8453994, -0.011473242)
 
-[node name="@MeshInstance3D@457440" type="MeshInstance3D" parent="container_array 1" unique_id=956217461]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.60632, 0, -3.2651405)
-material_override = ExtResource("11_0qs2n")
-mesh = ExtResource("7_y3af7")
+[node name="@Node3D@212741" parent="container_array 1" unique_id=1460976791 instance=ExtResource("2_4ftm2")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 3.9564495, 0.09125495, -0.012797601)
 
-[node name="@MeshInstance3D@457441" type="MeshInstance3D" parent="container_array 1" unique_id=1035647837]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.603484, 2.7541444, -3.2665415)
-material_override = ExtResource("11_0qs2n")
-mesh = ExtResource("7_y3af7")
+[node name="@Node3D@212743" parent="container_array 1" unique_id=1763180338 instance=ExtResource("2_4ftm2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.9503222, 2.8453994, -0.010464664)
 
-[node name="@MeshInstance3D@457442" type="MeshInstance3D" parent="container_array 1" unique_id=2041989740]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.270406, 0, -3.2620177)
-material_override = ExtResource("11_0qs2n")
-mesh = ExtResource("7_y3af7")
+[node name="@Node3D@212745" parent="container_array 1" unique_id=107479798 instance=ExtResource("2_4ftm2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.956232, 5.5995436, -0.01228259)
 
-[node name="@MeshInstance3D@457443" type="MeshInstance3D" parent="container_array 1" unique_id=2023900165]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.918086, 0, -3.2625668)
-material_override = ExtResource("10_jn3ni")
-mesh = ExtResource("7_y3af7")
+[node name="@Node3D@212747" parent="container_array 1" unique_id=124137000 instance=ExtResource("2_4ftm2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.600993, 0.09125495, -0.014103413)
 
-[node name="@MeshInstance3D@457444" type="MeshInstance3D" parent="container_array 1" unique_id=1954541014]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.918059, 2.7541444, -3.2758384)
-material_override = ExtResource("10_jn3ni")
-mesh = ExtResource("7_y3af7")
+[node name="@Node3D@212749" parent="container_array 1" unique_id=1446719155 instance=ExtResource("2_4ftm2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.60302, 2.8453994, -0.017510105)
 
-[node name="@MeshInstance3D@457445" type="MeshInstance3D" parent="container_array 1" unique_id=1457799606]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.65096, 0, 3.2760699)
-material_override = ExtResource("10_jn3ni")
-mesh = ExtResource("7_y3af7")
+[node name="@Node3D@212751" parent="container_array 1" unique_id=1378885962 instance=ExtResource("2_4ftm2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.5995026, 5.5995436, -0.01516513)
 
-[node name="@MeshInstance3D@457446" type="MeshInstance3D" parent="container_array 1" unique_id=220071650]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.9990025, 0, 3.2623265)
-material_override = ExtResource("9_22tk6")
-mesh = ExtResource("7_y3af7")
+[node name="@Node3D@212753" parent="container_array 1" unique_id=1268908049 instance=ExtResource("2_4ftm2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.898425, 0.09125495, -0.013860705)
 
-[node name="@MeshInstance3D@457447" type="MeshInstance3D" parent="container_array 1" unique_id=1039335657]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.9953792, 2.7541444, 3.2640817)
-material_override = ExtResource("9_22tk6")
-mesh = ExtResource("7_y3af7")
+[node name="@Node3D@212755" parent="container_array 1" unique_id=1793241194 instance=ExtResource("2_4ftm2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.894059, 2.8453994, -0.016747544)
 
-[node name="@MeshInstance3D@457448" type="MeshInstance3D" parent="container_array 1" unique_id=778325539]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.3400124, 0, 3.258262)
-material_override = ExtResource("12_av35p")
-mesh = ExtResource("7_y3af7")
+[node name="@Node3D@212757" parent="container_array 1" unique_id=1640236135 instance=ExtResource("2_4ftm2")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -9.276004, 0.09125495, 6.5461054)
 
-[node name="@MeshInstance3D@457449" type="MeshInstance3D" parent="container_array 1" unique_id=952369400]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.313794, 0, 3.2675226)
-material_override = ExtResource("12_av35p")
-mesh = ExtResource("7_y3af7")
+[node name="@Node3D@212759" parent="container_array 1" unique_id=730021938 instance=ExtResource("2_4ftm2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.278076, 2.8453994, 6.5443797)
 
-[node name="@MeshInstance3D@457450" type="MeshInstance3D" parent="container_array 1" unique_id=503176837]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.9573839, 0, 3.2570775)
-material_override = ExtResource("10_jn3ni")
-mesh = ExtResource("7_y3af7")
+[node name="@Node3D@212761" parent="container_array 1" unique_id=2114257921 instance=ExtResource("2_4ftm2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.628354, 0.09125495, 6.5508604)
 
-[node name="@MeshInstance3D@457451" type="MeshInstance3D" parent="container_array 1" unique_id=790186187]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.9671936, 2.7541444, 3.2634842)
-material_override = ExtResource("12_av35p")
-mesh = ExtResource("7_y3af7")
+[node name="@Node3D@212763" parent="container_array 1" unique_id=1428243487 instance=ExtResource("2_4ftm2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.6320724, 2.8453994, 6.5494637)
 
-[node name="@MeshInstance3D@457452" type="MeshInstance3D" parent="container_array 1" unique_id=1152119605]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.6157546, 0, 3.2575116)
-material_override = ExtResource("10_jn3ni")
-mesh = ExtResource("7_y3af7")
+[node name="@Node3D@212765" parent="container_array 1" unique_id=750188528 instance=ExtResource("2_4ftm2")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -3.9870634, 0.09125495, 6.54321)
 
-[node name="@MeshInstance3D@457453" type="MeshInstance3D" parent="container_array 1" unique_id=1239495503]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.6093535, 2.7541444, 3.2656865)
-material_override = ExtResource("10_jn3ni")
-mesh = ExtResource("7_y3af7")
+[node name="@Node3D@212767" parent="container_array 1" unique_id=82378565 instance=ExtResource("2_4ftm2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.98565, 2.8453994, 6.5476794)
 
-[node name="@MeshInstance3D@457454" type="MeshInstance3D" parent="container_array 1" unique_id=1589040891]
-transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 9.265264, 0, 3.2661333)
-material_override = ExtResource("12_av35p")
-mesh = ExtResource("7_y3af7")
+[node name="@Node3D@212769" parent="container_array 1" unique_id=1191636190 instance=ExtResource("2_4ftm2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.9832754, 5.5995436, 6.5490932)
 
-[node name="@MeshInstance3D@457455" type="MeshInstance3D" parent="container_array 1" unique_id=2113673099]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.9922435, 0, 9.7930355)
-material_override = ExtResource("10_jn3ni")
-mesh = ExtResource("7_y3af7")
+[node name="@Node3D@212771" parent="container_array 1" unique_id=1010876488 instance=ExtResource("2_4ftm2")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 1.3034432, 0.09125495, 6.5458336)
 
-[node name="@MeshInstance3D@457456" type="MeshInstance3D" parent="container_array 1" unique_id=587870651]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.3525498, 0, 9.801269)
-material_override = ExtResource("12_av35p")
-mesh = ExtResource("7_y3af7")
+[node name="@Node3D@212773" parent="container_array 1" unique_id=1891944761 instance=ExtResource("2_4ftm2")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 6.599869, 0.09125495, 6.551706)
 
-[node name="@MeshInstance3D@457457" type="MeshInstance3D" parent="container_array 1" unique_id=2034976207]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.3035, 0, 9.804329)
-material_override = ExtResource("10_jn3ni")
-mesh = ExtResource("7_y3af7")
+[node name="@Node3D@212775" parent="container_array 1" unique_id=1561651932 instance=ExtResource("2_4ftm2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.604953, 2.8453994, 6.5450864)
 
-[node name="@MeshInstance3D@457458" type="MeshInstance3D" parent="container_array 1" unique_id=1706023348]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.3133088, 2.7541444, 9.802131)
-material_override = ExtResource("10_jn3ni")
-mesh = ExtResource("7_y3af7")
+[node name="@Node3D@212777" parent="container_array 1" unique_id=1358028124 instance=ExtResource("2_4ftm2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.601345, 5.5995436, 6.546251)
 
-[node name="@MeshInstance3D@457459" type="MeshInstance3D" parent="container_array 1" unique_id=1921889233]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.9583352, 0, 9.795836)
-material_override = ExtResource("11_0qs2n")
-mesh = ExtResource("7_y3af7")
+[node name="@Node3D@212779" parent="container_array 1" unique_id=663661203 instance=ExtResource("2_4ftm2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.245512, 0.09125495, 6.5463)
 
-[node name="container_array 2" type="Node3D" parent="." unique_id=1571371229]
+[node name="@Node3D@212781" parent="container_array 1" unique_id=1815819922 instance=ExtResource("2_4ftm2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.244488, 2.8453994, 6.5513396)
+
+[node name="@Node3D@212783" parent="container_array 1" unique_id=1665200857 instance=ExtResource("2_4ftm2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.253042, 5.5995436, 6.5458636)
+
+[node name="container_array 2" type="Node3D" parent="." unique_id=785673378]
 transform = Transform3D(0.96, 0, 0, 0, 0.96, 0, 0, 0, 0.96, -0.5193027, 6.078212, 24.609457)
 
-[node name="@MeshInstance3D@491758" type="MeshInstance3D" parent="container_array 2" unique_id=516448499]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.996446, 0, 0.001446601)
-material_override = ExtResource("9_22tk6")
-mesh = ExtResource("7_y3af7")
+[node name="@Node3D@213741" parent="container_array 2" unique_id=590280681 instance=ExtResource("2_4ftm2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.277425, 0.09125495, -0.010756563)
 
-[node name="@MeshInstance3D@491759" type="MeshInstance3D" parent="container_array 2" unique_id=1613872178]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.9869757, 2.7541444, 0.0020750975)
-material_override = ExtResource("9_22tk6")
-mesh = ExtResource("7_y3af7")
+[node name="@Node3D@213743" parent="container_array 2" unique_id=1227080931 instance=ExtResource("2_4ftm2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.9808762, 0.09125495, -0.015177509)
 
-[node name="@MeshInstance3D@491760" type="MeshInstance3D" parent="container_array 2" unique_id=2028212329]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.9603212, 0, 0.0065202843)
-material_override = ExtResource("8_22tk6")
-mesh = ExtResource("7_y3af7")
+[node name="@Node3D@213745" parent="container_array 2" unique_id=744016120 instance=ExtResource("2_4ftm2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.9860618, 2.8453994, -0.019547502)
 
-[node name="@MeshInstance3D@491761" type="MeshInstance3D" parent="container_array 2" unique_id=2042921349]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.9522085, 2.7541444, -0.005220397)
-material_override = ExtResource("8_22tk6")
-mesh = ExtResource("7_y3af7")
+[node name="@Node3D@213747" parent="container_array 2" unique_id=504729116 instance=ExtResource("2_4ftm2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.9815223, 5.5995436, -0.017459678)
 
-[node name="@MeshInstance3D@491762" type="MeshInstance3D" parent="container_array 2" unique_id=709466717]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.6071305, 0, -0.0015773699)
-material_override = ExtResource("10_jn3ni")
-mesh = ExtResource("7_y3af7")
+[node name="@Node3D@213749" parent="container_array 2" unique_id=161310703 instance=ExtResource("2_4ftm2")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -1.3432772, 0.09125495, -0.017160373)
 
-[node name="@MeshInstance3D@491763" type="MeshInstance3D" parent="container_array 2" unique_id=431382965]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.256982, 0, 0.006776318)
-material_override = ExtResource("8_22tk6")
-mesh = ExtResource("7_y3af7")
+[node name="@Node3D@213751" parent="container_array 2" unique_id=452236626 instance=ExtResource("2_4ftm2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.3402445, 2.8453994, -0.017998237)
 
-[node name="@MeshInstance3D@491764" type="MeshInstance3D" parent="container_array 2" unique_id=41101614]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.270663, 2.7541444, -0.009563974)
-material_override = ExtResource("8_22tk6")
-mesh = ExtResource("7_y3af7")
+[node name="@Node3D@213753" parent="container_array 2" unique_id=811793884 instance=ExtResource("2_4ftm2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.3348752, 5.5995436, -0.015953004)
 
-[node name="@MeshInstance3D@491765" type="MeshInstance3D" parent="container_array 2" unique_id=1914731676]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.272706, 5.508289, 0.0065146647)
-material_override = ExtResource("8_22tk6")
-mesh = ExtResource("7_y3af7")
+[node name="@Node3D@213755" parent="container_array 2" unique_id=865922866 instance=ExtResource("2_4ftm2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.3097252, 0.09125495, -0.01775172)
 
-[node name="@MeshInstance3D@491766" type="MeshInstance3D" parent="container_array 2" unique_id=1719757991]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.925285, 0, 0.0010354063)
-material_override = ExtResource("10_jn3ni")
-mesh = ExtResource("7_y3af7")
+[node name="@Node3D@213757" parent="container_array 2" unique_id=1072798342 instance=ExtResource("2_4ftm2")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 3.950888, 0.09125495, -0.012483401)
 
-[node name="@MeshInstance3D@491767" type="MeshInstance3D" parent="container_array 2" unique_id=1028946758]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.912677, 2.7541444, 0.0056388844)
-material_override = ExtResource("10_jn3ni")
-mesh = ExtResource("7_y3af7")
+[node name="@Node3D@213759" parent="container_array 2" unique_id=536168499 instance=ExtResource("2_4ftm2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.9547508, 2.8453994, -0.019073626)
 
-[node name="@MeshInstance3D@491768" type="MeshInstance3D" parent="container_array 2" unique_id=609359101]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.289557, 0, 6.5264497)
-material_override = ExtResource("10_jn3ni")
-mesh = ExtResource("7_y3af7")
+[node name="@Node3D@213761" parent="container_array 2" unique_id=17896308 instance=ExtResource("2_4ftm2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.6005793, 0.09125495, -0.013749773)
 
-[node name="@MeshInstance3D@491769" type="MeshInstance3D" parent="container_array 2" unique_id=924356211]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.65162, 0, 6.5323234)
-material_override = ExtResource("10_jn3ni")
-mesh = ExtResource("7_y3af7")
+[node name="@Node3D@213763" parent="container_array 2" unique_id=917576937 instance=ExtResource("2_4ftm2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.600875, 2.8453994, -0.013770832)
 
-[node name="@MeshInstance3D@491770" type="MeshInstance3D" parent="container_array 2" unique_id=1323915238]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.641583, 2.7541444, 6.5368)
-material_override = ExtResource("10_jn3ni")
-mesh = ExtResource("7_y3af7")
+[node name="@Node3D@213765" parent="container_array 2" unique_id=1766234327 instance=ExtResource("2_4ftm2")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 9.245237, 0.09125495, -0.018723156)
 
-[node name="@MeshInstance3D@491771" type="MeshInstance3D" parent="container_array 2" unique_id=1108058777]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.9892037, 0, 6.529738)
-material_override = ExtResource("11_0qs2n")
-mesh = ExtResource("7_y3af7")
+[node name="@Node3D@213767" parent="container_array 2" unique_id=720253988 instance=ExtResource("2_4ftm2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.250945, 2.8453994, -0.01569905)
 
-[node name="@MeshInstance3D@491772" type="MeshInstance3D" parent="container_array 2" unique_id=935046675]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.9865122, 2.7541444, 6.528613)
-material_override = ExtResource("11_0qs2n")
-mesh = ExtResource("7_y3af7")
+[node name="@Node3D@213769" parent="container_array 2" unique_id=1192401934 instance=ExtResource("2_4ftm2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.895518, 0.09125495, -0.012819124)
 
-[node name="@MeshInstance3D@491773" type="MeshInstance3D" parent="container_array 2" unique_id=273647872]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.3153768, 0, 6.530583)
-material_override = ExtResource("11_0qs2n")
-mesh = ExtResource("7_y3af7")
+[node name="@Node3D@213771" parent="container_array 2" unique_id=523434139 instance=ExtResource("2_4ftm2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.894914, 2.8453994, -0.014419196)
 
-[node name="@MeshInstance3D@491774" type="MeshInstance3D" parent="container_array 2" unique_id=1831849516]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.3099598, 2.7541444, 6.529283)
-material_override = ExtResource("11_0qs2n")
-mesh = ExtResource("7_y3af7")
+[node name="@Node3D@213773" parent="container_array 2" unique_id=1983280471 instance=ExtResource("2_4ftm2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.89102, 5.5995436, -0.0105136)
 
-[node name="@MeshInstance3D@491775" type="MeshInstance3D" parent="container_array 2" unique_id=681188753]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.3171022, 5.508289, 6.5332713)
-material_override = ExtResource("11_0qs2n")
-mesh = ExtResource("7_y3af7")
+[node name="@Node3D@213775" parent="container_array 2" unique_id=1551105744 instance=ExtResource("2_4ftm2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.6325464, 0.09125495, 6.549618)
 
-[node name="@MeshInstance3D@491776" type="MeshInstance3D" parent="container_array 2" unique_id=1351546797]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.9588137, 0, 6.5404806)
-material_override = ExtResource("12_av35p")
-mesh = ExtResource("7_y3af7")
+[node name="@Node3D@213777" parent="container_array 2" unique_id=1742699625 instance=ExtResource("2_4ftm2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.6312637, 2.8453994, 6.543385)
 
-[node name="@MeshInstance3D@491777" type="MeshInstance3D" parent="container_array 2" unique_id=1986144531]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.266698, 0, 6.527266)
-material_override = ExtResource("11_0qs2n")
-mesh = ExtResource("7_y3af7")
+[node name="@Node3D@213779" parent="container_array 2" unique_id=635462580 instance=ExtResource("2_4ftm2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.6323514, 5.5995436, 6.544954)
 
-[node name="@MeshInstance3D@491778" type="MeshInstance3D" parent="container_array 2" unique_id=981598237]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.271317, 2.7541444, 6.5305257)
-material_override = ExtResource("11_0qs2n")
-mesh = ExtResource("7_y3af7")
+[node name="@Node3D@213781" parent="container_array 2" unique_id=996917167 instance=ExtResource("2_4ftm2")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -3.9871962, 0.09125495, 6.5437493)
 
-[node name="container_array 2_1" type="Node3D" parent="." unique_id=2095507771]
+[node name="@Node3D@213783" parent="container_array 2" unique_id=496009350 instance=ExtResource("2_4ftm2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.983357, 2.8453994, 6.5517864)
+
+[node name="@Node3D@213785" parent="container_array 2" unique_id=831037792 instance=ExtResource("2_4ftm2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.9896898, 5.5995436, 6.54875)
+
+[node name="@Node3D@213787" parent="container_array 2" unique_id=770459987 instance=ExtResource("2_4ftm2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.3415054, 0.09125495, 6.5444164)
+
+[node name="@Node3D@213789" parent="container_array 2" unique_id=1716376982 instance=ExtResource("2_4ftm2")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 1.3055974, 0.09125495, 6.5443287)
+
+[node name="@Node3D@213791" parent="container_array 2" unique_id=1938284824 instance=ExtResource("2_4ftm2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.3067038, 2.8453994, 6.544879)
+
+[node name="@Node3D@213793" parent="container_array 2" unique_id=2109432211 instance=ExtResource("2_4ftm2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.3130386, 5.5995436, 6.5429535)
+
+[node name="@Node3D@213795" parent="container_array 2" unique_id=2099355359 instance=ExtResource("2_4ftm2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.9519582, 0.09125495, 6.544282)
+
+[node name="@Node3D@213797" parent="container_array 2" unique_id=260542635 instance=ExtResource("2_4ftm2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.9522927, 2.8453994, 6.5479255)
+
+[node name="@Node3D@213799" parent="container_array 2" unique_id=1743811506 instance=ExtResource("2_4ftm2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.9526272, 5.5995436, 6.544221)
+
+[node name="@Node3D@213801" parent="container_array 2" unique_id=1925312050 instance=ExtResource("2_4ftm2")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 6.603746, 0.09125495, 6.5511265)
+
+[node name="@Node3D@213803" parent="container_array 2" unique_id=227245869 instance=ExtResource("2_4ftm2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.605968, 2.8453994, 6.5506344)
+
+[node name="@Node3D@213805" parent="container_array 2" unique_id=154218109 instance=ExtResource("2_4ftm2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.601615, 5.5995436, 6.5438957)
+
+[node name="@Node3D@213807" parent="container_array 2" unique_id=155390983 instance=ExtResource("2_4ftm2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.248046, 0.09125495, 6.551122)
+
+[node name="@Node3D@213809" parent="container_array 2" unique_id=447200242 instance=ExtResource("2_4ftm2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.248596, 2.8453994, 6.551703)
+
+[node name="@Node3D@213811" parent="container_array 2" unique_id=1661166787 instance=ExtResource("2_4ftm2")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 11.895238, 0.09125495, 6.548946)
+
+[node name="@Node3D@213813" parent="container_array 2" unique_id=1879560921 instance=ExtResource("2_4ftm2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.894079, 2.8453994, 6.545327)
+
+[node name="container_array 6" type="Node3D" parent="." unique_id=159602072]
 transform = Transform3D(0.96, 0, 0, 0, 0.96, 0, 0, 0, 0.96, -0.5193027, 6.078212, 11.613329)
 
-[node name="@MeshInstance3D@487225" type="MeshInstance3D" parent="container_array 2_1" unique_id=1118595874]
-transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -9.2899475, 0, -0.008237986)
-material_override = ExtResource("11_0qs2n")
-mesh = ExtResource("7_y3af7")
+[node name="Container" parent="container_array 6" unique_id=1630974433 instance=ExtResource("2_4ftm2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.276182, 0.09125495, -0.019446839)
 
-[node name="@MeshInstance3D@487226" type="MeshInstance3D" parent="container_array 2_1" unique_id=952372349]
-transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -9.291628, 2.7541444, 0.008213744)
-material_override = ExtResource("11_0qs2n")
-mesh = ExtResource("7_y3af7")
+[node name="@Node3D@209909" parent="container_array 6" unique_id=748080046 instance=ExtResource("2_4ftm2")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -6.630168, 0.09125495, -0.015584083)
 
-[node name="@MeshInstance3D@487227" type="MeshInstance3D" parent="container_array 2_1" unique_id=806712946]
-transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -6.6524625, 0, 0.007908249)
-material_override = ExtResource("12_av35p")
-mesh = ExtResource("7_y3af7")
+[node name="@Node3D@209911" parent="container_array 6" unique_id=266562959 instance=ExtResource("2_4ftm2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.6292005, 2.8453994, -0.012474646)
 
-[node name="@MeshInstance3D@487228" type="MeshInstance3D" parent="container_array 2_1" unique_id=321617109]
-transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -6.647884, 2.7541444, -0.007893073)
-material_override = ExtResource("12_av35p")
-mesh = ExtResource("7_y3af7")
+[node name="@Node3D@209913" parent="container_array 6" unique_id=2060951639 instance=ExtResource("2_4ftm2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.9808838, 0.09125495, -0.010082248)
 
-[node name="@MeshInstance3D@487229" type="MeshInstance3D" parent="container_array 2_1" unique_id=1405680595]
-transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -6.6412477, 5.508289, 0.006994102)
-material_override = ExtResource("9_22tk6")
-mesh = ExtResource("7_y3af7")
+[node name="@Node3D@209915" parent="container_array 6" unique_id=493485283 instance=ExtResource("2_4ftm2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.9880726, 2.8453994, -0.010315753)
 
-[node name="@MeshInstance3D@487230" type="MeshInstance3D" parent="container_array 2_1" unique_id=788927248]
-transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -3.9895294, 0, -0.007221276)
-material_override = ExtResource("11_0qs2n")
-mesh = ExtResource("7_y3af7")
+[node name="@Node3D@209917" parent="container_array 6" unique_id=2015610412 instance=ExtResource("2_4ftm2")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 3.9563365, 0.09125495, -0.010424631)
 
-[node name="@MeshInstance3D@487231" type="MeshInstance3D" parent="container_array 2_1" unique_id=379852818]
-transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -4.00021, 2.7541444, -0.0041227965)
-material_override = ExtResource("11_0qs2n")
-mesh = ExtResource("7_y3af7")
+[node name="@Node3D@209919" parent="container_array 6" unique_id=2003556290 instance=ExtResource("2_4ftm2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.9501736, 2.8453994, -0.014692947)
 
-[node name="@MeshInstance3D@487232" type="MeshInstance3D" parent="container_array 2_1" unique_id=792429868]
-transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -3.9979057, 5.508289, 0.004118421)
-material_override = ExtResource("11_0qs2n")
-mesh = ExtResource("7_y3af7")
+[node name="@Node3D@209921" parent="container_array 6" unique_id=484033509 instance=ExtResource("2_4ftm2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.9560916, 5.5995436, -0.019522926)
 
-[node name="@MeshInstance3D@487233" type="MeshInstance3D" parent="container_array 2_1" unique_id=344266122]
-transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -1.3475796, 0, 0.006604472)
-material_override = ExtResource("12_av35p")
-mesh = ExtResource("7_y3af7")
+[node name="@Node3D@209923" parent="container_array 6" unique_id=1791654250 instance=ExtResource("2_4ftm2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.5982184, 0.09125495, -0.019048877)
 
-[node name="@MeshInstance3D@487234" type="MeshInstance3D" parent="container_array 2_1" unique_id=583654277]
-transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -1.3477534, 2.7541444, -0.0006400896)
-material_override = ExtResource("12_av35p")
-mesh = ExtResource("7_y3af7")
+[node name="@Node3D@209925" parent="container_array 6" unique_id=1894559729 instance=ExtResource("2_4ftm2")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 9.247146, 0.09125495, -0.010435674)
 
-[node name="@MeshInstance3D@487235" type="MeshInstance3D" parent="container_array 2_1" unique_id=421521333]
-transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -1.3498957, 5.508289, 0.008817531)
-material_override = ExtResource("10_jn3ni")
-mesh = ExtResource("7_y3af7")
+[node name="@Node3D@209927" parent="container_array 6" unique_id=544713272 instance=ExtResource("2_4ftm2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.249104, 2.8453994, -0.014945099)
 
-[node name="@MeshInstance3D@487236" type="MeshInstance3D" parent="container_array 2_1" unique_id=805352190]
-transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 3.9539437, 0, 0.0014939494)
-material_override = ExtResource("8_22tk6")
-mesh = ExtResource("7_y3af7")
+[node name="@Node3D@209929" parent="container_array 6" unique_id=1285397708 instance=ExtResource("2_4ftm2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.251, 5.5995436, -0.018782932)
 
-[node name="@MeshInstance3D@487237" type="MeshInstance3D" parent="container_array 2_1" unique_id=1227137281]
-transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 3.9642787, 2.7541444, -0.00031563826)
-material_override = ExtResource("9_22tk6")
-mesh = ExtResource("7_y3af7")
+[node name="@Node3D@209931" parent="container_array 6" unique_id=400894833 instance=ExtResource("2_4ftm2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.896316, 0.09125495, -0.018968845)
 
-[node name="@MeshInstance3D@487238" type="MeshInstance3D" parent="container_array 2_1" unique_id=1371406264]
-transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 3.9555979, 5.508289, -0.007109713)
-material_override = ExtResource("8_22tk6")
-mesh = ExtResource("7_y3af7")
+[node name="@Node3D@209933" parent="container_array 6" unique_id=1830400191 instance=ExtResource("2_4ftm2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.89813, 2.8453994, -0.013407441)
 
-[node name="@MeshInstance3D@487239" type="MeshInstance3D" parent="container_array 2_1" unique_id=824669524]
-transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 9.270962, 0, 0.00080807693)
-material_override = ExtResource("10_jn3ni")
-mesh = ExtResource("7_y3af7")
+[node name="@Node3D@209935" parent="container_array 6" unique_id=1977851298 instance=ExtResource("2_4ftm2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.893708, 5.5995436, -0.01778315)
 
-[node name="@MeshInstance3D@487240" type="MeshInstance3D" parent="container_array 2_1" unique_id=303693882]
-transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 9.255471, 2.7541444, -0.0065685166)
-material_override = ExtResource("10_jn3ni")
-mesh = ExtResource("7_y3af7")
+[node name="@Node3D@209937" parent="container_array 6" unique_id=1379164574 instance=ExtResource("2_4ftm2")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -9.278699, 0.09125495, 6.545787)
 
-[node name="@MeshInstance3D@487241" type="MeshInstance3D" parent="container_array 2_1" unique_id=87960440]
-transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 9.258771, 5.508289, 0.00148167)
-material_override = ExtResource("10_jn3ni")
-mesh = ExtResource("7_y3af7")
+[node name="@Node3D@209939" parent="container_array 6" unique_id=1056992839 instance=ExtResource("2_4ftm2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.2793, 2.8453994, 6.5497227)
 
-[node name="@MeshInstance3D@487242" type="MeshInstance3D" parent="container_array 2_1" unique_id=582748744]
-transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -9.291275, 0, 6.535725)
-material_override = ExtResource("12_av35p")
-mesh = ExtResource("7_y3af7")
+[node name="@Node3D@209941" parent="container_array 6" unique_id=481937832 instance=ExtResource("2_4ftm2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.274225, 5.5995436, 6.5452714)
 
-[node name="@MeshInstance3D@487243" type="MeshInstance3D" parent="container_array 2_1" unique_id=1561717465]
-transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -9.306027, 2.7541444, 6.5411506)
-material_override = ExtResource("11_0qs2n")
-mesh = ExtResource("7_y3af7")
+[node name="@Node3D@209943" parent="container_array 6" unique_id=884482463 instance=ExtResource("2_4ftm2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.628019, 0.09125495, 6.5496836)
 
-[node name="@MeshInstance3D@487244" type="MeshInstance3D" parent="container_array 2_1" unique_id=1740823004]
-transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -9.293684, 5.508289, 6.529865)
-material_override = ExtResource("11_0qs2n")
-mesh = ExtResource("7_y3af7")
+[node name="@Node3D@209945" parent="container_array 6" unique_id=349143548 instance=ExtResource("2_4ftm2")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -3.9881887, 0.09125495, 6.552364)
 
-[node name="@MeshInstance3D@487245" type="MeshInstance3D" parent="container_array 2_1" unique_id=189250393]
-transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -6.6556377, 0, 6.534771)
-material_override = ExtResource("10_jn3ni")
-mesh = ExtResource("7_y3af7")
+[node name="@Node3D@209947" parent="container_array 6" unique_id=1448511505 instance=ExtResource("2_4ftm2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.989364, 2.8453994, 6.546398)
 
-[node name="@MeshInstance3D@487246" type="MeshInstance3D" parent="container_array 2_1" unique_id=1522231086]
-transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -6.639695, 2.7541444, 6.5296774)
-material_override = ExtResource("10_jn3ni")
-mesh = ExtResource("7_y3af7")
+[node name="@Node3D@209949" parent="container_array 6" unique_id=1279361726 instance=ExtResource("2_4ftm2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.9871607, 5.5995436, 6.5475626)
 
-[node name="@MeshInstance3D@487247" type="MeshInstance3D" parent="container_array 2_1" unique_id=160112417]
-transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -6.6500154, 5.508289, 6.540716)
-material_override = ExtResource("10_jn3ni")
-mesh = ExtResource("7_y3af7")
+[node name="@Node3D@209951" parent="container_array 6" unique_id=413071396 instance=ExtResource("2_4ftm2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.954286, 0.09125495, 6.5468183)
 
-[node name="@MeshInstance3D@487248" type="MeshInstance3D" parent="container_array 2_1" unique_id=1352054707]
-transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -3.9910314, 0, 6.5393186)
-material_override = ExtResource("8_22tk6")
-mesh = ExtResource("7_y3af7")
+[node name="@Node3D@209953" parent="container_array 6" unique_id=2146278403 instance=ExtResource("2_4ftm2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.9586642, 2.8453994, 6.5449634)
 
-[node name="@MeshInstance3D@487249" type="MeshInstance3D" parent="container_array 2_1" unique_id=469749431]
-transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -3.9955716, 2.7541444, 6.5354686)
-material_override = ExtResource("10_jn3ni")
-mesh = ExtResource("7_y3af7")
+[node name="@Node3D@209955" parent="container_array 6" unique_id=670484247 instance=ExtResource("2_4ftm2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.9515219, 5.5995436, 6.5520797)
 
-[node name="@MeshInstance3D@487250" type="MeshInstance3D" parent="container_array 2_1" unique_id=125238878]
-transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -1.345741, 0, 6.53694)
-material_override = ExtResource("11_0qs2n")
-mesh = ExtResource("7_y3af7")
+[node name="@Node3D@209957" parent="container_array 6" unique_id=1627487218 instance=ExtResource("2_4ftm2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.247376, 0.09125495, 6.551179)
 
-[node name="@MeshInstance3D@487251" type="MeshInstance3D" parent="container_array 2_1" unique_id=1676965503]
-transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 3.9577885, 0, 6.5420938)
-material_override = ExtResource("9_22tk6")
-mesh = ExtResource("7_y3af7")
+[node name="@Node3D@209959" parent="container_array 6" unique_id=1561543528 instance=ExtResource("2_4ftm2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.249123, 2.8453994, 6.549398)
 
-[node name="@MeshInstance3D@487252" type="MeshInstance3D" parent="container_array 2_1" unique_id=1045605936]
-transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 3.967538, 2.7541444, 6.533478)
-material_override = ExtResource("9_22tk6")
-mesh = ExtResource("7_y3af7")
-
-[node name="@MeshInstance3D@487253" type="MeshInstance3D" parent="container_array 2_1" unique_id=2126726228]
-transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 3.9512653, 5.508289, 6.5411353)
-material_override = ExtResource("12_av35p")
-mesh = ExtResource("7_y3af7")
-
-[node name="@MeshInstance3D@487254" type="MeshInstance3D" parent="container_array 2_1" unique_id=473351091]
-transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 6.616039, 0, 6.528654)
-material_override = ExtResource("9_22tk6")
-mesh = ExtResource("7_y3af7")
-
-[node name="@MeshInstance3D@487255" type="MeshInstance3D" parent="container_array 2_1" unique_id=1476693293]
-transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 6.617269, 2.7541444, 6.528525)
-material_override = ExtResource("9_22tk6")
-mesh = ExtResource("7_y3af7")
-
-[node name="@MeshInstance3D@487256" type="MeshInstance3D" parent="container_array 2_1" unique_id=512846118]
-transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 6.6218677, 5.508289, 6.5292597)
-material_override = ExtResource("9_22tk6")
-mesh = ExtResource("7_y3af7")
-
-[node name="@MeshInstance3D@487257" type="MeshInstance3D" parent="container_array 2_1" unique_id=1050077260]
-transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 9.266358, 0, 6.5234222)
-material_override = ExtResource("10_jn3ni")
-mesh = ExtResource("7_y3af7")
-
-[node name="@MeshInstance3D@487258" type="MeshInstance3D" parent="container_array 2_1" unique_id=474648780]
-transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 9.265385, 2.7541444, 6.5319505)
-material_override = ExtResource("12_av35p")
-mesh = ExtResource("7_y3af7")
-
-[node name="@MeshInstance3D@487259" type="MeshInstance3D" parent="container_array 2_1" unique_id=45456902]
-transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 9.270381, 5.508289, 6.5234137)
-material_override = ExtResource("12_av35p")
-mesh = ExtResource("7_y3af7")
-
-[node name="@MeshInstance3D@487260" type="MeshInstance3D" parent="container_array 2_1" unique_id=22330893]
-transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 11.909064, 0, 6.529171)
-material_override = ExtResource("12_av35p")
-mesh = ExtResource("7_y3af7")
-
-[node name="@MeshInstance3D@487261" type="MeshInstance3D" parent="container_array 2_1" unique_id=796218259]
-transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 11.910346, 2.7541444, 6.5242276)
-material_override = ExtResource("12_av35p")
-mesh = ExtResource("7_y3af7")
-
-[node name="@MeshInstance3D@487262" type="MeshInstance3D" parent="container_array 2_1" unique_id=139331527]
-transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 11.924472, 5.508289, 6.527909)
-material_override = ExtResource("12_av35p")
-mesh = ExtResource("7_y3af7")
-
-[node name="container_array 3" type="Node3D" parent="." unique_id=837957569]
+[node name="container_array 7" type="Node3D" parent="." unique_id=1734884861]
 transform = Transform3D(0.96, 0, 0, 0, 0.96, 0, 0, 0, 0.96, -0.51186764, 6.070433, -3.5219955)
 
-[node name="@MeshInstance3D@509585" type="MeshInstance3D" parent="container_array 3" unique_id=1371637400]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.308578, 0, 0.0049387887)
-material_override = ExtResource("12_av35p")
-mesh = ExtResource("7_y3af7")
+[node name="Container" parent="container_array 7" unique_id=1538564096 instance=ExtResource("2_4ftm2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.275865, 0.09125495, -0.011596545)
 
-[node name="@MeshInstance3D@509586" type="MeshInstance3D" parent="container_array 3" unique_id=1868124500]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.299436, 2.7541444, 0.0064295456)
-material_override = ExtResource("12_av35p")
-mesh = ExtResource("7_y3af7")
+[node name="@Node3D@218144" parent="container_array 7" unique_id=834899743 instance=ExtResource("2_4ftm2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.281266, 2.8453994, -0.01797635)
 
-[node name="@MeshInstance3D@509587" type="MeshInstance3D" parent="container_array 3" unique_id=1406065980]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.003778, 0, 0.009811448)
-material_override = ExtResource("10_jn3ni")
-mesh = ExtResource("7_y3af7")
+[node name="@Node3D@218146" parent="container_array 7" unique_id=2034974188 instance=ExtResource("2_4ftm2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.277438, 5.5995436, -0.010492623)
 
-[node name="@MeshInstance3D@509588" type="MeshInstance3D" parent="container_array 3" unique_id=1497778398]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.0006533, 2.7541444, -0.0027639186)
-material_override = ExtResource("10_jn3ni")
-mesh = ExtResource("7_y3af7")
+[node name="@Node3D@218148" parent="container_array 7" unique_id=2105035248 instance=ExtResource("2_4ftm2")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -6.633006, 0.09125495, -0.014551176)
 
-[node name="@MeshInstance3D@509589" type="MeshInstance3D" parent="container_array 3" unique_id=1517052079]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.998134, 5.508289, 0.0012522591)
-material_override = ExtResource("10_jn3ni")
-mesh = ExtResource("7_y3af7")
+[node name="@Node3D@218150" parent="container_array 7" unique_id=600951646 instance=ExtResource("2_4ftm2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.6364746, 2.8453994, -0.014331847)
 
-[node name="@MeshInstance3D@509590" type="MeshInstance3D" parent="container_array 3" unique_id=381684774]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.3499464, 0, -0.005521833)
-material_override = ExtResource("10_jn3ni")
-mesh = ExtResource("7_y3af7")
+[node name="@Node3D@218152" parent="container_array 7" unique_id=178102509 instance=ExtResource("2_4ftm2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.9881868, 0.09125495, -0.011260134)
 
-[node name="@MeshInstance3D@509591" type="MeshInstance3D" parent="container_array 3" unique_id=1564586895]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.312654, 0, 0.0089170225)
-material_override = ExtResource("12_av35p")
-mesh = ExtResource("7_y3af7")
+[node name="@Node3D@218154" parent="container_array 7" unique_id=1306682036 instance=ExtResource("2_4ftm2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.9854028, 2.8453994, -0.01235212)
 
-[node name="@MeshInstance3D@509592" type="MeshInstance3D" parent="container_array 3" unique_id=339097189]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.6038313, 0, 0.0021821065)
-material_override = ExtResource("10_jn3ni")
-mesh = ExtResource("7_y3af7")
+[node name="@Node3D@218156" parent="container_array 7" unique_id=1342241476 instance=ExtResource("2_4ftm2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.9869516, 5.5995436, -0.012501057)
 
-[node name="@MeshInstance3D@509593" type="MeshInstance3D" parent="container_array 3" unique_id=1147481573]
-transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 6.6174536, 2.7541444, -0.0006060209)
-material_override = ExtResource("10_jn3ni")
-mesh = ExtResource("7_y3af7")
+[node name="@Node3D@218158" parent="container_array 7" unique_id=286808936 instance=ExtResource("2_4ftm2")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -1.3348335, 0.09125495, -0.017128013)
 
-[node name="@MeshInstance3D@509594" type="MeshInstance3D" parent="container_array 3" unique_id=1875140520]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.924522, 0, -0.007780024)
-material_override = ExtResource("12_av35p")
-mesh = ExtResource("7_y3af7")
+[node name="@Node3D@218160" parent="container_array 7" unique_id=1934865766 instance=ExtResource("2_4ftm2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.3421408, 2.8453994, -0.018080987)
 
-[node name="@MeshInstance3D@509595" type="MeshInstance3D" parent="container_array 3" unique_id=233358607]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.910914, 2.7541444, 0.0004929984)
-material_override = ExtResource("12_av35p")
-mesh = ExtResource("7_y3af7")
+[node name="@Node3D@218162" parent="container_array 7" unique_id=507994015 instance=ExtResource("2_4ftm2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.3415545, 5.5995436, -0.018026005)
 
-[node name="@MeshInstance3D@509596" type="MeshInstance3D" parent="container_array 3" unique_id=591407899]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.6480427, 0, 6.526106)
-material_override = ExtResource("12_av35p")
-mesh = ExtResource("7_y3af7")
+[node name="@Node3D@218164" parent="container_array 7" unique_id=70019096 instance=ExtResource("2_4ftm2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.3050144, 0.09125495, -0.011276095)
 
-[node name="@MeshInstance3D@509597" type="MeshInstance3D" parent="container_array 3" unique_id=1604632456]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.646661, 2.7541444, 6.5295615)
-material_override = ExtResource("12_av35p")
-mesh = ExtResource("7_y3af7")
+[node name="@Node3D@218166" parent="container_array 7" unique_id=1647460184 instance=ExtResource("2_4ftm2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.309619, 2.8453994, -0.019563239)
 
-[node name="@MeshInstance3D@509598" type="MeshInstance3D" parent="container_array 3" unique_id=981784289]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.3405174, 0, 6.527814)
-material_override = ExtResource("10_jn3ni")
-mesh = ExtResource("7_y3af7")
+[node name="@Node3D@218168" parent="container_array 7" unique_id=1187692129 instance=ExtResource("2_4ftm2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.3067495, 5.5995436, -0.015664723)
 
-[node name="@MeshInstance3D@509599" type="MeshInstance3D" parent="container_array 3" unique_id=382860038]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.3355901, 2.7541444, 6.5420504)
-material_override = ExtResource("10_jn3ni")
-mesh = ExtResource("7_y3af7")
+[node name="@Node3D@218170" parent="container_array 7" unique_id=1264150400 instance=ExtResource("2_4ftm2")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 3.9537761, 0.09125495, -0.013596227)
 
-[node name="@MeshInstance3D@509600" type="MeshInstance3D" parent="container_array 3" unique_id=1663750718]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.615747, 0, 6.53813)
-material_override = ExtResource("10_jn3ni")
-mesh = ExtResource("7_y3af7")
+[node name="@Node3D@218172" parent="container_array 7" unique_id=730082927 instance=ExtResource("2_4ftm2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.599519, 0.09125495, -0.013320005)
 
-[node name="@MeshInstance3D@509601" type="MeshInstance3D" parent="container_array 3" unique_id=1002938865]
-transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 9.257896, 0, 6.524851)
-material_override = ExtResource("10_jn3ni")
-mesh = ExtResource("7_y3af7")
+[node name="@Node3D@218174" parent="container_array 7" unique_id=407920399 instance=ExtResource("2_4ftm2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.600858, 2.8453994, -0.01988297)
 
-[node name="@MeshInstance3D@509602" type="MeshInstance3D" parent="container_array 3" unique_id=279220128]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.916011, 0, 6.5342393)
-material_override = ExtResource("10_jn3ni")
-mesh = ExtResource("7_y3af7")
+[node name="@Node3D@218176" parent="container_array 7" unique_id=889024505 instance=ExtResource("2_4ftm2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.597681, 5.5995436, -0.013660575)
 
-[node name="@MeshInstance3D@509603" type="MeshInstance3D" parent="container_array 3" unique_id=1949978107]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.912668, 2.7541444, 6.5290833)
-material_override = ExtResource("10_jn3ni")
-mesh = ExtResource("7_y3af7")
+[node name="@Node3D@218178" parent="container_array 7" unique_id=584964688 instance=ExtResource("2_4ftm2")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 9.252701, 0.09125495, -0.011740484)
 
-[node name="@MeshInstance3D@509604" type="MeshInstance3D" parent="container_array 3" unique_id=519538552]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.906718, 5.508289, 6.5366893)
-material_override = ExtResource("10_jn3ni")
-mesh = ExtResource("7_y3af7")
+[node name="@Node3D@218180" parent="container_array 7" unique_id=520101074 instance=ExtResource("2_4ftm2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.25307, 2.8453994, -0.014865126)
 
-[node name="container_array 3_1" type="Node3D" parent="." unique_id=1442075231]
+[node name="@Node3D@218182" parent="container_array 7" unique_id=1534837442 instance=ExtResource("2_4ftm2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.245343, 5.5995436, -0.011241882)
+
+[node name="@Node3D@218184" parent="container_array 7" unique_id=369448746 instance=ExtResource("2_4ftm2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.892131, 0.09125495, -0.012793791)
+
+[node name="@Node3D@218186" parent="container_array 7" unique_id=551043389 instance=ExtResource("2_4ftm2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.900273, 2.8453994, -0.011030838)
+
+[node name="@Node3D@218188" parent="container_array 7" unique_id=957580203 instance=ExtResource("2_4ftm2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.8998, 5.5995436, -0.016832706)
+
+[node name="@Node3D@218190" parent="container_array 7" unique_id=1028947205 instance=ExtResource("2_4ftm2")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -9.282452, 0.09125495, 6.547161)
+
+[node name="@Node3D@218192" parent="container_array 7" unique_id=487936577 instance=ExtResource("2_4ftm2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.275324, 2.8453994, 6.548682)
+
+[node name="@Node3D@218194" parent="container_array 7" unique_id=1604281360 instance=ExtResource("2_4ftm2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.2737465, 5.5995436, 6.547543)
+
+[node name="@Node3D@218196" parent="container_array 7" unique_id=1289654722 instance=ExtResource("2_4ftm2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.6351047, 0.09125495, 6.547842)
+
+[node name="@Node3D@218198" parent="container_array 7" unique_id=1344089562 instance=ExtResource("2_4ftm2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.6341257, 2.8453994, 6.549922)
+
+[node name="@Node3D@218200" parent="container_array 7" unique_id=1135105472 instance=ExtResource("2_4ftm2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.627266, 5.5995436, 6.5486927)
+
+[node name="@Node3D@218202" parent="container_array 7" unique_id=725565843 instance=ExtResource("2_4ftm2")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -3.989308, 0.09125495, 6.544877)
+
+[node name="@Node3D@218204" parent="container_array 7" unique_id=629522016 instance=ExtResource("2_4ftm2")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 1.3057717, 0.09125495, 6.550389)
+
+[node name="@Node3D@218206" parent="container_array 7" unique_id=1138451820 instance=ExtResource("2_4ftm2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.3044703, 2.8453994, 6.5482697)
+
+[node name="@Node3D@218208" parent="container_array 7" unique_id=280313821 instance=ExtResource("2_4ftm2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.950841, 0.09125495, 6.5470953)
+
+[node name="@Node3D@218210" parent="container_array 7" unique_id=1147928813 instance=ExtResource("2_4ftm2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.9519966, 2.8453994, 6.544766)
+
+[node name="@Node3D@218212" parent="container_array 7" unique_id=434246806 instance=ExtResource("2_4ftm2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.9504297, 5.5995436, 6.5512753)
+
+[node name="@Node3D@218214" parent="container_array 7" unique_id=1996586721 instance=ExtResource("2_4ftm2")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 6.601172, 0.09125495, 6.552591)
+
+[node name="@Node3D@218216" parent="container_array 7" unique_id=1421619686 instance=ExtResource("2_4ftm2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.603443, 2.8453994, 6.544944)
+
+[node name="@Node3D@218218" parent="container_array 7" unique_id=784064199 instance=ExtResource("2_4ftm2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.5971637, 5.5995436, 6.548063)
+
+[node name="@Node3D@218220" parent="container_array 7" unique_id=225511574 instance=ExtResource("2_4ftm2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.245713, 0.09125495, 6.546537)
+
+[node name="@Node3D@218222" parent="container_array 7" unique_id=158547677 instance=ExtResource("2_4ftm2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.24959, 2.8453994, 6.5482707)
+
+[node name="@Node3D@218224" parent="container_array 7" unique_id=1892856832 instance=ExtResource("2_4ftm2")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 11.895483, 0.09125495, 6.547219)
+
+[node name="@Node3D@218226" parent="container_array 7" unique_id=1799600180 instance=ExtResource("2_4ftm2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.8923645, 2.8453994, 6.5451937)
+
+[node name="container_array 8" type="Node3D" parent="." unique_id=281474214]
 transform = Transform3D(0.96, 0, 0, 0, 0.96, 0, 0, 0, 0.96, -0.51288795, 6.094274, -16.840178)
 
-[node name="@MeshInstance3D@511643" type="MeshInstance3D" parent="container_array 3_1" unique_id=961028756]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.9925337, 0, -0.00646998)
-material_override = ExtResource("9_22tk6")
-mesh = ExtResource("7_y3af7")
+[node name="Container" parent="container_array 8" unique_id=1229399622 instance=ExtResource("2_4ftm2")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -6.6284676, 0.09125495, -0.019311491)
 
-[node name="@MeshInstance3D@511644" type="MeshInstance3D" parent="container_array 3_1" unique_id=811952413]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.3507668, 0, -0.005683117)
-material_override = ExtResource("9_22tk6")
-mesh = ExtResource("7_y3af7")
+[node name="@Node3D@224684" parent="container_array 8" unique_id=350582997 instance=ExtResource("2_4ftm2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.6348476, 2.8453994, -0.0106213195)
 
-[node name="@MeshInstance3D@511645" type="MeshInstance3D" parent="container_array 3_1" unique_id=1021149006]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.345303, 2.7541444, -0.0074674715)
-material_override = ExtResource("9_22tk6")
-mesh = ExtResource("7_y3af7")
+[node name="@Node3D@224686" parent="container_array 8" unique_id=1567085721 instance=ExtResource("2_4ftm2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.6358266, 5.5995436, -0.013448793)
 
-[node name="@MeshInstance3D@511646" type="MeshInstance3D" parent="container_array 3_1" unique_id=955166872]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.959613, 0, 0.0073446278)
-material_override = ExtResource("10_jn3ni")
-mesh = ExtResource("7_y3af7")
+[node name="@Node3D@224688" parent="container_array 8" unique_id=2093426452 instance=ExtResource("2_4ftm2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.9862573, 0.09125495, -0.014551176)
 
-[node name="@MeshInstance3D@511647" type="MeshInstance3D" parent="container_array 3_1" unique_id=636334721]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.6142488, 0, -0.0046298634)
-material_override = ExtResource("9_22tk6")
-mesh = ExtResource("7_y3af7")
+[node name="@Node3D@224690" parent="container_array 8" unique_id=41356415 instance=ExtResource("2_4ftm2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.9897258, 2.8453994, -0.014331847)
 
-[node name="@MeshInstance3D@511648" type="MeshInstance3D" parent="container_array 3_1" unique_id=1472938093]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.6504054, 0, 6.5421586)
-material_override = ExtResource("10_jn3ni")
-mesh = ExtResource("7_y3af7")
+[node name="@Node3D@224692" parent="container_array 8" unique_id=719268799 instance=ExtResource("2_4ftm2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.9854736, 5.5995436, -0.014709006)
 
-[node name="@MeshInstance3D@511649" type="MeshInstance3D" parent="container_array 3_1" unique_id=12132854]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.639887, 2.7541444, 6.534439)
-material_override = ExtResource("10_jn3ni")
-mesh = ExtResource("7_y3af7")
+[node name="@Node3D@224694" parent="container_array 8" unique_id=257498132 instance=ExtResource("2_4ftm2")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 3.9563687, 0.09125495, -0.016829083)
 
-[node name="@MeshInstance3D@511650" type="MeshInstance3D" parent="container_array 3_1" unique_id=67235784]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.3418379, 0, 6.5298705)
-material_override = ExtResource("12_av35p")
-mesh = ExtResource("7_y3af7")
+[node name="@Node3D@224696" parent="container_array 8" unique_id=493035665 instance=ExtResource("2_4ftm2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.950832, 2.8453994, -0.015362704)
 
-[node name="@MeshInstance3D@511651" type="MeshInstance3D" parent="container_array 3_1" unique_id=28399572]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.3410869, 2.7541444, 6.5246134)
-material_override = ExtResource("12_av35p")
-mesh = ExtResource("7_y3af7")
+[node name="@Node3D@224698" parent="container_array 8" unique_id=718308718 instance=ExtResource("2_4ftm2")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 9.244854, 0.09125495, -0.018080987)
 
-[node name="@MeshInstance3D@511652" type="MeshInstance3D" parent="container_array 3_1" unique_id=981905024]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.616475, 0, 6.5312953)
-material_override = ExtResource("12_av35p")
-mesh = ExtResource("7_y3af7")
+[node name="@Node3D@224700" parent="container_array 8" unique_id=75478266 instance=ExtResource("2_4ftm2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.24544, 2.8453994, -0.018026005)
 
-[node name="@MeshInstance3D@511653" type="MeshInstance3D" parent="container_array 3_1" unique_id=139000943]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.621417, 2.7541444, 6.5333486)
-material_override = ExtResource("12_av35p")
-mesh = ExtResource("7_y3af7")
+[node name="@Node3D@224702" parent="container_array 8" unique_id=1330475641 instance=ExtResource("2_4ftm2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.245749, 5.5995436, -0.014129275)
 
-[node name="@MeshInstance3D@511654" type="MeshInstance3D" parent="container_array 3_1" unique_id=590901507]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.260782, 0, 6.533903)
-material_override = ExtResource("12_av35p")
-mesh = ExtResource("7_y3af7")
+[node name="@Node3D@224704" parent="container_array 8" unique_id=853436199 instance=ExtResource("2_4ftm2")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -3.9867475, 0.09125495, 6.547268)
 
-[node name="container_array 4" type="Node3D" parent="." unique_id=270448567]
+[node name="@Node3D@224706" parent="container_array 8" unique_id=1155047437 instance=ExtResource("2_4ftm2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.9810755, 2.8453994, 6.5519247)
+
+[node name="@Node3D@224708" parent="container_array 8" unique_id=761213232 instance=ExtResource("2_4ftm2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.9822028, 5.5995436, 6.544329)
+
+[node name="@Node3D@224710" parent="container_array 8" unique_id=2018552726 instance=ExtResource("2_4ftm2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.3430836, 0.09125495, 6.552289)
+
+[node name="@Node3D@224712" parent="container_array 8" unique_id=1006698086 instance=ExtResource("2_4ftm2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.9564624, 0.09125495, 6.5438313)
+
+[node name="@Node3D@224714" parent="container_array 8" unique_id=422146147 instance=ExtResource("2_4ftm2")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 6.6012645, 0.09125495, 6.5445123)
+
+[node name="@Node3D@224716" parent="container_array 8" unique_id=1128975459 instance=ExtResource("2_4ftm2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.597005, 2.8453994, 6.551303)
+
+[node name="@Node3D@224718" parent="container_array 8" unique_id=1785476994 instance=ExtResource("2_4ftm2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.60563, 5.5995436, 6.5493946)
+
+[node name="@Node3D@224720" parent="container_array 8" unique_id=1489776439 instance=ExtResource("2_4ftm2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.245386, 0.09125495, 6.54537)
+
+[node name="@Node3D@224722" parent="container_array 8" unique_id=1610028445 instance=ExtResource("2_4ftm2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.246644, 2.8453994, 6.5465827)
+
+[node name="@Node3D@224724" parent="container_array 8" unique_id=304460130 instance=ExtResource("2_4ftm2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.253052, 5.5995436, 6.5461)
+
+[node name="container_array 9" type="Node3D" parent="." unique_id=1445341286]
 transform = Transform3D(0.96, 0, 0, 0, 0.96, 0, 0, 0, 0.96, -0.6410868, 6.0722785, -32.790478)
 
-[node name="@MeshInstance3D@422175" type="MeshInstance3D" parent="container_array 4" unique_id=724071115]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.3372799, 0, 0.0008246079)
-material_override = ExtResource("10_jn3ni")
-mesh = ExtResource("7_y3af7")
+[node name="@Node3D@231837" parent="container_array 9" unique_id=814187007 instance=ExtResource("2_4ftm2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.9873505, 0.09125495, -0.012458783)
 
-[node name="@MeshInstance3D@422176" type="MeshInstance3D" parent="container_array 4" unique_id=923529265]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.3061298, 0, -0.006913338)
-material_override = ExtResource("9_22tk6")
-mesh = ExtResource("7_y3af7")
+[node name="@Node3D@231839" parent="container_array 9" unique_id=1631614233 instance=ExtResource("2_4ftm2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.9888346, 2.8453994, -0.01381324)
 
-[node name="@MeshInstance3D@422177" type="MeshInstance3D" parent="container_array 4" unique_id=1021533005]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.30863, 2.7541444, -0.005013093)
-material_override = ExtResource("9_22tk6")
-mesh = ExtResource("7_y3af7")
+[node name="@Node3D@231841" parent="container_array 9" unique_id=1202328951 instance=ExtResource("2_4ftm2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.3104552, 0.09125495, -0.012034617)
 
-[node name="@MeshInstance3D@422178" type="MeshInstance3D" parent="container_array 4" unique_id=1039044710]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.3131671, 5.508289, -0.0019966494)
-material_override = ExtResource("10_jn3ni")
-mesh = ExtResource("7_y3af7")
+[node name="@Node3D@231843" parent="container_array 9" unique_id=721134296 instance=ExtResource("2_4ftm2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.3129421, 2.8453994, -0.016453367)
 
-[node name="@MeshInstance3D@422179" type="MeshInstance3D" parent="container_array 4" unique_id=1189517039]
-transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 9.262614, 0, 0.0033791186)
-material_override = ExtResource("11_0qs2n")
-mesh = ExtResource("7_y3af7")
+[node name="@Node3D@231845" parent="container_array 9" unique_id=1964101645 instance=ExtResource("2_4ftm2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.6019344, 0.09125495, -0.016003463)
 
-[node name="@MeshInstance3D@422180" type="MeshInstance3D" parent="container_array 4" unique_id=443727315]
-transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 9.271913, 2.7541444, -0.0024364898)
-material_override = ExtResource("8_22tk6")
-mesh = ExtResource("7_y3af7")
+[node name="@Node3D@231847" parent="container_array 9" unique_id=229621611 instance=ExtResource("2_4ftm2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.6052566, 2.8453994, -0.010362396)
 
-[node name="@MeshInstance3D@422181" type="MeshInstance3D" parent="container_array 4" unique_id=1876794538]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.9951005, 0, 6.5254855)
-material_override = ExtResource("12_av35p")
-mesh = ExtResource("7_y3af7")
+[node name="_Node3D_231845" parent="container_array 9" unique_id=319546948 instance=ExtResource("2_4ftm2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.6019344, 0.09125495, -0.016003463)
 
-[node name="@MeshInstance3D@422182" type="MeshInstance3D" parent="container_array 4" unique_id=1082058338]
-transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -3.9961276, 2.7541444, 6.540582)
-material_override = ExtResource("11_0qs2n")
-mesh = ExtResource("7_y3af7")
+[node name="_Node3D_231847" parent="container_array 9" unique_id=270791160 instance=ExtResource("2_4ftm2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.6052566, 2.8453994, -0.010362396)
 
-[node name="@MeshInstance3D@422183" type="MeshInstance3D" parent="container_array 4" unique_id=1826956699]
-transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -3.9866374, 5.508289, 6.5263267)
-material_override = ExtResource("11_0qs2n")
-mesh = ExtResource("7_y3af7")
+[node name="@Node3D@231849" parent="container_array 9" unique_id=901146700 instance=ExtResource("2_4ftm2")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -9.281555, 0.09125495, 6.5432243)
 
-[node name="@MeshInstance3D@422184" type="MeshInstance3D" parent="container_array 4" unique_id=1269498699]
-transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -1.3407648, 0, 6.5371876)
-material_override = ExtResource("10_jn3ni")
-mesh = ExtResource("7_y3af7")
+[node name="@Node3D@231851" parent="container_array 9" unique_id=1720716914 instance=ExtResource("2_4ftm2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.281336, 2.8453994, 6.5494094)
 
-[node name="@MeshInstance3D@422185" type="MeshInstance3D" parent="container_array 4" unique_id=820506983]
-transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -1.3425939, 2.7541444, 6.526156)
-material_override = ExtResource("12_av35p")
-mesh = ExtResource("7_y3af7")
+[node name="@Node3D@231853" parent="container_array 9" unique_id=796929608 instance=ExtResource("2_4ftm2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.3345495, 0.09125495, 6.544517)
 
-[node name="@MeshInstance3D@422186" type="MeshInstance3D" parent="container_array 4" unique_id=961077620]
-transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 1.2987539, 0, 6.5375047)
-material_override = ExtResource("9_22tk6")
-mesh = ExtResource("7_y3af7")
+[node name="@Node3D@231855" parent="container_array 9" unique_id=420893026 instance=ExtResource("2_4ftm2")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 1.3132042, 0.09125495, 6.5522647)
 
-[node name="@MeshInstance3D@422187" type="MeshInstance3D" parent="container_array 4" unique_id=526886698]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.3028362, 2.7541444, 6.528273)
-material_override = ExtResource("8_22tk6")
-mesh = ExtResource("7_y3af7")
+[node name="@Node3D@231857" parent="container_array 9" unique_id=980395699 instance=ExtResource("2_4ftm2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.3101119, 2.8453994, 6.5459266)
 
-[node name="@MeshInstance3D@422188" type="MeshInstance3D" parent="container_array 4" unique_id=1506844499]
-transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 1.3030843, 5.508289, 6.5335827)
-material_override = ExtResource("12_av35p")
-mesh = ExtResource("7_y3af7")
+[node name="@Node3D@231859" parent="container_array 9" unique_id=597642018 instance=ExtResource("2_4ftm2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.3088531, 5.5995436, 6.54514)
 
-[node name="@MeshInstance3D@422189" type="MeshInstance3D" parent="container_array 4" unique_id=533130559]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.609307, 0, 6.542461)
-material_override = ExtResource("11_0qs2n")
-mesh = ExtResource("7_y3af7")
+[node name="@Node3D@231861" parent="container_array 9" unique_id=11261812 instance=ExtResource("2_4ftm2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.9567008, 0.09125495, 6.543819)
 
-[node name="@MeshInstance3D@422190" type="MeshInstance3D" parent="container_array 4" unique_id=1002538944]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.605112, 2.7541444, 6.529418)
-material_override = ExtResource("11_0qs2n")
-mesh = ExtResource("7_y3af7")
+[node name="@Node3D@231863" parent="container_array 9" unique_id=1315480467 instance=ExtResource("2_4ftm2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.9568975, 2.8453994, 6.546358)
 
-[node name="@MeshInstance3D@422191" type="MeshInstance3D" parent="container_array 4" unique_id=220414851]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.264398, 0, 6.5326715)
-material_override = ExtResource("8_22tk6")
-mesh = ExtResource("7_y3af7")
+[node name="container_array 10" type="Node3D" parent="." unique_id=405840426]
+transform = Transform3D(0.96, 0, 0, 0, 0.96, 0, 0, 0, 0.96, -0.541142, 6.080702, -47.372562)
 
-[node name="@MeshInstance3D@422192" type="MeshInstance3D" parent="container_array 4" unique_id=1985223081]
-transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 9.256501, 2.7541444, 6.529113)
-material_override = ExtResource("8_22tk6")
-mesh = ExtResource("7_y3af7")
+[node name="@Node3D@263622" parent="container_array 10" unique_id=1732932404 instance=ExtResource("2_4ftm2")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -0.019482046, 0.09125495, -0.015681898)
 
-[node name="@MeshInstance3D@422193" type="MeshInstance3D" parent="container_array 4" unique_id=1624199432]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.261317, 5.508289, 6.5247617)
-material_override = ExtResource("8_22tk6")
-mesh = ExtResource("7_y3af7")
+[node name="@Node3D@263624" parent="container_array 10" unique_id=311503967 instance=ExtResource("2_4ftm2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0111024305, 2.8453994, -0.012788117)
 
-[node name="container_array 4_1" type="Node3D" parent="." unique_id=1585895222]
-transform = Transform3D(-0.96, 0, -8.392586e-08, 0, 0.96, 0, 8.392586e-08, 0, -0.96, 1.8166981, 6.080702, -40.892258)
+[node name="@Node3D@263626" parent="container_array 10" unique_id=5028145 instance=ExtResource("2_4ftm2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0129048545, 5.5995436, -0.019270107)
 
-[node name="@MeshInstance3D@438189" type="MeshInstance3D" parent="container_array 4_1" unique_id=1061585347]
-transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -4.001861, 0, -0.006269835)
-material_override = ExtResource("8_22tk6")
-mesh = ExtResource("7_y3af7")
+[node name="@Node3D@263628" parent="container_array 10" unique_id=1956611638 instance=ExtResource("2_4ftm2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.634139, 0.09125495, -0.01786777)
 
-[node name="@MeshInstance3D@438190" type="MeshInstance3D" parent="container_array 4_1" unique_id=704464493]
-transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 1.3127537, 0, 0.0021723052)
-material_override = ExtResource("8_22tk6")
-mesh = ExtResource("7_y3af7")
+[node name="@Node3D@263630" parent="container_array 10" unique_id=234799930 instance=ExtResource("2_4ftm2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.6336498, 2.8453994, -0.016964424)
 
-[node name="@MeshInstance3D@438192" type="MeshInstance3D" parent="container_array 4_1" unique_id=249841097]
-transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 3.954916, 2.7541444, 0.0066223554)
-material_override = ExtResource("8_22tk6")
-mesh = ExtResource("7_y3af7")
+[node name="@Node3D@263632" parent="container_array 10" unique_id=1700673247 instance=ExtResource("2_4ftm2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.6296885, 5.5995436, -0.011963361)
 
-[node name="@MeshInstance3D@438193" type="MeshInstance3D" parent="container_array 4_1" unique_id=224845836]
-transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 6.6093516, 0, -0.0057582334)
-material_override = ExtResource("8_22tk6")
-mesh = ExtResource("7_y3af7")
+[node name="@Node3D@263634" parent="container_array 10" unique_id=1301659680 instance=ExtResource("2_4ftm2")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 5.2782054, 0.09125495, -0.014472408)
 
-[node name="@MeshInstance3D@438194" type="MeshInstance3D" parent="container_array 4_1" unique_id=109608762]
-transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 6.617548, 2.7541444, -0.008289167)
-material_override = ExtResource("8_22tk6")
-mesh = ExtResource("7_y3af7")
+[node name="@Node3D@263636" parent="container_array 10" unique_id=2103366675 instance=ExtResource("2_4ftm2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.2738466, 2.8453994, -0.016326226)
 
-[node name="@MeshInstance3D@438195" type="MeshInstance3D" parent="container_array 4_1" unique_id=970491116]
-transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -3.995446, 0, 6.52516)
-material_override = ExtResource("8_22tk6")
-mesh = ExtResource("7_y3af7")
+[node name="@Node3D@263638" parent="container_array 10" unique_id=1526223214 instance=ExtResource("2_4ftm2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.2819505, 5.5995436, -0.016160388)
 
-[node name="@MeshInstance3D@438196" type="MeshInstance3D" parent="container_array 4_1" unique_id=363528633]
-transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -3.9869277, 2.7541444, 6.5284715)
-material_override = ExtResource("8_22tk6")
-mesh = ExtResource("7_y3af7")
+[node name="@Node3D@263640" parent="container_array 10" unique_id=888944920 instance=ExtResource("2_4ftm2")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -2.6659253, 0.09125495, 6.551904)
 
-[node name="@MeshInstance3D@438198" type="MeshInstance3D" parent="container_array 4_1" unique_id=705847284]
-transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -1.3397542, 2.7541444, 6.5426826)
-material_override = ExtResource("8_22tk6")
-mesh = ExtResource("7_y3af7")
+[node name="@Node3D@263642" parent="container_array 10" unique_id=628300529 instance=ExtResource("2_4ftm2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.6578453, 2.8453994, 6.5435348)
 
-[node name="@MeshInstance3D@438199" type="MeshInstance3D" parent="container_array 4_1" unique_id=371843794]
-transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 1.3158804, 0, 6.5350146)
-material_override = ExtResource("8_22tk6")
-mesh = ExtResource("7_y3af7")
+[node name="@Node3D@263644" parent="container_array 10" unique_id=1376442383 instance=ExtResource("2_4ftm2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.662704, 5.5995436, 6.5433617)
 
-[node name="@MeshInstance3D@438200" type="MeshInstance3D" parent="container_array 4_1" unique_id=1054215459]
-transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 1.3042135, 2.7541444, 6.541288)
-material_override = ExtResource("8_22tk6")
-mesh = ExtResource("7_y3af7")
+[node name="@Node3D@263648" parent="container_array 10" unique_id=1950226948 instance=ExtResource("2_4ftm2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.012505682, 2.8453994, 6.544649)
 
-[node name="@MeshInstance3D@438201" type="MeshInstance3D" parent="container_array 4_1" unique_id=723934225]
-transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 3.9590926, 0, 6.5371227)
-material_override = ExtResource("8_22tk6")
-mesh = ExtResource("7_y3af7")
+[node name="@Node3D@263650" parent="container_array 10" unique_id=1695253439 instance=ExtResource("2_4ftm2")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 2.6348426, 0.09125495, 6.5517497)
 
-[node name="@MeshInstance3D@438202" type="MeshInstance3D" parent="container_array 4_1" unique_id=195661709]
-transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 6.6209145, 0, 6.535508)
-material_override = ExtResource("8_22tk6")
-mesh = ExtResource("7_y3af7")
+[node name="@Node3D@263652" parent="container_array 10" unique_id=570775415 instance=ExtResource("2_4ftm2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.6364813, 2.8453994, 6.546877)
 
-[node name="@MeshInstance3D@438203" type="MeshInstance3D" parent="container_array 4_1" unique_id=117109424]
-transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 6.6117706, 2.7541444, 6.5367064)
-material_override = ExtResource("8_22tk6")
-mesh = ExtResource("7_y3af7")
+[node name="@Node3D@263654" parent="container_array 10" unique_id=106970890 instance=ExtResource("2_4ftm2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.6355386, 5.5995436, 6.550226)

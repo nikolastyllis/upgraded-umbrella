@@ -10,8 +10,6 @@ func _process(_delta: float) -> void:
 	if game_manager.story_increment == 6 and not opened_act_2:
 		opened_act_2 = true
 		_play_sound("door2")
-		await _play_animation_and_rebake("Act_2_open")
-		_set_open_collisions()
 
 func update_action_text():
 	action_text = "Cut open"

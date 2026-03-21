@@ -42,8 +42,6 @@ func interact_hold_time() -> float:
 func on_interact(_player):
 	_stop_banging()
 	_play_sound("door3")
-	await _play_animation_and_rebake("MonsterReveal")
-	_set_open_collisions()
 	game_manager.player_has_interacted_with_infected_container = true
 
 func can_interact(_player: Node) -> bool:
