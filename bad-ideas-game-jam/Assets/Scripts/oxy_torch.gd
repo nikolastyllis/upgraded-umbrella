@@ -8,6 +8,8 @@ var _original_transform: Transform3D
 @onready var rigid_body = $"."
 var player = null
 
+@onready var cutter = $Cutter
+
 func _ready():
 	update_action_text()
 
@@ -25,13 +27,13 @@ func on_interact(_player):
 	rigid_body.freeze = true
 	set_collision_enabled(false)
 
-	var hand_attachment = player.get_node("Character/Armature/Skeleton3D/BackpackAttachment")
+	var backpack_attachment = player.get_node("Character/Armature/Skeleton3D/BackpackAttachment")
 	get_parent().remove_child(self)
-	hand_attachment.add_child(self)
+	backpack_attachment.add_child(self)
 	global_transform = _original_transform
 
 	var tween = create_tween().set_parallel(true)
-	tween.tween_property(self, "position", Vector3.ZERO, 0.5)\
+	tween.tween_property(self, "position", Vector3(-0.1,-8, -15), 0.5)\
 		.set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_BACK)
 	tween.tween_property(self, "rotation", Vector3.ZERO, 0.5)\
 		.set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_QUAD)
@@ -43,7 +45,17 @@ func on_interact(_player):
 func _process(_delta):
 	if _held and Input.is_action_just_pressed("drop"):
 		drop()
-
+	
+	if player != null:
+		if player.is_container_door_interaction:
+			var right_hand = player.get_node("Character/Armature/Skeleton3D/RightHandAttachment")
+			right_hand.get_child(0).visible = true
+			cutter.visible = false
+		else:
+			var right_hand = player.get_node("Character/Armature/Skeleton3D/RightHandAttachment")
+			right_hand.get_child(0).visible = false
+			cutter.visible = true
+	
 func drop():
 	player.has_oxy_torch = false
 	_held = false

@@ -1,22 +1,22 @@
 [gd_scene format=3 uid="uid://clai2jixo1u8q"]
 
 [ext_resource type="Script" uid="uid://bnuuo1duu134y" path="res://Assets/Scripts/oxy_torch.gd" id="1_l3b1r"]
+[ext_resource type="PackedScene" uid="uid://cfwadmnogfqg3" path="res://Assets/Models/Items/BIGJ_oxy_backpack_01.glb" id="2_5f54v"]
+[ext_resource type="PackedScene" uid="uid://cu65fk7y3nxpb" path="res://Assets/Models/Items/BIGJ_oxy_cutter_01.glb" id="3_o5o06"]
 
-[sub_resource type="BoxMesh" id="BoxMesh_o77m7"]
+[sub_resource type="BoxShape3D" id="BoxShape3D_qt6b8"]
+size = Vector3(0.21063232, 0.5463867, 0.20153809)
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_o77m7"]
-
-[node name="RigidBody3D" type="RigidBody3D" unique_id=232120823]
+[node name="OxyTorch" type="RigidBody3D" unique_id=1597321299]
 script = ExtResource("1_l3b1r")
+action_text = null
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1318450355]
-transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0, 0)
-mesh = SubResource("BoxMesh_o77m7")
+[node name="Backpack" parent="." unique_id=850238865 instance=ExtResource("2_5f54v")]
 
-[node name="MeshInstance3D2" type="MeshInstance3D" parent="." unique_id=1914345575]
-transform = Transform3D(-2.1855695e-09, 0, 0.7, 0, 0.05, 0, -0.05, 0, -3.059797e-08, 0, 0, 0)
-mesh = SubResource("BoxMesh_o77m7")
+[node name="CutterPos" type="Node3D" parent="Backpack" unique_id=2140531208]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=557810721]
-transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0, 0)
-shape = SubResource("BoxShape3D_o77m7")
+[node name="Cutter" parent="." unique_id=721539824 instance=ExtResource("3_o5o06")]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=67519233]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.010284424, 0.06542969, -0.018249512)
+shape = SubResource("BoxShape3D_qt6b8")

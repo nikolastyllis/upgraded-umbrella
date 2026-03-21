@@ -20,6 +20,8 @@ extends BaseCharacter
 
 const HAND_IK_SURFACE_OFFSET := 0.001   # metres in front of the surface
 
+@onready var tool_tip: Node3D = $Character/Armature/Skeleton3D/RightHandAttachment/ToolTip
+
 @onready var sparks := $Sparks
 @onready var spark_light := $Sparks/Light
 
@@ -54,6 +56,11 @@ var current_camera_position: Vector3
 var dialog_hide_timer: SceneTreeTimer = null
 var movement_disabled = false
 
+# replace the existing var _ik_tween line with both of these
+var _ik_tween: Tween = null
+var _ik_enabled := false         # tracks intended state, not tween progress
+var _tip_reach := 0.0            # precomputed fixed offset, set in _ready
+
 func _ready() -> void:
 	super._ready()
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
@@ -63,6 +70,9 @@ func _ready() -> void:
 	torch.light_energy = 0.0
 	sparks.visible = false
 	spark_light.visible = false
+	# Precompute the fixed skeletal offset from IK target to tool tip.
+	# tool_tip is parented to the hand bone so this distance is constant.
+	_tip_reach = (tool_tip.global_position - hand_ik_target.global_position).length()
 
 func _input(event: InputEvent) -> void:
 	if not event is InputEventMouseMotion:
@@ -222,14 +232,11 @@ func advance_interact_timer(delta: float, state_machine: AnimationNodeStateMachi
 	if current == null:
 		reset_interact_timer()
 		return
-
 	if is_container_door_interaction and not _mouse_moved_this_frame:
 		return
-
 	if is_container_door_interaction and (not interact_raycast.is_colliding() or interact_raycast.get_collider() != current):
 		reset_interact_timer()
 		return
-
 	if not is_interacting:
 		is_interacting = true
 		movement_disabled = true
@@ -237,17 +244,14 @@ func advance_interact_timer(delta: float, state_machine: AnimationNodeStateMachi
 		if is_container_door_interaction:
 			tween_camera_fov(FOV_INTERACT)
 
-	# --- replace the sparks block inside advance_interact_timer ---
-
 	if is_container_door_interaction and interact_raycast.is_colliding():
 		var hit_point: Vector3 = interact_raycast.get_collision_point()
-		var normal: Vector3    = interact_raycast.get_collision_normal()
+		var normal: Vector3 = interact_raycast.get_collision_normal()
 
-		# ── sparks (unchanged) ──────────────────────────────────────
-		var x_axis    = normal
+		var x_axis = normal
 		var arbitrary = Vector3.UP if abs(normal.dot(Vector3.UP)) < 0.99 else Vector3.RIGHT
-		var z_axis    = x_axis.cross(arbitrary).normalized()
-		var y_axis    = z_axis.cross(x_axis).normalized()
+		var z_axis = x_axis.cross(arbitrary).normalized()
+		var y_axis = z_axis.cross(x_axis).normalized()
 		sparks.global_transform = Transform3D(Basis(x_axis, y_axis, z_axis), hit_point)
 
 		if interactable == null or not is_interacting:
@@ -258,34 +262,25 @@ func advance_interact_timer(delta: float, state_machine: AnimationNodeStateMachi
 			return
 
 		_play_oxy_torch_loop()
-		sparks.visible    = true
+		sparks.visible = true
 		spark_light.visible = true
 
-		 # Position: float just off the surface toward the player
-		var target_pos = hit_point + normal * HAND_IK_SURFACE_OFFSET
-		hand_ik_target.global_position = target_pos
+		hand_ik_target.global_position = hit_point + normal * HAND_IK_SURFACE_OFFSET
 
-		# Orientation: palm faces the surface (normal points at US, so palm faces -normal)
-		# For Mixamo right hand: fingers up, palm flat against the door
-		var palm_forward = -normal                          # INTO the surface
-		var palm_up      = Vector3.UP
-		# Avoid degenerate cross when surface is a floor/ceiling
-		if abs(palm_forward.dot(Vector3.UP)) > 0.95:
-			palm_up = Vector3.FORWARD
-			var palm_right = palm_up.cross(palm_forward).normalized()
-			palm_up        = palm_forward.cross(palm_right).normalized()
-			hand_ik_target.global_transform.basis = Basis(palm_right, palm_up, palm_forward)
-			
+		# Pull the elbow forward relative to the character so it doesn't flip
+		var elbow_hint: Vector3 = global_position + (-global_transform.basis.z * 0.5) + (Vector3.UP * 0.3)
+		hand_ik.magnet = skeleton.to_local(elbow_hint)
+
 		_set_hand_ik(true)
-
 	else:
 		_stop_oxy_torch_loop()
-		sparks.visible    = false
+		sparks.visible = false
 		spark_light.visible = false
 		_set_hand_ik(false)
 
 	interaction_hold_timer += delta
-	if not is_container_door_interaction: state_machine.travel("Interact")
+	if not is_container_door_interaction:
+		state_machine.travel("Interact")
 	var progress = interaction_hold_timer / current.interact_hold_time()
 	interact_progress_bar.value = progress * 100
 	if interaction_hold_timer >= current.interact_hold_time():
@@ -294,7 +289,6 @@ func advance_interact_timer(delta: float, state_machine: AnimationNodeStateMachi
 		interaction_hold_timer = 0.0
 		interact_progress_bar.value = 0
 		reset_interaction_state()
-
 # --- update reset_interaction_state to kill IK on cancel/complete ---
 
 func reset_interaction_state() -> void:
@@ -315,30 +309,25 @@ func reset_interact_timer() -> void:
 	interaction_disabled = false
 	reset_interaction_state()
 
-# --- add helper at bottom of file ---
-var _ik_tween: Tween = null
-
 func _set_hand_ik(enabled: bool) -> void:
-	var target := 1.0 if enabled else 0.0
-	
-	# Already at target, do nothing
-	if hand_ik.interpolation == target and hand_ik.is_running() == enabled:
+	# Only act when the desired state actually changes.
+	# This prevents restarting the tween every frame.
+	if enabled == _ik_enabled:
 		return
+	_ik_enabled = enabled
 
 	if _ik_tween:
 		_ik_tween.kill()
 
 	if enabled:
-		hand_ik.start()   # start before tweening in
-		hand_ik.interpolation = 0.0
+		hand_ik.start()  # must be running before interpolation tween begins
 
 	_ik_tween = create_tween()
-	_ik_tween.tween_property(hand_ik, "interpolation", target, 0.25)\
-		.set_ease(Tween.EASE_IN_OUT)\
+	_ik_tween.tween_property(hand_ik, "interpolation", 1.0 if enabled else 0.0, 0.25) \
+		.set_ease(Tween.EASE_IN_OUT) \
 		.set_trans(Tween.TRANS_CUBIC)
 
 	if not enabled:
-		# Stop AFTER the tween finishes so it doesn't snap off
 		_ik_tween.tween_callback(hand_ik.stop)
 
 func reset_interact_state() -> void:
