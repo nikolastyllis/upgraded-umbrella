@@ -13,8 +13,6 @@ func interact_hold_time() -> float:
 
 func on_interact(_player):
 	game_manager.player_has_slept = true
-	await _player.fade_out_camera(2)
-	await _player.fade_in_camera(2)
 		
 func can_interact(_player: Node) -> bool:
 	return not game_manager.player_has_slept

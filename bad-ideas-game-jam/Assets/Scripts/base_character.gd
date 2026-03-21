@@ -131,7 +131,7 @@ func update_movement_animation(input_dir: Vector2) -> void:
 		return
 	if is_climbing:
 		state_machine.travel("Climb")
-		animation_tree.set("parameters/Climb/Climb Direction/scale", sign(get_climb_input()))
+		animation_tree.set("parameters/AnimationNodeStateMachine/Climb/Climb Direction/scale", sign(get_climb_input()))
 	elif not is_on_floor():
 		state_machine.travel("Fall")
 	elif input_dir != Vector2.ZERO:

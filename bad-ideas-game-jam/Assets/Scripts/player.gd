@@ -13,6 +13,13 @@ extends BaseCharacter
 @onready var dialog_control := $CameraOrigin/SpringArm3D/Camera3D/DialogControl
 @onready var crosshair_ui := $CameraOrigin/SpringArm3D/Camera3D/CrosshairUI
 
+# --- add to onready block ---
+@onready var skeleton: Skeleton3D = $Character/Armature/Skeleton3D
+@onready var hand_ik: SkeletonIK3D = $Character/Armature/Skeleton3D/RightHandIK
+@onready var hand_ik_target: Node3D = $Character/HandIKTarget
+
+const HAND_IK_SURFACE_OFFSET := 0.001   # metres in front of the surface
+
 @onready var sparks := $Sparks
 @onready var spark_light := $Sparks/Light
 
@@ -230,27 +237,52 @@ func advance_interact_timer(delta: float, state_machine: AnimationNodeStateMachi
 		if is_container_door_interaction:
 			tween_camera_fov(FOV_INTERACT)
 
+	# --- replace the sparks block inside advance_interact_timer ---
+
 	if is_container_door_interaction and interact_raycast.is_colliding():
-		var hit_point = interact_raycast.get_collision_point()
-		var normal = interact_raycast.get_collision_normal()
-		var x_axis = normal
+		var hit_point: Vector3 = interact_raycast.get_collision_point()
+		var normal: Vector3    = interact_raycast.get_collision_normal()
+
+		# ── sparks (unchanged) ──────────────────────────────────────
+		var x_axis    = normal
 		var arbitrary = Vector3.UP if abs(normal.dot(Vector3.UP)) < 0.99 else Vector3.RIGHT
-		var z_axis = x_axis.cross(arbitrary).normalized()
-		var y_axis = z_axis.cross(x_axis).normalized()
+		var z_axis    = x_axis.cross(arbitrary).normalized()
+		var y_axis    = z_axis.cross(x_axis).normalized()
 		sparks.global_transform = Transform3D(Basis(x_axis, y_axis, z_axis), hit_point)
-		# Guard after await - everything may have changed
+
 		if interactable == null or not is_interacting:
 			_stop_oxy_torch_loop()
 			sparks.visible = false
 			spark_light.visible = false
+			_set_hand_ik(false)
 			return
+
 		_play_oxy_torch_loop()
-		sparks.visible = true
+		sparks.visible    = true
 		spark_light.visible = true
+
+		 # Position: float just off the surface toward the player
+		var target_pos = hit_point + normal * HAND_IK_SURFACE_OFFSET
+		hand_ik_target.global_position = target_pos
+
+		# Orientation: palm faces the surface (normal points at US, so palm faces -normal)
+		# For Mixamo right hand: fingers up, palm flat against the door
+		var palm_forward = -normal                          # INTO the surface
+		var palm_up      = Vector3.UP
+		# Avoid degenerate cross when surface is a floor/ceiling
+		if abs(palm_forward.dot(Vector3.UP)) > 0.95:
+			palm_up = Vector3.FORWARD
+			var palm_right = palm_up.cross(palm_forward).normalized()
+			palm_up        = palm_forward.cross(palm_right).normalized()
+			hand_ik_target.global_transform.basis = Basis(palm_right, palm_up, palm_forward)
+			
+		_set_hand_ik(true)
+
 	else:
 		_stop_oxy_torch_loop()
-		sparks.visible = false
+		sparks.visible    = false
 		spark_light.visible = false
+		_set_hand_ik(false)
 
 	interaction_hold_timer += delta
 	if not is_container_door_interaction: state_machine.travel("Interact")
@@ -263,6 +295,8 @@ func advance_interact_timer(delta: float, state_machine: AnimationNodeStateMachi
 		interact_progress_bar.value = 0
 		reset_interaction_state()
 
+# --- update reset_interaction_state to kill IK on cancel/complete ---
+
 func reset_interaction_state() -> void:
 	if is_interacting:
 		is_interacting = false
@@ -270,15 +304,42 @@ func reset_interaction_state() -> void:
 		if is_container_door_interaction:
 			tween_camera_fov(FOV_NORMAL)
 		is_container_door_interaction = false
-		sparks.visible = false
+		sparks.visible    = false
 		spark_light.visible = false
 		_stop_oxy_torch_loop()
+		_set_hand_ik(false)          # ← new
 
 func reset_interact_timer() -> void:
 	interaction_hold_timer = 0.0
 	interact_progress_bar.value = 0
 	interaction_disabled = false
 	reset_interaction_state()
+
+# --- add helper at bottom of file ---
+var _ik_tween: Tween = null
+
+func _set_hand_ik(enabled: bool) -> void:
+	var target := 1.0 if enabled else 0.0
+	
+	# Already at target, do nothing
+	if hand_ik.interpolation == target and hand_ik.is_running() == enabled:
+		return
+
+	if _ik_tween:
+		_ik_tween.kill()
+
+	if enabled:
+		hand_ik.start()   # start before tweening in
+		hand_ik.interpolation = 0.0
+
+	_ik_tween = create_tween()
+	_ik_tween.tween_property(hand_ik, "interpolation", target, 0.25)\
+		.set_ease(Tween.EASE_IN_OUT)\
+		.set_trans(Tween.TRANS_CUBIC)
+
+	if not enabled:
+		# Stop AFTER the tween finishes so it doesn't snap off
+		_ik_tween.tween_callback(hand_ik.stop)
 
 func reset_interact_state() -> void:
 	interaction_hold_timer = 0.0

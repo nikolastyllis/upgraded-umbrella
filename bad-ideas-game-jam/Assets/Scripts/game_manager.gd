@@ -5,6 +5,8 @@ extends Node3D
 @onready var player = $"../Player"
 
 @onready var bedroom             = $Locations/Bedroom
+@onready var bedroom2            = $Locations/Bedroom2
+@onready var bedroom3           = $Locations/Bedroom3
 @onready var bed             	 = $Locations/Bed
 @onready var container           = $Locations/Container
 @onready var store_room          = $Locations/StoreRoom
@@ -12,6 +14,9 @@ extends Node3D
 @onready var lifeboat            = $Locations/Lifeboat
 @onready var infected_spawn_1     = $Locations/InfectedSpawn1
 @onready var infected_spawn_2     = $Locations/InfectedSpawn2
+
+@onready var hide1            = $Locations/HideNpcs1
+@onready var hide2           = $Locations/HideNpcs2
 
 @onready var environment = $"../Lighting/WorldEnvironment"
 @onready var lighting = $"../Lighting/DirectionalLight3D"
@@ -98,8 +103,8 @@ func _ready() -> void:
 	_ambient_music_loop()
 
 @warning_ignore("shadowed_variable_base_class")
-func _player_is_near(position: Vector3) -> bool:
-	return (player.global_position - position).length() < 2
+func _player_is_near(position: Vector3, distance: float = 2.0) -> bool:
+	return (player.global_position - position).length() < distance
 	
 func _npcs_are_near(position: Vector3) -> bool:
 	return (twin_1.global_position - position).length() < 5 and (twin_2.global_position - position).length() < 5
@@ -118,7 +123,7 @@ func _ambient_music_loop() -> void:
 	var rng := RandomNumberGenerator.new()
 	rng.randomize()
 	while story_increment <= 5:
-		var wait_time := rng.randf_range(40.0, 120.0)
+		var wait_time := rng.randf_range(100.0, 200.0)
 		await _wait_for(wait_time)
 		if story_increment > 5 or _dialogue_active:
 			continue
@@ -142,21 +147,23 @@ func _process(_delta: float) -> void:
 		_play_act1_shift_over()
 		
 	if story_increment == 3 and player_has_slept:
+		player.fade_in_camera(5)
+		twin_1.global_position = bedroom.global_position
+		twin_2.global_position = bedroom2.global_position
+		player.global_position = bedroom3.global_position
 		story_increment += 1
 		_remove_objective()
 		_play_act3_wake_up()
 		
 	if story_increment == 4 and _player_is_near(store_room.global_position):
 		story_increment += 1
+		twin_1.global_position = hide1.global_position
+		twin_2.global_position = hide2.global_position
+		twin_1.set_target_position(Vector3.ZERO)
+		twin_2.set_target_position(Vector3.ZERO)
 		_remove_objective()
 		set_time_of_day(TimeOfDay.SUNSET, 120)
 		_play_act_2_store_room()
-	
-	if story_increment == 5 and _npcs_are_near(container.global_position):
-		twin_1.set_target_position(Vector3.ZERO)
-		twin_2.set_target_position(Vector3.ZERO)
-		twin_1.global_position = infected_spawn_1.global_position
-		twin_2.global_position = infected_spawn_2.global_position
 		
 	if story_increment == 5 and _player_is_near(container.global_position):
 		story_increment += 1
@@ -241,7 +248,7 @@ func _play_act1_shift_over():
 	
 func _play_act3_wake_up():
 	_dialogue_active = true
-	await _wait_for(3.0)
+	await _wait_for(2)
 	twin_1.set_target_position(player.global_position)
 	twin_2.set_target_position(player.global_position)
 	player.toggle_movement_disabled()
@@ -358,37 +365,37 @@ func _play_store_room_reminders() -> void:
 func _play_back_to_container_reminders() -> void:
 	while true:
 		await _wait_for(20.0)
-		if story_increment != 5:
+		if story_increment != 5 or _player_is_near(container.global_position, 20):
 			return
 		await twin_1.play_dialogue(55)
 		
 		await _wait_for(20.0)
-		if story_increment != 5:
+		if story_increment != 5 or _player_is_near(container.global_position, 20):
 			return
 		await twin_1.play_dialogue(57)
 		
 		await _wait_for(20.0)
-		if story_increment != 5:
+		if story_increment != 5 or _player_is_near(container.global_position, 20):
 			return
 		await twin_1.play_dialogue(58)
 		
 		await _wait_for(20.0)
-		if story_increment != 5:
+		if story_increment != 5 or _player_is_near(container.global_position, 20):
 			return
 		await twin_1.play_dialogue(59)
 		
 		await _wait_for(20.0)
-		if story_increment != 5:
+		if story_increment != 5 or _player_is_near(container.global_position, 20):
 			return
 		await twin_2.play_dialogue(51)
 		
 		await _wait_for(20.0)
-		if story_increment != 5:
+		if story_increment != 5 or _player_is_near(container.global_position, 20):
 			return
 		await twin_1.play_dialogue(53)
 		
 		await _wait_for(20.0)
-		if story_increment != 5:
+		if story_increment != 5 or _player_is_near(container.global_position, 20):
 			return
 		await twin_2.play_dialogue(52)
 		

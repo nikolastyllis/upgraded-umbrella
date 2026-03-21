@@ -23,12 +23,15 @@ func _play_sound(sound: String) -> void:
 
 # --- Shared collision logic ---
 func _set_open_collisions() -> void:
-	$ClosedCollision.disabled = true
-	$OpenCollision3.disabled = false
-	$OpenCollision4.disabled = false
-	$OpenCollision5.disabled = false
-	$OpenCollision6.disabled = false
-	$OpenCollision7.disabled = false
+	$"../StaticBody3D2/ClosedCollision".disabled = true
+	$"../StaticBody3D2/OpenCollision3".disabled = false
+	$"../StaticBody3D2/OpenCollision4".disabled = false
+	$"../StaticBody3D2/OpenCollision5".disabled = false
+	$"../StaticBody3D2/OpenCollision6".disabled = false
+	$"../StaticBody3D2/OpenCollision7".disabled = false
+	$"../StaticBody3D/CollisionShape3D3".disabled = true
+	$"../StaticBody3D/CollisionShape3D2".disabled = true
+	$"../StaticBody3D/CollisionShape3D".disabled = true
 
 # --- Shared animation helper ---
 func _play_animation_and_rebake(anim_name: String) -> void:

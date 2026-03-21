@@ -25,7 +25,7 @@ func on_interact(_player):
 	rigid_body.freeze = true
 	set_collision_enabled(false)
 
-	var hand_attachment = player.get_node("Character/Armature/Skeleton3D/RightHandAttachment")
+	var hand_attachment = player.get_node("Character/Armature/Skeleton3D/BackpackAttachment")
 	get_parent().remove_child(self)
 	hand_attachment.add_child(self)
 	global_transform = _original_transform

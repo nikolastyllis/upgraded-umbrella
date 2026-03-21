@@ -188,7 +188,7 @@ func _update_head_look_weight(delta: float) -> void:
 		return
 	var to_player = _player.global_position - global_position
 	var dist = to_player.length()
-	var forward = global_transform.basis.z
+	var forward = -global_transform.basis.z
 	var to_player_flat = Vector3(to_player.x, 0.0, to_player.z).normalized()
 	var dot = forward.dot(to_player_flat)
 	var target_weight = 1.0 if (dist <= HEAD_LOOK_DISTANCE and dot >= HEAD_LOOK_FOV) else 0.0
@@ -203,7 +203,7 @@ func _apply_head_look() -> void:
 		return
 
 	var to_player = _player.global_position - global_position
-	var forward = global_transform.basis.z
+	var forward = -global_transform.basis.z
 	var to_player_flat = Vector3(to_player.x, 0.0, to_player.z).normalized()
 	var yaw_angle = forward.signed_angle_to(to_player_flat, Vector3.UP)
 	yaw_angle = clampf(yaw_angle, deg_to_rad(-HEAD_MAX_YAW), deg_to_rad(HEAD_MAX_YAW)) * _head_look_weight
