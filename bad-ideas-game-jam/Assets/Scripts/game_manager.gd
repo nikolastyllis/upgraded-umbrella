@@ -9,6 +9,7 @@ extends Node3D
 @onready var bedroom3           = $Locations/Bedroom3
 @onready var bed             	 = $Locations/Bed
 @onready var container           = $Locations/Container
+@onready var oxy_torch           = $"../OxyTorch"
 @onready var store_room          = $Locations/StoreRoom
 @onready var bridge              = $Locations/Bridge
 @onready var lifeboat            = $Locations/Lifeboat
@@ -141,8 +142,13 @@ func _process(_delta: float) -> void:
 		story_increment += 1
 		_play_act_1_start()
 		
-	if story_increment == 2 and player_has_interacted_with_container:
-		story_increment += 1
+	if story_increment == 2 and player.has_oxy_torch:
+		story_increment += 0.5
+		_remove_objective()
+		_spawn_objective_marker(container)
+		
+	if story_increment == 2.5 and player_has_interacted_with_container:
+		story_increment += 0.5
 		_remove_objective()
 		_play_act1_shift_over()
 		
@@ -221,7 +227,7 @@ func _play_act_1_start() -> void:
 	await _wait_for(3.0)
 	await twin_2.play_dialogue(23)
 	await twin_1.play_dialogue(24)
-	_spawn_objective_marker(container)
+	_spawn_objective_marker(oxy_torch)
 	player.toggle_movement_disabled()
 	await twin_1.play_dialogue(32)
 	_play_container_reminders()

@@ -8,8 +8,8 @@ const STOP_DISTANCE = 1.0
 const STUCK_TIME_THRESHOLD = 2.5
 const STUCK_DISTANCE_THRESHOLD = 0.3
 const STUCK_SAMPLE_INTERVAL = 0.5
-const UNSTICK_DETOUR_DISTANCE = 3.0
-const UNSTICK_DETOUR_DURATION = 2.0
+const UNSTICK_DETOUR_DISTANCE = 8.0
+const UNSTICK_DETOUR_DURATION = 6.0
 
 var target_position := Vector3.ZERO 
 var _has_target := false

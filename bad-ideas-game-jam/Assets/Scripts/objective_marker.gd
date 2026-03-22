@@ -4,7 +4,7 @@ extends Node3D
 @export var edge_padding: float = 40.0
 @export var move_smoothness: float = 25.0
 @export var rotation_smoothness: float = 20.0
-@export var world_offset: Vector3 = Vector3(0, 1, 0)
+@export var world_offset: Vector3 = Vector3(0, 0.5, 0)
 
 @onready var marker_ui := $ObjectiveMarkerUI
 @onready var icon := $ObjectiveMarkerUI/Icon 
