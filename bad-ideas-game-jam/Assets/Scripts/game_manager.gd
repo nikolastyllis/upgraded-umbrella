@@ -204,33 +204,33 @@ func _play_act_1_start() -> void:
 	player.toggle_movement_disabled()
 	_dialogue_active = true
 	player.fade_in_camera(10)
-	#await _wait_for(10)
-	#await twin_1.play_dialogue(1)
-	#await player.play_dialogue(2)
-	#await twin_2.play_dialogue(3)
-	#await player.play_dialogue(4)
-	#await twin_1.play_dialogue(5)
-	#await twin_2.play_dialogue(6)
-	#await player.play_dialogue(7)
-	#await twin_2.play_dialogue(8)
-	#twin_1.play_dialogue(9)
-	#await twin_2.play_dialogue(10)
-	#await player.play_dialogue(11)
-	#await twin_1.play_dialogue(12)
-	#twin_1.play_dialogue(13)
-	#await twin_2.play_dialogue(14)
-	#await player.play_dialogue(15)
-	#await twin_1.play_dialogue(16)
-	#await twin_1.play_dialogue(17)
-	#await _wait_for(3.0)
-	#await twin_1.play_dialogue(18)
-	#twin_1.play_dialogue(19)
-	#await twin_2.play_dialogue(20)
-	#await twin_2.play_dialogue(21)
-	#await twin_2.play_dialogue(22)
-	#await _wait_for(3.0)
-	#await twin_2.play_dialogue(23)
-	#await twin_1.play_dialogue(24)
+	await _wait_for(10)
+	await twin_1.play_dialogue(1)
+	await player.play_dialogue(2)
+	await twin_2.play_dialogue(3)
+	await player.play_dialogue(4)
+	await twin_1.play_dialogue(5)
+	await twin_2.play_dialogue(6)
+	await player.play_dialogue(7)
+	await twin_2.play_dialogue(8)
+	twin_1.play_dialogue(9)
+	await twin_2.play_dialogue(10)
+	await player.play_dialogue(11)
+	await twin_1.play_dialogue(12)
+	twin_1.play_dialogue(13)
+	await twin_2.play_dialogue(14)
+	await player.play_dialogue(15)
+	await twin_1.play_dialogue(16)
+	await twin_1.play_dialogue(17)
+	await _wait_for(3.0)
+	await twin_1.play_dialogue(18)
+	twin_1.play_dialogue(19)
+	await twin_2.play_dialogue(20)
+	await twin_2.play_dialogue(21)
+	await twin_2.play_dialogue(22)
+	await _wait_for(3.0)
+	await twin_2.play_dialogue(23)
+	await twin_1.play_dialogue(24)
 	_spawn_objective_marker(oxy_torch)
 	player.toggle_movement_disabled()
 	await twin_1.play_dialogue(32)
@@ -242,7 +242,8 @@ func _play_act1_shift_over():
 	await _wait_for(3.0)
 	await _play_sound("bell")
 	player.toggle_movement_disabled()
-	await twin_1.play_dialogue(25)
+	await twin_2.play_dialogue(25)
+	await twin_1.play_dialogue(266)
 	await player.play_dialogue(26)
 	await twin_1.play_dialogue(27)
 	twin_1.play_dialogue(28)
@@ -285,6 +286,7 @@ func _play_act_2_store_room():
 	await twin_1.play_dialogue(41)
 	await player.play_dialogue(42)
 	await twin_1.play_dialogue(43)
+	await twin_2.play_dialogue(433)
 	await twin_1.play_dialogue(44)
 	await _wait_for(3.0)
 	await twin_2.play_dialogue(45)
@@ -313,6 +315,7 @@ func _play_act_3_container():
 	await player.play_dialogue(77)
 	await twin_1.play_dialogue(78)
 	_spawn_objective_marker(lifeboat)
+	_play_lifeboat_reminders()
 	_dialogue_active = false
 	
 func _play_act_4_search():
@@ -373,6 +376,18 @@ func _play_store_room_reminders() -> void:
 		if story_increment != 4:
 			return
 		await twin_2.play_dialogue(67)
+		
+func _play_lifeboat_reminders() -> void:
+	while true:
+		await _wait_for(30.0)
+		if story_increment != 7:
+			return
+		await twin_1.play_dialogue(92)
+		
+		await _wait_for(20.0)
+		if story_increment != 7:
+			return
+		await twin_1.play_dialogue(93)
 
 func _play_back_to_container_reminders() -> void:
 	while true:
