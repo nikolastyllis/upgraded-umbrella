@@ -7,11 +7,10 @@ Godot 4.6.x Toon Sky (DirectionalLight-driven sun)
 - Toon gradient + horizon banding
 - Procedural clouds with sun-lit highlights + self-shadowing feel
 - Optional stars at night
-
-Tip: In WorldEnvironment -> Background = Sky, assign a Sky resource using this ShaderMaterial.
 */
 
-uniform float time_of_day : hint_range(0.0, 1.0) = 0.35; // 0=midnight, 0.25=sunrise, 0.5=noon, 0.75=sunset
+uniform float sun_elev : hint_range(0.0, 1.0) = -1.0; // -1 = auto from LIGHT0_DIRECTION
+uniform float time_of_day : hint_range(0.0, 1.0) = 0.35; // (kept for compatibility)
 uniform float exposure : hint_range(0.2, 2.0) = 1.0;
 
 // Toon banding
@@ -25,21 +24,24 @@ uniform float horizon_softness : hint_range(0.001, 0.35) = 0.14;
 // Sun disc / halo (driven by DirectionalLight0 direction & colour)
 uniform float sun_size : hint_range(0.001, 0.09) = 0.02;
 uniform float sun_halo : hint_range(0.0, 0.7) = 0.18;
-uniform float sun_disc_boost : hint_range(0.0, 6.0) = 1.4; // extra stylised punch on disc/halo
+uniform float sun_disc_boost : hint_range(0.0, 6.0) = 1.4;
 
 // Clouds (procedural)
-uniform float cloud_amount : hint_range(0.0, 1.0) = 0.55;    // coverage
-uniform float cloud_scale : hint_range(0.2, 8.0) = 1.8;      // feature size
-uniform float cloud_speed : hint_range(0.0, 2.0) = 0.22;     // drift
-uniform vec2  cloud_wind_dir = vec2(1.0, 0.3);               // drift direction
-uniform float cloud_contrast : hint_range(0.5, 3.0) = 1.35;  // puffiness
-uniform float cloud_softness : hint_range(0.0, 0.35) = 0.10; // edge softness
+uniform float cloud_amount : hint_range(0.0, 1.0) = 0.55;
+uniform float cloud_scale : hint_range(0.2, 8.0) = 1.8;
+uniform float cloud_speed : hint_range(0.0, 2.0) = 0.22;
+uniform vec2  cloud_wind_dir = vec2(1.0, 0.3);
+uniform float cloud_contrast : hint_range(0.5, 3.0) = 1.35;
+uniform float cloud_softness : hint_range(0.0, 0.35) = 0.10;
+
+// NEW: allow clouds at night (1 = fully allowed, 0 = day-only like before)
+uniform float night_clouds : hint_range(0.0, 1.0) = 1.0;
 
 // Cloud lighting
 uniform float cloud_light_strength : hint_range(0.0, 2.0) = 1.0;
 uniform float cloud_shadow_strength : hint_range(0.0, 2.0) = 0.9;
-uniform float cloud_anisotropy : hint_range(0.0, 1.0) = 0.6; // forward scattering feel
-uniform float cloud_banding : hint_range(1.0, 10.0) = 4.0;   // toon steps just for clouds
+uniform float cloud_anisotropy : hint_range(0.0, 1.0) = 0.6;
+uniform float cloud_banding : hint_range(1.0, 10.0) = 4.0;
 
 // Stars
 uniform float stars : hint_range(0.0, 1.0) = 0.7;
@@ -95,7 +97,6 @@ float fbm(vec2 p) {
 	float v = 0.0;
 	float a = 0.55;
 
-	// rotate domain each octave to avoid grid artifacts
 	float s = sin(0.55);
 	float c = cos(0.55);
 	mat2 r = mat2(vec2(c, s), vec2(-s, c));
@@ -122,29 +123,30 @@ float stars_mask(vec3 dir) {
 	return s1;
 }
 
-// Cheap “two-tap” self-shadow feel: sample density towards sun direction
 float cloud_shadow_tap(vec2 uv, vec2 sun_uv_dir) {
-	// A couple taps “towards sun” darken the underside / leeward areas
 	float d1 = fbm(uv + sun_uv_dir * 0.35);
 	float d2 = fbm(uv + sun_uv_dir * 0.75);
-	// darker where density increases towards sun
-	float sh = sat((d1 + d2) * 0.5);
-	return sh;
+	return sat((d1 + d2) * 0.5);
 }
 
 void sky() {
-	// View direction in sky shader (Godot 4.x)
 	vec3 dir = normalize(EYEDIR);
 
-	// ---- Day/Night model from time_of_day ----
-	float dayness = 1.0 - smoothstep(0.0, 0.25, abs(time_of_day - 0.5) * 2.0);
-	float nightness = 1.0 - dayness;
+	// Sun elevation driver (preferred)
+	float elev = (sun_elev >= 0.0)
+		? sun_elev
+		: clamp(LIGHT0_DIRECTION.y * 0.5 + 0.5, 0.0, 1.0);
 
-	float duskness = smoothstep(0.0, 0.18, 0.18 - abs(time_of_day - 0.25))
-	               + smoothstep(0.0, 0.18, 0.18 - abs(time_of_day - 0.75));
-	duskness = sat(duskness);
+	// Day/night from elevation (horizon around 0.5)
+	float above = smoothstep(0.48, 0.52, elev);
+	float dayness = above * smoothstep(0.55, 0.90, elev);
+	float nightness = 1.0 - above;
 
-	// Base gradient palette blend
+	// Dusk near horizon
+	float duskness = 1.0 - smoothstep(0.52, 0.70, abs(elev - 0.5) * 2.0);
+	duskness = sat(duskness * 0.9);
+
+	// Base gradient colours
 	vec3 zen = mix(night_zenith, day_zenith, dayness);
 	vec3 hor = mix(night_horizon, day_horizon, dayness);
 	hor = mix(hor, dusk_horizon, duskness);
@@ -152,8 +154,8 @@ void sky() {
 
 	// Horizon toon blend
 	float h = smoothstep(horizon_height - horizon_softness, horizon_height + horizon_softness, dir.y);
-	float t = soft_steps(h, band_steps, band_softness);
-	vec3 col = mix(hor, zen, t);
+	float tt = soft_steps(h, band_steps, band_softness);
+	vec3 col = mix(hor, zen, tt);
 
 	// Ground tint below horizon
 	if (dir.y < horizon_height) {
@@ -161,9 +163,7 @@ void sky() {
 		col = mix(col, ground_tint, g);
 	}
 
-	// ---- Directional light driven Sun ----
-	// Depending on your setup, the “direction” may point *from* the light.
-	// If sun appears opposite, flip to -LIGHT0_DIRECTION.
+	// Sun disc + halo (DirectionalLight0)
 	vec3 sdir = normalize(LIGHT0_DIRECTION);
 	vec3 sun_col = LIGHT0_COLOR.rgb;
 	float sun_pow = LIGHT0_ENERGY * sun_disc_boost;
@@ -172,66 +172,52 @@ void sky() {
 	float sun_core = smoothstep(1.0 - sun_size, 1.0, sun_dot);
 	float sun_glow = smoothstep(1.0 - (sun_size + sun_halo), 1.0 - sun_size, sun_dot) * 0.6;
 
-	// A little dusk warmth (stylised)
 	vec3 warm = vec3(1.0, 0.55, 0.25);
 	sun_col = mix(sun_col, warm, duskness * 0.35);
 
-	col += sun_col * (sun_core * 2.0 + sun_glow) * sun_pow * dayness;
+	float sun_vis = clamp(dayness + duskness * 0.9, 0.0, 1.0);
+	col += sun_col * (sun_core * 2.0 + sun_glow) * sun_pow * sun_vis;
 
-	// ---- Clouds: procedural density + lighting/shadow ----
-	// Stable mapping: project to plane based on view direction (avoids pole pinching)
+	// ---- Clouds ----
 	vec2 view_plane = dir.xz / max(0.18, abs(dir.y) + 0.18);
 
-	// Wind direction normalised
 	vec2 wdir = normalize(cloud_wind_dir);
 	vec2 drift = wdir * (TIME * cloud_speed);
 
-	// Main cloud UV
 	vec2 uv = view_plane * cloud_scale + drift;
 
-	// Density field
 	float d = fbm(uv * 0.85);
 	d = pow(d, cloud_contrast);
 
-	// Coverage threshold → 0..1 “where clouds exist”
 	float coverage = smoothstep(1.0 - cloud_amount - cloud_softness,
 	                           1.0 - cloud_amount + cloud_softness, d);
 
-	// Toon the cloud shape slightly
 	float cloud_shape = soft_steps(coverage, max(2.0, cloud_banding), band_softness);
 
-	// --- Lighting ---
-	// Sun side factor for this sky ray (view dir vs sun dir)
 	float sun_side = sat(dot(dir, sdir) * 0.5 + 0.5);
-
-	// Fake anisotropic forward scattering (brighter around sun direction)
 	float forward = pow(sat(dot(dir, sdir)), mix(8.0, 2.0, cloud_anisotropy));
 	float highlight = mix(sun_side, 1.0, cloud_anisotropy) * (0.35 + 0.65 * forward);
 
-	// Self-shadow feel: sample density “towards sun” in UV space
-	// Convert sun dir into the same projected plane direction (approx)
 	vec2 sun_plane = normalize(sdir.xz + 1e-5);
 	float sh = cloud_shadow_tap(uv, sun_plane);
 
-	// Combine into toon light bands
 	float light_val = sat(0.35 + highlight * cloud_light_strength);
 	float shadow_val = sat(1.0 - sh * cloud_shadow_strength);
 
 	float lit = sat(light_val * shadow_val);
-	lit = soft_steps(lit, max(2.0, cloud_banding), 0.08); // separate toon banding for lighting
+	lit = soft_steps(lit, max(2.0, cloud_banding), 0.08);
 
-	// Cloud colours: base + lit rim
 	vec3 cloud_base = mix(vec3(0.75, 0.80, 0.95), vec3(0.95, 0.96, 1.0), dayness);
 	cloud_base = mix(cloud_base, vec3(1.0, 0.70, 0.45), duskness * 0.35);
-
 	vec3 cloud_lit = mix(cloud_base * 0.75, cloud_base * 1.15, lit);
 
-	// Apply clouds only above horizon-ish; fade near horizon to avoid harsh seam
 	float cloud_h_fade = smoothstep(horizon_height - 0.05, horizon_height + 0.15, dir.y);
 
-	col = mix(col, cloud_lit, cloud_shape * cloud_h_fade * dayness);
+	// ✅ Night clouds fix:
+	float cloud_vis = mix(dayness, 1.0, night_clouds * nightness);
+	col = mix(col, cloud_lit, cloud_shape * cloud_h_fade * cloud_vis);
 
-	// ---- Stars (night, above horizon) ----
+	// Stars (set stars = 0.0 from LookDriver for stormy nights)
 	if (nightness > 0.001 && dir.y > horizon_height) {
 		float sm = stars_mask(dir);
 		col += vec3(1.0) * sm * stars * nightness;

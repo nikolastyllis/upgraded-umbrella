@@ -1,13 +1,13 @@
-[gd_resource type="Environment" format=3 uid="uid://lnokunydxcko"]
+[gd_resource type="Environment" format=3 uid="uid://db3se1m0vcnag"]
 
-[ext_resource type="Material" uid="uid://eb5djxh4js65" path="res://Shaders/SkyShaderl.tres" id="1_hao2j"]
+[ext_resource type="Material" uid="uid://eb5djxh4js65" path="res://Shaders/SkyShaderl.tres" id="1_t055f"]
 
 [sub_resource type="Sky" id="Sky_jvqja"]
-sky_material = ExtResource("1_hao2j")
+sky_material = ExtResource("1_t055f")
 
 [resource]
 background_mode = 2
-background_energy_multiplier = 0.56
+background_energy_multiplier = 0.92
 sky = SubResource("Sky_jvqja")
 ambient_light_source = 3
 ambient_light_color = Color(0.43013, 0.40275463, 0.57900447, 1)
@@ -18,12 +18,11 @@ ssil_radius = 7.7
 ssil_intensity = 0.42
 ssil_sharpness = 1.0
 glow_enabled = true
-fog_enabled = true
 fog_mode = 1
-fog_light_color = Color(0.99557394, 0.6114239, 0.41234687, 1)
-fog_light_energy = 1.22
+fog_light_color = Color(0.358731, 0.595045, 0.6051909, 1)
+fog_light_energy = 0.19
 fog_sun_scatter = 0.95
-fog_density = 1.25
+fog_density = 1.01
 fog_aerial_perspective = 0.48
 fog_sky_affect = 0.805
 fog_height = -380.54

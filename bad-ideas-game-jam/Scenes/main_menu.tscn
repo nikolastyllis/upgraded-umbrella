@@ -4,7 +4,7 @@
 [ext_resource type="AudioStream" uid="uid://debvotnisyi1u" path="res://Music/MainMenu.ogg" id="2_t1dhk"]
 [ext_resource type="Shader" uid="uid://ossjmoq6orf1" path="res://Shaders/shader_ocean_calm.gdshader" id="2_vr1f0"]
 [ext_resource type="Texture2D" uid="uid://bw3728lre125f" path="res://Assets/Textures/Ocean/0001.jpg" id="3_t1dhk"]
-[ext_resource type="Environment" uid="uid://lnokunydxcko" path="res://Scenes/sunset.tres" id="3_vr1f0"]
+[ext_resource type="Environment" uid="uid://d3yi522swjc8m" path="res://Shaders/Sky_Water/sunset.tres" id="3_vr1f0"]
 [ext_resource type="Texture2D" uid="uid://bal1s5p7lfes2" path="res://Assets/Textures/Ocean/0258.jpg" id="4_5egv6"]
 [ext_resource type="Script" uid="uid://d1icg8locw87l" path="res://Assets/Scripts/water_camera.gd" id="5_vtepg"]
 [ext_resource type="Script" uid="uid://dgv8ik7gx8igs" path="res://Assets/Scripts/main_menu.gd" id="8_t1dhk"]
@@ -85,17 +85,17 @@ shader_parameter/wave_dir1 = Vector2(-0.545, 1.56)
 shader_parameter/wave_dir2 = Vector2(-0.21, 0.27)
 shader_parameter/normal_map1 = ExtResource("3_t1dhk")
 shader_parameter/normal_map2 = ExtResource("4_5egv6")
-shader_parameter/normal_strength = 0.4
+shader_parameter/normal_strength = 1.0
 shader_parameter/normal_speed1 = Vector2(0, -0.1)
 shader_parameter/normal_speed2 = Vector2(0, -0.1)
 shader_parameter/normal_tiling = 0.04
 shader_parameter/shallow_color = Color(0.07143798, 0.19504845, 0.28451857, 1)
-shader_parameter/deep_color = Color(0.35885537, 0.46708924, 0.5841905, 1)
-shader_parameter/horizon_color = Color(0.58431375, 0.7176471, 0.8509804, 1)
+shader_parameter/deep_color = Color(0.24567825, 0.3299818, 0.42340383, 1)
+shader_parameter/horizon_color = Color(0.0807055, 0.14628711, 0.21101722, 1)
 shader_parameter/metallic = 0.0
-shader_parameter/roughness = 0.04
-shader_parameter/fresnel_power = 1.0
-shader_parameter/horizon_start = 200.0
+shader_parameter/roughness = 1.0
+shader_parameter/fresnel_power = 5.0
+shader_parameter/horizon_start = 212.155
 shader_parameter/horizon_end = 800.0
 shader_parameter/foam_noise = SubResource("NoiseTexture2D_7xckk")
 shader_parameter/foam_color = Color(1, 1, 1, 1)
@@ -158,13 +158,18 @@ bus = &"Music"
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.0927014, 0, 0.60878706)
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="Lighting" unique_id=1333050787]
-transform = Transform3D(-0.6349026, 0.14087957, -0.75963944, 0.09654342, 0.9899945, 0.102909885, 0.7665367, -0.008000523, -0.6421508, 3.0927014, 0, -0.60878706)
-light_energy = 0.1
+transform = Transform3D(-0.02081439, -0.0073841787, -0.9997561, 0.09557393, 0.9953787, -0.00934163, 0.99520504, -0.09574505, -0.02001242, -13.930065, 0.62960666, -1.0252761)
+light_color = Color(0.99, 0.61149, 0.3762, 1)
+light_energy = 0.6
 light_indirect_energy = 0.0
-light_volumetric_fog_energy = 0.411
-light_angular_distance = 1.19
+light_volumetric_fog_energy = 0.0
+light_angular_distance = 1.2
 shadow_enabled = true
-shadow_blur = 0.0
+shadow_bias = 0.0
+shadow_blur = 0.465
+directional_shadow_mode = 1
+directional_shadow_split_1 = 0.348
+directional_shadow_fade_start = 1.0
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="Lighting" unique_id=972673621]
 environment = ExtResource("3_vr1f0")

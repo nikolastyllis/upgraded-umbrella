@@ -1,13 +1,16 @@
 [gd_resource type="ShaderMaterial" format=3 uid="uid://8eocahl8bt5n"]
 
 [ext_resource type="Shader" uid="uid://d266trvxphdyu" path="res://Shaders/cel-shader-base.gdshader" id="1_7q2v7"]
+[ext_resource type="Material" uid="uid://sgetjvg177mb" path="res://Shaders/outline.tres" id="1_bf3q0"]
 
 [resource]
 render_priority = 0
+next_pass = ExtResource("1_bf3q0")
 shader = ExtResource("1_7q2v7")
+shader_parameter/emission = Color(0, 0, 0, 1)
+shader_parameter/emission_energy = 1.0
 shader_parameter/normal_scale = 1.0
 shader_parameter/invert_normal_y = false
-shader_parameter/backlight = Color(0.5237806, 0.5237806, 0.5237805, 1)
 shader_parameter/color = Color(0.2835618, 0.47263944, 0.7640725, 1)
 shader_parameter/specular_color = Color(0.3, 0.3, 0.3, 1)
 shader_parameter/specular_strength = 0.86000004085
