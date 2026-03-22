@@ -380,12 +380,12 @@ func _play_store_room_reminders() -> void:
 func _play_lifeboat_reminders() -> void:
 	while true:
 		await _wait_for(30.0)
-		if story_increment != 7:
+		if story_increment != 6:
 			return
 		await twin_1.play_dialogue(92)
 		
 		await _wait_for(20.0)
-		if story_increment != 7:
+		if story_increment != 6:
 			return
 		await twin_1.play_dialogue(93)
 
