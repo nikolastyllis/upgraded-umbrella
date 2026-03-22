@@ -28,46 +28,46 @@ extends Node3D
 @onready var nav_region = $"../NavigationRegion3D"
 
 # environment -> sky -> sky_material -> shader -> shader_parameter -> time_of_day
-const DAY_TIME_OF_DAY = 0.5
-const NIGHT_TIME_OF_DAY = 0
-const SUNSET_TIME_OF_DAY = 0.25
+@export var DAY_TIME_OF_DAY = 0.5
+@export var NIGHT_TIME_OF_DAY = 0
+@export var SUNSET_TIME_OF_DAY = 0.25
 
 # lighting -> light -> light_color
-const DAY_LIGHT_COLOR = Color(1, 1 ,1)
-const NIGHT_LIGHT_COLOR = Color(1, 1 ,1)
-const SUNSET_LIGHT_COLOR = Color(0.67, 0.31, 0.26)
+@export var DAY_LIGHT_COLOR = Color(1, 1 ,1)
+@export var NIGHT_LIGHT_COLOR = Color(1, 1 ,1)
+@export var SUNSET_LIGHT_COLOR = Color(0.67, 0.31, 0.26)
 
 # lighting -> light -> light_energy
-const DAY_LIGHT_ENERGY = 1
-const NIGHT_LIGHT_ENERGY = 0.02
-const SUNSET_LIGHT_ENERGY = 0.8
+@export var DAY_LIGHT_ENERGY = 1
+@export var NIGHT_LIGHT_ENERGY = 0.02
+@export var SUNSET_LIGHT_ENERGY = 0.8
 
 # environment -> fog -> fog_light_color
-const DAY_FOG_COLOR = Color(0.58, 0.71, 0.84)
-const NIGHT_FOG_COLOR = Color(0,0,0)
-const SUNSET_FOG_COLOR = Color(0.67, 0.31, 0.26)
+@export var DAY_FOG_COLOR = Color(0.58, 0.71, 0.84)
+@export var NIGHT_FOG_COLOR = Color(0,0,0)
+@export var SUNSET_FOG_COLOR = Color(0.67, 0.31, 0.26)
 
 # environment -> volumetric fog -> volumetric_fog_density
-const DAY_FOG_DENSITY = 0.0
-const NIGHT_FOG_DENSITY = 0.02
-const SUNSET_FOG_DENSITY = 0.02
+@export var DAY_FOG_DENSITY = 0.0
+@export var NIGHT_FOG_DENSITY = 0.02
+@export var SUNSET_FOG_DENSITY = 0.02
 
 # ocean -> geometry -> material override -> shader_parameter -> shallow_color
-const DAY_SHALLOW_COLOR = Color(0.07, 0.19, 0.28)
+@export var DAY_SHALLOW_COLOR = Color(0.07, 0.19, 0.28)
 
 # ocean -> geometry -> material override -> shader_parameter -> deep_color
-const DAY_DEEP_COLOR = Color(0.35, 0.46, 0.58)
+@export var DAY_DEEP_COLOR = Color(0.35, 0.46, 0.58)
 
 # ocean -> geometry -> material override -> shader_parameter -> horizon_color
-const DAY_HORIZON_COLOR = Color(0.58, 0.71, 0.85)
+@export var DAY_HORIZON_COLOR = Color(0.58, 0.71, 0.85)
 
-const NIGHT_SHALLOW_COLOR = Color(0.14, 0.2, 0.38)
-const NIGHT_DEEP_COLOR = Color(0.08, 0.13, 0.26)
-const NIGHT_HORIZON_COLOR = Color(0.08, 0.12, 0.24)
+@export var NIGHT_SHALLOW_COLOR = Color(0.14, 0.2, 0.38)
+@export var NIGHT_DEEP_COLOR = Color(0.08, 0.13, 0.26)
+@export var NIGHT_HORIZON_COLOR = Color(0.08, 0.12, 0.24)
 
-const SUNSET_SHALLOW_COLOR = Color(0.07, 0.19, 0.28)
-const SUNSET_DEEP_COLOR = Color(0.35, 0.46, 0.58)
-const SUNSET_HORIZON_COLOR = Color(0.58, 0.71, 0.85)
+@export var SUNSET_SHALLOW_COLOR = Color(0.07, 0.19, 0.28)
+@export var SUNSET_DEEP_COLOR = Color(0.35, 0.46, 0.58)
+@export var SUNSET_HORIZON_COLOR = Color(0.58, 0.71, 0.85)
 
 @onready var objective_marker_prefab = "res://Prefabs/objective_marker_ui.tscn"
 
