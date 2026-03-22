@@ -40,7 +40,6 @@ filter_enabled = true
 filters = ["Armature/Skeleton3D:face_Jaw", "Armature/Skeleton3D:face_bottomLip", "Armature/Skeleton3D:face_topLip"]
 
 [sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_cj41y"]
-graph_offset = Vector2(-118.666664, -24.666666)
 nodes/output/position = Vector2(1213.3334, 400)
 nodes/AnimationNodeStateMachine/node = ExtResource("2_w14yb")
 nodes/AnimationNodeStateMachine/position = Vector2(80, 93.333336)
@@ -54,47 +53,13 @@ nodes/RadioBlend/node = SubResource("AnimationNodeBlend2_imgvl")
 nodes/RadioBlend/position = Vector2(853.3333, 360)
 node_connections = [&"output", 0, &"RadioBlend", &"TalkAdd", 0, &"AnimationNodeStateMachine", &"TalkAdd", 1, &"Animation", &"RadioBlend", 0, &"TalkAdd", &"RadioBlend", 1, &"Animation 2"]
 
-[node name="Character" unique_id=2009451537 instance=ExtResource("1_wddxd")]
+[node name="Character" unique_id=1494532939 instance=ExtResource("1_wddxd")]
 
-[node name="Armature" parent="." index="0" unique_id=2118425786]
+[node name="Armature" parent="." index="0" unique_id=3827985]
 transform = Transform3D(0.01, 0, 0, 0, -4.3711387e-10, -0.01, 0, 0.01, -4.3711387e-10, 0, 0, 0)
 
-[node name="Skeleton3D" parent="Armature" index="0" unique_id=2113267043]
-bones/7/rotation = Quaternion(0.95332843, 1.4397402e-07, -1.4394875e-07, -0.30193537)
-bones/9/position = Vector3(6.552315e-08, 9.975021, -0.7495023)
-bones/11/rotation = Quaternion(-0.5447233, -0.4491672, 0.5528428, -0.44259495)
-bones/13/position = Vector3(1.6885983e-06, 27.620623, 9.112126e-06)
-bones/14/position = Vector3(2.2568452e-06, 29.174458, -5.984599e-06)
-bones/17/position = Vector3(0.028532982, 3.5342913, -3.5462643e-05)
-bones/18/position = Vector3(0.50930023, 2.798349, 2.4318695e-05)
-bones/21/position = Vector3(-0.03477907, 1.9214672, 2.597515e-06)
-bones/24/position = Vector3(0.0775156, 2.8892324, -7.442359e-07)
-bones/26/position = Vector3(0.01627922, 2.0884583, 1.6212485e-05)
-bones/28/position = Vector3(0.051629066, 2.3588653, 1.6135258e-05)
-bones/29/position = Vector3(-0.0754962, 2.6187294, 5.097356e-06)
-bones/32/position = Vector3(0.02355194, 2.519667, -2.301769e-05)
-bones/33/position = Vector3(-0.041512728, 2.4316392, -1.7095885e-05)
-bones/34/position = Vector3(0.01795888, 1.6197462, -1.0535121e-05)
-bones/36/position = Vector3(3.797179e-07, 13.814883, -1.2306475e-05)
-bones/38/position = Vector3(-1.5414878e-07, 29.108309, -2.167527e-05)
-bones/42/position = Vector3(-0.5105705, 2.8173099, 8.106238e-06)
-bones/44/position = Vector3(0.011325359, 2.3437867, -1.532307e-05)
-bones/47/position = Vector3(1.4933133, 13.011054, 0.0016806058)
-bones/49/position = Vector3(0.06266403, 2.8524945, -4.0837094e-06)
-bones/50/position = Vector3(0.08547163, 2.1170132, 2.384186e-05)
-bones/51/position = Vector3(-1.4919767, 12.972758, -0.10599034)
-bones/52/position = Vector3(-0.055807114, 2.5642445, -1.8292889e-05)
-bones/55/position = Vector3(-4.343399, 10.865028, -0.88473845)
-bones/57/position = Vector3(0.02608098, 2.2335844, 2.4883444e-05)
-bones/58/position = Vector3(-0.019672051, 1.5773869, 1.7493965e-05)
-bones/60/position = Vector3(-4.5328845e-05, 13.724626, 34.654125)
-bones/61/position = Vector3(0.71510094, 1.6162018, -14.824098)
-bones/62/position = Vector3(0.7151019, -0.6903179, -14.824097)
-bones/63/rotation = Quaternion(-0.00037168284, -0.039116025, 0.99918926, -0.00952453)
-bones/73/rotation = Quaternion(0.6267974, 0.09693603, 0.7081656, -0.31020972)
-
-[node name="RightHandAttachment" type="BoneAttachment3D" parent="Armature/Skeleton3D" index="0" unique_id=601382995]
-transform = Transform3D(0.32187256, -0.8713692, 0.37028813, 0.9441096, 0.26602915, -0.19464073, 0.071096465, 0.41224205, 0.90829533, -75.26761, 3.364616, -136.73988)
+[node name="RightHandAttachment" type="BoneAttachment3D" parent="Armature/Skeleton3D" parent_id_path=PackedInt32Array(133894772) index="0" unique_id=601382995]
+transform = Transform3D(0.32187256, -0.8713692, 0.37028813, 0.9441096, 0.26602915, -0.19464073, 0.071096465, 0.41224205, 0.90829533, -75.26759, 3.3646154, -136.73982)
 bone_name = "mixamorig_RightHand"
 bone_idx = 38
 
@@ -113,7 +78,7 @@ draw_pass_1 = SubResource("SphereMesh_7g1xj")
 [node name="ToolTip" type="Node3D" parent="Armature/Skeleton3D/RightHandAttachment" index="1" unique_id=13478177]
 transform = Transform3D(0.99116933, -0.07222691, -0.111199066, 0.06167996, 0.99351215, -0.095534496, 0.11737839, 0.087832555, 0.9891964, 46.378185, 13.583412, 3.1464844)
 
-[node name="RightHandIK" type="SkeletonIK3D" parent="Armature/Skeleton3D" index="1" unique_id=1245086895]
+[node name="RightHandIK" type="SkeletonIK3D" parent="Armature/Skeleton3D" parent_id_path=PackedInt32Array(133894772) index="1" unique_id=1245086895]
 transform = Transform3D(100, 0, 0, 0, -4.3711384e-06, 100, 0, -100, -4.3711384e-06, 0, 0, 0)
 influence = 0.5
 root_bone = &"mixamorig_RightShoulder"
@@ -121,16 +86,16 @@ tip_bone = &"mixamorig_RightHandIndex4"
 magnet = Vector3(0.5, 0, 0.5)
 min_distance = 0.0
 
-[node name="BackpackAttachment" type="BoneAttachment3D" parent="Armature/Skeleton3D" index="2" unique_id=2041690690]
+[node name="BackpackAttachment" type="BoneAttachment3D" parent="Armature/Skeleton3D" parent_id_path=PackedInt32Array(133894772) index="2" unique_id=2041690690]
 transform = Transform3D(1, 0, 0, 0, -0.08486221, 0.99639237, 0, -0.99639237, -0.08486221, 0, -2.159023, -132.45042)
 bone_name = "mixamorig_Spine2"
 bone_idx = 3
 
-[node name="gilbert_mesh" parent="Armature/Skeleton3D" index="3" unique_id=1572960068]
+[node name="gilbert_mesh" parent="Armature/Skeleton3D" parent_id_path=PackedInt32Array(133894772) index="3" unique_id=1312890335]
 material_override = ExtResource("3_u8uuw")
 
-[node name="LeftHandAttachment" type="BoneAttachment3D" parent="Armature/Skeleton3D" index="4" unique_id=1492459017]
-transform = Transform3D(0.30716416, 0.87502724, -0.37413514, -0.94885916, 0.25148216, -0.19084474, -0.07290606, 0.41362238, 0.90752405, 75.26754, 3.5861287, -136.73979)
+[node name="LeftHandAttachment" type="BoneAttachment3D" parent="Armature/Skeleton3D" parent_id_path=PackedInt32Array(133894772) index="4" unique_id=1492459017]
+transform = Transform3D(0.30716407, 0.8750275, -0.37413517, -0.9488592, 0.25148216, -0.1908448, -0.072906055, 0.41362238, 0.90752405, 75.267555, 3.586132, -136.73979)
 bone_name = "mixamorig_LeftHand"
 bone_idx = 14
 
