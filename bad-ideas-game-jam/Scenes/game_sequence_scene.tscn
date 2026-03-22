@@ -288,7 +288,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18.811909, 0.16794395, -0.002
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 10.085365, 4.813717, 35.616417)
 
 [node name="Ladder3" parent="." unique_id=1530816229 instance=ExtResource("11_n0oop")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.041948, 5, -36.9601)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.041948, 5, -37.3601)
 
 [node name="Ladder4" parent="." unique_id=1432633190 instance=ExtResource("11_n0oop")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.880419, 5, -21.948483)
