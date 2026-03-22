@@ -79,10 +79,10 @@ transform = Transform3D(0.9595916, 0.2804912, 0.022976965, -0.26056245, 0.916312
 shape = SubResource("BoxShape3D_ii6rf")
 
 [node name="Physical Bone door_right" type="PhysicalBone3D" parent="rigged_container/Skeleton3D/PhysicalBoneSimulator3D" index="2" unique_id=1663257712]
-transform = Transform3D(1.5646219e-07, -0.31480643, 0.9491559, -0.27689013, 0.9120454, 0.302498, -0.9609016, -0.26281196, -0.087166645, 0.85433215, 1.1432681, 3.1949465)
+transform = Transform3D(1.5646219e-07, -0.31480643, 0.9491559, -0.27689013, 0.9120454, 0.302498, -0.9609016, -0.26281196, -0.08716664, 0.85433215, 1.1432681, 3.1949465)
 joint_type = 1
 joint_offset = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.4547259e-05, -3.7741847e-05, 0.39410532)
-body_offset = Transform3D(-0.27689007, 0.9120454, 0.302498, -1.5646219e-07, 0.31480643, -0.9491559, -0.9609016, -0.2628119, -0.087166615, -0.119185686, 0.3740793, 0.034328938)
+body_offset = Transform3D(-0.27689007, 0.9120454, 0.302498, -1.5646219e-07, 0.31480643, -0.9491559, -0.9609016, -0.2628119, -0.08716662, -0.119185686, 0.3740793, 0.034328938)
 bone_name = "door_right"
 joint_constraints/bias = 0.3
 joint_constraints/damping = 1.0
@@ -98,6 +98,7 @@ script = ExtResource("2_vrops")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" index="0" unique_id=406803372]
 shape = SubResource("BoxShape3D_ppjwr")
+disabled = true
 
 [node name="Hull1" type="CollisionShape3D" parent="StaticBody3D" index="1" unique_id=503750525]
 transform = Transform3D(4.9999995, 0, 0, 0, 4.999999, 0, 0, 0, 4.9999995, -0.035216063, -0.06709385, -31.208086)
