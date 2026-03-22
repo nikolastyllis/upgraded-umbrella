@@ -105,15 +105,15 @@ rendering_device/driver.windows="d3d12"
 
 specular_smoothness={
 "type": "float",
-"value": 1.0
+"value": 0.7
 }
 fresnel_smoothness={
 "type": "float",
-"value": 0.9
+"value": 0.1
 }
 outline_width={
 "type": "float",
-"value": 4.0
+"value": 6.0
 }
 outline_color={
 "type": "color",

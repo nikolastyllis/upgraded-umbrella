@@ -1,6 +1,6 @@
 [gd_scene format=4 uid="uid://dflyamv507y3p"]
 
-[ext_resource type="Texture2D" uid="uid://cbt6d8e7ucbuk" path="res://Assets/Textures/ChrisTest/BaseColor.png" id="1_b0kk7"]
+[ext_resource type="Material" uid="uid://btfypfsw7jecp" path="res://Materials/radio_mat.tres" id="1_8rhnr"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ll30b"]
 resource_name = "m_Radio"
@@ -44,9 +44,6 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_7mgfq")
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8rhnr"]
-albedo_texture = ExtResource("1_b0kk7")
-
 [sub_resource type="ArrayMesh" id="ArrayMesh_pprtm"]
 _surfaces = [{
 "aabb": AABB(-0.00037703756, -0.0004234965, -0.0013238511, 1e-05, 0.0006989086, 0.0010974116),
@@ -79,9 +76,6 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_pprtm")
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_83g7g"]
-albedo_texture = ExtResource("1_b0kk7")
-
 [sub_resource type="ArrayMesh" id="ArrayMesh_llkui"]
 _surfaces = [{
 "aabb": AABB(0.00034786205, -0.0004012616, -0.00013363082, 1e-05, 0.00065442803, 0.00073039974),
@@ -113,9 +107,6 @@ _surfaces = [{
 }]
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_llkui")
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3bdi0"]
-albedo_texture = ExtResource("1_b0kk7")
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_yhvpd"]
 _surfaces = [{
@@ -151,9 +142,6 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_yhvpd")
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_k4s1q"]
-albedo_texture = ExtResource("1_b0kk7")
-
 [sub_resource type="ArrayMesh" id="ArrayMesh_isfwk"]
 _surfaces = [{
 "aabb": AABB(-0.00040518263, -0.000478874, -0.0016720006, 0.00076206937, 0.0008101964, 0.0023287884),
@@ -187,9 +175,6 @@ _surfaces = [{
 }]
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_isfwk")
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_w3n3y"]
-albedo_texture = ExtResource("1_b0kk7")
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_wgdai"]
 _surfaces = [{
@@ -225,37 +210,34 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_wgdai")
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4au6u"]
-albedo_texture = ExtResource("1_b0kk7")
-
 [node name="radioTest" type="Node3D" unique_id=1067308080]
 
 [node name="Antenna_low" type="MeshInstance3D" parent="." unique_id=1082534477]
 transform = Transform3D(100, 0, 0, 0, -1.1920929e-05, 99.99999, 0, -99.99999, -1.1920929e-05, 0, 0, 0)
 mesh = SubResource("ArrayMesh_qrlgu")
-surface_material_override/0 = SubResource("StandardMaterial3D_8rhnr")
+surface_material_override/0 = ExtResource("1_8rhnr")
 
 [node name="BackPlate_low" type="MeshInstance3D" parent="." unique_id=468446585]
 transform = Transform3D(100, 0, 0, 0, -1.1920929e-05, 99.99999, 0, -99.99999, -1.1920929e-05, 0, 0, 0)
 mesh = SubResource("ArrayMesh_ky0fv")
-surface_material_override/0 = SubResource("StandardMaterial3D_83g7g")
+surface_material_override/0 = ExtResource("1_8rhnr")
 
 [node name="FrontGrille_low" type="MeshInstance3D" parent="." unique_id=1889909729]
 transform = Transform3D(100, 0, 0, 0, -1.1920929e-05, 99.99999, 0, -99.99999, -1.1920929e-05, 0, 0, 0)
 mesh = SubResource("ArrayMesh_mqm12")
-surface_material_override/0 = SubResource("StandardMaterial3D_3bdi0")
+surface_material_override/0 = ExtResource("1_8rhnr")
 
 [node name="Knobs_low" type="MeshInstance3D" parent="." unique_id=424408828]
 transform = Transform3D(100, 0, 0, 0, -1.1920929e-05, 99.99999, 0, -99.99999, -1.1920929e-05, 0, 0, 0)
 mesh = SubResource("ArrayMesh_0msru")
-surface_material_override/0 = SubResource("StandardMaterial3D_k4s1q")
+surface_material_override/0 = ExtResource("1_8rhnr")
 
 [node name="Radio_low" type="MeshInstance3D" parent="." unique_id=1028131627]
 transform = Transform3D(100, 0, 0, 0, -1.1920929e-05, 99.99999, 0, -99.99999, -1.1920929e-05, 0, 0, 0)
 mesh = SubResource("ArrayMesh_6r02s")
-surface_material_override/0 = SubResource("StandardMaterial3D_w3n3y")
+surface_material_override/0 = ExtResource("1_8rhnr")
 
 [node name="Switch_low" type="MeshInstance3D" parent="." unique_id=316918994]
 transform = Transform3D(100, 0, 0, 0, -1.1920929e-05, 99.99999, 0, -99.99999, -1.1920929e-05, 0, 0, 0)
 mesh = SubResource("ArrayMesh_rvy1k")
-surface_material_override/0 = SubResource("StandardMaterial3D_4au6u")
+surface_material_override/0 = ExtResource("1_8rhnr")

@@ -1,0 +1,44 @@
+[gd_resource type="ShaderMaterial" format=3 uid="uid://nvpnn4mp1cfr"]
+
+[ext_resource type="Material" uid="uid://sgetjvg177mb" path="res://Shaders/outline.tres" id="1_415a4"]
+[ext_resource type="Shader" uid="uid://d266trvxphdyu" path="res://Shaders/cel-shader-base.gdshader" id="2_wek2a"]
+[ext_resource type="Texture2D" uid="uid://b8tmv20uch3h3" path="res://Assets/Models/Characters/Twin 1/Char_Bazza_01_Twin_01_Col_Alpha.png" id="3_o36ev"]
+[ext_resource type="Texture2D" uid="uid://k5nel4px1k2f" path="res://Assets/Models/Characters/Twin 1/Char_Bazza_01_Twin_01_Normal.png" id="4_pa24f"]
+[ext_resource type="Texture2D" uid="uid://ykkjtkqsfggq" path="res://Assets/Models/Characters/Twin 1/Twin_01_ORM.png" id="5_2kd7w"]
+
+[sub_resource type="Gradient" id="Gradient_415a4"]
+interpolation_mode = 1
+offsets = PackedFloat32Array(0, 0.23505977, 0.5756972)
+colors = PackedColorArray(0, 0, 0, 1, 0.18837145, 0.18837145, 0.18837145, 1, 1, 1, 1, 1)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_wek2a"]
+frequency = 0.002
+fractal_type = 3
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_o36ev"]
+noise = SubResource("FastNoiseLite_wek2a")
+color_ramp = SubResource("Gradient_415a4")
+seamless = true
+
+[resource]
+render_priority = 0
+next_pass = ExtResource("1_415a4")
+shader = ExtResource("2_wek2a")
+shader_parameter/emission = Color(0, 0, 0, 1)
+shader_parameter/emission_energy = 0.0
+shader_parameter/normal_scale = 0.4430007810424996
+shader_parameter/normal_map = ExtResource("4_pa24f")
+shader_parameter/invert_normal_y = false
+shader_parameter/color = Color(1, 1, 1, 0)
+shader_parameter/base_texture = ExtResource("3_o36ev")
+shader_parameter/specular_color = Color(0.09007121, 0.11884003, 0.16652519, 1)
+shader_parameter/specular_strength = 0.0
+shader_parameter/orm_texture = ExtResource("5_2kd7w")
+shader_parameter/ao_strength = 1.0
+shader_parameter/roughness_strength = 1.0
+shader_parameter/metallic_strength = 1.0
+shader_parameter/invert_roughness = false
+shader_parameter/fresnel = Color(0.57164896, 0.5716494, 0.57164913, 0.3019608)
+shader_parameter/fresnel_texture = SubResource("NoiseTexture2D_o36ev")
+shader_parameter/uv_scale = Vector2(1, 1)
+shader_parameter/uv_offset = Vector2(0, 0)
