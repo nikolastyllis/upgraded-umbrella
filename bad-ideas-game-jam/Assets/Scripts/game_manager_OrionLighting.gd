@@ -425,7 +425,7 @@ func _wait_for(time: float):
 enum TimeOfDay { DAY, NIGHT, SUNSET }
 
 @export_group("Sun Angles (Degrees)")
-@export var DAY_SUN_PITCH_DEG: float = -65.0
+@export var DAY_SUN_PITCH_DEG: float = -85.0
 @export var DAY_SUN_YAW_DEG: float = -125.0
 
 @export var SUNSET_SUN_PITCH_DEG: float = 1.0

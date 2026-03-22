@@ -33,10 +33,9 @@ class_name LookDriver
 @export_group("Ramps: Colours (GradientTexture1D)")
 @export var fog_colour_ramp: GradientTexture1D
 @export var sky_zenith_ramp: GradientTexture1D
-@export var sky_horizon_ramp: GradientTexture1D
 @export var ocean_shallow_ramp: GradientTexture1D
 @export var ocean_deep_ramp: GradientTexture1D
-@export var ocean_horizon_ramp: GradientTexture1D
+@export var horizon_ramp: GradientTexture1D # shared sky+ocean horizon
 @export var sun_colour_ramp: GradientTexture1D
 
 @export_group("Ramps: Values (Curve)")
@@ -116,13 +115,13 @@ func _apply_look(t: float) -> void:
 	# 1) Light colour (optional)
 	if sun != null:
 		sun.light_color = _sample_col(sun_colour_ramp, t, sun.light_color)
-
+	var horizon_col := _sample_col(horizon_ramp, t, Color(0.70, 0.85, 1.0))
 	# 2) Environment (fog + adjustments)
 	var env := _get_live_environment()
 	if env != null:
 		if drive_fog:
 			_set_env_bool(env, env_fog_enabled_prop, true)
-			_set_env_color(env, env_fog_colour_prop, _sample_col(fog_colour_ramp, t, Color(0.7, 0.8, 0.9)))
+			_set_env_color(env, env_fog_colour_prop, horizon_col.lerp(Color(0.5,0.5,0.5), 0.15))
 			var cur_den := _to_f(env.get(env_fog_density_prop), 0.0)
 			_set_env_float(env, env_fog_density_prop, _sample_curve(fog_density_curve, t, cur_den))
 
@@ -138,7 +137,8 @@ func _apply_look(t: float) -> void:
 		_set_shader_float(sky_mat, sky_time_uniform, _to_blender_like_time(t))
 
 		_set_shader_color(sky_mat, sky_zenith_uniform, _sample_col(sky_zenith_ramp, t, Color(0.18, 0.45, 0.95)))
-		_set_shader_color(sky_mat, sky_horizon_uniform, _sample_col(sky_horizon_ramp, t, Color(0.70, 0.85, 1.0)))
+		
+		_set_shader_color(sky_mat, sky_horizon_uniform, horizon_col)
 
 		var cur_cloud := _get_shader_float(sky_mat, sky_cloud_amount_uniform, 0.55)
 		_set_shader_float(sky_mat, sky_cloud_amount_uniform, _sample_curve(cloud_amount_curve, t, cur_cloud))
@@ -160,7 +160,7 @@ func _apply_look(t: float) -> void:
 
 	_set_shader_color(ocean_mat, ocean_shallow_uniform, _sample_col(ocean_shallow_ramp, t, Color(0.05, 0.35, 0.35)))
 	_set_shader_color(ocean_mat, ocean_deep_uniform, _sample_col(ocean_deep_ramp, t, Color(0.01, 0.08, 0.18)))
-	_set_shader_color(ocean_mat, ocean_horizon_uniform, _sample_col(ocean_horizon_ramp, t, Color(0.05, 0.10, 0.15)))
+	_set_shader_color(ocean_mat, ocean_horizon_uniform, horizon_col)
 
 	var cur_foam := _get_shader_float(ocean_mat, ocean_foam_uniform, 1.0)
 	_set_shader_float(ocean_mat, ocean_foam_uniform, _sample_curve(ocean_foam_curve, t, cur_foam))
