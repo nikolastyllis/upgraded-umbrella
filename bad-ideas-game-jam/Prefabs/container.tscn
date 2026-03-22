@@ -107,3 +107,4 @@ shape = SubResource("BoxShape3D_uqqmb")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" index="5" unique_id=1521402740]
 shape = SubResource("BoxShape3D_r4cle")
+disabled = true

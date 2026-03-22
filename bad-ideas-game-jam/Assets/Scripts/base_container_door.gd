@@ -94,6 +94,14 @@ func can_interact(_player: Node) -> bool:
 	return game_manager.story_increment == 8
 
 func _ready():
+	
+	hull_1.disabled = true
+	hull_2.disabled = true
+	hull_3.disabled = true
+	hull_4.disabled = true
+	hull_5.disabled = true
+	interact_collider.disabled = false
+	
 	update_action_text()
 	
 	if root is HeroContainer:
@@ -152,8 +160,4 @@ func open_door_monster_reveal():
 
 func _on_animation_finished(_animation_name: String):
 	interact_collider.disabled = true
-	hull_1.disabled = true
-	hull_2.disabled = true
-	hull_3.disabled = true
-	hull_4.disabled = true
-	hull_5.disabled = true
+	

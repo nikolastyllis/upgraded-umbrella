@@ -194,7 +194,7 @@ func apply_movement(_input_dir: Vector2) -> void:
 	if is_climbing:
 		apply_climbing_movement()
 		return
-	is_jogging = Input.is_action_pressed("shift") and get_move_direction().length() > 0.01
+	is_jogging = Input.is_action_pressed("shift") and get_move_direction().length() > 0.01 and not has_oxy_torch
 	var speed = PLAYER_SPEED * (2.0 if is_jogging else 1.0)
 	var move_direction = get_move_direction()
 	if move_direction.length() > 0.01:
