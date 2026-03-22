@@ -1,0 +1,26 @@
+[gd_resource type="ShaderMaterial" format=3 uid="uid://cjm3y4cmqm6h0"]
+
+[ext_resource type="Material" uid="uid://sgetjvg177mb" path="res://Shaders/outline.tres" id="1_ehslj"]
+[ext_resource type="Shader" uid="uid://d266trvxphdyu" path="res://Shaders/cel-shader-base.gdshader" id="2_ivi4c"]
+[ext_resource type="Texture2D" uid="uid://bvxgrd548re2l" path="res://Assets/Models/Characters/Twin 2/NPC_02_v02_Twin2_Material_1.png" id="3_epiwf"]
+[ext_resource type="Texture2D" uid="uid://5jdr6dociocg" path="res://Assets/Models/Characters/Twin 2/NPC_02_v02_Twin2_Material.png" id="4_8uw3d"]
+
+[resource]
+render_priority = 0
+next_pass = ExtResource("1_ehslj")
+shader = ExtResource("2_ivi4c")
+shader_parameter/normal_scale = 0.777000796907501
+shader_parameter/normal_map = ExtResource("4_8uw3d")
+shader_parameter/invert_normal_y = false
+shader_parameter/backlight = Color(0.52642286, 0.5264225, 0.5264227, 1)
+shader_parameter/color = Color(1, 1, 1, 0)
+shader_parameter/base_texture = ExtResource("3_epiwf")
+shader_parameter/specular_color = Color(0.09007121, 0.11884003, 0.16652519, 1)
+shader_parameter/specular_strength = 1.0
+shader_parameter/ao_strength = 0.0
+shader_parameter/roughness_strength = 1.0
+shader_parameter/metallic_strength = 0.0
+shader_parameter/invert_roughness = false
+shader_parameter/fresnel = Color(1, 1, 1, 0.3019608)
+shader_parameter/uv_scale = Vector2(1, 1)
+shader_parameter/uv_offset = Vector2(0, 0)

@@ -1,0 +1,20 @@
+[gd_resource type="ShaderMaterial" format=3 uid="uid://8eocahl8bt5n"]
+
+[ext_resource type="Shader" uid="uid://d266trvxphdyu" path="res://Shaders/cel-shader-base.gdshader" id="1_7q2v7"]
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_7q2v7")
+shader_parameter/normal_scale = 1.0
+shader_parameter/invert_normal_y = false
+shader_parameter/backlight = Color(0.5237806, 0.5237806, 0.5237805, 1)
+shader_parameter/color = Color(0.2835618, 0.47263944, 0.7640725, 1)
+shader_parameter/specular_color = Color(0.3, 0.3, 0.3, 1)
+shader_parameter/specular_strength = 0.86000004085
+shader_parameter/ao_strength = 1.0
+shader_parameter/roughness_strength = 1.0
+shader_parameter/metallic_strength = 1.0
+shader_parameter/invert_roughness = false
+shader_parameter/fresnel = Color(0.2, 0.2, 0.2, 0.3)
+shader_parameter/uv_scale = Vector2(1, 1)
+shader_parameter/uv_offset = Vector2(0, 0)

@@ -243,8 +243,8 @@ script = ExtResource("5_yiumw")
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
 navigation_mesh = SubResource("NavigationMesh_h3qab")
 
-[node name="Ship Enviroment" parent="NavigationRegion3D" unique_id=426724818 instance=ExtResource("6_63acv")]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
+[node name="Ship Enviroment" parent="NavigationRegion3D" unique_id=1948200819 instance=ExtResource("6_63acv")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -1.4327164, 0, 11.8455925)
 
 [node name="HeroContainer1" parent="NavigationRegion3D" unique_id=1608144133 instance=ExtResource("11_t0b6u")]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -1.1, 12.3, -82)
@@ -361,7 +361,7 @@ shape = SubResource("BoxShape3D_tc46g")
 [node name="AudioManager" type="Node3D" parent="." unique_id=1974886538]
 script = ExtResource("14_qcyk2")
 
-[node name="Twin1" parent="." unique_id=766421067 instance=ExtResource("10_nr8gw")]
+[node name="Twin1" parent="." unique_id=206935403 instance=ExtResource("10_nr8gw")]
 transform = Transform3D(-0.53622466, 0, -0.84407526, 0, 1, 0, 0.84407526, 0, -0.53622466, -1.7503939, 6.990505, -37.10217)
 
 [node name="OxyTorch" parent="." unique_id=232120823 instance=ExtResource("16_t0b6u")]
