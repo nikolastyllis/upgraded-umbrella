@@ -13,7 +13,6 @@ extends BaseCharacter
 @onready var dialog_control := $CameraOrigin/SpringArm3D/Camera3D/DialogControl
 @onready var crosshair_ui := $CameraOrigin/SpringArm3D/Camera3D/CrosshairUI
 
-@onready var tool_tip: Node3D = $Character/Armature/Skeleton3D/RightHandAttachment/ToolTip
 @onready var skeleton: Skeleton3D = $Character/Armature/Skeleton3D
 @onready var right_hand_ik: SkeletonIK3D = $Character/Armature/Skeleton3D/RightHandIK
 var _ik_target_node: Node3D = null
