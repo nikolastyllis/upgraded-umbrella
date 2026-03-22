@@ -42,7 +42,10 @@ var _dialogue_active := false:
 
 var player_has_interacted_with_container = false
 var player_has_slept = false
+var player_has_returned_oxy_torch = false
 var player_has_interacted_with_infected_container = false
+var _oxy_return_obj_state := ""   # "storeroom" | "torch" | ""
+
 var set_monster_pos_debug = false
 var played_impact_lightning = false
 
@@ -55,6 +58,7 @@ var dialogue = {
 
 func play_from_act_3():
 	player_has_interacted_with_container = true
+	player_has_returned_oxy_torch = true
 	player_has_slept = true
 	story_increment = 3
 
@@ -111,7 +115,16 @@ func _process(_delta: float) -> void:
 		_remove_objective()
 		_play_act1_shift_over()
 
-	if story_increment == 3 and player_has_slept:
+	if story_increment == 3 and not player_has_returned_oxy_torch:
+		_update_oxy_torch_return_objective()
+		var torch_near_store = (oxy_torch.global_position - store_room.global_position).length() < 3.0
+		if _player_is_near(store_room.global_position, 3.0) and not player.has_oxy_torch and torch_near_store:
+			player_has_returned_oxy_torch = true
+			_oxy_return_obj_state = ""
+			_remove_objective()
+			_spawn_objective_marker(bed)
+
+	if story_increment == 3 and player_has_returned_oxy_torch and player_has_slept:
 		player.fade_in_camera(5)
 		twin_1.global_position = bedroom.global_position
 		twin_2.global_position = bedroom2.global_position
@@ -157,6 +170,19 @@ func _process(_delta: float) -> void:
 		twin_2.set_target_position(player.global_position)
 
 # ── ACT 1 SEQUENCES ─────────────────────────────────────────────────────────
+
+func _update_oxy_torch_return_objective() -> void:
+	if player_has_returned_oxy_torch or _dialogue_active:
+		return
+	var new_state := "storeroom" if player.has_oxy_torch else "torch"
+	if new_state == _oxy_return_obj_state:
+		return               # nothing changed, don't thrash the marker
+	_oxy_return_obj_state = new_state
+	_remove_objective()
+	if new_state == "storeroom":
+		_spawn_objective_marker(store_room)
+	else:
+		_spawn_objective_marker(oxy_torch)
 
 func _play_act_1_start() -> void:
 	player.toggle_movement_disabled()
@@ -211,7 +237,7 @@ func _play_act1_shift_over():
 	twin_2.set_target_position(bedroom.global_position)
 	await _wait_for(3.0)
 	twin_1.set_target_position(bedroom.global_position)
-	_spawn_objective_marker(bed)
+	_update_oxy_torch_return_objective()
 	player.toggle_movement_disabled()
 	_dialogue_active = false
 
@@ -243,8 +269,8 @@ func _play_act_2_store_room():
 	await _wait_for(2.0)
 	await twin_1.play_dialogue(41)
 	await player.play_dialogue(42)
-	await twin_1.play_dialogue(43)
 	await twin_2.play_dialogue(433)
+	await twin_1.play_dialogue(43)
 	await twin_1.play_dialogue(44)
 	await _wait_for(3.0)
 	await twin_2.play_dialogue(45)
