@@ -469,10 +469,10 @@ shape = SubResource("BoxShape3D_tc46g")
 script = ExtResource("14_qcyk2")
 
 [node name="Twin1" parent="." unique_id=206935403 instance=ExtResource("10_nr8gw")]
-transform = Transform3D(-0.53622466, 0, -0.84407526, 0, 1, 0, 0.84407526, 0, -0.53622466, -1.7503939, 6.990505, -37.10217)
+transform = Transform3D(-0.53622466, 0, -0.84407526, 0, 1, 0, 0.84407526, 0, -0.53622466, -1.7503939, 6.7905054, -37.30217)
 
 [node name="OxyTorch" parent="." unique_id=232120823 instance=ExtResource("16_t0b6u")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5656901, 6.522876, -37.108784)
 
 [node name="Twin2" parent="." unique_id=1596341678 instance=ExtResource("17_yiumw")]
-transform = Transform3D(0.25881904, 0, -0.9659258, 0, 1, 0, 0.9659258, 0, 0.25881904, -2.2503939, 6.990505, -36.502167)
+transform = Transform3D(0.25881904, 0, -0.9659258, 0, 1, 0, 0.9659258, 0, 0.25881904, -2.3503938, 6.7905054, -36.802166)

@@ -21,13 +21,13 @@ size = Vector3(0.14379883, 2.433838, 0.8388672)
 
 [node name="Container" unique_id=373595834 instance=ExtResource("1_r4cle")]
 
-[node name="Skeleton3D" parent="rigged_container" parent_id_path=PackedInt32Array(762356924) index="0" unique_id=322081502]
+[node name="Skeleton3D" parent="rigged_container" parent_id_path=PackedInt32Array(1615924177) index="0" unique_id=971057809]
 bones/1/rotation = Quaternion(-2.6692543e-08, -2.6692543e-08, -0.7071068, 0.7071068)
 bones/2/rotation = Quaternion(0.7071063, -1.0536721e-08, 0.70710737, 1.0536705e-08)
 bones/3/rotation = Quaternion(-2.6692543e-08, 2.6692543e-08, 0.7071068, 0.7071068)
 bones/4/rotation = Quaternion(-0.7071063, 0, 0.70710737, 0)
 
-[node name="mesh_container_model" parent="rigged_container/Skeleton3D" index="0" unique_id=1403816754]
+[node name="mesh_container_model" parent="rigged_container/Skeleton3D" index="0" unique_id=353647335]
 surface_material_override/0 = ExtResource("2_ry7uw")
 surface_material_override/1 = ExtResource("3_8ygw2")
 
