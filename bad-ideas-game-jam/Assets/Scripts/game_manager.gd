@@ -118,7 +118,7 @@ func _update_audio_and_rain() -> void:
 	var inside = player.is_inside()
 	audio_manager.set_target(audio_manager.Track.INSIDE,   -10.0   if inside                  else -40.0)
 	audio_manager.set_target(audio_manager.Track.OUTSIDE,  -10.0   if not inside              else -40.0)
-	audio_manager.set_target(audio_manager.Track.RAIN,     -10.0  if _is_night and not inside else -40.0)
+	audio_manager.set_target(audio_manager.Track.RAIN,     -20.0  if _is_night and not inside else -40.0)
 	rain.visible = _is_night and not inside
 
 func _ambient_music_loop() -> void:
