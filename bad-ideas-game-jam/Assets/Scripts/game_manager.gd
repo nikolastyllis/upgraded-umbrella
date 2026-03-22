@@ -106,7 +106,8 @@ func _ready() -> void:
 @warning_ignore("shadowed_variable_base_class")
 func _player_is_near(position: Vector3, distance: float = 2.0) -> bool:
 	return (player.global_position - position).length() < distance
-	
+
+@warning_ignore("shadowed_variable_base_class")
 func _npcs_are_near(position: Vector3) -> bool:
 	return (twin_1.global_position - position).length() < 5 and (twin_2.global_position - position).length() < 5
 
@@ -189,8 +190,11 @@ func _process(_delta: float) -> void:
 		
 	if story_increment == 7 and player_has_interacted_with_infected_container:
 		if not played_impact_lightning:
-			lightning_strike()
 			played_impact_lightning = true
+			lightning_strike()
+			story_increment += 1
+	
+	if story_increment == 8:
 		twin_1.set_target_position(player.global_position)
 		twin_2.set_target_position(player.global_position)
 
@@ -200,7 +204,7 @@ func _play_act_1_start() -> void:
 	player.toggle_movement_disabled()
 	_dialogue_active = true
 	player.fade_in_camera(10)
-	await _wait_for(3)
+	await _wait_for(10)
 	await twin_1.play_dialogue(1)
 	await player.play_dialogue(2)
 	await twin_2.play_dialogue(3)
@@ -320,6 +324,8 @@ func _play_search_noises() -> void:
 	var rng = RandomNumberGenerator.new()
 	rng.randomize()
 	while true:
+		if story_increment != 7:
+			return
 		var wait_time = rng.randf_range(1.0, 60.0)
 		await _wait_for(wait_time)
 		var dialogue_id = rng.randi_range(80, 91)

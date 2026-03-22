@@ -91,7 +91,7 @@ func can_interact(_player: Node) -> bool:
 	if is_hero_container_2:
 		return game_manager.story_increment == 7 and _player.has_oxy_torch
 	
-	return _player.has_oxy_torch
+	return game_manager.story_increment == 8
 
 func _ready():
 	update_action_text()

@@ -150,7 +150,10 @@ func _physics_process(delta: float) -> void:
 			torch.light_energy = 2.0
 			
 	apply_gravity(delta)
+	
 	if not movement_disabled:
+		if Input.is_action_just_pressed("ui_accept") and is_on_floor() and not is_climbing:
+			velocity.y = JUMP_VELOCITY
 		apply_movement(get_raw_input_dir())
 		update_movement_animation(get_raw_input_dir())
 		update_character_rotation(rotation.y, delta)
