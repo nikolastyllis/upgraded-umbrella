@@ -11,6 +11,12 @@ const STUCK_SAMPLE_INTERVAL = 0.5
 const UNSTICK_DETOUR_DISTANCE = 8.0
 const UNSTICK_DETOUR_DURATION = 6.0
 
+const UNSTICK_ANGLE_COUNT = 8          # directions to sample
+const UNSTICK_MIN_ANGLE_DIFF = 60.0    # degrees away from last attempt
+
+var _last_unstick_angle := 0.0
+var _unstick_attempt_count := 0
+
 var target_position := Vector3.ZERO 
 var _has_target := false
 
@@ -99,6 +105,8 @@ func check_stuck(delta: float) -> void:
 		stuck_timer = 0.0
 		stuck_sample_timer = 0.0
 		last_sampled_position = global_position
+		if _is_near_destination():
+			_unstick_attempt_count = 0  # ← reset on arrival
 		return
 	stuck_sample_timer += delta
 	if stuck_sample_timer >= STUCK_SAMPLE_INTERVAL:
@@ -115,15 +123,40 @@ func check_stuck(delta: float) -> void:
 		stuck_sample_timer = 0.0
 
 func unstick() -> void:
-	var move_dir = get_move_direction()
-	if move_dir.length() < 0.01:
-		move_dir = (target_position - global_position).normalized()
-		move_dir.y = 0
-	var perp = Vector3(-move_dir.z, 0, move_dir.x)
-	if randi() % 2 == 0:
-		perp = -perp
-	unstick_target = global_position + perp * UNSTICK_DETOUR_DISTANCE
+	_unstick_attempt_count += 1
+
+	# Build a reference forward direction toward the target
+	var ref_dir = (target_position - global_position)
+	ref_dir.y = 0
+	if ref_dir.length() < 0.01:
+		ref_dir = -global_transform.basis.z
+	ref_dir = ref_dir.normalized()
+
+	# Generate N candidate angles evenly spread around the NPC,
+	# weighted toward the target but covering all directions
+	var candidates: Array[float] = []
+	for i in range(UNSTICK_ANGLE_COUNT):
+		var angle = (float(i) / UNSTICK_ANGLE_COUNT) * TAU  # 0..2π
+		candidates.append(angle)
+	candidates.shuffle()
+
+	# Pick the first candidate that is far enough from the last unstick angle
+	var chosen_angle := candidates[0]
+	for angle in candidates:
+		var diff = abs(angle_difference(angle, _last_unstick_angle))
+		if rad_to_deg(diff) >= UNSTICK_MIN_ANGLE_DIFF:
+			chosen_angle = angle
+			break
+
+	_last_unstick_angle = chosen_angle
+
+	var detour_dir = Vector3(sin(chosen_angle), 0.0, cos(chosen_angle))
+	unstick_target = global_position + detour_dir * UNSTICK_DETOUR_DISTANCE
 	unstick_timer = UNSTICK_DETOUR_DURATION
+
+	# Increase detour distance on repeated failures so the NPC escapes further out
+	var boosted_distance = UNSTICK_DETOUR_DISTANCE * (1.0 + 0.5 * min(_unstick_attempt_count - 1, 4))
+	unstick_target = global_position + detour_dir * boosted_distance
 
 func get_move_direction() -> Vector3:
 	if _is_near_destination():

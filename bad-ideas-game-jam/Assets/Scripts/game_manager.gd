@@ -408,20 +408,20 @@ func _play_back_to_container_reminders() -> void:
 func _play_container_reminders() -> void:
 	# Reminder 1 — gentle nudge (audio 33), after 30 s
 	await _wait_for(30.0)
-	if story_increment != 2:
+	if story_increment > 2.5:
 		return
 	await twin_1.play_dialogue(33)
 
 	# Reminder 2 — more insistent (audio 34), after another 20 s
 	await _wait_for(20.0)
-	if story_increment != 2:
+	if story_increment > 2.5:
 		return
 	await twin_1.play_dialogue(34)
 
 	# Reminder 3 — urgent (audio 35), after another 15 s
 	while true:
 		await _wait_for(15.0)
-		if story_increment != 2:
+		if story_increment > 2.5:
 			return
 		await twin_1.play_dialogue(35)
 

@@ -65,7 +65,7 @@ func _stop_banging() -> void:
 		_banging_player = null
 
 func update_action_text():
-	action_text = "Cut open"
+	action_text = "Breach"
 
 func interact_hold_time() -> float:
 	return 6.0
@@ -94,6 +94,8 @@ func can_interact(_player: Node) -> bool:
 	return _player.has_oxy_torch
 
 func _ready():
+	update_action_text()
+	
 	if root is HeroContainer:
 		is_hero_container_1 = root.get_is_hero_container_1()
 		is_hero_container_2 = root.get_is_hero_container_2()

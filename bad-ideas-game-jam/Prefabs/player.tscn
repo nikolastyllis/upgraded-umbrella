@@ -6,7 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://cx3xgd26kwbxv" path="res://Prefabs/sparks.tscn" id="4_2nftw"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_myya0"]
-radius = 0.25
+radius = 0.3
 height = 1.7
 
 [node name="Player" type="CharacterBody3D" unique_id=1647912674]
