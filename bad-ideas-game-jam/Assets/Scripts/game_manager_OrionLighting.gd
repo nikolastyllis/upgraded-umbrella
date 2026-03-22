@@ -26,7 +26,7 @@ extends Node3D
 # --- NEW: Sun-driven look (LookDriver reads this light direction) ---
 @onready var sun_light: DirectionalLight3D = $"../Lighting/DirectionalLight3D"
 @onready var world_environment: WorldEnvironment = $"../Lighting/WorldEnvironment"
-@onready var look_driver = $"../Lightng/LookDriver" # not called directly, but kept as a reference
+@onready var look_driver = $"../Lighting/LookDriver"
 
 @onready var objective_marker_prefab = "res://Prefabs/objective_marker_ui.tscn"
 
