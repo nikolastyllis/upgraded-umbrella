@@ -165,7 +165,7 @@ func _get_mesh_aabb() -> AABB:
 	return aabb
 
 func _get_facing(bay: int, row: int, tier: int) -> float:
-	var parity: int = (bay + row + tier) % 2
+	var parity: int = (bay + row + tier + 1) % 2
 	if flip_base_rotation:
 		parity = 1 - parity
 	return PI if parity == 1 else 0.0
