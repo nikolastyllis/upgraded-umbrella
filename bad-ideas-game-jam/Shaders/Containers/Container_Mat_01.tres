@@ -1,11 +1,26 @@
-[gd_resource type="ORMMaterial3D" format=3 uid="uid://b6vuke4qqsysy"]
+[gd_resource type="ShaderMaterial" format=3 uid="uid://b6vuke4qqsysy"]
 
-[ext_resource type="Texture2D" uid="uid://dni5nnt6nrod" path="res://Shaders/Containers/Containers/Container_A_Col.png" id="1_2coha"]
-[ext_resource type="Texture2D" uid="uid://c0o6yhrep5li5" path="res://Shaders/Containers/Containers/Container_A_Normal.png" id="2_omdyf"]
-[ext_resource type="Texture2D" uid="uid://bp42f2aowsuw" path="res://Shaders/Containers/Containers/Container_A_ORM.png" id="3_84uiw"]
+[ext_resource type="Shader" uid="uid://d266trvxphdyu" path="res://Shaders/cel-shader-base.gdshader" id="1_omdyf"]
+[ext_resource type="Texture2D" uid="uid://dni5nnt6nrod" path="res://Shaders/Containers/Containers/Container_A_Col.png" id="2_84uiw"]
+[ext_resource type="Texture2D" uid="uid://c0o6yhrep5li5" path="res://Shaders/Containers/Containers/Container_A_Normal.png" id="3_wsqbe"]
+[ext_resource type="Texture2D" uid="uid://bp42f2aowsuw" path="res://Shaders/Containers/Containers/Container_A_ORM.png" id="4_ck8jx"]
 
 [resource]
-albedo_texture = ExtResource("1_2coha")
-orm_texture = ExtResource("3_84uiw")
-normal_enabled = true
-normal_texture = ExtResource("2_omdyf")
+render_priority = 0
+shader = ExtResource("1_omdyf")
+shader_parameter/normal_scale = 0.33100077572250086
+shader_parameter/normal_map = ExtResource("3_wsqbe")
+shader_parameter/invert_normal_y = false
+shader_parameter/backlight = Color(0.7553861, 0.75538605, 0.75538605, 1)
+shader_parameter/color = Color(1, 1, 1, 1)
+shader_parameter/base_texture = ExtResource("2_84uiw")
+shader_parameter/specular_color = Color(0.3, 0.3, 0.3, 1)
+shader_parameter/specular_strength = 0.88400004199
+shader_parameter/orm_texture = ExtResource("4_ck8jx")
+shader_parameter/ao_strength = 1.0
+shader_parameter/roughness_strength = 1.0
+shader_parameter/metallic_strength = 1.0
+shader_parameter/invert_roughness = true
+shader_parameter/fresnel = Color(0.3741394, 0.37413922, 0.37413922, 0.3019608)
+shader_parameter/uv_scale = Vector2(1, 1)
+shader_parameter/uv_offset = Vector2(0, 0)

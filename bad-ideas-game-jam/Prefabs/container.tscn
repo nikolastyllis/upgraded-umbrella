@@ -1,6 +1,8 @@
 [gd_scene format=3 uid="uid://ctj0n3n6mmc2r"]
 
 [ext_resource type="PackedScene" uid="uid://bnk84pppod0qq" path="res://Assets/Models/Enviroment/Container_rigged_01.glb" id="1_r4cle"]
+[ext_resource type="Material" uid="uid://b6vuke4qqsysy" path="res://Shaders/Containers/Container_Mat_01.tres" id="2_ry7uw"]
+[ext_resource type="Material" uid="uid://xq3mrku4l0r4" path="res://Shaders/Containers/Container_Mat_Internal.tres" id="3_8ygw2"]
 [ext_resource type="Script" uid="uid://cb4pbhuel2n8b" path="res://Assets/Scripts/base_container_door.gd" id="3_ry7uw"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_8ygw2"]
@@ -19,11 +21,15 @@ size = Vector3(0.14379883, 2.433838, 0.8388672)
 
 [node name="Container" unique_id=373595834 instance=ExtResource("1_r4cle")]
 
-[node name="Skeleton3D" parent="rigged_container" parent_id_path=PackedInt32Array(1615924177) index="0" unique_id=971057809]
+[node name="Skeleton3D" parent="rigged_container" parent_id_path=PackedInt32Array(762356924) index="0" unique_id=322081502]
 bones/1/rotation = Quaternion(-2.6692543e-08, -2.6692543e-08, -0.7071068, 0.7071068)
 bones/2/rotation = Quaternion(0.7071063, -1.0536721e-08, 0.70710737, 1.0536705e-08)
 bones/3/rotation = Quaternion(-2.6692543e-08, 2.6692543e-08, 0.7071068, 0.7071068)
 bones/4/rotation = Quaternion(-0.7071063, 0, 0.70710737, 0)
+
+[node name="mesh_container_model" parent="rigged_container/Skeleton3D" index="0" unique_id=1403816754]
+surface_material_override/0 = ExtResource("2_ry7uw")
+surface_material_override/1 = ExtResource("3_8ygw2")
 
 [node name="PhysicalBoneSimulator3D" type="PhysicalBoneSimulator3D" parent="rigged_container/Skeleton3D" index="1" unique_id=1279182037]
 

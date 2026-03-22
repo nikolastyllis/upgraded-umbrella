@@ -105,21 +105,21 @@ rendering_device/driver.windows="d3d12"
 
 specular_smoothness={
 "type": "float",
-"value": 0.05
+"value": 1.0
 }
 fresnel_smoothness={
 "type": "float",
-"value": 0.01
+"value": 0.9
 }
 outline_width={
 "type": "float",
-"value": 6.0
+"value": 10.0
 }
 outline_color={
 "type": "color",
-"value": Color(0, 0, 0, 1)
+"value": Color(1, 1, 1, 1)
 }
 diffuse_curve={
-"type": "float",
-"value": 0.1
+"type": "sampler2D",
+"value": "::l6r2p"
 }

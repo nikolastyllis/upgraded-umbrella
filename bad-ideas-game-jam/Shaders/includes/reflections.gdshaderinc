@@ -11,7 +11,7 @@ struct Surface {
 
 Surface reflections_fragment(vec2 uv) {
 	return Surface(
-		metallic * texture(texture_surface, uv).r,
+		metallic * texture(texture_surface, uv).b,
 		roughness * texture(texture_surface, uv).g
 	);
 }
