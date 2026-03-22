@@ -17,7 +17,6 @@ extends BaseCharacter
 @onready var skeleton: Skeleton3D = $Character/Armature/Skeleton3D
 @onready var right_hand_ik: SkeletonIK3D = $Character/Armature/Skeleton3D/RightHandIK
 var _ik_target_node: Node3D = null
-var _ik_tool_local_offset: Vector3 = Vector3.ZERO
 
 @onready var sparks := $Sparks
 @onready var spark_light := $Sparks/Light
@@ -52,12 +51,8 @@ var current_camera_position: Vector3
 var dialog_hide_timer: SceneTreeTimer = null
 var movement_disabled = false
 
-func _start_right_hand_ik(world_target: Vector3) -> void:
-	var tip_bone_idx    := skeleton.find_bone("mixamorig_RightHandIndex4")
-	var tip_bone_xform  := skeleton.global_transform * skeleton.get_bone_global_pose(tip_bone_idx)
-	var tool_world_pos  := tip_bone_xform * _ik_tool_local_offset
-	var tip_world_pos   := tip_bone_xform.origin
-	_ik_target_node.global_position = world_target + (tip_world_pos - tool_world_pos)
+func _start_right_hand_ik(hit_point) -> void:
+	_ik_target_node.global_position = hit_point
 	right_hand_ik.start()
 
 func _stop_right_hand_ik() -> void:
@@ -72,17 +67,12 @@ func _setup_right_hand_ik() -> void:
 	get_tree().root.add_child(_ik_target_node)
 
 	right_hand_ik.root_bone     = "mixamorig_RightArm"
-	right_hand_ik.tip_bone      = "mixamorig_RightHandIndex4"
+	right_hand_ik.tip_bone      = "oxy_tip"
 	right_hand_ik.interpolation = 1.0
 	right_hand_ik.use_magnet    = true
 	right_hand_ik.magnet        = Vector3(0.5, 0.0, 0.5)
 	right_hand_ik.target_node   = _ik_target_node.get_path()
 	right_hand_ik.stop()
-
-	# Snapshot offset in tip bone's LOCAL space — valid regardless of hand pose
-	var tip_bone_idx   := skeleton.find_bone("mixamorig_RightHandIndex4")
-	var tip_bone_xform := skeleton.global_transform * skeleton.get_bone_global_pose(tip_bone_idx)
-	_ik_tool_local_offset = tip_bone_xform.affine_inverse() * tool_tip.global_position
 
 func _ready() -> void:
 	super._ready()
