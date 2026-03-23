@@ -9,6 +9,7 @@ extends Node3D
 @onready var bedroom3         = $Locations/Bedroom3
 @onready var bed              = $Locations/Bed
 @onready var container        = $Locations/Container
+@onready var infected_container        = $Locations/InfectedContainer
 @onready var oxy_torch        = $"../OxyTorch"
 @onready var store_room       = $Locations/StoreRoom
 @onready var bridge           = $Locations/Bridge
@@ -32,6 +33,10 @@ extends Node3D
 
 var current_objective = null
 var story_increment   = 1
+var player_has_completed_game = false
+
+@export var debug_skip_dialog = false
+@export var debug_play_from_act_3 = false
 
 var _is_night = false
 var _dialogue_active := false:
@@ -45,6 +50,8 @@ var player_has_slept = false
 var player_has_returned_oxy_torch = false
 var player_has_interacted_with_infected_container = false
 var _oxy_return_obj_state := ""   # "storeroom" | "torch" | ""
+var _fuel_obj_state := ""   # "lifeboat" | "search" | ""
+var _act4_oxy_obj_state := ""   # "torch" | "infected" | ""
 
 var set_monster_pos_debug = false
 var played_impact_lightning = false
@@ -66,6 +73,8 @@ func _ready() -> void:
 	# Start in DAY instantly (no tween)
 	set_time_of_day(TimeOfDay.DAY, 0.0)
 	_ambient_music_loop()
+	if debug_play_from_act_3:
+		play_from_act_3()
 
 @warning_ignore("shadowed_variable_base_class")
 func _player_is_near(position: Vector3, distance: float = 2.0) -> bool:
@@ -152,20 +161,25 @@ func _process(_delta: float) -> void:
 	if story_increment == 6 and _player_is_near(lifeboat.global_position):
 		story_increment += 1
 		_remove_objective()
-		_play_act_4_search()
+		_play_act_4_lifeboat()
 
 	if player_has_interacted_with_infected_container and not set_monster_pos_debug:
 		twin_1.global_position = player.global_position
 		twin_2.global_position = player.global_position
 		set_monster_pos_debug = true
+		
+	if story_increment == 7 and not player_has_interacted_with_infected_container:
+		_update_act4_oxy_objective()
 
 	if story_increment == 7 and player_has_interacted_with_infected_container:
 		if not played_impact_lightning:
+			_remove_objective()
 			played_impact_lightning = true
 			lightning_strike()
 			story_increment += 1
 
 	if story_increment == 8:
+		_update_fuel_objective()
 		twin_1.set_target_position(player.global_position)
 		twin_2.set_target_position(player.global_position)
 
@@ -183,6 +197,33 @@ func _update_oxy_torch_return_objective() -> void:
 		_spawn_objective_marker(store_room)
 	else:
 		_spawn_objective_marker(oxy_torch)
+		
+func _update_act4_oxy_objective() -> void:
+	if player_has_interacted_with_infected_container or _dialogue_active:
+		return
+	var new_state := "infected" if player.has_oxy_torch else "torch"
+	if new_state == _act4_oxy_obj_state:
+		return
+	_act4_oxy_obj_state = new_state
+	_remove_objective()
+	if new_state == "infected":
+		_spawn_objective_marker(infected_container)
+	else:
+		_spawn_objective_marker(oxy_torch)
+		
+func _update_fuel_objective() -> void:
+	if player_has_completed_game:
+		_remove_objective()
+		return
+	var new_state := "lifeboat" if player.is_holding_jerry_can else "search"
+	if new_state == _fuel_obj_state:
+		return               
+	_fuel_obj_state = new_state
+	_remove_objective()
+	if new_state == "lifeboat":
+		_spawn_objective_marker(lifeboat)
+	else:
+		_remove_objective()
 
 func _play_act_1_start() -> void:
 	player.toggle_movement_disabled()
@@ -220,6 +261,14 @@ func _play_act_1_start() -> void:
 	await twin_1.play_dialogue(32)
 	_play_container_reminders()
 	_dialogue_active = false
+	
+func _play_act_4_lifeboat() -> void:
+	player.toggle_movement_disabled()
+	_dialogue_active = true
+	await _wait_for(10)
+	player.toggle_movement_disabled()
+	_dialogue_active = false
+	_play_act_4_search()
 
 func _play_act1_shift_over():
 	_dialogue_active = true

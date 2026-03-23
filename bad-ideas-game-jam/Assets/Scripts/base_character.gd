@@ -5,6 +5,7 @@ extends CharacterBody3D
 @onready var animation_tree: AnimationTree = $Character/Armature/AnimationTree
 @onready var character := $Character
 @onready var character_anchor := $CharacterAnchor
+@onready var game_manager = $"../GameManager"
 
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 var is_climbing := false
@@ -163,6 +164,8 @@ func get_player():
 	pass
 
 func play_dialogue(id: int) -> void:
+	if game_manager.debug_skip_dialog:
+		return
 	var path := "res://Assets/Dialogue/%d.ogg" % id
 	if not ResourceLoader.exists(path):
 		push_warning("Dialogue file not found: %s" % path)
