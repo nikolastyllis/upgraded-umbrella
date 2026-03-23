@@ -38,6 +38,7 @@ class_name LookDriver
 @export var horizon_ramp: GradientTexture1D # shared sky+ocean horizon
 @export var sun_colour_ramp: GradientTexture1D
 
+
 @export_group("Ramps: Values (Curve)")
 @export var fog_density_curve: Curve
 @export var exposure_curve: Curve
@@ -45,6 +46,7 @@ class_name LookDriver
 @export var ocean_foam_curve: Curve
 @export var ocean_macro_amp_curve: Curve
 @export var ocean_micro_amp_curve: Curve
+@export var sun_energy_curve: Curve   # NEW
 
 # -------------------------
 # Uniform/property names (match your shaders)
@@ -115,6 +117,9 @@ func _apply_look(t: float) -> void:
 	# 1) Light colour (optional)
 	if sun != null:
 		sun.light_color = _sample_col(sun_colour_ramp, t, sun.light_color)
+		var cur_energy := sun.light_energy
+		var target_energy := _sample_curve(sun_energy_curve, t, cur_energy)
+		sun.light_energy = target_energy
 	var horizon_col := _sample_col(horizon_ramp, t, Color(0.70, 0.85, 1.0))
 	# 2) Environment (fog + adjustments)
 	var env := _get_live_environment()
