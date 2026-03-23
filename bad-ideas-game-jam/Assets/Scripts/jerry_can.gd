@@ -11,8 +11,8 @@ var game_manager = null
 var lifeboat = null
 var dropped_at_lifeboat = false
 
-var box_types = [$Box_A, $Box_B, $Box_C]
-var meshes = [$"Box_A/box_A", $"Box_B/box_B", $"Box_C/box_C"]
+@onready var box_types = [$Box_A, $Box_B, $Box_C]
+@onready var meshes = [$"Box_A/box_A", $"Box_B/box_B", $"Box_C/box_C"]
 
 func _ready():
 	var idx = randi() % box_types.size()

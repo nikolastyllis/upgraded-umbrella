@@ -197,7 +197,6 @@ func play_from_act_8():
 	story_increment = 8
 
 func _ready() -> void:
-	player.toggle_movement_disabled()
 	add_to_group("game_manager")
 	lifeboat.add_to_group("lifeboat")
 	# Start in DAY instantly (no tween)
@@ -247,6 +246,7 @@ func _process(_delta: float) -> void:
 	# ── ACT 1 ────────────────────────────────────────────────────────────────
 
 	if story_increment == 1 and _player_is_near(container.global_position):
+		player.toggle_movement_disabled()
 		_play_act_1_start()
 		story_increment += 1
 		
@@ -750,7 +750,7 @@ func lightning_strike() -> void:
 	sun_light.rotation = original_rotation
 
 	await _wait_for(1.0)
-	audio_manager.play(audio_manager.Track.THUNDER, -20.0 if player.is_inside() else -6)
+	audio_manager.play(audio_manager.Track.THUNDER, -20.0 if player.is_inside() else -6.0)
 
 func _start_night_lightning() -> void:
 	_is_night = true

@@ -111,10 +111,10 @@ shape = SubResource("BoxShape3D_r4cle")
 disabled = true
 
 [node name="JerryCanSpawner" parent="." index="3" unique_id=1943496320 instance=ExtResource("5_gowdn")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.59531593, 0.363, 2.5222735)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.59531593, 1.3544717, 2.376779)
 
 [node name="JerryCanSpawner2" parent="." index="4" unique_id=826685862 instance=ExtResource("5_gowdn")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.022191465, 0.363, 2.5222735)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.022191465, 1.3544717, 2.376779)
 
 [node name="JerryCanSpawner3" parent="." index="5" unique_id=1106502842 instance=ExtResource("5_gowdn")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.64789313, 0.363, 2.5222735)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.64789313, 1.3544717, 2.376779)
