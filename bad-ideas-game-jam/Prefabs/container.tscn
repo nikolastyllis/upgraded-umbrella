@@ -22,17 +22,11 @@ size = Vector3(0.14379883, 2.433838, 0.8388672)
 
 [node name="Container" unique_id=373595834 instance=ExtResource("1_r4cle")]
 
-[node name="Skeleton3D" parent="rigged_container" parent_id_path=PackedInt32Array(1615924177) index="0" unique_id=971057809]
-bones/1/rotation = Quaternion(-2.6692543e-08, -2.6692543e-08, -0.7071068, 0.7071068)
-bones/2/rotation = Quaternion(0.7071063, -1.0536721e-08, 0.70710737, 1.0536705e-08)
-bones/3/rotation = Quaternion(-2.6692543e-08, 2.6692543e-08, 0.7071068, 0.7071068)
-bones/4/rotation = Quaternion(-0.7071063, 0, 0.70710737, 0)
-
-[node name="mesh_container_model" parent="rigged_container/Skeleton3D" index="0" unique_id=353647335]
+[node name="mesh_container_model" parent="rigged_container/Skeleton3D" parent_id_path=PackedInt32Array(971057809) index="0" unique_id=353647335]
 surface_material_override/0 = ExtResource("2_ry7uw")
 surface_material_override/1 = ExtResource("3_8ygw2")
 
-[node name="PhysicalBoneSimulator3D" type="PhysicalBoneSimulator3D" parent="rigged_container/Skeleton3D" index="1" unique_id=1279182037]
+[node name="PhysicalBoneSimulator3D" type="PhysicalBoneSimulator3D" parent="rigged_container/Skeleton3D" parent_id_path=PackedInt32Array(971057809) index="1" unique_id=1279182037]
 
 [node name="Physical Bone Root" type="PhysicalBone3D" parent="rigged_container/Skeleton3D/PhysicalBoneSimulator3D" index="0" unique_id=1469142241]
 transform = Transform3D(-0.93207616, 0.12639534, 0.33949712, 0, 0.937158, -0.34890544, -0.36226243, -0.32520646, -0.87350255, -0.6142057, 0.6312269, 1.5803088)
@@ -117,10 +111,10 @@ shape = SubResource("BoxShape3D_r4cle")
 disabled = true
 
 [node name="JerryCanSpawner" parent="." index="3" unique_id=1943496320 instance=ExtResource("5_gowdn")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.269, 0.363, -1.8787969)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.59531593, 0.363, 2.5222735)
 
-[node name="JerryCanSpawner2" parent="." index="4" unique_id=160593364 instance=ExtResource("5_gowdn")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.40572315, 0.363, -0.5426022)
+[node name="JerryCanSpawner2" parent="." index="4" unique_id=826685862 instance=ExtResource("5_gowdn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.022191465, 0.363, 2.5222735)
 
-[node name="JerryCanSpawner3" parent="." index="5" unique_id=973972508 instance=ExtResource("5_gowdn")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5217028, 0.363, 0.8152524)
+[node name="JerryCanSpawner3" parent="." index="5" unique_id=1106502842 instance=ExtResource("5_gowdn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.64789313, 0.363, 2.5222735)
