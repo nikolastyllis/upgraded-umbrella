@@ -225,6 +225,7 @@ func _process(_delta: float) -> void:
 		if not played_impact_lightning:
 			_remove_objective()
 			played_impact_lightning = true
+			audio_manager.play_boss_music()
 			lightning_strike()
 			story_increment += 1
 
