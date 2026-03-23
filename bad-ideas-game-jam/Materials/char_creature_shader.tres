@@ -11,9 +11,9 @@
 render_priority = 0
 next_pass = ExtResource("1_xg066")
 shader = ExtResource("2_xc5vi")
-shader_parameter/emission = Color(0, 0, 0, 1)
-shader_parameter/emission_energy = 1.0
+shader_parameter/emission = Color(0.655576, 0.5024188, 0, 1)
 shader_parameter/emission_texture = ExtResource("4_ywu0q")
+shader_parameter/emission_energy = 19.57
 shader_parameter/normal_scale = 0.5540007863150009
 shader_parameter/normal_map = ExtResource("5_pchmk")
 shader_parameter/invert_normal_y = false
