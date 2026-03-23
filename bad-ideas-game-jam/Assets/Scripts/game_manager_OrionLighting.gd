@@ -1,5 +1,91 @@
 extends Node3D
 
+
+var dialog: Dictionary = {
+	1: "[Ronnie] Here you go first attempt, try not to retire on this one cut will you.",
+	2: "[Gilbert] Im doing it! How... how you showed me.",
+	3: "[Wazza] Haha! Was that a teste pop?",
+	4: "[Gilbert] It wasn't a teste pop!",
+	5: "[Ronnie] It was.",
+	6: "[Wazza] Heh, wheres snap and crackle?",
+	7: "[Gilbert] Huh?",
+	8: "[Wazza] Like rice bubbles, snap, crackle, pop.",
+	9: "[Ronnie] Hahahaha.",
+	10: "[Wazza] Hahahaa.",
+	11: "[Gilbert] Oh shut up!",
+	12: "[Ronnie] Oh well theres snap.",
+	13: "[Ronnie] Hahahaha.",
+	14: "[Wazza] Ahahaa.",
+	15: "[Gilbert] Eeehhh.",
+	16: "[Ronnie] Haha don't get testy Michael Jackson.",
+	17: "[Ronnie] We didn't realise we were in the company of music royalty.",
+	18: "[Ronnie] King of pop.",
+	19: "[Ronnie] Hehaa.",
+	20: "[Wazza] Ahahahaa.",
+	21: "[Wazza] Alright that's enough, it wasn't a real pop.",
+	22: "[Wazza] Leave Quentin Tarantino alone.",
+	23: "[Wazza] Pop fiction! Hahaha.",
+	24: "[Ronnie] Aahahaha... haha. Alright cut it out, we have work to do.",
+	25: "[Wazza] That bell signals tools down mate, put them down.",
+	26: "[Gilbert] Are we seriously gonna finish now!",
+	27: "[Ronnie] Listen rice bubbles, your new to this game and I don't know what they taught you at school. But here in the real world, we have a saying.",
+	28: "[Ronnie] Why do today what you can do tomorrow!",
+	29: "[Wazza] Why do today what you can do tomorrow!",
+	30: "[Wazza] Go on, pick up the tools.",
+	31: "[Ronnie] Go on mate, these tools won't pick themselves up. Let's get out of here.",
+	32: "[Ronnie] Pick up the oxy torch mate, pick up the oxy torch.",
+	33: "[Ronnie] We got to uh, oxy the door mate, just what I said, oxy the door.",
+	34: "[Ronnie] What did I just tell you mate? Are your ears painted on mate? Oxy the door.",
+	35: "[Ronnie] Oxy the door!",
+	36: "[Ronnie] Alright Bubbles we are gonna head over and get this last container open from yesterday. Then we are gonna have a crack at fixing the power supply and getting that lifeboat working.",
+	37: "[Gilbert] Oh okay sweet I'll grab the oxy.",
+	38: "[Wazza] Nah mate we got it. You head down to the store-room and pick us up some of this important gear.",
+	39: "[Wazza] We will be on the radio, give us a call if you get in any trouble.",
+	40: "[Wazza] How you going young fella? You must have found that long wait by now?",
+	41: "[Ronnie] While your faffing about down there mate, you wanna pick us up a pie cost?",
+	42: "[Gilbert] Oh what's a pie cost?",
+	43: "[Ronnie] Like you don't know Tubby!",
+	44: "[Ronnie] Ahahahahahaha.",
+	45: "[Wazza] Alright Einstein stop f*****g around and get your ass back up here!",
+	46: "[Ronnie] Hey mate. You found that reach around yet?",
+	47: "[Wazza] Oh mate you got that uh, tub of elbow grease that's pretty important to.",
+	48: "[Ronnie] Oh mate we really need those sparks for the grinder.",
+	49: "[Wazza] Mate, I need those three boxes of sky hooks as soon as possible mate.",
+	50: "[Wazza] What are you doing down there mate? It's really important we get that reach around soon.",
+	51: "[Wazza] Mate, you know Ronnie is bloody stinging for a reach around mate.",
+	52: "[Wazza] It's not gonna grab itself, c'mon hurry it up mate.",
+	53: "[Ronnie] Oh yeah mate... the uh... the old reach around... it's important. You wanna go in there, get in there, two hands mate, come and grab it c'mon quick.",
+	54: "[Ronnie] Come meet the boys.",
+	55: "[Ronnie] Yeah come meet us down here.",
+	56: "[Ronnie] Meet the boys.",
+	57: "[Ronnie] Bubbles. Get the items and come meet us up here.",
+	58: "[Wazza] Mate Bubbles. Get the bloody supplies and come meet us up near the door.",
+	59: "[Wazza] Mate it's not rocket surgery, just get the items from the store-room and bring them back up.",
+	60: "[Wazza] Three boxes of sky hooks mate.",
+	61: "[Ronnie] Four tins of tartan paint.",
+	62: "[Wazza] Two spirit level bubbles.",
+	63: "[Ronnie] One box of sparks for the grinder.",
+	64: "[Ronnie] One long wait.",
+	65: "[Ronnie] Have you got the long wait yet mate?",
+	66: "[Ronnie] Big poppa. Get the items and come up here mate.",
+	67: "[Wazza] Listen MJ get the stuff we need and moonwalk your way back up here.",
+	68: "[Ronnie] Oh mate, these aren't real items Einstein, get your ass back up here.",
+	69: "[Ronnie] Alright Bubbles, found all your stuff? Nah come round mate, come back.",\
+	70: "[Gilbert] Oi uh boys, where are ya?",
+	71: "[Gilbert] Boys... where are you?",
+	72: "[Gilbert] Ahahaha... very... hahaha... very funny.",
+	73: "[Gilbert] If this is a prank you're not fooling anyone!",
+	74: "[Gilbert] Hello?",
+	75: "[Gilbert] Hello? Guys? Twins?",
+	76: "[Ronnie] At the lifeboat. Come help us out my friend.",
+	77: "[Gilbert] Are you alright? You sound weird.",
+	78: "[Ronnie] I'm fine.",
+	92: "[Ronnie] Meet us at the lifeboat.",
+	93: "[Ronnie] Come and see us at the lifeboat.",
+	266: "[Ronnie] Yeah mate, end of the day. Put the tools down and let's get out of here.",
+	433: "[Wazza] Around five-fifty at the Servo.",
+}
+
 @onready var twin_1 = $"../Twin1"   # Wazza
 @onready var twin_2 = $"../Twin2"   # Bazza
 @onready var player = $"../Player"
@@ -677,6 +763,11 @@ func _start_night_lightning() -> void:
 		await _wait_for(wait_time)
 		if _is_night:
 			lightning_strike()
+
+func show_dialog_text(id: int, time: float) -> void:
+	if not dialog.has(id):
+		return
+	player.show_dialog_text(dialog[id], time)
 
 # ── AUDIO HELPERS ───────────────────────────────────────────────────────────
 

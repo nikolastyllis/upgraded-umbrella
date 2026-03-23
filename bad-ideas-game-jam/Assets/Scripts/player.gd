@@ -345,12 +345,12 @@ func update_interactable() -> void:
 	else:
 		interact_ui_control.visible = false
 
-func show_dialog_text(dialog: String) -> void:
+func show_dialog_text(dialog: String, time: float) -> void:
 	var instance = DIALOG_SCENE.instantiate()
 	dialog_control.add_child(instance)
 	instance.get_node("DialogText").text = dialog
 	instance.get_node("AnimationPlayer").play("Dialog")
-	get_tree().create_timer(10.0).timeout.connect(func():
+	get_tree().create_timer(time + 5).timeout.connect(func():
 		if is_instance_valid(instance):
 			instance.queue_free()
 	)

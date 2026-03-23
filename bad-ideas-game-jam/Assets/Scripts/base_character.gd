@@ -199,6 +199,7 @@ func play_dialogue(id: int) -> void:
 		
 	dialogue_player.bus = "Radio" if use_radio else "Sound"
 	dialogue_player.stream = load(path)
+	
 	add_child(dialogue_player)
 	animation_tree.set("parameters/TalkAdd/add_amount", 1.0)
 	if use_radio or use_blip:
@@ -207,6 +208,7 @@ func play_dialogue(id: int) -> void:
 			func(v): animation_tree.set("parameters/RadioBlend/blend_amount", v),
 			0.0, 1.0, 0.3
 		)
+	game_manager.show_dialog_text(id, dialogue_player.stream.get_length())
 	dialogue_player.play()
 	await dialogue_player.finished
 	if use_radio or use_blip:
