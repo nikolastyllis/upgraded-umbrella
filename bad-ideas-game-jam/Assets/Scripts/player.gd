@@ -44,6 +44,7 @@ var interaction_hold_timer := 0.0
 var interaction_disabled: bool = false
 var can_interact: bool = true
 var has_oxy_torch: bool = false
+var is_holding_jerry_can: bool = false
 var interactable: Interactable = null
 var use_camera_position_right := true
 var current_camera_position: Vector3

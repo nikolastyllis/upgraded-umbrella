@@ -1,0 +1,18 @@
+[gd_scene format=3 uid="uid://yhb2avq7vcw1"]
+
+[ext_resource type="Script" uid="uid://8unevy0x11gu" path="res://Assets/Scripts/jerry_can.gd" id="1_6e3io"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_red0l"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_6e3io"]
+
+[node name="JerryCan" type="RigidBody3D" unique_id=1874871195]
+script = ExtResource("1_6e3io")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=741569489]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, 0, 0)
+mesh = SubResource("BoxMesh_red0l")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=144092837]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, 0, 0)
+shape = SubResource("BoxShape3D_6e3io")
