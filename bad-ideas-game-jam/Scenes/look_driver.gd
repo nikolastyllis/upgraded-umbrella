@@ -38,14 +38,18 @@ class_name LookDriver
 @export var horizon_ramp: GradientTexture1D # shared sky+ocean horizon
 @export var sun_colour_ramp: GradientTexture1D
 
+@export_group("Ramps: Ocean (Curve)")
+@export var ocean_foam_curve: Curve
+@export var ocean_macro_amp_curve: Curve
+@export var ocean_micro_amp_curve: Curve
+@export var ocean_macro_freq_curve: Curve
+@export var ocean_micro_freq_curve: Curve
+
 
 @export_group("Ramps: Values (Curve)")
 @export var fog_density_curve: Curve
 @export var exposure_curve: Curve
 @export var cloud_amount_curve: Curve
-@export var ocean_foam_curve: Curve
-@export var ocean_macro_amp_curve: Curve
-@export var ocean_micro_amp_curve: Curve
 @export var sun_energy_curve: Curve   # NEW
 
 # -------------------------
@@ -66,6 +70,8 @@ class_name LookDriver
 @export var ocean_foam_uniform := "foam_amount"
 @export var ocean_macro_amp_uniform := "macro_amp"
 @export var ocean_micro_amp_uniform := "micro_amp"
+@export var ocean_macro_freq_uniform := "macro_freq"
+@export var ocean_micro_freq_uniform := "micro_freq"
 
 @export_group("Environment Toggles")
 @export var drive_fog := true
@@ -169,7 +175,15 @@ func _apply_look(t: float) -> void:
 
 	var cur_foam := _get_shader_float(ocean_mat, ocean_foam_uniform, 1.0)
 	_set_shader_float(ocean_mat, ocean_foam_uniform, _sample_curve(ocean_foam_curve, t, cur_foam))
+	var cur_macro_f := _get_shader_float(ocean_mat, ocean_macro_freq_uniform, 0.035)
+	var cur_micro_f := _get_shader_float(ocean_mat, ocean_micro_freq_uniform, 0.22)
 
+	_set_shader_float(ocean_mat, ocean_macro_freq_uniform,
+	_sample_curve(ocean_macro_freq_curve, t, cur_macro_f))
+
+	_set_shader_float(ocean_mat, ocean_micro_freq_uniform,
+	_sample_curve(ocean_micro_freq_curve, t, cur_micro_f))
+	
 	var cur_macro := _get_shader_float(ocean_mat, ocean_macro_amp_uniform, 0.55)
 	var cur_micro := _get_shader_float(ocean_mat, ocean_micro_amp_uniform, 0.10)
 	_set_shader_float(ocean_mat, ocean_macro_amp_uniform, _sample_curve(ocean_macro_amp_curve, t, cur_macro))

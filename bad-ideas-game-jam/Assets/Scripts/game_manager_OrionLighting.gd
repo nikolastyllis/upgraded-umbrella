@@ -658,7 +658,7 @@ enum TimeOfDay { DAY, NIGHT, SUNSET }
 @export var SUNSET_SUN_PITCH_DEG: float = 1.0
 @export var SUNSET_SUN_YAW_DEG: float = -135.0
 
-@export var NIGHT_SUN_PITCH_DEG: float = 115.7
+@export var NIGHT_SUN_PITCH_DEG: float = 86.7
 @export var NIGHT_SUN_YAW_DEG: float = -125.0
 
 var _sun_tween: Tween
