@@ -17,6 +17,7 @@
 [ext_resource type="Script" uid="uid://bpgcgf8cu0yr" path="res://Assets/Scripts/audio_manager.gd" id="14_qcyk2"]
 [ext_resource type="PackedScene" uid="uid://clai2jixo1u8q" path="res://Prefabs/oxy_torch.tscn" id="16_t0b6u"]
 [ext_resource type="PackedScene" uid="uid://cxhfllg1iige5" path="res://Prefabs/npc_02.tscn" id="17_yiumw"]
+[ext_resource type="PackedScene" uid="uid://dp4otnp5mmihr" path="res://Prefabs/creature.tscn" id="18_tc46g"]
 
 [sub_resource type="Gradient" id="Gradient_gluub"]
 offsets = PackedFloat32Array(0.14097744, 0.4755639, 0.5770677, 0.90601504)
@@ -371,7 +372,7 @@ compositor = SubResource("Compositor_4n1t5")
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
 navigation_mesh = SubResource("NavigationMesh_h3qab")
 
-[node name="Ship Enviroment" parent="NavigationRegion3D" unique_id=1948200819 instance=ExtResource("6_63acv")]
+[node name="Ship Enviroment" parent="NavigationRegion3D" unique_id=1000911737 instance=ExtResource("6_63acv")]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
 
 [node name="HeroContainer1" parent="NavigationRegion3D" unique_id=1608144133 instance=ExtResource("11_t0b6u")]
@@ -490,3 +491,6 @@ action_text = "Interact"
 
 [node name="Twin2" parent="." unique_id=1596341678 instance=ExtResource("17_yiumw")]
 transform = Transform3D(0.25881904, 0, -0.9659258, 0, 1, 0, 0.9659258, 0, 0.25881904, -2.917481, 2.6326113, -43.20588)
+
+[node name="Npc" parent="." unique_id=278726554 instance=ExtResource("18_tc46g")]
+transform = Transform3D(-0.050279196, 0, -0.9987352, 0, 1, 0, 0.9987352, 0, -0.050279196, 4.1662846, 1.8193221, -43.535473)
