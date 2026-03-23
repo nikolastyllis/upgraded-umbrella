@@ -37,7 +37,7 @@ func play_sound(sound: String) -> void:
 	var player := AudioStreamPlayer3D.new()
 	player.bus = "Sound"
 	player.stream = load(path)
-	player.volume_db = 0.0
+	player.volume_db = -15
 	add_child(player)
 	player.play()
 	await player.finished
@@ -51,6 +51,7 @@ func _start_banging() -> void:
 
 	_banging_player = AudioStreamPlayer3D.new()
 	_banging_player.bus = "Sound"
+	_banging_player.volume_db = -10
 	_banging_player.stream = load(path)
 
 	if _banging_player.stream is AudioStreamOggVorbis:

@@ -11,28 +11,18 @@ var game_manager = null
 var lifeboat = null
 var dropped_at_lifeboat = false
 
-@onready var box_types = [$Box_A, $Box_B, $Box_C]
-@onready var meshes = [$"Box_A/box_A", $"Box_B/box_B", $"Box_C/box_C"]
+@onready var boxes = [$Box_A, $Box_B, $Box_C]
+@onready var colliders = [$box_A_collider,$box_B_collider,$box_C_collider]
 
 func _ready():
-	var idx = randi() % box_types.size()
+	var idx = randi() % boxes.size()
 	
-	# Show only the chosen box, hide the rest
-	for i in box_types.size():
-		box_types[i].visible = (i == idx)
+	for i in boxes.size():
+		boxes[i].visible = (i == idx)
 	
-	# Generate a bounding box collider from the chosen mesh
-	var mesh_instance: MeshInstance3D = meshes[idx]
-	var aabb: AABB = mesh_instance.get_aabb()
-	
-	var box_shape = BoxShape3D.new()
-	box_shape.size = aabb.size
-	
-	var col_shape = CollisionShape3D.new()
-	col_shape.shape = box_shape
-	# Transform the AABB center from mesh-local space into the RigidBody's local space
-	col_shape.position = mesh_instance.position + mesh_instance.basis * aabb.get_center()
-	add_child(col_shape)
+	for i in colliders.size():
+		if i != idx:
+			colliders[i].queue_free()
 	
 	update_action_text()
 
@@ -73,9 +63,6 @@ func can_interact(_player: Node) -> bool:
 	return not dropped_at_lifeboat
 
 func _process(_delta):
-	if _held and Input.is_action_just_pressed("drop"):
-		drop()
-		
 	if _held and _is_near_lifeboat():
 		drop()
 		dropped_at_lifeboat = true

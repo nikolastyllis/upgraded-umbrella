@@ -42,8 +42,8 @@ const SENSITIVITY_INTERACT = 0.005
 const FOV_INTERACT := 70.0
 
 var _panting_player: AudioStreamPlayer = null
-const PANTING_MIN_DB	:= -10
-const PANTING_MAX_DB	:=  10
+const PANTING_MIN_DB	:= 0
+const PANTING_MAX_DB	:=  20
 const PANTING_FADE_SPD :=   4.0
 
 var sensitivity := 0.25
@@ -136,7 +136,7 @@ func tween_camera_fov(target_fov: float) -> void:
 
 func handle_stamina(delta: float) -> void:
 	if is_jogging and jogging_timer <= jogging_max_time:
-		jogging_timer += (delta * (2 if has_oxy_torch else 1))
+		jogging_timer += (delta * (1.3 if has_oxy_torch else 1))
 	else:
 		jogging_timer -= delta
 
@@ -486,7 +486,7 @@ func _update_panting(delta: float) -> void:
 		var path = STINGER_PATHS[randi() % STINGER_PATHS.size()]
 		if ResourceLoader.exists(path):
 			_stamina_stinger_player.stream = load(path)
-			_stamina_stinger_player.volume_db = 6
+			_stamina_stinger_player.volume_db = 20
 			_stamina_stinger_player.play()
 	elif exhaustion < 1.0:
 		_stinger_played = false

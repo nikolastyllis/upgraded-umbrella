@@ -226,7 +226,7 @@ func _update_audio_and_rain() -> void:
 	var inside = player.is_inside()
 	audio_manager.set_target(audio_manager.Track.INSIDE,   -10.0  if inside                  else -40.0)
 	audio_manager.set_target(audio_manager.Track.OUTSIDE,  -10.0  if not inside              else -40.0)
-	audio_manager.set_target(audio_manager.Track.RAIN,     -20.0  if _is_night and not inside else -40.0)
+	audio_manager.set_target(audio_manager.Track.RAIN,     -13.0  if _is_night and not inside else -40.0)
 	rain.visible = _is_night and not inside
 
 func _ambient_music_loop() -> void:
@@ -371,7 +371,7 @@ func _update_fuel_objective() -> void:
 	if new_state == "lifeboat":
 		_spawn_objective_marker(lifeboat, "Drop supplies at the lifeboat (%s/5 Collected)" % number_of_supplies)
 	else:
-		player.set_objective_text("Search the containers for supplies to escape on the lifeboat")
+		player.set_objective_text("Search the containers for supplies to escape on the lifeboat (%s/5 Collected)" % number_of_supplies)
 		_remove_objective()
 
 func _play_act_1_start() -> void:
@@ -750,7 +750,7 @@ func lightning_strike() -> void:
 	sun_light.rotation = original_rotation
 
 	await _wait_for(1.0)
-	audio_manager.play(audio_manager.Track.THUNDER, -20.0 if player.is_inside() else -6.0)
+	audio_manager.play(audio_manager.Track.THUNDER, -10.0 if player.is_inside() else 0.0)
 
 func _start_night_lightning() -> void:
 	_is_night = true

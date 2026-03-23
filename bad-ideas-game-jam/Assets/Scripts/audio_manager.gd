@@ -79,7 +79,7 @@ func play(track: Track, target_db: float = 0.0) -> void:
 		p.volume_db = target_db
 	p.play()
 
-func play_boss_music(target_db: float = 0.0) -> void:
+func play_boss_music(target_db: float = -8) -> void:
 	var p: AudioStreamPlayer = _players[Track.BOSS]
 	if p.playing:
 		return

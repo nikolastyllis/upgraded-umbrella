@@ -5,14 +5,32 @@
 [ext_resource type="PackedScene" uid="uid://crpmdludp3kf" path="res://Prefabs/box_b.tscn" id="3_338c1"]
 [ext_resource type="PackedScene" uid="uid://drnjie6cojcqf" path="res://Prefabs/box_c.tscn" id="4_f7u1l"]
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_f7u1l"]
+size = Vector3(0.4229682, 0.42707542, 0.6668762)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_338c1"]
+size = Vector3(0.25901258, 0.30166578, 0.5309776)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_3t2p5"]
+size = Vector3(0.25864714, 0.2538103, 0.18469502)
+
 [node name="JerryCan" type="RigidBody3D" unique_id=1874871195]
 script = ExtResource("1_6e3io")
 
+[node name="box_A_collider" type="CollisionShape3D" parent="." unique_id=1378749409]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.19175398, 0)
+shape = SubResource("BoxShape3D_f7u1l")
+
+[node name="box_B_collider" type="CollisionShape3D" parent="." unique_id=479591142]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.15137771, 0)
+shape = SubResource("BoxShape3D_338c1")
+
+[node name="box_C_collider" type="CollisionShape3D" parent="." unique_id=457073856]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.123202875, 0)
+shape = SubResource("BoxShape3D_3t2p5")
+
 [node name="Box_A" parent="." unique_id=1760798036 instance=ExtResource("2_3t2p5")]
-visible = false
 
 [node name="Box_B" parent="." unique_id=893021635 instance=ExtResource("3_338c1")]
-visible = false
 
 [node name="Box_C" parent="." unique_id=120451100 instance=ExtResource("4_f7u1l")]
-visible = false
