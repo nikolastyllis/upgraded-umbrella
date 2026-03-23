@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://bhun3l1dxxlwo"]
 
-[ext_resource type="PackedScene" uid="uid://bocyb7fq47msb" path="res://Assets/Models/Enviroment/BIGJ_Ladder_02.glb" id="1_2guuy"]
+[ext_resource type="PackedScene" uid="uid://b2sho0taer3br" path="res://Assets/Models/Enviroment/BIGJ_Ladder_02.glb" id="1_2guuy"]
 [ext_resource type="Script" uid="uid://415q51ya5s0a" path="res://Assets/Scripts/ladder.gd" id="2_rmtat"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_rmtat"]
@@ -8,9 +8,6 @@ size = Vector3(0.60860384, 0.5, 2.6000001)
 
 [node name="Ladder" unique_id=1732391426 instance=ExtResource("1_2guuy")]
 script = ExtResource("2_rmtat")
-
-[node name="ladder_mesh" parent="." index="0" unique_id=171134315]
-transform = Transform3D(-4.371139e-08, 1, -4.371139e-08, 0, -4.371139e-08, -1, -1, -4.371139e-08, 1.9106855e-15, 0, 0, 0)
 
 [node name="Area" type="Area3D" parent="." index="1" unique_id=211856057]
 transform = Transform3D(0, -1, 0, 0, 0, -1, 1, 0, 0, -0.051775306, 0.29046512, 0)
