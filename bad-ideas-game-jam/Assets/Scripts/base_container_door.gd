@@ -12,7 +12,6 @@ class_name BaseContainerDoor
 @onready var hull_4: CollisionShape3D = $Hull4
 @onready var hull_5: CollisionShape3D = $Hull5
 @onready var root = $".."
-@onready var spawn_floor_collider = $"../rigged_container/Skeleton3D/PhysicalBoneSimulator3D/Physical Bone Root/Hull3"
 
 var _banging_player: AudioStreamPlayer3D = null
 
@@ -92,7 +91,7 @@ func can_interact(_player: Node) -> bool:
 	if is_hero_container_2:
 		return game_manager.story_increment == 7 and _player.has_oxy_torch
 	
-	return game_manager.story_increment == 8
+	return game_manager.story_increment == 8 and _player.has_oxy_torch
 
 func _ready():
 	
@@ -110,23 +109,6 @@ func _ready():
 		is_hero_container_2 = root.get_is_hero_container_2()
 	animation_player.animation_finished.connect(_on_animation_finished)
 	apply_material()
-	if not is_hero_container_1 and not is_hero_container_2: call_deferred("spawn_jerry_can_spawners")
-
-func spawn_jerry_can_spawners() -> void:
-	var jerry_can_spawner_scene = load("res://Prefabs/jerry_can_spawner.tscn")
-	var shape = spawn_floor_collider.shape
-	var global_origin = spawn_floor_collider.global_transform.origin
-	var half_x = shape.size.x / 2.0
-	var half_z = shape.size.z / 2.0
-	var spawn_y = global_origin.y + shape.size.y / 2.0 + 0.1
-
-	for i in 3:
-		var random_x = global_origin.x + randf_range(-half_x, half_x)
-		var random_z = global_origin.z + randf_range(-half_z, half_z)
-
-		var spawner = jerry_can_spawner_scene.instantiate()
-		get_tree().get_root().add_child(spawner)
-		spawner.global_position = Vector3(random_x, spawn_y, random_z)
 
 func _process(_delta: float):
 	

@@ -36,7 +36,14 @@ var story_increment   = 1
 var player_has_completed_game = false
 
 @export var debug_skip_dialog = false
-@export var debug_play_from_act_3 = false
+
+@export_group("Debug: Play From Act")
+@export var debug_play_from_act_3 = false  # Wake-up / post-sleep
+@export var debug_play_from_act_4 = false  # Store room (twins hidden, sunset begins)
+@export var debug_play_from_act_5 = false  # Back to container (night begins)
+@export var debug_play_from_act_6 = false  # Lifeboat reached, search begins
+@export var debug_play_from_act_7 = false  # Searching for infected container; twins on alert
+@export var debug_play_from_act_8 = false  # Infected container opened, lightning, twins chasing
 
 var _is_night = false
 var _dialogue_active := false:
@@ -63,18 +70,61 @@ var dialogue = {
 
 # ── LIFECYCLE ───────────────────────────────────────────────────────────────
 
+# Act 3 — player wakes up, must return oxy torch then sleep
 func play_from_act_3():
 	player_has_interacted_with_container = true
 	player_has_returned_oxy_torch = true
 	player_has_slept = true
 	story_increment = 3
 
+# Act 4 — twins hidden, sunset transition, player near store room
+func play_from_act_4():
+	play_from_act_3()
+	story_increment = 4
+	twin_1.global_position = hide1.global_position
+	twin_2.global_position = hide2.global_position
+	twin_1.set_target_position(Vector3.ZERO)
+	twin_2.set_target_position(Vector3.ZERO)
+	set_time_of_day(TimeOfDay.SUNSET, 0.0)
+
+# Act 5 — player must return to container; night has fallen
+func play_from_act_5():
+	play_from_act_4()
+	story_increment = 5
+	set_time_of_day(TimeOfDay.NIGHT, 0.0)
+
+# Act 6 — player at lifeboat, about to search for oxy torch
+func play_from_act_6():
+	play_from_act_5()
+	story_increment = 6
+
+# Act 7 — searching for infected container; twins begin hunting on interaction
+func play_from_act_7():
+	play_from_act_6()
+	story_increment = 7
+
+# Act 8 — infected container opened, lightning struck, twins chasing, fuel run
+func play_from_act_8():
+	play_from_act_7()
+	player_has_interacted_with_infected_container = true
+	set_monster_pos_debug = true
+	played_impact_lightning = true
+	twin_1.global_position = player.global_position
+	twin_2.global_position = player.global_position
+	story_increment = 8
+
 func _ready() -> void:
 	# Start in DAY instantly (no tween)
 	set_time_of_day(TimeOfDay.DAY, 0.0)
 	_ambient_music_loop()
-	if debug_play_from_act_3:
-		play_from_act_3()
+
+	# Only the highest-numbered debug flag wins
+	if    debug_play_from_act_8: play_from_act_8()
+	elif  debug_play_from_act_7: play_from_act_7()
+	elif  debug_play_from_act_6: play_from_act_6()
+	elif  debug_play_from_act_5: play_from_act_5()
+	elif  debug_play_from_act_4: play_from_act_4()
+	elif  debug_play_from_act_3: play_from_act_3()
 
 @warning_ignore("shadowed_variable_base_class")
 func _player_is_near(position: Vector3, distance: float = 2.0) -> bool:
@@ -175,6 +225,7 @@ func _process(_delta: float) -> void:
 		if not played_impact_lightning:
 			_remove_objective()
 			played_impact_lightning = true
+			audio_manager.play_boss_music()
 			lightning_strike()
 			story_increment += 1
 
@@ -512,7 +563,7 @@ enum TimeOfDay { DAY, NIGHT, SUNSET }
 var _sun_tween: Tween
 
 func set_time_of_day(time: TimeOfDay, duration: float = 180.0) -> void:
-	# Stop “night mode” as soon as we leave night
+	# Stop "night mode" as soon as we leave night
 	if time != TimeOfDay.NIGHT:
 		_is_night = false
 

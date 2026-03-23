@@ -406,8 +406,6 @@ draw_pass_1 = SubResource("RibbonTrailMesh_qcyk2")
 [node name="GameManager" type="Node3D" parent="." unique_id=1749829845]
 transform = Transform3D(-0.87114525, 0, 0.49102545, 0, 1, 0, -0.49102545, 0, -0.87114525, -8.530954, 7.9717035, 75.958336)
 script = ExtResource("12_yiumw")
-debug_skip_dialog = true
-debug_play_from_act_3 = true
 
 [node name="Locations" type="Node3D" parent="GameManager" unique_id=596146378]
 
@@ -470,7 +468,7 @@ shape = SubResource("BoxShape3D_tc46g")
 [node name="AudioManager" type="Node3D" parent="." unique_id=1974886538]
 script = ExtResource("14_qcyk2")
 
-[node name="Twin1" parent="." unique_id=206935403 instance=ExtResource("10_nr8gw")]
+[node name="Twin1" parent="." unique_id=258840836 instance=ExtResource("10_nr8gw")]
 transform = Transform3D(-0.53622466, 0, -0.84407526, 0, 1, 0, 0.84407526, 0, -0.53622466, -1.7503939, 6.7905054, -37.30217)
 
 [node name="OxyTorch" parent="." unique_id=232120823 instance=ExtResource("16_t0b6u")]

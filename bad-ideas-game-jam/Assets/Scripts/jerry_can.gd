@@ -12,7 +12,7 @@ func _ready():
 	update_action_text()
 
 func update_action_text():
-	action_text = "Pick up jerry can"
+	action_text = "Pick up supplies"
 
 func interact_hold_time() -> float:
 	return 1.0
