@@ -3,8 +3,6 @@
 [ext_resource type="Material" uid="uid://eb5djxh4js65" path="res://Shaders/SkyShaderl.tres" id="1_63acv"]
 [ext_resource type="Script" uid="uid://dejtvd24e0r1q" path="res://Scenes/look_driver.gd" id="1_yiumw"]
 [ext_resource type="Shader" uid="uid://ossjmoq6orf1" path="res://Shaders/shader_ocean_calm.gdshader" id="2_qcyk2"]
-[ext_resource type="Texture2D" uid="uid://bw3728lre125f" path="res://Assets/Textures/Ocean/0001.jpg" id="3_gluub"]
-[ext_resource type="Texture2D" uid="uid://bal1s5p7lfes2" path="res://Assets/Textures/Ocean/0258.jpg" id="4_t0b6u"]
 [ext_resource type="Script" uid="uid://d1icg8locw87l" path="res://Assets/Scripts/water_camera.gd" id="5_yiumw"]
 [ext_resource type="PackedScene" uid="uid://bkwpxm2ssdj8r" path="res://Scenes/main_enviroment_scene.tscn" id="6_63acv"]
 [ext_resource type="PackedScene" uid="uid://bsr2874wrilow" path="res://Assets/Models/Enviroment/BIGJ_ShipCol_03.glb" id="7_yiumw"]
@@ -145,8 +143,6 @@ shader_parameter/micro_freq = 0.59
 shader_parameter/micro_speed = 1.59
 shader_parameter/wave_dir1 = Vector2(-0.545, 1.56)
 shader_parameter/wave_dir2 = Vector2(-0.21, 0.27)
-shader_parameter/normal_map1 = ExtResource("3_gluub")
-shader_parameter/normal_map2 = ExtResource("4_t0b6u")
 shader_parameter/normal_strength = 0.595
 shader_parameter/normal_speed1 = Vector2(0, -0.1)
 shader_parameter/normal_speed2 = Vector2(0, -0.1)
@@ -321,7 +317,7 @@ ocean_macro_amp_curve = SubResource("Curve_yiumw")
 ocean_micro_amp_curve = SubResource("Curve_tc46g")
 
 [node name="ocean_mesh" type="MeshInstance3D" parent="Lighting" unique_id=977819256]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.8777213, -0.8144264, -4.9421344)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.8777213, -4.975403, -4.9421344)
 material_override = SubResource("ShaderMaterial_ti2qv")
 gi_mode = 0
 mesh = SubResource("PlaneMesh_7xckk")
@@ -350,46 +346,46 @@ transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
 navigation_mesh = SubResource("NavigationMesh_h3qab")
 
 [node name="Ship Enviroment" parent="NavigationRegion3D" unique_id=1948200819 instance=ExtResource("6_63acv")]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -1.4327164, 0, 11.8455925)
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
 
 [node name="HeroContainer1" parent="NavigationRegion3D" unique_id=1608144133 instance=ExtResource("11_t0b6u")]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -1.1, 12.3, -82)
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -2.4863162, 4.1924834, -94.93688)
 is_hero_container_1 = true
 
 [node name="HeroContainer2" parent="NavigationRegion3D" unique_id=1182687473 instance=ExtResource("11_t0b6u")]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 9.2, 12.3, -81.799995)
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 7.8707933, 4.178982, -94.91915)
 is_hero_container_2 = true
 
 [node name="BIGJ_ShipCol_03" parent="NavigationRegion3D" unique_id=455052738 instance=ExtResource("7_yiumw")]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 1.2392235, 8.331253, 13.074547)
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
 visible = false
 
 [node name="Ladder5" parent="NavigationRegion3D" unique_id=1732391426 instance=ExtResource("11_n0oop")]
-transform = Transform3D(-2, 0, -1.7484555e-07, 0, 2, 0, 1.7484555e-07, 0, -2, 20.765652, 9.442905, -74.08496)
+transform = Transform3D(-2, 0, -1.7484555e-07, 0, 2, 0, 1.7484555e-07, 0, -2, 16.478981, 1.8131809, -87.01131)
 
 [node name="Ladder6" parent="NavigationRegion3D" unique_id=787742009 instance=ExtResource("11_n0oop")]
-transform = Transform3D(-2, 0, -1.7484555e-07, 0, 2, 0, 1.7484555e-07, 0, -2, 20.167564, 9.442905, -43.8993)
+transform = Transform3D(-2, 0, -1.7484555e-07, 0, 2, 0, 1.7484555e-07, 0, -2, 18.484715, 1.6760406, -56.96122)
+
+[node name="Ladder9" parent="NavigationRegion3D" unique_id=746313749 instance=ExtResource("11_n0oop")]
+transform = Transform3D(2, 0, 3.496911e-07, 0, 2, 0, -3.496911e-07, 0, 2, -18.54504, 1.7591333, 0.60894966)
 
 [node name="Ladder8" parent="NavigationRegion3D" unique_id=685406565 instance=ExtResource("11_n0oop")]
-transform = Transform3D(-2, 0, -1.7484555e-07, 0, 2, 0, 1.7484555e-07, 0, -2, 20.17978, 9.755896, 14.193996)
-
-[node name="Ladder8" parent="NavigationRegion3D/Ladder8" unique_id=746313749 instance=ExtResource("11_n0oop")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18.811909, 0.16794395, -0.002315998)
+transform = Transform3D(-2, 0, -1.7484555e-07, 0, 2, 0, 1.7484555e-07, 0, -2, 18.4653, 1.6285543, 0.6384368)
 
 [node name="Ladder7" parent="NavigationRegion3D" unique_id=319840398 instance=ExtResource("11_n0oop")]
-transform = Transform3D(-2, 0, -1.7484555e-07, 0, 2, 0, 1.7484555e-07, 0, -2, 20.17073, 9.627434, 71.232834)
+transform = Transform3D(-2, 0, -1.7484555e-07, 0, 2, 0, 1.7484555e-07, 0, -2, 18.543262, 1.6421127, 57.808464)
 
 [node name="Ladder3" parent="NavigationRegion3D" unique_id=2071201242 instance=ExtResource("11_n0oop")]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -16.083897, 10, -74.7202)
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -16.559399, 1.7894154, -87.007965)
 
 [node name="Ladder4" parent="NavigationRegion3D" unique_id=248772487 instance=ExtResource("11_n0oop")]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -17.760838, 10, -43.896965)
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -18.574392, 1.6560307, -56.97734)
 
 [node name="Ladder2" parent="NavigationRegion3D" unique_id=84530094 instance=ExtResource("11_n0oop")]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -17.682226, 10.184528, 71.22519)
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -18.549574, 1.6419859, 57.818542)
 
 [node name="Player" parent="." unique_id=1647912674 instance=ExtResource("9_r4e2n")]
-transform = Transform3D(-4.3711385e-08, 0, -1, 0, 0.99999994, 0, 0.99999994, 0, -4.371139e-08, 0.5205846, 6.942821, -37.012554)
+transform = Transform3D(-4.3711385e-08, 0, -1, 0, 0.99999994, 0, 0.99999994, 0, -4.371139e-08, 0.5205846, 2.9835737, -43.335854)
 
 [node name="Rain" type="GPUParticles3D" parent="Player" unique_id=645779901]
 transform = Transform3D(-0.99752617, 0, 0.07029611, 0, 1, 0, -0.07029611, 0, -0.99752617, 0, 2.0065289, 0)
@@ -469,11 +465,11 @@ shape = SubResource("BoxShape3D_tc46g")
 script = ExtResource("14_qcyk2")
 
 [node name="Twin1" parent="." unique_id=258840836 instance=ExtResource("10_nr8gw")]
-transform = Transform3D(-0.53622466, 0, -0.84407526, 0, 1, 0, 0.84407526, 0, -0.53622466, -1.7503939, 6.7905054, -37.30217)
+transform = Transform3D(-0.53622466, 0, -0.84407526, 0, 1, 0, 0.84407526, 0, -0.53622466, -1.7503939, 2.9662738, -43.62547)
 
 [node name="OxyTorch" parent="." unique_id=232120823 instance=ExtResource("16_t0b6u")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5656901, 6.522876, -37.108784)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5656901, 2.6986442, -43.432083)
 action_text = "Interact"
 
 [node name="Twin2" parent="." unique_id=1596341678 instance=ExtResource("17_yiumw")]
-transform = Transform3D(0.25881904, 0, -0.9659258, 0, 1, 0, 0.9659258, 0, 0.25881904, -2.3503938, 6.7905054, -36.802166)
+transform = Transform3D(0.25881904, 0, -0.9659258, 0, 1, 0, 0.9659258, 0, 0.25881904, -2.3503938, 2.9662738, -43.125465)

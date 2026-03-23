@@ -128,7 +128,7 @@ var player_has_completed_game = false
 @export var debug_play_from_act_4 = false  # Store room (twins hidden, sunset begins)
 @export var debug_play_from_act_5 = false  # Back to container (night begins)
 @export var debug_play_from_act_6 = false  # Lifeboat reached, search begins
-@export var debug_play_from_act_7 = false  # Searching for infected container; twins on alert
+@export var debug_play_from_act_7 = true  # Searching for infected container; twins on alert
 @export var debug_play_from_act_8 = false  # Infected container opened, lightning, twins chasing
 
 var _is_night = false

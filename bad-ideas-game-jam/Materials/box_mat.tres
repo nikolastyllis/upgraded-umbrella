@@ -1,0 +1,29 @@
+[gd_resource type="ShaderMaterial" format=3 uid="uid://dm87a3oknugat"]
+
+[ext_resource type="Material" uid="uid://sgetjvg177mb" path="res://Shaders/outline.tres" id="1_cdsec"]
+[ext_resource type="Shader" uid="uid://d266trvxphdyu" path="res://Shaders/cel-shader-base.gdshader" id="2_8e3yc"]
+[ext_resource type="Texture2D" path="res://Assets/Models/Items/Boxes/Box_A_box_mat_Col_Alpha.png" id="3_cdsec"]
+[ext_resource type="Texture2D" uid="uid://bb40gna2orjxr" path="res://Assets/Models/Items/Boxes/box_mat_Normal.png" id="4_8e3yc"]
+[ext_resource type="Texture2D" uid="uid://dl3vrw7vnqtyq" path="res://Assets/Models/Items/Boxes/box_mat_ORM.png" id="5_x2apn"]
+
+[resource]
+render_priority = 0
+next_pass = ExtResource("1_cdsec")
+shader = ExtResource("2_8e3yc")
+shader_parameter/emission = Color(0, 0, 0, 1)
+shader_parameter/emission_energy = 1.0
+shader_parameter/normal_scale = 0.50000078375
+shader_parameter/normal_map = ExtResource("4_8e3yc")
+shader_parameter/invert_normal_y = false
+shader_parameter/color = Color(1, 1, 1, 1)
+shader_parameter/base_texture = ExtResource("3_cdsec")
+shader_parameter/specular_color = Color(0.3, 0.3, 0.3, 1)
+shader_parameter/specular_strength = 0.0
+shader_parameter/orm_texture = ExtResource("5_x2apn")
+shader_parameter/ao_strength = 1.0
+shader_parameter/roughness_strength = 1.0
+shader_parameter/metallic_strength = 0.0
+shader_parameter/invert_roughness = false
+shader_parameter/fresnel = Color(0.2051174, 0.20511746, 0.20511737, 0.3019608)
+shader_parameter/uv_scale = Vector2(1, 1)
+shader_parameter/uv_offset = Vector2(0, 0)
