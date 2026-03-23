@@ -41,6 +41,11 @@ var is_container_door_interaction: bool = false
 const SENSITIVITY_INTERACT = 0.005
 const FOV_INTERACT := 70.0
 
+var _panting_player: AudioStreamPlayer = null
+const PANTING_MIN_DB	:= -10
+const PANTING_MAX_DB	:=  10
+const PANTING_FADE_SPD :=   4.0
+
 var sensitivity := 0.25
 var interaction_hold_timer := 0.0
 var interaction_disabled: bool = false
@@ -52,6 +57,11 @@ var use_camera_position_right := true
 var current_camera_position: Vector3
 var dialog_hide_timer: SceneTreeTimer = null
 var movement_disabled = false
+
+var jogging_timer = 0
+var jogging_max_time = 20
+var jog_cooldown = false
+var jog_cooldown_time = 5
 
 func _start_right_hand_ik(hit_point) -> void:
 	_ik_target_node.global_position = hit_point
@@ -86,6 +96,7 @@ func _ready() -> void:
 	sparks.visible = false
 	spark_light.visible = false
 	_setup_right_hand_ik()
+	_setup_panting_player()
 
 func _input(event: InputEvent) -> void:
 	if not event is InputEventMouseMotion:
@@ -123,6 +134,24 @@ func tween_camera_fov(target_fov: float) -> void:
 	var tween = create_tween()
 	tween.tween_property(camera, "fov", target_fov, 0.4).set_ease(Tween.EASE_IN_OUT).set_trans(Tween.TRANS_QUAD)
 
+func handle_stamina(delta: float) -> void:
+	if is_jogging and jogging_timer <= jogging_max_time:
+		jogging_timer += (delta * (2 if has_oxy_torch else 1))
+	else:
+		jogging_timer -= delta
+
+	if jogging_timer >= jogging_max_time and not jog_cooldown:
+		jogging_timer += jog_cooldown_time
+		jog_cooldown = true
+		
+	if jogging_timer < jogging_max_time:
+		jog_cooldown = false
+
+	if jogging_timer < 0:
+		jogging_timer = 0
+
+	_update_panting(delta)
+
 func _process(delta: float) -> void:
 	update_interactable()
 	handle_interact(delta)
@@ -131,6 +160,9 @@ func _physics_process(delta: float) -> void:
 	super._physics_process(delta)
 	update_camera(delta)
 	handle_quit()
+	
+	handle_stamina(delta)
+	
 	if Input.is_action_just_pressed("ui_accept") and is_climbing:
 		if is_climbing:
 			stop_climbing()
@@ -187,7 +219,7 @@ func apply_movement(_input_dir: Vector2) -> void:
 	if is_climbing:
 		apply_climbing_movement()
 		return
-	is_jogging = Input.is_action_pressed("shift") and get_move_direction().length() > 0.01 and not has_oxy_torch
+	is_jogging = Input.is_action_pressed("shift") and get_move_direction().length() > 0.01 and (jogging_timer <= jogging_max_time)
 	var speed = PLAYER_SPEED * (2.0 if is_jogging else 1.0)
 	var move_direction = get_move_direction()
 	if move_direction.length() > 0.01:
@@ -414,3 +446,67 @@ func fade_in_camera(duration: float = 1.0) -> void:
 	tween.tween_property(overlay, "color:a", 0.0, duration).set_ease(Tween.EASE_IN_OUT)
 	await tween.finished
 	canvas_layer.queue_free()
+
+var _stamina_stinger_player: AudioStreamPlayer = null
+var _stinger_played := false
+var _was_jogging := false
+
+const STINGER_PATHS := [
+	"res://Assets/Dialogue/max_stamina.ogg",
+	"res://Assets/Dialogue/max_stamina2.ogg",
+	"res://Assets/Dialogue/max_stamina3.ogg",
+	"res://Assets/Dialogue/max_stamina4.ogg",
+]
+
+func _setup_panting_player() -> void:
+	const PATH := "res://Assets/Dialogue/panting.ogg"
+	if not ResourceLoader.exists(PATH):
+		push_warning("Panting audio not found: %s" % PATH)
+		return
+	_panting_player = AudioStreamPlayer.new()
+	_panting_player.bus = "Sound"
+	_panting_player.stream = load(PATH)
+	_panting_player.volume_db = PANTING_MIN_DB
+	add_child(_panting_player)
+
+	_stamina_stinger_player = AudioStreamPlayer.new()
+	_stamina_stinger_player.bus = "Sound"
+	add_child(_stamina_stinger_player)
+
+func _update_panting(delta: float) -> void:
+	if not is_instance_valid(_panting_player):
+		return
+
+	var exhaustion := clampf(jogging_timer / jogging_max_time, 0.0, 1.0)
+	var track_length: float = _panting_player.stream.get_length()
+
+	# Trigger stinger once on hitting max
+	if exhaustion >= 1.0 and not _stinger_played:
+		_stinger_played = true
+		var path = STINGER_PATHS[randi() % STINGER_PATHS.size()]
+		if ResourceLoader.exists(path):
+			_stamina_stinger_player.stream = load(path)
+			_stamina_stinger_player.volume_db = 6
+			_stamina_stinger_player.play()
+	elif exhaustion < 1.0:
+		_stinger_played = false
+
+	if is_jogging:
+		if not _was_jogging:
+			_panting_player.play(exhaustion * track_length)
+		elif not _panting_player.playing:
+			_panting_player.play(exhaustion * track_length)
+		_was_jogging = true
+	else:
+		_was_jogging = false
+
+	if not is_jogging and _panting_player.volume_db <= PANTING_MIN_DB + 0.5:
+		_panting_player.stop()
+		_panting_player.volume_db = PANTING_MIN_DB
+
+	var target_db := lerpf(PANTING_MIN_DB, PANTING_MAX_DB, exhaustion)
+	_panting_player.volume_db = lerpf(
+		_panting_player.volume_db,
+		target_db,
+		1.0 - exp(-PANTING_FADE_SPD * delta)
+	)

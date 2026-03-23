@@ -11,7 +11,29 @@ var game_manager = null
 var lifeboat = null
 var dropped_at_lifeboat = false
 
+var box_types = [$Box_A, $Box_B, $Box_C]
+var meshes = [$"Box_A/box_A", $"Box_B/box_B", $"Box_C/box_C"]
+
 func _ready():
+	var idx = randi() % box_types.size()
+	
+	# Show only the chosen box, hide the rest
+	for i in box_types.size():
+		box_types[i].visible = (i == idx)
+	
+	# Generate a bounding box collider from the chosen mesh
+	var mesh_instance: MeshInstance3D = meshes[idx]
+	var aabb: AABB = mesh_instance.get_aabb()
+	
+	var box_shape = BoxShape3D.new()
+	box_shape.size = aabb.size
+	
+	var col_shape = CollisionShape3D.new()
+	col_shape.shape = box_shape
+	# Transform the AABB center from mesh-local space into the RigidBody's local space
+	col_shape.position = mesh_instance.position + mesh_instance.basis * aabb.get_center()
+	add_child(col_shape)
+	
 	update_action_text()
 
 func update_action_text():

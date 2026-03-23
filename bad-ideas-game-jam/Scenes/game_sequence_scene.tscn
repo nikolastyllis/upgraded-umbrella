@@ -104,6 +104,7 @@ point_count = 3
 
 [sub_resource type="Gradient" id="Gradient_to28j"]
 offsets = PackedFloat32Array(0, 0.561753)
+colors = PackedColorArray(0, 0, 0, 1, 0.050314467, 0.050314467, 0.050314467, 1)
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_4n1t5"]
 
@@ -187,7 +188,7 @@ shader_parameter/crest_scale = 0.103
 shader_parameter/crest_speed = Vector2(0.006, 0.003)
 shader_parameter/crest_screen_strength = 0.135
 shader_parameter/crest_start = -0.92
-shader_parameter/crest_end = 3.4699999999999998
+shader_parameter/crest_end = 3.47
 shader_parameter/wind_scale = 0.07
 shader_parameter/wind_speed = Vector2(0.05, -0.5)
 shader_parameter/wind_threshold = 0.39
@@ -410,7 +411,7 @@ transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -18.574392, 1.6560307, -56.97
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -18.549574, 1.6419859, 57.818542)
 
 [node name="Player" parent="." unique_id=1647912674 instance=ExtResource("9_r4e2n")]
-transform = Transform3D(-4.3711385e-08, 0, -1, 0, 0.99999994, 0, 0.99999994, 0, -4.371139e-08, 0.5205846, 2.9835737, -43.335854)
+transform = Transform3D(-4.3711385e-08, 0, -1, 0, 0.99999994, 0, 0.99999994, 0, -4.371139e-08, -0.6674752, 2.5669377, -43.335854)
 
 [node name="Rain" type="GPUParticles3D" parent="Player" unique_id=645779901]
 transform = Transform3D(-0.99752617, 0, 0.07029611, 0, 1, 0, -0.07029611, 0, -0.99752617, 0, 2.0065289, 0)
@@ -427,32 +428,25 @@ draw_pass_1 = SubResource("RibbonTrailMesh_qcyk2")
 [node name="GameManager" type="Node3D" parent="." unique_id=1749829845]
 transform = Transform3D(-0.87114525, 0, 0.49102545, 0, 1, 0, -0.49102545, 0, -0.87114525, -8.530954, 7.9717035, 75.958336)
 script = ExtResource("12_yiumw")
+debug_skip_dialog = true
+debug_play_from_act_7 = false
 
 [node name="Locations" type="Node3D" parent="GameManager" unique_id=596146378]
 
 [node name="Container" type="Node3D" parent="GameManager/Locations" unique_id=2145291984]
-transform = Transform3D(-0.87114525, 0, -0.49102545, 0, 1, 0, 0.49102545, 0, -0.87114525, 52.21933, -4.896385, 108.92915)
+transform = Transform3D(-0.87114525, 0, -0.49102545, 0, 1, 0, 0.49102545, 0, -0.87114525, 52.717777, -5.021561, 108.34344)
 
 [node name="InfectedContainer" type="Node3D" parent="GameManager/Locations" unique_id=838499068]
-transform = Transform3D(-0.87114525, 0, -0.49102545, 0, 1, 0, 0.49102545, 0, -0.87114525, 49.10621, -4.653019, 112.3655)
-
-[node name="InfectedSpawn1" type="Node3D" parent="GameManager/Locations" unique_id=598080147]
-transform = Transform3D(-0.87114525, 0, -0.49102545, 0, 1, 0, 0.49102545, 0, -0.87114525, 51.357666, -5.0118823, 112.761)
-
-[node name="InfectedSpawn2" type="Node3D" parent="GameManager/Locations" unique_id=1649921029]
-transform = Transform3D(-0.87114525, 0, -0.49102545, 0, 1, 0, 0.49102545, 0, -0.87114525, 51.731304, -5.0118823, 112.17675)
+transform = Transform3D(-0.87114525, 0, -0.49102545, 0, 1, 0, 0.49102545, 0, -0.87114525, 48.17851, -4.8875194, 110.83903)
 
 [node name="StoreRoom" type="Node3D" parent="GameManager/Locations" unique_id=2049401470]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.8881474, 0, 10.120064)
-
-[node name="Bridge" type="Node3D" parent="GameManager/Locations" unique_id=1703577078]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.937132, 16.302486, 9.79039)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.9505725, -3.5560427, 15.856671)
 
 [node name="Lifeboat" type="Node3D" parent="GameManager/Locations" unique_id=2008104808]
-transform = Transform3D(0.74548763, 0, 0.66651946, 0, 1, 0, -0.66651946, 0, 0.74548763, 0.3183136, 5.419366, 3.8912048)
+transform = Transform3D(0.74548763, 0, 0.66651946, 0, 1, 0, -0.66651946, 0, 0.74548763, 4.4493775, 1.4250479, 10.1140375)
 
 [node name="Bed" type="StaticBody3D" parent="GameManager/Locations" unique_id=637987197]
-transform = Transform3D(0.6793314, 0, 0.73072296, 0, 0.29294226, 0, -0.3181064, 0, 1.5604937, -4.1017323, 7.9982805, 14.074158)
+transform = Transform3D(0.65736836, 0, 0.82998115, 0, 0.29294226, 0, -0.3613166, 0, 1.5100423, -0.25035757, 3.6109438, 19.364481)
 script = ExtResource("11_qcyk2")
 
 [node name="Bed" type="MeshInstance3D" parent="GameManager/Locations/Bed" unique_id=464638317]
@@ -463,13 +457,13 @@ mesh = SubResource("BoxMesh_63acv")
 shape = SubResource("BoxShape3D_63acv")
 
 [node name="Bedroom" type="Node3D" parent="GameManager/Locations" unique_id=944683596]
-transform = Transform3D(0.834473, 0, 0.5510489, 0, 1, 0, -0.5510489, 0, 0.834473, -7.142164, 8.844628, 16.920956)
+transform = Transform3D(0.834473, 0, 0.5510489, 0, 1, 0, -0.5510489, 0, 0.834473, -0.79460627, 4.559143, 19.765337)
 
-[node name="Bedroom2" type="Node3D" parent="GameManager/Locations" unique_id=708793083]
-transform = Transform3D(0.834473, 0, 0.5510489, 0, 1, 0, -0.5510489, 0, 0.834473, -8.124212, 8.844628, 15.178677)
+[node name="Bedroom2" type="Node3D" parent="GameManager/Locations" unique_id=791009384]
+transform = Transform3D(0.834473, 0, 0.5510489, 0, 1, 0, -0.5510489, 0, 0.834473, -3.5634284, 4.559143, 20.488443)
 
-[node name="Bedroom3" type="Node3D" parent="GameManager/Locations" unique_id=927461085]
-transform = Transform3D(0.834473, 0, 0.5510489, 0, 1, 0, -0.5510489, 0, 0.834473, -5.019743, 8.844628, 14.576759)
+[node name="Bedroom3" type="Node3D" parent="GameManager/Locations" unique_id=1985400669]
+transform = Transform3D(0.834473, 0, 0.5510489, 0, 1, 0, -0.5510489, 0, 0.834473, -2.8670514, 4.559143, 21.750313)
 
 [node name="HideNpcs1" type="Node3D" parent="GameManager/Locations" unique_id=84367275]
 transform = Transform3D(10, 0, 4.7683716e-07, 0, 9.999998, 0, -4.7683716e-07, 0, 10, 5.6865997, -32, 24.344685)
@@ -490,11 +484,11 @@ shape = SubResource("BoxShape3D_tc46g")
 script = ExtResource("14_qcyk2")
 
 [node name="Twin1" parent="." unique_id=258840836 instance=ExtResource("10_nr8gw")]
-transform = Transform3D(-0.53622466, 0, -0.84407526, 0, 1, 0, 0.84407526, 0, -0.53622466, -1.7503939, 2.9662738, -43.62547)
+transform = Transform3D(-0.53622466, 0, -0.84407526, 0, 1, 0, 0.84407526, 0, -0.53622466, -2.3619907, 2.61306, -43.53803)
 
 [node name="OxyTorch" parent="." unique_id=232120823 instance=ExtResource("16_t0b6u")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5656901, 2.6986442, -43.432083)
+transform = Transform3D(1, 0, 0, 0, 0.8267076, -0.5626318, 0, 0.5626318, 0.8267076, -1.6254706, 1.8873264, -42.922832)
 action_text = "Interact"
 
 [node name="Twin2" parent="." unique_id=1596341678 instance=ExtResource("17_yiumw")]
-transform = Transform3D(0.25881904, 0, -0.9659258, 0, 1, 0, 0.9659258, 0, 0.25881904, -2.3503938, 2.9662738, -43.125465)
+transform = Transform3D(0.25881904, 0, -0.9659258, 0, 1, 0, 0.9659258, 0, 0.25881904, -2.917481, 2.6326113, -43.20588)

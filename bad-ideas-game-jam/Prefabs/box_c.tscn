@@ -1,0 +1,9 @@
+[gd_scene format=3 uid="uid://drnjie6cojcqf"]
+
+[ext_resource type="PackedScene" uid="uid://cj35bq4yto4p7" path="res://Assets/Models/Items/Boxes/Box_C.glb" id="1_2a358"]
+[ext_resource type="Material" uid="uid://dm87a3oknugat" path="res://Materials/box_mat.tres" id="2_5s3pj"]
+
+[node name="Box_C" unique_id=120451100 instance=ExtResource("1_2a358")]
+
+[node name="box_C" parent="." index="0" unique_id=615231187]
+surface_material_override/0 = ExtResource("2_5s3pj")

@@ -1,45 +1,18 @@
 [gd_scene format=3 uid="uid://yhb2avq7vcw1"]
 
 [ext_resource type="Script" uid="uid://8unevy0x11gu" path="res://Assets/Scripts/jerry_can.gd" id="1_6e3io"]
-[ext_resource type="PackedScene" uid="uid://cghqtfikihtkg" path="res://Assets/Models/Items/Boxes/Box_A.glb" id="2_0vnqi"]
-[ext_resource type="Material" uid="uid://dm87a3oknugat" path="res://Materials/box_mat.tres" id="3_3t2p5"]
-[ext_resource type="PackedScene" uid="uid://cxekrdnkhdmnh" path="res://Assets/Models/Items/Boxes/Box_B.glb" id="4_338c1"]
-[ext_resource type="PackedScene" uid="uid://cj35bq4yto4p7" path="res://Assets/Models/Items/Boxes/Box_C.glb" id="5_f7u1l"]
-
-[sub_resource type="BoxMesh" id="BoxMesh_red0l"]
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_6e3io"]
+[ext_resource type="PackedScene" uid="uid://rbqgqb8aynq8" path="res://Prefabs/box_a.tscn" id="2_3t2p5"]
+[ext_resource type="PackedScene" uid="uid://crpmdludp3kf" path="res://Prefabs/box_b.tscn" id="3_338c1"]
+[ext_resource type="PackedScene" uid="uid://drnjie6cojcqf" path="res://Prefabs/box_c.tscn" id="4_f7u1l"]
 
 [node name="JerryCan" type="RigidBody3D" unique_id=1874871195]
 script = ExtResource("1_6e3io")
 
-[node name="Box_A" parent="." unique_id=1272826516 instance=ExtResource("2_0vnqi")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.008669287, -0.179794, -0.041382253)
-
-[node name="box_A" parent="Box_A" index="0" unique_id=239804683]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.18828303, -0.43614978)
-surface_material_override/0 = ExtResource("3_3t2p5")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=741569489]
-transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, 0, 0)
+[node name="Box_A" parent="." unique_id=1760798036 instance=ExtResource("2_3t2p5")]
 visible = false
-mesh = SubResource("BoxMesh_red0l")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=144092837]
-transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, 0, 0)
-shape = SubResource("BoxShape3D_6e3io")
+[node name="Box_B" parent="." unique_id=893021635 instance=ExtResource("3_338c1")]
+visible = false
 
-[node name="Box_B" parent="." unique_id=1451968438 instance=ExtResource("4_338c1")]
-
-[node name="box_B" parent="Box_B" index="0" unique_id=1856068439]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.4073614)
-surface_material_override/0 = ExtResource("3_3t2p5")
-
-[node name="Box_C" parent="." unique_id=489053740 instance=ExtResource("5_f7u1l")]
-
-[node name="box_C" parent="Box_C" index="0" unique_id=2026046519]
-surface_material_override/0 = ExtResource("3_3t2p5")
-
-[editable path="Box_A"]
-[editable path="Box_B"]
-[editable path="Box_C"]
+[node name="Box_C" parent="." unique_id=120451100 instance=ExtResource("4_f7u1l")]
+visible = false
