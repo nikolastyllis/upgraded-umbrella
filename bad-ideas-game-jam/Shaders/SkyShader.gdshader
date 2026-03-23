@@ -36,12 +36,18 @@ uniform float cloud_softness : hint_range(0.0, 0.35) = 0.10;
 
 // NEW: allow clouds at night (1 = fully allowed, 0 = day-only like before)
 uniform float night_clouds : hint_range(0.0, 1.0) = 1.0;
+uniform vec3 cloud_day_color   : source_color = vec3(0.95, 0.96, 1.0);
+uniform vec3 cloud_dusk_color  : source_color = vec3(1.0, 0.70, 0.45);
+uniform vec3 cloud_night_color : source_color = vec3(0.07, 0.09, 0.12);  // storm base
+uniform vec3 cloud_shadow_color: source_color = vec3(0.02, 0.03, 0.01);  // deep shadow
+uniform float night_cloud_darkness : hint_range(0.0, 2.0) = 2.0;         // 1=default, >1 darker
 
 // Cloud lighting
-uniform float cloud_light_strength : hint_range(0.0, 2.0) = 1.0;
-uniform float cloud_shadow_strength : hint_range(0.0, 2.0) = 0.9;
+uniform float cloud_light_strength : hint_range(0.0, 2.0) = 0.1;
+uniform float cloud_shadow_strength : hint_range(0.0, 2.0) = 1.9;
 uniform float cloud_anisotropy : hint_range(0.0, 1.0) = 0.6;
 uniform float cloud_banding : hint_range(1.0, 10.0) = 4.0;
+
 
 // Stars
 uniform float stars : hint_range(0.0, 1.0) = 0.7;
@@ -137,20 +143,19 @@ void sky() {
 		? sun_elev
 		: clamp(LIGHT0_DIRECTION.y * 0.5 + 0.5, 0.0, 1.0);
 
-	// Day/night from elevation (horizon around 0.5)
-	float above = smoothstep(0.48, 0.52, elev);
-	float dayness = above * smoothstep(0.55, 0.90, elev);
-	float nightness = 1.0 - above;
+	// Elevation: 0..1, horizon ~0.5
+	float night_factor = smoothstep(0.52, 0.46, elev); // 0 in day, 1 at night (sharper)
+	float day_factor   = 1.0 - night_factor;
 
-	// Dusk near horizon
-	float duskness = 1.0 - smoothstep(0.52, 0.70, abs(elev - 0.5) * 2.0);
-	duskness = sat(duskness * 0.9);
+	// Optional: dusk band near horizon
+	float dusk_factor = 1.0 - smoothstep(0.03, 0.18, abs(elev - 0.5));
+	dusk_factor = clamp(dusk_factor, 0.0, 1.0);;
 
 	// Base gradient colours
-	vec3 zen = mix(night_zenith, day_zenith, dayness);
-	vec3 hor = mix(night_horizon, day_horizon, dayness);
-	hor = mix(hor, dusk_horizon, duskness);
-	zen = mix(zen, dusk_zenith, duskness * 0.6);
+	vec3 zen = mix(night_zenith, day_zenith, day_factor);
+	vec3 hor = mix(night_horizon, day_horizon, day_factor);
+	hor = mix(hor, dusk_horizon, dusk_factor);
+	zen = mix(zen, dusk_zenith, dusk_factor * 0.6);
 
 	// Horizon toon blend
 	float h = smoothstep(horizon_height - horizon_softness, horizon_height + horizon_softness, dir.y);
@@ -173,9 +178,9 @@ void sky() {
 	float sun_glow = smoothstep(1.0 - (sun_size + sun_halo), 1.0 - sun_size, sun_dot) * 0.6;
 
 	vec3 warm = vec3(1.0, 0.55, 0.25);
-	sun_col = mix(sun_col, warm, duskness * 0.35);
+	sun_col = mix(sun_col, warm, dusk_factor * 0.35);
 
-	float sun_vis = clamp(dayness + duskness * 0.9, 0.0, 1.0);
+	float sun_vis = clamp(day_factor + dusk_factor * 0.9, 0.0, 1.0);
 	col += sun_col * (sun_core * 2.0 + sun_glow) * sun_pow * sun_vis;
 
 	// ---- Clouds ----
@@ -207,20 +212,32 @@ void sky() {
 	float lit = sat(light_val * shadow_val);
 	lit = soft_steps(lit, max(2.0, cloud_banding), 0.08);
 
-	vec3 cloud_base = mix(vec3(0.75, 0.80, 0.95), vec3(0.95, 0.96, 1.0), dayness);
-	cloud_base = mix(cloud_base, vec3(1.0, 0.70, 0.45), duskness * 0.35);
-	vec3 cloud_lit = mix(cloud_base * 0.75, cloud_base * 1.15, lit);
+	// Cloud base colour: explicitly crossfade DAY <-> NIGHT
+	vec3 cloud_base = mix(cloud_day_color, cloud_night_color, night_factor);
+
+	// Add dusk warmth only near horizon
+	cloud_base = mix(cloud_base, cloud_dusk_color, dusk_factor * 0.35);
+
+	// Make night clouds darker (storm)
+	cloud_base *= (1.0 - night_factor * 0.65 * night_cloud_darkness);
+
+	// Shading: deeper shadows at night, less glow
+	float shadow_push    = mix(0.75, 1.35, night_factor);
+	float highlight_push = mix(1.15, 1.02, night_factor);
+
+	vec3 shaded = mix(cloud_shadow_color, cloud_base, lit);
+	vec3 cloud_lit = mix(shaded * shadow_push, cloud_base * highlight_push, lit);
 
 	float cloud_h_fade = smoothstep(horizon_height - 0.05, horizon_height + 0.15, dir.y);
 
 	// ✅ Night clouds fix:
-	float cloud_vis = mix(dayness, 1.0, night_clouds * nightness);
+	float cloud_vis = mix(day_factor, 1.0, night_clouds * night_factor);
 	col = mix(col, cloud_lit, cloud_shape * cloud_h_fade * cloud_vis);
 
 	// Stars (set stars = 0.0 from LookDriver for stormy nights)
-	if (nightness > 0.001 && dir.y > horizon_height) {
+	if (night_factor > 0.001 && dir.y > horizon_height) {
 		float sm = stars_mask(dir);
-		col += vec3(1.0) * sm * stars * nightness;
+		col += vec3(1.0) * sm * stars * night_factor;
 	}
 
 	COLOR = col * exposure;
