@@ -29,6 +29,7 @@ window/stretch/mode="canvas_items"
 [gui]
 
 fonts/dynamic_fonts/use_oversampling=false
+theme/default_font_multichannel_signed_distance_field=true
 
 [input]
 

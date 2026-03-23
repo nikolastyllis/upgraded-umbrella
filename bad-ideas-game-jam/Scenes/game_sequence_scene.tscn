@@ -367,25 +367,25 @@ visible = false
 [node name="Ladder5" parent="NavigationRegion3D" unique_id=1732391426 instance=ExtResource("11_n0oop")]
 transform = Transform3D(-2, 0, -1.7484555e-07, 0, 2, 0, 1.7484555e-07, 0, -2, 20.765652, 9.442905, -74.08496)
 
-[node name="Ladder6" parent="NavigationRegion3D" unique_id=789706658 instance=ExtResource("11_n0oop")]
+[node name="Ladder6" parent="NavigationRegion3D" unique_id=787742009 instance=ExtResource("11_n0oop")]
 transform = Transform3D(-2, 0, -1.7484555e-07, 0, 2, 0, 1.7484555e-07, 0, -2, 20.167564, 9.442905, -43.8993)
 
-[node name="Ladder8" parent="NavigationRegion3D" unique_id=2076662094 instance=ExtResource("11_n0oop")]
+[node name="Ladder8" parent="NavigationRegion3D" unique_id=685406565 instance=ExtResource("11_n0oop")]
 transform = Transform3D(-2, 0, -1.7484555e-07, 0, 2, 0, 1.7484555e-07, 0, -2, 20.17978, 9.755896, 14.193996)
 
-[node name="Ladder8" parent="NavigationRegion3D/Ladder8" unique_id=210145557 instance=ExtResource("11_n0oop")]
+[node name="Ladder8" parent="NavigationRegion3D/Ladder8" unique_id=746313749 instance=ExtResource("11_n0oop")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18.811909, 0.16794395, -0.002315998)
 
-[node name="Ladder7" parent="NavigationRegion3D" unique_id=2109898749 instance=ExtResource("11_n0oop")]
+[node name="Ladder7" parent="NavigationRegion3D" unique_id=319840398 instance=ExtResource("11_n0oop")]
 transform = Transform3D(-2, 0, -1.7484555e-07, 0, 2, 0, 1.7484555e-07, 0, -2, 20.17073, 9.627434, 71.232834)
 
-[node name="Ladder3" parent="NavigationRegion3D" unique_id=1530816229 instance=ExtResource("11_n0oop")]
+[node name="Ladder3" parent="NavigationRegion3D" unique_id=2071201242 instance=ExtResource("11_n0oop")]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -16.083897, 10, -74.7202)
 
-[node name="Ladder4" parent="NavigationRegion3D" unique_id=1432633190 instance=ExtResource("11_n0oop")]
+[node name="Ladder4" parent="NavigationRegion3D" unique_id=248772487 instance=ExtResource("11_n0oop")]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -17.760838, 10, -43.896965)
 
-[node name="Ladder2" parent="NavigationRegion3D" unique_id=1207430211 instance=ExtResource("11_n0oop")]
+[node name="Ladder2" parent="NavigationRegion3D" unique_id=84530094 instance=ExtResource("11_n0oop")]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -17.682226, 10.184528, 71.22519)
 
 [node name="Player" parent="." unique_id=1647912674 instance=ExtResource("9_r4e2n")]
@@ -406,6 +406,7 @@ draw_pass_1 = SubResource("RibbonTrailMesh_qcyk2")
 [node name="GameManager" type="Node3D" parent="." unique_id=1749829845]
 transform = Transform3D(-0.87114525, 0, 0.49102545, 0, 1, 0, -0.49102545, 0, -0.87114525, -8.530954, 7.9717035, 75.958336)
 script = ExtResource("12_yiumw")
+debug_skip_dialog = true
 
 [node name="Locations" type="Node3D" parent="GameManager" unique_id=596146378]
 

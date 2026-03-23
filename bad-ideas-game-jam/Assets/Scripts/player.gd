@@ -12,6 +12,8 @@ extends BaseCharacter
 @onready var interact_progress_bar := $CameraOrigin/SpringArm3D/Camera3D/CrosshairUI/Interact/Progress
 @onready var dialog_control := $CameraOrigin/SpringArm3D/Camera3D/DialogControl
 @onready var crosshair_ui := $CameraOrigin/SpringArm3D/Camera3D/CrosshairUI
+@onready var objective_ui := $CameraOrigin/SpringArm3D/Camera3D/ObjectiveUI
+@onready var objective_ui_text := $CameraOrigin/SpringArm3D/Camera3D/ObjectiveUI/Description
 
 @onready var skeleton: Skeleton3D = $Character/Armature/Skeleton3D
 @onready var right_hand_ik: SkeletonIK3D = $Character/Armature/Skeleton3D/RightHandIK
@@ -93,6 +95,7 @@ func _input(event: InputEvent) -> void:
 func toggle_movement_disabled():
 	movement_disabled = not movement_disabled
 	crosshair_ui.visible = not movement_disabled
+	objective_ui.visible = not movement_disabled
 	tween_camera_fov(FOV_DISABLED if movement_disabled else FOV_NORMAL)
 	sensitivity = SENSITIVITY_DISABLED if movement_disabled else SENSITIVITY_NORMAL
 	can_interact = false if movement_disabled else true
@@ -387,6 +390,8 @@ func fade_out_camera(duration: float = 1.0) -> void:
 	tween.tween_property(overlay, "color:a", 1.0, duration).set_ease(Tween.EASE_IN_OUT)
 	await tween.finished
 
+func set_objective_text(text: String) -> void:
+	objective_ui_text.text = text
 
 func fade_in_camera(duration: float = 1.0) -> void:
 	var canvas_layer: CanvasLayer

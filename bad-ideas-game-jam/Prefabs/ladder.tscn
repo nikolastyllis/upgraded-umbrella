@@ -6,8 +6,11 @@
 [sub_resource type="BoxShape3D" id="BoxShape3D_rmtat"]
 size = Vector3(0.60860384, 0.5, 2.6000001)
 
-[node name="Ladder" unique_id=1732391426 instance=ExtResource("1_2guuy")]
+[node name="Ladder" unique_id=689004252 instance=ExtResource("1_2guuy")]
 script = ExtResource("2_rmtat")
+
+[node name="ladder_curve" parent="." index="0" unique_id=1470033106]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, -1, 0)
 
 [node name="Area" type="Area3D" parent="." index="1" unique_id=211856057]
 transform = Transform3D(0, -1, 0, 0, 0, -1, 1, 0, 0, -0.051775306, 0.29046512, 0)

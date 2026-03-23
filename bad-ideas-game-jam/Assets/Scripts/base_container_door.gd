@@ -68,7 +68,7 @@ func update_action_text():
 	action_text = "Breach"
 
 func interact_hold_time() -> float:
-	return 6.0
+	return 3.0
 
 func on_interact(_player):
 	if is_hero_container_1:

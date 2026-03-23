@@ -238,7 +238,7 @@ layout_mode = 2
 custom_minimum_size = Vector2(200, 0)
 layout_mode = 2
 size_flags_vertical = 3
-text = "FullSCREEN"
+text = "Fullscreen"
 
 [node name="Master Volume" type="HSlider" parent="Control/CenterContainer/SettingsMenu" unique_id=186862679]
 custom_minimum_size = Vector2(0, 80)
@@ -249,11 +249,11 @@ step = 0.001
 [node name="Label" type="Label" parent="Control/CenterContainer/SettingsMenu/Master Volume" unique_id=266919504]
 custom_minimum_size = Vector2(310, 20)
 layout_mode = 0
-offset_left = -233.0
-offset_top = 27.0
-offset_right = 77.0
-offset_bottom = 54.0
-text = "main volume"
+offset_left = -275.0
+offset_top = 20.0
+offset_right = 35.0
+offset_bottom = 54.895832
+text = "Master Volume"
 horizontal_alignment = 1
 
 [node name="Music Volume" type="HSlider" parent="Control/CenterContainer/SettingsMenu" unique_id=993328679]
@@ -262,14 +262,14 @@ layout_mode = 2
 max_value = 1.0
 step = 0.001
 
-[node name="Label" type="Label" parent="Control/CenterContainer/SettingsMenu/Music Volume" unique_id=1930701485]
+[node name="Label" type="Label" parent="Control/CenterContainer/SettingsMenu/Music Volume" unique_id=448245949]
 custom_minimum_size = Vector2(310, 20)
 layout_mode = 0
-offset_left = -241.0
-offset_top = 26.5
-offset_right = 69.0
-offset_bottom = 53.5
-text = "MUSIC VOLUME"
+offset_left = -275.0
+offset_top = 20.0
+offset_right = 35.0
+offset_bottom = 54.895832
+text = "Music Volume"
 horizontal_alignment = 1
 
 [node name="Sound Volume" type="HSlider" parent="Control/CenterContainer/SettingsMenu" unique_id=2082366417]
@@ -278,13 +278,13 @@ layout_mode = 2
 max_value = 1.0
 step = 0.001
 
-[node name="Label" type="Label" parent="Control/CenterContainer/SettingsMenu/Sound Volume" unique_id=1615631136]
+[node name="Label" type="Label" parent="Control/CenterContainer/SettingsMenu/Sound Volume" unique_id=145035700]
 custom_minimum_size = Vector2(310, 20)
 layout_mode = 0
-offset_left = -245.0
-offset_top = 27.0
-offset_right = 65.0
-offset_bottom = 54.0
+offset_left = -275.0
+offset_top = 20.0
+offset_right = 35.0
+offset_bottom = 54.895832
 text = "Sound Volume"
 horizontal_alignment = 1
 
@@ -303,7 +303,7 @@ theme_override_constants/separation = 9
 
 [node name="Play" type="Button" parent="Control/CenterContainer/MainMenu" unique_id=310050880]
 layout_mode = 2
-text = "play"
+text = "Play"
 
 [node name="Settings" type="Button" parent="Control/CenterContainer/MainMenu" unique_id=1702008508]
 layout_mode = 2
@@ -324,6 +324,7 @@ theme_override_constants/separation = 20
 
 [node name="Label" type="Label" parent="Control/CenterContainer/Credits" unique_id=1971572403]
 layout_mode = 2
+theme_override_constants/line_spacing = 2
 text = "Orion Furbank-Meyer - (Art)
 
 Zach Wyatt-Smith - (Art)

@@ -7,6 +7,9 @@ var _original_parent: Node = null
 var _original_transform: Transform3D
 @onready var rigid_body = $"."
 var player = null
+var game_manager = null
+var lifeboat = null
+var dropped_at_lifeboat = false
 
 func _ready():
 	update_action_text()
@@ -18,6 +21,10 @@ func interact_hold_time() -> float:
 	return 1.0
 
 func on_interact(_player):
+	
+	game_manager = get_tree().get_nodes_in_group("game_manager")[0]
+	lifeboat = get_tree().get_nodes_in_group("lifeboat")[0]
+	
 	player = _player
 	player.is_holding_jerry_can = true
 	_original_parent = get_parent()
@@ -40,9 +47,20 @@ func on_interact(_player):
 	_held = true
 	picked_up.emit(self)
 
+func can_interact(_player: Node) -> bool:
+	return not dropped_at_lifeboat
+
 func _process(_delta):
 	if _held and Input.is_action_just_pressed("drop"):
 		drop()
+		
+	if _held and _is_near_lifeboat():
+		drop()
+		dropped_at_lifeboat = true
+		game_manager.number_of_supplies += 1
+		
+func _is_near_lifeboat() -> bool:
+	return (global_position - lifeboat.global_position).length() < 1
 
 func drop():
 	player.is_holding_jerry_can = false

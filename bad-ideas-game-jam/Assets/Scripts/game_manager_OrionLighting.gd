@@ -63,6 +63,8 @@ var _act4_oxy_obj_state := ""   # "torch" | "infected" | ""
 var set_monster_pos_debug = false
 var played_impact_lightning = false
 
+var number_of_supplies = 0
+
 # ── DIALOGUE ────────────────────────────────────────────────────────────────
 var dialogue = {
 	# (unchanged; fill as needed)
@@ -109,11 +111,11 @@ func play_from_act_8():
 	player_has_interacted_with_infected_container = true
 	set_monster_pos_debug = true
 	played_impact_lightning = true
-	twin_1.global_position = player.global_position
-	twin_2.global_position = player.global_position
 	story_increment = 8
 
 func _ready() -> void:
+	add_to_group("game_manager")
+	lifeboat.add_to_group("lifeboat")
 	# Start in DAY instantly (no tween)
 	set_time_of_day(TimeOfDay.DAY, 0.0)
 	_ambient_music_loop()
@@ -167,7 +169,7 @@ func _process(_delta: float) -> void:
 	if story_increment == 2 and player.has_oxy_torch:
 		story_increment += 0.5
 		_remove_objective()
-		_spawn_objective_marker(container)
+		_spawn_objective_marker(container, "Use the oxy–acetylene torch on the container door")
 
 	if story_increment == 2.5 and player_has_interacted_with_container:
 		story_increment += 0.5
@@ -181,7 +183,7 @@ func _process(_delta: float) -> void:
 			player_has_returned_oxy_torch = true
 			_oxy_return_obj_state = ""
 			_remove_objective()
-			_spawn_objective_marker(bed)
+			_spawn_objective_marker(bed, "Go to sleep")
 
 	if story_increment == 3 and player_has_returned_oxy_torch and player_has_slept:
 		player.fade_in_camera(5)
@@ -214,8 +216,6 @@ func _process(_delta: float) -> void:
 		_play_act_4_lifeboat()
 
 	if player_has_interacted_with_infected_container and not set_monster_pos_debug:
-		twin_1.global_position = player.global_position
-		twin_2.global_position = player.global_position
 		set_monster_pos_debug = true
 		
 	if story_increment == 7 and not player_has_interacted_with_infected_container:
@@ -231,8 +231,6 @@ func _process(_delta: float) -> void:
 
 	if story_increment == 8:
 		_update_fuel_objective()
-		twin_1.set_target_position(player.global_position)
-		twin_2.set_target_position(player.global_position)
 
 # ── ACT 1 SEQUENCES ─────────────────────────────────────────────────────────
 
@@ -245,9 +243,9 @@ func _update_oxy_torch_return_objective() -> void:
 	_oxy_return_obj_state = new_state
 	_remove_objective()
 	if new_state == "storeroom":
-		_spawn_objective_marker(store_room)
+		_spawn_objective_marker(store_room, "Drop the oxy–acetylene in the store-room")
 	else:
-		_spawn_objective_marker(oxy_torch)
+		_spawn_objective_marker(oxy_torch, "Pick up the oxy–acetylene torch")
 		
 func _update_act4_oxy_objective() -> void:
 	if player_has_interacted_with_infected_container or _dialogue_active:
@@ -258,9 +256,9 @@ func _update_act4_oxy_objective() -> void:
 	_act4_oxy_obj_state = new_state
 	_remove_objective()
 	if new_state == "infected":
-		_spawn_objective_marker(infected_container)
+		_spawn_objective_marker(infected_container, "Use the oxy–acetylene torch on the container door")
 	else:
-		_spawn_objective_marker(oxy_torch)
+		_spawn_objective_marker(oxy_torch, "Pick up the oxy–acetylene torch")
 		
 func _update_fuel_objective() -> void:
 	if player_has_completed_game:
@@ -272,7 +270,7 @@ func _update_fuel_objective() -> void:
 	_fuel_obj_state = new_state
 	_remove_objective()
 	if new_state == "lifeboat":
-		_spawn_objective_marker(lifeboat)
+		_spawn_objective_marker(lifeboat, "Drop the supplies at the lifeboat")
 	else:
 		_remove_objective()
 
@@ -307,7 +305,7 @@ func _play_act_1_start() -> void:
 	await _wait_for(2.0)
 	await twin_2.play_dialogue(23)
 	await twin_1.play_dialogue(24)
-	_spawn_objective_marker(oxy_torch)
+	_spawn_objective_marker(oxy_torch, "Pick up the oxy–acetylene torch")
 	player.toggle_movement_disabled()
 	await twin_1.play_dialogue(32)
 	_play_container_reminders()
@@ -360,7 +358,7 @@ func _play_act3_wake_up():
 	twin_1.set_target_position(container.global_position)
 	twin_2.set_target_position(container.global_position)
 	player.toggle_movement_disabled()
-	_spawn_objective_marker(store_room)
+	_spawn_objective_marker(store_room, "Go to the store-room")
 	_play_store_room_reminders()
 	_dialogue_active = false
 
@@ -374,7 +372,7 @@ func _play_act_2_store_room():
 	await twin_1.play_dialogue(44)
 	await _wait_for(3.0)
 	await twin_2.play_dialogue(45)
-	_spawn_objective_marker(container)
+	_spawn_objective_marker(container, "Meet the twins at the container")
 	_play_back_to_container_reminders()
 	_dialogue_active = false
 
@@ -398,7 +396,7 @@ func _play_act_3_container():
 	await twin_1.play_dialogue(76)
 	await player.play_dialogue(77)
 	await twin_1.play_dialogue(78)
-	_spawn_objective_marker(lifeboat)
+	_spawn_objective_marker(lifeboat, "Meet Ronnie at the lifeboat")
 	_play_lifeboat_reminders()
 	_dialogue_active = false
 
@@ -532,10 +530,11 @@ func _play_container_reminders() -> void:
 func _teleport_player(location: Node3D) -> void:
 	player.global_position = location.global_position
 
-func _spawn_objective_marker(parent: Node3D) -> void:
+func _spawn_objective_marker(parent: Node3D, objective_text: String) -> void:
 	var packed = load(objective_marker_prefab)
 	var marker = packed.instantiate()
 	parent.add_child(marker)
+	player.set_objective_text(objective_text)
 	current_objective = marker
 
 func _remove_objective() -> void:
