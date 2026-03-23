@@ -57,6 +57,7 @@ var player_has_slept = false
 var player_has_returned_oxy_torch = false
 var player_has_interacted_with_infected_container = false
 var _oxy_return_obj_state := ""   # "storeroom" | "torch" | ""
+var _act_1_obj_state := ""   # "container" | "torch" | ""
 var _fuel_obj_state := ""   # "lifeboat" | "search" | ""
 var _act4_oxy_obj_state := ""   # "torch" | "infected" | ""
 
@@ -165,11 +166,13 @@ func _process(_delta: float) -> void:
 	if story_increment == 1 and _player_is_near(container.global_position):
 		story_increment += 1
 		_play_act_1_start()
+		
+	if not player_has_interacted_with_container:
+		_update_act_1_objective()
 
 	if story_increment == 2 and player.has_oxy_torch:
 		story_increment += 0.5
 		_remove_objective()
-		_spawn_objective_marker(container, "Use the oxy–acetylene torch on the container door")
 
 	if story_increment == 2.5 and player_has_interacted_with_container:
 		story_increment += 0.5
@@ -234,6 +237,19 @@ func _process(_delta: float) -> void:
 
 # ── ACT 1 SEQUENCES ─────────────────────────────────────────────────────────
 
+func _update_act_1_objective() -> void:
+	if player_has_interacted_with_container or _dialogue_active:
+		return
+	var new_state := "container" if player.has_oxy_torch else "torch"
+	if new_state == _act_1_obj_state:
+		return
+	_act_1_obj_state = new_state
+	_remove_objective()
+	if new_state == "container":
+		_spawn_objective_marker(container, "Use the oxy–acetylene torch on the container door")
+	else:
+		_spawn_objective_marker(oxy_torch, "Pick up the oxy–acetylene torch")
+
 func _update_oxy_torch_return_objective() -> void:
 	if player_has_returned_oxy_torch or _dialogue_active:
 		return
@@ -243,7 +259,7 @@ func _update_oxy_torch_return_objective() -> void:
 	_oxy_return_obj_state = new_state
 	_remove_objective()
 	if new_state == "storeroom":
-		_spawn_objective_marker(store_room, "Drop the oxy–acetylene in the store-room")
+		_spawn_objective_marker(store_room, "Drop the oxy–acetylene torch in the store-room")
 	else:
 		_spawn_objective_marker(oxy_torch, "Pick up the oxy–acetylene torch")
 		
@@ -270,8 +286,9 @@ func _update_fuel_objective() -> void:
 	_fuel_obj_state = new_state
 	_remove_objective()
 	if new_state == "lifeboat":
-		_spawn_objective_marker(lifeboat, "Drop the supplies at the lifeboat")
+		_spawn_objective_marker(lifeboat, "Drop supplies at the lifeboat (%s/5 Collected)" % number_of_supplies)
 	else:
+		player.set_objective_text("Search the containers for supplies to escape on the lifeboat")
 		_remove_objective()
 
 func _play_act_1_start() -> void:
@@ -305,7 +322,6 @@ func _play_act_1_start() -> void:
 	await _wait_for(2.0)
 	await twin_2.play_dialogue(23)
 	await twin_1.play_dialogue(24)
-	_spawn_objective_marker(oxy_torch, "Pick up the oxy–acetylene torch")
 	player.toggle_movement_disabled()
 	await twin_1.play_dialogue(32)
 	_play_container_reminders()
