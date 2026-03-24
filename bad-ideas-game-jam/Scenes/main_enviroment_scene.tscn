@@ -9,155 +9,155 @@
 
 [node name="BIGJ_Ship_03" parent="." unique_id=350430157 instance=ExtResource("1_l8ged")]
 
-[node name="Walls Below Poop Deck_001" parent="BIGJ_Ship_03" index="1" unique_id=1395054860]
+[node name="Walls Below Poop Deck_001" parent="BIGJ_Ship_03" index="1" unique_id=654397185]
 material_override = ExtResource("2_khp5w")
 
-[node name="Container Posts_007" parent="BIGJ_Ship_03" index="3" unique_id=2123795890]
+[node name="Container Posts_007" parent="BIGJ_Ship_03" index="3" unique_id=1658649675]
 material_override = ExtResource("2_khp5w")
 
-[node name="Front wall " parent="BIGJ_Ship_03" index="4" unique_id=1880501875]
+[node name="Front wall " parent="BIGJ_Ship_03" index="4" unique_id=146295031]
 material_override = ExtResource("2_khp5w")
 
-[node name="Main Deck Complete" parent="BIGJ_Ship_03" index="83" unique_id=1363718655]
+[node name="Main Deck Complete" parent="BIGJ_Ship_03" index="83" unique_id=1404379687]
 material_override = ExtResource("2_khp5w")
 
-[node name="Poop Deck Complete" parent="BIGJ_Ship_03" index="84" unique_id=749583893]
+[node name="Poop Deck Complete" parent="BIGJ_Ship_03" index="84" unique_id=1161130730]
 material_override = ExtResource("2_khp5w")
 
-[node name="Front Playform " parent="BIGJ_Ship_03" index="85" unique_id=227248336]
+[node name="Front Playform " parent="BIGJ_Ship_03" index="85" unique_id=455735564]
 material_override = ExtResource("2_khp5w")
 
-[node name="Hold Walls_005" parent="BIGJ_Ship_03" index="86" unique_id=1494378963]
+[node name="Hold Walls_005" parent="BIGJ_Ship_03" index="86" unique_id=941436696]
 material_override = ExtResource("2_khp5w")
 
-[node name="Wall Details" parent="BIGJ_Ship_03" index="87" unique_id=1360951357]
+[node name="Wall Details" parent="BIGJ_Ship_03" index="87" unique_id=1813534731]
 material_override = ExtResource("2_khp5w")
 
-[node name="Wall Details_001" parent="BIGJ_Ship_03" index="88" unique_id=788530283]
+[node name="Wall Details_001" parent="BIGJ_Ship_03" index="88" unique_id=1725402333]
 material_override = ExtResource("2_khp5w")
 
-[node name="Hatch Cover v2" parent="BIGJ_Ship_03" index="89" unique_id=1727380138]
+[node name="Hatch Cover v2" parent="BIGJ_Ship_03" index="89" unique_id=677840463]
 material_override = ExtResource("2_khp5w")
 
-[node name="Hatch Cover v2_001" parent="BIGJ_Ship_03" index="90" unique_id=1478983191]
+[node name="Hatch Cover v2_001" parent="BIGJ_Ship_03" index="90" unique_id=1845246860]
 material_override = ExtResource("2_khp5w")
 
-[node name="Hatch Cover v2_002" parent="BIGJ_Ship_03" index="91" unique_id=951118873]
+[node name="Hatch Cover v2_002" parent="BIGJ_Ship_03" index="91" unique_id=152823739]
 material_override = ExtResource("2_khp5w")
 
-[node name="Hatch Cover v2_003" parent="BIGJ_Ship_03" index="92" unique_id=407440520]
+[node name="Hatch Cover v2_003" parent="BIGJ_Ship_03" index="92" unique_id=851104962]
 material_override = ExtResource("2_khp5w")
 
-[node name="Hatch Cover v2_004" parent="BIGJ_Ship_03" index="93" unique_id=1125243383]
+[node name="Hatch Cover v2_004" parent="BIGJ_Ship_03" index="93" unique_id=926609021]
 material_override = ExtResource("2_khp5w")
 
-[node name="Hatch Cover v2_004_001" parent="BIGJ_Ship_03" index="94" unique_id=1357182644]
+[node name="Hatch Cover v2_004_001" parent="BIGJ_Ship_03" index="94" unique_id=363715946]
 material_override = ExtResource("2_khp5w")
 
-[node name="Hatch Cover v2_004_002" parent="BIGJ_Ship_03" index="95" unique_id=1458628673]
+[node name="Hatch Cover v2_004_002" parent="BIGJ_Ship_03" index="95" unique_id=1278951675]
 material_override = ExtResource("2_khp5w")
 
-[node name="Hatch Cover v2_005" parent="BIGJ_Ship_03" index="96" unique_id=1753991680]
+[node name="Hatch Cover v2_005" parent="BIGJ_Ship_03" index="96" unique_id=1866264142]
 material_override = ExtResource("2_khp5w")
 
-[node name="Plane_012" parent="BIGJ_Ship_03" index="108" unique_id=1691808894]
+[node name="Plane_012" parent="BIGJ_Ship_03" index="108" unique_id=1140188535]
 material_override = ExtResource("2_khp5w")
 
-[node name="Hull Complete Shape" parent="BIGJ_Ship_03" index="109" unique_id=1454174596]
+[node name="Hull Complete Shape" parent="BIGJ_Ship_03" index="109" unique_id=1455246745]
 material_override = ExtResource("2_im6th")
 
-[node name="Hull Complete Shape_001" parent="BIGJ_Ship_03" index="110" unique_id=1521117819]
+[node name="Hull Complete Shape_001" parent="BIGJ_Ship_03" index="110" unique_id=1716468980]
 material_override = ExtResource("2_im6th")
 
-[node name="Lashing Bridge" parent="BIGJ_Ship_03" index="147" unique_id=683695229]
+[node name="Lashing Bridge" parent="BIGJ_Ship_03" index="147" unique_id=901353254]
 material_override = ExtResource("2_khp5w")
 
-[node name="Lashing Bridge_003" parent="BIGJ_Ship_03" index="148" unique_id=816829081]
+[node name="Lashing Bridge_003" parent="BIGJ_Ship_03" index="148" unique_id=534391879]
 material_override = ExtResource("2_khp5w")
 
-[node name="Lashing Bridge_006" parent="BIGJ_Ship_03" index="149" unique_id=1730760866]
+[node name="Lashing Bridge_006" parent="BIGJ_Ship_03" index="149" unique_id=1837770837]
 material_override = ExtResource("2_khp5w")
 
-[node name="Lashing Bridge_001" parent="BIGJ_Ship_03" index="150" unique_id=1046214257]
+[node name="Lashing Bridge_001" parent="BIGJ_Ship_03" index="150" unique_id=894843303]
 material_override = ExtResource("2_khp5w")
 
-[node name="lashing Bridge 1_002" parent="BIGJ_Ship_03/Lashing Bridge Entry Large" parent_id_path=PackedInt32Array(350430157, 1362380098) index="3" unique_id=956591505]
+[node name="lashing Bridge 1_002" parent="BIGJ_Ship_03/Lashing Bridge Entry Large" parent_id_path=PackedInt32Array(350430157, 1615837988) index="3" unique_id=603629640]
 material_override = ExtResource("2_khp5w")
 
-[node name="lashing Bridge 1_0022" parent="BIGJ_Ship_03/Lashing Bridge Entry Large_001" parent_id_path=PackedInt32Array(350430157, 1225249427) index="3" unique_id=989898584]
+[node name="lashing Bridge 1_0022" parent="BIGJ_Ship_03/Lashing Bridge Entry Large_001" parent_id_path=PackedInt32Array(350430157, 1280836300) index="3" unique_id=617099307]
 material_override = ExtResource("2_khp5w")
 
-[node name="lashing Bridge 1_0023" parent="BIGJ_Ship_03" index="156" unique_id=1924481855]
+[node name="lashing Bridge 1_0023" parent="BIGJ_Ship_03" index="156" unique_id=594085731]
 material_override = ExtResource("2_khp5w")
 
-[node name="lashing Bridge 1_003" parent="BIGJ_Ship_03" index="161" unique_id=2027749293]
+[node name="lashing Bridge 1_003" parent="BIGJ_Ship_03" index="161" unique_id=1058635146]
 material_override = ExtResource("2_khp5w")
 
-[node name="Container Posts A" parent="BIGJ_Ship_03" index="163" unique_id=251196010]
+[node name="Container Posts A" parent="BIGJ_Ship_03" index="163" unique_id=752907018]
 material_override = ExtResource("2_khp5w")
 
-[node name="Container Posts B" parent="BIGJ_Ship_03" index="164" unique_id=1176307728]
+[node name="Container Posts B" parent="BIGJ_Ship_03" index="164" unique_id=1118156706]
 material_override = ExtResource("2_khp5w")
 
-[node name="Container Posts B_001" parent="BIGJ_Ship_03" index="165" unique_id=96406484]
+[node name="Container Posts B_001" parent="BIGJ_Ship_03" index="165" unique_id=1850417292]
 material_override = ExtResource("2_khp5w")
 
-[node name="Container Posts A_002" parent="BIGJ_Ship_03" index="167" unique_id=342816245]
+[node name="Container Posts A_002" parent="BIGJ_Ship_03" index="167" unique_id=883666280]
 material_override = ExtResource("2_khp5w")
 
-[node name="Container Posts B_002" parent="BIGJ_Ship_03" index="168" unique_id=550923169]
+[node name="Container Posts B_002" parent="BIGJ_Ship_03" index="168" unique_id=2102040328]
 material_override = ExtResource("2_khp5w")
 
-[node name="Container Posts B_003" parent="BIGJ_Ship_03" index="169" unique_id=951191760]
+[node name="Container Posts B_003" parent="BIGJ_Ship_03" index="169" unique_id=1604813900]
 material_override = ExtResource("2_khp5w")
 
-[node name="Container Posts B_004" parent="BIGJ_Ship_03" index="170" unique_id=1572027901]
+[node name="Container Posts B_004" parent="BIGJ_Ship_03" index="170" unique_id=1019848206]
 material_override = ExtResource("2_khp5w")
 
-[node name="Container Posts A_003" parent="BIGJ_Ship_03" index="171" unique_id=627552384]
+[node name="Container Posts A_003" parent="BIGJ_Ship_03" index="171" unique_id=218369944]
 material_override = ExtResource("2_khp5w")
 
-[node name="Container Posts B_005" parent="BIGJ_Ship_03" index="172" unique_id=1584826974]
+[node name="Container Posts B_005" parent="BIGJ_Ship_03" index="172" unique_id=590747219]
 material_override = ExtResource("2_khp5w")
 
-[node name="Container Posts B_006" parent="BIGJ_Ship_03" index="173" unique_id=1295749074]
+[node name="Container Posts B_006" parent="BIGJ_Ship_03" index="173" unique_id=1296489388]
 material_override = ExtResource("2_khp5w")
 
-[node name="Container Posts A_005" parent="BIGJ_Ship_03" index="174" unique_id=1195203527]
+[node name="Container Posts A_005" parent="BIGJ_Ship_03" index="174" unique_id=1428540181]
 material_override = ExtResource("2_khp5w")
 
-[node name="Container Posts B_007" parent="BIGJ_Ship_03" index="175" unique_id=1790268476]
+[node name="Container Posts B_007" parent="BIGJ_Ship_03" index="175" unique_id=1771811883]
 material_override = ExtResource("2_khp5w")
 
-[node name="Container Posts B_008" parent="BIGJ_Ship_03" index="176" unique_id=1254083883]
+[node name="Container Posts B_008" parent="BIGJ_Ship_03" index="176" unique_id=1371173320]
 material_override = ExtResource("2_khp5w")
 
-[node name="Container Posts B_009" parent="BIGJ_Ship_03" index="177" unique_id=57753342]
+[node name="Container Posts B_009" parent="BIGJ_Ship_03" index="177" unique_id=24884657]
 material_override = ExtResource("2_khp5w")
 
-[node name="Container Posts B_010" parent="BIGJ_Ship_03" index="178" unique_id=1612295021]
+[node name="Container Posts B_010" parent="BIGJ_Ship_03" index="178" unique_id=1027776878]
 material_override = ExtResource("2_khp5w")
 
-[node name="Container Posts A_008" parent="BIGJ_Ship_03" index="179" unique_id=1733573580]
+[node name="Container Posts A_008" parent="BIGJ_Ship_03" index="179" unique_id=797700640]
 material_override = ExtResource("2_khp5w")
 
-[node name="Container Posts B_011" parent="BIGJ_Ship_03" index="180" unique_id=1315751867]
+[node name="Container Posts B_011" parent="BIGJ_Ship_03" index="180" unique_id=868564339]
 material_override = ExtResource("2_khp5w")
 
-[node name="Container Posts B_012" parent="BIGJ_Ship_03" index="181" unique_id=1874608273]
+[node name="Container Posts B_012" parent="BIGJ_Ship_03" index="181" unique_id=407375544]
 material_override = ExtResource("2_khp5w")
 
-[node name="bridge start_002" parent="BIGJ_Ship_03" index="182" unique_id=1393554162]
+[node name="bridge start_002" parent="BIGJ_Ship_03" index="182" unique_id=6325698]
 material_override = ExtResource("2_khp5w")
 
-[node name="bridge start_001" parent="BIGJ_Ship_03" index="183" unique_id=1276792051]
+[node name="bridge start_001" parent="BIGJ_Ship_03" index="183" unique_id=1665044299]
 material_override = ExtResource("2_khp5w")
 
-[node name="bridge start" parent="BIGJ_Ship_03" index="184" unique_id=2028785450]
+[node name="bridge start" parent="BIGJ_Ship_03" index="184" unique_id=20368924]
 material_override = ExtResource("2_khp5w")
 
 [node name="container_array 5" type="Node3D" parent="BIGJ_Ship_03" unique_id=2021597639]
-transform = Transform3D(0.98, 0, 0, 0, 0.98, 0, 0, 0, 0.98, -2.466865, -0.10829115, 48.0858)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.466865, -0.10829115, 48.0858)
 
 [node name="Container" parent="BIGJ_Ship_03/container_array 5" unique_id=373595834 instance=ExtResource("2_4ftm2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.6653728, 0.09125495, 3.2643664)
@@ -178,7 +178,7 @@ transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 10.6
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -5.44128, 2.8594832, -1.333046)
 
 [node name="container_array 1" type="Node3D" parent="BIGJ_Ship_03" unique_id=1483757596]
-transform = Transform3D(0.98, 0, 0, 0, 0.98, 0, 0, 0, 0.98, -1.2525635, 2.0300002, 33.871853)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.2525635, 2.0300002, 33.871853)
 
 [node name="@Node3D@212723" parent="BIGJ_Ship_03/container_array 1" unique_id=401195711 instance=ExtResource("2_4ftm2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.279607, 0.09125495, -0.019112376)
@@ -274,7 +274,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.244488, 2.8453994, 6.551339
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.253042, 5.5995436, 6.5458636)
 
 [node name="container_array 2" type="Node3D" parent="BIGJ_Ship_03" unique_id=785673378]
-transform = Transform3D(0.98, 0, 0, 0, 0.98, 0, 0, 0, 0.98, -1.2525635, 1.9120002, 18.04541)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.2525635, 1.9120002, 18.04541)
 
 [node name="Container" parent="BIGJ_Ship_03/container_array 2" unique_id=16096896 instance=ExtResource("2_4ftm2")]
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -9.276017, 0.09125495, -0.014495812)
@@ -400,7 +400,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.894067, 0.09125495, 6.5484
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.8908415, 2.8453994, 6.549123)
 
 [node name="container_array 6" type="Node3D" parent="BIGJ_Ship_03" unique_id=159602072]
-transform = Transform3D(0.98, 0, 0, 0, 0.98, 0, 0, 0, 0.98, -1.2525635, 2.005, 5.132507)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.2525635, 2.005, 5.132507)
 
 [node name="Container" parent="BIGJ_Ship_03/container_array 6" unique_id=24344546 instance=ExtResource("2_4ftm2")]
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -9.283389, 0.09125495, -0.012577688)
@@ -523,7 +523,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.893322, 2.8453994, 6.54956
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.896081, 5.5995436, 6.5524073)
 
 [node name="container_array 7" type="Node3D" parent="BIGJ_Ship_03" unique_id=1734884861]
-transform = Transform3D(0.98, 0, 0, 0, 0.98, 0, 0, 0, 0.98, -1.2525635, 1.9970002, -10.002493)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.2525635, 1.9970002, -10.002493)
 
 [node name="Container" parent="BIGJ_Ship_03/container_array 7" unique_id=1538564096 instance=ExtResource("2_4ftm2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.275865, 0.09125495, -0.011596545)
@@ -622,7 +622,7 @@ transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 11.8
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.8923645, 2.8453994, 6.5451937)
 
 [node name="container_array 8" type="Node3D" parent="BIGJ_Ship_03" unique_id=281474214]
-transform = Transform3D(0.98, 0, 0, 0, 0.98, 0, 0, 0, 0.98, -1.2525635, 2.021, -23.320492)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.2525635, 2.021, -23.320492)
 
 [node name="Container" parent="BIGJ_Ship_03/container_array 8" unique_id=1560300556 instance=ExtResource("2_4ftm2")]
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -9.278192, 0.09125495, -0.01867595)
@@ -670,7 +670,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.9824922, 0.09125495, 6.547
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.896343, 0.09125495, 6.54371)
 
 [node name="container_array 9" type="Node3D" parent="BIGJ_Ship_03" unique_id=1445341286]
-transform = Transform3D(0.98, 0, 0, 0, 0.98, 0, 0, 0, 0.98, 1.3433685, 1.9990001, -39.270496)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.3433685, 1.9990001, -39.270496)
 
 [node name="Container" parent="BIGJ_Ship_03/container_array 9" unique_id=1017930563 instance=ExtResource("2_4ftm2")]
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -9.274737, 0.09125495, -0.01894195)
@@ -769,7 +769,7 @@ transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 9.25
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.249072, 2.8453994, 6.5506577)
 
 [node name="container_array 10" type="Node3D" parent="BIGJ_Ship_03" unique_id=405840426]
-transform = Transform3D(0.98, 0, 0, 0, 0.98, 0, 0, 0, 0.98, -1.2525635, 2.008, -53.852493)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.2525635, 2.008, -53.852493)
 
 [node name="@Node3D@263622" parent="BIGJ_Ship_03/container_array 10" unique_id=1732932404 instance=ExtResource("2_4ftm2")]
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -0.019482046, 0.09125495, -0.015681898)
