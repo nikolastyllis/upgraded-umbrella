@@ -24,5 +24,6 @@ path_postprocessing = 1
 avoidance_enabled = true
 
 [node name="Character" parent="." unique_id=1452525287 instance=ExtResource("2_avcrw")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, -0.95988744, 0)
 
 [connection signal="velocity_computed" from="NavigationAgent3D" to="." method="_on_navigation_agent_3d_velocity_computed"]

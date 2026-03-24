@@ -438,6 +438,9 @@ transform = Transform3D(-0.87114525, 0, -0.49102545, 0, 1, 0, 0.49102545, 0, -0.
 [node name="InfectedContainer" type="Node3D" parent="GameManager/Locations" unique_id=838499068]
 transform = Transform3D(-0.87114525, 0, -0.49102545, 0, 1, 0, 0.49102545, 0, -0.87114525, 48.17851, -4.8875194, 110.83903)
 
+[node name="InfectedSpawn" type="Node3D" parent="GameManager/Locations" unique_id=2083012015]
+transform = Transform3D(-0.87114525, 0, -0.49102545, 0, 1, 0, 0.49102545, 0, -0.87114525, 48.83744, -4.617096, 112.008064)
+
 [node name="StoreRoom" type="Node3D" parent="GameManager/Locations" unique_id=2049401470]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.9505725, -3.5560427, 15.856671)
 
@@ -492,5 +495,5 @@ action_text = "Interact"
 [node name="Twin2" parent="." unique_id=1596341678 instance=ExtResource("17_yiumw")]
 transform = Transform3D(0.25881904, 0, -0.9659258, 0, 1, 0, 0.9659258, 0, 0.25881904, -2.917481, 2.6326113, -43.20588)
 
-[node name="Npc" parent="." unique_id=278726554 instance=ExtResource("18_tc46g")]
-transform = Transform3D(-0.050279196, 0, -0.9987352, 0, 1, 0, 0.9987352, 0, -0.050279196, 4.1662846, 1.8193221, -43.535473)
+[node name="Creature" parent="." unique_id=747631994 instance=ExtResource("18_tc46g")]
+transform = Transform3D(0.060943916, 0, 0.99814117, 0, 1, 0, -0.99814117, 0, 0.060943916, 4.1631603, 2.6473827, -43.434284)
