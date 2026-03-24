@@ -2,7 +2,7 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ns1x8loauwrk"
+uid="uid://dx3o7e7mm1asl"
 path.s3tc="res://.godot/imported/Gilbert_01_v02_gilbert_tex_Normal.png-a23538ed959bb8fe9266e78ecf351342.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
@@ -29,8 +29,8 @@ compress/normal_map=1
 compress/channel_pack=0
 mipmaps/generate=true
 mipmaps/limit=-1
-roughness/mode=0
-roughness/src_normal=""
+roughness/mode=1
+roughness/src_normal="res://Assets/Models/Characters/Gilbert/Gilbert_01_v02_gilbert_tex_Normal.png"
 process/channel_remap/red=0
 process/channel_remap/green=1
 process/channel_remap/blue=2

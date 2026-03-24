@@ -1,0 +1,56 @@
+[gd_resource type="Environment" format=3 uid="uid://clu4dy4ig886a"]
+
+[ext_resource type="Material" uid="uid://eb5djxh4js65" path="res://Shaders/SkyShaderl.tres" id="1_1lxed"]
+
+[sub_resource type="Gradient" id="Gradient_1lxed"]
+offsets = PackedFloat32Array(0, 0.7307692, 1)
+colors = PackedColorArray(0, 0, 0, 1, 0.7469797, 0.74697965, 0.74697965, 1, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_j3wgc"]
+gradient = SubResource("Gradient_1lxed")
+fill_to = Vector2(0.8262108, 0.0028490028)
+
+[sub_resource type="Sky" id="Sky_jvqja"]
+sky_material = ExtResource("1_1lxed")
+
+[resource]
+background_mode = 2
+sky = SubResource("Sky_jvqja")
+ambient_light_source = 3
+ambient_light_color = Color(0.53696036, 0.41278136, 0.3013136, 1)
+ambient_light_energy = 5.13
+tonemap_mode = 1
+tonemap_exposure = 0.78
+ssr_fade_in = 0.7386868
+ssao_enabled = true
+ssil_enabled = true
+ssil_radius = 7.7
+ssil_intensity = 0.42
+ssil_sharpness = 1.0
+sdfgi_enabled = true
+sdfgi_use_occlusion = true
+glow_enabled = true
+fog_enabled = true
+fog_light_color = Color(0.5229361, 0.48964188, 0.4863223, 1)
+fog_light_energy = 0.08
+fog_sun_scatter = 0.69
+fog_density = 0.63190836
+fog_aerial_perspective = 0.48
+fog_sky_affect = 0.815
+fog_depth_curve = 0.5547851
+fog_depth_begin = 0.0
+fog_depth_end = 326.7
+volumetric_fog_enabled = true
+volumetric_fog_density = 0.005
+volumetric_fog_albedo = Color(0.99282366, 0.5525977, 0.19748756, 1)
+volumetric_fog_emission_energy = 0.0
+volumetric_fog_anisotropy = 0.48
+volumetric_fog_length = 91.1
+volumetric_fog_detail_spread = 2.5491216
+volumetric_fog_ambient_inject = 1.01
+volumetric_fog_sky_affect = 0.0
+adjustment_enabled = true
+adjustment_brightness = 0.87
+adjustment_contrast = 1.11
+adjustment_saturation = 0.98
+adjustment_color_correction = SubResource("GradientTexture2D_j3wgc")

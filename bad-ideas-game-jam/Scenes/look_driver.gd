@@ -51,13 +51,12 @@ class_name LookDriver
 @export var exposure_curve: Curve
 @export var cloud_amount_curve: Curve
 @export var sun_energy_curve: Curve   # NEW
+@export var sky_sun_elev_uniform := "sun_elev"
 
 # -------------------------
 # Uniform/property names (match your shaders)
 # -------------------------
 @export_group("Sky Shader Uniform Names")
-@export var sky_sun_elev_uniform := "sun_elev" # your revised sky shader has this
-@export var sky_time_uniform := "time_of_day"  # kept for compatibility
 @export var sky_zenith_uniform := "day_zenith"
 @export var sky_horizon_uniform := "day_horizon"
 @export var sky_cloud_amount_uniform := "cloud_amount"
@@ -126,6 +125,8 @@ func _apply_look(t: float) -> void:
 		var cur_energy := sun.light_energy
 		var target_energy := _sample_curve(sun_energy_curve, t, cur_energy)
 		sun.light_energy = target_energy
+		
+		
 	var horizon_col := _sample_col(horizon_ramp, t, Color(0.70, 0.85, 1.0))
 	# 2) Environment (fog + adjustments)
 	var env := _get_live_environment()
@@ -145,15 +146,13 @@ func _apply_look(t: float) -> void:
 	var sky_mat := _get_sky_shader()
 	if sky_mat != null:
 		_set_shader_float(sky_mat, sky_sun_elev_uniform, t)
-		_set_shader_float(sky_mat, sky_time_uniform, _to_blender_like_time(t))
-
 		_set_shader_color(sky_mat, sky_zenith_uniform, _sample_col(sky_zenith_ramp, t, Color(0.18, 0.45, 0.95)))
 		
 		_set_shader_color(sky_mat, sky_horizon_uniform, horizon_col)
 
 		var cur_cloud := _get_shader_float(sky_mat, sky_cloud_amount_uniform, 0.55)
 		_set_shader_float(sky_mat, sky_cloud_amount_uniform, _sample_curve(cloud_amount_curve, t, cur_cloud))
-
+	
 	# 4) Ocean shader uniforms
 	var ocean_mat := _get_ocean_shader()
 

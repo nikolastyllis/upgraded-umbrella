@@ -2,9 +2,9 @@
 
 [ext_resource type="Material" uid="uid://sgetjvg177mb" path="res://Shaders/outline.tres" id="1_ehslj"]
 [ext_resource type="Shader" uid="uid://d266trvxphdyu" path="res://Shaders/cel-shader-base.gdshader" id="2_ivi4c"]
-[ext_resource type="Texture2D" uid="uid://dkav24ndq4104" path="res://Assets/Models/Characters/Gilbert/Gilbert_01_v02_gilbert_tex_Col_Alpha.png" id="3_ivi4c"]
-[ext_resource type="Texture2D" uid="uid://ns1x8loauwrk" path="res://Assets/Models/Characters/Gilbert/Gilbert_01_v02_gilbert_tex_Normal.png" id="4_epiwf"]
-[ext_resource type="Texture2D" uid="uid://4msw4ra7lixg" path="res://Assets/Models/Characters/Gilbert/Gilbert_01_v02_gilbert_tex_ORM.png" id="5_8uw3d"]
+[ext_resource type="Texture2D" uid="uid://cq6hdadxh2vo8" path="res://Assets/Models/Characters/Gilbert/gilbert_tex_Col_Alpha.png" id="3_ivi4c"]
+[ext_resource type="Texture2D" uid="uid://bchebb7hetpft" path="res://Assets/Models/Characters/Gilbert/gilbert_tex_Normal.png" id="4_epiwf"]
+[ext_resource type="Texture2D" uid="uid://v2aacwh3xxr2" path="res://Assets/Models/Characters/Gilbert/gilbert_tex_ORM.png" id="5_8uw3d"]
 
 [resource]
 render_priority = 0

@@ -1,41 +1,49 @@
 [gd_resource type="ShaderMaterial" format=3 uid="uid://eb5djxh4js65"]
 
 [ext_resource type="Shader" uid="uid://dbfwmpsps6ds6" path="res://Shaders/SkyShader.gdshader" id="1_cd6vg"]
+[ext_resource type="Texture2D" uid="uid://cv546mr8d5nsh" path="res://Assets/Textures/Enviroment/Clouds/18f10853da7f5bc239e602eb2e80442f.jpg" id="2_rkan8"]
+[ext_resource type="Texture2D" uid="uid://defmjtpna8w0w" path="res://Assets/Textures/Enviroment/Clouds/cirrus.png" id="2_y2522"]
+[ext_resource type="Texture2D" uid="uid://cvd4hnm8r4re6" path="res://Assets/Textures/Enviroment/Clouds/T_Random_54.png" id="4_y2522"]
 
 [resource]
 shader = ExtResource("1_cd6vg")
-shader_parameter/sun_elev = 0.10167396
-shader_parameter/time_of_day = 0.949163
-shader_parameter/exposure = 0.96600003936523
-shader_parameter/band_steps = 2.9470000449825
-shader_parameter/band_softness = 0.25
-shader_parameter/horizon_height = -0.00099999352773
-shader_parameter/horizon_softness = 0.010000000475
-shader_parameter/sun_size = 0.0010000000475
-shader_parameter/sun_halo = 0.038000001805
-shader_parameter/sun_disc_boost = 1.4050000667375
-shader_parameter/cloud_amount = 0.66382796
-shader_parameter/cloud_scale = 0.84100003342773
-shader_parameter/cloud_speed = 0.1210000057475
+shader_parameter/sun_elev = 0.4872460439801216
+shader_parameter/exposure = 1.0
+shader_parameter/band_steps = 5.6950001755125
+shader_parameter/band_softness = 0.15600000741
+shader_parameter/horizon_height = 0.05800000927477003
+shader_parameter/horizon_softness = 0.20800000988
+shader_parameter/sun_size = 0.0030000001425
+shader_parameter/sun_halo = 0.04800000228
+shader_parameter/sun_disc_boost = 1.2470000592325
+shader_parameter/cloud_amount = 0.3884421
+shader_parameter/cloud_scale = 0.4850000165177299
+shader_parameter/cloud_speed = 0.0530000025175
 shader_parameter/cloud_wind_dir = Vector2(1, 0.3)
-shader_parameter/cloud_contrast = 1.914000067165
+shader_parameter/cloud_contrast = 0.9750000225625
 shader_parameter/cloud_softness = 0.34999999403954
 shader_parameter/night_clouds = 1.0
-shader_parameter/cloud_day_color = Color(0.67481464, 0.67481464, 0.6748146, 1)
-shader_parameter/cloud_dusk_color = Color(0.99999934, 0.60946, 0.23328283, 1)
-shader_parameter/cloud_night_color = Color(0.046924733, 0.062873825, 0.088392906, 1)
-shader_parameter/cloud_shadow_color = Color(0.02, 0.03, 0.01, 1)
-shader_parameter/night_cloud_darkness = 2.0
-shader_parameter/cloud_light_strength = 0.4570000217075
-shader_parameter/cloud_shadow_strength = 1.5050000714875
-shader_parameter/cloud_anisotropy = 0.27600001311
-shader_parameter/cloud_banding = 4.4110001620225
-shader_parameter/stars = 0.0
-shader_parameter/star_density = 1.36500005831773
-shader_parameter/day_zenith = Color(0.4018696, 0.69017214, 0.83898306, 1)
-shader_parameter/day_horizon = Color(0.6831847, 0.79950786, 0.8124848, 1)
-shader_parameter/dusk_zenith = Color(0.03430582, 0.17305031, 0.34587076, 1)
-shader_parameter/dusk_horizon = Color(0.74478364, 0.2859082, 0.11864882, 1)
-shader_parameter/night_zenith = Color(0.07499113, 0.0776569, 0.16479325, 1)
-shader_parameter/night_horizon = Color(0.17126894, 0.19912833, 0.31925288, 1)
-shader_parameter/ground_tint = Color(0.0823747, 0.2629932, 0.39122584, 1)
+shader_parameter/cloud_day_color = Color(0.67206407, 0.67206407, 0.67206407, 1)
+shader_parameter/cloud_dusk_color = Color(0.5897895, 0.6321171, 0.64807224, 1)
+shader_parameter/cloud_night_color = Color(0.19094837, 0.2712397, 0.42012298, 1)
+shader_parameter/cloud_shadow_color = Color(0.20610094, 0.2345815, 0.24881932, 1)
+shader_parameter/night_cloud_darkness = 1.8610000883975
+shader_parameter/cloud_light_strength = 1.1050000524875
+shader_parameter/cloud_shadow_strength = 0.1150000054625
+shader_parameter/cloud_anisotropy = 0.2130000101175
+shader_parameter/cloud_banding = 3.038000096805
+shader_parameter/cumulus_tex = ExtResource("4_y2522")
+shader_parameter/cumulus_detail_tex = ExtResource("2_y2522")
+shader_parameter/cirrus_tex = ExtResource("2_rkan8")
+shader_parameter/cirrus_amount = 0.230000010925
+shader_parameter/cirrus_scale = 0.33800000953523
+shader_parameter/cirrus_speed = 0.02800000133
+shader_parameter/stars = 1.0
+shader_parameter/star_density = 0.52200001827523
+shader_parameter/day_zenith = Color(0.25504714, 0.44598764, 0.6103476, 1)
+shader_parameter/day_horizon = Color(0.5269836, 0.48781398, 0.4839086, 1)
+shader_parameter/dusk_zenith = Color(0.32435295, 0.24814785, 0.32517034, 1)
+shader_parameter/dusk_horizon = Color(1, 0.50465226, 0.24068418, 1)
+shader_parameter/night_zenith = Color(0.00840021, 0.008399359, 0.026454968, 1)
+shader_parameter/night_horizon = Color(0, 0, 0, 1)
+shader_parameter/ground_tint = Color(0.02, 0.02, 0.03, 1)

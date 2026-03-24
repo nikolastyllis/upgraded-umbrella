@@ -13,6 +13,8 @@ config_version=5
 config/name="Bad Ideas Game Jam"
 run/main_scene="uid://cnab0waxuwnf6"
 config/features=PackedStringArray("4.6", "Forward Plus")
+boot_splash/bg_color=Color(0.06469657, 0.06469652, 0.0646965, 1)
+boot_splash/image="uid://b7v1yr45rp4tq"
 config/icon="res://icon.svg"
 
 [audio]
@@ -101,6 +103,7 @@ shift={
 [rendering]
 
 rendering_device/driver.windows="d3d12"
+anti_aliasing/quality/screen_space_aa=1
 
 [shader_globals]
 
@@ -114,7 +117,7 @@ fresnel_smoothness={
 }
 outline_width={
 "type": "float",
-"value": 6.0
+"value": 8.0
 }
 outline_color={
 "type": "color",
@@ -122,5 +125,5 @@ outline_color={
 }
 diffuse_curve={
 "type": "sampler2D",
-"value": "::l4e8c"
+"value": "::0ixb7"
 }
