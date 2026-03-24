@@ -29,16 +29,16 @@ size = Vector3(2.6167486, 0.06036228, 6.5329328)
 [sub_resource type="BoxShape3D" id="BoxShape3D_u53l7"]
 size = Vector3(0.21462429, 2.7541444, 6.5329328)
 
-[node name="HeroContainer" unique_id=1608144133 instance=ExtResource("1_6mape")]
+[node name="HeroContainer" unique_id=88889113 instance=ExtResource("1_6mape")]
 script = ExtResource("2_fgtk5")
 
-[node name="Skeleton3D" parent="rigged_container" parent_id_path=PackedInt32Array(1530316704) index="7" unique_id=1522481256]
+[node name="Skeleton3D" parent="rigged_container" parent_id_path=PackedInt32Array(553396367) index="0" unique_id=1007115395]
 bones/1/rotation = Quaternion(-2.6692543e-08, -2.6692543e-08, -0.7071068, 0.7071068)
 bones/2/rotation = Quaternion(0.7071063, -1.0536721e-08, 0.70710737, 1.0536705e-08)
 bones/3/rotation = Quaternion(-2.6692543e-08, 2.6692543e-08, 0.7071068, 0.7071068)
 bones/4/rotation = Quaternion(-0.7071063, 0, 0.70710737, 0)
 
-[node name="mesh_container_model" parent="rigged_container/Skeleton3D" index="0" unique_id=1172533044]
+[node name="mesh_container_model" parent="rigged_container/Skeleton3D" index="0" unique_id=1234677160]
 surface_material_override/0 = ExtResource("3_teyur")
 surface_material_override/1 = ExtResource("4_d1rd4")
 
@@ -71,7 +71,7 @@ transform = Transform3D(-0.9320761, 0, -0.36226243, 0.12639531, 0.9371578, -0.32
 shape = SubResource("BoxShape3D_d1rd4")
 
 [node name="Physical Bone door_left" type="PhysicalBone3D" parent="rigged_container/Skeleton3D/PhysicalBoneSimulator3D" index="1" unique_id=324943303]
-transform = Transform3D(-1.5288359e-05, 0.31480053, -0.9491579, 0.27684677, 0.9120605, 0.30249223, 0.9609141, -0.2627667, -0.08716545, -0.8543733, 1.1432605, 3.194966)
+transform = Transform3D(-1.5288359e-05, 0.31480053, -0.9491579, 0.27684677, 0.9120605, 0.30249223, 0.9609141, -0.2627667, -0.08716545, -0.8298051, 1.1180115, 3.1317537)
 joint_type = 1
 joint_offset = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.9557774e-06, -1.0249205e-05, 0.39407033)
 body_offset = Transform3D(-0.2768467, -0.9120605, -0.30249223, -1.5288359e-05, 0.31480053, -0.9491579, 0.9609141, -0.26276663, -0.08716543, 0.119193316, 0.37403816, 0.034348488)
@@ -85,10 +85,10 @@ transform = Transform3D(0.9595916, 0.2804912, 0.022976965, -0.26056245, 0.916312
 shape = SubResource("BoxShape3D_ii6rf")
 
 [node name="Physical Bone door_right" type="PhysicalBone3D" parent="rigged_container/Skeleton3D/PhysicalBoneSimulator3D" index="2" unique_id=1663257712]
-transform = Transform3D(1.5646219e-07, -0.31480643, 0.9491559, -0.27689013, 0.9120454, 0.302498, -0.9609016, -0.26281196, -0.08716664, 0.85433215, 1.1432681, 3.1949465)
+transform = Transform3D(1.5646219e-07, -0.31480643, 0.9491559, -0.27689013, 0.9120454, 0.302498, -0.9609016, -0.26281196, -0.087166645, 0.82976395, 1.1180191, 3.1317341)
 joint_type = 1
 joint_offset = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.4547259e-05, -3.7741847e-05, 0.39410532)
-body_offset = Transform3D(-0.27689007, 0.9120454, 0.302498, -1.5646219e-07, 0.31480643, -0.9491559, -0.9609016, -0.2628119, -0.08716662, -0.119185686, 0.3740793, 0.034328938)
+body_offset = Transform3D(-0.27689007, 0.9120454, 0.302498, -1.5646219e-07, 0.31480643, -0.9491559, -0.9609016, -0.2628119, -0.087166615, -0.119185686, 0.3740793, 0.034328938)
 bone_name = "door_right"
 joint_constraints/bias = 0.3
 joint_constraints/damping = 1.0
