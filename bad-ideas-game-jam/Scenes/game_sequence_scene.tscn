@@ -89,12 +89,12 @@ point_count = 2
 
 [sub_resource type="Curve" id="Curve_57jre"]
 _limits = [0.0, 2.0, 0.0, 1.0]
-_data = [Vector2(0, 0.23275483), 0.0, 0.0, 0, 0, Vector2(0.76632303, 1.39169), 4.314947, 4.314947, 0, 0, Vector2(1, 2), 0.0, 0.0, 0, 0]
+_data = [Vector2(0, 0.23275483), 0.0, 0.0, 0, 0, Vector2(0.76632303, 1.39169), 4.314947, 4.314947, 0, 0, Vector2(1, 1.6853567), 0.0, 0.0, 0, 0]
 point_count = 3
 
 [sub_resource type="Curve" id="Curve_iy7pm"]
 _limits = [-1.0, 1.0, 0.0, 1.0]
-_data = [Vector2(0, 0.10326731), 0.0, -0.15109101, 0, 0, Vector2(0.66494846, 0.14521968), 0.0, 0.0, 0, 0, Vector2(1, -0.3057686), -0.12850711, 0.0, 0, 0]
+_data = [Vector2(0, 0.21339238), 0.0, -0.15109101, 0, 0, Vector2(0.66323024, 0.19766021), 0.0, 0.0, 0, 0, Vector2(1, 0.3602258), -0.12850711, 0.0, 0, 0]
 point_count = 3
 
 [sub_resource type="Curve" id="Curve_uiotd"]
@@ -156,11 +156,11 @@ shader = ExtResource("2_qcyk2")
 shader_parameter/time_scale = 1.0
 shader_parameter/ocean_speed = 0.1
 shader_parameter/ocean_dir = Vector3(0, 0, -1)
-shader_parameter/macro_amp = 5.3959446
-shader_parameter/macro_freq = 0.10676728
+shader_parameter/macro_amp = 6.1438794
+shader_parameter/macro_freq = 0.1167701
 shader_parameter/macro_speed = 0.72
-shader_parameter/micro_amp = 1.1458151
-shader_parameter/micro_freq = 0.87476814
+shader_parameter/micro_amp = 1.4518641
+shader_parameter/micro_freq = 0.87676466
 shader_parameter/micro_speed = 1.59
 shader_parameter/wave_dir1 = Vector2(-0.545, 1.56)
 shader_parameter/wave_dir2 = Vector2(-0.21, 0.27)
@@ -170,9 +170,9 @@ shader_parameter/normal_strength = 0.2
 shader_parameter/normal_speed1 = Vector2(0, -0.1)
 shader_parameter/normal_speed2 = Vector2(0, -0.1)
 shader_parameter/normal_tiling = 0.04
-shader_parameter/shallow_color = Color(0.16922823, 0.30239838, 0.262028, 1)
-shader_parameter/deep_color = Color(0.014384992, 0.056302696, 0.075178355, 1)
-shader_parameter/horizon_color = Color(0.20629662, 0.0948219, 0.05073555, 1)
+shader_parameter/shallow_color = Color(0.05399482, 0.14184085, 0.1312926, 1)
+shader_parameter/deep_color = Color(0.009129226, 0.03885907, 0.0507347, 1)
+shader_parameter/horizon_color = Color(0.011974596, 0.01812943, 0.06524632, 1)
 shader_parameter/metallic = 0.0
 shader_parameter/roughness = 0.04
 shader_parameter/fresnel_power = 0.1
@@ -180,7 +180,7 @@ shader_parameter/horizon_start = 1.0
 shader_parameter/horizon_end = 800.0
 shader_parameter/foam_noise = SubResource("NoiseTexture2D_oihns")
 shader_parameter/foam_color = Color(1, 1, 1, 1)
-shader_parameter/foam_amount = 1.1240798
+shader_parameter/foam_amount = 1.2023804
 shader_parameter/foam_scale = 0.02
 shader_parameter/foam_speed = Vector2(-0.05, 0.105)
 shader_parameter/patch_threshold = 0.065
@@ -213,6 +213,10 @@ shader_parameter/wake_noise_scale = 0.02
 shader_parameter/wake_noise_speed = Vector2(0, -0.3)
 shader_parameter/wake_centerline = 4.955
 shader_parameter/wake_falloff_pow = 1.685
+shader_parameter/foam_brightness = 0.65
+shader_parameter/foam_distance_fade_start = 220.0
+shader_parameter/foam_distance_fade_end = 900.0
+shader_parameter/foam_wake_boost = 1.0
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_7xckk"]
 size = Vector2(1000, 1000)
@@ -242,10 +246,10 @@ ssil_sharpness = 1.0
 glow_enabled = true
 fog_enabled = true
 fog_mode = 1
-fog_light_color = Color(0.25035214, 0.15559861, 0.11812522, 1)
+fog_light_color = Color(0.085178405, 0.09041002, 0.13045937, 1)
 fog_light_energy = 5.27
 fog_sun_scatter = 0.45
-fog_density = 1.9702418
+fog_density = 1.6853567
 fog_aerial_perspective = 0.48
 fog_sky_affect = 0.582
 fog_depth_curve = 1.0717736
@@ -352,9 +356,9 @@ mesh = SubResource("PlaneMesh_7xckk")
 script = ExtResource("5_yiumw")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="Lighting" unique_id=1333050787]
-transform = Transform3D(0.97814775, -0.20752366, -0.0126927635, -0.09798954, -0.4063025, -0.90846926, 0.18337123, 0.8898609, -0.4177591, 0, 0, 0)
-light_color = Color(0.22224653, 0.10887003, 3.154977e-07, 1)
-light_energy = 0.09791469
+transform = Transform3D(0.97814786, -0.20752312, -0.012692858, -0.0092071965, 0.017755091, -0.9998, 0.20770699, 0.978069, 0.015456378, 0, 0, 0)
+light_color = Color(0.00048571825, 0.00023794174, 6.8951067e-10, 1)
+light_energy = 5.369497e-07
 light_indirect_energy = 1.06
 light_volumetric_fog_energy = 0.0
 light_specular = 0.551
@@ -381,7 +385,7 @@ transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -2.4863162, 4.1924834, -94.93688)
 is_hero_container_1 = true
 
-[node name="HeroContainer2" parent="NavigationRegion3D" unique_id=1182687473 instance=ExtResource("11_t0b6u")]
+[node name="HeroContainer2" parent="NavigationRegion3D" unique_id=1020252913 instance=ExtResource("11_t0b6u")]
 transform = Transform3D(-2, 0, -1.7484555e-07, 0, 2, 0, 1.7484555e-07, 0, -2, -5.2778296, 3.9973335, -65.311966)
 is_hero_container_2 = true
 

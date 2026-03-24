@@ -4,6 +4,9 @@ render_mode cull_back, diffuse_toon, specular_toon;
 varying vec3 v_world_pos;
 varying float v_wave;
 
+// NEW: store geometric world normal so foam doesn't depend on normal-map/view weirdness
+varying vec3 v_geo_n_world;
+
 // ============================================================
 // GROUPS (Inspector)
 // ============================================================
@@ -85,78 +88,73 @@ uniform float wake_centerline = 0.55;
 uniform float wake_falloff_pow = 1.2;
 
 // ============================================================
+// NEW OPTIONAL TUNING (won't break naming conventions)
+// ============================================================
+
+group_uniforms FoamTuning;
+uniform float foam_brightness : hint_range(0.0, 1.5) = 0.65;      // foam is too bright -> lower this
+uniform float foam_distance_fade_start = 220.0;                   // foam fades with distance
+uniform float foam_distance_fade_end   = 900.0;
+uniform float foam_wake_boost = 1.0;                               // extra boost only for wake
+
+// ============================================================
 // HELPERS
 // ============================================================
 
 vec2 flow_offset() {
-	// world-space flow direction in XZ
 	vec2 d = normalize(ocean_dir.xz + vec2(1e-6, 0.0));
 	return d * (TIME * time_scale * ocean_speed);
 }
 
-// Wake mask in ship-local space, but sampling the moving ocean field
-float wake_mask(vec3 world_pos) {
+// Cheaper wake mask: fewer samples + anchored cone + edge churn
+float wake_mask(vec3 world_pos, vec2 flow) {
 	vec2 rel = world_pos.xz - ship_pos.xz;
 
 	vec2 f = normalize(ship_fwd.xz + vec2(1e-6, 0.0));
-	vec2 b = -f;                 // behind direction
-	vec2 r = vec2(-f.y, f.x);    // right direction
+	vec2 b = -f;
+	vec2 r = vec2(-f.y, f.x);
 
-	float z = dot(rel, b);       // 0 at ship, positive behind
+	float z = dot(rel, b);
 	float x = dot(rel, r);
 
+	// only behind ship
 	if (z < 0.0 || z > wake_length) return 0.0;
 
 	float t = z / wake_length;
 	float half_w = mix(wake_width_start, wake_width_end, t) * 0.5;
 
-	// Base cone
+	// cone edge + fade back
 	float edge = 1.0 - smoothstep(half_w - wake_edge_soft, half_w + wake_edge_soft, abs(x));
 	float fade_back = pow(1.0 - t, wake_falloff_pow);
 
-	// Centreline streak
+	// centreline
 	float center = 1.0 - smoothstep(0.0, half_w, abs(x));
-	center = pow(center, 2.0) * wake_centerline;
+	center = center * center * wake_centerline;
 
-	// Stream direction for moving foam (anchored cone)
+	// stream noise along wake direction (anchored cone, moving foam)
 	float scroll = TIME * time_scale * ocean_speed;
 	vec2 stream = b * scroll;
 
-	// Main breakup inside wake (bigger shapes)
-	vec2 nuv = (world_pos.xz + stream) * wake_noise_scale + TIME * wake_noise_speed;
+	// inside breakup (1 sample)
+	vec2 nuv = (world_pos.xz + stream - flow) * wake_noise_scale + TIME * wake_noise_speed;
 	float n = texture(foam_noise, nuv).r;
-	float breakup = smoothstep(0.35, 0.85, n);
+	float breakup = smoothstep(0.40, 0.85, n);
 
-	// --- Edge-only churn band ---
-	// edge_band = 0 in centre, 1 near edges
-	float nx = abs(x) / max(half_w, 1e-4); // 0..1 across half-width
+	// edge band factor
+	float nx = abs(x) / max(half_w, 1e-4);
 	float edge_band = smoothstep(1.0 - wake_edge_band, 1.0, nx);
 
-	// Separate noise for churning edges (smaller, more chaotic)
-	vec2 euv = (world_pos.xz + stream * 1.35) * wake_edge_noise_scale + TIME * wake_edge_noise_speed;
+	// edge churn noise (1 sample only)
+	vec2 euv = (world_pos.xz + stream - flow) * wake_edge_noise_scale + TIME * wake_edge_noise_speed;
 	float en = texture(wake_edge_noise, euv).r;
-	// sharpen into turbulent clumps
-	float edge_turb = smoothstep(0.40, 0.92, en);
+	float churn = smoothstep(0.45, 0.92, en);
 
-	// Add “streaking” by mixing in a second shifted sample
-	float en2 = texture(wake_edge_noise, euv + r * 0.35 + b * 0.25).r;
-	edge_turb = max(edge_turb, smoothstep(0.45, 0.95, en2));
-
-	// Make turbulence strongest near ship, still present along wake
-	float near_boost = mix(0.65, 1.25, smoothstep(1.0, 0.0, t));
-
-	// Compose wake:
 	float m = edge * fade_back;
-
-	// Internal breakup modulates base wake
-	m *= mix(0.65, 1.0, breakup);
-
-	// Add centreline
+	m *= mix(0.70, 1.0, breakup);
 	m += center * fade_back;
 
-	// Multiply extra churn into edges (this is the “random churning”)
-	// edge_band gates it to edges; edge_turb provides randomness
-	m *= mix(1.0, 1.0 + edge_turb * wake_edge_churn * near_boost, edge_band);
+	// churn only on edges
+	m *= mix(1.0, 1.0 + churn * wake_edge_churn, edge_band);
 
 	return clamp(m, 0.0, 1.0);
 }
@@ -168,9 +166,15 @@ float wake_mask(vec3 world_pos) {
 void vertex() {
 	float t = TIME * time_scale;
 
+	// World pos
+	v_world_pos = (MODEL_MATRIX * vec4(VERTEX, 1.0)).xyz;
+
+	// Store geometric world normal BEFORE normal maps
+	v_geo_n_world = normalize((MODEL_MATRIX * vec4(NORMAL, 0.0)).xyz);
+
 	vec2 p = VERTEX.xz;
 
-	// Macro swells
+	// Macro swells (stable)
 	float m1 = sin(dot(normalize(wave_dir1), p) * macro_freq + t * macro_speed);
 	float m2 = cos(dot(normalize(wave_dir2), p) * (macro_freq * 1.35) + t * (macro_speed * 0.85));
 	float macro = (m1 + m2) * 0.5 * macro_amp;
@@ -182,10 +186,8 @@ void vertex() {
 
 	VERTEX.y += (macro + micro);
 
-	// Crests driven by macro only (stable)
+	// Foam crests driven by macro only (stable)
 	v_wave = macro;
-
-	v_world_pos = (MODEL_MATRIX * vec4(VERTEX, 1.0)).xyz;
 }
 
 void fragment() {
@@ -195,9 +197,14 @@ void fragment() {
 	float dist = length(CAMERA_POSITION_WORLD.xz - v_world_pos.xz);
 	float horizon_t = smoothstep(horizon_start, horizon_end, dist);
 
-	// Animated normal detail
+	// Base colour
+	vec3 base_col = mix(shallow_color, deep_color, clamp(dist / 600.0, 0.0, 1.0));
+	base_col = mix(base_col, horizon_color, horizon_t);
+
+	// ------------------------------------------------------------
+	// Normal mapping (visual detail), but keep foam logic on geo normal
+	// ------------------------------------------------------------
 	vec2 uv = UV * (1.0 / max(normal_tiling, 0.0001));
-	// Make normal scrolling consistent with ocean flow
 	uv -= flow * normal_tiling;
 
 	vec2 t1 = uv + TIME * normal_speed1;
@@ -206,56 +213,68 @@ void fragment() {
 	vec3 n1 = texture(normal_map1, t1).xyz * 2.0 - 1.0;
 	vec3 n2 = texture(normal_map2, t2).xyz * 2.0 - 1.0;
 	vec3 nrm_detail = normalize(mix(n1, n2, 0.5));
+
 	NORMAL = normalize(mix(NORMAL, nrm_detail, normal_strength));
 
-	// Fresnel
+	// Fresnel (used only subtly; should not drive foam)
 	float ndv = clamp(dot(normalize(NORMAL), normalize(VIEW)), 0.0, 1.0);
 	float fres = pow(1.0 - ndv, fresnel_power);
 
-	// Base colour
-	vec3 base_col = mix(shallow_color, deep_color, clamp(dist / 600.0, 0.0, 1.0));
-	base_col = mix(base_col, horizon_color, horizon_t);
-
-	// ------------------- FOAM LAYERS (all consistent flow) -------------------
-	// Use world pos minus flow so foam appears to stream past ship
+	// ------------------------------------------------------------
+	// FOAM MASKS (world flow-consistent, view-stable)
+	// ------------------------------------------------------------
 	vec2 wp = (v_world_pos.xz - flow);
 
-	// 1) Patch islands
+	// Patch islands (1 sample)
 	vec2 foam_uv = wp * foam_scale + TIME * foam_speed;
 	float foam_tex = texture(foam_noise, foam_uv).r;
 	float patches = smoothstep(patch_threshold, patch_threshold + patch_softness, foam_tex);
 	float foam_patches = patches * patch_strength;
 
-	// 2) Crest base from wave + steepness
+	// Crest base: use v_geo_n_world.y, not perturbed NORMAL.y
 	float crest_height = smoothstep(crest_start, crest_end, v_wave);
-	float steep = 1.0 - clamp(NORMAL.y, 0.0, 1.0);
+	float steep = 1.0 - clamp(v_geo_n_world.y, 0.0, 1.0);
 	float crest_base = crest_height * steep;
 
-	// 3) Crest screening (large bands)
+	// Crest screening (1 sample)
 	vec2 crest_uv = wp * crest_scale + TIME * crest_speed;
 	float crest_screen = texture(crest_noise, crest_uv).r;
 	crest_screen = smoothstep(0.35, 0.85, crest_screen);
 	float crest_screened = crest_base * mix(1.0, crest_screen, crest_screen_strength);
 
-	// 4) Wind breakup on top
+	// Wind breakup on top (reuse foam_noise, 1 sample)
 	vec2 wind_uv = wp * wind_scale + TIME * wind_speed;
 	float wind_tex = texture(foam_noise, wind_uv).r;
 	float wind = smoothstep(wind_threshold, wind_threshold + wind_softness, wind_tex);
 	float wind_break = crest_screened * wind * wind_strength;
 
+	// Combine foam (clamped)
 	float foam_mask = clamp((foam_patches + crest_screened * 0.75 + wind_break) * foam_amount, 0.0, 1.0);
 
-	// ------------------- WAKE -------------------
-	float w = wake_mask(v_world_pos);
-	float foam_with_wake = clamp(foam_mask + w * wake_strength, 0.0, 1.0);
+	// Wake (cheaper + stable) - uses 2 samples total (foam_noise + wake_edge_noise)
+	float w = wake_mask(v_world_pos, flow);
+	float foam_with_wake = clamp(foam_mask + w * wake_strength * foam_wake_boost, 0.0, 1.0);
 
-	// Slight wake brightening
-	vec3 wake_tint = mix(vec3(1.0), foam_color, 0.35);
-	vec3 col_with_wake = mix(base_col, wake_tint, w * 0.25);
+	// Distance fade foam (prevents bright speckling on horizon)
+	float foam_fade = 1.0 - smoothstep(foam_distance_fade_start, foam_distance_fade_end, dist);
+	foam_with_wake *= foam_fade;
 
-	// Final
-	ALBEDO = mix(col_with_wake, foam_color, foam_with_wake);
-	EMISSION = horizon_color * fres * 0.35 + foam_color * foam_with_wake * 0.10;
+	// ------------------------------------------------------------
+	// FOAM SHADING (fix "always too bright")
+	// ------------------------------------------------------------
+	// Foam should not be emissive; it should be slightly darker and sit in water.
+	// Also slightly reduce foam in the far horizon blend.
+	vec3 foam_col = foam_color * foam_brightness;
+	foam_col = mix(foam_col, horizon_color, horizon_t * 0.25);
+
+	// Wake tint: only a subtle lift (not glowing)
+	vec3 col_with_wake = mix(base_col, foam_col, w * 0.18);
+
+	ALBEDO = mix(col_with_wake, foam_col, foam_with_wake);
+
+	// Minimal emission: keep a gentle fresnel only (no foam glow)
+	EMISSION = horizon_color * fres * 0.12;
+
 	METALLIC = metallic;
 	ROUGHNESS = roughness;
 }
