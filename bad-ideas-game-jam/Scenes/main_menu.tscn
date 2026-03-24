@@ -55,18 +55,6 @@ colors = PackedColorArray(1, 1, 1, 1, 0.9493348, 0.46504265, 1.347661e-06, 1, 0,
 [sub_resource type="GradientTexture1D" id="GradientTexture1D_ujyyl"]
 gradient = SubResource("Gradient_x5fq5")
 
-[sub_resource type="Curve" id="Curve_mkpwh"]
-_data = [Vector2(0, 0.14227325), 0.0, 0.0, 0, 0, Vector2(1, 0.76401764), 0.0, 0.0, 0, 0]
-point_count = 2
-
-[sub_resource type="Curve" id="Curve_4nkqq"]
-_data = [Vector2(0, 0.15832984), 0.0, -0.15109101, 0, 0, Vector2(0.65807563, 0.32613945), 0.0, 0.0, 0, 0, Vector2(1, 0), -0.12850711, 0.0, 0, 0]
-point_count = 3
-
-[sub_resource type="Curve" id="Curve_ehtkc"]
-_data = [Vector2(0, 0.5280354), 0.0, 0.0, 0, 0, Vector2(0.7938145, 0.5359014), -0.020622205, -0.020622205, 0, 0, Vector2(1, 0.5471), 0.0, 0.0, 0, 0]
-point_count = 3
-
 [sub_resource type="Curve" id="Curve_6dk6o"]
 _limits = [0.0, 298.51, 0.0, 1.0]
 _data = [Vector2(0, 0.17930603), 0.0, 0.0, 0, 0, Vector2(1, 278.9425), 0.0, 0.0, 0, 0]
@@ -81,6 +69,18 @@ point_count = 3
 _limits = [0.0, 10.35, 0.0, 1.0]
 _data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(1, 5.9265122), 0.0, 0.0, 0, 0]
 point_count = 2
+
+[sub_resource type="Curve" id="Curve_mkpwh"]
+_data = [Vector2(0, 0.14227325), 0.0, 0.0, 0, 0, Vector2(1, 0.76401764), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Curve" id="Curve_4nkqq"]
+_data = [Vector2(0, 0.15832984), 0.0, -0.15109101, 0, 0, Vector2(0.65807563, 0.32613945), 0.0, 0.0, 0, 0, Vector2(1, 0), -0.12850711, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="Curve" id="Curve_ehtkc"]
+_data = [Vector2(0, 0.5280354), 0.0, 0.0, 0, 0, Vector2(0.7938145, 0.5359014), -0.020622205, -0.020622205, 0, 0, Vector2(1, 0.5471), 0.0, 0.0, 0, 0]
+point_count = 3
 
 [sub_resource type="CameraAttributesPhysical" id="CameraAttributesPhysical_to28j"]
 
@@ -193,6 +193,10 @@ shader_parameter/wake_noise_scale = 0.02
 shader_parameter/wake_noise_speed = Vector2(0, -0.3)
 shader_parameter/wake_centerline = 4.955
 shader_parameter/wake_falloff_pow = 1.685
+shader_parameter/foam_brightness = 0.65
+shader_parameter/foam_distance_fade_start = 220.0
+shader_parameter/foam_distance_fade_end = 900.0
+shader_parameter/foam_wake_boost = 1.0
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_ujyyl"]
 size = Vector2(1000, 1000)
@@ -210,12 +214,9 @@ agent_radius = 0.3
 
 [node name="EnviromentTestScene" type="Node3D" unique_id=1795795939]
 
-[node name="LookDriver" type="Node3D" parent="." unique_id=1892044860 node_paths=PackedStringArray("sun", "world_env", "ocean_mesh")]
+[node name="LookDriver" type="Node3D" parent="." unique_id=1892044860]
 transform = Transform3D(0.13492006, -0.99085647, 0, 0.99085647, 0.13492006, 0, 0, 0, 1, -3.092701, 0, 0.60878754)
 script = ExtResource("1_t1dhk")
-sun = NodePath("")
-world_env = NodePath("")
-ocean_mesh = NodePath("")
 manual_t = 0.0
 fog_colour_ramp = SubResource("GradientTexture1D_5egv6")
 sky_zenith_ramp = SubResource("GradientTexture1D_vtepg")
@@ -223,12 +224,12 @@ ocean_shallow_ramp = SubResource("GradientTexture1D_8dnnj")
 ocean_deep_ramp = SubResource("GradientTexture1D_m3bi6")
 horizon_ramp = SubResource("GradientTexture1D_wyh8j")
 sun_colour_ramp = SubResource("GradientTexture1D_ujyyl")
-fog_density_curve = SubResource("Curve_mkpwh")
-exposure_curve = SubResource("Curve_4nkqq")
-cloud_amount_curve = SubResource("Curve_ehtkc")
 ocean_foam_curve = SubResource("Curve_6dk6o")
 ocean_macro_amp_curve = SubResource("Curve_jr6u5")
 ocean_micro_amp_curve = SubResource("Curve_6m47u")
+fog_density_curve = SubResource("Curve_mkpwh")
+exposure_curve = SubResource("Curve_4nkqq")
+cloud_amount_curve = SubResource("Curve_ehtkc")
 
 [node name="Camera3D" type="Camera3D" parent="." unique_id=238692534]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 23.81532, 26.710968, 82.66727)
@@ -444,7 +445,7 @@ text = "Back
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.6854534, -9.536743e-07, -0.929554)
 navigation_mesh = SubResource("NavigationMesh_trj04")
 
-[node name="Ship Enviroment" parent="NavigationRegion3D" unique_id=753600076 instance=ExtResource("11_vr1f0")]
+[node name="Ship Enviroment" parent="NavigationRegion3D" unique_id=807321189 instance=ExtResource("11_vr1f0")]
 
 [connection signal="toggled" from="Control/CenterContainer/SettingsMenu/CheckBox" to="Control" method="_on_check_box_toggled"]
 [connection signal="value_changed" from="Control/CenterContainer/SettingsMenu/Master Volume" to="Control" method="_on_master_volume_value_changed"]
