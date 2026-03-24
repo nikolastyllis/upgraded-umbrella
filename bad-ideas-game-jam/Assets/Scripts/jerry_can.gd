@@ -26,6 +26,8 @@ func _ready():
 			colliders[i].queue_free()
 			
 	for i in interiors.size():
+		if i == idx:
+			interiors[i].visible = true
 		if i != idx:
 			interiors[i].queue_free()
 	

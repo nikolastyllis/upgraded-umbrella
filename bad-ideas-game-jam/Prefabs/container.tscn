@@ -119,6 +119,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.019270614, -1.3544717, -2.
 
 [node name="Container_Interior_BoxB_Stack" parent="JerryCanSpawner" index="1" unique_id=1032426778 instance=ExtResource("7_5miy3")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.019270614, -1.3544717, -2.376779)
+visible = false
 
 [node name="Container_Interior_BoxC_Stack" parent="JerryCanSpawner" index="2" unique_id=1339504235 instance=ExtResource("8_2yi8i")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.019270614, -1.3544717, -2.376779)
+visible = false
