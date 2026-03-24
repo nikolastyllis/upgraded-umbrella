@@ -77,12 +77,12 @@ func on_interact(_player):
 		game_manager.player_has_interacted_with_container = true
 		return
 	
-	if is_hero_container_2:
+	elif is_hero_container_2:
 		open_door_monster_reveal()
 		game_manager.player_has_interacted_with_infected_container = true
 		return
 	
-	open_door_act2()
+	else: open_door_act2()
 	
 func can_interact(_player: Node) -> bool:
 	
@@ -149,6 +149,7 @@ func open_door_act2():
 	play_sound("door2")
 	
 func open_door_monster_reveal():
+	print("here")
 	_stop_banging()
 	skeleton.physical_bones_start_simulation()
 	animation_player.play("MonsterReveal")
