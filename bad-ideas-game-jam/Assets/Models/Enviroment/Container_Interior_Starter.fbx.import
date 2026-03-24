@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://bhcj1qs5ajb06"
-path="res://.godot/imported/Container_Creature_Reveal.glb-c734205ac37104c3602f87e7b528b6cf.scn"
+uid="uid://38kbp4tchkj"
+path="res://.godot/imported/Container_Interior_Starter.fbx-0a6b3b4abe4729f6510d08a476ffebfc.scn"
 
 [deps]
 
-source_file="res://Assets/Models/Enviroment/Container_Creature_Reveal.glb"
-dest_files=["res://.godot/imported/Container_Creature_Reveal.glb-c734205ac37104c3602f87e7b528b6cf.scn"]
+source_file="res://Assets/Models/Enviroment/Container_Interior_Starter.fbx"
+dest_files=["res://.godot/imported/Container_Interior_Starter.fbx-0a6b3b4abe4729f6510d08a476ffebfc.scn"]
 
 [params]
 
@@ -30,7 +30,7 @@ meshes/force_disable_compression=false
 skins/use_named_skins=true
 animation/import=true
 animation/fps=30
-animation/trimming=false
+animation/trimming=true
 animation/remove_immutable_tracks=true
 animation/import_rest_as_RESET=false
 import_script/path=""
@@ -38,5 +38,7 @@ materials/extract=0
 materials/extract_format=0
 materials/extract_path=""
 _subresources={}
-gltf/naming_version=2
-gltf/embedded_image_handling=1
+fbx/importer=0
+fbx/allow_geometry_helper_nodes=false
+fbx/embedded_image_handling=1
+fbx/naming_version=2
