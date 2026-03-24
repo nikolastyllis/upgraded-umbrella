@@ -1,4 +1,4 @@
-[gd_scene format=3 uid="uid://3vvbcad7503f"]
+[gd_scene format=3 uid="uid://bieuxijp0d8bs"]
 
 [ext_resource type="PackedScene" uid="uid://cpdbw12p8cvy" path="res://Assets/Models/BIGJ_Ladder_test_01.glb" id="1_4oh6n"]
 
@@ -7,10 +7,10 @@ data = PackedVector3Array(-1.6524999, 0.5317, 0.49049997, -1.6524999, -1.5748, 0
 
 [node name="BIGJ_Ladder_test_01" unique_id=1503290428 instance=ExtResource("1_4oh6n")]
 
-[node name="StaticBody3D" parent="ladder" parent_id_path=PackedInt32Array(889229337) index="0" unique_id=1435475623]
+[node name="StaticBody3D" parent="ladder" parent_id_path=PackedInt32Array(2098959683) index="0" unique_id=164335644]
 collision_layer = 3
 
-[node name="CollisionShape3D" parent="ladder/StaticBody3D" index="0" unique_id=1881524200]
+[node name="CollisionShape3D" parent="ladder/StaticBody3D" index="0" unique_id=1306123707]
 transform = Transform3D(1, 0, 0, 0, 0.82774043, 0, 0, 0, 1, 0.17474747, 0, 0)
 
 [node name="StaticBody3D" type="StaticBody3D" parent="." index="3" unique_id=1367446535]

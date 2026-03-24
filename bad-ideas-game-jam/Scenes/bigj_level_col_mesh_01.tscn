@@ -4,5 +4,5 @@
 
 [node name="BIGJ_Level_Col_Mesh_01" unique_id=774214255 instance=ExtResource("1_x5qsj")]
 
-[node name="StaticBody3D" parent="collision_interior " parent_id_path=PackedInt32Array(1801683700) index="0" unique_id=816237683]
+[node name="StaticBody3D" parent="collision_interior " parent_id_path=PackedInt32Array(2074338936) index="0" unique_id=417215871]
 collision_layer = 9

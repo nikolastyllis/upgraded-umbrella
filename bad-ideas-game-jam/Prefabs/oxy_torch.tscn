@@ -2,7 +2,10 @@
 
 [ext_resource type="Script" uid="uid://bnuuo1duu134y" path="res://Assets/Scripts/oxy_torch.gd" id="1_l3b1r"]
 [ext_resource type="PackedScene" uid="uid://cfwadmnogfqg3" path="res://Assets/Models/Items/BIGJ_oxy_backpack_01.glb" id="2_5f54v"]
+[ext_resource type="Material" uid="uid://b7m2lpkb371ul" path="res://Materials/backpack_mat.tres" id="3_1odys"]
 [ext_resource type="PackedScene" uid="uid://cu65fk7y3nxpb" path="res://Assets/Models/Items/BIGJ_oxy_cutter_01.glb" id="3_o5o06"]
+[ext_resource type="Material" uid="uid://djrjhxc58bjm3" path="res://Materials/oxy_mat.tres" id="3_qt6b8"]
+[ext_resource type="Material" uid="uid://d27ivjtqh8wyt" path="res://Materials/oxy_cutter_mat.tres" id="5_1odys"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_qt6b8"]
 size = Vector3(0.21063232, 0.5463867, 0.20153809)
@@ -13,10 +16,31 @@ action_text = null
 
 [node name="Backpack" parent="." unique_id=850238865 instance=ExtResource("2_5f54v")]
 
+[node name="backpack_straps" parent="Backpack/Oxy Backpack/Skeleton3D" parent_id_path=PackedInt32Array(850238865, 1496061150) index="0" unique_id=2031000010]
+surface_material_override/0 = ExtResource("3_1odys")
+
+[node name="gas_tank" parent="Backpack/Oxy Backpack/Skeleton3D" parent_id_path=PackedInt32Array(850238865, 1496061150) index="1" unique_id=1088342148]
+surface_material_override/0 = ExtResource("3_qt6b8")
+
+[node name="gas_tube" parent="Backpack/Oxy Backpack/Skeleton3D" parent_id_path=PackedInt32Array(850238865, 1496061150) index="2" unique_id=1684403936]
+surface_material_override/0 = ExtResource("3_qt6b8")
+
+[node name="oxy_tank" parent="Backpack/Oxy Backpack/Skeleton3D" parent_id_path=PackedInt32Array(850238865, 1496061150) index="3" unique_id=37386747]
+surface_material_override/0 = ExtResource("3_qt6b8")
+
+[node name="oxy_tube" parent="Backpack/Oxy Backpack/Skeleton3D" parent_id_path=PackedInt32Array(850238865, 1496061150) index="4" unique_id=1630321875]
+surface_material_override/0 = ExtResource("3_qt6b8")
+
 [node name="CutterPos" type="Node3D" parent="Backpack" unique_id=2140531208]
 
 [node name="Cutter" parent="." unique_id=721539824 instance=ExtResource("3_o5o06")]
 
+[node name="base_low" parent="Cutter/Oxy Cutter/Skeleton3D" parent_id_path=PackedInt32Array(721539824, 944097494) index="0" unique_id=1208212238]
+surface_material_override/0 = ExtResource("5_1odys")
+
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=67519233]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.010284424, 0.06542969, -0.018249512)
 shape = SubResource("BoxShape3D_qt6b8")
+
+[editable path="Backpack"]
+[editable path="Cutter"]

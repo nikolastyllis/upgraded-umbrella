@@ -16487,6 +16487,13 @@ _subresources={
 "slice_99/start_frame": 0,
 "slices/amount": 0
 }
+},
+"materials": {
+"gilbert_tex": {
+"use_external/enabled": true,
+"use_external/fallback_path": "res://Shaders/Materials/char_gilbert_shader.tres",
+"use_external/path": "uid://cjm3y4cmqm6h0"
+}
 }
 }
 gltf/naming_version=2

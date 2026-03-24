@@ -1,0 +1,27 @@
+[gd_resource type="ShaderMaterial" format=3 uid="uid://djrjhxc58bjm3"]
+
+[ext_resource type="Material" uid="uid://sgetjvg177mb" path="res://Shaders/outline.tres" id="1_svdht"]
+[ext_resource type="Shader" uid="uid://d266trvxphdyu" path="res://Shaders/cel-shader-base.gdshader" id="2_4xvfy"]
+[ext_resource type="Texture2D" uid="uid://bmpeonxpvp0u7" path="res://Assets/Models/Items/BIGJ_oxy_backpack_01_m_Tanks_Col_Alpha.png" id="3_wqhmx"]
+[ext_resource type="Texture2D" uid="uid://57wwapd3cgxr" path="res://Assets/Models/Items/BIGJ_oxy_backpack_01_m_Tanks_Normal.png" id="4_svdht"]
+
+[resource]
+render_priority = 0
+next_pass = ExtResource("1_svdht")
+shader = ExtResource("2_4xvfy")
+shader_parameter/emission = Color(0, 0, 0, 1)
+shader_parameter/emission_energy = 1.0
+shader_parameter/normal_scale = 0.50000078375
+shader_parameter/normal_map = ExtResource("4_svdht")
+shader_parameter/invert_normal_y = false
+shader_parameter/color = Color(1, 1, 1, 1)
+shader_parameter/base_texture = ExtResource("3_wqhmx")
+shader_parameter/specular_color = Color(0.3, 0.3, 0.3, 1)
+shader_parameter/specular_strength = 0.0
+shader_parameter/ao_strength = 1.0
+shader_parameter/roughness_strength = 1.0
+shader_parameter/metallic_strength = 0.0
+shader_parameter/invert_roughness = false
+shader_parameter/fresnel = Color(0.2051174, 0.20511746, 0.20511737, 0.3019608)
+shader_parameter/uv_scale = Vector2(1, 1)
+shader_parameter/uv_offset = Vector2(0, 0)
