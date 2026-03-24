@@ -13,6 +13,7 @@ var dropped_at_lifeboat = false
 
 @onready var boxes = [$Box_A, $Box_B, $Box_C]
 @onready var colliders = [$box_A_collider,$box_B_collider,$box_C_collider]
+@onready var interiors = [$"../Container_Interior_BoxA_Stack", $"../Container_Interior_BoxB_Stack", $"../Container_Interior_BoxC_Stack"]
 
 func _ready():
 	var idx = randi() % boxes.size()
@@ -23,6 +24,10 @@ func _ready():
 	for i in colliders.size():
 		if i != idx:
 			colliders[i].queue_free()
+			
+	for i in interiors.size():
+		if i != idx:
+			interiors[i].queue_free()
 	
 	update_action_text()
 

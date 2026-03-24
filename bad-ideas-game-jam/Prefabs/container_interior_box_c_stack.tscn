@@ -1,0 +1,5 @@
+[gd_scene format=3 uid="uid://q2qrlt5gx3ho"]
+
+[ext_resource type="PackedScene" uid="uid://ok0pvedfv5va" path="res://Assets/Models/Enviroment/Container_Interior_BoxC_Stack.fbx" id="1_yylan"]
+
+[node name="Container_Interior_BoxC_Stack" unique_id=1339504235 instance=ExtResource("1_yylan")]

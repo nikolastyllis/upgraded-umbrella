@@ -19,7 +19,7 @@ nodes/root_script=null
 nodes/apply_root_scale=true
 nodes/root_scale=1.0
 nodes/import_as_skeleton_bones=false
-nodes/use_name_suffixes=true
+nodes/use_name_suffixes=false
 nodes/use_node_type_suffixes=true
 meshes/ensure_tangents=true
 meshes/generate_lods=true
@@ -47,8 +47,6 @@ _subresources={
 },
 "nodes": {
 "PATH:box_B_stack": {
-"generate/navmesh": 1,
-"generate/physics": true,
 "physics/shape_type": 1
 }
 }
