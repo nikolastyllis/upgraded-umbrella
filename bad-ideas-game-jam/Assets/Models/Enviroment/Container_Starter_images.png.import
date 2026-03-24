@@ -2,20 +2,20 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b5aewrb1agml2"
-path.s3tc="res://.godot/imported/BIGJ_ShipBlockout_03_Steel Red Test_normal.png-2ed2fa638415816ee87de6484f2c8843.s3tc.ctex"
+uid="uid://ga0m5xskoqmw"
+path.s3tc="res://.godot/imported/Container_Starter_images.png-708a0dd35ceb6fdff7cd48682b02ed1d.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
 }
 generator_parameters={
-"md5": "a81667c64e5a38b4d7b9042b32e917a5"
+"md5": "9faf03a2f887ee9c067c34f71f826c65"
 }
 
 [deps]
 
-source_file="res://Assets/Models/Enviroment/BIGJ_ShipBlockout_03_Steel Red Test_normal.png"
-dest_files=["res://.godot/imported/BIGJ_ShipBlockout_03_Steel Red Test_normal.png-2ed2fa638415816ee87de6484f2c8843.s3tc.ctex"]
+source_file="res://Assets/Models/Enviroment/Container_Starter_images.png"
+dest_files=["res://.godot/imported/Container_Starter_images.png-708a0dd35ceb6fdff7cd48682b02ed1d.s3tc.ctex"]
 
 [params]
 
@@ -25,7 +25,7 @@ compress/lossy_quality=0.7
 compress/uastc_level=0
 compress/rdo_quality_loss=0.0
 compress/hdr_compression=1
-compress/normal_map=1
+compress/normal_map=0
 compress/channel_pack=0
 mipmaps/generate=true
 mipmaps/limit=-1

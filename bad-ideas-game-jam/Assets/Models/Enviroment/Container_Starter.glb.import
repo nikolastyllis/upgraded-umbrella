@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://cmax0ds83ntq6"
-path="res://.godot/imported/Container_Interior_Reveal.glb-c23ddbbaea02e7acd597152e950993c0.scn"
+uid="uid://dh7aubkywyjof"
+path="res://.godot/imported/Container_Starter.glb-8189b674e98814ff9bf79e5e6444162a.scn"
 
 [deps]
 
-source_file="res://Assets/Models/Enviroment/Container_Interior_Reveal.glb"
-dest_files=["res://.godot/imported/Container_Interior_Reveal.glb-c23ddbbaea02e7acd597152e950993c0.scn"]
+source_file="res://Assets/Models/Enviroment/Container_Starter.glb"
+dest_files=["res://.godot/imported/Container_Starter.glb-8189b674e98814ff9bf79e5e6444162a.scn"]
 
 [params]
 

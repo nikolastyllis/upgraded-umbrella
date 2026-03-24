@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://ce1yp6o3mvdtg"
-path="res://.godot/imported/BIGJ_ShipBlockout_03.glb-ecccc1b86f18aaf97a62b7896989cb64.scn"
+uid="uid://bhcj1qs5ajb06"
+path="res://.godot/imported/Container_Creature_Reveal.glb-c734205ac37104c3602f87e7b528b6cf.scn"
 
 [deps]
 
-source_file="res://Assets/Models/Enviroment/BIGJ_ShipBlockout_03.glb"
-dest_files=["res://.godot/imported/BIGJ_ShipBlockout_03.glb-ecccc1b86f18aaf97a62b7896989cb64.scn"]
+source_file="res://Assets/Models/Enviroment/Container_Creature_Reveal.glb"
+dest_files=["res://.godot/imported/Container_Creature_Reveal.glb-c734205ac37104c3602f87e7b528b6cf.scn"]
 
 [params]
 

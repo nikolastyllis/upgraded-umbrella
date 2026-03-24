@@ -10,9 +10,11 @@
 [ext_resource type="PackedScene" uid="uid://bsr2874wrilow" path="res://Assets/Models/Enviroment/BIGJ_ShipCol_03.glb" id="7_yiumw"]
 [ext_resource type="PackedScene" uid="uid://btg75au461yd7" path="res://Prefabs/player.tscn" id="9_r4e2n"]
 [ext_resource type="PackedScene" uid="uid://dpl2uefq7xuhu" path="res://Prefabs/npc_01.tscn" id="10_nr8gw"]
+[ext_resource type="PackedScene" uid="uid://bhcj1qs5ajb06" path="res://Assets/Models/Enviroment/Container_Creature_Reveal.glb" id="11_0ixb7"]
 [ext_resource type="PackedScene" uid="uid://bhun3l1dxxlwo" path="res://Prefabs/ladder.tscn" id="11_n0oop"]
 [ext_resource type="Script" uid="uid://bj53hstaryc7l" path="res://Assets/Scripts/bed.gd" id="11_qcyk2"]
 [ext_resource type="PackedScene" uid="uid://si3fr5t5stqy" path="res://Prefabs/hero_container.tscn" id="11_t0b6u"]
+[ext_resource type="PackedScene" uid="uid://dh7aubkywyjof" path="res://Assets/Models/Enviroment/Container_Starter.glb" id="12_r4e2n"]
 [ext_resource type="Script" uid="uid://cr7u4jtas6no" path="res://Assets/Scripts/game_manager_OrionLighting.gd" id="12_yiumw"]
 [ext_resource type="Script" uid="uid://bpgcgf8cu0yr" path="res://Assets/Scripts/audio_manager.gd" id="14_qcyk2"]
 [ext_resource type="PackedScene" uid="uid://clai2jixo1u8q" path="res://Prefabs/oxy_torch.tscn" id="16_t0b6u"]
@@ -154,11 +156,11 @@ shader = ExtResource("2_qcyk2")
 shader_parameter/time_scale = 1.0
 shader_parameter/ocean_speed = 0.1
 shader_parameter/ocean_dir = Vector3(0, 0, -1)
-shader_parameter/macro_amp = 5.3959446
-shader_parameter/macro_freq = 0.10676728
+shader_parameter/macro_amp = 2.340203
+shader_parameter/macro_freq = 0.06555525
 shader_parameter/macro_speed = 0.72
-shader_parameter/micro_amp = 1.1458151
-shader_parameter/micro_freq = 0.87476814
+shader_parameter/micro_amp = -0.00161772
+shader_parameter/micro_freq = 0.5495938
 shader_parameter/micro_speed = 1.59
 shader_parameter/wave_dir1 = Vector2(-0.545, 1.56)
 shader_parameter/wave_dir2 = Vector2(-0.21, 0.27)
@@ -168,9 +170,9 @@ shader_parameter/normal_strength = 0.2
 shader_parameter/normal_speed1 = Vector2(0, -0.1)
 shader_parameter/normal_speed2 = Vector2(0, -0.1)
 shader_parameter/normal_tiling = 0.04
-shader_parameter/shallow_color = Color(0.16922823, 0.30239838, 0.262028, 1)
-shader_parameter/deep_color = Color(0.014384992, 0.056302696, 0.075178355, 1)
-shader_parameter/horizon_color = Color(0.20629662, 0.0948219, 0.05073555, 1)
+shader_parameter/shallow_color = Color(0.26962334, 0.50854665, 0.5791065, 1)
+shader_parameter/deep_color = Color(0.20147198, 0.41727358, 0.59869343, 1)
+shader_parameter/horizon_color = Color(0.6637195, 0.84853566, 0.8973445, 1)
 shader_parameter/metallic = 0.0
 shader_parameter/roughness = 0.04
 shader_parameter/fresnel_power = 0.1
@@ -178,7 +180,7 @@ shader_parameter/horizon_start = 1.0
 shader_parameter/horizon_end = 800.0
 shader_parameter/foam_noise = SubResource("NoiseTexture2D_oihns")
 shader_parameter/foam_color = Color(1, 1, 1, 1)
-shader_parameter/foam_amount = 1.1240798
+shader_parameter/foam_amount = 0.0577391
 shader_parameter/foam_scale = 0.02
 shader_parameter/foam_speed = Vector2(-0.05, 0.105)
 shader_parameter/patch_threshold = 0.065
@@ -240,10 +242,10 @@ ssil_sharpness = 1.0
 glow_enabled = true
 fog_enabled = true
 fog_mode = 1
-fog_light_color = Color(0.25035214, 0.15559861, 0.11812522, 1)
+fog_light_color = Color(0.6391615, 0.7962553, 0.83774287, 1)
 fog_light_energy = 5.27
 fog_sun_scatter = 0.45
-fog_density = 1.9702418
+fog_density = 0.23296174
 fog_aerial_perspective = 0.48
 fog_sky_affect = 0.582
 fog_depth_curve = 1.0717736
@@ -350,9 +352,9 @@ mesh = SubResource("PlaneMesh_7xckk")
 script = ExtResource("5_yiumw")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="Lighting" unique_id=1333050787]
-transform = Transform3D(0.97814775, -0.20752366, -0.0126927635, -0.09798954, -0.4063025, -0.90846926, 0.18337123, 0.8898609, -0.4177591, 0, 0, 0)
-light_color = Color(0.22224653, 0.10887003, 3.154977e-07, 1)
-light_energy = 0.09791469
+transform = Transform3D(0.97814786, -0.20752312, -0.012692858, -0.0523585, -0.30495134, 0.95092773, -0.20120919, -0.9294833, -0.30915305, 0, 0, 0)
+light_color = Color(0.9984548, 0.9836847, 0.9695018, 1)
+light_energy = 1.0000126
 light_indirect_energy = 1.06
 light_volumetric_fog_energy = 0.0
 light_specular = 0.551
@@ -372,7 +374,7 @@ compositor = SubResource("Compositor_4n1t5")
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
 navigation_mesh = SubResource("NavigationMesh_h3qab")
 
-[node name="Ship Enviroment" parent="NavigationRegion3D" unique_id=1000911737 instance=ExtResource("6_63acv")]
+[node name="Ship Enviroment" parent="NavigationRegion3D" unique_id=810700767 instance=ExtResource("6_63acv")]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
 
 [node name="HeroContainer1" parent="NavigationRegion3D" unique_id=1608144133 instance=ExtResource("11_t0b6u")]
@@ -410,6 +412,12 @@ transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -18.574392, 1.6560307, -56.97
 
 [node name="Ladder2" parent="NavigationRegion3D" unique_id=84530094 instance=ExtResource("11_n0oop")]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -18.549574, 1.6419859, 57.818542)
+
+[node name="Container_Creature_Reveal" parent="NavigationRegion3D" unique_id=889431274 instance=ExtResource("11_0ixb7")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -5.162621, 4.0807395, -71.53636)
+
+[node name="Container_Starter" parent="NavigationRegion3D" unique_id=1856440081 instance=ExtResource("12_r4e2n")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -2.5062826, 4.062416, -94.71448)
 
 [node name="Player" parent="." unique_id=1647912674 instance=ExtResource("9_r4e2n")]
 transform = Transform3D(-4.3711385e-08, 0, -1, 0, 0.99999994, 0, 0.99999994, 0, -4.371139e-08, -0.6674752, 2.5669377, -43.335854)

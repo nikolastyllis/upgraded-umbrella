@@ -2,20 +2,20 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ktbo10owbluk"
-path.s3tc="res://.godot/imported/BIGJ_ShipBlockout_02_Steel Red Test_ORM.png-35dbc990dc2063dfae35a3058b9ad49f.s3tc.ctex"
+uid="uid://chhpuw5lh8lgb"
+path.s3tc="res://.godot/imported/Container_Creature_Reveal_images.png-5da0b37aaf4145687e4036c8aa682b11.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
 }
 generator_parameters={
-"md5": "c67bed3479620651b662ce188511ee86"
+"md5": "9faf03a2f887ee9c067c34f71f826c65"
 }
 
 [deps]
 
-source_file="res://Assets/Models/Enviroment/BIGJ_ShipBlockout_02_Steel Red Test_ORM.png"
-dest_files=["res://.godot/imported/BIGJ_ShipBlockout_02_Steel Red Test_ORM.png-35dbc990dc2063dfae35a3058b9ad49f.s3tc.ctex"]
+source_file="res://Assets/Models/Enviroment/Container_Creature_Reveal_images.png"
+dest_files=["res://.godot/imported/Container_Creature_Reveal_images.png-5da0b37aaf4145687e4036c8aa682b11.s3tc.ctex"]
 
 [params]
 
