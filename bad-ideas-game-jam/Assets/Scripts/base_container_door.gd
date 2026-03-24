@@ -82,7 +82,7 @@ func on_interact(_player):
 		game_manager.player_has_interacted_with_infected_container = true
 		return
 	
-	open_door()
+	open_door_act2()
 	
 func can_interact(_player: Node) -> bool:
 	
@@ -137,11 +137,6 @@ func apply_material() -> void:
 		
 	if mat:
 		mesh.set_surface_override_material(0, mat)
-
-func open_door():
-	skeleton.physical_bones_start_simulation()
-	animation_player.play("DoorOpen_01")
-	play_sound("door3")
 	
 func open_door_act1():
 	skeleton.physical_bones_start_simulation()

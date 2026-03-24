@@ -22,11 +22,17 @@ size = Vector3(0.14379883, 2.433838, 0.8388672)
 
 [node name="Container" unique_id=373595834 instance=ExtResource("1_r4cle")]
 
-[node name="mesh_container_model" parent="rigged_container/Skeleton3D" parent_id_path=PackedInt32Array(971057809) index="0" unique_id=353647335]
+[node name="Skeleton3D" parent="rigged_container" parent_id_path=PackedInt32Array(561702650) index="0" unique_id=1336309984]
+bones/1/rotation = Quaternion(-2.6692543e-08, -2.6692543e-08, -0.7071068, 0.7071068)
+bones/2/rotation = Quaternion(0.7071063, -1.0536721e-08, 0.70710737, 1.0536705e-08)
+bones/3/rotation = Quaternion(-2.6692543e-08, 2.6692543e-08, 0.7071068, 0.7071068)
+bones/4/rotation = Quaternion(-0.7071063, 0, 0.70710737, 0)
+
+[node name="mesh_container_model" parent="rigged_container/Skeleton3D" index="0" unique_id=1189015799]
 surface_material_override/0 = ExtResource("2_ry7uw")
 surface_material_override/1 = ExtResource("3_8ygw2")
 
-[node name="PhysicalBoneSimulator3D" type="PhysicalBoneSimulator3D" parent="rigged_container/Skeleton3D" parent_id_path=PackedInt32Array(971057809) index="1" unique_id=1279182037]
+[node name="PhysicalBoneSimulator3D" type="PhysicalBoneSimulator3D" parent="rigged_container/Skeleton3D" index="1" unique_id=1279182037]
 
 [node name="Physical Bone Root" type="PhysicalBone3D" parent="rigged_container/Skeleton3D/PhysicalBoneSimulator3D" index="0" unique_id=1469142241]
 transform = Transform3D(-0.93207616, 0.12639534, 0.33949712, 0, 0.937158, -0.34890544, -0.36226243, -0.32520646, -0.87350255, -0.6142057, 0.6312269, 1.5803088)
@@ -55,10 +61,10 @@ transform = Transform3D(-0.9320761, 0, -0.36226243, 0.12639531, 0.9371578, -0.32
 shape = SubResource("BoxShape3D_uqqmb")
 
 [node name="Physical Bone door_left" type="PhysicalBone3D" parent="rigged_container/Skeleton3D/PhysicalBoneSimulator3D" index="1" unique_id=376903884]
-transform = Transform3D(-1.5050173e-05, 0.31479126, -0.94916093, 0.27685276, 0.9120618, 0.30248284, 0.9609124, -0.26277325, -0.08716454, -0.8543718, 1.143263, 3.194968)
+transform = Transform3D(-1.540772e-05, 0.31480518, -0.94915634, 0.276859, 0.91205573, 0.30249557, 0.9609106, -0.26277778, -0.08717069, -0.82978594, 1.1180454, 3.1318002)
 joint_type = 1
-joint_offset = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.799796e-06, -8.665025e-06, 0.39407116)
-body_offset = Transform3D(-0.2768527, -0.9120618, -0.30248284, -1.5050173e-05, 0.31479126, -0.94916093, 0.9609124, -0.2627732, -0.08716452, 0.11919081, 0.37403965, 0.034350395)
+joint_offset = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.441159e-05, -3.697537e-05, 0.39408222)
+body_offset = Transform3D(-0.27685893, -0.91205573, -0.30249557, -1.540772e-05, 0.31480518, -0.94915634, 0.9609106, -0.26277772, -0.08717067, 0.11915934, 0.3740573, 0.03439498)
 bone_name = "door_left"
 joint_constraints/bias = 0.3
 joint_constraints/damping = 1.0
@@ -69,10 +75,10 @@ transform = Transform3D(0.9595916, 0.2804912, 0.022976965, -0.26056245, 0.916312
 shape = SubResource("BoxShape3D_1lkrb")
 
 [node name="Physical Bone door_right" type="PhysicalBone3D" parent="rigged_container/Skeleton3D/PhysicalBoneSimulator3D" index="2" unique_id=1257001028]
-transform = Transform3D(-1.553446e-06, -0.3148035, 0.9491569, -0.27689305, 0.9120457, 0.3024945, -0.9609008, -0.2628145, -0.08716831, 0.854329, 1.1432686, 3.1949503)
+transform = Transform3D(-2.4057194e-06, -0.31484014, 0.9491448, -0.27685824, 0.91204363, 0.30253267, -0.96091086, -0.2627778, -0.087168284, 0.82975763, 1.1180265, 3.1317356)
 joint_type = 1
-joint_offset = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.17607415e-05, -3.6958605e-05, 0.3941085)
-body_offset = Transform3D(-0.276893, 0.9120457, 0.3024945, 1.553446e-06, 0.3148035, -0.9491569, -0.9609008, -0.26281443, -0.08716829, -0.11918521, 0.37408245, 0.034332752)
+joint_offset = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.964671e-06, -6.0099177e-05, 0.3941092)
+body_offset = Transform3D(-0.27685818, 0.91204363, 0.30253267, 2.4057194e-06, 0.31484014, -0.9491448, -0.96091086, -0.26277775, -0.08716826, -0.119178295, 0.3740856, 0.034330368)
 bone_name = "door_right"
 joint_constraints/bias = 0.3
 joint_constraints/damping = 1.0

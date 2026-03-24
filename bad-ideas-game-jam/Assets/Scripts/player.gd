@@ -116,17 +116,18 @@ func toggle_movement_disabled():
 		velocity.z = 0
 		var state_machine = animation_tree["parameters/AnimationNodeStateMachine/playback"]
 		state_machine.travel("Idle")
-	if movement_disabled and npcs.size() >= 2:
-		var midpoint = (npcs[0].global_position + npcs[1].global_position) * 0.5
-		var direction = (midpoint - global_position)
+	if movement_disabled and npcs.size() >= 1:
+		var closest_npc = npcs.reduce(func(a, b): 
+			return a if global_position.distance_to(a.global_position) <= global_position.distance_to(b.global_position) else b)
+		var direction = (closest_npc.global_position - global_position)
 		direction.y = 0
 		if direction.length() > 0.01:
 			var target_angle = atan2(direction.x, direction.z)
 			var tween = create_tween()
 			tween.tween_method(
-				func(angle: float): rotation.y = angle,
-				rotation.y,
-				target_angle,
+				func(t: float): rotation.y = lerp_angle(rotation.y, target_angle, t),
+				0.0,
+				1.0,
 				0.4
 			).set_ease(Tween.EASE_IN_OUT).set_trans(Tween.TRANS_QUAD)
 

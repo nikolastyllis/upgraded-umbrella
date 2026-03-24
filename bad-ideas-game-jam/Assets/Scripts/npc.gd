@@ -56,6 +56,7 @@ func set_target_position(pos: Vector3) -> void:
 
 func _process(delta: float) -> void:
 	_update_head_look_weight(delta)
+	_has_target = target_position != Vector3.ZERO
 	
 func get_player():
 	return _player	

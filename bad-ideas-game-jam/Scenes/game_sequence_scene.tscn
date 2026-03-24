@@ -380,7 +380,7 @@ transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -2.4863162, 4.1924834, -94.93
 is_hero_container_1 = true
 
 [node name="HeroContainer2" parent="NavigationRegion3D" unique_id=1182687473 instance=ExtResource("11_t0b6u")]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 7.8707933, 4.178982, -94.91915)
+transform = Transform3D(-2, 0, -1.7484555e-07, 0, 2, 0, 1.7484555e-07, 0, -2, -5.091493, 3.9973335, -65.93196)
 is_hero_container_2 = true
 
 [node name="BIGJ_ShipCol_03" parent="NavigationRegion3D" unique_id=455052738 instance=ExtResource("7_yiumw")]
@@ -439,7 +439,7 @@ transform = Transform3D(-0.87114525, 0, -0.49102545, 0, 1, 0, 0.49102545, 0, -0.
 transform = Transform3D(-0.87114525, 0, -0.49102545, 0, 1, 0, 0.49102545, 0, -0.87114525, 48.17851, -4.8875194, 110.83903)
 
 [node name="InfectedSpawn" type="Node3D" parent="GameManager/Locations" unique_id=2083012015]
-transform = Transform3D(-0.87114525, 0, -0.49102545, 0, 1, 0, 0.49102545, 0, -0.87114525, 48.83744, -4.617096, 112.008064)
+transform = Transform3D(-0.87114525, 0, -0.49102545, 0, 1, 0, 0.49102545, 0, -0.87114525, 49.72281, -4.617096, 113.57883)
 
 [node name="StoreRoom" type="Node3D" parent="GameManager/Locations" unique_id=2049401470]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.9505725, -3.5560427, 15.856671)
@@ -496,4 +496,4 @@ action_text = "Interact"
 transform = Transform3D(0.25881904, 0, -0.9659258, 0, 1, 0, 0.9659258, 0, 0.25881904, -2.917481, 2.6326113, -43.20588)
 
 [node name="Creature" parent="." unique_id=747631994 instance=ExtResource("18_tc46g")]
-transform = Transform3D(0.060943916, 0, 0.99814117, 0, 1, 0, -0.99814117, 0, 0.060943916, 4.1631603, 2.6473827, -43.434284)
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -1.7934155, -20.827534, 54.122692)

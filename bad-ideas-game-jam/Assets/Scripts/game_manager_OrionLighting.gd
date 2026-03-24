@@ -88,6 +88,7 @@ var dialog: Dictionary = {
 @onready var twin_1 = $"../Twin1"   # Wazza
 @onready var twin_2 = $"../Twin2"   # Bazza
 @onready var player = $"../Player"
+@onready var creature = $"../Creature"
 
 @onready var bedroom          = $Locations/Bedroom
 @onready var bedroom2         = $Locations/Bedroom2
@@ -95,6 +96,7 @@ var dialog: Dictionary = {
 @onready var bed              = $Locations/Bed
 @onready var container        = $Locations/Container
 @onready var infected_container = $Locations/InfectedContainer
+@onready var infected_spawn = $Locations/InfectedSpawn
 @onready var oxy_torch        = $"../OxyTorch"
 @onready var store_room       = $Locations/StoreRoom
 @onready var lifeboat         = $Locations/Lifeboat
@@ -246,6 +248,8 @@ func _process(_delta: float) -> void:
 	# ── ACT 1 ────────────────────────────────────────────────────────────────
 
 	if story_increment == 1 and _player_is_near(container.global_position):
+		creature.global_position = hide1.global_position
+		creature.set_target_position(Vector3.ZERO)
 		player.toggle_movement_disabled()
 		_play_act_1_start()
 		story_increment += 1
@@ -303,6 +307,7 @@ func _process(_delta: float) -> void:
 
 	if player_has_interacted_with_infected_container and not set_monster_pos_debug:
 		set_monster_pos_debug = true
+		creature.global_position = infected_spawn.global_position
 		
 	if story_increment == 7 and not player_has_interacted_with_infected_container:
 		_update_act4_oxy_objective()
@@ -313,10 +318,14 @@ func _process(_delta: float) -> void:
 			played_impact_lightning = true
 			audio_manager.play_boss_music()
 			lightning_strike()
+			player.toggle_movement_disabled()
+			await _wait_for(5.0)
+			player.toggle_movement_disabled()
 			story_increment += 1
 
 	if story_increment == 8:
 		_update_fuel_objective()
+		creature.set_target_position(player.global_position)
 
 # ── ACT 1 SEQUENCES ─────────────────────────────────────────────────────────
 
@@ -507,12 +516,10 @@ func _play_search_noises() -> void:
 	var rng = RandomNumberGenerator.new()
 	rng.randomize()
 	while true:
-		if story_increment != 7:
-			return
 		var wait_time = rng.randf_range(1.0, 60.0)
 		await _wait_for(wait_time)
 		var dialogue_id = rng.randi_range(80, 91)
-		var speaker = twin_1 if rng.randi_range(0, 1) == 0 else twin_2
+		var speaker = creature
 		await speaker.play_dialogue(dialogue_id)
 
 func _play_store_room_reminders() -> void:
