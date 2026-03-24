@@ -43,7 +43,7 @@ transform = Transform3D(-0.9320761, 0, -0.36226243, 0.12639531, 0.9371578, -0.32
 shape = SubResource("BoxShape3D_gowdn")
 
 [node name="Hull3" type="CollisionShape3D" parent="rigged_container/Skeleton3D/PhysicalBoneSimulator3D/Physical Bone Root" index="2" unique_id=463091156]
-transform = Transform3D(-0.93207586, 3.908511e-09, -0.36226243, 0.12639529, 0.9371571, -0.32520646, 0.33949706, -0.34890544, -0.87350225, 2.2020086e-07, 0.05923426, 1.7871096)
+transform = Transform3D(-0.93207586, 3.908511e-09, -0.36226243, 0.12639529, 0.9371571, -0.32520646, 0.33949706, -0.34890544, -0.87350225, 2.2020086e-07, 0.059234317, 1.7871096)
 shape = SubResource("BoxShape3D_gowdn")
 
 [node name="Hull4" type="CollisionShape3D" parent="rigged_container/Skeleton3D/PhysicalBoneSimulator3D/Physical Bone Root" index="3" unique_id=713821776]
@@ -95,7 +95,7 @@ transform = Transform3D(4.9999995, 0, 0, 0, 4.9999995, 0, 0, 0, 4.9999995, -0.03
 shape = SubResource("BoxShape3D_gowdn")
 
 [node name="Hull3" type="CollisionShape3D" parent="StaticBody3D" index="2" unique_id=1287357682]
-transform = Transform3D(4.9999986, 0, 0, 0, 4.999996, 0, 0, 0, 4.999999, -0.035216063, -5.9689455, -15.69599)
+transform = Transform3D(4.9999986, 0, 0, 0, 4.999996, 0, 0, 0, 4.999999, -0.035216063, -6.1593013, -15.69599)
 shape = SubResource("BoxShape3D_gowdn")
 
 [node name="Hull4" type="CollisionShape3D" parent="StaticBody3D" index="3" unique_id=1193803742]
