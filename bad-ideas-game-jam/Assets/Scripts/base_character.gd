@@ -163,7 +163,7 @@ func get_climb_input() -> float:
 func get_player():
 	pass
 
-func play_dialogue(id: int) -> void:
+func play_dialogue(id: int, volume: float = 20) -> void:
 	if game_manager.debug_skip_dialog:
 		return
 	var path := "res://Assets/Dialogue/%d.ogg" % id
@@ -180,8 +180,10 @@ func play_dialogue(id: int) -> void:
 		
 	if self is Player:
 		var npcs = get_tree().get_nodes_in_group("npcs")
-		for npc in npcs:
-			use_blip = global_position.distance_to(npc.global_position) > 7.0 or use_blip
+		if npcs.size() > 0:
+			var closest = npcs.reduce(func(a, b): 
+				return a if global_position.distance_to(a.global_position) <= global_position.distance_to(b.global_position) else b)
+			use_blip = global_position.distance_to(closest.global_position) > 7.0 or use_blip
 	
 	if use_radio:
 		await _play_static()
@@ -195,7 +197,7 @@ func play_dialogue(id: int) -> void:
 		dialogue_player.volume_db = 5
 	else:
 		dialogue_player = AudioStreamPlayer3D.new()
-		dialogue_player.volume_db = 20
+		dialogue_player.volume_db = volume
 		
 	dialogue_player.bus = "Radio" if use_radio else "Sound"
 	dialogue_player.stream = load(path)

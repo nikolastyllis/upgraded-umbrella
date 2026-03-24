@@ -27,7 +27,7 @@ var _ik_target_node: Node3D = null
 @onready var camera := $CameraOrigin/SpringArm3D/Camera3D
 
 const FOV_NORMAL := 80.0
-const FOV_DISABLED := 60.0
+const FOV_DISABLED := 50.0
 
 const SENSITIVITY_NORMAL = 0.25
 const SENSITIVITY_DISABLED = 0.1

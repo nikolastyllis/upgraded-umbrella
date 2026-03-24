@@ -32,6 +32,9 @@ animation = &"Jog"
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_xf1pj"]
 animation = &"Walking"
 
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_1cgfa"]
+animation = &"Roar"
+
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_i0ilm"]
 xfade_time = 0.3
 
@@ -86,6 +89,13 @@ xfade_time = 0.3
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_uvsxv"]
 xfade_time = 0.3
 
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_mb36q"]
+switch_mode = 2
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_gtfnu"]
+xfade_time = 0.3
+
 [resource]
 states/Climb/node = SubResource("AnimationNodeBlendTree_xeb05")
 states/Climb/position = Vector2(745.56793, 294.83127)
@@ -102,6 +112,8 @@ states/Jog/node = SubResource("AnimationNodeAnimation_g11uy")
 states/Jog/position = Vector2(911.6666, -163.66669)
 states/Move/node = SubResource("AnimationNodeAnimation_xf1pj")
 states/Move/position = Vector2(710.99994, -116.33333)
+states/Roar/node = SubResource("AnimationNodeAnimation_1cgfa")
+states/Roar/position = Vector2(-7, 233.66667)
 states/Start/position = Vector2(-42.66666, -82.673065)
-transitions = ["Climb", "Fall", SubResource("AnimationNodeStateMachineTransition_i0ilm"), "Climb", "Finish Climbing", SubResource("AnimationNodeStateMachineTransition_a1rxb"), "Fall", "Climb", SubResource("AnimationNodeStateMachineTransition_flf3p"), "Interact", "Move", SubResource("AnimationNodeStateMachineTransition_b4rpi"), "Move", "Interact", SubResource("AnimationNodeStateMachineTransition_noq0r"), "Fall", "Move", SubResource("AnimationNodeStateMachineTransition_maw3l"), "Move", "Fall", SubResource("AnimationNodeStateMachineTransition_2nuhh"), "Move", "Climb", SubResource("AnimationNodeStateMachineTransition_rfvlc"), "Interact", "Idle", SubResource("AnimationNodeStateMachineTransition_e0llr"), "Idle", "Interact", SubResource("AnimationNodeStateMachineTransition_48yx5"), "Idle", "Move", SubResource("AnimationNodeStateMachineTransition_xf1pj"), "Move", "Idle", SubResource("AnimationNodeStateMachineTransition_t32vp"), "Idle", "Fall", SubResource("AnimationNodeStateMachineTransition_66ajp"), "Fall", "Idle", SubResource("AnimationNodeStateMachineTransition_hwr16"), "Start", "Idle", SubResource("AnimationNodeStateMachineTransition_rwqiu"), "Finish Climbing", "Idle", SubResource("AnimationNodeStateMachineTransition_n168f"), "Move", "Jog", SubResource("AnimationNodeStateMachineTransition_1cgfa"), "Jog", "Move", SubResource("AnimationNodeStateMachineTransition_uvsxv")]
-graph_offset = Vector2(-361, -84)
+transitions = ["Climb", "Fall", SubResource("AnimationNodeStateMachineTransition_i0ilm"), "Climb", "Finish Climbing", SubResource("AnimationNodeStateMachineTransition_a1rxb"), "Fall", "Climb", SubResource("AnimationNodeStateMachineTransition_flf3p"), "Interact", "Move", SubResource("AnimationNodeStateMachineTransition_b4rpi"), "Move", "Interact", SubResource("AnimationNodeStateMachineTransition_noq0r"), "Fall", "Move", SubResource("AnimationNodeStateMachineTransition_maw3l"), "Move", "Fall", SubResource("AnimationNodeStateMachineTransition_2nuhh"), "Move", "Climb", SubResource("AnimationNodeStateMachineTransition_rfvlc"), "Interact", "Idle", SubResource("AnimationNodeStateMachineTransition_e0llr"), "Idle", "Interact", SubResource("AnimationNodeStateMachineTransition_48yx5"), "Idle", "Move", SubResource("AnimationNodeStateMachineTransition_xf1pj"), "Move", "Idle", SubResource("AnimationNodeStateMachineTransition_t32vp"), "Idle", "Fall", SubResource("AnimationNodeStateMachineTransition_66ajp"), "Fall", "Idle", SubResource("AnimationNodeStateMachineTransition_hwr16"), "Start", "Idle", SubResource("AnimationNodeStateMachineTransition_rwqiu"), "Finish Climbing", "Idle", SubResource("AnimationNodeStateMachineTransition_n168f"), "Move", "Jog", SubResource("AnimationNodeStateMachineTransition_1cgfa"), "Jog", "Move", SubResource("AnimationNodeStateMachineTransition_uvsxv"), "Roar", "Idle", SubResource("AnimationNodeStateMachineTransition_mb36q"), "Idle", "Roar", SubResource("AnimationNodeStateMachineTransition_gtfnu")]
+graph_offset = Vector2(-421, -151)
