@@ -1,0 +1,29 @@
+[gd_resource type="ShaderMaterial" format=3 uid="uid://csmaghw50vkgm"]
+
+[ext_resource type="Shader" uid="uid://d266trvxphdyu" path="res://Shaders/cel-shader-base.gdshader" id="1_ei5c4"]
+[ext_resource type="Material" uid="uid://sgetjvg177mb" path="res://Shaders/outline.tres" id="1_p0nii"]
+[ext_resource type="Texture2D" uid="uid://c66bqdettslxt" path="res://Materials/Containers/Containers/Container_C_Col.png" id="2_ei5c4"]
+[ext_resource type="Texture2D" uid="uid://c0o6yhrep5li5" path="res://Materials/Containers/Containers/Container_A_Normal.png" id="3_ranl5"]
+[ext_resource type="Texture2D" uid="uid://b0d88f6yn6iw7" path="res://Materials/Containers/Containers/Container_C_ORM.png" id="4_p0nii"]
+
+[resource]
+render_priority = 0
+next_pass = ExtResource("1_p0nii")
+shader = ExtResource("1_ei5c4")
+shader_parameter/emission = Color(0, 0, 0, 1)
+shader_parameter/emission_energy = 1.0
+shader_parameter/normal_scale = 0.33100077572250086
+shader_parameter/normal_map = ExtResource("3_ranl5")
+shader_parameter/invert_normal_y = false
+shader_parameter/color = Color(1, 1, 1, 1)
+shader_parameter/base_texture = ExtResource("2_ei5c4")
+shader_parameter/specular_color = Color(0.3, 0.3, 0.3, 1)
+shader_parameter/specular_strength = 0.88400004199
+shader_parameter/orm_texture = ExtResource("4_p0nii")
+shader_parameter/ao_strength = 1.0
+shader_parameter/roughness_strength = 1.0
+shader_parameter/metallic_strength = 1.0
+shader_parameter/invert_roughness = true
+shader_parameter/fresnel = Color(0.3741394, 0.37413922, 0.37413922, 0.3019608)
+shader_parameter/uv_scale = Vector2(1, 1)
+shader_parameter/uv_offset = Vector2(0, 0)

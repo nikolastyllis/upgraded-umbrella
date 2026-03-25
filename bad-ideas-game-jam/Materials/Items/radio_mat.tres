@@ -1,0 +1,27 @@
+[gd_resource type="ShaderMaterial" format=3 uid="uid://bp5cdy4e2n42l"]
+
+[ext_resource type="Material" uid="uid://sgetjvg177mb" path="res://Shaders/outline.tres" id="1_iq4lo"]
+[ext_resource type="Shader" uid="uid://d266trvxphdyu" path="res://Shaders/cel-shader-base.gdshader" id="2_423dk"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_liqkv"]
+load_path = "res://.godot/imported/Normal.png-c903e52b38fad9750ae4a2952f07be48.s3tc.ctex"
+
+[resource]
+render_priority = 0
+next_pass = ExtResource("1_iq4lo")
+shader = ExtResource("2_423dk")
+shader_parameter/emission = Color(0, 0, 0, 1)
+shader_parameter/emission_energy = 1.0
+shader_parameter/normal_scale = 1.000000807500001
+shader_parameter/normal_map = SubResource("CompressedTexture2D_liqkv")
+shader_parameter/invert_normal_y = false
+shader_parameter/color = Color(0.20990813, 0.20990813, 0.2099081, 1)
+shader_parameter/specular_color = Color(0.3, 0.3, 0.3, 1)
+shader_parameter/specular_strength = 0.0
+shader_parameter/ao_strength = 1.0
+shader_parameter/roughness_strength = 1.0
+shader_parameter/metallic_strength = 1.0
+shader_parameter/invert_roughness = true
+shader_parameter/fresnel = Color(0.31925523, 0.31925526, 0.3192552, 0.3019608)
+shader_parameter/uv_scale = Vector2(1, 1)
+shader_parameter/uv_offset = Vector2(0, 0)

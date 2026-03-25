@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://cg27h6m4wwam0"]
 
 [ext_resource type="Script" uid="uid://cml5ttx0x2bvc" path="res://Assets/Scripts/objective_marker.gd" id="1_2d8xp"]
-[ext_resource type="Texture2D" uid="uid://barr4fktxwmiq" path="res://Assets/Textures/Quest/location-dot-solid.png" id="1_r4eht"]
+[ext_resource type="Texture2D" uid="uid://barr4fktxwmiq" path="res://Materials/Textures/Quest/location-dot-solid.png" id="1_r4eht"]
 
 [node name="ObjectiveMarker" type="Node3D" unique_id=2030661204]
 script = ExtResource("1_2d8xp")

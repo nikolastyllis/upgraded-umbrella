@@ -1,6 +1,6 @@
 [gd_scene format=4 uid="uid://bavspgaljulua"]
 
-[ext_resource type="Material" uid="uid://btfypfsw7jecp" path="res://Materials/radio_mat.tres" id="1_c2qj0"]
+[ext_resource type="Material" path="res://Materials/Items/radio_mat.tres" id="1_c2qj0"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ll30b"]
 resource_name = "m_Radio"

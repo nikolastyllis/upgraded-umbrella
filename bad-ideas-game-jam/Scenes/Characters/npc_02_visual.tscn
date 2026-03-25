@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://u5y10vhp7ytu"]
 
-[ext_resource type="PackedScene" uid="uid://cfefyw1fbou02" path="res://Assets/Models/Characters/Twin 2/NPC_02_v02.glb" id="1_ohiqd"]
-[ext_resource type="Material" uid="uid://dyllk1b32o585" path="res://Materials/twin_wazza_mat.tres" id="2_7tm5b"]
+[ext_resource type="PackedScene" uid="uid://cfefyw1fbou02" path="res://Assets/Models/Characters/Wazza/Char_Wazza_import.glb" id="1_ohiqd"]
+[ext_resource type="Material" uid="uid://dyllk1b32o585" path="res://Materials/Characters/char_wazza_mat.tres" id="2_7tm5b"]
 [ext_resource type="PackedScene" uid="uid://dflyamv507y3p" path="res://Assets/Models/Chris/radio.tscn" id="2_78w0x"]
 [ext_resource type="AnimationNodeStateMachine" uid="uid://bxqqlicehbqk1" path="res://Scenes/Characters/movement_state_machine.tres" id="2_imgvl"]
 

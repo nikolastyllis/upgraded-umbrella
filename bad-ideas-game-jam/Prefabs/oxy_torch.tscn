@@ -2,17 +2,16 @@
 
 [ext_resource type="Script" uid="uid://bnuuo1duu134y" path="res://Assets/Scripts/oxy_torch.gd" id="1_l3b1r"]
 [ext_resource type="PackedScene" uid="uid://cfwadmnogfqg3" path="res://Assets/Models/Items/BIGJ_oxy_backpack_01.glb" id="2_5f54v"]
-[ext_resource type="Material" uid="uid://b7m2lpkb371ul" path="res://Materials/backpack_mat.tres" id="3_1odys"]
+[ext_resource type="Material" uid="uid://b7m2lpkb371ul" path="res://Materials/Items/backpack_mat.tres" id="3_1odys"]
 [ext_resource type="PackedScene" uid="uid://cu65fk7y3nxpb" path="res://Assets/Models/Items/BIGJ_oxy_cutter_01.glb" id="3_o5o06"]
-[ext_resource type="Material" uid="uid://djrjhxc58bjm3" path="res://Materials/oxy_mat.tres" id="3_qt6b8"]
-[ext_resource type="Material" uid="uid://d27ivjtqh8wyt" path="res://Materials/oxy_cutter_mat.tres" id="5_1odys"]
+[ext_resource type="Material" uid="uid://djrjhxc58bjm3" path="res://Materials/Items/oxy_mat.tres" id="3_qt6b8"]
+[ext_resource type="Material" uid="uid://d27ivjtqh8wyt" path="res://Materials/Items/oxy_cutter_mat.tres" id="5_1odys"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_qt6b8"]
 size = Vector3(0.21063232, 0.5463867, 0.20153809)
 
 [node name="OxyTorch" type="RigidBody3D" unique_id=1597321299]
 script = ExtResource("1_l3b1r")
-action_text = null
 
 [node name="Backpack" parent="." unique_id=850238865 instance=ExtResource("2_5f54v")]
 

@@ -3,8 +3,8 @@
 [ext_resource type="Material" uid="uid://eb5djxh4js65" path="res://Shaders/SkyShaderl.tres" id="1_63acv"]
 [ext_resource type="Script" uid="uid://dejtvd24e0r1q" path="res://Scenes/look_driver.gd" id="1_yiumw"]
 [ext_resource type="Shader" uid="uid://ossjmoq6orf1" path="res://Shaders/shader_ocean_calm.gdshader" id="2_qcyk2"]
-[ext_resource type="Texture2D" uid="uid://x0f6fojpxg1k" path="res://Assets/Textures/Ocean/0066.jpg" id="3_yiumw"]
-[ext_resource type="Texture2D" uid="uid://bw3728lre125f" path="res://Assets/Textures/Ocean/0001.jpg" id="4_tc46g"]
+[ext_resource type="Texture2D" uid="uid://x0f6fojpxg1k" path="res://Materials/Textures/Ocean/0066.jpg" id="3_yiumw"]
+[ext_resource type="Texture2D" uid="uid://bw3728lre125f" path="res://Materials/Textures/Ocean/0001.jpg" id="4_tc46g"]
 [ext_resource type="Script" uid="uid://d1icg8locw87l" path="res://Assets/Scripts/water_camera.gd" id="5_yiumw"]
 [ext_resource type="PackedScene" uid="uid://bkwpxm2ssdj8r" path="res://Scenes/main_enviroment_scene.tscn" id="6_63acv"]
 [ext_resource type="PackedScene" uid="uid://bsr2874wrilow" path="res://Assets/Models/Enviroment/BIGJ_ShipCol_03.glb" id="7_yiumw"]
@@ -489,7 +489,7 @@ shape = SubResource("BoxShape3D_tc46g")
 [node name="AudioManager" type="Node3D" parent="." unique_id=1974886538]
 script = ExtResource("14_qcyk2")
 
-[node name="Twin1" parent="." unique_id=513082347 instance=ExtResource("10_nr8gw")]
+[node name="Twin1" parent="." unique_id=17231606 instance=ExtResource("10_nr8gw")]
 transform = Transform3D(-0.53622466, 0, -0.84407526, 0, 1, 0, 0.84407526, 0, -0.53622466, -2.3619907, 2.61306, -43.53803)
 
 [node name="OxyTorch" parent="." unique_id=232120823 instance=ExtResource("16_t0b6u")]

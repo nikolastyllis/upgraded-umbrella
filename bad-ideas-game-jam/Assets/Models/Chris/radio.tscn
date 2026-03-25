@@ -1,6 +1,6 @@
 [gd_scene format=4 uid="uid://dflyamv507y3p"]
 
-[ext_resource type="Material" uid="uid://btfypfsw7jecp" path="res://Materials/radio_mat.tres" id="1_8rhnr"]
+[ext_resource type="Material" uid="uid://bp5cdy4e2n42l" path="res://Materials/Items/radio_mat.tres" id="1_8rhnr"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ll30b"]
 resource_name = "m_Radio"
@@ -210,7 +210,7 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_wgdai")
 
-[node name="radioTest" type="Node3D" unique_id=1067308080]
+[node name="radio_model" type="Node3D" unique_id=1067308080]
 
 [node name="Antenna_low" type="MeshInstance3D" parent="." unique_id=1082534477]
 transform = Transform3D(100, 0, 0, 0, -1.1920929e-05, 99.99999, 0, -99.99999, -1.1920929e-05, 0, 0, 0)

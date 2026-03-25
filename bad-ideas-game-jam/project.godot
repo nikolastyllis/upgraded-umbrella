@@ -109,11 +109,11 @@ anti_aliasing/quality/screen_space_aa=1
 
 specular_smoothness={
 "type": "float",
-"value": 0.4
+"value": 0.1
 }
 fresnel_smoothness={
 "type": "float",
-"value": 0.1
+"value": 1.0
 }
 outline_width={
 "type": "float",
@@ -125,5 +125,5 @@ outline_color={
 }
 diffuse_curve={
 "type": "sampler2D",
-"value": "::0ixb7"
+"value": "res://Shaders/diffuse_curveC.png"
 }

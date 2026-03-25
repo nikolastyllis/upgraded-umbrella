@@ -21,11 +21,11 @@ var is_hero_container_2 = false
 var opened_act_2 = false
 
 const CONTAINER_MATERIALS: Array[String] = [
-	"res://Shaders/Containers/Container_Mat_01.tres",
-	"res://Shaders/Containers/Container_Mat_02.tres",
-	"res://Shaders/Containers/Container_Mat_03.tres",
-	"res://Shaders/Containers/Container_Mat_04.tres",
-	"res://Shaders/Containers/Container_Mat_05.tres",
+	"res://Materials/Containers/Container_Mat_01.tres",
+	"res://Materials/Containers/Container_Mat_02.tres",
+	"res://Materials/Containers/Container_Mat_03.tres",
+	"res://Materials/Containers/Container_Mat_04.tres",
+	"res://Materials/Containers/Container_Mat_05.tres",
 ]
 
 # --- Shared sound logic ---

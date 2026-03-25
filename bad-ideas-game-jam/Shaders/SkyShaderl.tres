@@ -1,9 +1,9 @@
 [gd_resource type="ShaderMaterial" format=3 uid="uid://eb5djxh4js65"]
 
 [ext_resource type="Shader" uid="uid://dbfwmpsps6ds6" path="res://Shaders/SkyShader.gdshader" id="1_cd6vg"]
-[ext_resource type="Texture2D" uid="uid://cv546mr8d5nsh" path="res://Assets/Textures/Enviroment/Clouds/18f10853da7f5bc239e602eb2e80442f.jpg" id="2_rkan8"]
-[ext_resource type="Texture2D" uid="uid://defmjtpna8w0w" path="res://Assets/Textures/Enviroment/Clouds/cirrus.png" id="2_y2522"]
-[ext_resource type="Texture2D" uid="uid://cvd4hnm8r4re6" path="res://Assets/Textures/Enviroment/Clouds/T_Random_54.png" id="4_y2522"]
+[ext_resource type="Texture2D" uid="uid://cv546mr8d5nsh" path="res://Materials/Textures/Enviroment/Clouds/18f10853da7f5bc239e602eb2e80442f.jpg" id="2_rkan8"]
+[ext_resource type="Texture2D" uid="uid://defmjtpna8w0w" path="res://Materials/Textures/Enviroment/Clouds/cirrus.png" id="2_y2522"]
+[ext_resource type="Texture2D" uid="uid://cvd4hnm8r4re6" path="res://Materials/Textures/Enviroment/Clouds/T_Random_54.png" id="4_y2522"]
 
 [resource]
 shader = ExtResource("1_cd6vg")

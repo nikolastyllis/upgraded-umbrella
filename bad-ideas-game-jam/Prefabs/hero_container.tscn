@@ -3,8 +3,8 @@
 [ext_resource type="PackedScene" uid="uid://8fpxblujja2h" path="res://Assets/Models/BIGJ_HeroContainer_01.glb" id="1_6mape"]
 [ext_resource type="Script" uid="uid://d18hl2ep7da32" path="res://Assets/Scripts/hero_container.gd" id="2_fgtk5"]
 [ext_resource type="Script" uid="uid://cb4pbhuel2n8b" path="res://Assets/Scripts/base_container_door.gd" id="2_vrops"]
-[ext_resource type="Material" uid="uid://b6vuke4qqsysy" path="res://Shaders/Containers/Container_Mat_01.tres" id="3_teyur"]
-[ext_resource type="Material" uid="uid://xq3mrku4l0r4" path="res://Shaders/Containers/Container_Mat_Internal.tres" id="4_d1rd4"]
+[ext_resource type="Material" uid="uid://b6vuke4qqsysy" path="res://Materials/Containers/Container_Mat_01.tres" id="3_teyur"]
+[ext_resource type="Material" uid="uid://xq3mrku4l0r4" path="res://Materials/Containers/Container_Mat_Internal.tres" id="4_d1rd4"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_fgtk5"]
 size = Vector3(2.6167486, 2.7541444, 0.3104117)

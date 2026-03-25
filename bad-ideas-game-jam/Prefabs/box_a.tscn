@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://rbqgqb8aynq8"]
 
 [ext_resource type="PackedScene" uid="uid://cghqtfikihtkg" path="res://Assets/Models/Items/Boxes/Box_A.glb" id="1_4brnj"]
-[ext_resource type="Material" uid="uid://dm87a3oknugat" path="res://Materials/box_mat.tres" id="2_5p1fm"]
+[ext_resource type="Material" uid="uid://dm87a3oknugat" path="res://Materials/Items/box_mat.tres" id="2_5p1fm"]
 
 [node name="Box_A" unique_id=1760798036 instance=ExtResource("1_4brnj")]
 
