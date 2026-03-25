@@ -120,7 +120,7 @@ specular_smoothness={
 }
 fresnel_smoothness={
 "type": "float",
-"value": 1.0
+"value": 0.8
 }
 outline_width={
 "type": "float",

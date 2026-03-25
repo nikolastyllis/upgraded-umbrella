@@ -2,10 +2,18 @@ global uniform sampler2D diffuse_curve: repeat_disable;
 global uniform float specular_smoothness;
 global uniform float fresnel_smoothness;
 
- float diffuse_sample(vec3 light, vec3 normal) {
-	return texture(diffuse_curve, vec2(dot(light, normal), 0)
-	).r;
- }
+float diffuse_sample(vec3 light, vec3 normal) {
+	float ndl = clamp(dot(normalize(light), normalize(normal)), 0.0, 1.0);
+
+	vec2 tex_size = vec2(textureSize(diffuse_curve, 0));
+	float half_texel_x = 0.5 / tex_size.x;
+	float half_texel_y = 0.5 / tex_size.y;
+
+	float u = mix(half_texel_x, 1.0 - half_texel_x, ndl);
+	float v = 0.5; // or half_texel_y if you want to be precise
+
+	return texture(diffuse_curve, vec2(u, v)).r;
+}
 
 float is_lit(vec3 light, vec3 normal, float attenuation) {
 	return attenuation * diffuse_sample(light, normal);
@@ -52,7 +60,7 @@ vec3 fresnel_light(
 		vec3 light,
 		float attenuation
 ) {
-	float fresnel_dot = 1.0 - dot(normal, view);
+	float fresnel_dot = 0.9 - dot(normal, view);
 	float fresnel_threshold = pow((1.0 - fresnel_strength), dot(light, normal));
 	return light_color
 			* fresnel_color
