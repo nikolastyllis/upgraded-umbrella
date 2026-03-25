@@ -157,6 +157,17 @@ func _process(delta: float) -> void:
 	update_interactable()
 	handle_interact(delta)
 
+func die() -> void:
+	movement_disabled = true
+	var state_machine = animation_tree["parameters/AnimationNodeStateMachine/playback"]
+	state_machine.travel("Death")
+	await animation_tree.animation_finished
+
+	var tween_out := create_tween()
+	tween_out.tween_property(camera, "fov", 110.0, 3.0).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_QUAD)
+	await fade_out_camera(3.0)
+	game_manager.restart_from_act_7()
+
 func _physics_process(delta: float) -> void:
 	super._physics_process(delta)
 	update_camera(delta)
@@ -183,7 +194,7 @@ func _physics_process(delta: float) -> void:
 			play_dialogue(random_int)
 			velocity.y = JUMP_VELOCITY
 		apply_movement(get_raw_input_dir())
-		update_movement_animation(get_raw_input_dir())
+		update_movement_animation(get_raw_input_dir()) 
 		update_character_rotation(rotation.y, delta)
 		move_and_slide()
 		

@@ -391,29 +391,29 @@ is_hero_container_2 = true
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
 visible = false
 
-[node name="Ladder5" parent="NavigationRegion3D" unique_id=1732391426 instance=ExtResource("11_n0oop")]
-transform = Transform3D(-2, 0, -1.7484555e-07, 0, 2, 0, 1.7484555e-07, 0, -2, 16.69221, 1.8131809, -87.01131)
+[node name="Ladder" parent="NavigationRegion3D" unique_id=689004252 instance=ExtResource("11_n0oop")]
+transform = Transform3D(-2, 0, -1.7484555e-07, 0, 2, 0, 1.7484555e-07, 0, -2, 16.49635, 1.7353554, -87.01547)
 
-[node name="Ladder6" parent="NavigationRegion3D" unique_id=787742009 instance=ExtResource("11_n0oop")]
-transform = Transform3D(-2, 0, -1.7484555e-07, 0, 2, 0, 1.7484555e-07, 0, -2, 18.90391, 1.6760406, -56.96122)
+[node name="Ladder2" parent="NavigationRegion3D" unique_id=2032777478 instance=ExtResource("11_n0oop")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -16.5201, 1.7353554, -87.01547)
 
-[node name="Ladder9" parent="NavigationRegion3D" unique_id=746313749 instance=ExtResource("11_n0oop")]
-transform = Transform3D(2, 0, 3.496911e-07, 0, 2, 0, -3.496911e-07, 0, 2, -18.90554, 1.7591333, 0.6089497)
+[node name="Ladder3" parent="NavigationRegion3D" unique_id=1050650612 instance=ExtResource("11_n0oop")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -18.65149, 1.756964, -56.96338)
 
-[node name="Ladder8" parent="NavigationRegion3D" unique_id=685406565 instance=ExtResource("11_n0oop")]
-transform = Transform3D(-2, 0, -1.7484555e-07, 0, 2, 0, 1.7484555e-07, 0, -2, 18.576576, 1.8844266, 0.63843673)
+[node name="Ladder4" parent="NavigationRegion3D" unique_id=1884994886 instance=ExtResource("11_n0oop")]
+transform = Transform3D(-2, 0, 1.7484555e-07, 0, 2, 0, -1.7484555e-07, 0, -2, 18.514242, 1.756964, 0.60641885)
 
-[node name="Ladder7" parent="NavigationRegion3D" unique_id=319840398 instance=ExtResource("11_n0oop")]
-transform = Transform3D(-2, 0, -1.7484555e-07, 0, 2, 0, 1.7484555e-07, 0, -2, 18.569765, 1.7678611, 57.593163)
+[node name="Ladder7" parent="NavigationRegion3D" unique_id=2061004003 instance=ExtResource("11_n0oop")]
+transform = Transform3D(-2, 0, 1.7484555e-07, 0, 2, 0, -1.7484555e-07, 0, -2, 18.514236, 1.756964, 57.77704)
 
-[node name="Ladder3" parent="NavigationRegion3D" unique_id=2071201242 instance=ExtResource("11_n0oop")]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -16.559399, 1.7894154, -87.007965)
+[node name="Ladder5" parent="NavigationRegion3D" unique_id=205154540 instance=ExtResource("11_n0oop")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -18.65149, 1.756964, 0.6666746)
 
-[node name="Ladder4" parent="NavigationRegion3D" unique_id=248772487 instance=ExtResource("11_n0oop")]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -18.706345, 1.7390335, -57.33609)
+[node name="Ladder8" parent="NavigationRegion3D" unique_id=274774301 instance=ExtResource("11_n0oop")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -18.65149, 1.756964, 57.785572)
 
-[node name="Ladder2" parent="NavigationRegion3D" unique_id=84530094 instance=ExtResource("11_n0oop")]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -18.646338, 1.7592611, 57.49981)
+[node name="Ladder6" parent="NavigationRegion3D" unique_id=1814009180 instance=ExtResource("11_n0oop")]
+transform = Transform3D(-2, 0, 1.7484555e-07, 0, 2, 0, -1.7484555e-07, 0, -2, 18.514248, 1.756964, -56.96338)
 
 [node name="Player" parent="." unique_id=1647912674 instance=ExtResource("9_r4e2n")]
 transform = Transform3D(-4.3711385e-08, 0, -1, 0, 0.99999994, 0, 0.99999994, 0, -4.371139e-08, -0.6674752, 2.5669377, -43.335854)
@@ -433,6 +433,19 @@ draw_pass_1 = SubResource("RibbonTrailMesh_qcyk2")
 [node name="GameManager" type="Node3D" parent="." unique_id=1749829845]
 transform = Transform3D(-0.87114525, 0, 0.49102545, 0, 1, 0, -0.49102545, 0, -0.87114525, -8.530954, 7.9717035, 75.958336)
 script = ExtResource("12_yiumw")
+debug_skip_dialog = null
+debug_play_from_act_3 = null
+debug_play_from_act_4 = null
+debug_play_from_act_5 = null
+debug_play_from_act_6 = null
+debug_play_from_act_7 = null
+debug_play_from_act_8 = null
+DAY_SUN_PITCH_DEG = null
+DAY_SUN_YAW_DEG = null
+SUNSET_SUN_PITCH_DEG = null
+SUNSET_SUN_YAW_DEG = null
+NIGHT_SUN_PITCH_DEG = null
+NIGHT_SUN_YAW_DEG = null
 
 [node name="Locations" type="Node3D" parent="GameManager" unique_id=596146378]
 
@@ -494,7 +507,6 @@ transform = Transform3D(-0.53622466, 0, -0.84407526, 0, 1, 0, 0.84407526, 0, -0.
 
 [node name="OxyTorch" parent="." unique_id=232120823 instance=ExtResource("16_t0b6u")]
 transform = Transform3D(1, 0, 0, 0, 0.8267076, -0.5626318, 0, 0.5626318, 0.8267076, -1.6254706, 1.8873264, -42.922832)
-action_text = "Interact"
 
 [node name="Twin2" parent="." unique_id=1596341678 instance=ExtResource("17_yiumw")]
 transform = Transform3D(0.25881904, 0, -0.9659258, 0, 1, 0, 0.9659258, 0, 0.25881904, -2.917481, 2.6326113, -43.20588)

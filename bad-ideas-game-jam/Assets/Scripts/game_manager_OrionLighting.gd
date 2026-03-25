@@ -190,6 +190,13 @@ func play_from_act_6():
 func play_from_act_7():
 	play_from_act_6()
 	story_increment = 7
+	
+func restart_from_act_7() -> void:
+	await SceneTransition.fade_out()
+	get_tree().reload_current_scene()
+	await get_tree().process_frame
+	play_from_act_7()
+	await SceneTransition.fade_in()
 
 # Act 8 — infected container opened, lightning struck, twins chasing, fuel run
 func play_from_act_8():
