@@ -2,9 +2,9 @@
 
 [ext_resource type="Material" uid="uid://sgetjvg177mb" path="res://Shaders/outline.tres" id="1_gda58"]
 [ext_resource type="Shader" uid="uid://d266trvxphdyu" path="res://Shaders/cel-shader-base.gdshader" id="2_2bpro"]
-[ext_resource type="Texture2D" uid="uid://bwmyx4wqqr38a" path="res://Materials/Textures/Enviroment/Steel Red Test_Custom.png" id="3_71hxj"]
-[ext_resource type="Texture2D" uid="uid://dfswbi0h4koe5" path="res://Materials/Textures/Enviroment/Steel Red Test_normal.png" id="4_5qf5s"]
-[ext_resource type="Texture2D" uid="uid://cpo6mleahtspd" path="res://Materials/Textures/Enviroment/Steel Red Test_ORM.png" id="5_syu71"]
+[ext_resource type="Texture2D" uid="uid://dua04q1nnya7g" path="res://Materials/Textures/Enviroment/Hull_Walls_Col_Alpha.png" id="3_htthf"]
+[ext_resource type="Texture2D" uid="uid://rkgmigxxynk5" path="res://Materials/Textures/Enviroment/Hull_Walls_Normal.png" id="4_migja"]
+[ext_resource type="Texture2D" uid="uid://cjw208f702ali" path="res://Materials/Textures/Enviroment/Hull_Walls_ORM.png" id="5_6p4tp"]
 
 [resource]
 render_priority = 0
@@ -13,13 +13,13 @@ shader = ExtResource("2_2bpro")
 shader_parameter/emission = Color(0, 0, 0, 1)
 shader_parameter/emission_energy = 1.0
 shader_parameter/normal_scale = 1.0
-shader_parameter/normal_map = ExtResource("4_5qf5s")
+shader_parameter/normal_map = ExtResource("4_migja")
 shader_parameter/invert_normal_y = false
-shader_parameter/color = Color(0, 0.62622523, 0.94865066, 1)
-shader_parameter/base_texture = ExtResource("3_71hxj")
+shader_parameter/color = Color(1, 1, 1, 1)
+shader_parameter/base_texture = ExtResource("3_htthf")
 shader_parameter/specular_color = Color(0.1955451, 0.1955451, 0.19554505, 1)
 shader_parameter/specular_strength = 0.7750000368125
-shader_parameter/orm_texture = ExtResource("5_syu71")
+shader_parameter/orm_texture = ExtResource("5_6p4tp")
 shader_parameter/ao_strength = 1.0
 shader_parameter/roughness_strength = 1.0
 shader_parameter/metallic_strength = 0.0

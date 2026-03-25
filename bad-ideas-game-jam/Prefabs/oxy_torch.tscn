@@ -13,21 +13,24 @@ size = Vector3(0.21063232, 0.5463867, 0.20153809)
 [node name="OxyTorch" type="RigidBody3D" unique_id=1597321299]
 script = ExtResource("1_l3b1r")
 
-[node name="Backpack" parent="." unique_id=850238865 instance=ExtResource("2_5f54v")]
+[node name="Backpack" parent="." unique_id=1374153960 instance=ExtResource("2_5f54v")]
 
-[node name="backpack" parent="Backpack/Oxy Backpack/Skeleton3D" parent_id_path=PackedInt32Array(850238865, 511263744) index="0" unique_id=1181128877]
+[node name="Oxy Backpack" parent="Backpack" index="0" unique_id=84058954]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.03641963)
+
+[node name="backpack" parent="Backpack/Oxy Backpack/Skeleton3D" parent_id_path=PackedInt32Array(1374153960, 164671641) index="0" unique_id=1037150438]
 material_override = ExtResource("3_1odys")
 
-[node name="gas_tank" parent="Backpack/Oxy Backpack/Skeleton3D" parent_id_path=PackedInt32Array(850238865, 511263744) index="1" unique_id=444928978]
+[node name="gas_tank" parent="Backpack/Oxy Backpack/Skeleton3D" parent_id_path=PackedInt32Array(1374153960, 164671641) index="1" unique_id=1505590555]
 surface_material_override/0 = ExtResource("3_qt6b8")
 
-[node name="gas_tube" parent="Backpack/Oxy Backpack/Skeleton3D" parent_id_path=PackedInt32Array(850238865, 511263744) index="2" unique_id=202034944]
+[node name="gas_tube" parent="Backpack/Oxy Backpack/Skeleton3D" parent_id_path=PackedInt32Array(1374153960, 164671641) index="2" unique_id=1234371607]
 surface_material_override/0 = ExtResource("3_qt6b8")
 
-[node name="oxy_tank" parent="Backpack/Oxy Backpack/Skeleton3D" parent_id_path=PackedInt32Array(850238865, 511263744) index="3" unique_id=670428590]
+[node name="oxy_tank" parent="Backpack/Oxy Backpack/Skeleton3D" parent_id_path=PackedInt32Array(1374153960, 164671641) index="3" unique_id=327385020]
 surface_material_override/0 = ExtResource("3_qt6b8")
 
-[node name="oxy_tube" parent="Backpack/Oxy Backpack/Skeleton3D" parent_id_path=PackedInt32Array(850238865, 511263744) index="4" unique_id=1971024292]
+[node name="oxy_tube" parent="Backpack/Oxy Backpack/Skeleton3D" parent_id_path=PackedInt32Array(1374153960, 164671641) index="4" unique_id=857657169]
 surface_material_override/0 = ExtResource("3_qt6b8")
 
 [node name="CutterPos" type="Node3D" parent="Backpack" unique_id=2140531208]

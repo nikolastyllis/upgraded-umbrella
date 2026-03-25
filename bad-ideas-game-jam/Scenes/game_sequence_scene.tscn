@@ -163,11 +163,11 @@ shader = ExtResource("2_qcyk2")
 shader_parameter/time_scale = 1.0
 shader_parameter/ocean_speed = 0.1
 shader_parameter/ocean_dir = Vector3(0, 0, -1)
-shader_parameter/macro_amp = 6.1447005
-shader_parameter/macro_freq = 0.116781086
+shader_parameter/macro_amp = 5.8450913
+shader_parameter/macro_freq = 0.11277468
 shader_parameter/macro_speed = 0.72
-shader_parameter/micro_amp = 1.4522007
-shader_parameter/micro_freq = 0.8767647
+shader_parameter/micro_amp = 1.3294417
+shader_parameter/micro_freq = 0.87646186
 shader_parameter/micro_speed = 1.59
 shader_parameter/wave_dir1 = Vector2(-0.545, 1.56)
 shader_parameter/wave_dir2 = Vector2(-0.21, 0.27)
@@ -177,9 +177,9 @@ shader_parameter/normal_strength = 0.2
 shader_parameter/normal_speed1 = Vector2(0, -0.1)
 shader_parameter/normal_speed2 = Vector2(0, -0.1)
 shader_parameter/normal_tiling = 0.04
-shader_parameter/shallow_color = Color(0.053750914, 0.14156175, 0.13104008, 1)
-shader_parameter/deep_color = Color(0.009123802, 0.038841084, 0.050709486, 1)
-shader_parameter/horizon_color = Color(0.011974596, 0.01812943, 0.06524632, 1)
+shader_parameter/shallow_color = Color(0.05657185, 0.16568656, 0.14228517, 1)
+shader_parameter/deep_color = Color(0.01114963, 0.04556468, 0.06013125, 1)
+shader_parameter/horizon_color = Color(0.018458158, 0.026548222, 0.072574235, 1)
 shader_parameter/metallic = 0.0
 shader_parameter/roughness = 0.04
 shader_parameter/fresnel_power = 0.1
@@ -187,7 +187,7 @@ shader_parameter/horizon_start = 1.0
 shader_parameter/horizon_end = 800.0
 shader_parameter/foam_noise = SubResource("NoiseTexture2D_oihns")
 shader_parameter/foam_color = Color(1, 1, 1, 1)
-shader_parameter/foam_amount = 1.2024612
+shader_parameter/foam_amount = 1.1722655
 shader_parameter/foam_scale = 0.02
 shader_parameter/foam_speed = Vector2(-0.05, 0.105)
 shader_parameter/patch_threshold = 0.065
@@ -253,10 +253,10 @@ ssil_sharpness = 1.0
 glow_enabled = true
 fog_enabled = true
 fog_mode = 1
-fog_light_color = Color(0.085178405, 0.09041002, 0.13045937, 1)
+fog_light_color = Color(0.090689436, 0.09756599, 0.13668811, 1)
 fog_light_energy = 5.27
 fog_sun_scatter = 0.45
-fog_density = 1.9997733
+fog_density = 1.9255153
 fog_aerial_perspective = 0.48
 fog_sky_affect = 0.582
 fog_depth_curve = 1.0717736
@@ -365,13 +365,15 @@ mesh = SubResource("PlaneMesh_7xckk")
 script = ExtResource("5_yiumw")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="Lighting" unique_id=1333050787]
-transform = Transform3D(0.5210096, -0.85346043, -0.01242388, -2.9802322e-08, 0.014555439, -0.9998945, 0.85355073, 0.52095455, 0.007583499, 0, 0, 0)
-light_color = Color(0.00025701523, 0.00012588501, 3.6482106e-10, 1)
-light_energy = -0.9999999
+transform = Transform3D(0.52100974, -0.82341266, 0.22481234, 0, -0.26338476, -0.96469134, 0.85355085, 0.5026134, -0.13722613, 0, 0, 0)
+light_color = Color(0.08573419, 0.04199788, 1.2170688e-07, 1)
+light_energy = -0.9930987
 light_indirect_energy = 1.272
 light_volumetric_fog_energy = 0.0
-light_angular_distance = 9.415087
+light_angular_distance = 9.3914385
 shadow_enabled = true
+shadow_normal_bias = 9.152
+shadow_blur = 0.669
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="Lighting" unique_id=972673621]
 environment = SubResource("Environment_0ixb7")
@@ -442,7 +444,6 @@ draw_pass_1 = SubResource("RibbonTrailMesh_qcyk2")
 transform = Transform3D(-0.87114525, 0, 0.49102545, 0, 1, 0, -0.49102545, 0, -0.87114525, -8.530954, 7.9717035, 75.958336)
 script = ExtResource("12_yiumw")
 debug_skip_dialog = true
-debug_play_from_act_7 = false
 
 [node name="Locations" type="Node3D" parent="GameManager" unique_id=596146378]
 
@@ -502,7 +503,7 @@ script = ExtResource("14_qcyk2")
 [node name="Twin1" parent="." unique_id=17231606 instance=ExtResource("10_nr8gw")]
 transform = Transform3D(-0.53622466, 0, -0.84407526, 0, 1, 0, 0.84407526, 0, -0.53622466, -2.3619907, 2.61306, -43.53803)
 
-[node name="OxyTorch" parent="." unique_id=232120823 instance=ExtResource("16_t0b6u")]
+[node name="OxyTorch" parent="." unique_id=1597321299 instance=ExtResource("16_t0b6u")]
 transform = Transform3D(1, 0, 0, 0, 0.8267076, -0.5626318, 0, 0.5626318, 0.8267076, -1.6254706, 1.8873264, -42.922832)
 
 [node name="Twin2" parent="." unique_id=1596341678 instance=ExtResource("17_yiumw")]

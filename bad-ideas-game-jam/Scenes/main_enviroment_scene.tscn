@@ -3,246 +3,338 @@
 [ext_resource type="PackedScene" uid="uid://cw715p30txa6y" path="res://Assets/Models/Enviroment/BIGJ_Ship_03.glb" id="1_l8ged"]
 [ext_resource type="PackedScene" uid="uid://ctj0n3n6mmc2r" path="res://Prefabs/container.tscn" id="2_4ftm2"]
 [ext_resource type="Material" uid="uid://cxpwhh6t2s1cs" path="res://Materials/Ship/ship_main_deck_mat.tres" id="2_khp5w"]
-[ext_resource type="Material" uid="uid://sgetjvg177mb" path="res://Shaders/outline.tres" id="3_khp5w"]
 [ext_resource type="Material" uid="uid://nn3ewwhgb1a3" path="res://Materials/Ship/ship_handrail_A_mat.tres" id="3_l8ged"]
-[ext_resource type="Shader" uid="uid://d266trvxphdyu" path="res://Shaders/cel-shader-base.gdshader" id="4_7fy0s"]
+[ext_resource type="Material" uid="uid://0ujctbwowsms" path="res://Materials/Ship/grey_rustt.tres" id="3_tlnlp"]
 [ext_resource type="Material" uid="uid://cvdlxl52307wq" path="res://Materials/Ship/ship_hull_mat.tres" id="4_tlnlp"]
+[ext_resource type="Material" uid="uid://c2vuo1ewf0rlr" path="res://Materials/Ship/Blue_Plain.tres" id="5_ix6e3"]
 [ext_resource type="Material" uid="uid://c51ek0v8ig1jv" path="res://Materials/Ship/ship_connectors_mat.tres" id="6_tlnlp"]
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_l8ged"]
-render_priority = 0
-next_pass = ExtResource("3_khp5w")
-shader = ExtResource("4_7fy0s")
-shader_parameter/emission = Color(0, 0, 0, 1)
-shader_parameter/emission_energy = 1.0
-shader_parameter/normal_scale = 1.0
-shader_parameter/invert_normal_y = false
-shader_parameter/color = Color(0.2835618, 0.47263944, 0.7640725, 1)
-shader_parameter/specular_color = Color(0.3, 0.3, 0.3, 1)
-shader_parameter/specular_strength = 0.86000004085
-shader_parameter/ao_strength = 1.0
-shader_parameter/roughness_strength = 1.0
-shader_parameter/metallic_strength = 1.0
-shader_parameter/invert_roughness = false
-shader_parameter/fresnel = Color(0.2, 0.2, 0.2, 0.3)
-shader_parameter/uv_scale = Vector2(1, 1)
-shader_parameter/uv_offset = Vector2(0, 0)
 
 [node name="Ship Enviroment" type="Node3D" unique_id=1795795939]
 
-[node name="BIGJ_Ship_03" parent="." unique_id=350430157 instance=ExtResource("1_l8ged")]
+[node name="BIGJ_Ship_03" parent="." unique_id=1107486186 instance=ExtResource("1_l8ged")]
 
-[node name="Walls Below Poop Deck_001" parent="BIGJ_Ship_03" index="1" unique_id=654397185]
+[node name="Walls Below Poop Deck_001" parent="BIGJ_Ship_03" index="1" unique_id=1177078214]
 material_override = ExtResource("2_khp5w")
 
-[node name="Container Posts_007" parent="BIGJ_Ship_03" index="3" unique_id=1658649675]
+[node name="Container Posts_007" parent="BIGJ_Ship_03" index="3" unique_id=1322945952]
 material_override = ExtResource("2_khp5w")
 
-[node name="Front wall " parent="BIGJ_Ship_03" index="4" unique_id=146295031]
-material_override = ExtResource("2_khp5w")
+[node name="Front wall " parent="BIGJ_Ship_03" index="4" unique_id=947628867]
+material_override = ExtResource("3_tlnlp")
 
-[node name="ladder New_001" parent="BIGJ_Ship_03" index="5" unique_id=2080271569]
+[node name="ladder New_001" parent="BIGJ_Ship_03" index="5" unique_id=2100905883]
 visible = false
 
-[node name="Main Deck Complete" parent="BIGJ_Ship_03" index="83" unique_id=1404379687]
+[node name="Flute" parent="BIGJ_Ship_03" index="6" unique_id=1618000150]
+material_override = ExtResource("3_tlnlp")
+
+[node name="Superstructure Accommodation Block" parent="BIGJ_Ship_03" index="7" unique_id=499002950]
 material_override = ExtResource("2_khp5w")
 
-[node name="Poop Deck Complete" parent="BIGJ_Ship_03" index="84" unique_id=1161130730]
-material_override = ExtResource("2_khp5w")
-
-[node name="Front Playform " parent="BIGJ_Ship_03" index="85" unique_id=455735564]
-material_override = ExtResource("2_khp5w")
-
-[node name="Hold Walls_005" parent="BIGJ_Ship_03" index="86" unique_id=941436696]
-material_override = ExtResource("2_khp5w")
-
-[node name="Wall Details" parent="BIGJ_Ship_03" index="87" unique_id=1813534731]
-material_override = ExtResource("2_khp5w")
-
-[node name="Wall Details_001" parent="BIGJ_Ship_03" index="88" unique_id=1725402333]
-material_override = ExtResource("2_khp5w")
-
-[node name="Hatch Cover v2" parent="BIGJ_Ship_03" index="89" unique_id=677840463]
-material_override = ExtResource("2_khp5w")
-
-[node name="Hatch Cover v2_001" parent="BIGJ_Ship_03" index="90" unique_id=1845246860]
-material_override = ExtResource("2_khp5w")
-
-[node name="Hatch Cover v2_002" parent="BIGJ_Ship_03" index="91" unique_id=152823739]
-material_override = ExtResource("2_khp5w")
-
-[node name="Hatch Cover v2_003" parent="BIGJ_Ship_03" index="92" unique_id=851104962]
-material_override = ExtResource("2_khp5w")
-
-[node name="Hatch Cover v2_004" parent="BIGJ_Ship_03" index="93" unique_id=926609021]
-material_override = ExtResource("2_khp5w")
-
-[node name="Hatch Cover v2_004_001" parent="BIGJ_Ship_03" index="94" unique_id=363715946]
-material_override = ExtResource("2_khp5w")
-
-[node name="Hatch Cover v2_004_002" parent="BIGJ_Ship_03" index="95" unique_id=1278951675]
-material_override = ExtResource("2_khp5w")
-
-[node name="Hatch Cover v2_005" parent="BIGJ_Ship_03" index="96" unique_id=1866264142]
-material_override = ExtResource("2_khp5w")
-
-[node name="Plane_012" parent="BIGJ_Ship_03" index="108" unique_id=1140188535]
-material_override = ExtResource("3_l8ged")
-
-[node name="Hull Complete Shape" parent="BIGJ_Ship_03" index="109" unique_id=1455246745]
+[node name="Superstructure Accommodation Block_001" parent="BIGJ_Ship_03" index="9" unique_id=782425720]
 material_override = ExtResource("4_tlnlp")
 
-[node name="Hull Complete Shape_001" parent="BIGJ_Ship_03" index="110" unique_id=1716468980]
-material_override = SubResource("ShaderMaterial_l8ged")
+[node name="Accommodation Deck" parent="BIGJ_Ship_03" index="73" unique_id=1775789152]
+material_override = ExtResource("3_tlnlp")
 
-[node name="Lashing Bridge" parent="BIGJ_Ship_03" index="147" unique_id=901353254]
+[node name="Accommodation Deck_001" parent="BIGJ_Ship_03" index="74" unique_id=1281282638]
+material_override = ExtResource("3_tlnlp")
+
+[node name="Accommodation Deck_002" parent="BIGJ_Ship_03" index="75" unique_id=1255357513]
+material_override = ExtResource("3_tlnlp")
+
+[node name="Accommodation Deck_003" parent="BIGJ_Ship_03" index="76" unique_id=435001807]
+material_override = ExtResource("3_tlnlp")
+
+[node name="Accommodation Deck_004" parent="BIGJ_Ship_03" index="77" unique_id=173871421]
 material_override = ExtResource("2_khp5w")
 
-[node name="Lashing Bridge_003" parent="BIGJ_Ship_03" index="148" unique_id=534391879]
+[node name="Bridge Deck" parent="BIGJ_Ship_03" index="78" unique_id=1530462679]
+material_override = ExtResource("4_tlnlp")
+
+[node name="Accommodation Deck_007" parent="BIGJ_Ship_03" index="79" unique_id=1697048946]
 material_override = ExtResource("2_khp5w")
 
-[node name="Lashing Bridge_006" parent="BIGJ_Ship_03" index="149" unique_id=1837770837]
+[node name="Nav Bridge" parent="BIGJ_Ship_03" index="80" unique_id=1652243209]
 material_override = ExtResource("2_khp5w")
 
-[node name="Lashing Bridge_001" parent="BIGJ_Ship_03" index="150" unique_id=894843303]
+[node name="Nav Bridge_001" parent="BIGJ_Ship_03" index="81" unique_id=863794560]
 material_override = ExtResource("2_khp5w")
 
-[node name="Plane_007" parent="BIGJ_Ship_03/Lashing Bridge Entry Large" parent_id_path=PackedInt32Array(350430157, 1615837988) index="0" unique_id=997577098]
-material_override = ExtResource("3_l8ged")
+[node name="Nav Bridge_002" parent="BIGJ_Ship_03" index="82" unique_id=1548974434]
+material_override = ExtResource("5_ix6e3")
 
-[node name="Plane_008" parent="BIGJ_Ship_03/Lashing Bridge Entry Large" parent_id_path=PackedInt32Array(350430157, 1615837988) index="1" unique_id=1338249568]
-material_override = ExtResource("3_l8ged")
-
-[node name="Plane_013" parent="BIGJ_Ship_03/Lashing Bridge Entry Large" parent_id_path=PackedInt32Array(350430157, 1615837988) index="2" unique_id=2005241010]
-material_override = ExtResource("3_l8ged")
-
-[node name="lashing Bridge 1_002" parent="BIGJ_Ship_03/Lashing Bridge Entry Large" parent_id_path=PackedInt32Array(350430157, 1615837988) index="3" unique_id=603629640]
+[node name="Main Deck Complete" parent="BIGJ_Ship_03" index="83" unique_id=911856954]
 material_override = ExtResource("2_khp5w")
 
-[node name="Plane_005" parent="BIGJ_Ship_03/Lashing Bridge Entry Large" parent_id_path=PackedInt32Array(350430157, 1615837988) index="5" unique_id=832961069]
-material_override = ExtResource("3_l8ged")
-
-[node name="Plane_010" parent="BIGJ_Ship_03/Lashing Bridge Entry Large" parent_id_path=PackedInt32Array(350430157, 1615837988) index="7" unique_id=2541684]
-material_override = ExtResource("3_l8ged")
-
-[node name="Plane_0072" parent="BIGJ_Ship_03/Lashing Bridge Entry Large_001" parent_id_path=PackedInt32Array(350430157, 1280836300) index="0" unique_id=2053104851]
-material_override = ExtResource("3_l8ged")
-
-[node name="Plane_0082" parent="BIGJ_Ship_03/Lashing Bridge Entry Large_001" parent_id_path=PackedInt32Array(350430157, 1280836300) index="1" unique_id=522149142]
-material_override = ExtResource("3_l8ged")
-
-[node name="Plane_0132" parent="BIGJ_Ship_03/Lashing Bridge Entry Large_001" parent_id_path=PackedInt32Array(350430157, 1280836300) index="2" unique_id=155997593]
-material_override = ExtResource("3_l8ged")
-
-[node name="lashing Bridge 1_0022" parent="BIGJ_Ship_03/Lashing Bridge Entry Large_001" parent_id_path=PackedInt32Array(350430157, 1280836300) index="3" unique_id=617099307]
+[node name="Poop Deck Complete" parent="BIGJ_Ship_03" index="84" unique_id=1596383513]
 material_override = ExtResource("2_khp5w")
 
-[node name="Plane_0052" parent="BIGJ_Ship_03/Lashing Bridge Entry Large_001" parent_id_path=PackedInt32Array(350430157, 1280836300) index="5" unique_id=1090398199]
-material_override = ExtResource("3_l8ged")
-
-[node name="Plane_0102" parent="BIGJ_Ship_03/Lashing Bridge Entry Large_001" parent_id_path=PackedInt32Array(350430157, 1280836300) index="7" unique_id=2034354795]
-material_override = ExtResource("3_l8ged")
-
-[node name="Plane_0073" parent="BIGJ_Ship_03" index="153" unique_id=1366743969]
-material_override = ExtResource("3_l8ged")
-
-[node name="Plane_0083" parent="BIGJ_Ship_03" index="154" unique_id=1406362417]
-material_override = ExtResource("3_l8ged")
-
-[node name="lashing Bridge 1_0023" parent="BIGJ_Ship_03" index="156" unique_id=594085731]
+[node name="Front Playform " parent="BIGJ_Ship_03" index="85" unique_id=775642302]
 material_override = ExtResource("2_khp5w")
 
-[node name="Plane_0053" parent="BIGJ_Ship_03" index="158" unique_id=1376086963]
+[node name="Hold Walls_005" parent="BIGJ_Ship_03" index="86" unique_id=2016851438]
+material_override = ExtResource("3_tlnlp")
+
+[node name="Wall Details" parent="BIGJ_Ship_03" index="87" unique_id=1648950546]
+material_override = ExtResource("2_khp5w")
+
+[node name="Wall Details_001" parent="BIGJ_Ship_03" index="88" unique_id=1300844327]
+material_override = ExtResource("2_khp5w")
+
+[node name="Hatch Cover v2" parent="BIGJ_Ship_03" index="89" unique_id=1065278636]
+material_override = ExtResource("2_khp5w")
+
+[node name="Hatch Cover v2_001" parent="BIGJ_Ship_03" index="90" unique_id=1141847199]
+material_override = ExtResource("2_khp5w")
+
+[node name="Hatch Cover v2_002" parent="BIGJ_Ship_03" index="91" unique_id=233826127]
+material_override = ExtResource("2_khp5w")
+
+[node name="Hatch Cover v2_003" parent="BIGJ_Ship_03" index="92" unique_id=1485044094]
+material_override = ExtResource("2_khp5w")
+
+[node name="Hatch Cover v2_004" parent="BIGJ_Ship_03" index="93" unique_id=1878114476]
+material_override = ExtResource("2_khp5w")
+
+[node name="Hatch Cover v2_004_001" parent="BIGJ_Ship_03" index="94" unique_id=63113079]
+material_override = ExtResource("2_khp5w")
+
+[node name="Hatch Cover v2_004_002" parent="BIGJ_Ship_03" index="95" unique_id=30828009]
+material_override = ExtResource("2_khp5w")
+
+[node name="Hatch Cover v2_005" parent="BIGJ_Ship_03" index="96" unique_id=1881573300]
+material_override = ExtResource("2_khp5w")
+
+[node name="Cube_016" parent="BIGJ_Ship_03" index="97" unique_id=1499736854]
 material_override = ExtResource("3_l8ged")
 
-[node name="ladder New3" parent="BIGJ_Ship_03" index="159" unique_id=1718170887]
-visible = false
-
-[node name="Plane_0103" parent="BIGJ_Ship_03" index="160" unique_id=2129193093]
+[node name="Cube_017" parent="BIGJ_Ship_03" index="98" unique_id=449409075]
 material_override = ExtResource("3_l8ged")
 
-[node name="lashing Bridge 1_003" parent="BIGJ_Ship_03" index="161" unique_id=1058635146]
-material_override = ExtResource("2_khp5w")
+[node name="Cube_018" parent="BIGJ_Ship_03" index="99" unique_id=805740025]
+material_override = ExtResource("3_l8ged")
 
-[node name="Container Posts A" parent="BIGJ_Ship_03" index="163" unique_id=752907018]
-material_override = ExtResource("2_khp5w")
+[node name="Plane_012" parent="BIGJ_Ship_03" index="108" unique_id=1124730461]
+material_override = ExtResource("3_l8ged")
 
-[node name="Container Posts B" parent="BIGJ_Ship_03" index="164" unique_id=1118156706]
-material_override = ExtResource("2_khp5w")
+[node name="Hull Complete Shape" parent="BIGJ_Ship_03" index="109" unique_id=1931778881]
+material_override = ExtResource("4_tlnlp")
 
-[node name="Container Posts B_001" parent="BIGJ_Ship_03" index="165" unique_id=1850417292]
-material_override = ExtResource("2_khp5w")
+[node name="Hull Complete Shape_001" parent="BIGJ_Ship_03" index="110" unique_id=1561365914]
+material_override = ExtResource("5_ix6e3")
 
-[node name="Nub A_005" parent="BIGJ_Ship_03/Container Posts B_001" index="0" unique_id=1082790349]
+[node name="Crane Base" parent="BIGJ_Ship_03/Crane" parent_id_path=PackedInt32Array(1107486186, 2109039286) index="0" unique_id=1478725844]
+material_override = ExtResource("3_tlnlp")
+
+[node name="Cube" parent="BIGJ_Ship_03/Crane" parent_id_path=PackedInt32Array(1107486186, 2109039286) index="1" unique_id=580407445]
+material_override = ExtResource("3_tlnlp")
+
+[node name="Cube_002" parent="BIGJ_Ship_03/Crane" parent_id_path=PackedInt32Array(1107486186, 2109039286) index="2" unique_id=1156796659]
+material_override = ExtResource("3_tlnlp")
+
+[node name="Cylinder" parent="BIGJ_Ship_03/Crane" parent_id_path=PackedInt32Array(1107486186, 2109039286) index="3" unique_id=1471756015]
+material_override = ExtResource("3_tlnlp")
+
+[node name="Cube_004" parent="BIGJ_Ship_03/Crane" parent_id_path=PackedInt32Array(1107486186, 2109039286) index="4" unique_id=724893386]
+material_override = ExtResource("3_tlnlp")
+
+[node name="Cube_005" parent="BIGJ_Ship_03/Crane" parent_id_path=PackedInt32Array(1107486186, 2109039286) index="5" unique_id=1397766355]
+material_override = ExtResource("3_tlnlp")
+
+[node name="Cylinder_001" parent="BIGJ_Ship_03/Crane" parent_id_path=PackedInt32Array(1107486186, 2109039286) index="6" unique_id=520200178]
+material_override = ExtResource("3_tlnlp")
+
+[node name="Cube_006" parent="BIGJ_Ship_03/Crane" parent_id_path=PackedInt32Array(1107486186, 2109039286) index="7" unique_id=1685081785]
+material_override = ExtResource("3_tlnlp")
+
+[node name="Cube_007" parent="BIGJ_Ship_03/Crane" parent_id_path=PackedInt32Array(1107486186, 2109039286) index="8" unique_id=2146469683]
+material_override = ExtResource("3_tlnlp")
+
+[node name="Cube_008" parent="BIGJ_Ship_03/Crane" parent_id_path=PackedInt32Array(1107486186, 2109039286) index="9" unique_id=1185111912]
+material_override = ExtResource("3_tlnlp")
+
+[node name="Crane Base2" parent="BIGJ_Ship_03" index="112" unique_id=873652683]
+material_override = ExtResource("3_tlnlp")
+
+[node name="Cube2" parent="BIGJ_Ship_03" index="113" unique_id=1703802840]
+material_override = ExtResource("3_tlnlp")
+
+[node name="Cube_0022" parent="BIGJ_Ship_03" index="114" unique_id=123486519]
+material_override = ExtResource("3_tlnlp")
+
+[node name="Cylinder2" parent="BIGJ_Ship_03" index="115" unique_id=1408262387]
+material_override = ExtResource("3_tlnlp")
+
+[node name="Cube_0042" parent="BIGJ_Ship_03" index="116" unique_id=173748580]
+material_override = ExtResource("3_tlnlp")
+
+[node name="Cube_0052" parent="BIGJ_Ship_03" index="117" unique_id=228679374]
+material_override = ExtResource("3_tlnlp")
+
+[node name="Cylinder_0012" parent="BIGJ_Ship_03" index="118" unique_id=1418305560]
+material_override = ExtResource("3_tlnlp")
+
+[node name="Cube_0062" parent="BIGJ_Ship_03" index="119" unique_id=2053498167]
+material_override = ExtResource("3_tlnlp")
+
+[node name="Cube_0072" parent="BIGJ_Ship_03" index="120" unique_id=1141375400]
+material_override = ExtResource("3_tlnlp")
+
+[node name="Cylinder_0022" parent="BIGJ_Ship_03" index="122" unique_id=492684223]
+material_override = ExtResource("3_tlnlp")
+
+[node name="Cube_0142" parent="BIGJ_Ship_03" index="123" unique_id=974895352]
+material_override = ExtResource("3_tlnlp")
+
+[node name="Cube_0152" parent="BIGJ_Ship_03" index="124" unique_id=1232320963]
+material_override = ExtResource("3_tlnlp")
+
+[node name="Lashing Bridge" parent="BIGJ_Ship_03" index="147" unique_id=2067841060]
 material_override = ExtResource("6_tlnlp")
 
-[node name="Nub A_006" parent="BIGJ_Ship_03/Container Posts B_001" index="1" unique_id=117747748]
+[node name="Lashing Bridge_003" parent="BIGJ_Ship_03" index="148" unique_id=1131996439]
 material_override = ExtResource("6_tlnlp")
 
-[node name="Container Posts A_002" parent="BIGJ_Ship_03" index="167" unique_id=883666280]
-material_override = ExtResource("2_khp5w")
-
-[node name="Container Posts B_002" parent="BIGJ_Ship_03" index="168" unique_id=2102040328]
-material_override = ExtResource("2_khp5w")
-
-[node name="Container Posts B_003" parent="BIGJ_Ship_03" index="169" unique_id=1604813900]
-material_override = ExtResource("2_khp5w")
-
-[node name="Container Posts B_004" parent="BIGJ_Ship_03" index="170" unique_id=1019848206]
-material_override = ExtResource("2_khp5w")
-
-[node name="Container Posts A_003" parent="BIGJ_Ship_03" index="171" unique_id=218369944]
-material_override = ExtResource("2_khp5w")
-
-[node name="Container Posts B_005" parent="BIGJ_Ship_03" index="172" unique_id=590747219]
-material_override = ExtResource("2_khp5w")
-
-[node name="Container Posts B_006" parent="BIGJ_Ship_03" index="173" unique_id=1296489388]
-material_override = ExtResource("2_khp5w")
-
-[node name="Container Posts A_005" parent="BIGJ_Ship_03" index="174" unique_id=1428540181]
-material_override = ExtResource("2_khp5w")
-
-[node name="Container Posts B_007" parent="BIGJ_Ship_03" index="175" unique_id=1771811883]
-material_override = ExtResource("2_khp5w")
-
-[node name="Container Posts B_008" parent="BIGJ_Ship_03" index="176" unique_id=1371173320]
-material_override = ExtResource("2_khp5w")
-
-[node name="Container Posts B_009" parent="BIGJ_Ship_03" index="177" unique_id=24884657]
-material_override = ExtResource("2_khp5w")
-
-[node name="Container Posts B_010" parent="BIGJ_Ship_03" index="178" unique_id=1027776878]
-material_override = ExtResource("2_khp5w")
-
-[node name="Container Posts A_008" parent="BIGJ_Ship_03" index="179" unique_id=797700640]
-material_override = ExtResource("2_khp5w")
-
-[node name="Container Posts B_011" parent="BIGJ_Ship_03" index="180" unique_id=868564339]
-material_override = ExtResource("2_khp5w")
-
-[node name="Container Posts B_012" parent="BIGJ_Ship_03" index="181" unique_id=407375544]
-material_override = ExtResource("2_khp5w")
-
-[node name="bridge start_002" parent="BIGJ_Ship_03" index="182" unique_id=6325698]
-material_override = ExtResource("2_khp5w")
-
-[node name="bridge start_001" parent="BIGJ_Ship_03" index="183" unique_id=1665044299]
-material_override = ExtResource("2_khp5w")
-
-[node name="bridge start" parent="BIGJ_Ship_03" index="184" unique_id=20368924]
-material_override = ExtResource("2_khp5w")
-
-[node name="Nub A_003" parent="BIGJ_Ship_03/bridge start" index="0" unique_id=70405568]
+[node name="Lashing Bridge_006" parent="BIGJ_Ship_03" index="149" unique_id=1644288709]
 material_override = ExtResource("6_tlnlp")
 
-[node name="Nub A_004" parent="BIGJ_Ship_03/bridge start" index="1" unique_id=1147208166]
+[node name="Lashing Bridge_001" parent="BIGJ_Ship_03" index="150" unique_id=170623505]
 material_override = ExtResource("6_tlnlp")
 
-[node name="Nub A_007" parent="BIGJ_Ship_03/bridge start" index="2" unique_id=938241572]
+[node name="Plane_007" parent="BIGJ_Ship_03/Lashing Bridge Entry Large" parent_id_path=PackedInt32Array(1107486186, 59736208) index="0" unique_id=220483392]
+material_override = ExtResource("3_l8ged")
+
+[node name="Plane_008" parent="BIGJ_Ship_03/Lashing Bridge Entry Large" parent_id_path=PackedInt32Array(1107486186, 59736208) index="1" unique_id=943626310]
+material_override = ExtResource("3_l8ged")
+
+[node name="Plane_013" parent="BIGJ_Ship_03/Lashing Bridge Entry Large" parent_id_path=PackedInt32Array(1107486186, 59736208) index="2" unique_id=1242106737]
+material_override = ExtResource("3_l8ged")
+
+[node name="lashing Bridge 1_002" parent="BIGJ_Ship_03/Lashing Bridge Entry Large" parent_id_path=PackedInt32Array(1107486186, 59736208) index="3" unique_id=119147807]
+material_override = ExtResource("2_khp5w")
+
+[node name="Plane_005" parent="BIGJ_Ship_03/Lashing Bridge Entry Large" parent_id_path=PackedInt32Array(1107486186, 59736208) index="5" unique_id=1002842329]
+material_override = ExtResource("3_l8ged")
+
+[node name="Plane_010" parent="BIGJ_Ship_03/Lashing Bridge Entry Large" parent_id_path=PackedInt32Array(1107486186, 59736208) index="6" unique_id=850709912]
+material_override = ExtResource("3_l8ged")
+
+[node name="Plane_0072" parent="BIGJ_Ship_03/Lashing Bridge Entry Large_001" parent_id_path=PackedInt32Array(1107486186, 463804305) index="0" unique_id=84907829]
+material_override = ExtResource("3_l8ged")
+
+[node name="Plane_0082" parent="BIGJ_Ship_03/Lashing Bridge Entry Large_001" parent_id_path=PackedInt32Array(1107486186, 463804305) index="1" unique_id=1501073877]
+material_override = ExtResource("3_l8ged")
+
+[node name="Plane_0132" parent="BIGJ_Ship_03/Lashing Bridge Entry Large_001" parent_id_path=PackedInt32Array(1107486186, 463804305) index="2" unique_id=191745549]
+material_override = ExtResource("3_l8ged")
+
+[node name="lashing Bridge 1_0022" parent="BIGJ_Ship_03/Lashing Bridge Entry Large_001" parent_id_path=PackedInt32Array(1107486186, 463804305) index="3" unique_id=796726287]
+material_override = ExtResource("2_khp5w")
+
+[node name="Plane_0052" parent="BIGJ_Ship_03/Lashing Bridge Entry Large_001" parent_id_path=PackedInt32Array(1107486186, 463804305) index="5" unique_id=453879976]
+material_override = ExtResource("3_l8ged")
+
+[node name="Plane_0102" parent="BIGJ_Ship_03/Lashing Bridge Entry Large_001" parent_id_path=PackedInt32Array(1107486186, 463804305) index="6" unique_id=606741733]
+material_override = ExtResource("3_l8ged")
+
+[node name="Plane_0073" parent="BIGJ_Ship_03" index="153" unique_id=448635717]
+material_override = ExtResource("3_l8ged")
+
+[node name="Plane_0083" parent="BIGJ_Ship_03" index="154" unique_id=1430663245]
+material_override = ExtResource("3_l8ged")
+
+[node name="lashing Bridge 1_0023" parent="BIGJ_Ship_03" index="156" unique_id=521879897]
+material_override = ExtResource("2_khp5w")
+
+[node name="Plane_0053" parent="BIGJ_Ship_03" index="158" unique_id=1830433944]
+material_override = ExtResource("3_l8ged")
+
+[node name="Plane_0103" parent="BIGJ_Ship_03" index="159" unique_id=806631062]
+material_override = ExtResource("3_l8ged")
+
+[node name="lashing Bridge 1_003" parent="BIGJ_Ship_03" index="160" unique_id=642984221]
+material_override = ExtResource("2_khp5w")
+
+[node name="Container Posts A" parent="BIGJ_Ship_03" index="162" unique_id=303761948]
+material_override = ExtResource("2_khp5w")
+
+[node name="Container Posts B" parent="BIGJ_Ship_03" index="163" unique_id=606735330]
+material_override = ExtResource("2_khp5w")
+
+[node name="Container Posts B_001" parent="BIGJ_Ship_03" index="164" unique_id=169843016]
+material_override = ExtResource("2_khp5w")
+
+[node name="Nub A_005" parent="BIGJ_Ship_03/Container Posts B_001" index="0" unique_id=1188846296]
 material_override = ExtResource("6_tlnlp")
 
-[node name="Nub A_008" parent="BIGJ_Ship_03/bridge start" index="3" unique_id=1347811427]
+[node name="Nub A_006" parent="BIGJ_Ship_03/Container Posts B_001" index="1" unique_id=449111425]
+material_override = ExtResource("6_tlnlp")
+
+[node name="Container Posts A_002" parent="BIGJ_Ship_03" index="166" unique_id=692467478]
+material_override = ExtResource("2_khp5w")
+
+[node name="Container Posts B_002" parent="BIGJ_Ship_03" index="167" unique_id=498127873]
+material_override = ExtResource("2_khp5w")
+
+[node name="Container Posts B_003" parent="BIGJ_Ship_03" index="168" unique_id=290022536]
+material_override = ExtResource("2_khp5w")
+
+[node name="Container Posts B_004" parent="BIGJ_Ship_03" index="169" unique_id=45822548]
+material_override = ExtResource("2_khp5w")
+
+[node name="Container Posts A_003" parent="BIGJ_Ship_03" index="170" unique_id=1344078810]
+material_override = ExtResource("2_khp5w")
+
+[node name="Container Posts B_005" parent="BIGJ_Ship_03" index="171" unique_id=138485057]
+material_override = ExtResource("2_khp5w")
+
+[node name="Container Posts B_006" parent="BIGJ_Ship_03" index="172" unique_id=1420134836]
+material_override = ExtResource("2_khp5w")
+
+[node name="Container Posts A_005" parent="BIGJ_Ship_03" index="173" unique_id=1082798837]
+material_override = ExtResource("2_khp5w")
+
+[node name="Container Posts B_007" parent="BIGJ_Ship_03" index="174" unique_id=1906942920]
+material_override = ExtResource("2_khp5w")
+
+[node name="Container Posts B_008" parent="BIGJ_Ship_03" index="175" unique_id=2043875048]
+material_override = ExtResource("2_khp5w")
+
+[node name="Container Posts B_009" parent="BIGJ_Ship_03" index="176" unique_id=152905481]
+material_override = ExtResource("2_khp5w")
+
+[node name="Container Posts B_010" parent="BIGJ_Ship_03" index="177" unique_id=446827618]
+material_override = ExtResource("2_khp5w")
+
+[node name="Container Posts A_008" parent="BIGJ_Ship_03" index="178" unique_id=1356360704]
+material_override = ExtResource("2_khp5w")
+
+[node name="Container Posts B_011" parent="BIGJ_Ship_03" index="179" unique_id=107659529]
+material_override = ExtResource("2_khp5w")
+
+[node name="Container Posts B_012" parent="BIGJ_Ship_03" index="180" unique_id=401190633]
+material_override = ExtResource("2_khp5w")
+
+[node name="bridge start_002" parent="BIGJ_Ship_03" index="181" unique_id=1371957149]
+material_override = ExtResource("2_khp5w")
+
+[node name="bridge start_001" parent="BIGJ_Ship_03" index="182" unique_id=765655243]
+material_override = ExtResource("2_khp5w")
+
+[node name="bridge start" parent="BIGJ_Ship_03" index="183" unique_id=226959514]
+material_override = ExtResource("2_khp5w")
+
+[node name="Nub A_003" parent="BIGJ_Ship_03/bridge start" index="0" unique_id=1205234947]
+material_override = ExtResource("6_tlnlp")
+
+[node name="Nub A_004" parent="BIGJ_Ship_03/bridge start" index="1" unique_id=443331004]
+material_override = ExtResource("6_tlnlp")
+
+[node name="Nub A_007" parent="BIGJ_Ship_03/bridge start" index="2" unique_id=1932012121]
+material_override = ExtResource("6_tlnlp")
+
+[node name="Nub A_008" parent="BIGJ_Ship_03/bridge start" index="3" unique_id=61766541]
 material_override = ExtResource("6_tlnlp")
 
 [node name="container_array 5" type="Node3D" parent="BIGJ_Ship_03" unique_id=2021597639]
@@ -883,5 +975,125 @@ transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 2.63
 
 [node name="@Node3D@263652" parent="BIGJ_Ship_03/container_array 10" unique_id=570775415 instance=ExtResource("2_4ftm2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.6364813, 2.8453994, 6.546877)
+
+[node name="Night Lights" type="Node3D" parent="." unique_id=1730764628]
+
+[node name="SpotLight3D" type="SpotLight3D" parent="Night Lights" unique_id=237008619]
+transform = Transform3D(1, 0, 0, 0, 0.78205377, 0.623211, 0, -0.623211, 0.78205377, 7.8126984, 20.98048, 57.867218)
+light_color = Color(0.9301446, 0.84689915, 0.6640551, 1)
+light_energy = 100.0
+light_size = 0.02
+shadow_enabled = true
+spot_range = 53.933434
+spot_angle = 20.12752
+
+[node name="SpotLight3D3" type="SpotLight3D" parent="Night Lights" unique_id=1835408216]
+transform = Transform3D(0.99187666, 0, -0.1272031, 0.07927438, 0.78205377, 0.6181485, 0.09947967, -0.623211, 0.7757009, 2.1107512, 21.852718, 57.61987)
+light_color = Color(0.9301446, 0.84689915, 0.6640551, 1)
+light_energy = 100.0
+light_size = 0.02
+shadow_enabled = true
+spot_range = 53.933434
+spot_angle = 20.12752
+
+[node name="SpotLight3D4" type="SpotLight3D" parent="Night Lights" unique_id=1460353345]
+transform = Transform3D(0.99613583, -0.007165849, 0.08753269, -0.04897165, 0.782021, 0.6213253, -0.072904706, -0.62321097, 0.7786481, -2.6765978, 21.807291, 57.562294)
+light_color = Color(0.9301446, 0.84689915, 0.6640551, 1)
+light_energy = 100.0
+light_size = 0.02
+shadow_enabled = true
+spot_range = 53.933434
+spot_angle = 20.12752
+
+[node name="SpotLight3D5" type="SpotLight3D" parent="Night Lights" unique_id=30876141]
+transform = Transform3D(0.99613583, -0.007165849, 0.08753269, -0.04897165, 0.782021, 0.6213253, -0.072904706, -0.62321097, 0.7786481, 0.10617781, 18.432062, 26.576006)
+light_color = Color(0.9301446, 0.84689915, 0.6640551, 1)
+light_energy = 100.0
+light_size = 0.02
+shadow_enabled = true
+spot_range = 53.933434
+spot_angle = 20.12752
+
+[node name="SpotLight3D6" type="SpotLight3D" parent="Night Lights" unique_id=1461839875]
+transform = Transform3D(0.9961359, -0.087701924, 0.0046575693, -0.048971646, -0.5106432, 0.8583969, -0.072904706, -0.8553082, -0.512965, -0.84456927, 17.356771, -26.190584)
+light_color = Color(0.9301446, 0.84689915, 0.6640551, 1)
+light_energy = 100.0
+light_size = 0.02
+shadow_enabled = true
+spot_range = 53.933434
+spot_angle = 20.12752
+
+[node name="SpotLight3D7" type="SpotLight3D" parent="Night Lights" unique_id=1902056286]
+transform = Transform3D(0.99613583, -0.06604596, 0.057890017, -0.048971646, 0.12946093, 0.99037457, -0.072904706, -0.9893826, 0.12572628, 0.08503954, 16.792671, -55.21697)
+light_color = Color(0.9301446, 0.84689915, 0.6640551, 1)
+light_energy = 100.0
+light_size = 0.02
+shadow_enabled = true
+spot_range = 53.933434
+spot_angle = 20.12752
+
+[node name="SpotLight3D2" type="SpotLight3D" parent="Night Lights" unique_id=23948616]
+transform = Transform3D(1, 0, 0, 0, 0.84003675, 0.5425295, 0, -0.5425295, 0.84003675, -8.879656, 20.98048, 57.867218)
+light_color = Color(0.9301446, 0.84689915, 0.6640551, 1)
+light_energy = 100.0
+light_size = 0.02
+shadow_enabled = true
+spot_range = 53.933434
+spot_angle = 20.12752
+
+[node name="OmniLight3D" type="OmniLight3D" parent="Night Lights" unique_id=1024933128]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 18.847067, -28.047901)
+light_color = Color(0.9948409, 0, 0.17758498, 1)
+light_size = 0.071
+
+[node name="OmniLight3D2" type="OmniLight3D" parent="Night Lights" unique_id=2051942744]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 22.40142, 28.134499)
+light_color = Color(0.9948409, 0, 0.17758498, 1)
+light_size = 0.071
+
+[node name="OmniLight3D3" type="OmniLight3D" parent="Night Lights" unique_id=736475115]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.038731, 22.40142, 62.278526)
+light_color = Color(0.9948409, 0, 0.17758498, 1)
+light_size = 0.071
+
+[node name="OmniLight3D4" type="OmniLight3D" parent="Night Lights" unique_id=433965711]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.16204, 22.40142, 62.278526)
+light_color = Color(0.9948409, 0, 0.17758498, 1)
+light_size = 0.071
+
+[node name="OmniLight3D5" type="OmniLight3D" parent="Night Lights" unique_id=1374735118]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.038731, 1.6820774, 22.34363)
+light_color = Color(0.9948409, 0, 0.17758498, 1)
+light_size = 0.071
+
+[node name="OmniLight3D6" type="OmniLight3D" parent="Night Lights" unique_id=1107226240]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.16204, 1.6820774, 22.34363)
+light_color = Color(0.9948409, 0, 0.17758498, 1)
+light_size = 0.071
+
+[node name="OmniLight3D7" type="OmniLight3D" parent="Night Lights" unique_id=1208764491]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.038731, 1.6820774, -9.68244)
+light_color = Color(0.9948409, 0, 0.17758498, 1)
+light_size = 0.071
+
+[node name="OmniLight3D8" type="OmniLight3D" parent="Night Lights" unique_id=785498386]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.16204, 1.6820774, -9.68244)
+light_color = Color(0.9948409, 0, 0.17758498, 1)
+light_size = 0.071
+
+[node name="OmniLight3D9" type="OmniLight3D" parent="Night Lights" unique_id=1208533809]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.038731, 1.6820774, -34.462147)
+light_color = Color(0.9948409, 0, 0.17758498, 1)
+light_size = 0.071
+
+[node name="OmniLight3D10" type="OmniLight3D" parent="Night Lights" unique_id=1456427765]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.16204, 1.6820774, -34.462147)
+light_color = Color(0.9948409, 0, 0.17758498, 1)
+light_size = 0.071
+
+[node name="probes" type="Node3D" parent="." unique_id=1032271196]
+
+[node name="LightmapProbe" type="LightmapProbe" parent="probes" unique_id=772075261]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.3812747, -43.62248)
 
 [editable path="BIGJ_Ship_03"]

@@ -1,0 +1,29 @@
+[gd_resource type="ShaderMaterial" format=3 uid="uid://c2vuo1ewf0rlr"]
+
+[ext_resource type="Material" uid="uid://sgetjvg177mb" path="res://Shaders/outline.tres" id="1_0v880"]
+[ext_resource type="Shader" uid="uid://d266trvxphdyu" path="res://Shaders/cel-shader-base.gdshader" id="2_fenvc"]
+[ext_resource type="Texture2D" uid="uid://oh3mv0e2g0e7" path="res://Materials/Textures/Enviroment/Hull_Walls_noLarge Rust_Col_Alpha.png" id="3_0v880"]
+[ext_resource type="Texture2D" uid="uid://ctpk36oxo8m6r" path="res://Materials/Textures/Enviroment/Hull_Walls_noLarge Rust_Normal.png" id="4_fenvc"]
+[ext_resource type="Texture2D" uid="uid://bnbpufvfnl1np" path="res://Materials/Textures/Enviroment/Hull_Walls_noLarge Rust_ORM.png" id="5_u330j"]
+
+[resource]
+render_priority = 0
+next_pass = ExtResource("1_0v880")
+shader = ExtResource("2_fenvc")
+shader_parameter/emission = Color(0, 0, 0, 1)
+shader_parameter/emission_energy = 1.0
+shader_parameter/normal_scale = 1.0
+shader_parameter/normal_map = ExtResource("4_fenvc")
+shader_parameter/invert_normal_y = false
+shader_parameter/color = Color(1, 1, 1, 1)
+shader_parameter/base_texture = ExtResource("3_0v880")
+shader_parameter/specular_color = Color(0.1955451, 0.1955451, 0.19554505, 1)
+shader_parameter/specular_strength = 0.7750000368125
+shader_parameter/orm_texture = ExtResource("5_u330j")
+shader_parameter/ao_strength = 1.0
+shader_parameter/roughness_strength = 1.0
+shader_parameter/metallic_strength = 0.0
+shader_parameter/invert_roughness = false
+shader_parameter/fresnel = Color(0.5079715, 0.5079715, 0.5079715, 0.3019608)
+shader_parameter/uv_scale = Vector2(2, 2)
+shader_parameter/uv_offset = Vector2(0, 0)
