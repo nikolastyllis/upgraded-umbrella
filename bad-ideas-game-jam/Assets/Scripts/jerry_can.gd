@@ -10,13 +10,14 @@ var player = null
 var game_manager = null
 var lifeboat = null
 var dropped_at_lifeboat = false
+var idx = -1
 
 @onready var boxes = [$Box_A, $Box_B, $Box_C]
 @onready var colliders = [$box_A_collider,$box_B_collider,$box_C_collider]
 @onready var interiors = [$"../Container_Interior_BoxA_Stack", $"../Container_Interior_BoxB_Stack", $"../Container_Interior_BoxC_Stack"]
 
 func _ready():
-	var idx = randi() % boxes.size()
+	idx = randi() % boxes.size()
 	
 	for i in boxes.size():
 		boxes[i].visible = (i == idx)
@@ -40,6 +41,15 @@ func interact_hold_time() -> float:
 	return 1.0
 
 func on_interact(_player):
+	
+	if idx == 0:
+		_player.play_dialogue(95)
+		
+	if idx == 1:
+		_player.play_dialogue(96)
+	
+	if idx == 2:
+		_player.play_dialogue(94)
 	
 	game_manager = get_tree().get_nodes_in_group("game_manager")[0]
 	lifeboat = get_tree().get_nodes_in_group("lifeboat")[0]

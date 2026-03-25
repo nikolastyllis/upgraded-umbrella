@@ -198,8 +198,9 @@ func _begin_roar(look_target: Node3D = null) -> void:
 	var state_machine = animation_tree["parameters/AnimationNodeStateMachine/playback"]
 	state_machine.travel(ROAR_ANIM_NAME)
 
-	var dialogue_id = randi_range(80, 91)
-	play_dialogue(dialogue_id, 50)
+	var dialogue_id = randi_range(80, 84)
+	
+	play_dialogue(dialogue_id, 40, 0.5)
 
 func _tick_roar(delta: float) -> void:
 	_roar_timer -= delta

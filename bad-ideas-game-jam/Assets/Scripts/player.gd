@@ -70,7 +70,7 @@ func _start_right_hand_ik(hit_point) -> void:
 func _stop_right_hand_ik() -> void:
 	right_hand_ik.stop()
 	
-func _exit_tree() -> void:
+func _exit_tree() -> void: 
 	if _ik_target_node:
 		_ik_target_node.queue_free()
 
@@ -179,6 +179,8 @@ func _physics_process(delta: float) -> void:
 	
 	if not movement_disabled:
 		if Input.is_action_just_pressed("ui_accept") and is_on_floor() and not is_climbing:
+			var random_int = randi_range(98, 100)
+			play_dialogue(random_int)
 			velocity.y = JUMP_VELOCITY
 		apply_movement(get_raw_input_dir())
 		update_movement_animation(get_raw_input_dir())
