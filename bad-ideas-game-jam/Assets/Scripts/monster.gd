@@ -326,8 +326,23 @@ func apply_movement() -> void:
 # ─────────────────────────────────────────────
 func update_movement_animation(input_dir: Vector2) -> void:
 	var state_machine = animation_tree["parameters/AnimationNodeStateMachine/playback"]
-	if input_dir.length() > 0.01:
-		state_machine.travel("Jog")
+
+	# Mirror BaseCharacter: finish-climb takes priority
+	if current_ladder and current_ladder.end_y() < global_position.y and get_climb_input() > 0 and finish_climb_animation_cooldown_timer > finish_climb_animation_cooldown:
+		finish_climb_animation_cooldown_timer = 0
+		state_machine.travel("Finish Climbing")
+		is_finishing_climb = true
+
+	if is_finishing_climb:
+		return
+
+	if is_climbing:
+		state_machine.travel("Climb")
+		animation_tree.set("parameters/AnimationNodeStateMachine/Climb/Climb Direction/scale", sign(get_climb_input()))
+	elif not is_on_floor():
+		state_machine.travel("Fall")
+	elif input_dir.length() > 0.01:
+		state_machine.travel("Jog")  # Monster always jogs, never walks
 	else:
 		state_machine.travel("Idle")
 

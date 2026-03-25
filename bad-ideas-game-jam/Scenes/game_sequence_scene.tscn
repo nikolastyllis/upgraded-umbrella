@@ -401,16 +401,16 @@ transform = Transform3D(-2, 0, -1.7484555e-07, 0, 2, 0, 1.7484555e-07, 0, -2, 18
 transform = Transform3D(2, 0, 3.496911e-07, 0, 2, 0, -3.496911e-07, 0, 2, -18.90554, 1.7591333, 0.6089497)
 
 [node name="Ladder8" parent="NavigationRegion3D" unique_id=685406565 instance=ExtResource("11_n0oop")]
-transform = Transform3D(-2, 0, -1.7484555e-07, 0, 2, 0, 1.7484555e-07, 0, -2, 18.745255, 1.8844266, 0.63843673)
+transform = Transform3D(-2, 0, -1.7484555e-07, 0, 2, 0, 1.7484555e-07, 0, -2, 18.576576, 1.8844266, 0.63843673)
 
 [node name="Ladder7" parent="NavigationRegion3D" unique_id=319840398 instance=ExtResource("11_n0oop")]
-transform = Transform3D(-2, 0, -1.7484555e-07, 0, 2, 0, 1.7484555e-07, 0, -2, 18.730616, 1.7678611, 57.808464)
+transform = Transform3D(-2, 0, -1.7484555e-07, 0, 2, 0, 1.7484555e-07, 0, -2, 18.569765, 1.7678611, 57.593163)
 
 [node name="Ladder3" parent="NavigationRegion3D" unique_id=2071201242 instance=ExtResource("11_n0oop")]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -16.559399, 1.7894154, -87.007965)
 
 [node name="Ladder4" parent="NavigationRegion3D" unique_id=248772487 instance=ExtResource("11_n0oop")]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -18.841255, 1.7390335, -57.33609)
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -18.706345, 1.7390335, -57.33609)
 
 [node name="Ladder2" parent="NavigationRegion3D" unique_id=84530094 instance=ExtResource("11_n0oop")]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -18.646338, 1.7592611, 57.49981)

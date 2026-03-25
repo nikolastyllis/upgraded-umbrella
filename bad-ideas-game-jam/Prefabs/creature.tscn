@@ -4,7 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://bhvvfdf12hmai" path="res://Scenes/Characters/creature_visual.tscn" id="2_avcrw"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_myya0"]
-radius = 0.15
+radius = 0.19433594
 height = 1.7
 
 [node name="Npc" type="CharacterBody3D" unique_id=1647912674]

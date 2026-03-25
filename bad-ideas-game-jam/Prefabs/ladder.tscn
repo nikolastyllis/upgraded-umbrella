@@ -4,7 +4,7 @@
 [ext_resource type="Script" uid="uid://415q51ya5s0a" path="res://Assets/Scripts/ladder.gd" id="2_rmtat"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_rmtat"]
-size = Vector3(0.60860384, 0.5, 2.6000001)
+size = Vector3(0.60860384, 0.6, 2.6000001)
 
 [node name="Ladder" unique_id=689004252 instance=ExtResource("1_2guuy")]
 script = ExtResource("2_rmtat")
@@ -18,7 +18,7 @@ collision_layer = 6
 collision_mask = 7
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area" index="0" unique_id=1274182121]
-transform = Transform3D(-1, -4.371139e-08, 1.9106855e-15, 4.371139e-08, -1, 4.371139e-08, 0, 4.371139e-08, 1, 6.628425e-11, -0.05025889, 0.00092971325)
+transform = Transform3D(-1, -4.371139e-08, 1.9106855e-15, 4.371139e-08, -1, 4.371139e-08, 0, 4.371139e-08, 1, 2.2518538e-09, -0.00025889277, 0.00092971325)
 shape = SubResource("BoxShape3D_rmtat")
 
 [node name="NavigationLink3D" type="NavigationLink3D" parent="." index="2" unique_id=2022253896]
