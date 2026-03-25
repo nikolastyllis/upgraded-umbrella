@@ -21,10 +21,6 @@ config/icon="res://icon.svg"
 
 buses/default_bus_layout="uid://boomcgkr7undd"
 
-[autoload]
-
-SceneTransition="*uid://dsjiai4kdqpn3"
-
 [display]
 
 window/size/viewport_width=1920

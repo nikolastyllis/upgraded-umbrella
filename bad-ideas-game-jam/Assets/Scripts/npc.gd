@@ -50,6 +50,8 @@ func _ready() -> void:
 	add_to_group("npcs")
 
 func set_target_position(pos: Vector3) -> void:
+	if get_tree() == null:
+		return
 	await get_tree().create_timer(randf() * 3).timeout
 	target_position = pos
 	_has_target = true

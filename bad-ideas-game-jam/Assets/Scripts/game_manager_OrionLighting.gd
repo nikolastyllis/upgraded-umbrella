@@ -192,11 +192,9 @@ func play_from_act_7():
 	story_increment = 7
 	
 func restart_from_act_7() -> void:
-	await SceneTransition.fade_out()
+	debug_play_from_act_7 = true
+	number_of_supplies = 0
 	get_tree().reload_current_scene()
-	await get_tree().process_frame
-	play_from_act_7()
-	await SceneTransition.fade_in()
 
 # Act 8 — infected container opened, lightning struck, twins chasing, fuel run
 func play_from_act_8():
@@ -262,7 +260,7 @@ func _process(_delta: float) -> void:
 		_play_act_1_start()
 		story_increment += 1
 		
-	if story_increment == 2 and not player_has_interacted_with_container:
+	if story_increment <= 2 and not player_has_interacted_with_container:
 		_update_act_1_objective()
 
 	if story_increment == 2 and player.has_oxy_torch:
