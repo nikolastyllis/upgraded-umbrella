@@ -252,7 +252,6 @@ func _process(_delta: float) -> void:
 	_update_audio_and_rain()
 
 	# ── ACT 1 ────────────────────────────────────────────────────────────────
-
 	if story_increment == 1 and _player_is_near(container.global_position):
 		creature.global_position = hide1.global_position
 		creature.set_target_position(Vector3.ZERO)
@@ -260,12 +259,11 @@ func _process(_delta: float) -> void:
 		_play_act_1_start()
 		story_increment += 1
 		
-	if story_increment <= 2 and not player_has_interacted_with_container:
+	if story_increment <= 2.5:
 		_update_act_1_objective()
 
 	if story_increment == 2 and player.has_oxy_torch:
 		story_increment += 0.5
-		_remove_objective()
 
 	if story_increment == 2.5 and player_has_interacted_with_container:
 		story_increment += 0.5
@@ -424,6 +422,7 @@ func _play_act_1_start() -> void:
 	player.toggle_movement_disabled()
 	await twin_1.play_dialogue(32)
 	_play_container_reminders()
+	_spawn_objective_marker(oxy_torch, "Pick up the oxy–acetylene torch")
 	_dialogue_active = false
 	
 func _play_act_4_lifeboat() -> void:
@@ -448,7 +447,6 @@ func _play_act1_shift_over():
 	await twin_2.play_dialogue(30)
 	await twin_1.play_dialogue(31)
 	twin_2.set_target_position(bedroom.global_position)
-	await _wait_for(3.0)
 	twin_1.set_target_position(bedroom.global_position)
 	_update_oxy_torch_return_objective()
 	player.toggle_movement_disabled()
