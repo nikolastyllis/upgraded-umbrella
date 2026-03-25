@@ -2,6 +2,8 @@
 
 [ext_resource type="Material" uid="uid://sgetjvg177mb" path="res://Shaders/outline.tres" id="1_xa3wg"]
 [ext_resource type="Shader" uid="uid://d266trvxphdyu" path="res://Shaders/cel-shader-base.gdshader" id="2_avqoj"]
+[ext_resource type="Texture2D" uid="uid://doly28xj2ryim" path="res://Assets/Models/Items/BIGJ_oxy_torch_Low_OxyBackpack_mat_BaseColor.png" id="3_ippal"]
+[ext_resource type="Texture2D" uid="uid://buyem58ebk2uo" path="res://Assets/Models/Items/BIGJ_oxy_torch_Low_OxyBackpack_mat_Normal.png" id="4_exw8m"]
 
 [resource]
 render_priority = 0
@@ -10,8 +12,10 @@ shader = ExtResource("2_avqoj")
 shader_parameter/emission = Color(0, 0, 0, 1)
 shader_parameter/emission_energy = 1.0
 shader_parameter/normal_scale = 0.50000078375
+shader_parameter/normal_map = ExtResource("4_exw8m")
 shader_parameter/invert_normal_y = false
 shader_parameter/color = Color(0.3266795, 0.3266795, 0.32667947, 1)
+shader_parameter/base_texture = ExtResource("3_ippal")
 shader_parameter/specular_color = Color(0.14767182, 0.14767179, 0.14767179, 1)
 shader_parameter/specular_strength = 0.86000004085
 shader_parameter/ao_strength = 1.0

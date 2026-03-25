@@ -15,19 +15,19 @@ script = ExtResource("1_l3b1r")
 
 [node name="Backpack" parent="." unique_id=850238865 instance=ExtResource("2_5f54v")]
 
-[node name="backpack_straps" parent="Backpack/Oxy Backpack/Skeleton3D" parent_id_path=PackedInt32Array(850238865, 1496061150) index="0" unique_id=2031000010]
-surface_material_override/0 = ExtResource("3_1odys")
+[node name="backpack" parent="Backpack/Oxy Backpack/Skeleton3D" parent_id_path=PackedInt32Array(850238865, 511263744) index="0" unique_id=1181128877]
+material_override = ExtResource("3_1odys")
 
-[node name="gas_tank" parent="Backpack/Oxy Backpack/Skeleton3D" parent_id_path=PackedInt32Array(850238865, 1496061150) index="1" unique_id=1088342148]
+[node name="gas_tank" parent="Backpack/Oxy Backpack/Skeleton3D" parent_id_path=PackedInt32Array(850238865, 511263744) index="1" unique_id=444928978]
 surface_material_override/0 = ExtResource("3_qt6b8")
 
-[node name="gas_tube" parent="Backpack/Oxy Backpack/Skeleton3D" parent_id_path=PackedInt32Array(850238865, 1496061150) index="2" unique_id=1684403936]
+[node name="gas_tube" parent="Backpack/Oxy Backpack/Skeleton3D" parent_id_path=PackedInt32Array(850238865, 511263744) index="2" unique_id=202034944]
 surface_material_override/0 = ExtResource("3_qt6b8")
 
-[node name="oxy_tank" parent="Backpack/Oxy Backpack/Skeleton3D" parent_id_path=PackedInt32Array(850238865, 1496061150) index="3" unique_id=37386747]
+[node name="oxy_tank" parent="Backpack/Oxy Backpack/Skeleton3D" parent_id_path=PackedInt32Array(850238865, 511263744) index="3" unique_id=670428590]
 surface_material_override/0 = ExtResource("3_qt6b8")
 
-[node name="oxy_tube" parent="Backpack/Oxy Backpack/Skeleton3D" parent_id_path=PackedInt32Array(850238865, 1496061150) index="4" unique_id=1630321875]
+[node name="oxy_tube" parent="Backpack/Oxy Backpack/Skeleton3D" parent_id_path=PackedInt32Array(850238865, 511263744) index="4" unique_id=1971024292]
 surface_material_override/0 = ExtResource("3_qt6b8")
 
 [node name="CutterPos" type="Node3D" parent="Backpack" unique_id=2140531208]

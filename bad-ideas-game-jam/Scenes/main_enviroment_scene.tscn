@@ -6,6 +6,7 @@
 [ext_resource type="Material" uid="uid://sgetjvg177mb" path="res://Shaders/outline.tres" id="3_khp5w"]
 [ext_resource type="Material" uid="uid://nn3ewwhgb1a3" path="res://Materials/Ship/ship_handrail_A_mat.tres" id="3_l8ged"]
 [ext_resource type="Shader" uid="uid://d266trvxphdyu" path="res://Shaders/cel-shader-base.gdshader" id="4_7fy0s"]
+[ext_resource type="Material" uid="uid://cvdlxl52307wq" path="res://Materials/Ship/ship_hull_mat.tres" id="4_tlnlp"]
 [ext_resource type="Material" uid="uid://c51ek0v8ig1jv" path="res://Materials/Ship/ship_connectors_mat.tres" id="6_tlnlp"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_l8ged"]
@@ -39,6 +40,9 @@ material_override = ExtResource("2_khp5w")
 
 [node name="Front wall " parent="BIGJ_Ship_03" index="4" unique_id=146295031]
 material_override = ExtResource("2_khp5w")
+
+[node name="ladder New_001" parent="BIGJ_Ship_03" index="5" unique_id=2080271569]
+visible = false
 
 [node name="Main Deck Complete" parent="BIGJ_Ship_03" index="83" unique_id=1404379687]
 material_override = ExtResource("2_khp5w")
@@ -84,6 +88,9 @@ material_override = ExtResource("2_khp5w")
 
 [node name="Plane_012" parent="BIGJ_Ship_03" index="108" unique_id=1140188535]
 material_override = ExtResource("3_l8ged")
+
+[node name="Hull Complete Shape" parent="BIGJ_Ship_03" index="109" unique_id=1455246745]
+material_override = ExtResource("4_tlnlp")
 
 [node name="Hull Complete Shape_001" parent="BIGJ_Ship_03" index="110" unique_id=1716468980]
 material_override = SubResource("ShaderMaterial_l8ged")
@@ -147,6 +154,9 @@ material_override = ExtResource("2_khp5w")
 
 [node name="Plane_0053" parent="BIGJ_Ship_03" index="158" unique_id=1376086963]
 material_override = ExtResource("3_l8ged")
+
+[node name="ladder New3" parent="BIGJ_Ship_03" index="159" unique_id=1718170887]
+visible = false
 
 [node name="Plane_0103" parent="BIGJ_Ship_03" index="160" unique_id=2129193093]
 material_override = ExtResource("3_l8ged")
