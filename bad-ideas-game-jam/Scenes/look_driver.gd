@@ -52,7 +52,7 @@ class_name LookDriver
 @export var cloud_amount_curve: Curve
 @export var sun_energy_curve: Curve   # NEW
 @export var sky_sun_elev_uniform := "sun_elev"
-
+@export var sun_angula_curve: Curve
 # -------------------------
 # Uniform/property names (match your shaders)
 # -------------------------
@@ -125,7 +125,7 @@ func _apply_look(t: float) -> void:
 		var cur_energy := sun.light_energy
 		var target_energy := _sample_curve(sun_energy_curve, t, cur_energy)
 		sun.light_energy = target_energy
-		
+		sun.light_angular_distance = _sample_curve(sun_angula_curve, t, 1)
 		
 	var horizon_col := _sample_col(horizon_ramp, t, Color(0.70, 0.85, 1.0))
 	# 2) Environment (fog + adjustments)

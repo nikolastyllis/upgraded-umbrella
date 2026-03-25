@@ -94,7 +94,7 @@ point_count = 2
 
 [sub_resource type="Curve" id="Curve_iy7pm"]
 _limits = [-1.0, 1.0, 0.0, 1.0]
-_data = [Vector2(0, 0.06131494), 0.0, -0.15109101, 0, 0, Vector2(0.5137457, 0.113755465), 0.0, 0.0, 0, 0, Vector2(1, 0.04558277), -0.12850711, 0.0, 0, 0]
+_data = [Vector2(0, 1), 0.0, -0.15109101, 0, 0, Vector2(0.5137457, 0.113755465), 0.0, 0.0, 0, 0, Vector2(1, 0.04558277), -0.12850711, 0.0, 0, 0]
 point_count = 3
 
 [sub_resource type="Curve" id="Curve_uiotd"]
@@ -105,6 +105,11 @@ point_count = 2
 [sub_resource type="Curve" id="Curve_gluub"]
 _limits = [-1.0, 1.0, 0.0, 1.0]
 _data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.48625433, 1), -0.03721973, -0.03721973, 0, 0, Vector2(1, -1), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="Curve" id="Curve_0ixb7"]
+_limits = [0.0, 15.0, 0.0, 1.0]
+_data = [Vector2(0, 12.87616), 0.0, 0.0, 0, 0, Vector2(0.46735394, 0.4870901), 0.0, 0.0, 0, 0, Vector2(0.9982818, 9.415087), 0.0, 0.0, 0, 0]
 point_count = 3
 
 [sub_resource type="Gradient" id="Gradient_to28j"]
@@ -158,11 +163,11 @@ shader = ExtResource("2_qcyk2")
 shader_parameter/time_scale = 1.0
 shader_parameter/ocean_speed = 0.1
 shader_parameter/ocean_dir = Vector3(0, 0, -1)
-shader_parameter/macro_amp = 4.6581154
-shader_parameter/macro_freq = 0.0968944
+shader_parameter/macro_amp = 6.1447005
+shader_parameter/macro_freq = 0.116781086
 shader_parameter/macro_speed = 0.72
-shader_parameter/micro_amp = 0.8454587
-shader_parameter/micro_freq = 0.8680039
+shader_parameter/micro_amp = 1.4522007
+shader_parameter/micro_freq = 0.8767647
 shader_parameter/micro_speed = 1.59
 shader_parameter/wave_dir1 = Vector2(-0.545, 1.56)
 shader_parameter/wave_dir2 = Vector2(-0.21, 0.27)
@@ -172,9 +177,9 @@ shader_parameter/normal_strength = 0.2
 shader_parameter/normal_speed1 = Vector2(0, -0.1)
 shader_parameter/normal_speed2 = Vector2(0, -0.1)
 shader_parameter/normal_tiling = 0.04
-shader_parameter/shallow_color = Color(0.10870613, 0.25707135, 0.18515345, 1)
-shader_parameter/deep_color = Color(0.020353414, 0.07611157, 0.10293645, 1)
-shader_parameter/horizon_color = Color(0.16528368, 0.18745968, 0.19261062, 1)
+shader_parameter/shallow_color = Color(0.053750914, 0.14156175, 0.13104008, 1)
+shader_parameter/deep_color = Color(0.009123802, 0.038841084, 0.050709486, 1)
+shader_parameter/horizon_color = Color(0.011974596, 0.01812943, 0.06524632, 1)
 shader_parameter/metallic = 0.0
 shader_parameter/roughness = 0.04
 shader_parameter/fresnel_power = 0.1
@@ -182,7 +187,7 @@ shader_parameter/horizon_start = 1.0
 shader_parameter/horizon_end = 800.0
 shader_parameter/foam_noise = SubResource("NoiseTexture2D_oihns")
 shader_parameter/foam_color = Color(1, 1, 1, 1)
-shader_parameter/foam_amount = 1.035548
+shader_parameter/foam_amount = 1.2024612
 shader_parameter/foam_scale = 0.02
 shader_parameter/foam_speed = Vector2(-0.05, 0.105)
 shader_parameter/patch_threshold = 0.065
@@ -232,11 +237,13 @@ sky_material = ExtResource("1_63acv")
 [sub_resource type="Environment" id="Environment_0ixb7"]
 background_mode = 2
 sky = SubResource("Sky_oihns")
+ambient_light_source = 3
 ambient_light_color = Color(0.59188694, 0.40920484, 0.15684012, 1)
 ambient_light_energy = 0.0
-reflected_light_source = 2
-tonemap_mode = 2
-tonemap_exposure = 0.55
+tonemap_mode = 4
+tonemap_exposure = 1.54
+tonemap_agx_white = 2.92
+tonemap_agx_contrast = 1.0
 ssao_radius = 3.92
 ssao_intensity = 0.76
 ssao_horizon = 0.31
@@ -246,10 +253,10 @@ ssil_sharpness = 1.0
 glow_enabled = true
 fog_enabled = true
 fog_mode = 1
-fog_light_color = Color(0.21549113, 0.23434073, 0.23871903, 1)
+fog_light_color = Color(0.085178405, 0.09041002, 0.13045937, 1)
 fog_light_energy = 5.27
 fog_sun_scatter = 0.45
-fog_density = 1.6158942
+fog_density = 1.9997733
 fog_aerial_perspective = 0.48
 fog_sky_affect = 0.582
 fog_depth_curve = 1.0717736
@@ -331,7 +338,7 @@ script = ExtResource("1_yiumw")
 sun = NodePath("../DirectionalLight3D")
 world_env = NodePath("../WorldEnvironment")
 ocean_mesh = NodePath("../ocean_mesh")
-manual_t = 0.709
+manual_t = 0.0
 fog_colour_ramp = SubResource("GradientTexture1D_tc46g")
 sky_zenith_ramp = SubResource("GradientTexture1D_0ixb7")
 ocean_shallow_ramp = SubResource("GradientTexture1D_vrw5k")
@@ -347,6 +354,7 @@ fog_density_curve = SubResource("Curve_57jre")
 exposure_curve = SubResource("Curve_iy7pm")
 cloud_amount_curve = SubResource("Curve_uiotd")
 sun_energy_curve = SubResource("Curve_gluub")
+sun_angula_curve = SubResource("Curve_0ixb7")
 
 [node name="ocean_mesh" type="MeshInstance3D" parent="Lighting" unique_id=977819256]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.8777213, -8.915844, -4.9421344)
@@ -357,12 +365,12 @@ mesh = SubResource("PlaneMesh_7xckk")
 script = ExtResource("5_yiumw")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="Lighting" unique_id=1333050787]
-transform = Transform3D(0.97462416, -0.06620234, -0.21383265, -0.13733584, 0.5775027, -0.8047543, 0.17676498, 0.81370026, 0.5537573, 0.012317654, -0.0072660935, 0.20387076)
-light_color = Color(0.47407678, 0.232232, 6.729921e-07, 1)
-light_energy = -0.81135535
+transform = Transform3D(0.5210096, -0.85346043, -0.01242388, -2.9802322e-08, 0.014555439, -0.9998945, 0.85355073, 0.52095455, 0.007583499, 0, 0, 0)
+light_color = Color(0.00025701523, 0.00012588501, 3.6482106e-10, 1)
+light_energy = -0.9999999
 light_indirect_energy = 1.272
 light_volumetric_fog_energy = 0.0
-light_angular_distance = 4.47
+light_angular_distance = 9.415087
 shadow_enabled = true
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="Lighting" unique_id=972673621]
@@ -433,19 +441,6 @@ draw_pass_1 = SubResource("RibbonTrailMesh_qcyk2")
 [node name="GameManager" type="Node3D" parent="." unique_id=1749829845]
 transform = Transform3D(-0.87114525, 0, 0.49102545, 0, 1, 0, -0.49102545, 0, -0.87114525, -8.530954, 7.9717035, 75.958336)
 script = ExtResource("12_yiumw")
-debug_skip_dialog = null
-debug_play_from_act_3 = null
-debug_play_from_act_4 = null
-debug_play_from_act_5 = null
-debug_play_from_act_6 = null
-debug_play_from_act_7 = null
-debug_play_from_act_8 = null
-DAY_SUN_PITCH_DEG = null
-DAY_SUN_YAW_DEG = null
-SUNSET_SUN_PITCH_DEG = null
-SUNSET_SUN_YAW_DEG = null
-NIGHT_SUN_PITCH_DEG = null
-NIGHT_SUN_YAW_DEG = null
 
 [node name="Locations" type="Node3D" parent="GameManager" unique_id=596146378]
 
