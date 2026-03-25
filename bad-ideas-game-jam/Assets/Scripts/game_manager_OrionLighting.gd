@@ -2,16 +2,16 @@ extends Node3D
 
 var dialog: Dictionary = {
 	1: "[Ronnie] Here you go, first attempt. Try not to retire on this one cut, will ya.",
-	2: "[Gilbert] I'm doing it! How... how you showed me.",
+	2: "[Gilbert] I'm doing it how you showed me!",
 	3: "[Wazza] Haha! Was that a teste pop?",
-	4: "[Gilbert] It wasn't a teste pop!",
+	4: "[Gilbert] Not it... no it wasn't!",
 	5: "[Ronnie] It was.",
 	6: "[Wazza] Heh, where's snap and crackle?",
 	7: "[Gilbert] Huh?",
 	8: "[Wazza] Like Rice Bubbles, snap, crackle, pop.",
 	9: "[Ronnie] Hahahaha.",
 	10: "[Wazza] Hahahaa.",
-	11: "[Gilbert] Oh, shut up!",
+	11: "[Gilbert] Shut up!",
 	12: "[Ronnie] Oh well, there's snap.",
 	13: "[Ronnie] Hahahaha.",
 	14: "[Wazza] Ahahaa.",
@@ -37,12 +37,12 @@ var dialog: Dictionary = {
 	34: "[Ronnie] What did I just tell you, mate? Are your ears painted on? Oxy the door.",
 	35: "[Ronnie] Oxy the door!",
 	36: "[Ronnie] Alright, Bubbles, we're gonna head over and get this last container open from yesterday. Then we're gonna have a crack at fixing the power supply and getting that lifeboat working.",
-	37: "[Gilbert] Oh okay, sweet. I'll grab the oxy.",
+	37: "[Gilbert] Okay sweet, I'll pick up the oxy cutter.",
 	38: "[Wazza] Nah, mate, we got it. You head down to the storeroom and pick us up some of this important gear.",
 	39: "[Wazza] We'll be on the radio. Give us a call if you get in any trouble.",
 	40: "[Wazza] How you going, young fella? You must've found that long wait by now?",
 	41: "[Ronnie] While you're faffing about down there, mate, you wanna pick us up a pie cost?",
-	42: "[Gilbert] Oh, what's a pie cost?",
+	42: "[Gilbert] Uh, what's a pie cost?",
 	43: "[Ronnie] Like you don't know, Tubby!",
 	44: "[Ronnie] Ahahahahahaha.",
 	45: "[Wazza] Alright, Einstein, stop f*****g around and get your ass back up here!",
@@ -70,15 +70,16 @@ var dialog: Dictionary = {
 	67: "[Wazza] Listen, MJ, get the stuff we need and moonwalk your way back up here.",
 	68: "[Ronnie] Oh mate, these aren't real items, Einstein. Get your ass back up here.",
 	69: "[Ronnie] Alright, Bubbles, found all your stuff? Nah, come round, mate, come back.",
-	70: "[Gilbert] Oi, uh, boys, where are ya?",
-	71: "[Gilbert] Boys... where are you?",
-	72: "[Gilbert] Ahahaha... very... hahaha... very funny.",
-	73: "[Gilbert] If this is a prank, you're not fooling anyone!",
+	70: "[Gilbert] Oi, boys, where are you?",
+	71: "[Gilbert] Guys?",
+	72: "[Gilbert] Where are you guys?",
+	73: "[Gilbert] Guys if this is a prank, you're not fooling anyone!",
 	74: "[Gilbert] Hello?",
-	75: "[Gilbert] Hello? Guys? Twins?",
+	75: "[Gilbert] Ronnie? Wazza?",
 	76: "[Ronnie] At the lifeboat. Come help us out, my friend.",
-	77: "[Gilbert] Are you alright? You sound weird.",
+	77: "[Gilbert] Uh, are you alright? You sound weird.",
 	78: "[Ronnie] I'm fine.",
+	778: "[Gilbert] To the life boat.",
 	92: "[Ronnie] Meet us at the lifeboat.",
 	93: "[Ronnie] Come and see us at the lifeboat.",
 	266: "[Ronnie] Yeah, mate, end of the day. Put the tools down and let's get out of here.",
@@ -322,6 +323,7 @@ func _process(_delta: float) -> void:
 			creature.roar()
 			await _wait_for(6.0)
 			player.toggle_movement_disabled()
+			player.play_dialogue(97)
 			story_increment += 1
 
 	if story_increment == 8:
@@ -504,6 +506,7 @@ func _play_act_3_container():
 	await twin_1.play_dialogue(76)
 	await player.play_dialogue(77)
 	await twin_1.play_dialogue(78)
+	await player.play_dialogue(778)
 	_spawn_objective_marker(lifeboat, "Meet Ronnie at the lifeboat")
 	_play_lifeboat_reminders()
 	_dialogue_active = false

@@ -7,7 +7,7 @@
 
 [resource]
 shader = ExtResource("1_cd6vg")
-shader_parameter/sun_elev = 0.4872460439801216
+shader_parameter/sun_elev = 0.9023772180080414
 shader_parameter/exposure = 1.0
 shader_parameter/band_steps = 5.6950001755125
 shader_parameter/band_softness = 0.15600000741
@@ -16,9 +16,9 @@ shader_parameter/horizon_softness = 0.20800000988
 shader_parameter/sun_size = 0.0030000001425
 shader_parameter/sun_halo = 0.04800000228
 shader_parameter/sun_disc_boost = 1.2470000592325
-shader_parameter/cloud_amount = 0.3884421
+shader_parameter/cloud_amount = 0.7680188
 shader_parameter/cloud_scale = 0.4850000165177299
-shader_parameter/cloud_speed = 0.0530000025175
+shader_parameter/cloud_speed = 0.02000000095
 shader_parameter/cloud_wind_dir = Vector2(1, 0.3)
 shader_parameter/cloud_contrast = 0.9750000225625
 shader_parameter/cloud_softness = 0.34999999403954
@@ -40,8 +40,8 @@ shader_parameter/cirrus_scale = 0.33800000953523
 shader_parameter/cirrus_speed = 0.02800000133
 shader_parameter/stars = 1.0
 shader_parameter/star_density = 0.52200001827523
-shader_parameter/day_zenith = Color(0.25504714, 0.44598764, 0.6103476, 1)
-shader_parameter/day_horizon = Color(0.5269836, 0.48781398, 0.4839086, 1)
+shader_parameter/day_zenith = Color(0.09188036, 0.1729769, 0.33951405, 1)
+shader_parameter/day_horizon = Color(0.16528368, 0.18745968, 0.19261062, 1)
 shader_parameter/dusk_zenith = Color(0.32435295, 0.24814785, 0.32517034, 1)
 shader_parameter/dusk_horizon = Color(1, 0.50465226, 0.24068418, 1)
 shader_parameter/night_zenith = Color(0.00840021, 0.008399359, 0.026454968, 1)
