@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dakd33awvrfum"
-path="res://.godot/imported/char_ronnie_mat_Emissive.png-de5b0fad36cd8ca5dd2661500ad9851d.ctex"
+uid="uid://13wc1cj5sfnh"
+path="res://.godot/imported/char_ronnie_mat_Emissive.png-9f2a4775a7e12740a1bab19ea31a61a9.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Models/Characters/Creature/char_ronnie_mat_Emissive.png"
-dest_files=["res://.godot/imported/char_ronnie_mat_Emissive.png-de5b0fad36cd8ca5dd2661500ad9851d.ctex"]
+source_file="res://Assets/Models/Characters/Ronnie/char_ronnie_mat_Emissive.png"
+dest_files=["res://.godot/imported/char_ronnie_mat_Emissive.png-9f2a4775a7e12740a1bab19ea31a61a9.ctex"]
 
 [params]
 

@@ -2,20 +2,17 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://6e3qh6umg5er"
-path.s3tc="res://.godot/imported/Char_Wazza_import_Material_1.png-6c093485690537c9a68b79ed7a68fa46.s3tc.ctex"
+uid="uid://b2gjdr3y3mx20"
+path.s3tc="res://.godot/imported/char_wazza_mat_ORM.png-9694fa89f15103e2d607ec54314acf6d.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
 }
-generator_parameters={
-"md5": "250f493fbb8e69a243d73c68907baa48"
-}
 
 [deps]
 
-source_file="res://Assets/Models/Characters/Wazza/Char_Wazza_import_Material_1.png"
-dest_files=["res://.godot/imported/Char_Wazza_import_Material_1.png-6c093485690537c9a68b79ed7a68fa46.s3tc.ctex"]
+source_file="res://Assets/Models/Characters/Wazza/char_wazza_mat_ORM.png"
+dest_files=["res://.godot/imported/char_wazza_mat_ORM.png-9694fa89f15103e2d607ec54314acf6d.s3tc.ctex"]
 
 [params]
 

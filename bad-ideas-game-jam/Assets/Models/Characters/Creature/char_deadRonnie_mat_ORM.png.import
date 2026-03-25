@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ykkjtkqsfggq"
-path.s3tc="res://.godot/imported/Twin_01_ORM.png-488e21e5712b65c0a0be6d439683b847.s3tc.ctex"
+uid="uid://dvqqqldbfpetu"
+path.s3tc="res://.godot/imported/char_deadRonnie_mat_ORM.png-0220ec5ff51037035ea929f53c665cdc.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://Assets/Models/Characters/Ronnie/Twin_01_ORM.png"
-dest_files=["res://.godot/imported/Twin_01_ORM.png-488e21e5712b65c0a0be6d439683b847.s3tc.ctex"]
+source_file="res://Assets/Models/Characters/Creature/char_deadRonnie_mat_ORM.png"
+dest_files=["res://.godot/imported/char_deadRonnie_mat_ORM.png-0220ec5ff51037035ea929f53c665cdc.s3tc.ctex"]
 
 [params]
 
@@ -22,7 +22,7 @@ compress/lossy_quality=0.7
 compress/uastc_level=0
 compress/rdo_quality_loss=0.0
 compress/hdr_compression=1
-compress/normal_map=0
+compress/normal_map=1
 compress/channel_pack=0
 mipmaps/generate=true
 mipmaps/limit=-1

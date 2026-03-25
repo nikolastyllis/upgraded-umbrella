@@ -33,6 +33,13 @@ window/stretch/mode="canvas_items"
 fonts/dynamic_fonts/use_oversampling=false
 theme/default_font_multichannel_signed_distance_field=true
 
+[importer_defaults]
+
+scene={
+&"blender/materials/unpack_enabled": false,
+&"gltf/embedded_image_handling": 0
+}
+
 [input]
 
 left={

@@ -1,25 +1,25 @@
 [gd_resource type="ShaderMaterial" format=3 uid="uid://bp86jri4olwri"]
 
-[ext_resource type="Material" uid="uid://sgetjvg177mb" path="res://Shaders/outline.tres" id="1_yfkx6"]
-[ext_resource type="Shader" uid="uid://d266trvxphdyu" path="res://Shaders/cel-shader-base.gdshader" id="2_8mcf0"]
-[ext_resource type="Texture2D" uid="uid://6ng81j35avev" path="res://Assets/Models/Characters/Creature/char_ronnie_mat_Col_Alpha.png" id="3_nxf1r"]
-[ext_resource type="Texture2D" uid="uid://c77qiqlt7ntqx" path="res://Assets/Models/Characters/Creature/char_ronnie_mat_Normal.png" id="4_nxf1r"]
-[ext_resource type="Texture2D" uid="uid://b6lw1edyq5hi3" path="res://Assets/Models/Characters/Creature/char_ronnie_mat_ORM.png" id="5_8mcf0"]
+[ext_resource type="Material" uid="uid://sgetjvg177mb" path="res://Shaders/outline.tres" id="1_woi16"]
+[ext_resource type="Shader" uid="uid://d266trvxphdyu" path="res://Shaders/cel-shader-base.gdshader" id="2_fq8gb"]
+[ext_resource type="Texture2D" uid="uid://p2a3t4jwarxa" path="res://Assets/Models/Characters/Creature/char_deadRonnie_mat_Col_Alpha.png" id="3_4o3e1"]
+[ext_resource type="Texture2D" uid="uid://qyth0dol8pj3" path="res://Assets/Models/Characters/Creature/char_deadRonnie_mat_Normal.png" id="4_o42vx"]
+[ext_resource type="Texture2D" uid="uid://dvqqqldbfpetu" path="res://Assets/Models/Characters/Creature/char_deadRonnie_mat_ORM.png" id="5_hgx4j"]
 
 [resource]
 render_priority = 0
-next_pass = ExtResource("1_yfkx6")
-shader = ExtResource("2_8mcf0")
+next_pass = ExtResource("1_woi16")
+shader = ExtResource("2_fq8gb")
 shader_parameter/emission = Color(0, 0, 0, 1)
 shader_parameter/emission_energy = 0.0
 shader_parameter/normal_scale = 0.8890008022274998
-shader_parameter/normal_map = ExtResource("4_nxf1r")
+shader_parameter/normal_map = ExtResource("4_o42vx")
 shader_parameter/invert_normal_y = false
 shader_parameter/color = Color(1, 1, 1, 0)
-shader_parameter/base_texture = ExtResource("3_nxf1r")
+shader_parameter/base_texture = ExtResource("3_4o3e1")
 shader_parameter/specular_color = Color(0.09007121, 0.11884003, 0.16652519, 1)
 shader_parameter/specular_strength = 0.0
-shader_parameter/orm_texture = ExtResource("5_8mcf0")
+shader_parameter/orm_texture = ExtResource("5_hgx4j")
 shader_parameter/ao_strength = 1.0
 shader_parameter/roughness_strength = 0.0
 shader_parameter/metallic_strength = 0.0

@@ -2,20 +2,17 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://d2amf3skysscs"
-path.s3tc="res://.godot/imported/NPC_02_v02_Material.png-af7c4e7c985d42bf754995912807539a.s3tc.ctex"
+uid="uid://ctu8v3ywvibp0"
+path.s3tc="res://.godot/imported/char_ronnie_mat_Col_Alpha.png-d61f255463526e8a3d1998c897b7ac98.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
 }
-generator_parameters={
-"md5": "c097f475e501291ba7a683ab489285e7"
-}
 
 [deps]
 
-source_file="res://Assets/Models/Characters/Wazza/NPC_02_v02_Material.png"
-dest_files=["res://.godot/imported/NPC_02_v02_Material.png-af7c4e7c985d42bf754995912807539a.s3tc.ctex"]
+source_file="res://Assets/Models/Characters/Ronnie/char_ronnie_mat_Col_Alpha.png"
+dest_files=["res://.godot/imported/char_ronnie_mat_Col_Alpha.png-d61f255463526e8a3d1998c897b7ac98.s3tc.ctex"]
 
 [params]
 
@@ -25,12 +22,12 @@ compress/lossy_quality=0.7
 compress/uastc_level=0
 compress/rdo_quality_loss=0.0
 compress/hdr_compression=1
-compress/normal_map=1
+compress/normal_map=0
 compress/channel_pack=0
 mipmaps/generate=true
 mipmaps/limit=-1
-roughness/mode=1
-roughness/src_normal="res://Assets/Models/Characters/Twin 2/NPC_02_v02_Material.png"
+roughness/mode=0
+roughness/src_normal=""
 process/channel_remap/red=0
 process/channel_remap/green=1
 process/channel_remap/blue=2

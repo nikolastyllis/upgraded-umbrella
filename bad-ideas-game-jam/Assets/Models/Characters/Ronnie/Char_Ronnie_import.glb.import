@@ -12375,6 +12375,12 @@ _subresources={
 "slice_99/start_frame": 0,
 "slices/amount": 0
 }
+},
+"materials": {
+"@MATERIAL:0": {
+"use_external/enabled": true,
+"use_external/path": "uid://bmev3byogbo3f"
+}
 }
 }
 gltf/naming_version=2
