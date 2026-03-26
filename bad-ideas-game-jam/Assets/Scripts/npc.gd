@@ -11,8 +11,8 @@ const STUCK_SAMPLE_INTERVAL = 0.5
 const UNSTICK_DETOUR_DISTANCE = 8.0
 const UNSTICK_DETOUR_DURATION = 6.0
 
-const UNSTICK_ANGLE_COUNT = 8          # directions to sample
-const UNSTICK_MIN_ANGLE_DIFF = 60.0    # degrees away from last attempt
+const UNSTICK_ANGLE_COUNT = 8
+const UNSTICK_MIN_ANGLE_DIFF = 60.0
 
 var _last_unstick_angle := 0.0
 var _unstick_attempt_count := 0
@@ -27,19 +27,16 @@ var last_sampled_position := Vector3.ZERO
 var unstick_timer := 0.0
 var unstick_target := Vector3.ZERO
 
-# At the top with other @onready vars
 @onready var skeleton := $Character/Armature/Skeleton3D
 @onready var _player := $"../Player"
 
-# New constants
 const HEAD_LOOK_DISTANCE = 10.0
-const HEAD_LOOK_FOV = 0.3        # dot product threshold (~70° cone in front)
+const HEAD_LOOK_FOV = 0.3
 const HEAD_LOOK_SPEED = 5.0
-const HEAD_MAX_YAW = 60.0        # degrees left/right limit
+const HEAD_MAX_YAW = 60.0
 
-# New vars
 var _head_bone_idx := -1
-var _head_look_weight := 0.0     # 0 = neutral, 1 = fully tracking
+var _head_look_weight := 0.0
 
 func _ready() -> void:
 	super._ready()
@@ -109,7 +106,7 @@ func check_stuck(delta: float) -> void:
 		stuck_sample_timer = 0.0
 		last_sampled_position = global_position
 		if _is_near_destination():
-			_unstick_attempt_count = 0  # ← reset on arrival
+			_unstick_attempt_count = 0
 		return
 	stuck_sample_timer += delta
 	if stuck_sample_timer >= STUCK_SAMPLE_INTERVAL:
@@ -128,22 +125,18 @@ func check_stuck(delta: float) -> void:
 func unstick() -> void:
 	_unstick_attempt_count += 1
 
-	# Build a reference forward direction toward the target
 	var ref_dir = (target_position - global_position)
 	ref_dir.y = 0
 	if ref_dir.length() < 0.01:
 		ref_dir = -global_transform.basis.z
 	ref_dir = ref_dir.normalized()
 
-	# Generate N candidate angles evenly spread around the NPC,
-	# weighted toward the target but covering all directions
 	var candidates: Array[float] = []
 	for i in range(UNSTICK_ANGLE_COUNT):
 		var angle = (float(i) / UNSTICK_ANGLE_COUNT) * TAU  # 0..2π
 		candidates.append(angle)
 	candidates.shuffle()
 
-	# Pick the first candidate that is far enough from the last unstick angle
 	var chosen_angle := candidates[0]
 	for angle in candidates:
 		var diff = abs(angle_difference(angle, _last_unstick_angle))
@@ -157,7 +150,6 @@ func unstick() -> void:
 	unstick_target = global_position + detour_dir * UNSTICK_DETOUR_DISTANCE
 	unstick_timer = UNSTICK_DETOUR_DURATION
 
-	# Increase detour distance on repeated failures so the NPC escapes further out
 	var boosted_distance = UNSTICK_DETOUR_DISTANCE * (1.0 + 0.5 * min(_unstick_attempt_count - 1, 4))
 	unstick_target = global_position + detour_dir * boosted_distance
 
@@ -191,7 +183,7 @@ func _on_navigation_agent_3d_velocity_computed(safe_velocity: Vector3) -> void:
 	velocity.x = safe_velocity.x
 	velocity.z = safe_velocity.z
 	if not is_on_floor():
-		pass  # gravity is handled separately, don't overwrite y
+		pass
 
 func dismount_ladder() -> void:
 	if is_climbing and is_on_floor() and get_climb_input() < 0 and current_ladder.end_y() > global_position.y:

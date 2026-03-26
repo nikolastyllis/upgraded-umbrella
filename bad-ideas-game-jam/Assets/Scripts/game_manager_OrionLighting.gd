@@ -86,8 +86,8 @@ var dialog: Dictionary = {
 	433: "[Wazza] Around five-fifty at the servo.",
 }
 
-@onready var twin_1 = $"../Twin1"   # Wazza
-@onready var twin_2 = $"../Twin2"   # Bazza
+@onready var twin_1 = $"../Twin1"
+@onready var twin_2 = $"../Twin2"
 @onready var player = $"../Player"
 @onready var creature = $"../Creature"
 
@@ -109,7 +109,6 @@ var dialog: Dictionary = {
 @onready var rain = $"../Player/Rain"
 @onready var nav_region = $"../NavigationRegion3D"
 
-# --- NEW: Sun-driven look (LookDriver reads this light direction) ---
 @onready var sun_light: DirectionalLight3D = $"../Lighting/DirectionalLight3D"
 @onready var world_environment: WorldEnvironment = $"../Lighting/WorldEnvironment"
 @onready var look_driver = $"../Lighting/LookDriver"
@@ -123,12 +122,12 @@ var player_has_completed_game = false
 @export var debug_skip_dialog = false
 
 @export_group("Debug: Play From Act")
-@export var debug_play_from_act_3 = false  # Wake-up / post-sleep
-@export var debug_play_from_act_4 = false  # Store room (twins hidden, sunset begins)
-@export var debug_play_from_act_5 = false  # Back to container (night begins)
-@export var debug_play_from_act_6 = false  # Lifeboat reached, search begins
-@export var debug_play_from_act_7 = true  # Searching for infected container; twins on alert
-@export var debug_play_from_act_8 = false  # Infected container opened, lightning, twins chasing
+@export var debug_play_from_act_3 = false
+@export var debug_play_from_act_4 = false
+@export var debug_play_from_act_5 = false
+@export var debug_play_from_act_6 = false
+@export var debug_play_from_act_7 = true
+@export var debug_play_from_act_8 = false
 
 var _is_night = false
 var _dialogue_active := false:
@@ -151,21 +150,12 @@ var played_impact_lightning = false
 
 var number_of_supplies = 0
 
-# ── DIALOGUE ────────────────────────────────────────────────────────────────
-var dialogue = {
-	# (unchanged; fill as needed)
-}
-
-# ── LIFECYCLE ───────────────────────────────────────────────────────────────
-
-# Act 3 — player wakes up, must return oxy torch then sleep
 func play_from_act_3():
 	player_has_interacted_with_container = true
 	player_has_returned_oxy_torch = true
 	player_has_slept = true
 	story_increment = 3
 
-# Act 4 — twins hidden, sunset transition, player near store room
 func play_from_act_4():
 	play_from_act_3()
 	story_increment = 4
@@ -175,18 +165,15 @@ func play_from_act_4():
 	twin_2.set_target_position(Vector3.ZERO)
 	set_time_of_day(TimeOfDay.SUNSET, 0.0)
 
-# Act 5 — player must return to container; night has fallen
 func play_from_act_5():
 	play_from_act_4()
 	story_increment = 5
 	set_time_of_day(TimeOfDay.NIGHT, 0.0)
 
-# Act 6 — player at lifeboat, about to search for oxy torch
 func play_from_act_6():
 	play_from_act_5()
 	story_increment = 6
 
-# Act 7 — searching for infected container; twins begin hunting on interaction
 func play_from_act_7():
 	play_from_act_6()
 	story_increment = 7
@@ -196,7 +183,6 @@ func restart_from_act_7() -> void:
 	number_of_supplies = 0
 	get_tree().reload_current_scene()
 
-# Act 8 — infected container opened, lightning struck, twins chasing, fuel run
 func play_from_act_8():
 	play_from_act_7()
 	player_has_interacted_with_infected_container = true
@@ -207,11 +193,9 @@ func play_from_act_8():
 func _ready() -> void:
 	add_to_group("game_manager")
 	lifeboat.add_to_group("lifeboat")
-	# Start in DAY instantly (no tween)
 	set_time_of_day(TimeOfDay.DAY, 0.0)
 	_ambient_music_loop()
 
-	# Only the highest-numbered debug flag wins
 	if    debug_play_from_act_8: play_from_act_8()
 	elif  debug_play_from_act_7: play_from_act_7()
 	elif  debug_play_from_act_6: play_from_act_6()
@@ -251,7 +235,6 @@ func _ambient_music_loop() -> void:
 func _process(_delta: float) -> void:
 	_update_audio_and_rain()
 
-	# ── ACT 1 ────────────────────────────────────────────────────────────────
 	if story_increment == 1 and _player_is_near(container.global_position):
 		creature.global_position = hide1.global_position
 		creature.set_target_position(Vector3.ZERO)
@@ -333,8 +316,6 @@ func _process(_delta: float) -> void:
 		_update_fuel_objective()
 		creature.set_target_position(player.global_position)
 
-# ── ACT 1 SEQUENCES ─────────────────────────────────────────────────────────
-
 func _update_act_1_objective() -> void:
 	if player_has_interacted_with_container or _dialogue_active:
 		return
@@ -353,7 +334,7 @@ func _update_oxy_torch_return_objective() -> void:
 		return
 	var new_state := "storeroom" if player.has_oxy_torch else "torch"
 	if new_state == _oxy_return_obj_state:
-		return               # nothing changed, don't thrash the marker
+		return
 	_oxy_return_obj_state = new_state
 	_remove_objective()
 	if new_state == "storeroom":
@@ -637,8 +618,6 @@ func _play_container_reminders() -> void:
 			return
 		await twin_1.play_dialogue(35)
 
-# ── HELPERS ─────────────────────────────────────────────────────────────────
-
 func _teleport_player(location: Node3D) -> void:
 	player.global_position = location.global_position
 
@@ -657,8 +636,6 @@ func _remove_objective() -> void:
 func _wait_for(time: float):
 	return get_tree().create_timer(time).timeout
 
-# ── TIME OF DAY (Sun rotation only) ─────────────────────────────────────────
-
 enum TimeOfDay { DAY, NIGHT, SUNSET }
 
 @export_group("Sun Angles (Degrees)")
@@ -674,7 +651,6 @@ enum TimeOfDay { DAY, NIGHT, SUNSET }
 var _sun_tween: Tween
 
 func set_time_of_day(time: TimeOfDay, duration: float = 180.0) -> void:
-	# Stop "night mode" as soon as we leave night
 	if time != TimeOfDay.NIGHT:
 		_is_night = false
 
@@ -682,13 +658,11 @@ func set_time_of_day(time: TimeOfDay, duration: float = 180.0) -> void:
 		push_warning("GameManager: sun_light missing at ../Lighting/DirectionalLight3D")
 		return
 
-	# Kill existing tween
 	if _sun_tween and _sun_tween.is_running():
 		_sun_tween.kill()
 
 	var target_rot := _get_sun_rotation(time)
 
-	# Instant set
 	if duration <= 0.0:
 		sun_light.rotation = target_rot
 		if time == TimeOfDay.NIGHT:
@@ -715,8 +689,6 @@ func _get_sun_rotation(time: TimeOfDay) -> Vector3:
 			return Vector3(deg_to_rad(NIGHT_SUN_PITCH_DEG), deg_to_rad(NIGHT_SUN_YAW_DEG), 0.0)
 	return Vector3(deg_to_rad(DAY_SUN_PITCH_DEG), deg_to_rad(DAY_SUN_YAW_DEG), 0.0)
 
-# ── LIGHTNING ───────────────────────────────────────────────────────────────
-
 func lightning_strike() -> void:
 	if sun_light == null or world_environment == null or world_environment.environment == null:
 		return
@@ -727,7 +699,6 @@ func lightning_strike() -> void:
 	var original_rotation: Vector3 = sun_light.rotation
 	var t := 0.0
 
-	# Flash up
 	while t < 1.0:
 		t += get_process_delta_time() * 20.0
 		sun_light.light_color = original_color.lerp(Color.WHITE, t)
@@ -735,10 +706,8 @@ func lightning_strike() -> void:
 		world_environment.environment.fog_light_color = original_fog.lerp(Color(0.8, 0.8, 1.0), t)
 		await get_tree().process_frame
 
-	# Snap straight down at peak
 	sun_light.rotation = Vector3(-PI / 2, 0, 0)
 
-	# Quick flicker before fading
 	await _wait_for(0.04)
 	sun_light.light_energy = original_energy
 	await get_tree().process_frame
@@ -746,10 +715,8 @@ func lightning_strike() -> void:
 	sun_light.light_energy = 4.0
 	await get_tree().process_frame
 
-	# Restore rotation before fading out
 	sun_light.rotation = original_rotation
 
-	# Flash down
 	t = 1.0
 	while t > 0.0:
 		t -= get_process_delta_time() * 8.0
@@ -778,8 +745,6 @@ func show_dialog_text(id: int, time: float) -> void:
 	if not dialog.has(id):
 		return
 	player.show_dialog_text(dialog[id], time)
-
-# ── AUDIO HELPERS ───────────────────────────────────────────────────────────
 
 func _play_sound(sound: String) -> void:
 	var STATIC_PATH := "res://Assets/Sound/%s.ogg" % sound

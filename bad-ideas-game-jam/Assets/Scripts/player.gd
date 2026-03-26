@@ -222,7 +222,6 @@ func get_move_direction() -> Vector3:
 	var dir = get_raw_input_dir()
 	if dir.length() < 0.01:
 		return Vector3.ZERO
-	# Movement is relative to where the camera is looking, not where the character faces
 	var cam_forward = -camera_origin.global_transform.basis.z
 	var cam_right = camera_origin.global_transform.basis.x
 	cam_forward.y = 0
@@ -316,18 +315,18 @@ func advance_interact_timer(delta: float, state_machine: AnimationNodeStateMachi
 
 		if interactable == null or not is_interacting:
 			_stop_oxy_torch_loop()
-			_stop_right_hand_ik()   # ← stop IK if interaction lost
+			_stop_right_hand_ik()
 			sparks.visible      = false
 			spark_light.visible = false
 			return
 
 		_play_oxy_torch_loop()
-		_start_right_hand_ik(hit_point)   # ← drive IK to the spark point
+		_start_right_hand_ik(hit_point)
 		sparks.visible      = true
 		spark_light.visible = true
 	else:
 		_stop_oxy_torch_loop()
-		_stop_right_hand_ik()             # ← no collision, release IK
+		_stop_right_hand_ik() 
 		sparks.visible      = false
 		spark_light.visible = false
 
@@ -342,7 +341,6 @@ func advance_interact_timer(delta: float, state_machine: AnimationNodeStateMachi
 		interaction_hold_timer = 0.0
 		interact_progress_bar.value = 0
 		reset_interaction_state()
-# --- update reset_interaction_state to kill IK on cancel/complete ---
 
 func reset_interaction_state() -> void:
 	if is_interacting:
@@ -376,8 +374,6 @@ func update_interactable() -> void:
 		var collided_interactable = interact_raycast.get_collider()
 		if collided_interactable is Interactable and collided_interactable.can_interact(self):
 			new_interactable = collided_interactable
-	# While actively holding an interaction, keep the current interactable locked in
-	# so looking away doesn't cancel the hold progress
 	if interaction_hold_timer > 0 and interactable != null and Input.is_action_pressed("interact"):
 		interact_ui_control.visible = true
 		return
@@ -494,7 +490,6 @@ func _update_panting(delta: float) -> void:
 	var exhaustion := clampf(jogging_timer / jogging_max_time, 0.0, 1.0)
 	var track_length: float = _panting_player.stream.get_length()
 
-	# Trigger stinger once on hitting max
 	if exhaustion >= 1.0 and not _stinger_played:
 		_stinger_played = true
 		var path = STINGER_PATHS[randi() % STINGER_PATHS.size()]

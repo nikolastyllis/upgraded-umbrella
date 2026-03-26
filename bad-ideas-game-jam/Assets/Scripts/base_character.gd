@@ -18,11 +18,11 @@ var finish_climb_animation_cooldown = 4.0
 var is_jogging: bool = false
 
 var footstep_timer := 0.0
-var footstep_interval := .78  # Seconds between steps
+var footstep_interval := .78
 var jog_footstep_interval := .39
 
 var ladder_step_timer := 0.0
-var ladder_step_interval := 0.8  # Slightly faster than footsteps
+var ladder_step_interval := 0.8
 var ladder_player: AudioStreamPlayer3D
 
 var footstep_player: AudioStreamPlayer3D
@@ -48,7 +48,7 @@ func _setup_footstep_player() -> void:
 func _physics_process(delta: float) -> void:
 	finish_climb_animation_cooldown_timer += delta
 	_update_footsteps(delta)
-	_update_ladder_sounds(delta)  # ADD THIS LINE
+	_update_ladder_sounds(delta)
 
 func _update_footsteps(delta: float) -> void:
 	var is_walking = is_on_floor() and velocity.length() > 0.5 and not is_climbing and not is_finishing_climb
@@ -62,7 +62,7 @@ func _update_footsteps(delta: float) -> void:
 			else: 
 				footstep_timer = footstep_interval
 	else:
-		footstep_timer = 0.0  # Reset so next step plays immediately on movement
+		footstep_timer = 0.0
 
 func _update_ladder_sounds(delta: float) -> void:
 	var is_moving_on_ladder = is_climbing and abs(get_climb_input()) > 0.1 and not is_finishing_climb
@@ -73,7 +73,7 @@ func _update_ladder_sounds(delta: float) -> void:
 			_play_ladder_step()
 			ladder_step_timer = ladder_step_interval
 	else:
-		ladder_step_timer = 0.0  # Reset so next step plays immediately
+		ladder_step_timer = 0.0
 
 func _play_footstep() -> void:
 	footstep_player.pitch_scale = randf_range(0.8, 1.2)

@@ -28,7 +28,6 @@ const CONTAINER_MATERIALS: Array[String] = [
 	"res://Materials/Containers/Container_Mat_05.tres",
 ]
 
-# --- Shared sound logic ---
 func play_sound(sound: String) -> void:
 	var path := "res://Assets/Sound/%s.ogg" % sound
 	if not ResourceLoader.exists(path):

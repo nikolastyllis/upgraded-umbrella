@@ -1,64 +1,38 @@
 class_name Monster
 extends NPC
 
-# ─────────────────────────────────────────────
-#  Speed
-#  Player jog = PLAYER_SPEED * 2.0 = 3.0
-#  Monster is slightly faster at 3.2
-# ─────────────────────────────────────────────
 const MONSTER_SPEED := 3.0
 
-# ─────────────────────────────────────────────
-#  Line-of-sight detection
-# ─────────────────────────────────────────────
 const DETECTION_DISTANCE  := 18.0
 const DETECTION_FOV_DOT   := 0.3
 const LOS_CHECK_INTERVAL  := 0.2
 const LOSE_SIGHT_DURATION := 4.0
 
-# ─────────────────────────────────────────────
-#  Roar
-# ─────────────────────────────────────────────
 const ROAR_ANIM_NAME := "Roar"
 const ROAR_DURATION  := 6.0
 const ROAR_COOLDOWN  := 20.0
 
-# ─────────────────────────────────────────────
-#  Pounce — jump at the player
-# ─────────────────────────────────────────────
 const POUNCE_DISTANCE      := 5.0
 const POUNCE_JUMP_VELOCITY := 10.0
 const POUNCE_LUNGE_SPEED   := 8.0
 const POUNCE_COOLDOWN      := 4.0
 const POUNCE_CHECK_INTERVAL := 0.3
 
-# ─────────────────────────────────────────────
-#  Step-jump
-# ─────────────────────────────────────────────
 const STEP_CHECK_DISTANCE := 0.6
 const STEP_MAX_HEIGHT     := 0.55
 const STEP_MIN_HEIGHT     := 0.08
 const STEP_JUMP_VELOCITY  := 3.2
 const STEP_CHECK_INTERVAL := 0.12
 
-# ─────────────────────────────────────────────
-#  Patrol — biased toward player's last known pos
-# ─────────────────────────────────────────────
-const PATROL_WANDER_RADIUS  := 8.0   # tighter radius so waypoints stay closer
-const PATROL_WAYPOINT_COUNT := 4     # one extra waypoint to keep moving longer
-const PATROL_SPEED          := 2.0   # faster plod while patrolling
-const PATROL_PLAYER_BIAS    := 0.65  # 0=pure random, 1=always toward player
+const PATROL_WANDER_RADIUS  := 8.0
+const PATROL_WAYPOINT_COUNT := 4
+const PATROL_SPEED          := 2.0
+const PATROL_PLAYER_BIAS    := 0.65
 
-# ─────────────────────────────────────────────
-#  Kill attack
-# ─────────────────────────────────────────────
 const KILL_DISTANCE       := 1.8
 const KILL_ANIM_NAME      := "Attack"
 const KILL_CHECK_INTERVAL := 0.2
 
-# ─────────────────────────────────────────────
-#  Stuck detection
-# ─────────────────────────────────────────────
 const STUCK_CHECK_INTERVAL := 3.0
 const STUCK_MOVE_THRESHOLD := 2.0
 const STUCK_TIME_LIMIT     := 20.0
@@ -66,13 +40,10 @@ const TELEPORT_RADIUS_MIN  := 6.0
 const TELEPORT_RADIUS_MAX  := 14.0
 const TELEPORT_ATTEMPTS    := 20
 
-# ─────────────────────────────────────────────
-#  Internal state
-# ─────────────────────────────────────────────
 var _is_chasing          := false
 var _is_roaring          := false
-var _is_killing          := false   # wind-up started; gates kill-check re-entry
-var _is_killing_locked   := false   # actual strike moment — freezes movement
+var _is_killing          := false
+var _is_killing_locked   := false
 var _roar_timer          := 0.0
 var _roar_cooldown_timer := 0.0
 var _los_timer           := 0.0
@@ -85,7 +56,6 @@ var _last_sampled_position := Vector3.ZERO
 
 var _roar_target_player: Node3D = null
 
-# Patrol
 enum PatrolState { IDLE, PATROLLING }
 var _patrol_state       := PatrolState.IDLE
 var _patrol_waypoints   : Array[Vector3] = []
@@ -95,17 +65,11 @@ var _last_seen_position := Vector3.ZERO
 func _ready() -> void:
 	super._ready()
 
-# ─────────────────────────────────────────────
-#  Speed override
-# ─────────────────────────────────────────────
 func get_speed() -> float:
 	if _patrol_state == PatrolState.PATROLLING:
 		return PATROL_SPEED
 	return MONSTER_SPEED
 
-# ─────────────────────────────────────────────
-#  Main loops
-# ─────────────────────────────────────────────
 func _process(delta: float) -> void:
 	_update_head_look_weight(delta)
 	_update_los(delta)
@@ -123,9 +87,6 @@ func _physics_process(delta: float) -> void:
 		move_and_slide()
 		return
 
-	# Only freeze movement at the actual strike moment, not during wind-up.
-	# During wind-up (_is_killing but not _is_killing_locked) the monster
-	# keeps jogging toward the player so the player can't walk away.
 	if _is_killing_locked:
 		velocity.x = 0.0
 		velocity.z = 0.0
@@ -137,9 +98,6 @@ func _physics_process(delta: float) -> void:
 	_check_step_jump(delta)
 	_tick_patrol()
 
-# ─────────────────────────────────────────────
-#  Nav agent — block velocity only during roar / strike lock
-# ─────────────────────────────────────────────
 func _on_navigation_agent_3d_velocity_computed(safe_velocity: Vector3) -> void:
 	if _is_roaring or _is_killing_locked:
 		velocity.x = 0.0
@@ -147,9 +105,6 @@ func _on_navigation_agent_3d_velocity_computed(safe_velocity: Vector3) -> void:
 		return
 	super._on_navigation_agent_3d_velocity_computed(safe_velocity)
 
-# ─────────────────────────────────────────────
-#  Line-of-sight
-# ─────────────────────────────────────────────
 func _update_los(delta: float) -> void:
 	if _is_roaring:
 		return
@@ -183,8 +138,6 @@ func _can_see_player(player: Node3D) -> bool:
 	if dist > DETECTION_DISTANCE:
 		return false
 
-	# Skip FOV check at close range — monster can't "look away" when the
-	# player is near enough to kill.
 	if dist > KILL_DISTANCE * 2.0:
 		var forward        = -global_transform.basis.z
 		var to_player_flat = Vector3(to_player.x, 0.0, to_player.z).normalized()
@@ -215,9 +168,6 @@ func _stop_chase() -> void:
 	target_position = Vector3.ZERO
 	_has_target     = false
 
-# ─────────────────────────────────────────────
-#  Roar sequence
-# ─────────────────────────────────────────────
 func _begin_roar(look_target: Node3D = null) -> void:
 	_is_roaring          = true
 	_roar_timer          = ROAR_DURATION
@@ -263,9 +213,6 @@ func _end_roar() -> void:
 
 	_roar_target_player = null
 
-# ─────────────────────────────────────────────
-#  Kill attack
-# ─────────────────────────────────────────────
 func _update_kill_check(delta: float) -> void:
 	if _is_killing or _is_roaring:
 		return
@@ -276,8 +223,6 @@ func _update_kill_check(delta: float) -> void:
 
 	var dist = global_position.distance_to(player.global_position)
 
-	# Allow kill if actively chasing, OR if the player is within kill range
-	# regardless of chase state (handles FOV-loss-at-close-range edge case).
 	if not _is_chasing and dist > KILL_DISTANCE:
 		return
 
@@ -292,8 +237,6 @@ func _update_kill_check(delta: float) -> void:
 func _begin_kill(player: Node3D) -> void:
 	_is_killing = true
 
-	# Keep chasing during the wind-up so the monster jogs right into the
-	# player rather than freezing and letting them walk away.
 	_is_chasing     = true
 	_has_target     = true
 	target_position = player.global_position
@@ -304,12 +247,10 @@ func _begin_kill(player: Node3D) -> void:
 		rotation.y = atan2(-to_player.x, -to_player.z)
 
 	var state_machine = animation_tree["parameters/AnimationNodeStateMachine/playback"]
-	state_machine.start(KILL_ANIM_NAME, true)  # immediate — interrupts anything playing
+	state_machine.start(KILL_ANIM_NAME, true)
 
-	# Short wind-up window: monster keeps moving toward player
 	await get_tree().create_timer(0.3).timeout
 
-	# Freeze for the strike itself
 	_is_killing_locked = true
 	_is_chasing        = false
 	_has_target        = false
@@ -325,9 +266,6 @@ func _begin_kill(player: Node3D) -> void:
 		current_player.die()
 		roar()
 
-# ─────────────────────────────────────────────
-#  Patrol — biased toward player's last known pos
-# ─────────────────────────────────────────────
 func _begin_patrol() -> void:
 	_patrol_waypoints.clear()
 	_patrol_index = 0
@@ -339,8 +277,6 @@ func _begin_patrol() -> void:
 		var radius := randf_range(PATROL_WANDER_RADIUS * 0.4, PATROL_WANDER_RADIUS)
 		var random_offset := Vector3(cos(angle) * radius, 0.0, sin(angle) * radius)
 
-		# Lerp between a random wander point and the player's current position
-		# so the patrol naturally drifts toward the player
 		var wander_point := _last_seen_position + random_offset
 		var bias_target  = player.global_position if is_instance_valid(player) else _last_seen_position
 		var waypoint     := wander_point.lerp(bias_target, PATROL_PLAYER_BIAS * randf())
@@ -354,7 +290,6 @@ func _tick_patrol() -> void:
 	if _patrol_state != PatrolState.PATROLLING or _is_chasing:
 		return
 
-	# Gently nudge the current waypoint toward the player each frame
 	var player = get_player()
 	if is_instance_valid(player) and _patrol_index < _patrol_waypoints.size():
 		_patrol_waypoints[_patrol_index] = _patrol_waypoints[_patrol_index].lerp(
@@ -382,9 +317,6 @@ func _stop_patrol() -> void:
 	target_position = Vector3.ZERO
 	_has_target     = false
 
-# ─────────────────────────────────────────────
-#  Stuck detection + teleport
-# ─────────────────────────────────────────────
 func _update_stuck_check(delta: float) -> void:
 	if not _is_chasing or _is_roaring or _is_killing:
 		_stuck_timer           = 0.0
@@ -453,12 +385,8 @@ func _teleport_out_of_sight() -> void:
 			global_position = hit.position
 			return
 
-	# All attempts failed — try again sooner
 	_stuck_timer = STUCK_TIME_LIMIT * 0.5
 
-# ─────────────────────────────────────────────
-#  Step-jump
-# ─────────────────────────────────────────────
 func _check_step_jump(delta: float) -> void:
 	_step_timer -= delta
 	if _step_timer > 0.0:
@@ -498,9 +426,6 @@ func _check_step_jump(delta: float) -> void:
 	var jump_v = sqrt(2.0 * step_height) * (STEP_JUMP_VELOCITY / sqrt(2.0 * STEP_MAX_HEIGHT))
 	velocity.y = clampf(jump_v, 1.5, STEP_JUMP_VELOCITY)
 
-# ─────────────────────────────────────────────
-#  Movement — always full speed, no walk state
-# ─────────────────────────────────────────────
 func apply_movement() -> void:
 	if is_climbing:
 		apply_climbing_movement()
@@ -511,11 +436,7 @@ func apply_movement() -> void:
 		desired_velocity = move_direction * get_speed()
 	navigation_agent_3d.set_velocity(desired_velocity)
 
-# ─────────────────────────────────────────────
-#  Animation
-# ─────────────────────────────────────────────
 func update_movement_animation(input_dir: Vector2) -> void:
-	# Don't let movement animations override the attack during wind-up or strike
 	if _is_killing:
 		return
 	var state_machine = animation_tree["parameters/AnimationNodeStateMachine/playback"]
@@ -538,8 +459,5 @@ func update_movement_animation(input_dir: Vector2) -> void:
 	else:
 		state_machine.travel("Idle")
 
-# ─────────────────────────────────────────────
-#  Public API
-# ─────────────────────────────────────────────
 func roar(look_at_target: Node3D = get_player()) -> void:
 	_begin_roar(look_at_target)

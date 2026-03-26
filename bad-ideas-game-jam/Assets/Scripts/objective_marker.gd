@@ -37,7 +37,7 @@ func _process(delta: float):
 
 	var min_scale = 0.05
 	var max_scale = 0.1 
-	var scale_distance = clamp(distance_magnitude, 5, 50)  # clamp distance to avoid extremes
+	var scale_distance = clamp(distance_magnitude, 5, 50)
 	var scale_factor = lerp(max_scale, min_scale, (scale_distance - 5) / (50 - 5))
 	icon.scale = Vector2(scale_factor, scale_factor)
 	
