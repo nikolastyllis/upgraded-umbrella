@@ -71,7 +71,8 @@ const TELEPORT_ATTEMPTS    := 20
 # ─────────────────────────────────────────────
 var _is_chasing          := false
 var _is_roaring          := false
-var _is_killing          := false
+var _is_killing          := false   # wind-up started; gates kill-check re-entry
+var _is_killing_locked   := false   # actual strike moment — freezes movement
 var _roar_timer          := 0.0
 var _roar_cooldown_timer := 0.0
 var _los_timer           := 0.0
@@ -114,11 +115,20 @@ func _process(delta: float) -> void:
 	_update_stuck_check(delta)
 
 func _physics_process(delta: float) -> void:
-	if _is_roaring or _is_killing:
+	if _is_roaring:
 		velocity.x = 0.0
 		velocity.z = 0.0
-		if _is_roaring:
-			_tick_roar(delta)
+		_tick_roar(delta)
+		apply_gravity(delta)
+		move_and_slide()
+		return
+
+	# Only freeze movement at the actual strike moment, not during wind-up.
+	# During wind-up (_is_killing but not _is_killing_locked) the monster
+	# keeps jogging toward the player so the player can't walk away.
+	if _is_killing_locked:
+		velocity.x = 0.0
+		velocity.z = 0.0
 		apply_gravity(delta)
 		move_and_slide()
 		return
@@ -128,10 +138,10 @@ func _physics_process(delta: float) -> void:
 	_tick_patrol()
 
 # ─────────────────────────────────────────────
-#  Nav agent — block velocity during roar / kill
+#  Nav agent — block velocity only during roar / strike lock
 # ─────────────────────────────────────────────
 func _on_navigation_agent_3d_velocity_computed(safe_velocity: Vector3) -> void:
-	if _is_roaring or _is_killing:
+	if _is_roaring or _is_killing_locked:
 		velocity.x = 0.0
 		velocity.z = 0.0
 		return
@@ -173,10 +183,13 @@ func _can_see_player(player: Node3D) -> bool:
 	if dist > DETECTION_DISTANCE:
 		return false
 
-	var forward        = -global_transform.basis.z
-	var to_player_flat = Vector3(to_player.x, 0.0, to_player.z).normalized()
-	if forward.dot(to_player_flat) < DETECTION_FOV_DOT:
-		return false
+	# Skip FOV check at close range — monster can't "look away" when the
+	# player is near enough to kill.
+	if dist > KILL_DISTANCE * 2.0:
+		var forward        = -global_transform.basis.z
+		var to_player_flat = Vector3(to_player.x, 0.0, to_player.z).normalized()
+		if forward.dot(to_player_flat) < DETECTION_FOV_DOT:
+			return false
 
 	var space  = get_world_3d().direct_space_state
 	var origin = global_position + Vector3.UP * 1.6
@@ -254,24 +267,36 @@ func _end_roar() -> void:
 #  Kill attack
 # ─────────────────────────────────────────────
 func _update_kill_check(delta: float) -> void:
-	if _is_killing or _is_roaring or not _is_chasing:
+	if _is_killing or _is_roaring:
 		return
+
+	var player = get_player()
+	if not is_instance_valid(player):
+		return
+
+	var dist = global_position.distance_to(player.global_position)
+
+	# Allow kill if actively chasing, OR if the player is within kill range
+	# regardless of chase state (handles FOV-loss-at-close-range edge case).
+	if not _is_chasing and dist > KILL_DISTANCE:
+		return
+
 	_kill_check_timer -= delta
 	if _kill_check_timer > 0.0:
 		return
 	_kill_check_timer = KILL_CHECK_INTERVAL
 
-	var player = get_player()
-	if not is_instance_valid(player):
-		return
-	if global_position.distance_to(player.global_position) <= KILL_DISTANCE:
+	if dist <= KILL_DISTANCE:
 		_begin_kill(player)
 
 func _begin_kill(player: Node3D) -> void:
 	_is_killing = true
-	_is_chasing = false
-	_has_target = false
-	velocity     = Vector3.ZERO
+
+	# Keep chasing during the wind-up so the monster jogs right into the
+	# player rather than freezing and letting them walk away.
+	_is_chasing     = true
+	_has_target     = true
+	target_position = player.global_position
 
 	var to_player = player.global_position - global_position
 	to_player.y   = 0.0
@@ -279,10 +304,22 @@ func _begin_kill(player: Node3D) -> void:
 		rotation.y = atan2(-to_player.x, -to_player.z)
 
 	var state_machine = animation_tree["parameters/AnimationNodeStateMachine/playback"]
-	state_machine.travel(KILL_ANIM_NAME)
+	state_machine.start(KILL_ANIM_NAME, true)  # immediate — interrupts anything playing
 
-	await get_tree().create_timer(1.0).timeout
-	_is_killing = false
+	# Short wind-up window: monster keeps moving toward player
+	await get_tree().create_timer(0.3).timeout
+
+	# Freeze for the strike itself
+	_is_killing_locked = true
+	_is_chasing        = false
+	_has_target        = false
+	velocity           = Vector3.ZERO
+
+	await get_tree().create_timer(0.7).timeout
+
+	_is_killing        = false
+	_is_killing_locked = false
+
 	var current_player = get_player()
 	if is_instance_valid(current_player) and global_position.distance_to(current_player.global_position) <= KILL_DISTANCE:
 		current_player.die()
@@ -478,6 +515,9 @@ func apply_movement() -> void:
 #  Animation
 # ─────────────────────────────────────────────
 func update_movement_animation(input_dir: Vector2) -> void:
+	# Don't let movement animations override the attack during wind-up or strike
+	if _is_killing:
+		return
 	var state_machine = animation_tree["parameters/AnimationNodeStateMachine/playback"]
 
 	if current_ladder and current_ladder.end_y() < global_position.y and get_climb_input() > 0 and finish_climb_animation_cooldown_timer > finish_climb_animation_cooldown:
