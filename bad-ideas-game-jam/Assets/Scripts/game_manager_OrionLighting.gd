@@ -269,9 +269,9 @@ func _process(_delta: float) -> void:
 
 	if story_increment == 3 and player_has_returned_oxy_torch and player_has_slept:
 		player.fade_in_camera(5)
-		twin_1.global_position = bedroom.global_position
-		twin_2.global_position = bedroom2.global_position
-		player.global_position = bedroom3.global_position
+		twin_1.global_position = bedroom2.global_position
+		twin_2.global_position = bedroom3.global_position
+		player.global_position = bedroom.global_position
 		story_increment += 1
 		_remove_objective()
 		_play_act3_wake_up()
@@ -432,8 +432,8 @@ func _play_act1_shift_over():
 	await twin_2.play_dialogue(29)
 	await twin_2.play_dialogue(30)
 	await twin_1.play_dialogue(31)
-	twin_2.set_target_position(bedroom.global_position)
-	twin_1.set_target_position(bedroom.global_position)
+	twin_2.set_target_position(bedroom3.global_position)
+	twin_1.set_target_position(bedroom2.global_position)
 	_update_oxy_torch_return_objective()
 	player.toggle_movement_disabled()
 	_dialogue_active = false
