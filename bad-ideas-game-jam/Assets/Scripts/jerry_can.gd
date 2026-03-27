@@ -42,6 +42,8 @@ func interact_hold_time() -> float:
 
 func on_interact(_player):
 	
+	add_to_group("interacted_boxes")
+	
 	if idx == 0:
 		_player.play_dialogue(95)
 		

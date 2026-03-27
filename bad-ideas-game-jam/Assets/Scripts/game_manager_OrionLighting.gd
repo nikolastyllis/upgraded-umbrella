@@ -183,6 +183,9 @@ func play_from_act_7():
 func restart_from_act_7() -> void:
 	player.global_position = respawn.global_position
 	creature.global_position = infected_spawn.global_position
+	number_of_supplies = 0
+	_remove_objective()
+	player.set_objective_text("Search the containers for supplies to escape on the lifeboat (%s/5 Collected)" % number_of_supplies)
 	await player.fade_in_camera(3.0)
 
 func play_from_act_8():

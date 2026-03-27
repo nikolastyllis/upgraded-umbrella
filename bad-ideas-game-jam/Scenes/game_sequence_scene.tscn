@@ -288,6 +288,7 @@ agent_max_slope = 60.0
 edge_max_length = 1.0
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_63acv"]
+emission_shape_scale = Vector3(1, 10, 1)
 emission_shape = 6
 emission_ring_axis = Vector3(0, 90, 1)
 emission_ring_height = 2.0
@@ -430,8 +431,8 @@ transform = Transform3D(-2, 0, 1.7484555e-07, 0, 2, 0, -1.7484555e-07, 0, -2, 18
 transform = Transform3D(-4.3711385e-08, 0, -1, 0, 0.99999994, 0, 0.99999994, 0, -4.371139e-08, -0.6674752, 2.5669377, -43.335854)
 
 [node name="Rain" type="GPUParticles3D" parent="Player" unique_id=645779901]
-transform = Transform3D(-0.99752617, 0, 0.07029611, 0, 1, 0, -0.07029611, 0, -0.99752617, 0, 11.69352, 0)
-amount = 2000
+transform = Transform3D(-0.99752617, 0, 0.07029611, 0, 1, 0, -0.07029611, 0, -0.99752617, 0, 0.6935196, 0)
+amount = 10000
 lifetime = 1.89
 randomness = 1.0
 visibility_aabb = AABB(-10, -4, -10, 20, 8, 20)

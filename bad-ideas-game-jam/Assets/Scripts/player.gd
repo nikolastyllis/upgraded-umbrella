@@ -59,7 +59,7 @@ var dialog_hide_timer: SceneTreeTimer = null
 var movement_disabled = false
 
 var jogging_timer = 0
-var jogging_max_time = 20
+var jogging_max_time = 35
 var jog_cooldown = false
 var jog_cooldown_time = 5
 
@@ -139,7 +139,7 @@ func handle_stamina(delta: float) -> void:
 	if is_jogging and jogging_timer <= jogging_max_time:
 		jogging_timer += (delta * (1.3 if has_oxy_torch else 1.0))
 	else:
-		jogging_timer -= delta
+		jogging_timer -= delta * 2
 
 	if jogging_timer >= jogging_max_time and not jog_cooldown:
 		jogging_timer += jog_cooldown_time
@@ -166,10 +166,15 @@ func die() -> void:
 	var tween_out := create_tween()
 	tween_out.tween_property(camera, "fov", 110.0, 3.0).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_QUAD)
 	await fade_out_camera(3.0)
+	
+	var interacted_boxes = get_tree().get_nodes_in_group("interacted_boxes")
+	for box in interacted_boxes:
+		box.queue_free()
+	
 	state_machine.travel("Idle")
 	var tween_in := create_tween()
-	tween_in.tween_property(camera, "fov", 80.0, 1.0).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_QUAD)
-	game_manager.restart_from_act_7()
+	tween_in.tween_property(camera, "fov", 80.0, 0.1).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_QUAD)
+	await game_manager.restart_from_act_7()
 	movement_disabled = false
 
 func _physics_process(delta: float) -> void:
