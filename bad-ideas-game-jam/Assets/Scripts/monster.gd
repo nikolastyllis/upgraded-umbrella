@@ -29,7 +29,7 @@ const PATROL_WAYPOINT_COUNT := 4
 const PATROL_SPEED          := 2.0
 const PATROL_PLAYER_BIAS    := 0.65
 
-const KILL_DISTANCE       := 1.8
+const KILL_DISTANCE       := 1.25
 const KILL_ANIM_NAME      := "Attack"
 const KILL_CHECK_INTERVAL := 0.2
 
@@ -250,21 +250,17 @@ func _begin_kill(player: Node3D) -> void:
 	state_machine.start(KILL_ANIM_NAME, true)
 
 	await get_tree().create_timer(0.3).timeout
-
-	_is_killing_locked = true
-	_is_chasing        = false
-	_has_target        = false
-	velocity           = Vector3.ZERO
-
-	await get_tree().create_timer(0.7).timeout
-
-	_is_killing        = false
-	_is_killing_locked = false
-
+	
 	var current_player = get_player()
 	if is_instance_valid(current_player) and global_position.distance_to(current_player.global_position) <= KILL_DISTANCE:
 		current_player.die()
 		roar()
+
+	_is_killing_locked = true
+	_is_chasing        = false
+	_has_target        = false
+	_is_killing        = false
+	_is_killing_locked = false
 
 func _begin_patrol() -> void:
 	_patrol_waypoints.clear()
