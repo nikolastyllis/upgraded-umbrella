@@ -390,7 +390,7 @@ navigation_mesh = SubResource("NavigationMesh_h3qab")
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
 
 [node name="HeroContainer1" parent="NavigationRegion3D" unique_id=1608144133 instance=ExtResource("11_t0b6u")]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -2.4863162, 4.1924834, -94.93688)
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -2.4863162, 4.1924834, -94.62823)
 is_hero_container_1 = true
 
 [node name="HeroContainer2" parent="NavigationRegion3D" unique_id=1020252913 instance=ExtResource("11_t0b6u")]
@@ -442,7 +442,6 @@ draw_pass_1 = SubResource("RibbonTrailMesh_qcyk2")
 [node name="GameManager" type="Node3D" parent="." unique_id=1749829845]
 transform = Transform3D(-0.87114525, 0, 0.49102545, 0, 1, 0, -0.49102545, 0, -0.87114525, -8.530954, 7.9717035, 75.958336)
 script = ExtResource("12_yiumw")
-debug_play_from_act_7 = false
 
 [node name="Locations" type="Node3D" parent="GameManager" unique_id=596146378]
 
@@ -453,7 +452,7 @@ transform = Transform3D(-0.87114525, -0.27626652, -0.40593448, 0, 0.8267076, -0.
 transform = Transform3D(-0.4910254, 0, 0.87114525, 0, 0.99999994, 0, -0.8711452, 0, -0.49102542, 51.726254, -5.404766, 107.78374)
 
 [node name="Container" type="Node3D" parent="GameManager/Locations" unique_id=2145291984]
-transform = Transform3D(-0.87114525, 0, -0.49102545, 0, 1, 0, 0.49102545, 0, -0.87114525, 52.717777, -5.021561, 108.34344)
+transform = Transform3D(-0.87114525, 0, -0.49102545, 0, 1, 0, 0.49102545, 0, -0.87114525, 52.642, -5.021561, 108.20899)
 
 [node name="InfectedContainer" type="Node3D" parent="GameManager/Locations" unique_id=838499068]
 transform = Transform3D(-0.87114525, 0, -0.49102545, 0, 1, 0, 0.49102545, 0, -0.87114525, 49.796497, -4.9159975, 100.331604)
@@ -518,7 +517,7 @@ transform = Transform3D(0.25881904, 0, -0.9659258, 0, 1, 0, 0.9659258, 0, 0.2588
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.7934155, -20.827534, 54.122692)
 
 [node name="Container_Interior_Starter" parent="." unique_id=933320396 instance=ExtResource("19_0ixb7")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.180876, 2.1194236, -47.42996)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.180876, 2.1194236, -47.27563)
 
 [node name="Container_Interior_Reveal" parent="." unique_id=944618827 instance=ExtResource("20_r4e2n")]
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -2.5552702, 1.9932939, -32.42649)

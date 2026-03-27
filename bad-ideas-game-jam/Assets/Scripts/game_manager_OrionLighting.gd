@@ -403,9 +403,9 @@ func _play_act_1_start() -> void:
 	await twin_2.play_dialogue(23)
 	await twin_1.play_dialogue(24)
 	player.toggle_movement_disabled()
+	_spawn_objective_marker(oxy_torch, "Pick up the oxy–acetylene torch")
 	await twin_1.play_dialogue(32)
 	_play_container_reminders()
-	_spawn_objective_marker(oxy_torch, "Pick up the oxy–acetylene torch")
 	_dialogue_active = false
 	
 func _play_act_4_lifeboat() -> void:
