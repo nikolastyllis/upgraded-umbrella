@@ -101,6 +101,8 @@ var dialog: Dictionary = {
 @onready var oxy_torch        = $"../OxyTorch"
 @onready var store_room       = $Locations/StoreRoom
 @onready var lifeboat         = $Locations/Lifeboat
+@onready var respawn         = $Locations/Respawn
+@onready var oxy_torch_respawn = $Locations/OxyTorchRespawn
 
 @onready var hide1 = $Locations/HideNpcs1
 @onready var hide2 = $Locations/HideNpcs2
@@ -179,9 +181,9 @@ func play_from_act_7():
 	story_increment = 7
 	
 func restart_from_act_7() -> void:
-	debug_play_from_act_7 = true
-	number_of_supplies = 0
-	get_tree().reload_current_scene()
+	player.global_position = respawn.global_position
+	creature.global_position = infected_spawn.global_position
+	await player.fade_in_camera(3.0)
 
 func play_from_act_8():
 	play_from_act_7()

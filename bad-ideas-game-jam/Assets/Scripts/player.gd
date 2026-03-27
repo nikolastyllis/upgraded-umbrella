@@ -166,7 +166,11 @@ func die() -> void:
 	var tween_out := create_tween()
 	tween_out.tween_property(camera, "fov", 110.0, 3.0).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_QUAD)
 	await fade_out_camera(3.0)
+	state_machine.travel("Idle")
+	var tween_in := create_tween()
+	tween_in.tween_property(camera, "fov", 80.0, 1.0).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_QUAD)
 	game_manager.restart_from_act_7()
+	movement_disabled = false
 
 func _physics_process(delta: float) -> void:
 	super._physics_process(delta)

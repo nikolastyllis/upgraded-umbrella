@@ -429,10 +429,9 @@ transform = Transform3D(-2, 0, 1.7484555e-07, 0, 2, 0, -1.7484555e-07, 0, -2, 18
 transform = Transform3D(-4.3711385e-08, 0, -1, 0, 0.99999994, 0, 0.99999994, 0, -4.371139e-08, -0.6674752, 2.5669377, -43.335854)
 
 [node name="Rain" type="GPUParticles3D" parent="Player" unique_id=645779901]
-transform = Transform3D(-0.99752617, 0, 0.07029611, 0, 1, 0, -0.07029611, 0, -0.99752617, 0, 2.0065289, 0)
-visible = false
+transform = Transform3D(-0.99752617, 0, 0.07029611, 0, 1, 0, -0.07029611, 0, -0.99752617, 0, 11.69352, 0)
 amount = 2000
-lifetime = 2.0
+lifetime = 1.89
 randomness = 1.0
 visibility_aabb = AABB(-10, -4, -10, 20, 8, 20)
 trail_enabled = true
@@ -446,6 +445,12 @@ script = ExtResource("12_yiumw")
 debug_play_from_act_7 = false
 
 [node name="Locations" type="Node3D" parent="GameManager" unique_id=596146378]
+
+[node name="OxyTorchRespawn" type="Node3D" parent="GameManager/Locations" unique_id=1284677764]
+transform = Transform3D(-0.87114525, -0.27626652, -0.40593448, 0, 0.8267076, -0.5626318, 0.49102545, -0.490134, -0.7201824, 52.358, -6.0843773, 106.95354)
+
+[node name="Respawn" type="Node3D" parent="GameManager/Locations" unique_id=888515974]
+transform = Transform3D(-0.4910254, 0, 0.87114525, 0, 0.99999994, 0, -0.8711452, 0, -0.49102542, 51.726254, -5.404766, 107.78374)
 
 [node name="Container" type="Node3D" parent="GameManager/Locations" unique_id=2145291984]
 transform = Transform3D(-0.87114525, 0, -0.49102545, 0, 1, 0, 0.49102545, 0, -0.87114525, 52.717777, -5.021561, 108.34344)
