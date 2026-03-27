@@ -10,8 +10,6 @@
 render_priority = 0
 next_pass = ExtResource("1_y45tb")
 shader = ExtResource("2_ia2tr")
-shader_parameter/emission = Color(0, 0, 0, 1)
-shader_parameter/emission_energy = 1.0
 shader_parameter/normal_scale = 1.0
 shader_parameter/normal_map = ExtResource("4_yasm1")
 shader_parameter/invert_normal_y = false
@@ -26,5 +24,5 @@ shader_parameter/roughness_strength = 0.0
 shader_parameter/metallic_strength = 0.0
 shader_parameter/invert_roughness = false
 shader_parameter/fresnel = Color(0.25565878, 0.25565878, 0.25565878, 0.3019608)
-shader_parameter/uv_scale = Vector2(10, 10)
+shader_parameter/uv_scale = Vector2(1, 1)
 shader_parameter/uv_offset = Vector2(0, 0)

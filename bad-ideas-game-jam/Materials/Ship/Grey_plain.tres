@@ -1,0 +1,28 @@
+[gd_resource type="ShaderMaterial" format=3 uid="uid://bjdt2xponfry6"]
+
+[ext_resource type="Material" uid="uid://sgetjvg177mb" path="res://Shaders/outline.tres" id="1_w6032"]
+[ext_resource type="Shader" uid="uid://d266trvxphdyu" path="res://Shaders/cel-shader-base.gdshader" id="2_21snj"]
+[ext_resource type="Texture2D" uid="uid://d22ml6qovn41" path="res://Materials/Textures/Enviroment/Steel_Panel_DarkGrey_Custom.png" id="3_w6032"]
+[ext_resource type="Texture2D" uid="uid://cmn4a65j7m7t3" path="res://Materials/Textures/Enviroment/Steel_Panel_DarkGrey_Normal.png" id="4_21snj"]
+[ext_resource type="Texture2D" uid="uid://b3ghmcn3xdtaf" path="res://Materials/Textures/Enviroment/Steel_Panel_DarkGrey_ORM.png" id="5_layhh"]
+
+[resource]
+render_priority = 0
+next_pass = ExtResource("1_w6032")
+shader = ExtResource("2_21snj")
+shader_parameter/normal_scale = 1.0
+shader_parameter/normal_map = ExtResource("4_21snj")
+shader_parameter/invert_normal_y = false
+shader_parameter/alpha_cutoff = 0.7050000334875
+shader_parameter/color = Color(0.29219002, 0.29219005, 0.29219002, 1)
+shader_parameter/base_texture = ExtResource("3_w6032")
+shader_parameter/specular_color = Color(0.1955451, 0.1955451, 0.19554505, 1)
+shader_parameter/specular_strength = 0.7750000368125
+shader_parameter/orm_texture = ExtResource("5_layhh")
+shader_parameter/ao_strength = 1.0
+shader_parameter/roughness_strength = 1.0
+shader_parameter/metallic_strength = 0.0
+shader_parameter/invert_roughness = false
+shader_parameter/fresnel = Color(0.5079715, 0.5079715, 0.5079715, 0.3019608)
+shader_parameter/uv_scale = Vector2(0.6, 0.46)
+shader_parameter/uv_offset = Vector2(0, 0)
