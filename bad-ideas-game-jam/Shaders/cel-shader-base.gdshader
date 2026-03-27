@@ -1,7 +1,7 @@
 shader_type spatial;
 
 #define USE_ALPHA 0
-#define USE_ALPHA_CUTOFF 0
+#define USE_ALPHA_CUTOFF 1
 #define USE_EMISSION 1
 #define USE_REFLECTIONS 0
 #define USE_NORMAL_MAP 1

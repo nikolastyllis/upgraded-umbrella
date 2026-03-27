@@ -8,14 +8,15 @@
 [resource]
 render_priority = 0
 shader = ExtResource("1_qa1qo")
+shader_parameter/emission = Color(0, 0, 0, 1)
+shader_parameter/emission_energy = 1.0
 shader_parameter/normal_scale = 0.8880008021799988
 shader_parameter/normal_map = ExtResource("3_1d5hd")
 shader_parameter/invert_normal_y = false
-shader_parameter/backlight = Color(0.7553861, 0.75538605, 0.75538605, 1)
 shader_parameter/color = Color(1, 1, 1, 1)
 shader_parameter/base_texture = ExtResource("2_qa1qo")
 shader_parameter/specular_color = Color(0.3, 0.3, 0.3, 1)
-shader_parameter/specular_strength = 0.88400004199
+shader_parameter/specular_strength = 0.0
 shader_parameter/orm_texture = ExtResource("4_v0j7a")
 shader_parameter/ao_strength = 1.0
 shader_parameter/roughness_strength = 1.0
