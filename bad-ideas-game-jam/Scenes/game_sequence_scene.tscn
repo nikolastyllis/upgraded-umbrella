@@ -448,7 +448,7 @@ process_material = SubResource("ParticleProcessMaterial_63acv")
 draw_pass_1 = SubResource("RibbonTrailMesh_qcyk2")
 
 [node name="GameManager" type="Node3D" parent="." unique_id=1749829845]
-transform = Transform3D(-0.87121385, -0.46844015, 0.14680025, 0, 0.2990408, 0.9542403, -0.49090374, 0.8313474, -0.26052848, -8.530954, 7.9717035, 75.958336)
+transform = Transform3D(-0.87121385, 0, 0.49090374, 0, 1, 0, -0.49090374, 0, -0.87121385, -8.431, 7.972, 75.958)
 script = ExtResource("12_yiumw")
 debug_play_from_act_7 = false
 DAY_SUN_PITCH_DEG = -72.6
