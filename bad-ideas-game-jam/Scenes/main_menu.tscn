@@ -280,7 +280,6 @@ agent_radius = 0.3
 [node name="EnviromentTestScene" type="Node3D" unique_id=1795795939]
 
 [node name="Camera3D" type="Camera3D" parent="." unique_id=238692534]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 23.81532, 26.710968, 82.66727)
 current = true
 script = ExtResource("1_yhxw7")
 fade_overlay = NodePath("../Control/CanvasLayer/ColorRect")
