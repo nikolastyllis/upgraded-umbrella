@@ -12,6 +12,7 @@
 [node name="Ship Enviroment" type="Node3D" unique_id=1795795939]
 
 [node name="BIGJ_Ship_03" parent="." unique_id=1107486186 instance=ExtResource("1_l8ged")]
+metadata/_edit_lock_ = true
 
 [node name="Walls Below Poop Deck_001" parent="BIGJ_Ship_03" index="1" unique_id=1177078214]
 material_override = ExtResource("2_khp5w")
