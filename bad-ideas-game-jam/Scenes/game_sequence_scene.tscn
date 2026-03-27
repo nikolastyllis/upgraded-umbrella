@@ -22,68 +22,68 @@
 [ext_resource type="PackedScene" uid="uid://dkqydnieh7ivh" path="res://Assets/Models/Enviroment/Container_Interior_Reveal.fbx" id="20_r4e2n"]
 
 [sub_resource type="Gradient" id="Gradient_0ixb7"]
-offsets = PackedFloat32Array(0.14097744, 0.4755639, 0.69924814, 0.90601504)
+offsets = PackedFloat32Array(0.14097744, 0.36654136, 0.4830827, 0.7838346)
 colors = PackedColorArray(0.118439026, 0.5469272, 0.7884899, 1, 0.7037083, 0.8916921, 0.9748431, 1, 0.99999994, 0.5166931, 0.19935611, 1, 0, 0, 0, 1)
 
-[sub_resource type="GradientTexture1D" id="GradientTexture1D_tc46g"]
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_0ixb7"]
 gradient = SubResource("Gradient_0ixb7")
 
 [sub_resource type="Gradient" id="Gradient_r4e2n"]
 offsets = PackedFloat32Array(0, 0.89285713, 1)
 colors = PackedColorArray(0.44058615, 0.75456274, 0.8992734, 1, 0.10059404, 0.18911234, 0.3698296, 1, 0.0025271194, 0.0075181467, 0.028647257, 1)
 
-[sub_resource type="GradientTexture1D" id="GradientTexture1D_0ixb7"]
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_r4e2n"]
 gradient = SubResource("Gradient_r4e2n")
 
 [sub_resource type="Gradient" id="Gradient_nr8gw"]
 offsets = PackedFloat32Array(0, 0.56954885, 0.7781955, 0.84774435, 0.9135338, 1)
 colors = PackedColorArray(0.27592334, 0.5127547, 0.5835772, 1, 0.12968373, 0.4150748, 0.47980076, 1, 0.3102272, 0.52018106, 0.43028408, 1, 0.31, 0.24273, 0.17980002, 1, 0.0676, 0.26, 0.18624668, 1, 0.05374243, 0.14148921, 0.13100627, 1)
 
-[sub_resource type="GradientTexture1D" id="GradientTexture1D_vrw5k"]
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_nr8gw"]
 gradient = SubResource("Gradient_nr8gw")
 
 [sub_resource type="Gradient" id="Gradient_n0oop"]
 offsets = PackedFloat32Array(0, 0.35338345, 1)
 colors = PackedColorArray(0.2102713, 0.42708164, 0.6137572, 1, 0.08353881, 0.28582063, 0.39680067, 1, 0.009117713, 0.038820855, 0.050681174, 1)
 
-[sub_resource type="GradientTexture1D" id="GradientTexture1D_41wu6"]
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_n0oop"]
 gradient = SubResource("Gradient_n0oop")
 
 [sub_resource type="Gradient" id="Gradient_vrw5k"]
-offsets = PackedFloat32Array(0, 0.69736844, 0.78571427, 0.90789473, 0.9868421)
-colors = PackedColorArray(0.47710752, 0.7820976, 0.8294359, 1, 0.54849243, 0.36090565, 0.33490166, 1, 1, 0.64251745, 0.16529453, 1, 0.12580642, 0.16593808, 0.19390252, 1, 0.011974596, 0.01812943, 0.06524632, 1)
+offsets = PackedFloat32Array(0, 0.2781955, 0.5338346, 0.90789473, 0.9868421)
+colors = PackedColorArray(0.47710752, 0.7820976, 0.8294359, 1, 0.8343018, 0.54639024, 0.6000764, 1, 0.92, 0.50600004, 0, 1, 0.12580642, 0.16593808, 0.19390252, 1, 0.011974596, 0.01812943, 0.06524632, 1)
 
-[sub_resource type="GradientTexture1D" id="GradientTexture1D_oihns"]
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_vrw5k"]
 gradient = SubResource("Gradient_vrw5k")
 
 [sub_resource type="Gradient" id="Gradient_u5hjn"]
-offsets = PackedFloat32Array(0, 0.80451125, 1)
+offsets = PackedFloat32Array(0, 0.5833333, 1)
 colors = PackedColorArray(1, 1, 1, 1, 0.9493348, 0.46504265, 1.347661e-06, 1, 0, 0, 0, 1)
 
-[sub_resource type="GradientTexture1D" id="GradientTexture1D_3f6hp"]
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_u5hjn"]
 gradient = SubResource("Gradient_u5hjn")
 
-[sub_resource type="Curve" id="Curve_3e3ic"]
+[sub_resource type="Curve" id="Curve_41wu6"]
 _limits = [0.0, 3.3876443, 0.0, 1.0]
 _data = [Vector2(0, 0.05671096), 0.0, 0.0, 0, 0, Vector2(1, 1.2025521), 1.7155775, 0.0, 0, 0]
 point_count = 2
 
-[sub_resource type="Curve" id="Curve_yiumw"]
+[sub_resource type="Curve" id="Curve_hy2ke"]
 _limits = [0.0, 10.0, 0.0, 1.0]
 _data = [Vector2(0, 2.343687), 0.0, 0.0, 0, 0, Vector2(1, 6.145623), 17.434084, 0.0, 0, 0]
 point_count = 2
 
-[sub_resource type="Curve" id="Curve_tc46g"]
+[sub_resource type="Curve" id="Curve_jtogl"]
 _limits = [0.0, 6.6438084, 0.0, 1.0]
 _data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(1, 1.452579), 7.1489964, 0.0, 0, 0]
 point_count = 2
 
-[sub_resource type="Curve" id="Curve_t0b6u"]
+[sub_resource type="Curve" id="Curve_x5fq5"]
 _limits = [0.0, 0.4437256, 0.0, 1.0]
 _data = [Vector2(0, 0.0656012), 0.0, 0.0, 0, 0, Vector2(1, 0.116793424), 0.2331115, 0.0, 0, 0]
 point_count = 2
 
-[sub_resource type="Curve" id="Curve_oihns"]
+[sub_resource type="Curve" id="Curve_3f6hp"]
 _data = [Vector2(0, 0.5490116), 0.0, 0.0, 0, 0, Vector2(1, 0.8767647), 0.0, 0.0, 0, 0]
 point_count = 2
 
@@ -102,12 +102,12 @@ _limits = [0.0, 2.0, 0.0, 1.0]
 _data = [Vector2(0, 0.017748833), 0.0, 0.0, 0, 0, Vector2(1, 0.78862417), 0.0, 0.0, 0, 0]
 point_count = 2
 
-[sub_resource type="Curve" id="Curve_gluub"]
+[sub_resource type="Curve" id="Curve_3e3ic"]
 _limits = [-1.0, 1.0, 0.0, 1.0]
 _data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.48625433, 1), -0.03721973, -0.03721973, 0, 0, Vector2(1, -1), 0.0, 0.0, 0, 0]
 point_count = 3
 
-[sub_resource type="Curve" id="Curve_0ixb7"]
+[sub_resource type="Curve" id="Curve_2xjtm"]
 _limits = [0.0, 15.0, 0.0, 1.0]
 _data = [Vector2(0, 12.87616), 0.0, 0.0, 0, 0, Vector2(0.46735394, 0.4870901), 0.0, 0.0, 0, 0, Vector2(0.9982818, 9.415087), 0.0, 0.0, 0, 0]
 point_count = 3
@@ -118,7 +118,7 @@ colors = PackedColorArray(0, 0, 0, 1, 0.050314467, 0.050314467, 0.050314467, 1)
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_4n1t5"]
 
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_tc46g"]
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_4u10r"]
 noise = SubResource("FastNoiseLite_4n1t5")
 color_ramp = SubResource("Gradient_to28j")
 seamless = true
@@ -141,7 +141,7 @@ domain_warp_frequency = 5.975
 domain_warp_fractal_octaves = 3
 domain_warp_fractal_lacunarity = 8.73
 
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_oihns"]
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_uf6pr"]
 noise = SubResource("FastNoiseLite_ti2qv")
 color_ramp = SubResource("Gradient_4n1t5")
 seamless = true
@@ -152,7 +152,7 @@ colors = PackedColorArray(0, 0, 0, 1, 0.030320821, 0.030320821, 0.030320821, 1, 
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_3fxhi"]
 
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_0ixb7"]
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_xpwo0"]
 noise = SubResource("FastNoiseLite_3fxhi")
 color_ramp = SubResource("Gradient_h3qab")
 seamless = true
@@ -185,7 +185,7 @@ shader_parameter/roughness = 0.04
 shader_parameter/fresnel_power = 0.1
 shader_parameter/horizon_start = 1.0
 shader_parameter/horizon_end = 800.0
-shader_parameter/foam_noise = SubResource("NoiseTexture2D_oihns")
+shader_parameter/foam_noise = SubResource("NoiseTexture2D_uf6pr")
 shader_parameter/foam_color = Color(1, 1, 1, 1)
 shader_parameter/foam_amount = 1.1722655
 shader_parameter/foam_scale = 0.02
@@ -193,7 +193,7 @@ shader_parameter/foam_speed = Vector2(-0.05, 0.105)
 shader_parameter/patch_threshold = 0.065
 shader_parameter/patch_softness = 1.6949999999999998
 shader_parameter/patch_strength = 0.2
-shader_parameter/crest_noise = SubResource("NoiseTexture2D_tc46g")
+shader_parameter/crest_noise = SubResource("NoiseTexture2D_4u10r")
 shader_parameter/crest_scale = 0.103
 shader_parameter/crest_speed = Vector2(0.006, 0.003)
 shader_parameter/crest_screen_strength = 0.135
@@ -211,7 +211,7 @@ shader_parameter/wake_width_start = 5.91
 shader_parameter/wake_width_end = 58.36
 shader_parameter/wake_edge_soft = 4.57
 shader_parameter/wake_strength = 0.69
-shader_parameter/wake_edge_noise = SubResource("NoiseTexture2D_0ixb7")
+shader_parameter/wake_edge_noise = SubResource("NoiseTexture2D_xpwo0")
 shader_parameter/wake_edge_noise_scale = 0.07
 shader_parameter/wake_edge_noise_speed = Vector2(0, -0.9)
 shader_parameter/wake_edge_band = 0.285
@@ -231,12 +231,12 @@ subdivide_width = 100
 subdivide_depth = 100
 center_offset = Vector3(0, -7, 0)
 
-[sub_resource type="Sky" id="Sky_oihns"]
+[sub_resource type="Sky" id="Sky_pdtmv"]
 sky_material = ExtResource("1_63acv")
 
 [sub_resource type="Environment" id="Environment_0ixb7"]
 background_mode = 2
-sky = SubResource("Sky_oihns")
+sky = SubResource("Sky_pdtmv")
 ambient_light_source = 3
 ambient_light_color = Color(0.59188694, 0.40920484, 0.15684012, 1)
 ambient_light_energy = 0.0
@@ -332,29 +332,29 @@ curve = SubResource("Curve_63acv")
 [node name="Lighting" type="Node3D" parent="." unique_id=1156227915]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.092701, 0, 0.6087799)
 
-[node name="LookDriver" type="Node3D" parent="Lighting" unique_id=1877438112 node_paths=PackedStringArray("sun", "world_env", "ocean_mesh")]
-transform = Transform3D(0.5234169, 0.44931555, -0.7239822, -0.15030707, -0.7876559, -0.5974997, -0.83871484, 0.42156118, -0.3447371, 0, 0, 0)
+[node name="LookDriver" type="Node3D" parent="Lighting" unique_id=140239345 node_paths=PackedStringArray("sun", "world_env", "ocean_mesh")]
+transform = Transform3D(0.5234169, 0.44931555, -0.7239822, -0.15030707, -0.7876559, -0.5974997, -0.83871484, 0.42156118, -0.3447371, 3.0927014, 0, -0.60878706)
 script = ExtResource("1_yiumw")
 sun = NodePath("../DirectionalLight3D")
 world_env = NodePath("../WorldEnvironment")
 ocean_mesh = NodePath("../ocean_mesh")
 manual_t = 0.0
-fog_colour_ramp = SubResource("GradientTexture1D_tc46g")
-sky_zenith_ramp = SubResource("GradientTexture1D_0ixb7")
-ocean_shallow_ramp = SubResource("GradientTexture1D_vrw5k")
-ocean_deep_ramp = SubResource("GradientTexture1D_41wu6")
-horizon_ramp = SubResource("GradientTexture1D_oihns")
-sun_colour_ramp = SubResource("GradientTexture1D_3f6hp")
-ocean_foam_curve = SubResource("Curve_3e3ic")
-ocean_macro_amp_curve = SubResource("Curve_yiumw")
-ocean_micro_amp_curve = SubResource("Curve_tc46g")
-ocean_macro_freq_curve = SubResource("Curve_t0b6u")
-ocean_micro_freq_curve = SubResource("Curve_oihns")
+fog_colour_ramp = SubResource("GradientTexture1D_0ixb7")
+sky_zenith_ramp = SubResource("GradientTexture1D_r4e2n")
+ocean_shallow_ramp = SubResource("GradientTexture1D_nr8gw")
+ocean_deep_ramp = SubResource("GradientTexture1D_n0oop")
+horizon_ramp = SubResource("GradientTexture1D_vrw5k")
+sun_colour_ramp = SubResource("GradientTexture1D_u5hjn")
+ocean_foam_curve = SubResource("Curve_41wu6")
+ocean_macro_amp_curve = SubResource("Curve_hy2ke")
+ocean_micro_amp_curve = SubResource("Curve_jtogl")
+ocean_macro_freq_curve = SubResource("Curve_x5fq5")
+ocean_micro_freq_curve = SubResource("Curve_3f6hp")
 fog_density_curve = SubResource("Curve_57jre")
 exposure_curve = SubResource("Curve_iy7pm")
 cloud_amount_curve = SubResource("Curve_uiotd")
-sun_energy_curve = SubResource("Curve_gluub")
-sun_angula_curve = SubResource("Curve_0ixb7")
+sun_energy_curve = SubResource("Curve_3e3ic")
+sun_angula_curve = SubResource("Curve_2xjtm")
 
 [node name="ocean_mesh" type="MeshInstance3D" parent="Lighting" unique_id=977819256]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.8777213, -8.915844, -4.9421344)
@@ -366,7 +366,7 @@ script = ExtResource("5_yiumw")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="Lighting" unique_id=1333050787]
 transform = Transform3D(0.52100974, -0.82341266, 0.22481234, 0, -0.26338476, -0.96469134, 0.85355085, 0.5026134, -0.13722613, 0, 0, 0)
-light_color = Color(0.08573419, 0.04199788, 1.2170688e-07, 1)
+light_color = Color(0.040224195, 0.019704282, 5.71016e-08, 1)
 light_energy = -0.9930987
 light_indirect_energy = 1.272
 light_volumetric_fog_energy = 0.0
@@ -442,6 +442,7 @@ draw_pass_1 = SubResource("RibbonTrailMesh_qcyk2")
 [node name="GameManager" type="Node3D" parent="." unique_id=1749829845]
 transform = Transform3D(-0.87114525, 0, 0.49102545, 0, 1, 0, -0.49102545, 0, -0.87114525, -8.530954, 7.9717035, 75.958336)
 script = ExtResource("12_yiumw")
+debug_play_from_act_7 = false
 
 [node name="Locations" type="Node3D" parent="GameManager" unique_id=596146378]
 
