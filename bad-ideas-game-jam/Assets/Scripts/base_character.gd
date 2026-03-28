@@ -34,16 +34,35 @@ func _ready() -> void:
 	animation_tree.animation_finished.connect(_on_animation_finished)
 	_setup_footstep_player()
 
+var footstep_streams: Array = []
+var ladder_streams: Array = []
+
 func _setup_footstep_player() -> void:
 	footstep_player = AudioStreamPlayer3D.new()
 	footstep_player.bus = "Sound"
-	footstep_player.stream = load("res://Assets/Sound/footstep.ogg")
 	add_child(footstep_player)
+
+	for i in range(1, 4):
+		footstep_streams.append(load("res://Assets/Sound/footstep%d.ogg" % i))
 
 	ladder_player = AudioStreamPlayer3D.new()
 	ladder_player.bus = "Sound"
-	ladder_player.stream = load("res://Assets/Sound/ladder.ogg")
 	add_child(ladder_player)
+
+	for i in range(1, 5):
+		ladder_streams.append(load("res://Assets/Sound/ladder%d.ogg" % i))
+
+func _play_footstep() -> void:
+	footstep_player.stream = footstep_streams[randi() % footstep_streams.size()]
+	footstep_player.pitch_scale = randf_range(0.8, 1.2)
+	footstep_player.volume_db = randf_range(-20, -15)
+	footstep_player.play()
+
+func _play_ladder_step() -> void:
+	ladder_player.stream = ladder_streams[randi() % ladder_streams.size()]
+	ladder_player.pitch_scale = randf_range(0.8, 1.2)
+	ladder_player.volume_db = randf_range(-20, -15)
+	ladder_player.play()
 
 func _physics_process(delta: float) -> void:
 	finish_climb_animation_cooldown_timer += delta
@@ -74,16 +93,6 @@ func _update_ladder_sounds(delta: float) -> void:
 			ladder_step_timer = ladder_step_interval
 	else:
 		ladder_step_timer = 0.0
-
-func _play_footstep() -> void:
-	footstep_player.pitch_scale = randf_range(0.8, 1.2)
-	footstep_player.volume_db = randf_range(-20, -15)
-	footstep_player.play()
-	
-func _play_ladder_step() -> void:
-	ladder_player.pitch_scale = randf_range(0.8, 1.2)
-	ladder_player.volume_db = randf_range(-20, -15)
-	ladder_player.play()
 	
 func start_climbing(ladder: Node3D) -> void:
 	if climb_cooldown > 0:
