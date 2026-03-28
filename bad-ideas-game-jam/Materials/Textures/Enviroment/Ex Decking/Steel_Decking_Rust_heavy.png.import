@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bnbpufvfnl1np"
-path.s3tc="res://.godot/imported/Hull_Walls_noLarge Rust_ORM.png-6f05867f12c74f0a54dc666b4f9b49b0.s3tc.ctex"
+uid="uid://8xdvn8qd3o32"
+path.s3tc="res://.godot/imported/Steel_Decking_Rust_heavy.png-2a3fc7703e6893fc7bece16da692bfc8.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://Materials/Textures/Enviroment/Hull_Walls_noLarge Rust_ORM.png"
-dest_files=["res://.godot/imported/Hull_Walls_noLarge Rust_ORM.png-6f05867f12c74f0a54dc666b4f9b49b0.s3tc.ctex"]
+source_file="res://Materials/Textures/Enviroment/Ex Decking/Steel_Decking_Rust_heavy.png"
+dest_files=["res://.godot/imported/Steel_Decking_Rust_heavy.png-2a3fc7703e6893fc7bece16da692bfc8.s3tc.ctex"]
 
 [params]
 
