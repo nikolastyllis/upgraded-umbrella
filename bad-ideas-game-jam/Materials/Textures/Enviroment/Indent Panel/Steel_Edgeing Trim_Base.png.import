@@ -2,26 +2,27 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bo5kgd7ng5041"
-path="res://.godot/imported/Hull_Walls_Grey_Base.png-bd00ca779919cd38faf40996449ff855.ctex"
+uid="uid://b672o3gtjntjx"
+path.s3tc="res://.godot/imported/Steel_Edgeing Trim_Base.png-7e14f89d5135bb7177dbb291d3b5d448.s3tc.ctex"
 metadata={
-"vram_texture": false
+"imported_formats": ["s3tc_bptc"],
+"vram_texture": true
 }
 
 [deps]
 
-source_file="res://Materials/Textures/Enviroment/Ex Steel Panel/Hull_Walls_Grey_Base.png"
-dest_files=["res://.godot/imported/Hull_Walls_Grey_Base.png-bd00ca779919cd38faf40996449ff855.ctex"]
+source_file="res://Materials/Textures/Enviroment/Indent Panel/Steel_Edgeing Trim_Base.png"
+dest_files=["res://.godot/imported/Steel_Edgeing Trim_Base.png-7e14f89d5135bb7177dbb291d3b5d448.s3tc.ctex"]
 
 [params]
 
-compress/mode=1
+compress/mode=2
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/uastc_level=0
 compress/rdo_quality_loss=0.0
 compress/hdr_compression=1
-compress/normal_map=1
+compress/normal_map=0
 compress/channel_pack=0
 mipmaps/generate=true
 mipmaps/limit=-1

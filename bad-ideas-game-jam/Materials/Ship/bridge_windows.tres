@@ -1,0 +1,30 @@
+[gd_resource type="ShaderMaterial" format=3 uid="uid://ct3phceoao5ux"]
+
+[ext_resource type="Material" uid="uid://sgetjvg177mb" path="res://Shaders/outline.tres" id="1_k47m0"]
+[ext_resource type="Shader" uid="uid://d266trvxphdyu" path="res://Shaders/cel-shader-base.gdshader" id="2_ulb12"]
+
+[resource]
+render_priority = 0
+next_pass = ExtResource("1_k47m0")
+shader = ExtResource("2_ulb12")
+shader_parameter/emission = Color(0, 0, 0, 1)
+shader_parameter/emission_energy = 1.0
+shader_parameter/normal_scale = 1.0
+shader_parameter/invert_normal_y = false
+shader_parameter/alpha_cutoff = 0.0
+shader_parameter/color = Color(0.5158663, 0.7292846, 0.85607564, 1)
+shader_parameter/use_mask = false
+shader_parameter/mask_strength = 0.0
+shader_parameter/color_replace_detail = 0.5
+shader_parameter/rust_light_strength = 0.0
+shader_parameter/rust_heavy_strength = 0.0
+shader_parameter/rust_blend_sharpness = 0.41500001645262
+shader_parameter/ao_strength = 0.0
+shader_parameter/roughness_strength = 1.0
+shader_parameter/metallic_strength = 1.0
+shader_parameter/invert_roughness = true
+shader_parameter/specular_color = Color(0.30251467, 0.40513113, 0.56819916, 1)
+shader_parameter/specular_strength = 0.7750000368125
+shader_parameter/fresnel = Color(0.5079715, 0.5079715, 0.5079715, 0.3019608)
+shader_parameter/uv_scale = Vector2(1, 1)
+shader_parameter/uv_offset = Vector2(0, 0)

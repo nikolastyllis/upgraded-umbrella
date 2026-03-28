@@ -1,0 +1,42 @@
+[gd_resource type="ShaderMaterial" format=3 uid="uid://c68gjktj7h3ie"]
+
+[ext_resource type="Material" uid="uid://sgetjvg177mb" path="res://Shaders/outline.tres" id="1_tsmjx"]
+[ext_resource type="Shader" uid="uid://d266trvxphdyu" path="res://Shaders/cel-shader-base.gdshader" id="2_0hxiu"]
+[ext_resource type="Texture2D" uid="uid://b672o3gtjntjx" path="res://Materials/Textures/Enviroment/Indent Panel/Steel_Edgeing Trim_Base.png" id="3_weh4o"]
+[ext_resource type="Texture2D" uid="uid://o13uq3lqggmx" path="res://Materials/Textures/Enviroment/Indent Panel/Steel_Edgeing Trim_Paint_mask.png" id="4_qssty"]
+[ext_resource type="Texture2D" uid="uid://bjfrgg3fcdwx1" path="res://Materials/Textures/Enviroment/Indent Panel/Steel_Edgeing Trim_Normal.png" id="5_yyc7t"]
+[ext_resource type="Texture2D" uid="uid://dajqto8ic1obs" path="res://Materials/Textures/Enviroment/Indent Panel/Steel_Edgeing Trim_ORM.png" id="6_g4se6"]
+[ext_resource type="Texture2D" uid="uid://dq4e5ogl7uak2" path="res://Materials/Textures/Enviroment/Indent Panel/Steel_Edgeing Trim_Rust_heavy.png" id="7_i0i5l"]
+[ext_resource type="Texture2D" uid="uid://1fc1hfn3d7ta" path="res://Materials/Textures/Enviroment/Indent Panel/Steel_Edgeing Trim_Rust_light.png" id="8_8mc25"]
+
+[resource]
+render_priority = 0
+next_pass = ExtResource("1_tsmjx")
+shader = ExtResource("2_0hxiu")
+shader_parameter/emission = Color(0, 0, 0, 1)
+shader_parameter/emission_energy = 1.0
+shader_parameter/normal_scale = 1.0
+shader_parameter/normal_map = ExtResource("5_yyc7t")
+shader_parameter/invert_normal_y = false
+shader_parameter/alpha_cutoff = 0.0
+shader_parameter/color = Color(0.5106012, 0.5106013, 0.5106012, 1)
+shader_parameter/base_texture = ExtResource("3_weh4o")
+shader_parameter/mask_texture = ExtResource("4_qssty")
+shader_parameter/use_mask = false
+shader_parameter/mask_strength = 1.0
+shader_parameter/color_replace_detail = 0.5
+shader_parameter/rust_light_texture = ExtResource("8_8mc25")
+shader_parameter/rust_heavy_texture = ExtResource("7_i0i5l")
+shader_parameter/rust_light_strength = 1.0
+shader_parameter/rust_heavy_strength = 1.0
+shader_parameter/rust_blend_sharpness = 1.0
+shader_parameter/orm_texture = ExtResource("6_g4se6")
+shader_parameter/ao_strength = 1.0
+shader_parameter/roughness_strength = 1.0
+shader_parameter/metallic_strength = 0.0
+shader_parameter/invert_roughness = false
+shader_parameter/specular_color = Color(0.1955451, 0.1955451, 0.19554505, 1)
+shader_parameter/specular_strength = 0.7750000368125
+shader_parameter/fresnel = Color(0.5079715, 0.5079715, 0.5079715, 0.3019608)
+shader_parameter/uv_scale = Vector2(1, 1)
+shader_parameter/uv_offset = Vector2(0, 0)
