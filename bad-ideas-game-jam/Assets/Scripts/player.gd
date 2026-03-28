@@ -63,6 +63,9 @@ var jogging_max_time = 35
 var jog_cooldown = false
 var jog_cooldown_time = 5
 
+var _death_player: AudioStreamPlayer = null
+const DEATH_SOUND_PATH := "res://Assets/Sound/death.ogg"
+
 func _start_right_hand_ik(hit_point) -> void:
 	_ik_target_node.global_position = hit_point
 	right_hand_ik.start()
@@ -158,6 +161,9 @@ func _process(delta: float) -> void:
 	handle_interact(delta)
 
 func die() -> void:
+	if is_instance_valid(_death_player):
+		_death_player.play()
+	
 	movement_disabled = true
 	var state_machine = animation_tree["parameters/AnimationNodeStateMachine/playback"]
 	state_machine.travel("Death")
@@ -478,6 +484,13 @@ const STINGER_PATHS := [
 ]
 
 func _setup_panting_player() -> void:
+	
+	if ResourceLoader.exists(DEATH_SOUND_PATH):
+		_death_player = AudioStreamPlayer.new()
+		_death_player.bus = "Sound"
+		_death_player.stream = load(DEATH_SOUND_PATH)
+		add_child(_death_player)
+	
 	const PATH := "res://Assets/Dialogue/panting.ogg"
 	if not ResourceLoader.exists(PATH):
 		push_warning("Panting audio not found: %s" % PATH)
