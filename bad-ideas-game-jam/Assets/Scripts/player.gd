@@ -161,7 +161,6 @@ func die() -> void:
 	movement_disabled = true
 	var state_machine = animation_tree["parameters/AnimationNodeStateMachine/playback"]
 	state_machine.travel("Death")
-	await animation_tree.animation_finished
 
 	var tween_out := create_tween()
 	tween_out.tween_property(camera, "fov", 110.0, 3.0).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_QUAD)
