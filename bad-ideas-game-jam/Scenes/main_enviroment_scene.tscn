@@ -5,12 +5,45 @@
 [ext_resource type="Material" uid="uid://cxpwhh6t2s1cs" path="res://Materials/Ship/ship_main_deck_mat.tres" id="2_khp5w"]
 [ext_resource type="Material" uid="uid://nn3ewwhgb1a3" path="res://Materials/Ship/ship_handrail_A_mat.tres" id="3_l8ged"]
 [ext_resource type="Material" uid="uid://0ujctbwowsms" path="res://Materials/Ship/grey_Panel_rust.tres" id="3_tlnlp"]
+[ext_resource type="Material" uid="uid://sgetjvg177mb" path="res://Shaders/outline.tres" id="4_jn3ni"]
 [ext_resource type="Material" uid="uid://cvdlxl52307wq" path="res://Materials/Ship/ship_hull_mat.tres" id="4_tlnlp"]
-[ext_resource type="Material" uid="uid://c2vuo1ewf0rlr" path="res://Materials/Ship/Blue_Plain.tres" id="5_ix6e3"]
+[ext_resource type="Shader" uid="uid://d266trvxphdyu" path="res://Shaders/cel-shader-base.gdshader" id="5_0qs2n"]
+[ext_resource type="Texture2D" path="res://Materials/Textures/Enviroment/Hull_Walls_noLarge Rust_Col_Alpha.png" id="6_av35p"]
 [ext_resource type="Material" uid="uid://bjdt2xponfry6" path="res://Materials/Ship/Grey_plain.tres" id="6_ix6e3"]
 [ext_resource type="Material" uid="uid://c51ek0v8ig1jv" path="res://Materials/Ship/ship_connectors_mat.tres" id="6_tlnlp"]
 [ext_resource type="Material" uid="uid://x2eruwm8nps" path="res://Materials/Ship/Grey_superrust.tres" id="7_gcmii"]
+[ext_resource type="Texture2D" path="res://Materials/Textures/Enviroment/Hull_Walls_noLarge Rust_Normal.png" id="7_mtju5"]
+[ext_resource type="Texture2D" path="res://Materials/Textures/Enviroment/Hull_Walls_noLarge Rust_ORM.png" id="8_ns4fk"]
 [ext_resource type="PackedScene" uid="uid://b5d4vtdc3vxxk" path="res://Assets/Models/Enviroment/BIGJ_Ship_Hull.glb" id="11_4npjt"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ucy3n"]
+render_priority = 0
+next_pass = ExtResource("4_jn3ni")
+shader = ExtResource("5_0qs2n")
+shader_parameter/emission = Color(0, 0, 0, 1)
+shader_parameter/emission_energy = 1.0
+shader_parameter/normal_scale = 1.0
+shader_parameter/normal_map = ExtResource("7_mtju5")
+shader_parameter/invert_normal_y = false
+shader_parameter/alpha_cutoff = 1.0
+shader_parameter/color = Color(1, 1, 1, 1)
+shader_parameter/base_texture = ExtResource("6_av35p")
+shader_parameter/use_mask = false
+shader_parameter/mask_strength = 1.0
+shader_parameter/color_replace_detail = 0.5
+shader_parameter/rust_light_strength = 1.0
+shader_parameter/rust_heavy_strength = 1.0
+shader_parameter/rust_blend_sharpness = 1.0
+shader_parameter/orm_texture = ExtResource("8_ns4fk")
+shader_parameter/ao_strength = 1.0
+shader_parameter/roughness_strength = 1.0
+shader_parameter/metallic_strength = 0.0
+shader_parameter/invert_roughness = false
+shader_parameter/specular_color = Color(0.1955451, 0.1955451, 0.19554505, 1)
+shader_parameter/specular_strength = 0.7750000368125
+shader_parameter/fresnel = Color(0.5079715, 0.5079715, 0.5079715, 0.3019608)
+shader_parameter/uv_scale = Vector2(1, 1)
+shader_parameter/uv_offset = Vector2(0, 0)
 
 [node name="Ship Enviroment" type="Node3D" unique_id=1795795939]
 
@@ -32,13 +65,13 @@ visible = false
 material_override = ExtResource("6_ix6e3")
 
 [node name="Superstructure Accommodation Block" parent="BIGJ_Ship_03" index="7" unique_id=1224405635]
-material_override = ExtResource("5_ix6e3")
+material_override = SubResource("ShaderMaterial_ucy3n")
 
 [node name="2nd Deck_Linked_002" parent="BIGJ_Ship_03" index="8" unique_id=1528602716]
 material_override = ExtResource("7_gcmii")
 
 [node name="Superstructure Accommodation Block_001" parent="BIGJ_Ship_03" index="9" unique_id=1704898020]
-material_override = ExtResource("5_ix6e3")
+material_override = SubResource("ShaderMaterial_ucy3n")
 
 [node name="Accommodation Deck" parent="BIGJ_Ship_03" index="73" unique_id=1714453470]
 material_override = ExtResource("6_tlnlp")
@@ -53,7 +86,7 @@ material_override = ExtResource("6_tlnlp")
 material_override = ExtResource("6_ix6e3")
 
 [node name="Accommodation Deck_004" parent="BIGJ_Ship_03" index="77" unique_id=1727631751]
-material_override = ExtResource("7_gcmii")
+material_override = ExtResource("2_khp5w")
 
 [node name="Bridge Deck" parent="BIGJ_Ship_03" index="78" unique_id=866262333]
 material_override = ExtResource("2_khp5w")
@@ -62,13 +95,13 @@ material_override = ExtResource("2_khp5w")
 material_override = ExtResource("6_ix6e3")
 
 [node name="Nav Bridge" parent="BIGJ_Ship_03" index="80" unique_id=102982221]
-material_override = ExtResource("5_ix6e3")
+material_override = SubResource("ShaderMaterial_ucy3n")
 
 [node name="Nav Bridge_001" parent="BIGJ_Ship_03" index="81" unique_id=1690275236]
-material_override = ExtResource("5_ix6e3")
+material_override = SubResource("ShaderMaterial_ucy3n")
 
 [node name="Nav Bridge_002" parent="BIGJ_Ship_03" index="82" unique_id=2124562864]
-material_override = ExtResource("5_ix6e3")
+material_override = SubResource("ShaderMaterial_ucy3n")
 
 [node name="Main Deck Complete" parent="BIGJ_Ship_03" index="83" unique_id=1212119845]
 visible = false
@@ -115,13 +148,13 @@ material_override = ExtResource("3_tlnlp")
 material_override = ExtResource("3_tlnlp")
 
 [node name="Cube_016" parent="BIGJ_Ship_03" index="97" unique_id=1358726300]
-material_override = ExtResource("5_ix6e3")
+material_override = SubResource("ShaderMaterial_ucy3n")
 
 [node name="Cube_017" parent="BIGJ_Ship_03" index="98" unique_id=1227286656]
-material_override = ExtResource("5_ix6e3")
+material_override = SubResource("ShaderMaterial_ucy3n")
 
 [node name="Cube_018" parent="BIGJ_Ship_03" index="99" unique_id=1523329720]
-material_override = ExtResource("5_ix6e3")
+material_override = SubResource("ShaderMaterial_ucy3n")
 
 [node name="Cube_025" parent="BIGJ_Ship_03" index="101" unique_id=41776874]
 material_override = ExtResource("3_tlnlp")
@@ -156,7 +189,7 @@ visible = false
 material_override = ExtResource("4_tlnlp")
 
 [node name="Crane Base" parent="BIGJ_Ship_03/Crane" parent_id_path=PackedInt32Array(694625144, 1217211658) index="0" unique_id=1796398862]
-material_override = ExtResource("5_ix6e3")
+material_override = SubResource("ShaderMaterial_ucy3n")
 
 [node name="Cube" parent="BIGJ_Ship_03/Crane" parent_id_path=PackedInt32Array(694625144, 1217211658) index="1" unique_id=1364995602]
 material_override = ExtResource("3_tlnlp")
@@ -186,7 +219,7 @@ material_override = ExtResource("3_tlnlp")
 material_override = ExtResource("3_tlnlp")
 
 [node name="Crane Base2" parent="BIGJ_Ship_03" index="117" unique_id=634290740]
-material_override = ExtResource("5_ix6e3")
+material_override = SubResource("ShaderMaterial_ucy3n")
 
 [node name="Cube2" parent="BIGJ_Ship_03" index="118" unique_id=881120782]
 material_override = ExtResource("3_tlnlp")
@@ -1070,12 +1103,18 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.6364813, 2.8453994, 6.54687
 [node name="Ship Model" type="Node3D" parent="." unique_id=888447321]
 metadata/_edit_lock_ = true
 
-[node name="BIGJ_Ship_Hull" parent="Ship Model" unique_id=832733075 instance=ExtResource("11_4npjt")]
+[node name="BIGJ_Ship_Hull" parent="Ship Model" unique_id=1205683746 instance=ExtResource("11_4npjt")]
 
-[node name="Hull Bow Cover" parent="Ship Model/BIGJ_Ship_Hull" index="0" unique_id=1452277549]
+[node name="Hull Bow Cover" parent="Ship Model/BIGJ_Ship_Hull" index="0" unique_id=1087895168]
 material_override = ExtResource("4_tlnlp")
 
-[node name="Hull Complete" parent="Ship Model/BIGJ_Ship_Hull" index="3" unique_id=900447941]
+[node name="Main Deck" parent="Ship Model/BIGJ_Ship_Hull" index="1" unique_id=1875019143]
+material_override = ExtResource("2_khp5w")
+
+[node name="Poop Deck" parent="Ship Model/BIGJ_Ship_Hull" index="2" unique_id=102407478]
+material_override = ExtResource("2_khp5w")
+
+[node name="Hull Complete_001" parent="Ship Model/BIGJ_Ship_Hull" index="3" unique_id=504035929]
 material_override = ExtResource("4_tlnlp")
 
 [node name="Night Lights" type="Node3D" parent="." unique_id=1730764628]
