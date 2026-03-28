@@ -1,18 +1,18 @@
 shader_type spatial;
 
-#define USE_ALPHA 0
+#define USE_ALPHA 1
 #define USE_ALPHA_CUTOFF 1
-#define USE_EMISSION 0
-#define USE_REFLECTIONS 1
+#define USE_EMISSION 1
+#define USE_REFLECTIONS 0
 #define USE_NORMAL_MAP 1
-#define USE_OCCLUSION 0
+#define USE_OCCLUSION 1
 #define USE_HEIGHT_MAP 0
 #define USE_ANISOTROPY 0
 #define USE_BACKLIGHT 0
 #define USE_REFRACTION 0
 
 #if USE_ALPHA
-render_mode depth_draw_always;
+render_mode blend_mix, depth_prepass_alpha, cull_back;
 #endif
 
 #include "includes/base-cel-shader.gdshaderinc"
@@ -21,19 +21,9 @@ render_mode depth_draw_always;
 #include "includes/emission.gdshaderinc"
 #endif
 
-// ORM now handles metallic/roughness/AO directly,
-// so reflections/occlusion includes are not needed for this version.
-// #if USE_REFLECTIONS
-// #include "includes/reflections.gdshaderinc"
-// #endif
-
 #if USE_NORMAL_MAP
 #include "includes/normal-map.gdshaderinc"
 #endif
-
-// #if USE_OCCLUSION
-// #include "includes/occlusion.gdshaderinc"
-// #endif
 
 #if USE_HEIGHT_MAP
 #include "includes/height-map.gdshaderinc"
@@ -56,30 +46,58 @@ render_mode depth_draw_always;
 group_uniforms BaseProperties;
 
 #if USE_ALPHA_CUTOFF
-uniform float alpha_cutoff: hint_range(0.0, 1.0) = 0.5;
+uniform float alpha_cutoff : hint_range(0.0, 1.0) = 0.5;
 #endif
 
-uniform vec4 color: source_color = vec4(0.7, 0.12, 0.86, 1.0);
-uniform sampler2D base_texture: source_color;
+uniform vec4 color : source_color = vec4(0.7, 0.12, 0.86, 1.0);
 
-// replaced old specular texture workflow
-uniform vec3 specular_color: source_color = vec3(0.3, 0.3, 0.3);
-uniform float specular_strength: hint_range(0.0, 1.0) = 0.5;
+//
+// Shared base panel
+//
+uniform sampler2D base_texture : source_color;
 
-// packed ORM map:
-// R = AO
-// G = Roughness
-// B = Metallic
-uniform sampler2D orm_texture: hint_default_white;
-uniform float ao_strength: hint_range(0.0, 1.0) = 1.0;
-uniform float roughness_strength: hint_range(0.0, 1.0) = 1.0;
-uniform float metallic_strength: hint_range(0.0, 1.0) = 1.0;
+//
+// Paint recolour mask
+//
+uniform sampler2D mask_texture : hint_default_white;
+uniform bool use_mask = false;
+uniform float mask_strength : hint_range(0.0, 1.0) = 1.0;
+uniform float color_replace_detail : hint_range(0.0, 1.0) = 0.5;
 
-// optional inversion if your source export differs
+//
+// Rust overlays
+// RGB = rust colour
+// A   = rust shape mask
+//
+uniform sampler2D rust_light_texture : source_color;
+uniform sampler2D rust_heavy_texture : source_color;
+
+uniform float rust_light_strength : hint_range(0.0, 2.0) = 1.0;
+uniform float rust_heavy_strength : hint_range(0.0, 2.0) = 1.0;
+uniform float rust_blend_sharpness : hint_range(0.1, 8.0) = 1.0;
+
+//
+// Shared ORM + normal
+//
+uniform sampler2D orm_texture : hint_default_white;
+
+uniform float ao_strength : hint_range(0.0, 1.0) = 1.0;
+uniform float roughness_strength : hint_range(0.0, 1.0) = 1.0;
+uniform float metallic_strength : hint_range(0.0, 1.0) = 1.0;
 uniform bool invert_roughness = false;
 
-uniform vec4 fresnel: source_color = vec4(0.2, 0.2, 0.2, 0.3);
-uniform sampler2D fresnel_texture: hint_default_white;
+#if USE_NORMAL_MAP
+
+#endif
+
+//
+// Surface response
+//
+uniform vec3 specular_color : source_color = vec3(0.3, 0.3, 0.3);
+uniform float specular_strength : hint_range(0.0, 1.0) = 0.5;
+
+uniform vec4 fresnel : source_color = vec4(0.2, 0.2, 0.2, 0.3);
+uniform sampler2D fresnel_texture : hint_default_white;
 
 group_uniforms;
 
@@ -107,9 +125,29 @@ void fragment() {
 	base_uv = height_map_fragment(UV, VERTEX, TANGENT, BINORMAL, NORMAL);
 	#endif
 
+	//
+	// Vertex colour controls rust amount
+	// G = light rust
+	// B = heavy rust
+	//
+	float rust_light_amount = pow(clamp(COLOR.g, 0.0, 1.0), rust_blend_sharpness) * rust_light_strength;
+	float rust_heavy_amount = pow(clamp(COLOR.b, 0.0, 1.0), rust_blend_sharpness) * rust_heavy_strength;
+
+	rust_light_amount = clamp(rust_light_amount, 0.0, 1.0);
+	rust_heavy_amount = clamp(rust_heavy_amount, 0.0, 1.0);
+
+	//
+	// Sample textures
+	//
 	vec4 base_tex = texture(base_texture, base_uv);
+	vec4 rust_light_tex = texture(rust_light_texture, base_uv);
+	vec4 rust_heavy_tex = texture(rust_heavy_texture, base_uv);
+
 	vec3 orm = texture(orm_texture, base_uv).rgb;
 
+	//
+	// Shared ORM
+	//
 	float ao = orm.r;
 	float rough = orm.g;
 	float metal = orm.b;
@@ -126,80 +164,119 @@ void fragment() {
 	metal = clamp(metal, 0.0, 1.0);
 	ao = clamp(ao, 0.0, 1.0);
 
-	#if USE_ALPHA
+	//
+	// Base paint recolour
+	//
+	float paint_mask = 1.0;
+	if (use_mask) {
+		paint_mask = texture(mask_texture, base_uv).r;
+		paint_mask *= mask_strength;
+		paint_mask = clamp(paint_mask, 0.0, 1.0);
+	}
+
+	float base_value = dot(base_tex.rgb, vec3(0.299, 0.587, 0.114));
+	base_value = mix(1.0, base_value, color_replace_detail);
+
+	vec3 replaced_base = color.rgb * base_value;
+
+	vec3 painted_base;
+	if (use_mask) {
+		painted_base = mix(base_tex.rgb, replaced_base, paint_mask);
+	} else {
+		painted_base = base_tex.rgb * color.rgb;
+	}
+
+	//
+	// Rust overlay masks come from rust texture alpha
+	//
+	float rust_light_mask = rust_light_tex.a * rust_light_amount;
+	float rust_heavy_mask = rust_heavy_tex.a * rust_heavy_amount;
+
+	rust_light_mask = clamp(rust_light_mask, 0.0, 1.0);
+	rust_heavy_mask = clamp(rust_heavy_mask, 0.0, 1.0);
+
+	//
+	// Layer rust on top of painted base
+	//
+	vec3 final_albedo = painted_base;
+	final_albedo = mix(final_albedo, rust_light_tex.rgb, rust_light_mask);
+	final_albedo = mix(final_albedo, rust_heavy_tex.rgb, rust_heavy_mask);
+
+	ALBEDO = final_albedo;
+
+	//
+	// Alpha from base texture alpha and material alpha
+	//
 	float alpha = color.a * base_tex.a;
-	ALBEDO *= alpha;
-	#elif USE_ALPHA_CUTOFF
-	ALPHA = color.a * base_tex.a;
-	ALPHA_SCISSOR_THRESHOLD = alpha_cutoff;
+
+	#if USE_ALPHA
+		ALPHA = alpha;
+	#endif
+
+	#if USE_ALPHA_CUTOFF
+		ALPHA_SCISSOR_THRESHOLD = alpha_cutoff;
 	#endif
 
 	#if USE_REFRACTION && USE_ALPHA
-	EMISSION += refraction_fragment(alpha, NORMAL, SCREEN_UV, FRAGCOORD.z);
+		EMISSION += refraction_fragment(alpha, NORMAL, SCREEN_UV, FRAGCOORD.z);
 	#elif !USE_REFRACTION && USE_ALPHA
-	EMISSION += transparency_fragment(alpha, SCREEN_UV);
+		EMISSION += transparency_fragment(alpha, SCREEN_UV);
 	#endif
-
-	ALBEDO = color.rgb * base_tex.rgb;
 
 	AO = ao;
 	ROUGHNESS = rough;
 	METALLIC = metal;
 
-	// keep toon specular neutral, not tinted by ORM channels
 	SPECULAR_COLOR = specular_color;
-
-	// map roughness -> broader/weaker stylised highlight
-	// smoother surface = stronger/tighter highlight
 	SPECULAR_STRENGTH = clamp(specular_strength * (1.0 - rough), 0.0, 1.0);
 
 	FRESNEL_COLOR = fresnel.rgb * texture(fresnel_texture, base_uv).rgb;
 	FRESNEL_STRENGTH = fresnel.a * texture(fresnel_texture, base_uv).a;
 
 	#if USE_EMISSION
-	EMISSION += emission_fragment(base_uv);
+		EMISSION += emission_fragment(base_uv);
 	#endif
 
 	#if USE_NORMAL_MAP
-	NormalData normal = normal_map_fragment(base_uv, NORMAL, TANGENT, BINORMAL);
-	NORMAL = normal.vector;
-	NORMAL_MAP = normal.map;
-	NORMAL_MAP_DEPTH = normal.depth;
+		NormalData normal = normal_map_fragment(base_uv, NORMAL, TANGENT, BINORMAL);
+		NORMAL = normal.vector;
+		NORMAL_MAP = normal.map;
+		NORMAL_MAP_DEPTH = normal.depth;
 	#endif
 
 	#if USE_ANISOTROPY
-	AnisotropyData aniso = anisotropy_fragment(UV);
-	ANISOTROPY_DIR = aniso.direction;
-	ANISOTROPY_RATIO = aniso.ratio;
+		AnisotropyData aniso = anisotropy_fragment(UV);
+		ANISOTROPY_DIR = aniso.direction;
+		ANISOTROPY_RATIO = aniso.ratio;
 	#endif
 
 	#if USE_BACKLIGHT
-	BACKLIGHT = backlight_fragment(base_uv);
+		BACKLIGHT = backlight_fragment(base_uv);
 	#endif
 }
 
 void light() {
 	#if USE_BACKLIGHT
-	DIFFUSE_LIGHT += backlight_diffuse(
-		ALBEDO, LIGHT_COLOR, LIGHT, NORMAL, ATTENUATION, BACKLIGHT
-	);
+		DIFFUSE_LIGHT += backlight_diffuse(
+			ALBEDO, LIGHT_COLOR, LIGHT, NORMAL, ATTENUATION, BACKLIGHT
+		);
 	#else
-	DIFFUSE_LIGHT += diffuse_light(
-		ALBEDO, LIGHT_COLOR, LIGHT, NORMAL, ATTENUATION
-	);
+		DIFFUSE_LIGHT += diffuse_light(
+			ALBEDO, LIGHT_COLOR, LIGHT, NORMAL, ATTENUATION
+		);
 	#endif
 
 	#if USE_ANISOTROPY
-	SPECULAR_LIGHT += anisotropy_specular(
-		LIGHT_COLOR, SPECULAR_COLOR, SPECULAR_STRENGTH,
-		NORMAL, VIEW, LIGHT, ATTENUATION, UV,
-		ANISOTROPY_DIR, ANISOTROPY_RATIO
-	);
+		SPECULAR_LIGHT += anisotropy_specular(
+			LIGHT_COLOR, SPECULAR_COLOR, SPECULAR_STRENGTH,
+			NORMAL, VIEW, LIGHT, ATTENUATION, UV,
+			ANISOTROPY_DIR, ANISOTROPY_RATIO
+		);
 	#else
-	SPECULAR_LIGHT += specular_light(
-		LIGHT_COLOR, SPECULAR_COLOR, SPECULAR_STRENGTH,
-		NORMAL, VIEW, LIGHT, ATTENUATION
-	);
+		SPECULAR_LIGHT += specular_light(
+			LIGHT_COLOR, SPECULAR_COLOR, SPECULAR_STRENGTH,
+			NORMAL, VIEW, LIGHT, ATTENUATION
+		);
 	#endif
 
 	SPECULAR_LIGHT += fresnel_light(

@@ -53,6 +53,7 @@ class_name LookDriver
 @export var sun_energy_curve: Curve   # NEW
 @export var sky_sun_elev_uniform := "sun_elev"
 @export var sun_angula_curve: Curve
+@export var ambient_light: Curve 
 # -------------------------
 # Uniform/property names (match your shaders)
 # -------------------------
@@ -136,7 +137,7 @@ func _apply_look(t: float) -> void:
 			_set_env_color(env, env_fog_colour_prop, horizon_col.lerp(Color(0.5,0.5,0.5), 0.15))
 			var cur_den := _to_f(env.get(env_fog_density_prop), 0.0)
 			_set_env_float(env, env_fog_density_prop, _sample_curve(fog_density_curve, t, cur_den))
-
+			
 		if drive_adjustments:
 			_set_env_bool(env, env_adjust_enabled_prop, true)
 			var cur_exp := _to_f(env.get(env_exposure_prop), 1.0)

@@ -2,9 +2,12 @@
 
 [ext_resource type="Material" uid="uid://sgetjvg177mb" path="res://Shaders/outline.tres" id="1_gda58"]
 [ext_resource type="Shader" uid="uid://d266trvxphdyu" path="res://Shaders/cel-shader-base.gdshader" id="2_2bpro"]
-[ext_resource type="Texture2D" uid="uid://dua04q1nnya7g" path="res://Materials/Textures/Enviroment/Hull_Walls_Col_Alpha.png" id="3_htthf"]
-[ext_resource type="Texture2D" uid="uid://rkgmigxxynk5" path="res://Materials/Textures/Enviroment/Hull_Walls_Normal.png" id="4_migja"]
-[ext_resource type="Texture2D" uid="uid://cjw208f702ali" path="res://Materials/Textures/Enviroment/Hull_Walls_ORM.png" id="5_6p4tp"]
+[ext_resource type="Texture2D" uid="uid://bo5kgd7ng5041" path="res://Materials/Textures/Enviroment/Ex Steel Panel/Hull_Walls_Grey_Base.png" id="3_2fppm"]
+[ext_resource type="Texture2D" uid="uid://2qdpb06ouf6e" path="res://Materials/Textures/Enviroment/Ex Steel Panel/Hull_Walls_Grey_Paint_mask.png" id="4_22hx5"]
+[ext_resource type="Texture2D" uid="uid://dtpojy5i8xo73" path="res://Materials/Textures/Enviroment/Ex Steel Panel/Hull_Walls_Grey_Normal.png" id="5_oglul"]
+[ext_resource type="Texture2D" uid="uid://76hd7b0nmymw" path="res://Materials/Textures/Enviroment/Ex Steel Panel/Hull_Walls_Grey_ORM.png" id="6_wvrsy"]
+[ext_resource type="Texture2D" uid="uid://c46ev1g6t8dm3" path="res://Materials/Textures/Enviroment/Ex Steel Panel/Hull_Walls_Grey_Rust_heavy.png" id="7_pd20f"]
+[ext_resource type="Texture2D" uid="uid://31t07cmgclgr" path="res://Materials/Textures/Enviroment/Ex Steel Panel/Hull_Walls_Grey_Rust_light.png" id="8_fiqsc"]
 
 [resource]
 render_priority = 0
@@ -13,17 +16,27 @@ shader = ExtResource("2_2bpro")
 shader_parameter/emission = Color(0, 0, 0, 1)
 shader_parameter/emission_energy = 1.0
 shader_parameter/normal_scale = 1.0
-shader_parameter/normal_map = ExtResource("4_migja")
+shader_parameter/normal_map = ExtResource("5_oglul")
 shader_parameter/invert_normal_y = false
-shader_parameter/color = Color(1, 1, 1, 1)
-shader_parameter/base_texture = ExtResource("3_htthf")
-shader_parameter/specular_color = Color(0.1955451, 0.1955451, 0.19554505, 1)
-shader_parameter/specular_strength = 0.7750000368125
-shader_parameter/orm_texture = ExtResource("5_6p4tp")
+shader_parameter/alpha_cutoff = 0.5
+shader_parameter/color = Color(0.24095076, 0.44329363, 0.58074814, 1)
+shader_parameter/base_texture = ExtResource("3_2fppm")
+shader_parameter/mask_texture = ExtResource("4_22hx5")
+shader_parameter/use_mask = true
+shader_parameter/mask_strength = 1.0
+shader_parameter/color_replace_detail = 0.5
+shader_parameter/rust_light_texture = ExtResource("8_fiqsc")
+shader_parameter/rust_heavy_texture = ExtResource("7_pd20f")
+shader_parameter/rust_light_strength = 1.7110000812725001
+shader_parameter/rust_heavy_strength = 1.29200006137
+shader_parameter/rust_blend_sharpness = 1.0
+shader_parameter/orm_texture = ExtResource("6_wvrsy")
 shader_parameter/ao_strength = 1.0
 shader_parameter/roughness_strength = 1.0
 shader_parameter/metallic_strength = 0.0
 shader_parameter/invert_roughness = false
+shader_parameter/specular_color = Color(0.1955451, 0.1955451, 0.19554505, 1)
+shader_parameter/specular_strength = 0.7750000368125
 shader_parameter/fresnel = Color(0.25565878, 0.25565878, 0.25565878, 0.3019608)
 shader_parameter/uv_scale = Vector2(1, 1)
 shader_parameter/uv_offset = Vector2(0, 0)

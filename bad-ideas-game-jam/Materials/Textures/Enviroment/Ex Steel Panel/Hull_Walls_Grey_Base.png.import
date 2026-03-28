@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://st46kbc8dbn6"
-path.s3tc="res://.godot/imported/Steel_Panel_Grey_heavyRust_ORM.png-c61795c9d9417592c00506e57b6e105c.s3tc.ctex"
+uid="uid://bo5kgd7ng5041"
+path.s3tc="res://.godot/imported/Hull_Walls_Grey_Base.png-bd00ca779919cd38faf40996449ff855.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://Materials/Textures/Enviroment/Steel_Panel_Grey_heavyRust_ORM.png"
-dest_files=["res://.godot/imported/Steel_Panel_Grey_heavyRust_ORM.png-c61795c9d9417592c00506e57b6e105c.s3tc.ctex"]
+source_file="res://Materials/Textures/Enviroment/Ex Steel Panel/Hull_Walls_Grey_Base.png"
+dest_files=["res://.godot/imported/Hull_Walls_Grey_Base.png-bd00ca779919cd38faf40996449ff855.s3tc.ctex"]
 
 [params]
 

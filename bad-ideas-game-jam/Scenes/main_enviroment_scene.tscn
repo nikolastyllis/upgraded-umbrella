@@ -9,6 +9,8 @@
 [ext_resource type="Material" uid="uid://c2vuo1ewf0rlr" path="res://Materials/Ship/Blue_Plain.tres" id="5_ix6e3"]
 [ext_resource type="Material" uid="uid://bjdt2xponfry6" path="res://Materials/Ship/Grey_plain.tres" id="6_ix6e3"]
 [ext_resource type="Material" uid="uid://c51ek0v8ig1jv" path="res://Materials/Ship/ship_connectors_mat.tres" id="6_tlnlp"]
+[ext_resource type="Material" uid="uid://x2eruwm8nps" path="res://Materials/Ship/Grey_superrust.tres" id="7_gcmii"]
+[ext_resource type="PackedScene" uid="uid://b5d4vtdc3vxxk" path="res://Assets/Models/Enviroment/BIGJ_Ship_Hull.glb" id="11_4npjt"]
 
 [node name="Ship Enviroment" type="Node3D" unique_id=1795795939]
 
@@ -32,6 +34,9 @@ material_override = ExtResource("6_ix6e3")
 [node name="Superstructure Accommodation Block" parent="BIGJ_Ship_03" index="7" unique_id=1224405635]
 material_override = ExtResource("5_ix6e3")
 
+[node name="2nd Deck_Linked_002" parent="BIGJ_Ship_03" index="8" unique_id=1528602716]
+material_override = ExtResource("7_gcmii")
+
 [node name="Superstructure Accommodation Block_001" parent="BIGJ_Ship_03" index="9" unique_id=1704898020]
 material_override = ExtResource("5_ix6e3")
 
@@ -45,16 +50,16 @@ material_override = ExtResource("6_tlnlp")
 material_override = ExtResource("6_tlnlp")
 
 [node name="Accommodation Deck_003" parent="BIGJ_Ship_03" index="76" unique_id=749154890]
-material_override = ExtResource("2_khp5w")
+material_override = ExtResource("6_ix6e3")
 
 [node name="Accommodation Deck_004" parent="BIGJ_Ship_03" index="77" unique_id=1727631751]
-material_override = ExtResource("2_khp5w")
+material_override = ExtResource("7_gcmii")
 
 [node name="Bridge Deck" parent="BIGJ_Ship_03" index="78" unique_id=866262333]
 material_override = ExtResource("2_khp5w")
 
 [node name="Accommodation Deck_007" parent="BIGJ_Ship_03" index="79" unique_id=753340976]
-material_override = ExtResource("2_khp5w")
+material_override = ExtResource("6_ix6e3")
 
 [node name="Nav Bridge" parent="BIGJ_Ship_03" index="80" unique_id=102982221]
 material_override = ExtResource("5_ix6e3")
@@ -66,10 +71,12 @@ material_override = ExtResource("5_ix6e3")
 material_override = ExtResource("5_ix6e3")
 
 [node name="Main Deck Complete" parent="BIGJ_Ship_03" index="83" unique_id=1212119845]
-material_override = ExtResource("6_ix6e3")
+visible = false
+material_override = ExtResource("7_gcmii")
 
 [node name="Poop Deck Complete" parent="BIGJ_Ship_03" index="84" unique_id=1833813357]
-material_override = ExtResource("2_khp5w")
+visible = false
+material_override = ExtResource("7_gcmii")
 
 [node name="Front Playform " parent="BIGJ_Ship_03" index="85" unique_id=1552635220]
 material_override = ExtResource("2_khp5w")
@@ -116,6 +123,12 @@ material_override = ExtResource("5_ix6e3")
 [node name="Cube_018" parent="BIGJ_Ship_03" index="99" unique_id=1523329720]
 material_override = ExtResource("5_ix6e3")
 
+[node name="Cube_025" parent="BIGJ_Ship_03" index="101" unique_id=41776874]
+material_override = ExtResource("3_tlnlp")
+
+[node name="Cube_027" parent="BIGJ_Ship_03" index="103" unique_id=373671644]
+material_override = ExtResource("3_tlnlp")
+
 [node name="Plane_012" parent="BIGJ_Ship_03" index="108" unique_id=1170768834]
 material_override = ExtResource("3_l8ged")
 
@@ -135,9 +148,11 @@ material_override = ExtResource("3_l8ged")
 material_override = ExtResource("3_l8ged")
 
 [node name="Hull Complete Shape" parent="BIGJ_Ship_03" index="114" unique_id=570730083]
+visible = false
 material_override = ExtResource("4_tlnlp")
 
 [node name="Hull Complete Shape_001" parent="BIGJ_Ship_03" index="115" unique_id=654796409]
+visible = false
 material_override = ExtResource("4_tlnlp")
 
 [node name="Crane Base" parent="BIGJ_Ship_03/Crane" parent_id_path=PackedInt32Array(694625144, 1217211658) index="0" unique_id=1796398862]
@@ -410,644 +425,658 @@ material_override = ExtResource("6_tlnlp")
 [node name="Nub A_008" parent="BIGJ_Ship_03/bridge start" index="3" unique_id=1089277435]
 material_override = ExtResource("6_tlnlp")
 
-[node name="container_array 5" type="Node3D" parent="BIGJ_Ship_03" unique_id=2021597639]
+[node name="Containers" type="Node3D" parent="." unique_id=620163192]
+metadata/_edit_lock_ = true
+
+[node name="container_array 5" type="Node3D" parent="Containers" unique_id=2021597639]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.466865, -0.10829115, 48.0858)
 
-[node name="Container" parent="BIGJ_Ship_03/container_array 5" unique_id=373595834 instance=ExtResource("2_4ftm2")]
+[node name="Container" parent="Containers/container_array 5" unique_id=373595834 instance=ExtResource("2_4ftm2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.6653728, 0.09125495, 3.2643664)
 
-[node name="@Node3D@169253" parent="BIGJ_Ship_03/container_array 5" unique_id=1432510172 instance=ExtResource("2_4ftm2")]
+[node name="@Node3D@169253" parent="Containers/container_array 5" unique_id=1432510172 instance=ExtResource("2_4ftm2")]
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -0.015025109, 0.09125495, 3.2682803)
 
-[node name="@Node3D@169259" parent="BIGJ_Ship_03/container_array 5" unique_id=2119645470 instance=ExtResource("2_4ftm2")]
+[node name="@Node3D@169259" parent="Containers/container_array 5" unique_id=2119645470 instance=ExtResource("2_4ftm2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.6297705, 0.09125495, 3.2616153)
 
-[node name="@Node3D@169263" parent="BIGJ_Ship_03/container_array 5" unique_id=1536578809 instance=ExtResource("2_4ftm2")]
+[node name="@Node3D@169263" parent="Containers/container_array 5" unique_id=1536578809 instance=ExtResource("2_4ftm2")]
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 5.283235, 0.09125495, 3.2697961)
 
-[node name="_Node3D_169263" parent="BIGJ_Ship_03/container_array 5" unique_id=83243119 instance=ExtResource("2_4ftm2")]
+[node name="_Node3D_169263" parent="Containers/container_array 5" unique_id=83243119 instance=ExtResource("2_4ftm2")]
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 10.625679, 2.8594832, -1.333046)
 
-[node name="_Node3D_169264" parent="BIGJ_Ship_03/container_array 5" unique_id=357046782 instance=ExtResource("2_4ftm2")]
+[node name="_Node3D_169264" parent="Containers/container_array 5" unique_id=357046782 instance=ExtResource("2_4ftm2")]
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -5.44128, 2.8594832, -1.333046)
 
-[node name="container_array 1" type="Node3D" parent="BIGJ_Ship_03" unique_id=1483757596]
+[node name="container_array 1" type="Node3D" parent="Containers" unique_id=1483757596]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.2525635, 2.0300002, 33.871853)
 
-[node name="@Node3D@212723" parent="BIGJ_Ship_03/container_array 1" unique_id=401195711 instance=ExtResource("2_4ftm2")]
+[node name="@Node3D@212723" parent="Containers/container_array 1" unique_id=401195711 instance=ExtResource("2_4ftm2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.279607, 0.09125495, -0.019112376)
 
-[node name="@Node3D@212725" parent="BIGJ_Ship_03/container_array 1" unique_id=489944529 instance=ExtResource("2_4ftm2")]
+[node name="@Node3D@212725" parent="Containers/container_array 1" unique_id=489944529 instance=ExtResource("2_4ftm2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.274407, 2.8453994, -0.017019266)
 
-[node name="@Node3D@212727" parent="BIGJ_Ship_03/container_array 1" unique_id=478122204 instance=ExtResource("2_4ftm2")]
+[node name="@Node3D@212727" parent="Containers/container_array 1" unique_id=478122204 instance=ExtResource("2_4ftm2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.277114, 5.5995436, -0.019681124)
 
-[node name="@Node3D@212729" parent="BIGJ_Ship_03/container_array 1" unique_id=284083046 instance=ExtResource("2_4ftm2")]
+[node name="@Node3D@212729" parent="Containers/container_array 1" unique_id=284083046 instance=ExtResource("2_4ftm2")]
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -6.633905, 0.09125495, -0.017429134)
 
-[node name="@Node3D@212731" parent="BIGJ_Ship_03/container_array 1" unique_id=1171843709 instance=ExtResource("2_4ftm2")]
+[node name="@Node3D@212731" parent="Containers/container_array 1" unique_id=1171843709 instance=ExtResource("2_4ftm2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.6341686, 2.8453994, -0.010410492)
 
-[node name="@Node3D@212733" parent="BIGJ_Ship_03/container_array 1" unique_id=1078372954 instance=ExtResource("2_4ftm2")]
+[node name="@Node3D@212733" parent="Containers/container_array 1" unique_id=1078372954 instance=ExtResource("2_4ftm2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.9814165, 0.09125495, -0.016319644)
 
-[node name="@Node3D@212735" parent="BIGJ_Ship_03/container_array 1" unique_id=1830513444 instance=ExtResource("2_4ftm2")]
+[node name="@Node3D@212735" parent="Containers/container_array 1" unique_id=1830513444 instance=ExtResource("2_4ftm2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.9895623, 2.8453994, -0.013115802)
 
-[node name="@Node3D@212737" parent="BIGJ_Ship_03/container_array 1" unique_id=1431942011 instance=ExtResource("2_4ftm2")]
+[node name="@Node3D@212737" parent="Containers/container_array 1" unique_id=1431942011 instance=ExtResource("2_4ftm2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.3055726, 0.09125495, -0.01214896)
 
-[node name="@Node3D@212739" parent="BIGJ_Ship_03/container_array 1" unique_id=799752942 instance=ExtResource("2_4ftm2")]
+[node name="@Node3D@212739" parent="Containers/container_array 1" unique_id=799752942 instance=ExtResource("2_4ftm2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.3044666, 2.8453994, -0.011473242)
 
-[node name="@Node3D@212741" parent="BIGJ_Ship_03/container_array 1" unique_id=1460976791 instance=ExtResource("2_4ftm2")]
+[node name="@Node3D@212741" parent="Containers/container_array 1" unique_id=1460976791 instance=ExtResource("2_4ftm2")]
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 3.9564495, 0.09125495, -0.012797601)
 
-[node name="@Node3D@212743" parent="BIGJ_Ship_03/container_array 1" unique_id=1763180338 instance=ExtResource("2_4ftm2")]
+[node name="@Node3D@212743" parent="Containers/container_array 1" unique_id=1763180338 instance=ExtResource("2_4ftm2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.9503222, 2.8453994, -0.010464664)
 
-[node name="@Node3D@212745" parent="BIGJ_Ship_03/container_array 1" unique_id=107479798 instance=ExtResource("2_4ftm2")]
+[node name="@Node3D@212745" parent="Containers/container_array 1" unique_id=107479798 instance=ExtResource("2_4ftm2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.956232, 5.5995436, -0.01228259)
 
-[node name="@Node3D@212747" parent="BIGJ_Ship_03/container_array 1" unique_id=124137000 instance=ExtResource("2_4ftm2")]
+[node name="@Node3D@212747" parent="Containers/container_array 1" unique_id=124137000 instance=ExtResource("2_4ftm2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.600993, 0.09125495, -0.014103413)
 
-[node name="@Node3D@212749" parent="BIGJ_Ship_03/container_array 1" unique_id=1446719155 instance=ExtResource("2_4ftm2")]
+[node name="@Node3D@212749" parent="Containers/container_array 1" unique_id=1446719155 instance=ExtResource("2_4ftm2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.60302, 2.8453994, -0.017510105)
 
-[node name="@Node3D@212751" parent="BIGJ_Ship_03/container_array 1" unique_id=1378885962 instance=ExtResource("2_4ftm2")]
+[node name="@Node3D@212751" parent="Containers/container_array 1" unique_id=1378885962 instance=ExtResource("2_4ftm2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.5995026, 5.5995436, -0.01516513)
 
-[node name="@Node3D@212753" parent="BIGJ_Ship_03/container_array 1" unique_id=1268908049 instance=ExtResource("2_4ftm2")]
+[node name="@Node3D@212753" parent="Containers/container_array 1" unique_id=1268908049 instance=ExtResource("2_4ftm2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.898425, 0.09125495, -0.013860705)
 
-[node name="@Node3D@212755" parent="BIGJ_Ship_03/container_array 1" unique_id=1793241194 instance=ExtResource("2_4ftm2")]
+[node name="@Node3D@212755" parent="Containers/container_array 1" unique_id=1793241194 instance=ExtResource("2_4ftm2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.894059, 2.8453994, -0.016747544)
 
-[node name="@Node3D@212757" parent="BIGJ_Ship_03/container_array 1" unique_id=1640236135 instance=ExtResource("2_4ftm2")]
+[node name="@Node3D@212757" parent="Containers/container_array 1" unique_id=1640236135 instance=ExtResource("2_4ftm2")]
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -9.276004, 0.09125495, 6.5461054)
 
-[node name="@Node3D@212759" parent="BIGJ_Ship_03/container_array 1" unique_id=730021938 instance=ExtResource("2_4ftm2")]
+[node name="@Node3D@212759" parent="Containers/container_array 1" unique_id=730021938 instance=ExtResource("2_4ftm2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.278076, 2.8453994, 6.5443797)
 
-[node name="@Node3D@212761" parent="BIGJ_Ship_03/container_array 1" unique_id=2114257921 instance=ExtResource("2_4ftm2")]
+[node name="@Node3D@212761" parent="Containers/container_array 1" unique_id=2114257921 instance=ExtResource("2_4ftm2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.628354, 0.09125495, 6.5508604)
 
-[node name="@Node3D@212763" parent="BIGJ_Ship_03/container_array 1" unique_id=1428243487 instance=ExtResource("2_4ftm2")]
+[node name="@Node3D@212763" parent="Containers/container_array 1" unique_id=1428243487 instance=ExtResource("2_4ftm2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.6320724, 2.8453994, 6.5494637)
 
-[node name="@Node3D@212765" parent="BIGJ_Ship_03/container_array 1" unique_id=750188528 instance=ExtResource("2_4ftm2")]
+[node name="@Node3D@212765" parent="Containers/container_array 1" unique_id=750188528 instance=ExtResource("2_4ftm2")]
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -3.9870634, 0.09125495, 6.54321)
 
-[node name="@Node3D@212767" parent="BIGJ_Ship_03/container_array 1" unique_id=82378565 instance=ExtResource("2_4ftm2")]
+[node name="@Node3D@212767" parent="Containers/container_array 1" unique_id=82378565 instance=ExtResource("2_4ftm2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.98565, 2.8453994, 6.5476794)
 
-[node name="@Node3D@212769" parent="BIGJ_Ship_03/container_array 1" unique_id=1191636190 instance=ExtResource("2_4ftm2")]
+[node name="@Node3D@212769" parent="Containers/container_array 1" unique_id=1191636190 instance=ExtResource("2_4ftm2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.9832754, 5.5995436, 6.5490932)
 
-[node name="@Node3D@212771" parent="BIGJ_Ship_03/container_array 1" unique_id=1010876488 instance=ExtResource("2_4ftm2")]
+[node name="@Node3D@212771" parent="Containers/container_array 1" unique_id=1010876488 instance=ExtResource("2_4ftm2")]
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 1.3034432, 0.09125495, 6.5458336)
 
-[node name="@Node3D@212773" parent="BIGJ_Ship_03/container_array 1" unique_id=1891944761 instance=ExtResource("2_4ftm2")]
+[node name="@Node3D@212773" parent="Containers/container_array 1" unique_id=1891944761 instance=ExtResource("2_4ftm2")]
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 6.599869, 0.09125495, 6.551706)
 
-[node name="@Node3D@212775" parent="BIGJ_Ship_03/container_array 1" unique_id=1561651932 instance=ExtResource("2_4ftm2")]
+[node name="@Node3D@212775" parent="Containers/container_array 1" unique_id=1561651932 instance=ExtResource("2_4ftm2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.604953, 2.8453994, 6.5450864)
 
-[node name="@Node3D@212777" parent="BIGJ_Ship_03/container_array 1" unique_id=1358028124 instance=ExtResource("2_4ftm2")]
+[node name="@Node3D@212777" parent="Containers/container_array 1" unique_id=1358028124 instance=ExtResource("2_4ftm2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.601345, 5.5995436, 6.546251)
 
-[node name="@Node3D@212779" parent="BIGJ_Ship_03/container_array 1" unique_id=663661203 instance=ExtResource("2_4ftm2")]
+[node name="@Node3D@212779" parent="Containers/container_array 1" unique_id=663661203 instance=ExtResource("2_4ftm2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.245512, 0.09125495, 6.5463)
 
-[node name="@Node3D@212781" parent="BIGJ_Ship_03/container_array 1" unique_id=1815819922 instance=ExtResource("2_4ftm2")]
+[node name="@Node3D@212781" parent="Containers/container_array 1" unique_id=1815819922 instance=ExtResource("2_4ftm2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.244488, 2.8453994, 6.5513396)
 
-[node name="@Node3D@212783" parent="BIGJ_Ship_03/container_array 1" unique_id=1665200857 instance=ExtResource("2_4ftm2")]
+[node name="@Node3D@212783" parent="Containers/container_array 1" unique_id=1665200857 instance=ExtResource("2_4ftm2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.253042, 5.5995436, 6.5458636)
 
-[node name="container_array 2" type="Node3D" parent="BIGJ_Ship_03" unique_id=785673378]
+[node name="container_array 2" type="Node3D" parent="Containers" unique_id=785673378]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.2525635, 1.9120002, 18.04541)
 
-[node name="Container" parent="BIGJ_Ship_03/container_array 2" unique_id=16096896 instance=ExtResource("2_4ftm2")]
+[node name="Container" parent="Containers/container_array 2" unique_id=16096896 instance=ExtResource("2_4ftm2")]
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -9.276017, 0.09125495, -0.014495812)
 
-[node name="@Node3D@195755" parent="BIGJ_Ship_03/container_array 2" unique_id=432819238 instance=ExtResource("2_4ftm2")]
+[node name="@Node3D@195755" parent="Containers/container_array 2" unique_id=432819238 instance=ExtResource("2_4ftm2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.278431, 2.8453994, -0.011043334)
 
-[node name="@Node3D@195759" parent="BIGJ_Ship_03/container_array 2" unique_id=846731824 instance=ExtResource("2_4ftm2")]
+[node name="@Node3D@195759" parent="Containers/container_array 2" unique_id=846731824 instance=ExtResource("2_4ftm2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.6280637, 0.09125495, -0.016835887)
 
-[node name="@Node3D@195761" parent="BIGJ_Ship_03/container_array 2" unique_id=163335618 instance=ExtResource("2_4ftm2")]
+[node name="@Node3D@195761" parent="Containers/container_array 2" unique_id=163335618 instance=ExtResource("2_4ftm2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.636289, 2.8453994, -0.014296591)
 
-[node name="@Node3D@195765" parent="BIGJ_Ship_03/container_array 2" unique_id=407265062 instance=ExtResource("2_4ftm2")]
+[node name="@Node3D@195765" parent="Containers/container_array 2" unique_id=407265062 instance=ExtResource("2_4ftm2")]
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -3.987851, 0.09125495, -0.010998679)
 
-[node name="@Node3D@195767" parent="BIGJ_Ship_03/container_array 2" unique_id=364634811 instance=ExtResource("2_4ftm2")]
+[node name="@Node3D@195767" parent="Containers/container_array 2" unique_id=364634811 instance=ExtResource("2_4ftm2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.98998, 2.8453994, -0.010376192)
 
-[node name="@Node3D@195771" parent="BIGJ_Ship_03/container_array 2" unique_id=1153128957 instance=ExtResource("2_4ftm2")]
+[node name="@Node3D@195771" parent="Containers/container_array 2" unique_id=1153128957 instance=ExtResource("2_4ftm2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.3410976, 0.09125495, -0.019805271)
 
-[node name="@Node3D@195773" parent="BIGJ_Ship_03/container_array 2" unique_id=275071362 instance=ExtResource("2_4ftm2")]
+[node name="@Node3D@195773" parent="Containers/container_array 2" unique_id=275071362 instance=ExtResource("2_4ftm2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.3360277, 2.8453994, -0.014611805)
 
-[node name="@Node3D@195775" parent="BIGJ_Ship_03/container_array 2" unique_id=866525915 instance=ExtResource("2_4ftm2")]
+[node name="@Node3D@195775" parent="Containers/container_array 2" unique_id=866525915 instance=ExtResource("2_4ftm2")]
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 1.3063407, 0.09125495, -0.016518457)
 
-[node name="@Node3D@195777" parent="BIGJ_Ship_03/container_array 2" unique_id=1696197354 instance=ExtResource("2_4ftm2")]
+[node name="@Node3D@195777" parent="Containers/container_array 2" unique_id=1696197354 instance=ExtResource("2_4ftm2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.3098367, 2.8453994, -0.0147853475)
 
-[node name="@Node3D@195779" parent="BIGJ_Ship_03/container_array 2" unique_id=733387111 instance=ExtResource("2_4ftm2")]
+[node name="@Node3D@195779" parent="Containers/container_array 2" unique_id=733387111 instance=ExtResource("2_4ftm2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.9515362, 0.09125495, -0.015656738)
 
-[node name="@Node3D@195781" parent="BIGJ_Ship_03/container_array 2" unique_id=440312019 instance=ExtResource("2_4ftm2")]
+[node name="@Node3D@195781" parent="Containers/container_array 2" unique_id=440312019 instance=ExtResource("2_4ftm2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.957867, 2.8453994, -0.014526975)
 
-[node name="@Node3D@195785" parent="BIGJ_Ship_03/container_array 2" unique_id=744987697 instance=ExtResource("2_4ftm2")]
+[node name="@Node3D@195785" parent="Containers/container_array 2" unique_id=744987697 instance=ExtResource("2_4ftm2")]
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 6.6046653, 0.09125495, -0.015484506)
 
-[node name="@Node3D@195787" parent="BIGJ_Ship_03/container_array 2" unique_id=740320167 instance=ExtResource("2_4ftm2")]
+[node name="@Node3D@195787" parent="Containers/container_array 2" unique_id=740320167 instance=ExtResource("2_4ftm2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.6067805, 2.8453994, -0.012569517)
 
-[node name="@Node3D@195789" parent="BIGJ_Ship_03/container_array 2" unique_id=1108275115 instance=ExtResource("2_4ftm2")]
+[node name="@Node3D@195789" parent="Containers/container_array 2" unique_id=1108275115 instance=ExtResource("2_4ftm2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.25166, 0.09125495, -0.012186688)
 
-[node name="@Node3D@195791" parent="BIGJ_Ship_03/container_array 2" unique_id=1462208970 instance=ExtResource("2_4ftm2")]
+[node name="@Node3D@195791" parent="Containers/container_array 2" unique_id=1462208970 instance=ExtResource("2_4ftm2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.246114, 2.8453994, -0.013165438)
 
-[node name="@Node3D@195793" parent="BIGJ_Ship_03/container_array 2" unique_id=766879890 instance=ExtResource("2_4ftm2")]
+[node name="@Node3D@195793" parent="Containers/container_array 2" unique_id=766879890 instance=ExtResource("2_4ftm2")]
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 11.893075, 0.09125495, -0.013440761)
 
-[node name="@Node3D@195795" parent="BIGJ_Ship_03/container_array 2" unique_id=1553922182 instance=ExtResource("2_4ftm2")]
+[node name="@Node3D@195795" parent="Containers/container_array 2" unique_id=1553922182 instance=ExtResource("2_4ftm2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.898172, 2.8453994, -0.017656015)
 
-[node name="@Node3D@195799" parent="BIGJ_Ship_03/container_array 2" unique_id=998156737 instance=ExtResource("2_4ftm2")]
+[node name="@Node3D@195799" parent="Containers/container_array 2" unique_id=998156737 instance=ExtResource("2_4ftm2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.277381, 0.09125495, 6.5509696)
 
-[node name="@Node3D@195801" parent="BIGJ_Ship_03/container_array 2" unique_id=1799810330 instance=ExtResource("2_4ftm2")]
+[node name="@Node3D@195801" parent="Containers/container_array 2" unique_id=1799810330 instance=ExtResource("2_4ftm2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.280308, 2.8453994, 6.55157)
 
-[node name="@Node3D@195803" parent="BIGJ_Ship_03/container_array 2" unique_id=1741952719 instance=ExtResource("2_4ftm2")]
+[node name="@Node3D@195803" parent="Containers/container_array 2" unique_id=1741952719 instance=ExtResource("2_4ftm2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.280916, 5.5995436, 6.548479)
 
-[node name="@Node3D@195805" parent="BIGJ_Ship_03/container_array 2" unique_id=369587500 instance=ExtResource("2_4ftm2")]
+[node name="@Node3D@195805" parent="Containers/container_array 2" unique_id=369587500 instance=ExtResource("2_4ftm2")]
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -6.6325397, 0.09125495, 6.548588)
 
-[node name="@Node3D@195807" parent="BIGJ_Ship_03/container_array 2" unique_id=1104949636 instance=ExtResource("2_4ftm2")]
+[node name="@Node3D@195807" parent="Containers/container_array 2" unique_id=1104949636 instance=ExtResource("2_4ftm2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.6328087, 2.8453994, 6.54381)
 
-[node name="@Node3D@195809" parent="BIGJ_Ship_03/container_array 2" unique_id=190157560 instance=ExtResource("2_4ftm2")]
+[node name="@Node3D@195809" parent="Containers/container_array 2" unique_id=190157560 instance=ExtResource("2_4ftm2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.9824657, 0.09125495, 6.5470486)
 
-[node name="@Node3D@195811" parent="BIGJ_Ship_03/container_array 2" unique_id=1063019160 instance=ExtResource("2_4ftm2")]
+[node name="@Node3D@195811" parent="Containers/container_array 2" unique_id=1063019160 instance=ExtResource("2_4ftm2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.9863024, 2.8453994, 6.5450506)
 
-[node name="@Node3D@195813" parent="BIGJ_Ship_03/container_array 2" unique_id=1136280982 instance=ExtResource("2_4ftm2")]
+[node name="@Node3D@195813" parent="Containers/container_array 2" unique_id=1136280982 instance=ExtResource("2_4ftm2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.989658, 5.5995436, 6.5507097)
 
-[node name="@Node3D@195815" parent="BIGJ_Ship_03/container_array 2" unique_id=1227039925 instance=ExtResource("2_4ftm2")]
+[node name="@Node3D@195815" parent="Containers/container_array 2" unique_id=1227039925 instance=ExtResource("2_4ftm2")]
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -1.3411779, 0.09125495, 6.543547)
 
-[node name="@Node3D@195817" parent="BIGJ_Ship_03/container_array 2" unique_id=782202161 instance=ExtResource("2_4ftm2")]
+[node name="@Node3D@195817" parent="Containers/container_array 2" unique_id=782202161 instance=ExtResource("2_4ftm2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.334854, 2.8453994, 6.548742)
 
-[node name="@Node3D@195819" parent="BIGJ_Ship_03/container_array 2" unique_id=817451806 instance=ExtResource("2_4ftm2")]
+[node name="@Node3D@195819" parent="Containers/container_array 2" unique_id=817451806 instance=ExtResource("2_4ftm2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.3392277, 5.5995436, 6.5516114)
 
-[node name="@Node3D@195821" parent="BIGJ_Ship_03/container_array 2" unique_id=816417710 instance=ExtResource("2_4ftm2")]
+[node name="@Node3D@195821" parent="Containers/container_array 2" unique_id=816417710 instance=ExtResource("2_4ftm2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.3049585, 0.09125495, 6.544708)
 
-[node name="@Node3D@195823" parent="BIGJ_Ship_03/container_array 2" unique_id=806793143 instance=ExtResource("2_4ftm2")]
+[node name="@Node3D@195823" parent="Containers/container_array 2" unique_id=806793143 instance=ExtResource("2_4ftm2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.3126692, 2.8453994, 6.546382)
 
-[node name="@Node3D@195825" parent="BIGJ_Ship_03/container_array 2" unique_id=856163999 instance=ExtResource("2_4ftm2")]
+[node name="@Node3D@195825" parent="Containers/container_array 2" unique_id=856163999 instance=ExtResource("2_4ftm2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.3038858, 5.5995436, 6.5448666)
 
-[node name="@Node3D@195827" parent="BIGJ_Ship_03/container_array 2" unique_id=1016122148 instance=ExtResource("2_4ftm2")]
+[node name="@Node3D@195827" parent="Containers/container_array 2" unique_id=1016122148 instance=ExtResource("2_4ftm2")]
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 3.9553876, 0.09125495, 6.5436788)
 
-[node name="@Node3D@195829" parent="BIGJ_Ship_03/container_array 2" unique_id=1318628705 instance=ExtResource("2_4ftm2")]
+[node name="@Node3D@195829" parent="Containers/container_array 2" unique_id=1318628705 instance=ExtResource("2_4ftm2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.9568582, 2.8453994, 6.5443425)
 
-[node name="@Node3D@195831" parent="BIGJ_Ship_03/container_array 2" unique_id=1986477240 instance=ExtResource("2_4ftm2")]
+[node name="@Node3D@195831" parent="Containers/container_array 2" unique_id=1986477240 instance=ExtResource("2_4ftm2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.9501915, 5.5995436, 6.550224)
 
-[node name="@Node3D@195833" parent="BIGJ_Ship_03/container_array 2" unique_id=1273843357 instance=ExtResource("2_4ftm2")]
+[node name="@Node3D@195833" parent="Containers/container_array 2" unique_id=1273843357 instance=ExtResource("2_4ftm2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.6013913, 0.09125495, 6.549974)
 
-[node name="@Node3D@195835" parent="BIGJ_Ship_03/container_array 2" unique_id=1098420533 instance=ExtResource("2_4ftm2")]
+[node name="@Node3D@195835" parent="Containers/container_array 2" unique_id=1098420533 instance=ExtResource("2_4ftm2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.601691, 2.8453994, 6.550988)
 
-[node name="@Node3D@195837" parent="BIGJ_Ship_03/container_array 2" unique_id=1843278918 instance=ExtResource("2_4ftm2")]
+[node name="@Node3D@195837" parent="Containers/container_array 2" unique_id=1843278918 instance=ExtResource("2_4ftm2")]
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 9.243831, 0.09125495, 6.5441203)
 
-[node name="@Node3D@195839" parent="BIGJ_Ship_03/container_array 2" unique_id=1577040540 instance=ExtResource("2_4ftm2")]
+[node name="@Node3D@195839" parent="Containers/container_array 2" unique_id=1577040540 instance=ExtResource("2_4ftm2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.247481, 2.8453994, 6.5488553)
 
-[node name="@Node3D@195843" parent="BIGJ_Ship_03/container_array 2" unique_id=256374227 instance=ExtResource("2_4ftm2")]
+[node name="@Node3D@195843" parent="Containers/container_array 2" unique_id=256374227 instance=ExtResource("2_4ftm2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.894067, 0.09125495, 6.5484834)
 
-[node name="@Node3D@195845" parent="BIGJ_Ship_03/container_array 2" unique_id=1508311087 instance=ExtResource("2_4ftm2")]
+[node name="@Node3D@195845" parent="Containers/container_array 2" unique_id=1508311087 instance=ExtResource("2_4ftm2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.8908415, 2.8453994, 6.549123)
 
-[node name="container_array 6" type="Node3D" parent="BIGJ_Ship_03" unique_id=159602072]
+[node name="container_array 6" type="Node3D" parent="Containers" unique_id=159602072]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.2525635, 2.005, 5.132507)
 
-[node name="Container" parent="BIGJ_Ship_03/container_array 6" unique_id=24344546 instance=ExtResource("2_4ftm2")]
+[node name="Container" parent="Containers/container_array 6" unique_id=24344546 instance=ExtResource("2_4ftm2")]
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -9.283389, 0.09125495, -0.012577688)
 
-[node name="@Node3D@198841" parent="BIGJ_Ship_03/container_array 6" unique_id=158976937 instance=ExtResource("2_4ftm2")]
+[node name="@Node3D@198841" parent="Containers/container_array 6" unique_id=158976937 instance=ExtResource("2_4ftm2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.274887, 2.8453994, -0.010229057)
 
-[node name="@Node3D@198843" parent="BIGJ_Ship_03/container_array 6" unique_id=774382637 instance=ExtResource("2_4ftm2")]
+[node name="@Node3D@198843" parent="Containers/container_array 6" unique_id=774382637 instance=ExtResource("2_4ftm2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.626999, 0.09125495, -0.012515389)
 
-[node name="@Node3D@198845" parent="BIGJ_Ship_03/container_array 6" unique_id=1601428740 instance=ExtResource("2_4ftm2")]
+[node name="@Node3D@198845" parent="Containers/container_array 6" unique_id=1601428740 instance=ExtResource("2_4ftm2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.634889, 2.8453994, -0.019026302)
 
-[node name="@Node3D@198847" parent="BIGJ_Ship_03/container_array 6" unique_id=860413511 instance=ExtResource("2_4ftm2")]
+[node name="@Node3D@198847" parent="Containers/container_array 6" unique_id=860413511 instance=ExtResource("2_4ftm2")]
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -3.9844697, 0.09125495, -0.013382897)
 
-[node name="@Node3D@198849" parent="BIGJ_Ship_03/container_array 6" unique_id=882633620 instance=ExtResource("2_4ftm2")]
+[node name="@Node3D@198849" parent="Containers/container_array 6" unique_id=882633620 instance=ExtResource("2_4ftm2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.9850285, 2.8453994, -0.010557963)
 
-[node name="@Node3D@198851" parent="BIGJ_Ship_03/container_array 6" unique_id=1683226139 instance=ExtResource("2_4ftm2")]
+[node name="@Node3D@198851" parent="Containers/container_array 6" unique_id=1683226139 instance=ExtResource("2_4ftm2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.9816542, 5.5995436, -0.016770761)
 
-[node name="@Node3D@198853" parent="BIGJ_Ship_03/container_array 6" unique_id=1331819157 instance=ExtResource("2_4ftm2")]
+[node name="@Node3D@198853" parent="Containers/container_array 6" unique_id=1331819157 instance=ExtResource("2_4ftm2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.3343418, 0.09125495, -0.015424427)
 
-[node name="@Node3D@198855" parent="BIGJ_Ship_03/container_array 6" unique_id=121828589 instance=ExtResource("2_4ftm2")]
+[node name="@Node3D@198855" parent="Containers/container_array 6" unique_id=121828589 instance=ExtResource("2_4ftm2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.3403525, 2.8453994, -0.019851264)
 
-[node name="@Node3D@198857" parent="BIGJ_Ship_03/container_array 6" unique_id=295896551 instance=ExtResource("2_4ftm2")]
+[node name="@Node3D@198857" parent="Containers/container_array 6" unique_id=295896551 instance=ExtResource("2_4ftm2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.3372482, 5.5995436, -0.013123787)
 
-[node name="@Node3D@198859" parent="BIGJ_Ship_03/container_array 6" unique_id=1865781625 instance=ExtResource("2_4ftm2")]
+[node name="@Node3D@198859" parent="Containers/container_array 6" unique_id=1865781625 instance=ExtResource("2_4ftm2")]
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 1.3099675, 0.09125495, -0.010621866)
 
-[node name="@Node3D@198861" parent="BIGJ_Ship_03/container_array 6" unique_id=1763191649 instance=ExtResource("2_4ftm2")]
+[node name="@Node3D@198861" parent="Containers/container_array 6" unique_id=1763191649 instance=ExtResource("2_4ftm2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.3039654, 2.8453994, -0.016445108)
 
-[node name="@Node3D@198863" parent="BIGJ_Ship_03/container_array 6" unique_id=1100841017 instance=ExtResource("2_4ftm2")]
+[node name="@Node3D@198863" parent="Containers/container_array 6" unique_id=1100841017 instance=ExtResource("2_4ftm2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.311461, 5.5995436, -0.010800569)
 
-[node name="@Node3D@198865" parent="BIGJ_Ship_03/container_array 6" unique_id=2052056358 instance=ExtResource("2_4ftm2")]
+[node name="@Node3D@198865" parent="Containers/container_array 6" unique_id=2052056358 instance=ExtResource("2_4ftm2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.9527931, 0.09125495, -0.011186452)
 
-[node name="@Node3D@198867" parent="BIGJ_Ship_03/container_array 6" unique_id=752368853 instance=ExtResource("2_4ftm2")]
+[node name="@Node3D@198867" parent="Containers/container_array 6" unique_id=752368853 instance=ExtResource("2_4ftm2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.9551501, 2.8453994, -0.010888141)
 
-[node name="@Node3D@198869" parent="BIGJ_Ship_03/container_array 6" unique_id=1818934837 instance=ExtResource("2_4ftm2")]
+[node name="@Node3D@198869" parent="Containers/container_array 6" unique_id=1818934837 instance=ExtResource("2_4ftm2")]
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 6.605574, 0.09125495, -0.010660603)
 
-[node name="@Node3D@198871" parent="BIGJ_Ship_03/container_array 6" unique_id=1560765905 instance=ExtResource("2_4ftm2")]
+[node name="@Node3D@198871" parent="Containers/container_array 6" unique_id=1560765905 instance=ExtResource("2_4ftm2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.252765, 0.09125495, -0.018783718)
 
-[node name="@Node3D@198873" parent="BIGJ_Ship_03/container_array 6" unique_id=1474216539 instance=ExtResource("2_4ftm2")]
+[node name="@Node3D@198873" parent="Containers/container_array 6" unique_id=1474216539 instance=ExtResource("2_4ftm2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.250402, 2.8453994, -0.018349828)
 
-[node name="@Node3D@198875" parent="BIGJ_Ship_03/container_array 6" unique_id=66958816 instance=ExtResource("2_4ftm2")]
+[node name="@Node3D@198875" parent="Containers/container_array 6" unique_id=66958816 instance=ExtResource("2_4ftm2")]
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 11.8948, 0.09125495, -0.018153457)
 
-[node name="@Node3D@198877" parent="BIGJ_Ship_03/container_array 6" unique_id=709824293 instance=ExtResource("2_4ftm2")]
+[node name="@Node3D@198877" parent="Containers/container_array 6" unique_id=709824293 instance=ExtResource("2_4ftm2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.894885, 2.8453994, -0.016333206)
 
-[node name="@Node3D@198879" parent="BIGJ_Ship_03/container_array 6" unique_id=1693751157 instance=ExtResource("2_4ftm2")]
+[node name="@Node3D@198879" parent="Containers/container_array 6" unique_id=1693751157 instance=ExtResource("2_4ftm2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.897518, 5.5995436, -0.017365517)
 
-[node name="@Node3D@198881" parent="BIGJ_Ship_03/container_array 6" unique_id=1986701640 instance=ExtResource("2_4ftm2")]
+[node name="@Node3D@198881" parent="Containers/container_array 6" unique_id=1986701640 instance=ExtResource("2_4ftm2")]
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -6.628105, 0.09125495, 6.547625)
 
-[node name="@Node3D@198883" parent="BIGJ_Ship_03/container_array 6" unique_id=529055596 instance=ExtResource("2_4ftm2")]
+[node name="@Node3D@198883" parent="Containers/container_array 6" unique_id=529055596 instance=ExtResource("2_4ftm2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.6306596, 2.8453994, 6.544769)
 
-[node name="@Node3D@198885" parent="BIGJ_Ship_03/container_array 6" unique_id=465209124 instance=ExtResource("2_4ftm2")]
+[node name="@Node3D@198885" parent="Containers/container_array 6" unique_id=465209124 instance=ExtResource("2_4ftm2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.9828877, 0.09125495, 6.547651)
 
-[node name="@Node3D@198887" parent="BIGJ_Ship_03/container_array 6" unique_id=1140596478 instance=ExtResource("2_4ftm2")]
+[node name="@Node3D@198887" parent="Containers/container_array 6" unique_id=1140596478 instance=ExtResource("2_4ftm2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.9807527, 2.8453994, 6.5433106)
 
-[node name="@Node3D@198889" parent="BIGJ_Ship_03/container_array 6" unique_id=1372308159 instance=ExtResource("2_4ftm2")]
+[node name="@Node3D@198889" parent="Containers/container_array 6" unique_id=1372308159 instance=ExtResource("2_4ftm2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.9834192, 5.5995436, 6.5509543)
 
-[node name="@Node3D@198891" parent="BIGJ_Ship_03/container_array 6" unique_id=1590632382 instance=ExtResource("2_4ftm2")]
+[node name="@Node3D@198891" parent="Containers/container_array 6" unique_id=1590632382 instance=ExtResource("2_4ftm2")]
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -1.3432081, 0.09125495, 6.551432)
 
-[node name="@Node3D@198893" parent="BIGJ_Ship_03/container_array 6" unique_id=98470018 instance=ExtResource("2_4ftm2")]
+[node name="@Node3D@198893" parent="Containers/container_array 6" unique_id=98470018 instance=ExtResource("2_4ftm2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.3423417, 2.8453994, 6.550292)
 
-[node name="@Node3D@198895" parent="BIGJ_Ship_03/container_array 6" unique_id=1738124305 instance=ExtResource("2_4ftm2")]
+[node name="@Node3D@198895" parent="Containers/container_array 6" unique_id=1738124305 instance=ExtResource("2_4ftm2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.3371487, 5.5995436, 6.547515)
 
-[node name="@Node3D@198897" parent="BIGJ_Ship_03/container_array 6" unique_id=1783537164 instance=ExtResource("2_4ftm2")]
+[node name="@Node3D@198897" parent="Containers/container_array 6" unique_id=1783537164 instance=ExtResource("2_4ftm2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.3036789, 0.09125495, 6.5512824)
 
-[node name="@Node3D@198899" parent="BIGJ_Ship_03/container_array 6" unique_id=1390286229 instance=ExtResource("2_4ftm2")]
+[node name="@Node3D@198899" parent="Containers/container_array 6" unique_id=1390286229 instance=ExtResource("2_4ftm2")]
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 3.9540725, 0.09125495, 6.546273)
 
-[node name="@Node3D@198901" parent="BIGJ_Ship_03/container_array 6" unique_id=1649788061 instance=ExtResource("2_4ftm2")]
+[node name="@Node3D@198901" parent="Containers/container_array 6" unique_id=1649788061 instance=ExtResource("2_4ftm2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.95764, 2.8453994, 6.552149)
 
-[node name="@Node3D@198903" parent="BIGJ_Ship_03/container_array 6" unique_id=1223235246 instance=ExtResource("2_4ftm2")]
+[node name="@Node3D@198903" parent="Containers/container_array 6" unique_id=1223235246 instance=ExtResource("2_4ftm2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.605887, 0.09125495, 6.5505333)
 
-[node name="@Node3D@198905" parent="BIGJ_Ship_03/container_array 6" unique_id=1149046872 instance=ExtResource("2_4ftm2")]
+[node name="@Node3D@198905" parent="Containers/container_array 6" unique_id=1149046872 instance=ExtResource("2_4ftm2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.6043057, 2.8453994, 6.5527105)
 
-[node name="@Node3D@198907" parent="BIGJ_Ship_03/container_array 6" unique_id=1932126955 instance=ExtResource("2_4ftm2")]
+[node name="@Node3D@198907" parent="Containers/container_array 6" unique_id=1932126955 instance=ExtResource("2_4ftm2")]
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 9.246253, 0.09125495, 6.5462203)
 
-[node name="@Node3D@198909" parent="BIGJ_Ship_03/container_array 6" unique_id=245155362 instance=ExtResource("2_4ftm2")]
+[node name="@Node3D@198909" parent="Containers/container_array 6" unique_id=245155362 instance=ExtResource("2_4ftm2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.25099, 2.8453994, 6.5465593)
 
-[node name="@Node3D@198911" parent="BIGJ_Ship_03/container_array 6" unique_id=1300613733 instance=ExtResource("2_4ftm2")]
+[node name="@Node3D@198911" parent="Containers/container_array 6" unique_id=1300613733 instance=ExtResource("2_4ftm2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.249084, 5.5995436, 6.5476503)
 
-[node name="@Node3D@198913" parent="BIGJ_Ship_03/container_array 6" unique_id=2145094431 instance=ExtResource("2_4ftm2")]
+[node name="@Node3D@198913" parent="Containers/container_array 6" unique_id=2145094431 instance=ExtResource("2_4ftm2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.890932, 0.09125495, 6.5476255)
 
-[node name="@Node3D@198915" parent="BIGJ_Ship_03/container_array 6" unique_id=579937379 instance=ExtResource("2_4ftm2")]
+[node name="@Node3D@198915" parent="Containers/container_array 6" unique_id=579937379 instance=ExtResource("2_4ftm2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.893322, 2.8453994, 6.54956)
 
-[node name="@Node3D@198917" parent="BIGJ_Ship_03/container_array 6" unique_id=1752979508 instance=ExtResource("2_4ftm2")]
+[node name="@Node3D@198917" parent="Containers/container_array 6" unique_id=1752979508 instance=ExtResource("2_4ftm2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.896081, 5.5995436, 6.5524073)
 
-[node name="container_array 7" type="Node3D" parent="BIGJ_Ship_03" unique_id=1734884861]
+[node name="container_array 7" type="Node3D" parent="Containers" unique_id=1734884861]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.2525635, 1.9970002, -10.002493)
 
-[node name="Container" parent="BIGJ_Ship_03/container_array 7" unique_id=1538564096 instance=ExtResource("2_4ftm2")]
+[node name="Container" parent="Containers/container_array 7" unique_id=1538564096 instance=ExtResource("2_4ftm2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.275865, 0.09125495, -0.011596545)
 
-[node name="@Node3D@218144" parent="BIGJ_Ship_03/container_array 7" unique_id=834899743 instance=ExtResource("2_4ftm2")]
+[node name="@Node3D@218144" parent="Containers/container_array 7" unique_id=834899743 instance=ExtResource("2_4ftm2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.281266, 2.8453994, -0.01797635)
 
-[node name="@Node3D@218148" parent="BIGJ_Ship_03/container_array 7" unique_id=2105035248 instance=ExtResource("2_4ftm2")]
+[node name="@Node3D@218148" parent="Containers/container_array 7" unique_id=2105035248 instance=ExtResource("2_4ftm2")]
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -6.633006, 0.09125495, -0.014551176)
 
-[node name="@Node3D@218150" parent="BIGJ_Ship_03/container_array 7" unique_id=600951646 instance=ExtResource("2_4ftm2")]
+[node name="@Node3D@218150" parent="Containers/container_array 7" unique_id=600951646 instance=ExtResource("2_4ftm2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.6364746, 2.8453994, -0.014331847)
 
-[node name="@Node3D@218152" parent="BIGJ_Ship_03/container_array 7" unique_id=178102509 instance=ExtResource("2_4ftm2")]
+[node name="@Node3D@218152" parent="Containers/container_array 7" unique_id=178102509 instance=ExtResource("2_4ftm2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.9881868, 0.09125495, -0.011260134)
 
-[node name="@Node3D@218154" parent="BIGJ_Ship_03/container_array 7" unique_id=1306682036 instance=ExtResource("2_4ftm2")]
+[node name="@Node3D@218154" parent="Containers/container_array 7" unique_id=1306682036 instance=ExtResource("2_4ftm2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.9854028, 2.8453994, -0.01235212)
 
-[node name="@Node3D@218158" parent="BIGJ_Ship_03/container_array 7" unique_id=286808936 instance=ExtResource("2_4ftm2")]
+[node name="@Node3D@218158" parent="Containers/container_array 7" unique_id=286808936 instance=ExtResource("2_4ftm2")]
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -1.3348335, 0.09125495, -0.017128013)
 
-[node name="@Node3D@218160" parent="BIGJ_Ship_03/container_array 7" unique_id=1934865766 instance=ExtResource("2_4ftm2")]
+[node name="@Node3D@218160" parent="Containers/container_array 7" unique_id=1934865766 instance=ExtResource("2_4ftm2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.3421408, 2.8453994, -0.018080987)
 
-[node name="@Node3D@218164" parent="BIGJ_Ship_03/container_array 7" unique_id=70019096 instance=ExtResource("2_4ftm2")]
+[node name="@Node3D@218164" parent="Containers/container_array 7" unique_id=70019096 instance=ExtResource("2_4ftm2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.3050144, 0.09125495, -0.011276095)
 
-[node name="@Node3D@218166" parent="BIGJ_Ship_03/container_array 7" unique_id=1647460184 instance=ExtResource("2_4ftm2")]
+[node name="@Node3D@218166" parent="Containers/container_array 7" unique_id=1647460184 instance=ExtResource("2_4ftm2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.309619, 2.8453994, -0.019563239)
 
-[node name="@Node3D@218170" parent="BIGJ_Ship_03/container_array 7" unique_id=1264150400 instance=ExtResource("2_4ftm2")]
+[node name="@Node3D@218170" parent="Containers/container_array 7" unique_id=1264150400 instance=ExtResource("2_4ftm2")]
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 3.9537761, 0.09125495, -0.013596227)
 
-[node name="@Node3D@218172" parent="BIGJ_Ship_03/container_array 7" unique_id=730082927 instance=ExtResource("2_4ftm2")]
+[node name="@Node3D@218172" parent="Containers/container_array 7" unique_id=730082927 instance=ExtResource("2_4ftm2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.599519, 0.09125495, -0.013320005)
 
-[node name="@Node3D@218174" parent="BIGJ_Ship_03/container_array 7" unique_id=407920399 instance=ExtResource("2_4ftm2")]
+[node name="@Node3D@218174" parent="Containers/container_array 7" unique_id=407920399 instance=ExtResource("2_4ftm2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.600858, 2.8453994, -0.01988297)
 
-[node name="@Node3D@218178" parent="BIGJ_Ship_03/container_array 7" unique_id=584964688 instance=ExtResource("2_4ftm2")]
+[node name="@Node3D@218178" parent="Containers/container_array 7" unique_id=584964688 instance=ExtResource("2_4ftm2")]
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 9.252701, 0.09125495, -0.011740484)
 
-[node name="@Node3D@218180" parent="BIGJ_Ship_03/container_array 7" unique_id=520101074 instance=ExtResource("2_4ftm2")]
+[node name="@Node3D@218180" parent="Containers/container_array 7" unique_id=520101074 instance=ExtResource("2_4ftm2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.25307, 2.8453994, -0.014865126)
 
-[node name="@Node3D@218184" parent="BIGJ_Ship_03/container_array 7" unique_id=369448746 instance=ExtResource("2_4ftm2")]
+[node name="@Node3D@218184" parent="Containers/container_array 7" unique_id=369448746 instance=ExtResource("2_4ftm2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.892131, 0.09125495, -0.012793791)
 
-[node name="@Node3D@218186" parent="BIGJ_Ship_03/container_array 7" unique_id=551043389 instance=ExtResource("2_4ftm2")]
+[node name="@Node3D@218186" parent="Containers/container_array 7" unique_id=551043389 instance=ExtResource("2_4ftm2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.900273, 2.8453994, -0.011030838)
 
-[node name="@Node3D@218190" parent="BIGJ_Ship_03/container_array 7" unique_id=1028947205 instance=ExtResource("2_4ftm2")]
+[node name="@Node3D@218190" parent="Containers/container_array 7" unique_id=1028947205 instance=ExtResource("2_4ftm2")]
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -9.282452, 0.09125495, 6.547161)
 
-[node name="@Node3D@218192" parent="BIGJ_Ship_03/container_array 7" unique_id=487936577 instance=ExtResource("2_4ftm2")]
+[node name="@Node3D@218192" parent="Containers/container_array 7" unique_id=487936577 instance=ExtResource("2_4ftm2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.275324, 2.8453994, 6.548682)
 
-[node name="@Node3D@218196" parent="BIGJ_Ship_03/container_array 7" unique_id=1289654722 instance=ExtResource("2_4ftm2")]
+[node name="@Node3D@218196" parent="Containers/container_array 7" unique_id=1289654722 instance=ExtResource("2_4ftm2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.6351047, 0.09125495, 6.547842)
 
-[node name="@Node3D@218198" parent="BIGJ_Ship_03/container_array 7" unique_id=1344089562 instance=ExtResource("2_4ftm2")]
+[node name="@Node3D@218198" parent="Containers/container_array 7" unique_id=1344089562 instance=ExtResource("2_4ftm2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.6341257, 2.8453994, 6.549922)
 
-[node name="@Node3D@218202" parent="BIGJ_Ship_03/container_array 7" unique_id=725565843 instance=ExtResource("2_4ftm2")]
+[node name="@Node3D@218202" parent="Containers/container_array 7" unique_id=725565843 instance=ExtResource("2_4ftm2")]
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -3.989308, 0.09125495, 6.544877)
 
-[node name="@Node3D@218204" parent="BIGJ_Ship_03/container_array 7" unique_id=629522016 instance=ExtResource("2_4ftm2")]
+[node name="@Node3D@218204" parent="Containers/container_array 7" unique_id=629522016 instance=ExtResource("2_4ftm2")]
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 1.3057717, 0.09125495, 6.550389)
 
-[node name="@Node3D@218206" parent="BIGJ_Ship_03/container_array 7" unique_id=1138451820 instance=ExtResource("2_4ftm2")]
+[node name="@Node3D@218206" parent="Containers/container_array 7" unique_id=1138451820 instance=ExtResource("2_4ftm2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.3044703, 2.8453994, 6.5482697)
 
-[node name="@Node3D@218208" parent="BIGJ_Ship_03/container_array 7" unique_id=280313821 instance=ExtResource("2_4ftm2")]
+[node name="@Node3D@218208" parent="Containers/container_array 7" unique_id=280313821 instance=ExtResource("2_4ftm2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.950841, 0.09125495, 6.5470953)
 
-[node name="@Node3D@218210" parent="BIGJ_Ship_03/container_array 7" unique_id=1147928813 instance=ExtResource("2_4ftm2")]
+[node name="@Node3D@218210" parent="Containers/container_array 7" unique_id=1147928813 instance=ExtResource("2_4ftm2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.9519966, 2.8453994, 6.544766)
 
-[node name="@Node3D@218214" parent="BIGJ_Ship_03/container_array 7" unique_id=1996586721 instance=ExtResource("2_4ftm2")]
+[node name="@Node3D@218214" parent="Containers/container_array 7" unique_id=1996586721 instance=ExtResource("2_4ftm2")]
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 6.601172, 0.09125495, 6.552591)
 
-[node name="@Node3D@218216" parent="BIGJ_Ship_03/container_array 7" unique_id=1421619686 instance=ExtResource("2_4ftm2")]
+[node name="@Node3D@218216" parent="Containers/container_array 7" unique_id=1421619686 instance=ExtResource("2_4ftm2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.603443, 2.8453994, 6.544944)
 
-[node name="@Node3D@218220" parent="BIGJ_Ship_03/container_array 7" unique_id=225511574 instance=ExtResource("2_4ftm2")]
+[node name="@Node3D@218220" parent="Containers/container_array 7" unique_id=225511574 instance=ExtResource("2_4ftm2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.245713, 0.09125495, 6.546537)
 
-[node name="@Node3D@218222" parent="BIGJ_Ship_03/container_array 7" unique_id=158547677 instance=ExtResource("2_4ftm2")]
+[node name="@Node3D@218222" parent="Containers/container_array 7" unique_id=158547677 instance=ExtResource("2_4ftm2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.24959, 2.8453994, 6.5482707)
 
-[node name="@Node3D@218224" parent="BIGJ_Ship_03/container_array 7" unique_id=1892856832 instance=ExtResource("2_4ftm2")]
+[node name="@Node3D@218224" parent="Containers/container_array 7" unique_id=1892856832 instance=ExtResource("2_4ftm2")]
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 11.895483, 0.09125495, 6.547219)
 
-[node name="@Node3D@218226" parent="BIGJ_Ship_03/container_array 7" unique_id=1799600180 instance=ExtResource("2_4ftm2")]
+[node name="@Node3D@218226" parent="Containers/container_array 7" unique_id=1799600180 instance=ExtResource("2_4ftm2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.8923645, 2.8453994, 6.5451937)
 
-[node name="container_array 8" type="Node3D" parent="BIGJ_Ship_03" unique_id=281474214]
+[node name="container_array 8" type="Node3D" parent="Containers" unique_id=281474214]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.2525635, 2.021, -23.320492)
 
-[node name="Container" parent="BIGJ_Ship_03/container_array 8" unique_id=1560300556 instance=ExtResource("2_4ftm2")]
+[node name="Container" parent="Containers/container_array 8" unique_id=1560300556 instance=ExtResource("2_4ftm2")]
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -9.278192, 0.09125495, -0.01867595)
 
-[node name="@Node3D@275195" parent="BIGJ_Ship_03/container_array 8" unique_id=1950529356 instance=ExtResource("2_4ftm2")]
+[node name="@Node3D@275195" parent="Containers/container_array 8" unique_id=1950529356 instance=ExtResource("2_4ftm2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.281308, 2.8453994, -0.014487794)
 
-[node name="@Node3D@275197" parent="BIGJ_Ship_03/container_array 8" unique_id=1421794226 instance=ExtResource("2_4ftm2")]
+[node name="@Node3D@275197" parent="Containers/container_array 8" unique_id=1421794226 instance=ExtResource("2_4ftm2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.6357126, 0.09125495, -0.014496012)
 
-[node name="@Node3D@275199" parent="BIGJ_Ship_03/container_array 8" unique_id=38666833 instance=ExtResource("2_4ftm2")]
+[node name="@Node3D@275199" parent="Containers/container_array 8" unique_id=38666833 instance=ExtResource("2_4ftm2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.6279364, 2.8453994, -0.014794237)
 
-[node name="@Node3D@275201" parent="BIGJ_Ship_03/container_array 8" unique_id=585876155 instance=ExtResource("2_4ftm2")]
+[node name="@Node3D@275201" parent="Containers/container_array 8" unique_id=585876155 instance=ExtResource("2_4ftm2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.3412626, 0.09125495, -0.01159978)
 
-[node name="@Node3D@275203" parent="BIGJ_Ship_03/container_array 8" unique_id=1867639347 instance=ExtResource("2_4ftm2")]
+[node name="@Node3D@275203" parent="Containers/container_array 8" unique_id=1867639347 instance=ExtResource("2_4ftm2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.3363982, 2.8453994, -0.010822724)
 
-[node name="@Node3D@275207" parent="BIGJ_Ship_03/container_array 8" unique_id=1228422028 instance=ExtResource("2_4ftm2")]
+[node name="@Node3D@275207" parent="Containers/container_array 8" unique_id=1228422028 instance=ExtResource("2_4ftm2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.9511547, 0.09125495, -0.017240206)
 
-[node name="@Node3D@275209" parent="BIGJ_Ship_03/container_array 8" unique_id=1146945118 instance=ExtResource("2_4ftm2")]
+[node name="@Node3D@275209" parent="Containers/container_array 8" unique_id=1146945118 instance=ExtResource("2_4ftm2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.9599042, 2.8453994, -0.013470963)
 
-[node name="@Node3D@275213" parent="BIGJ_Ship_03/container_array 8" unique_id=325945779 instance=ExtResource("2_4ftm2")]
+[node name="@Node3D@275213" parent="Containers/container_array 8" unique_id=325945779 instance=ExtResource("2_4ftm2")]
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 6.600249, 0.09125495, -0.014144411)
 
-[node name="@Node3D@275215" parent="BIGJ_Ship_03/container_array 8" unique_id=262547658 instance=ExtResource("2_4ftm2")]
+[node name="@Node3D@275215" parent="Containers/container_array 8" unique_id=262547658 instance=ExtResource("2_4ftm2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.6040974, 2.8453994, -0.012009448)
 
-[node name="@Node3D@275219" parent="BIGJ_Ship_03/container_array 8" unique_id=510494474 instance=ExtResource("2_4ftm2")]
+[node name="@Node3D@275219" parent="Containers/container_array 8" unique_id=510494474 instance=ExtResource("2_4ftm2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.246441, 0.09125495, -0.018019196)
 
-[node name="_Node3D_275219" parent="BIGJ_Ship_03/container_array 8" unique_id=1236702364 instance=ExtResource("2_4ftm2")]
+[node name="_Node3D_275219" parent="Containers/container_array 8" unique_id=1236702364 instance=ExtResource("2_4ftm2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.246441, 0.09125519, 6.56341)
 
-[node name="@Node3D@275225" parent="BIGJ_Ship_03/container_array 8" unique_id=1428630258 instance=ExtResource("2_4ftm2")]
+[node name="@Node3D@275225" parent="Containers/container_array 8" unique_id=1428630258 instance=ExtResource("2_4ftm2")]
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -6.633372, 0.09125495, 6.5450983)
 
-[node name="@Node3D@275231" parent="BIGJ_Ship_03/container_array 8" unique_id=165067702 instance=ExtResource("2_4ftm2")]
+[node name="@Node3D@275231" parent="Containers/container_array 8" unique_id=165067702 instance=ExtResource("2_4ftm2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.9824922, 0.09125495, 6.5473)
 
-[node name="@Node3D@275235" parent="BIGJ_Ship_03/container_array 8" unique_id=706433213 instance=ExtResource("2_4ftm2")]
+[node name="@Node3D@275235" parent="Containers/container_array 8" unique_id=706433213 instance=ExtResource("2_4ftm2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.896343, 0.09125495, 6.54371)
 
-[node name="container_array 9" type="Node3D" parent="BIGJ_Ship_03" unique_id=1445341286]
+[node name="container_array 9" type="Node3D" parent="Containers" unique_id=1445341286]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.3433685, 1.9990001, -39.270496)
 
-[node name="Container" parent="BIGJ_Ship_03/container_array 9" unique_id=1017930563 instance=ExtResource("2_4ftm2")]
+[node name="Container" parent="Containers/container_array 9" unique_id=1017930563 instance=ExtResource("2_4ftm2")]
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -9.274737, 0.09125495, -0.01894195)
 
-[node name="@Node3D@286517" parent="BIGJ_Ship_03/container_array 9" unique_id=1226198824 instance=ExtResource("2_4ftm2")]
+[node name="@Node3D@286517" parent="Containers/container_array 9" unique_id=1226198824 instance=ExtResource("2_4ftm2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.279969, 2.8453994, -0.0137196835)
 
-[node name="@Node3D@286519" parent="BIGJ_Ship_03/container_array 9" unique_id=2059733278 instance=ExtResource("2_4ftm2")]
+[node name="@Node3D@286519" parent="Containers/container_array 9" unique_id=2059733278 instance=ExtResource("2_4ftm2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.2769985, 5.5995436, -0.013152117)
 
-[node name="@Node3D@286521" parent="BIGJ_Ship_03/container_array 9" unique_id=1730615506 instance=ExtResource("2_4ftm2")]
+[node name="@Node3D@286521" parent="Containers/container_array 9" unique_id=1730615506 instance=ExtResource("2_4ftm2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.6327662, 0.09125495, -0.011414834)
 
-[node name="@Node3D@286523" parent="BIGJ_Ship_03/container_array 9" unique_id=1839702254 instance=ExtResource("2_4ftm2")]
+[node name="@Node3D@286523" parent="Containers/container_array 9" unique_id=1839702254 instance=ExtResource("2_4ftm2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.3405012, 0.09125495, -0.018824916)
 
-[node name="@Node3D@286525" parent="BIGJ_Ship_03/container_array 9" unique_id=1767641522 instance=ExtResource("2_4ftm2")]
+[node name="@Node3D@286525" parent="Containers/container_array 9" unique_id=1767641522 instance=ExtResource("2_4ftm2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.3402765, 2.8453994, -0.019731235)
 
-[node name="@Node3D@286527" parent="BIGJ_Ship_03/container_array 9" unique_id=1968163648 instance=ExtResource("2_4ftm2")]
+[node name="@Node3D@286527" parent="Containers/container_array 9" unique_id=1968163648 instance=ExtResource("2_4ftm2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.3406609, 5.5995436, -0.010755612)
 
-[node name="@Node3D@286529" parent="BIGJ_Ship_03/container_array 9" unique_id=907567358 instance=ExtResource("2_4ftm2")]
+[node name="@Node3D@286529" parent="Containers/container_array 9" unique_id=907567358 instance=ExtResource("2_4ftm2")]
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 1.304683, 0.09125495, -0.014643781)
 
-[node name="@Node3D@286531" parent="BIGJ_Ship_03/container_array 9" unique_id=39994942 instance=ExtResource("2_4ftm2")]
+[node name="@Node3D@286531" parent="Containers/container_array 9" unique_id=39994942 instance=ExtResource("2_4ftm2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.3122563, 2.8453994, -0.0129055325)
 
-[node name="@Node3D@286533" parent="BIGJ_Ship_03/container_array 9" unique_id=1782470267 instance=ExtResource("2_4ftm2")]
+[node name="@Node3D@286533" parent="Containers/container_array 9" unique_id=1782470267 instance=ExtResource("2_4ftm2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.9568126, 0.09125495, -0.019990701)
 
-[node name="@Node3D@286535" parent="BIGJ_Ship_03/container_array 9" unique_id=293736632 instance=ExtResource("2_4ftm2")]
+[node name="@Node3D@286535" parent="Containers/container_array 9" unique_id=293736632 instance=ExtResource("2_4ftm2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.957419, 2.8453994, -0.011387965)
 
-[node name="@Node3D@286537" parent="BIGJ_Ship_03/container_array 9" unique_id=1339914266 instance=ExtResource("2_4ftm2")]
+[node name="@Node3D@286537" parent="Containers/container_array 9" unique_id=1339914266 instance=ExtResource("2_4ftm2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.9574647, 5.5995436, -0.012584209)
 
-[node name="@Node3D@286539" parent="BIGJ_Ship_03/container_array 9" unique_id=1112171169 instance=ExtResource("2_4ftm2")]
+[node name="@Node3D@286539" parent="Containers/container_array 9" unique_id=1112171169 instance=ExtResource("2_4ftm2")]
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 6.603221, 0.09125495, -0.013986507)
 
-[node name="@Node3D@286541" parent="BIGJ_Ship_03/container_array 9" unique_id=452011394 instance=ExtResource("2_4ftm2")]
+[node name="@Node3D@286541" parent="Containers/container_array 9" unique_id=452011394 instance=ExtResource("2_4ftm2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.6059575, 2.8453994, -0.01079226)
 
-[node name="@Node3D@286543" parent="BIGJ_Ship_03/container_array 9" unique_id=1421878066 instance=ExtResource("2_4ftm2")]
+[node name="@Node3D@286543" parent="Containers/container_array 9" unique_id=1421878066 instance=ExtResource("2_4ftm2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.6009173, 5.5995436, -0.010411789)
 
-[node name="@Node3D@286545" parent="BIGJ_Ship_03/container_array 9" unique_id=1835697345 instance=ExtResource("2_4ftm2")]
+[node name="@Node3D@286545" parent="Containers/container_array 9" unique_id=1835697345 instance=ExtResource("2_4ftm2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.244409, 0.09125495, -0.01839261)
 
-[node name="@Node3D@286547" parent="BIGJ_Ship_03/container_array 9" unique_id=1219519715 instance=ExtResource("2_4ftm2")]
+[node name="@Node3D@286547" parent="Containers/container_array 9" unique_id=1219519715 instance=ExtResource("2_4ftm2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.250461, 2.8453994, -0.013155125)
 
-[node name="@Node3D@286549" parent="BIGJ_Ship_03/container_array 9" unique_id=1081366821 instance=ExtResource("2_4ftm2")]
+[node name="@Node3D@286549" parent="Containers/container_array 9" unique_id=1081366821 instance=ExtResource("2_4ftm2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.27555, 0.09125495, 6.547522)
 
-[node name="@Node3D@286551" parent="BIGJ_Ship_03/container_array 9" unique_id=1937711405 instance=ExtResource("2_4ftm2")]
+[node name="@Node3D@286551" parent="Containers/container_array 9" unique_id=1937711405 instance=ExtResource("2_4ftm2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.277979, 2.8453994, 6.5521398)
 
-[node name="@Node3D@286553" parent="BIGJ_Ship_03/container_array 9" unique_id=1745119780 instance=ExtResource("2_4ftm2")]
+[node name="@Node3D@286553" parent="Containers/container_array 9" unique_id=1745119780 instance=ExtResource("2_4ftm2")]
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -6.6298866, 0.09125495, 6.5522614)
 
-[node name="@Node3D@286557" parent="BIGJ_Ship_03/container_array 9" unique_id=1986444777 instance=ExtResource("2_4ftm2")]
+[node name="@Node3D@286557" parent="Containers/container_array 9" unique_id=1986444777 instance=ExtResource("2_4ftm2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.9813018, 2.8453994, 6.5508513)
 
-[node name="@Node3D@286559" parent="BIGJ_Ship_03/container_array 9" unique_id=799939970 instance=ExtResource("2_4ftm2")]
+[node name="@Node3D@286559" parent="Containers/container_array 9" unique_id=799939970 instance=ExtResource("2_4ftm2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.986989, 5.5995436, 6.5525103)
 
-[node name="@Node3D@286561" parent="BIGJ_Ship_03/container_array 9" unique_id=1956607381 instance=ExtResource("2_4ftm2")]
+[node name="@Node3D@286561" parent="Containers/container_array 9" unique_id=1956607381 instance=ExtResource("2_4ftm2")]
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -1.3339138, 0.09125495, 6.5483937)
 
-[node name="@Node3D@286563" parent="BIGJ_Ship_03/container_array 9" unique_id=305109208 instance=ExtResource("2_4ftm2")]
+[node name="@Node3D@286563" parent="Containers/container_array 9" unique_id=305109208 instance=ExtResource("2_4ftm2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.3426521, 2.8453994, 6.5470295)
 
-[node name="@Node3D@286565" parent="BIGJ_Ship_03/container_array 9" unique_id=1494285410 instance=ExtResource("2_4ftm2")]
+[node name="@Node3D@286565" parent="Containers/container_array 9" unique_id=1494285410 instance=ExtResource("2_4ftm2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.3396304, 5.5995436, 6.5481725)
 
-[node name="@Node3D@286567" parent="BIGJ_Ship_03/container_array 9" unique_id=786827645 instance=ExtResource("2_4ftm2")]
+[node name="@Node3D@286567" parent="Containers/container_array 9" unique_id=786827645 instance=ExtResource("2_4ftm2")]
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 3.9522116, 0.09125495, 6.5470614)
 
-[node name="@Node3D@286569" parent="BIGJ_Ship_03/container_array 9" unique_id=926510826 instance=ExtResource("2_4ftm2")]
+[node name="@Node3D@286569" parent="Containers/container_array 9" unique_id=926510826 instance=ExtResource("2_4ftm2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.953646, 2.8453994, 6.5432386)
 
-[node name="@Node3D@286571" parent="BIGJ_Ship_03/container_array 9" unique_id=1644385709 instance=ExtResource("2_4ftm2")]
+[node name="@Node3D@286571" parent="Containers/container_array 9" unique_id=1644385709 instance=ExtResource("2_4ftm2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.9552157, 5.5995436, 6.545883)
 
-[node name="@Node3D@286573" parent="BIGJ_Ship_03/container_array 9" unique_id=479340447 instance=ExtResource("2_4ftm2")]
+[node name="@Node3D@286573" parent="Containers/container_array 9" unique_id=479340447 instance=ExtResource("2_4ftm2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.6028523, 0.09125495, 6.5469766)
 
-[node name="@Node3D@286575" parent="BIGJ_Ship_03/container_array 9" unique_id=272041047 instance=ExtResource("2_4ftm2")]
+[node name="@Node3D@286575" parent="Containers/container_array 9" unique_id=272041047 instance=ExtResource("2_4ftm2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.59994, 2.8453994, 6.549933)
 
-[node name="@Node3D@286577" parent="BIGJ_Ship_03/container_array 9" unique_id=1263053772 instance=ExtResource("2_4ftm2")]
+[node name="@Node3D@286577" parent="Containers/container_array 9" unique_id=1263053772 instance=ExtResource("2_4ftm2")]
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 9.253571, 0.09125495, 6.5462904)
 
-[node name="@Node3D@286579" parent="BIGJ_Ship_03/container_array 9" unique_id=1522481374 instance=ExtResource("2_4ftm2")]
+[node name="@Node3D@286579" parent="Containers/container_array 9" unique_id=1522481374 instance=ExtResource("2_4ftm2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.249072, 2.8453994, 6.5506577)
 
-[node name="container_array 10" type="Node3D" parent="BIGJ_Ship_03" unique_id=405840426]
+[node name="container_array 10" type="Node3D" parent="Containers" unique_id=405840426]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.2525635, 2.008, -54.11332)
 
-[node name="@Node3D@263622" parent="BIGJ_Ship_03/container_array 10" unique_id=1732932404 instance=ExtResource("2_4ftm2")]
+[node name="@Node3D@263622" parent="Containers/container_array 10" unique_id=1732932404 instance=ExtResource("2_4ftm2")]
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -0.019482046, 0.09125495, -0.015681898)
 
-[node name="@Node3D@263628" parent="BIGJ_Ship_03/container_array 10" unique_id=1956611638 instance=ExtResource("2_4ftm2")]
+[node name="@Node3D@263628" parent="Containers/container_array 10" unique_id=1956611638 instance=ExtResource("2_4ftm2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.634139, 0.09125495, -0.01786777)
 
-[node name="@Node3D@263634" parent="BIGJ_Ship_03/container_array 10" unique_id=1301659680 instance=ExtResource("2_4ftm2")]
+[node name="@Node3D@263634" parent="Containers/container_array 10" unique_id=1301659680 instance=ExtResource("2_4ftm2")]
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 5.2782054, 0.09125495, -0.014472408)
 
-[node name="@Node3D@263640" parent="BIGJ_Ship_03/container_array 10" unique_id=888944920 instance=ExtResource("2_4ftm2")]
+[node name="@Node3D@263640" parent="Containers/container_array 10" unique_id=888944920 instance=ExtResource("2_4ftm2")]
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -2.6659253, 0.09125495, 6.551904)
 
-[node name="@Node3D@263642" parent="BIGJ_Ship_03/container_array 10" unique_id=628300529 instance=ExtResource("2_4ftm2")]
+[node name="@Node3D@263642" parent="Containers/container_array 10" unique_id=628300529 instance=ExtResource("2_4ftm2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.6578453, 2.8453994, 6.5435348)
 
-[node name="@Node3D@263648" parent="BIGJ_Ship_03/container_array 10" unique_id=1950226948 instance=ExtResource("2_4ftm2")]
+[node name="@Node3D@263648" parent="Containers/container_array 10" unique_id=1950226948 instance=ExtResource("2_4ftm2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.012505682, 2.8453994, 6.544649)
 
-[node name="@Node3D@263650" parent="BIGJ_Ship_03/container_array 10" unique_id=1695253439 instance=ExtResource("2_4ftm2")]
+[node name="@Node3D@263650" parent="Containers/container_array 10" unique_id=1695253439 instance=ExtResource("2_4ftm2")]
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 2.6348426, 0.09125495, 6.5517497)
 
-[node name="@Node3D@263652" parent="BIGJ_Ship_03/container_array 10" unique_id=570775415 instance=ExtResource("2_4ftm2")]
+[node name="@Node3D@263652" parent="Containers/container_array 10" unique_id=570775415 instance=ExtResource("2_4ftm2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.6364813, 2.8453994, 6.546877)
+
+[node name="Ship Model" type="Node3D" parent="." unique_id=888447321]
+metadata/_edit_lock_ = true
+
+[node name="BIGJ_Ship_Hull" parent="Ship Model" unique_id=832733075 instance=ExtResource("11_4npjt")]
+
+[node name="Hull Bow Cover" parent="Ship Model/BIGJ_Ship_Hull" index="0" unique_id=1452277549]
+material_override = ExtResource("4_tlnlp")
+
+[node name="Hull Complete" parent="Ship Model/BIGJ_Ship_Hull" index="3" unique_id=900447941]
+material_override = ExtResource("4_tlnlp")
 
 [node name="Night Lights" type="Node3D" parent="." unique_id=1730764628]
 
@@ -1170,3 +1199,4 @@ light_size = 0.071
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.3812747, -43.62248)
 
 [editable path="BIGJ_Ship_03"]
+[editable path="Ship Model/BIGJ_Ship_Hull"]

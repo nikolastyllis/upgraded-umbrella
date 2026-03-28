@@ -2,7 +2,7 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://mngfw4ov5ej8"
+uid="uid://dsqud0ojso5wb"
 path.s3tc="res://.godot/imported/Steel_Panel_Grey_heavyRust_Col_Alpha.png-0afe9591ec1e996b2c3560eb1a85d5b1.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
@@ -22,7 +22,7 @@ compress/lossy_quality=0.7
 compress/uastc_level=0
 compress/rdo_quality_loss=0.0
 compress/hdr_compression=1
-compress/normal_map=1
+compress/normal_map=0
 compress/channel_pack=0
 mipmaps/generate=true
 mipmaps/limit=-1
