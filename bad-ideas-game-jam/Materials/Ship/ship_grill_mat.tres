@@ -2,30 +2,35 @@
 
 [ext_resource type="Material" uid="uid://sgetjvg177mb" path="res://Shaders/outline.tres" id="1_y45tb"]
 [ext_resource type="Shader" uid="uid://d266trvxphdyu" path="res://Shaders/cel-shader-base.gdshader" id="2_ia2tr"]
-[ext_resource type="Texture2D" uid="uid://ijfgcj0olcmn" path="res://Materials/Textures/Enviroment/grill_tex_Col_Alpha.png" id="3_7yt8h"]
-[ext_resource type="Texture2D" uid="uid://8qbm32koa6no" path="res://Materials/Textures/Enviroment/grill_tex_Normal.png" id="4_yasm1"]
-[ext_resource type="Texture2D" uid="uid://co76s62k0n8ns" path="res://Materials/Textures/Enviroment/grill_tex_ORM.png" id="5_vq7eu"]
+[ext_resource type="Texture2D" uid="uid://b2idpvut3i8m1" path="res://Materials/Textures/Enviroment/Grills/grill_tex_Col_Alpha.png" id="3_7yt8h"]
+[ext_resource type="Texture2D" uid="uid://b4ea0n1gxg3h8" path="res://Materials/Textures/Enviroment/Grills/grill_tex_Normal.png" id="4_yasm1"]
+[ext_resource type="Texture2D" uid="uid://cq1xwi4eiomrp" path="res://Materials/Textures/Enviroment/Grills/grill_tex_ORM.png" id="5_vq7eu"]
 
 [resource]
 render_priority = 0
 next_pass = ExtResource("1_y45tb")
 shader = ExtResource("2_ia2tr")
+shader_parameter/emission = Color(0, 0, 0, 1)
+shader_parameter/emission_energy = 1.0
 shader_parameter/normal_scale = 1.0
 shader_parameter/normal_map = ExtResource("4_yasm1")
 shader_parameter/invert_normal_y = false
-shader_parameter/alpha_cutoff = 0.098000004655
+shader_parameter/alpha_cutoff = 0.6330000300675
 shader_parameter/color = Color(1, 1, 1, 1)
 shader_parameter/base_texture = ExtResource("3_7yt8h")
 shader_parameter/use_mask = false
-shader_parameter/mask_strength = 1.0
-shader_parameter/color_replace_detail = 0.5
-shader_parameter/specular_color = Color(0.1955451, 0.1955451, 0.19554505, 1)
-shader_parameter/specular_strength = 0.0
+shader_parameter/mask_strength = 0.0
+shader_parameter/color_replace_detail = 0.0
+shader_parameter/rust_light_strength = 0.0
+shader_parameter/rust_heavy_strength = 0.0
+shader_parameter/rust_blend_sharpness = 0.10000000149012
 shader_parameter/orm_texture = ExtResource("5_vq7eu")
 shader_parameter/ao_strength = 1.0
 shader_parameter/roughness_strength = 0.0
 shader_parameter/metallic_strength = 0.0
 shader_parameter/invert_roughness = false
+shader_parameter/specular_color = Color(0.1955451, 0.1955451, 0.19554505, 1)
+shader_parameter/specular_strength = 0.0
 shader_parameter/fresnel = Color(0.25565878, 0.25565878, 0.25565878, 0.3019608)
 shader_parameter/uv_scale = Vector2(1, 1)
 shader_parameter/uv_offset = Vector2(0, 0)
