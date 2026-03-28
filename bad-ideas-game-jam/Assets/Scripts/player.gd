@@ -161,7 +161,6 @@ func die() -> void:
 	movement_disabled = true
 	var state_machine = animation_tree["parameters/AnimationNodeStateMachine/playback"]
 	state_machine.travel("Death")
-
 	var tween_out := create_tween()
 	tween_out.tween_property(camera, "fov", 110.0, 3.0).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_QUAD)
 	await fade_out_camera(3.0)
@@ -169,6 +168,8 @@ func die() -> void:
 	var interacted_boxes = get_tree().get_nodes_in_group("interacted_boxes")
 	for box in interacted_boxes:
 		box.queue_free()
+		
+	camera_origin.rotation_degrees = Vector3(0, -180, 0)
 	
 	state_machine.travel("Idle")
 	var tween_in := create_tween()

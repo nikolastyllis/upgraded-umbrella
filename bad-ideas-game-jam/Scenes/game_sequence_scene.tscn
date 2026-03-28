@@ -463,7 +463,7 @@ metadata/_edit_lock_ = true
 transform = Transform3D(-0.87114525, -0.27626652, -0.40593448, 0, 0.8267076, -0.5626318, 0.49102545, -0.490134, -0.7201824, 52.358, -6.0843773, 106.95354)
 
 [node name="Respawn" type="Node3D" parent="GameManager/Locations" unique_id=888515974]
-transform = Transform3D(-0.4910254, 0, 0.87114525, 0, 0.99999994, 0, -0.8711452, 0, -0.49102542, 51.726254, -5.404766, 107.78374)
+transform = Transform3D(0.99999994, 0, 0, 0, 0.99999994, 0, 0, 0, 1, 51.96664, -5.1743274, 104.09488)
 
 [node name="Container" type="Node3D" parent="GameManager/Locations" unique_id=2145291984]
 transform = Transform3D(-0.87114525, 0, -0.49102545, 0, 1, 0, 0.49102545, 0, -0.87114525, 52.696583, -5.021561, 108.17822)
