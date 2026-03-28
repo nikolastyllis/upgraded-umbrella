@@ -379,7 +379,7 @@ light_volumetric_fog_energy = 0.0
 light_angular_distance = 1.5950041
 shadow_enabled = true
 shadow_normal_bias = 4.319
-shadow_opacity = 0.8
+shadow_opacity = 0.5
 shadow_blur = 0.669
 directional_shadow_mode = 1
 directional_shadow_fade_start = 1.0
@@ -452,7 +452,7 @@ draw_pass_1 = SubResource("RibbonTrailMesh_qcyk2")
 [node name="GameManager" type="Node3D" parent="." unique_id=1749829845]
 transform = Transform3D(-0.87121385, 0, 0.49090374, 0, 1, 0, -0.49090374, 0, -0.87121385, -8.431, 7.972, 75.958)
 script = ExtResource("12_yiumw")
-debug_skip_dialog = true
+debug_play_from_act_7 = false
 DAY_SUN_PITCH_DEG = -72.6
 DAY_SUN_YAW_DEG = 124.3
 SUNSET_SUN_YAW_DEG = 130.0
