@@ -55,13 +55,13 @@ func _setup_footstep_player() -> void:
 func _play_footstep() -> void:
 	footstep_player.stream = footstep_streams[randi() % footstep_streams.size()]
 	footstep_player.pitch_scale = randf_range(0.8, 1.2)
-	footstep_player.volume_db = randf_range(-20, -15)
+	footstep_player.volume_db = randf_range(-10.0, 0.0)
 	footstep_player.play()
 
 func _play_ladder_step() -> void:
 	ladder_player.stream = ladder_streams[randi() % ladder_streams.size()]
 	ladder_player.pitch_scale = randf_range(0.8, 1.2)
-	ladder_player.volume_db = randf_range(-20, -15)
+	ladder_player.volume_db = randf_range(-10.0, 0.0)
 	ladder_player.play()
 
 func _physics_process(delta: float) -> void:
