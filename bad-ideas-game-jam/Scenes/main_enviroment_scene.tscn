@@ -10,6 +10,7 @@
 [ext_resource type="Material" uid="uid://bolm5xo6weej3" path="res://Materials/Ship/rust_panel_simple_white.tres" id="5_mtju5"]
 [ext_resource type="Material" uid="uid://bea2b3oeci11q" path="res://Materials/Ship/Window_Door.tres" id="5_ns4fk"]
 [ext_resource type="Material" uid="uid://c51ek0v8ig1jv" path="res://Materials/Ship/ship_grill_mat.tres" id="6_tlnlp"]
+[ext_resource type="Material" uid="uid://386rl4fymu66" path="res://Materials/Ship/InteriorWalls.tres" id="7_0qs2n"]
 [ext_resource type="Material" uid="uid://cxpwhh6t2s1cs" path="res://Materials/Ship/ship_main_deck_mat.tres" id="7_gcmii"]
 [ext_resource type="Material" uid="uid://ct3phceoao5ux" path="res://Materials/Ship/bridge_windows.tres" id="8_ucy3n"]
 [ext_resource type="Material" uid="uid://bndtvqpehtb6c" path="res://Materials/Ship/ship_panel_lighter.tres" id="11_22tk6"]
@@ -95,6 +96,9 @@ material_override = ExtResource("2_0qs2n")
 
 [node name="Cylinder_006" parent="BIGJ_Ship_03" index="25" unique_id=1726009455]
 material_override = ExtResource("12_ns4fk")
+
+[node name="Interior Walls" parent="BIGJ_Ship_03" index="26" unique_id=2111432743]
+material_override = ExtResource("7_0qs2n")
 
 [node name="Walls Below Poop Deck_001" parent="BIGJ_Ship_03" index="27" unique_id=1707359905]
 material_override = ExtResource("3_tlnlp")
