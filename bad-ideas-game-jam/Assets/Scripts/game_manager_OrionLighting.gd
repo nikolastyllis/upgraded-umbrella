@@ -15,7 +15,6 @@ var dialog: Dictionary = {
 	12: "[Ronnie] Oh well, there's snap.",
 	13: "[Ronnie] Hahahaha.",
 	14: "[Wazza] Ahahaa.",
-	15: "[Gilbert] Eeehhh.",
 	16: "[Ronnie] Haha, don't get testy, Michael Jackson.",
 	17: "[Ronnie] We didn't realise we were in the company of music royalty.",
 	18: "[Ronnie] King of pop.",
@@ -395,7 +394,6 @@ func _play_act_1_start() -> void:
 	await twin_1.play_dialogue(12)
 	twin_1.play_dialogue(13)
 	await twin_2.play_dialogue(14)
-	await player.play_dialogue(15)
 	await twin_1.play_dialogue(16)
 	await twin_1.play_dialogue(17)
 	await _wait_for(1.0)

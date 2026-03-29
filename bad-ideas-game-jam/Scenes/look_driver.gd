@@ -83,6 +83,7 @@ class_name LookDriver
 @export var env_fog_density_prop := "fog_density"
 @export var env_adjust_enabled_prop := "adjustment_enabled"
 @export var env_exposure_prop := "adjustment_exposure"
+@export var env_ambient_sky_contribution_prop := "ambient_light_sky_contribution"
 
 var _last_t := -1.0
 
@@ -123,39 +124,47 @@ func _apply_look(t: float) -> void:
 	# 1) Light colour (optional)
 	if sun != null:
 		sun.light_color = _sample_col(sun_colour_ramp, t, sun.light_color)
-		var cur_energy := sun.light_energy
-		var target_energy := _sample_curve(sun_energy_curve, t, cur_energy)
+		var cur_energy: float = sun.light_energy
+		var target_energy: float = _sample_curve(sun_energy_curve, t, cur_energy)
 		sun.light_energy = target_energy
-		sun.light_angular_distance = _sample_curve(sun_angula_curve, t, 1)
+		sun.light_angular_distance = _sample_curve(sun_angula_curve, t, 1.0)
 		
-	var horizon_col := _sample_col(horizon_ramp, t, Color(0.70, 0.85, 1.0))
+	var horizon_col: Color = _sample_col(horizon_ramp, t, Color(0.70, 0.85, 1.0))
+
 	# 2) Environment (fog + adjustments)
-	var env := _get_live_environment()
+	var env: Environment = _get_live_environment()
 	if env != null:
 		if drive_fog:
 			_set_env_bool(env, env_fog_enabled_prop, true)
-			_set_env_color(env, env_fog_colour_prop, horizon_col.lerp(Color(0.5,0.5,0.5), 0.15))
-			var cur_den := _to_f(env.get(env_fog_density_prop), 0.0)
+			_set_env_color(env, env_fog_colour_prop, horizon_col.lerp(Color(0.5, 0.5, 0.5), 0.15))
+			var cur_den: float = _to_f(env.get(env_fog_density_prop), 0.0)
 			_set_env_float(env, env_fog_density_prop, _sample_curve(fog_density_curve, t, cur_den))
 			
 		if drive_adjustments:
 			_set_env_bool(env, env_adjust_enabled_prop, true)
-			var cur_exp := _to_f(env.get(env_exposure_prop), 1.0)
+
+			var cur_exp: float = _to_f(env.get(env_exposure_prop), 1.0)
 			_set_env_float(env, env_exposure_prop, _sample_curve(exposure_curve, t, cur_exp))
 
+			var cur_ambient: float = _to_f(env.get(env_ambient_sky_contribution_prop), 1.0)
+			_set_env_float(
+				env,
+				env_ambient_sky_contribution_prop,
+				_sample_curve(ambient_light, t, cur_ambient)
+			)
+
 	# 3) Sky shader uniforms
-	var sky_mat := _get_sky_shader()
+	var sky_mat: ShaderMaterial = _get_sky_shader()
 	if sky_mat != null:
 		_set_shader_float(sky_mat, sky_sun_elev_uniform, t)
 		_set_shader_color(sky_mat, sky_zenith_uniform, _sample_col(sky_zenith_ramp, t, Color(0.18, 0.45, 0.95)))
-		
 		_set_shader_color(sky_mat, sky_horizon_uniform, horizon_col)
 
-		var cur_cloud := _get_shader_float(sky_mat, sky_cloud_amount_uniform, 0.55)
+		var cur_cloud: float = _get_shader_float(sky_mat, sky_cloud_amount_uniform, 0.55)
 		_set_shader_float(sky_mat, sky_cloud_amount_uniform, _sample_curve(cloud_amount_curve, t, cur_cloud))
 	
 	# 4) Ocean shader uniforms
-	var ocean_mat := _get_ocean_shader()
+	var ocean_mat: ShaderMaterial = _get_ocean_shader()
 
 	if DEBUG_print_material_status:
 		_print_ocean_status(ocean_mat)
@@ -173,23 +182,18 @@ func _apply_look(t: float) -> void:
 	_set_shader_color(ocean_mat, ocean_deep_uniform, _sample_col(ocean_deep_ramp, t, Color(0.01, 0.08, 0.18)))
 	_set_shader_color(ocean_mat, ocean_horizon_uniform, horizon_col)
 
-	var cur_foam := _get_shader_float(ocean_mat, ocean_foam_uniform, 1.0)
+	var cur_foam: float = _get_shader_float(ocean_mat, ocean_foam_uniform, 1.0)
 	_set_shader_float(ocean_mat, ocean_foam_uniform, _sample_curve(ocean_foam_curve, t, cur_foam))
-	var cur_macro_f := _get_shader_float(ocean_mat, ocean_macro_freq_uniform, 0.035)
-	var cur_micro_f := _get_shader_float(ocean_mat, ocean_micro_freq_uniform, 0.22)
 
-	_set_shader_float(ocean_mat, ocean_macro_freq_uniform,
-	_sample_curve(ocean_macro_freq_curve, t, cur_macro_f))
-
-	_set_shader_float(ocean_mat, ocean_micro_freq_uniform,
-	_sample_curve(ocean_micro_freq_curve, t, cur_micro_f))
+	var cur_macro_f: float = _get_shader_float(ocean_mat, ocean_macro_freq_uniform, 0.035)
+	var cur_micro_f: float = _get_shader_float(ocean_mat, ocean_micro_freq_uniform, 0.22)
+	_set_shader_float(ocean_mat, ocean_macro_freq_uniform, _sample_curve(ocean_macro_freq_curve, t, cur_macro_f))
+	_set_shader_float(ocean_mat, ocean_micro_freq_uniform, _sample_curve(ocean_micro_freq_curve, t, cur_micro_f))
 	
-	var cur_macro := _get_shader_float(ocean_mat, ocean_macro_amp_uniform, 0.55)
-	var cur_micro := _get_shader_float(ocean_mat, ocean_micro_amp_uniform, 0.10)
+	var cur_macro: float = _get_shader_float(ocean_mat, ocean_macro_amp_uniform, 0.55)
+	var cur_micro: float = _get_shader_float(ocean_mat, ocean_micro_amp_uniform, 0.10)
 	_set_shader_float(ocean_mat, ocean_macro_amp_uniform, _sample_curve(ocean_macro_amp_curve, t, cur_macro))
 	_set_shader_float(ocean_mat, ocean_micro_amp_uniform, _sample_curve(ocean_micro_amp_curve, t, cur_micro))
-
-
 # -------------------------
 # Helpers
 # -------------------------

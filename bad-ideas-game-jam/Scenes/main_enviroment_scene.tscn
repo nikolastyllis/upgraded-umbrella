@@ -19,6 +19,7 @@
 [node name="Ship Enviroment" type="Node3D" unique_id=1795795939]
 
 [node name="BIGJ_Ship_03" parent="." unique_id=694625144 instance=ExtResource("1_l8ged")]
+metadata/_edit_lock_ = true
 
 [node name="Plane_020" parent="BIGJ_Ship_03" index="1" unique_id=504483245]
 material_override = ExtResource("2_0qs2n")
@@ -328,7 +329,8 @@ material_override = ExtResource("7_gcmii")
 material_override = ExtResource("7_gcmii")
 
 [node name="Accommodation Deck_004" parent="BIGJ_Ship_03" index="110" unique_id=1319069377]
-material_override = ExtResource("7_gcmii")
+surface_material_override/0 = ExtResource("7_gcmii")
+surface_material_override/1 = ExtResource("3_tlnlp")
 
 [node name="Bridge Deck" parent="BIGJ_Ship_03" index="111" unique_id=309916217]
 material_override = ExtResource("7_gcmii")
@@ -374,7 +376,9 @@ surface_material_override/1 = ExtResource("7_gcmii")
 surface_material_override/2 = ExtResource("3_av35p")
 
 [node name="Hatch Cover v2_002" parent="BIGJ_Ship_03" index="123" unique_id=415048395]
-material_override = ExtResource("3_tlnlp")
+surface_material_override/0 = ExtResource("3_tlnlp")
+surface_material_override/1 = ExtResource("7_gcmii")
+surface_material_override/2 = ExtResource("3_av35p")
 
 [node name="Hatch Cover v2_003" parent="BIGJ_Ship_03" index="124" unique_id=693209990]
 surface_material_override/0 = ExtResource("3_tlnlp")
@@ -940,6 +944,7 @@ material_override = ExtResource("3_tlnlp")
 material_override = ExtResource("3_av35p")
 
 [node name="Container Posts B_007" parent="BIGJ_Ship_03" index="230" unique_id=574315885]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.226734, -0.12261677, 21.312088)
 material_override = ExtResource("3_tlnlp")
 
 [node name="Nub A_028" parent="BIGJ_Ship_03/Container Posts B_007" index="0" unique_id=1911982989]
@@ -1072,10 +1077,7 @@ metadata/_edit_lock_ = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.466865, -0.10829115, 48.0858)
 
 [node name="Container" parent="Containers/container_array 5" unique_id=373595834 instance=ExtResource("2_4ftm2")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.6653728, 0.09125495, 3.2643664)
-
-[node name="@Node3D@169253" parent="Containers/container_array 5" unique_id=1432510172 instance=ExtResource("2_4ftm2")]
-transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -0.015025109, 0.09125495, 3.2682803)
+transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, -2.6653728, 0.09125495, 3.2643661)
 
 [node name="@Node3D@169259" parent="Containers/container_array 5" unique_id=2119645470 instance=ExtResource("2_4ftm2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.6297705, 0.09125495, 3.2616153)
@@ -1084,172 +1086,121 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.6297705, 0.09125495, 3.2616
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 5.283235, 0.09125495, 3.2697961)
 
 [node name="_Node3D_169263" parent="Containers/container_array 5" unique_id=83243119 instance=ExtResource("2_4ftm2")]
-transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 10.625679, 2.8594832, -1.333046)
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 10.083006, 2.939166, -0.8847923)
+
+[node name="_Node3D_169267" parent="Containers/container_array 5" unique_id=683553091 instance=ExtResource("2_4ftm2")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 12.761868, 2.939166, -0.8847923)
+
+[node name="_Node3D_169266" parent="Containers/container_array 5" unique_id=1361657633 instance=ExtResource("2_4ftm2")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 2.5909095, 2.939166, -0.8847923)
 
 [node name="_Node3D_169264" parent="Containers/container_array 5" unique_id=357046782 instance=ExtResource("2_4ftm2")]
-transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -5.44128, 2.8594832, -1.333046)
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -5.1469903, 2.9322605, -0.92907333)
+
+[node name="_Node3D_169265" parent="Containers/container_array 5" unique_id=1384616019 instance=ExtResource("2_4ftm2")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -2.5800629, 2.9322605, -0.92907333)
 
 [node name="container_array 1" type="Node3D" parent="Containers" unique_id=1483757596]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.2525635, 2.0300002, 33.871853)
 
 [node name="@Node3D@212723" parent="Containers/container_array 1" unique_id=401195711 instance=ExtResource("2_4ftm2")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.279607, 0.09125495, -0.019112376)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.279607, 0.09125495, -0.019111633)
 
 [node name="@Node3D@212725" parent="Containers/container_array 1" unique_id=489944529 instance=ExtResource("2_4ftm2")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.274407, 2.8453994, -0.017019266)
-
-[node name="@Node3D@212727" parent="Containers/container_array 1" unique_id=478122204 instance=ExtResource("2_4ftm2")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.277114, 5.5995436, -0.019681124)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.274407, 2.8155847, -0.017017365)
 
 [node name="@Node3D@212729" parent="Containers/container_array 1" unique_id=284083046 instance=ExtResource("2_4ftm2")]
-transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -6.633905, 0.09125495, -0.017429134)
+transform = Transform3D(1, 0, 1.7484555e-07, 0, 1, 0, -1.7484555e-07, 0, 1, -6.633905, 0.09125495, -0.017429352)
 
 [node name="@Node3D@212731" parent="Containers/container_array 1" unique_id=1171843709 instance=ExtResource("2_4ftm2")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.6341686, 2.8453994, -0.010410492)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.6341686, 2.8155847, -0.010410309)
 
 [node name="@Node3D@212733" parent="Containers/container_array 1" unique_id=1078372954 instance=ExtResource("2_4ftm2")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.9814165, 0.09125495, -0.016319644)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.3392785, 0.09125495, -0.016319275)
 
 [node name="@Node3D@212735" parent="Containers/container_array 1" unique_id=1830513444 instance=ExtResource("2_4ftm2")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.9895623, 2.8453994, -0.013115802)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.3474238, 2.8155847, -0.013114929)
 
 [node name="@Node3D@212737" parent="Containers/container_array 1" unique_id=1431942011 instance=ExtResource("2_4ftm2")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.3055726, 0.09125495, -0.01214896)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.3055726, 0.09125495, -0.012149811)
 
 [node name="@Node3D@212739" parent="Containers/container_array 1" unique_id=799752942 instance=ExtResource("2_4ftm2")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.3044666, 2.8453994, -0.011473242)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.3044666, 2.8155847, -0.011474609)
 
-[node name="@Node3D@212741" parent="Containers/container_array 1" unique_id=1460976791 instance=ExtResource("2_4ftm2")]
-transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 3.9564495, 0.09125495, -0.012797601)
+[node name="_Node3D_212737" parent="Containers/container_array 1" unique_id=255635481 instance=ExtResource("2_4ftm2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.3055726, 0.09125495, 6.37059)
 
-[node name="@Node3D@212743" parent="Containers/container_array 1" unique_id=1763180338 instance=ExtResource("2_4ftm2")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.9503222, 2.8453994, -0.010464664)
-
-[node name="@Node3D@212745" parent="Containers/container_array 1" unique_id=107479798 instance=ExtResource("2_4ftm2")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.956232, 5.5995436, -0.01228259)
+[node name="_Node3D_212739" parent="Containers/container_array 1" unique_id=1892467172 instance=ExtResource("2_4ftm2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.3044666, 2.8155847, 6.3712654)
 
 [node name="@Node3D@212747" parent="Containers/container_array 1" unique_id=124137000 instance=ExtResource("2_4ftm2")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.600993, 0.09125495, -0.014103413)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.600993, 0.09125495, -0.014102936)
 
 [node name="@Node3D@212749" parent="Containers/container_array 1" unique_id=1446719155 instance=ExtResource("2_4ftm2")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.60302, 2.8453994, -0.017510105)
-
-[node name="@Node3D@212751" parent="Containers/container_array 1" unique_id=1378885962 instance=ExtResource("2_4ftm2")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.5995026, 5.5995436, -0.01516513)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.60302, 2.8155847, -0.01750946)
 
 [node name="@Node3D@212753" parent="Containers/container_array 1" unique_id=1268908049 instance=ExtResource("2_4ftm2")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.898425, 0.09125495, -0.013860705)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.641906, 0.09125495, -0.01386261)
 
 [node name="@Node3D@212755" parent="Containers/container_array 1" unique_id=1793241194 instance=ExtResource("2_4ftm2")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.894059, 2.8453994, -0.016747544)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.63754, 2.8155847, -0.016746521)
 
 [node name="@Node3D@212757" parent="Containers/container_array 1" unique_id=1640236135 instance=ExtResource("2_4ftm2")]
-transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -9.276004, 0.09125495, 6.5461054)
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -9.276004, 0.09125495, 6.4217567)
 
 [node name="@Node3D@212759" parent="Containers/container_array 1" unique_id=730021938 instance=ExtResource("2_4ftm2")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.278076, 2.8453994, 6.5443797)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.278076, 2.8155847, 6.4200325)
 
 [node name="@Node3D@212761" parent="Containers/container_array 1" unique_id=2114257921 instance=ExtResource("2_4ftm2")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.628354, 0.09125495, 6.5508604)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.628354, 0.09125495, 6.4265137)
 
 [node name="@Node3D@212763" parent="Containers/container_array 1" unique_id=1428243487 instance=ExtResource("2_4ftm2")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.6320724, 2.8453994, 6.5494637)
-
-[node name="@Node3D@212765" parent="Containers/container_array 1" unique_id=750188528 instance=ExtResource("2_4ftm2")]
-transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -3.9870634, 0.09125495, 6.54321)
-
-[node name="@Node3D@212767" parent="Containers/container_array 1" unique_id=82378565 instance=ExtResource("2_4ftm2")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.98565, 2.8453994, 6.5476794)
-
-[node name="@Node3D@212769" parent="Containers/container_array 1" unique_id=1191636190 instance=ExtResource("2_4ftm2")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.9832754, 5.5995436, 6.5490932)
-
-[node name="@Node3D@212771" parent="Containers/container_array 1" unique_id=1010876488 instance=ExtResource("2_4ftm2")]
-transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 1.3034432, 0.09125495, 6.5458336)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.6320724, 2.8155847, 6.4251175)
 
 [node name="@Node3D@212773" parent="Containers/container_array 1" unique_id=1891944761 instance=ExtResource("2_4ftm2")]
-transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 6.599869, 0.09125495, 6.551706)
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 3.9667091, 0.09125495, 6.2787895)
 
 [node name="@Node3D@212775" parent="Containers/container_array 1" unique_id=1561651932 instance=ExtResource("2_4ftm2")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.604953, 2.8453994, 6.5450864)
-
-[node name="@Node3D@212777" parent="Containers/container_array 1" unique_id=1358028124 instance=ExtResource("2_4ftm2")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.601345, 5.5995436, 6.546251)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.9717932, 2.8155847, 6.272171)
 
 [node name="@Node3D@212779" parent="Containers/container_array 1" unique_id=663661203 instance=ExtResource("2_4ftm2")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.245512, 0.09125495, 6.5463)
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 11.686102, 0.09125495, 6.4219513)
 
 [node name="@Node3D@212781" parent="Containers/container_array 1" unique_id=1815819922 instance=ExtResource("2_4ftm2")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.244488, 2.8453994, 6.5513396)
-
-[node name="@Node3D@212783" parent="Containers/container_array 1" unique_id=1665200857 instance=ExtResource("2_4ftm2")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.253042, 5.5995436, 6.5458636)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.710865, 2.8155847, 6.4269905)
 
 [node name="container_array 2" type="Node3D" parent="Containers" unique_id=785673378]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.2525635, 1.9120002, 18.04541)
 
-[node name="Container" parent="Containers/container_array 2" unique_id=16096896 instance=ExtResource("2_4ftm2")]
-transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -9.276017, 0.09125495, -0.014495812)
-
 [node name="@Node3D@195755" parent="Containers/container_array 2" unique_id=432819238 instance=ExtResource("2_4ftm2")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.278431, 2.8453994, -0.011043334)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.26328, 2.8453994, -6.3798656)
 
-[node name="@Node3D@195759" parent="Containers/container_array 2" unique_id=846731824 instance=ExtResource("2_4ftm2")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.6280637, 0.09125495, -0.016835887)
-
-[node name="@Node3D@195761" parent="Containers/container_array 2" unique_id=163335618 instance=ExtResource("2_4ftm2")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.636289, 2.8453994, -0.014296591)
-
-[node name="@Node3D@195765" parent="Containers/container_array 2" unique_id=407265062 instance=ExtResource("2_4ftm2")]
-transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -3.987851, 0.09125495, -0.010998679)
-
-[node name="@Node3D@195767" parent="Containers/container_array 2" unique_id=364634811 instance=ExtResource("2_4ftm2")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.98998, 2.8453994, -0.010376192)
+[node name="_Node3D_195755" parent="Containers/container_array 2" unique_id=1702729452 instance=ExtResource("2_4ftm2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.656537, 2.8453994, -6.3798656)
 
 [node name="@Node3D@195771" parent="Containers/container_array 2" unique_id=1153128957 instance=ExtResource("2_4ftm2")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.3410976, 0.09125495, -0.019805271)
+transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, -1.3410976, 0.09125495, -0.019805908)
+
+[node name="_Node3D_195772" parent="Containers/container_array 2" unique_id=2113430272 instance=ExtResource("2_4ftm2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.7938585, 0.09125495, -0.019805908)
 
 [node name="@Node3D@195773" parent="Containers/container_array 2" unique_id=275071362 instance=ExtResource("2_4ftm2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.3360277, 2.8453994, -0.014611805)
 
-[node name="@Node3D@195775" parent="Containers/container_array 2" unique_id=866525915 instance=ExtResource("2_4ftm2")]
-transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 1.3063407, 0.09125495, -0.016518457)
-
-[node name="@Node3D@195777" parent="Containers/container_array 2" unique_id=1696197354 instance=ExtResource("2_4ftm2")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.3098367, 2.8453994, -0.0147853475)
-
-[node name="@Node3D@195779" parent="Containers/container_array 2" unique_id=733387111 instance=ExtResource("2_4ftm2")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.9515362, 0.09125495, -0.015656738)
-
-[node name="@Node3D@195781" parent="Containers/container_array 2" unique_id=440312019 instance=ExtResource("2_4ftm2")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.957867, 2.8453994, -0.014526975)
-
-[node name="@Node3D@195785" parent="Containers/container_array 2" unique_id=744987697 instance=ExtResource("2_4ftm2")]
-transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 6.6046653, 0.09125495, -0.015484506)
-
-[node name="@Node3D@195787" parent="Containers/container_array 2" unique_id=740320167 instance=ExtResource("2_4ftm2")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.6067805, 2.8453994, -0.012569517)
-
-[node name="@Node3D@195789" parent="Containers/container_array 2" unique_id=1108275115 instance=ExtResource("2_4ftm2")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.25166, 0.09125495, -0.012186688)
-
-[node name="@Node3D@195791" parent="Containers/container_array 2" unique_id=1462208970 instance=ExtResource("2_4ftm2")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.246114, 2.8453994, -0.013165438)
+[node name="_Node3D_195773" parent="Containers/container_array 2" unique_id=141478748 instance=ExtResource("2_4ftm2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.8058748, 2.9389486, -0.038446426)
 
 [node name="@Node3D@195793" parent="Containers/container_array 2" unique_id=766879890 instance=ExtResource("2_4ftm2")]
-transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 11.893075, 0.09125495, -0.013440761)
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 11.665079, 0.09125495, -0.013441086)
 
 [node name="@Node3D@195795" parent="Containers/container_array 2" unique_id=1553922182 instance=ExtResource("2_4ftm2")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.898172, 2.8453994, -0.017656015)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.6701765, 2.8453994, -0.017656326)
 
 [node name="@Node3D@195799" parent="Containers/container_array 2" unique_id=998156737 instance=ExtResource("2_4ftm2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.277381, 0.09125495, 6.5509696)
 
 [node name="@Node3D@195801" parent="Containers/container_array 2" unique_id=1799810330 instance=ExtResource("2_4ftm2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.280308, 2.8453994, 6.55157)
-
-[node name="@Node3D@195803" parent="Containers/container_array 2" unique_id=1741952719 instance=ExtResource("2_4ftm2")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.280916, 5.5995436, 6.548479)
 
 [node name="@Node3D@195805" parent="Containers/container_array 2" unique_id=369587500 instance=ExtResource("2_4ftm2")]
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -6.6325397, 0.09125495, 6.548588)
@@ -1275,47 +1226,38 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.334854, 2.8453994, 6.54874
 [node name="@Node3D@195819" parent="Containers/container_array 2" unique_id=817451806 instance=ExtResource("2_4ftm2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.3392277, 5.5995436, 6.5516114)
 
-[node name="@Node3D@195821" parent="Containers/container_array 2" unique_id=816417710 instance=ExtResource("2_4ftm2")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.3049585, 0.09125495, 6.544708)
-
-[node name="@Node3D@195823" parent="Containers/container_array 2" unique_id=806793143 instance=ExtResource("2_4ftm2")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.3126692, 2.8453994, 6.546382)
-
-[node name="@Node3D@195825" parent="Containers/container_array 2" unique_id=856163999 instance=ExtResource("2_4ftm2")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.3038858, 5.5995436, 6.5448666)
-
 [node name="@Node3D@195827" parent="Containers/container_array 2" unique_id=1016122148 instance=ExtResource("2_4ftm2")]
-transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 3.9553876, 0.09125495, 6.5436788)
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 3.805242, 0.09125495, 6.3711834)
 
 [node name="@Node3D@195829" parent="Containers/container_array 2" unique_id=1318628705 instance=ExtResource("2_4ftm2")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.9568582, 2.8453994, 6.5443425)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.8067126, 2.8453994, 6.371847)
 
 [node name="@Node3D@195831" parent="Containers/container_array 2" unique_id=1986477240 instance=ExtResource("2_4ftm2")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.9501915, 5.5995436, 6.550224)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.800046, 5.5995436, 6.3777294)
 
 [node name="@Node3D@195833" parent="Containers/container_array 2" unique_id=1273843357 instance=ExtResource("2_4ftm2")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.6013913, 0.09125495, 6.549974)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.451246, 0.09125495, 6.3774796)
 
 [node name="@Node3D@195835" parent="Containers/container_array 2" unique_id=1098420533 instance=ExtResource("2_4ftm2")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.601691, 2.8453994, 6.550988)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.4515452, 2.8453994, 6.3784924)
 
 [node name="@Node3D@195837" parent="Containers/container_array 2" unique_id=1843278918 instance=ExtResource("2_4ftm2")]
-transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 9.243831, 0.09125495, 6.5441203)
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 9.093685, 0.09125495, 6.371626)
 
 [node name="@Node3D@195839" parent="Containers/container_array 2" unique_id=1577040540 instance=ExtResource("2_4ftm2")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.247481, 2.8453994, 6.5488553)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.097336, 2.8453994, 6.37636)
 
 [node name="@Node3D@195843" parent="Containers/container_array 2" unique_id=256374227 instance=ExtResource("2_4ftm2")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.894067, 0.09125495, 6.5484834)
+transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 11.740696, 0.09125495, 6.376625)
 
 [node name="@Node3D@195845" parent="Containers/container_array 2" unique_id=1508311087 instance=ExtResource("2_4ftm2")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.8908415, 2.8453994, 6.549123)
+transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 11.743921, 2.8453994, 6.375986)
 
 [node name="container_array 6" type="Node3D" parent="Containers" unique_id=159602072]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.2525635, 2.005, 5.132507)
 
 [node name="Container" parent="Containers/container_array 6" unique_id=24344546 instance=ExtResource("2_4ftm2")]
-transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -9.283389, 0.09125495, -0.012577688)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.283389, 0.09125495, -0.012577534)
 
 [node name="@Node3D@198841" parent="Containers/container_array 6" unique_id=158976937 instance=ExtResource("2_4ftm2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.274887, 2.8453994, -0.010229057)
@@ -1333,7 +1275,7 @@ transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -3.9
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.9850285, 2.8453994, -0.010557963)
 
 [node name="@Node3D@198851" parent="Containers/container_array 6" unique_id=1683226139 instance=ExtResource("2_4ftm2")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.9816542, 5.5995436, -0.016770761)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.9351988, 5.5995436, -0.01677084)
 
 [node name="@Node3D@198853" parent="Containers/container_array 6" unique_id=1331819157 instance=ExtResource("2_4ftm2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.3343418, 0.09125495, -0.015424427)
@@ -1344,8 +1286,11 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.3403525, 2.8453994, -0.019
 [node name="@Node3D@198857" parent="Containers/container_array 6" unique_id=295896551 instance=ExtResource("2_4ftm2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.3372482, 5.5995436, -0.013123787)
 
+[node name="_Node3D_198857" parent="Containers/container_array 6" unique_id=512565380 instance=ExtResource("2_4ftm2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.891022, 5.5995436, -0.013123989)
+
 [node name="@Node3D@198859" parent="Containers/container_array 6" unique_id=1865781625 instance=ExtResource("2_4ftm2")]
-transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 1.3099675, 0.09125495, -0.010621866)
+transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 1.3099675, 0.09125495, -0.010622025)
 
 [node name="@Node3D@198861" parent="Containers/container_array 6" unique_id=1763191649 instance=ExtResource("2_4ftm2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.3039654, 2.8453994, -0.016445108)
@@ -1353,191 +1298,140 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.3039654, 2.8453994, -0.0164
 [node name="@Node3D@198863" parent="Containers/container_array 6" unique_id=1100841017 instance=ExtResource("2_4ftm2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.311461, 5.5995436, -0.010800569)
 
+[node name="_Node3D_198851" parent="Containers/container_array 6" unique_id=2063256078 instance=ExtResource("2_4ftm2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.9351988, 5.5995436, -8.950615)
+
+[node name="_Node3D_198852" parent="Containers/container_array 6" unique_id=1454066767 instance=ExtResource("2_4ftm2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.171836, 5.5995436, -8.950615)
+
+[node name="_Node3D_198863" parent="Containers/container_array 6" unique_id=150673948 instance=ExtResource("2_4ftm2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.311461, 5.5995436, -8.944644)
+
+[node name="_Node3D_198865" parent="Containers/container_array 6" unique_id=1457795909 instance=ExtResource("2_4ftm2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.3230944, 5.5995436, -8.944644)
+
+[node name="_Node3D_198864" parent="Containers/container_array 6" unique_id=1006712518 instance=ExtResource("2_4ftm2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.8646545, 5.5995436, -8.944644)
+
 [node name="@Node3D@198865" parent="Containers/container_array 6" unique_id=2052056358 instance=ExtResource("2_4ftm2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.9527931, 0.09125495, -0.011186452)
 
 [node name="@Node3D@198867" parent="Containers/container_array 6" unique_id=752368853 instance=ExtResource("2_4ftm2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.9551501, 2.8453994, -0.010888141)
 
-[node name="@Node3D@198869" parent="Containers/container_array 6" unique_id=1818934837 instance=ExtResource("2_4ftm2")]
-transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 6.605574, 0.09125495, -0.010660603)
-
 [node name="@Node3D@198871" parent="Containers/container_array 6" unique_id=1560765905 instance=ExtResource("2_4ftm2")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.252765, 0.09125495, -0.018783718)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.024769, 0.09125495, -0.01878357)
 
 [node name="@Node3D@198873" parent="Containers/container_array 6" unique_id=1474216539 instance=ExtResource("2_4ftm2")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.250402, 2.8453994, -0.018349828)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.022407, 2.8453994, -0.018349648)
 
 [node name="@Node3D@198875" parent="Containers/container_array 6" unique_id=66958816 instance=ExtResource("2_4ftm2")]
-transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 11.8948, 0.09125495, -0.018153457)
+transform = Transform3D(1, 0, 1.7484555e-07, 0, 1, 0, -1.7484555e-07, 0, 1, 11.666804, 0.09125495, -0.018153667)
 
 [node name="@Node3D@198877" parent="Containers/container_array 6" unique_id=709824293 instance=ExtResource("2_4ftm2")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.894885, 2.8453994, -0.016333206)
-
-[node name="@Node3D@198879" parent="Containers/container_array 6" unique_id=1693751157 instance=ExtResource("2_4ftm2")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.897518, 5.5995436, -0.017365517)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.666889, 2.8453994, -0.016333103)
 
 [node name="@Node3D@198881" parent="Containers/container_array 6" unique_id=1986701640 instance=ExtResource("2_4ftm2")]
-transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -6.628105, 0.09125495, 6.547625)
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -9.271183, 0.09125495, 6.547625)
 
-[node name="@Node3D@198883" parent="Containers/container_array 6" unique_id=529055596 instance=ExtResource("2_4ftm2")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.6306596, 2.8453994, 6.544769)
-
-[node name="@Node3D@198885" parent="Containers/container_array 6" unique_id=465209124 instance=ExtResource("2_4ftm2")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.9828877, 0.09125495, 6.547651)
-
-[node name="@Node3D@198887" parent="Containers/container_array 6" unique_id=1140596478 instance=ExtResource("2_4ftm2")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.9807527, 2.8453994, 6.5433106)
-
-[node name="@Node3D@198889" parent="Containers/container_array 6" unique_id=1372308159 instance=ExtResource("2_4ftm2")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.9834192, 5.5995436, 6.5509543)
-
-[node name="@Node3D@198891" parent="Containers/container_array 6" unique_id=1590632382 instance=ExtResource("2_4ftm2")]
-transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -1.3432081, 0.09125495, 6.551432)
-
-[node name="@Node3D@198893" parent="Containers/container_array 6" unique_id=98470018 instance=ExtResource("2_4ftm2")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.3423417, 2.8453994, 6.550292)
-
-[node name="@Node3D@198895" parent="Containers/container_array 6" unique_id=1738124305 instance=ExtResource("2_4ftm2")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.3371487, 5.5995436, 6.547515)
-
-[node name="@Node3D@198897" parent="Containers/container_array 6" unique_id=1783537164 instance=ExtResource("2_4ftm2")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.3036789, 0.09125495, 6.5512824)
-
-[node name="@Node3D@198899" parent="Containers/container_array 6" unique_id=1390286229 instance=ExtResource("2_4ftm2")]
-transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 3.9540725, 0.09125495, 6.546273)
-
-[node name="@Node3D@198901" parent="Containers/container_array 6" unique_id=1649788061 instance=ExtResource("2_4ftm2")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.95764, 2.8453994, 6.552149)
-
-[node name="@Node3D@198903" parent="Containers/container_array 6" unique_id=1223235246 instance=ExtResource("2_4ftm2")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.605887, 0.09125495, 6.5505333)
-
-[node name="@Node3D@198905" parent="Containers/container_array 6" unique_id=1149046872 instance=ExtResource("2_4ftm2")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.6043057, 2.8453994, 6.5527105)
+[node name="_Node3D_198881" parent="Containers/container_array 6" unique_id=1755591652 instance=ExtResource("2_4ftm2")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -6.66444, 0.09125495, 6.547625)
 
 [node name="@Node3D@198907" parent="Containers/container_array 6" unique_id=1932126955 instance=ExtResource("2_4ftm2")]
-transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 9.246253, 0.09125495, 6.5462203)
+transform = Transform3D(1, 0, 1.7484555e-07, 0, 1, 0, -1.7484555e-07, 0, 1, 9.018257, 0.09125495, 6.5462203)
 
 [node name="@Node3D@198909" parent="Containers/container_array 6" unique_id=245155362 instance=ExtResource("2_4ftm2")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.25099, 2.8453994, 6.5465593)
-
-[node name="@Node3D@198911" parent="Containers/container_array 6" unique_id=1300613733 instance=ExtResource("2_4ftm2")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.249084, 5.5995436, 6.5476503)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.022994, 2.8453994, 6.546559)
 
 [node name="@Node3D@198913" parent="Containers/container_array 6" unique_id=2145094431 instance=ExtResource("2_4ftm2")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.890932, 0.09125495, 6.5476255)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.662936, 0.09125495, 6.547625)
 
 [node name="@Node3D@198915" parent="Containers/container_array 6" unique_id=579937379 instance=ExtResource("2_4ftm2")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.893322, 2.8453994, 6.54956)
-
-[node name="@Node3D@198917" parent="Containers/container_array 6" unique_id=1752979508 instance=ExtResource("2_4ftm2")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.896081, 5.5995436, 6.5524073)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.665326, 2.8453994, 6.54956)
 
 [node name="container_array 7" type="Node3D" parent="Containers" unique_id=1734884861]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.2525635, 1.9970002, -10.002493)
 
 [node name="Container" parent="Containers/container_array 7" unique_id=1538564096 instance=ExtResource("2_4ftm2")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.275865, 0.09125495, -0.011596545)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.069715, 0.09125495, -0.28878212)
 
 [node name="@Node3D@218144" parent="Containers/container_array 7" unique_id=834899743 instance=ExtResource("2_4ftm2")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.281266, 2.8453994, -0.01797635)
-
-[node name="@Node3D@218148" parent="Containers/container_array 7" unique_id=2105035248 instance=ExtResource("2_4ftm2")]
-transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -6.633006, 0.09125495, -0.014551176)
-
-[node name="@Node3D@218150" parent="Containers/container_array 7" unique_id=600951646 instance=ExtResource("2_4ftm2")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.6364746, 2.8453994, -0.014331847)
-
-[node name="@Node3D@218152" parent="Containers/container_array 7" unique_id=178102509 instance=ExtResource("2_4ftm2")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.9881868, 0.09125495, -0.011260134)
-
-[node name="@Node3D@218154" parent="Containers/container_array 7" unique_id=1306682036 instance=ExtResource("2_4ftm2")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.9854028, 2.8453994, -0.01235212)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.075116, 2.8453994, -0.2951622)
 
 [node name="@Node3D@218158" parent="Containers/container_array 7" unique_id=286808936 instance=ExtResource("2_4ftm2")]
-transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -1.3348335, 0.09125495, -0.017128013)
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -1.2809062, 0.09125495, -0.32857132)
+
+[node name="_Node3D_218158" parent="Containers/container_array 7" unique_id=1530667265 instance=ExtResource("2_4ftm2")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -1.2809045, 0.09125495, 6.155801)
 
 [node name="@Node3D@218160" parent="Containers/container_array 7" unique_id=1934865766 instance=ExtResource("2_4ftm2")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.3421408, 2.8453994, -0.018080987)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.2882133, 2.8453994, -0.32952404)
 
 [node name="@Node3D@218164" parent="Containers/container_array 7" unique_id=70019096 instance=ExtResource("2_4ftm2")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.3050144, 0.09125495, -0.011276095)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.3589418, 0.09125495, -0.32271957)
 
 [node name="@Node3D@218166" parent="Containers/container_array 7" unique_id=1647460184 instance=ExtResource("2_4ftm2")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.309619, 2.8453994, -0.019563239)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.3635464, 2.8453994, -0.331007)
 
 [node name="@Node3D@218170" parent="Containers/container_array 7" unique_id=1264150400 instance=ExtResource("2_4ftm2")]
-transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 3.9537761, 0.09125495, -0.013596227)
-
-[node name="@Node3D@218172" parent="Containers/container_array 7" unique_id=730082927 instance=ExtResource("2_4ftm2")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.599519, 0.09125495, -0.013320005)
-
-[node name="@Node3D@218174" parent="Containers/container_array 7" unique_id=407920399 instance=ExtResource("2_4ftm2")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.600858, 2.8453994, -0.01988297)
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 4.007704, 0.09125495, -0.32503986)
 
 [node name="@Node3D@218178" parent="Containers/container_array 7" unique_id=584964688 instance=ExtResource("2_4ftm2")]
-transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 9.252701, 0.09125495, -0.011740484)
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 9.01131, 0.09125495, -0.20872974)
 
 [node name="@Node3D@218180" parent="Containers/container_array 7" unique_id=520101074 instance=ExtResource("2_4ftm2")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.25307, 2.8453994, -0.014865126)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.011679, 2.8453994, -0.26754665)
 
 [node name="@Node3D@218184" parent="Containers/container_array 7" unique_id=369448746 instance=ExtResource("2_4ftm2")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.892131, 0.09125495, -0.012793791)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.533678, 0.09125495, -0.2500801)
 
 [node name="@Node3D@218186" parent="Containers/container_array 7" unique_id=551043389 instance=ExtResource("2_4ftm2")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.900273, 2.8453994, -0.011030838)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.541821, 2.82477, -0.2572117)
 
 [node name="@Node3D@218190" parent="Containers/container_array 7" unique_id=1028947205 instance=ExtResource("2_4ftm2")]
-transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -9.282452, 0.09125495, 6.547161)
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -9.076302, 0.09125495, 6.1297674)
 
 [node name="@Node3D@218192" parent="Containers/container_array 7" unique_id=487936577 instance=ExtResource("2_4ftm2")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.275324, 2.8453994, 6.548682)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.069174, 2.8453994, 6.1312885)
 
-[node name="@Node3D@218196" parent="Containers/container_array 7" unique_id=1289654722 instance=ExtResource("2_4ftm2")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.6351047, 0.09125495, 6.547842)
+[node name="_Node3D_218196" parent="Containers/container_array 7" unique_id=1695432740 instance=ExtResource("2_4ftm2")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -3.8945432, 0.09125495, 6.1069756)
 
-[node name="@Node3D@218198" parent="Containers/container_array 7" unique_id=1344089562 instance=ExtResource("2_4ftm2")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.6341257, 2.8453994, 6.549922)
-
-[node name="@Node3D@218202" parent="Containers/container_array 7" unique_id=725565843 instance=ExtResource("2_4ftm2")]
-transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -3.989308, 0.09125495, 6.544877)
+[node name="_Node3D_218198" parent="Containers/container_array 7" unique_id=1676480928 instance=ExtResource("2_4ftm2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.8935642, 2.8453994, 6.1090555)
 
 [node name="@Node3D@218204" parent="Containers/container_array 7" unique_id=629522016 instance=ExtResource("2_4ftm2")]
-transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 1.3057717, 0.09125495, 6.550389)
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 1.3597001, 0.09125495, 6.109523)
 
 [node name="@Node3D@218206" parent="Containers/container_array 7" unique_id=1138451820 instance=ExtResource("2_4ftm2")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.3044703, 2.8453994, 6.5482697)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.3583987, 2.8453994, 6.1074038)
+
+[node name="_Node3D_218206" parent="Containers/container_array 7" unique_id=853257011 instance=ExtResource("2_4ftm2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.1951516, 2.8453994, 6.1074038)
 
 [node name="@Node3D@218208" parent="Containers/container_array 7" unique_id=280313821 instance=ExtResource("2_4ftm2")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.950841, 0.09125495, 6.5470953)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.0047693, 0.09125495, 6.106229)
 
 [node name="@Node3D@218210" parent="Containers/container_array 7" unique_id=1147928813 instance=ExtResource("2_4ftm2")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.9519966, 2.8453994, 6.544766)
-
-[node name="@Node3D@218214" parent="Containers/container_array 7" unique_id=1996586721 instance=ExtResource("2_4ftm2")]
-transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 6.601172, 0.09125495, 6.552591)
-
-[node name="@Node3D@218216" parent="Containers/container_array 7" unique_id=1421619686 instance=ExtResource("2_4ftm2")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.603443, 2.8453994, 6.544944)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.005925, 2.8453994, 6.118991)
 
 [node name="@Node3D@218220" parent="Containers/container_array 7" unique_id=225511574 instance=ExtResource("2_4ftm2")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.245713, 0.09125495, 6.546537)
+transform = Transform3D(-1, 0, 8.940697e-08, 0, 1, 0, -8.940697e-08, 0, -1, 8.927801, 0.09125495, 6.1380267)
 
 [node name="@Node3D@218222" parent="Containers/container_array 7" unique_id=158547677 instance=ExtResource("2_4ftm2")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.24959, 2.8453994, 6.5482707)
+transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 11.567593, 2.8070955, 6.1621485)
 
 [node name="@Node3D@218224" parent="Containers/container_array 7" unique_id=1892856832 instance=ExtResource("2_4ftm2")]
-transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 11.895483, 0.09125495, 6.547219)
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 11.57071, 0.09125495, 6.1433654)
 
 [node name="@Node3D@218226" parent="Containers/container_array 7" unique_id=1799600180 instance=ExtResource("2_4ftm2")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.8923645, 2.8453994, 6.5451937)
+transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 8.943048, 2.7941136, 6.1389976)
 
 [node name="container_array 8" type="Node3D" parent="Containers" unique_id=281474214]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.2525635, 2.021, -23.320492)
 
 [node name="Container" parent="Containers/container_array 8" unique_id=1560300556 instance=ExtResource("2_4ftm2")]
-transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -9.278192, 0.09125495, -0.01867595)
+transform = Transform3D(1, 0, 1.7484555e-07, 0, 1, 0, -1.7484555e-07, 0, 1, -9.278192, 0.09125495, -0.018676758)
 
 [node name="@Node3D@275195" parent="Containers/container_array 8" unique_id=1950529356 instance=ExtResource("2_4ftm2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.281308, 2.8453994, -0.014487794)
@@ -1553,6 +1447,12 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.3412626, 0.09125495, -0.01
 
 [node name="@Node3D@275203" parent="Containers/container_array 8" unique_id=1867639347 instance=ExtResource("2_4ftm2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.3363982, 2.8453994, -0.010822724)
+
+[node name="_Node3D_275201" parent="Containers/container_array 8" unique_id=1989063741 instance=ExtResource("2_4ftm2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.3412626, 0.09125495, 6.406994)
+
+[node name="_Node3D_275203" parent="Containers/container_array 8" unique_id=1040011598 instance=ExtResource("2_4ftm2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.3363981, 2.8453994, 6.407772)
 
 [node name="@Node3D@275207" parent="Containers/container_array 8" unique_id=1228422028 instance=ExtResource("2_4ftm2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.9511547, 0.09125495, -0.017240206)
@@ -1570,142 +1470,142 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.6040974, 2.8453994, -0.0120
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.246441, 0.09125495, -0.018019196)
 
 [node name="_Node3D_275219" parent="Containers/container_array 8" unique_id=1236702364 instance=ExtResource("2_4ftm2")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.246441, 0.09125519, 6.56341)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.0251, 0.09125519, 6.512211)
 
 [node name="@Node3D@275225" parent="Containers/container_array 8" unique_id=1428630258 instance=ExtResource("2_4ftm2")]
-transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -6.633372, 0.09125495, 6.5450983)
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -6.633372, 0.09125495, 6.4230785)
 
 [node name="@Node3D@275231" parent="Containers/container_array 8" unique_id=165067702 instance=ExtResource("2_4ftm2")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.9824922, 0.09125495, 6.5473)
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -9.203033, 0.09125495, 6.398407)
 
 [node name="@Node3D@275235" parent="Containers/container_array 8" unique_id=706433213 instance=ExtResource("2_4ftm2")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.896343, 0.09125495, 6.54371)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.675002, 0.09125495, 6.4925117)
 
 [node name="container_array 9" type="Node3D" parent="Containers" unique_id=1445341286]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.3433685, 1.9990001, -39.270496)
 
 [node name="Container" parent="Containers/container_array 9" unique_id=1017930563 instance=ExtResource("2_4ftm2")]
-transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -9.274737, 0.09125495, -0.01894195)
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -9.274737, 0.09125495, -0.18151855)
 
 [node name="@Node3D@286517" parent="Containers/container_array 9" unique_id=1226198824 instance=ExtResource("2_4ftm2")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.279969, 2.8453994, -0.0137196835)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.279969, 2.8453994, -0.17918015)
+
+[node name="_Node3D_286517" parent="Containers/container_array 9" unique_id=1841606160 instance=ExtResource("2_4ftm2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.659163, 2.8453994, -0.17918015)
 
 [node name="@Node3D@286519" parent="Containers/container_array 9" unique_id=2059733278 instance=ExtResource("2_4ftm2")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.2769985, 5.5995436, -0.013152117)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.2769985, 5.5995436, -0.21997452)
 
 [node name="@Node3D@286521" parent="Containers/container_array 9" unique_id=1730615506 instance=ExtResource("2_4ftm2")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.6327662, 0.09125495, -0.011414834)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.6327662, 0.09125495, -0.17398834)
 
 [node name="@Node3D@286523" parent="Containers/container_array 9" unique_id=1839702254 instance=ExtResource("2_4ftm2")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.3405012, 0.09125495, -0.018824916)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.3405012, 0.09125495, -0.1814003)
 
 [node name="@Node3D@286525" parent="Containers/container_array 9" unique_id=1767641522 instance=ExtResource("2_4ftm2")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.3402765, 2.8453994, -0.019731235)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.3402765, 2.8453994, -0.1851883)
+
+[node name="_Node3D_286525" parent="Containers/container_array 9" unique_id=840337246 instance=ExtResource("2_4ftm2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.08521366, 2.8453994, -8.383057)
+
+[node name="_Node3D_286526" parent="Containers/container_array 9" unique_id=809481311 instance=ExtResource("2_4ftm2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.5374696, 2.8453994, -8.383057)
 
 [node name="@Node3D@286527" parent="Containers/container_array 9" unique_id=1968163648 instance=ExtResource("2_4ftm2")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.3406609, 5.5995436, -0.010755612)
-
-[node name="@Node3D@286529" parent="Containers/container_array 9" unique_id=907567358 instance=ExtResource("2_4ftm2")]
-transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 1.304683, 0.09125495, -0.014643781)
-
-[node name="@Node3D@286531" parent="Containers/container_array 9" unique_id=39994942 instance=ExtResource("2_4ftm2")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.3122563, 2.8453994, -0.0129055325)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.3406609, 5.5995436, -0.21757889)
 
 [node name="@Node3D@286533" parent="Containers/container_array 9" unique_id=1782470267 instance=ExtResource("2_4ftm2")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.9568126, 0.09125495, -0.019990701)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.847022, 0.09125495, -0.23637772)
 
 [node name="@Node3D@286535" parent="Containers/container_array 9" unique_id=293736632 instance=ExtResource("2_4ftm2")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.957419, 2.8453994, -0.011387965)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.8700833, 2.8453994, -0.21528625)
 
 [node name="@Node3D@286537" parent="Containers/container_array 9" unique_id=1339914266 instance=ExtResource("2_4ftm2")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.9574647, 5.5995436, -0.012584209)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.9574647, 5.5995436, -0.21940613)
 
 [node name="@Node3D@286539" parent="Containers/container_array 9" unique_id=1112171169 instance=ExtResource("2_4ftm2")]
-transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 6.603221, 0.09125495, -0.013986507)
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 6.466254, 0.09125495, -0.27146912)
 
 [node name="@Node3D@286541" parent="Containers/container_array 9" unique_id=452011394 instance=ExtResource("2_4ftm2")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.6059575, 2.8453994, -0.01079226)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.4890428, 2.7877216, -0.17625046)
 
 [node name="@Node3D@286543" parent="Containers/container_array 9" unique_id=1421878066 instance=ExtResource("2_4ftm2")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.6009173, 5.5995436, -0.010411789)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.6009173, 5.5995436, -0.21723175)
 
 [node name="@Node3D@286545" parent="Containers/container_array 9" unique_id=1835697345 instance=ExtResource("2_4ftm2")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.244409, 0.09125495, -0.01839261)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.113109, 0.09125495, -0.13254547)
 
 [node name="@Node3D@286547" parent="Containers/container_array 9" unique_id=1219519715 instance=ExtResource("2_4ftm2")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.250461, 2.8453994, -0.013155125)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.119161, 2.7782211, -0.17861557)
 
 [node name="@Node3D@286549" parent="Containers/container_array 9" unique_id=1081366821 instance=ExtResource("2_4ftm2")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.27555, 0.09125495, 6.547522)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.069132, 0.09125495, 6.3474617)
 
 [node name="@Node3D@286551" parent="Containers/container_array 9" unique_id=1937711405 instance=ExtResource("2_4ftm2")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.277979, 2.8453994, 6.5521398)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.277979, 2.8453994, 6.3520775)
 
 [node name="@Node3D@286553" parent="Containers/container_array 9" unique_id=1745119780 instance=ExtResource("2_4ftm2")]
-transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -6.6298866, 0.09125495, 6.5522614)
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -6.4880314, 0.09125495, 6.3521996)
 
 [node name="@Node3D@286557" parent="Containers/container_array 9" unique_id=1986444777 instance=ExtResource("2_4ftm2")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.9813018, 2.8453994, 6.5508513)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.072584, 2.8453994, 6.350788)
 
-[node name="@Node3D@286559" parent="Containers/container_array 9" unique_id=799939970 instance=ExtResource("2_4ftm2")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.986989, 5.5995436, 6.5525103)
+[node name="_Node3D_286557" parent="Containers/container_array 9" unique_id=1016898749 instance=ExtResource("2_4ftm2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.657774, 2.8453994, 6.350788)
 
 [node name="@Node3D@286561" parent="Containers/container_array 9" unique_id=1956607381 instance=ExtResource("2_4ftm2")]
-transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -1.3339138, 0.09125495, 6.5483937)
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -1.3610187, 0.09125495, 6.3483315)
 
 [node name="@Node3D@286563" parent="Containers/container_array 9" unique_id=305109208 instance=ExtResource("2_4ftm2")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.3426521, 2.8453994, 6.5470295)
-
-[node name="@Node3D@286565" parent="Containers/container_array 9" unique_id=1494285410 instance=ExtResource("2_4ftm2")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.3396304, 5.5995436, 6.5481725)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.3426521, 2.8453994, 6.3469734)
 
 [node name="@Node3D@286567" parent="Containers/container_array 9" unique_id=786827645 instance=ExtResource("2_4ftm2")]
-transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 3.9522116, 0.09125495, 6.5470614)
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 3.8162322, 0.09125495, 6.347004)
 
 [node name="@Node3D@286569" parent="Containers/container_array 9" unique_id=926510826 instance=ExtResource("2_4ftm2")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.953646, 2.8453994, 6.5432386)
-
-[node name="@Node3D@286571" parent="Containers/container_array 9" unique_id=1644385709 instance=ExtResource("2_4ftm2")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.9552157, 5.5995436, 6.545883)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.8134432, 2.798586, 6.377819)
 
 [node name="@Node3D@286573" parent="Containers/container_array 9" unique_id=479340447 instance=ExtResource("2_4ftm2")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.6028523, 0.09125495, 6.5469766)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.4127965, 0.09125495, 6.34692)
 
 [node name="@Node3D@286575" parent="Containers/container_array 9" unique_id=272041047 instance=ExtResource("2_4ftm2")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.59994, 2.8453994, 6.549933)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.4154267, 2.8140564, 6.3498726)
 
 [node name="@Node3D@286577" parent="Containers/container_array 9" unique_id=1263053772 instance=ExtResource("2_4ftm2")]
-transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 9.253571, 0.09125495, 6.5462904)
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 8.989362, 0.09125495, 6.3462334)
+
+[node name="_Node3D_286545" parent="Containers/container_array 9" unique_id=589518724 instance=ExtResource("2_4ftm2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.669966, 0.09125495, -0.16146088)
+
+[node name="_Node3D_286577" parent="Containers/container_array 9" unique_id=294551532 instance=ExtResource("2_4ftm2")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -11.685783, 0.09125495, 6.3203087)
 
 [node name="@Node3D@286579" parent="Containers/container_array 9" unique_id=1522481374 instance=ExtResource("2_4ftm2")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.249072, 2.8453994, 6.5506577)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.984348, 2.8167896, 6.3505974)
 
 [node name="container_array 10" type="Node3D" parent="Containers" unique_id=405840426]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.2525635, 2.008, -54.11332)
 
 [node name="@Node3D@263622" parent="Containers/container_array 10" unique_id=1732932404 instance=ExtResource("2_4ftm2")]
-transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -0.019482046, 0.09125495, -0.015681898)
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -0.019482017, 0.09125495, 0.060253143)
+
+[node name="_Node3D_263622" parent="Containers/container_array 10" unique_id=712406161 instance=ExtResource("2_4ftm2")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -2.6477509, 0.09125495, 0.060253143)
 
 [node name="@Node3D@263628" parent="Containers/container_array 10" unique_id=1956611638 instance=ExtResource("2_4ftm2")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.634139, 0.09125495, -0.01786777)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.634139, 0.09125495, 0.05806732)
 
 [node name="@Node3D@263634" parent="Containers/container_array 10" unique_id=1301659680 instance=ExtResource("2_4ftm2")]
-transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 5.2782054, 0.09125495, -0.014472408)
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 5.2782054, 0.09125495, 0.061462402)
+
+[node name="_Node3D_263634" parent="Containers/container_array 10" unique_id=1848891604 instance=ExtResource("2_4ftm2")]
+transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 5.2782054, 0.09125495, 6.4522285)
 
 [node name="@Node3D@263640" parent="Containers/container_array 10" unique_id=888944920 instance=ExtResource("2_4ftm2")]
-transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -2.6659253, 0.09125495, 6.551904)
-
-[node name="@Node3D@263642" parent="Containers/container_array 10" unique_id=628300529 instance=ExtResource("2_4ftm2")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.6578453, 2.8453994, 6.5435348)
-
-[node name="@Node3D@263648" parent="Containers/container_array 10" unique_id=1950226948 instance=ExtResource("2_4ftm2")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.012505682, 2.8453994, 6.544649)
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -2.6659253, 0.09125495, 6.627838)
 
 [node name="@Node3D@263650" parent="Containers/container_array 10" unique_id=1695253439 instance=ExtResource("2_4ftm2")]
-transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 2.6348426, 0.09125495, 6.5517497)
-
-[node name="@Node3D@263652" parent="Containers/container_array 10" unique_id=570775415 instance=ExtResource("2_4ftm2")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.6364813, 2.8453994, 6.546877)
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 2.6348426, 0.09125495, 6.4811974)
 
 [node name="Ship Model" type="Node3D" parent="." unique_id=888447321]
 metadata/_edit_lock_ = true
