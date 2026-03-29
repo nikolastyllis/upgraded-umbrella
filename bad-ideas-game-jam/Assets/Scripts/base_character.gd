@@ -313,7 +313,7 @@ func _play_oxy_torch_loop() -> void:
 	var loop_player := AudioStreamPlayer.new()
 	loop_player.bus = "Sound"
 	loop_player.stream = load(LOOP_PATH)
-	loop_player.volume_db = -30
+	loop_player.volume_db = 0
 	add_child(loop_player)
 	loop_player.play()
 	_loop_player = loop_player

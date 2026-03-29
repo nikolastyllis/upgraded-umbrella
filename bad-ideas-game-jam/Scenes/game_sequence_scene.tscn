@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://bw3728lre125f" path="res://Materials/Textures/Ocean/0001.jpg" id="4_tc46g"]
 [ext_resource type="Script" uid="uid://d1icg8locw87l" path="res://Assets/Scripts/water_camera.gd" id="5_yiumw"]
 [ext_resource type="PackedScene" uid="uid://bkwpxm2ssdj8r" path="res://Scenes/main_enviroment_scene.tscn" id="6_63acv"]
+[ext_resource type="Script" uid="uid://dp7452es0gdfx" path="res://Scenes/night_light_controller.gd" id="7_nr8gw"]
 [ext_resource type="PackedScene" uid="uid://bsr2874wrilow" path="res://Assets/Models/Enviroment/BIGJ_ShipCol_03.glb" id="7_yiumw"]
 [ext_resource type="PackedScene" uid="uid://btg75au461yd7" path="res://Prefabs/player.tscn" id="9_r4e2n"]
 [ext_resource type="PackedScene" uid="uid://dpl2uefq7xuhu" path="res://Prefabs/npc_01.tscn" id="10_nr8gw"]
@@ -51,8 +52,8 @@ colors = PackedColorArray(0.2102713, 0.42708164, 0.6137572, 1, 0.08353881, 0.285
 gradient = SubResource("Gradient_n0oop")
 
 [sub_resource type="Gradient" id="Gradient_vrw5k"]
-offsets = PackedFloat32Array(0, 0.2781955, 0.5338346, 0.90789473, 0.9868421)
-colors = PackedColorArray(0.47710752, 0.7820976, 0.8294359, 1, 0.8343018, 0.54639024, 0.6000764, 1, 0.92, 0.50600004, 0, 1, 0.12580642, 0.16593808, 0.19390252, 1, 0.011974596, 0.01812943, 0.06524632, 1)
+offsets = PackedFloat32Array(0, 0.2781955, 0.5338346, 0.82608694, 0.9868421)
+colors = PackedColorArray(0.47710752, 0.7820976, 0.8294359, 1, 0.8343018, 0.54639024, 0.6000764, 1, 0.92, 0.50600004, 0, 1, 0.013876391, 0.03265672, 0.049707696, 1, 0, 0, 0, 1)
 
 [sub_resource type="GradientTexture1D" id="GradientTexture1D_vrw5k"]
 gradient = SubResource("Gradient_vrw5k")
@@ -95,7 +96,7 @@ point_count = 2
 
 [sub_resource type="Curve" id="Curve_iy7pm"]
 _limits = [-1.0, 1.0, 0.0, 1.0]
-_data = [Vector2(0, 1), 0.0, -0.15109101, 0, 0, Vector2(0.5137457, 0.113755465), 0.0, 0.0, 0, 0, Vector2(1, 0.04558277), -0.12850711, 0.0, 0, 0]
+_data = [Vector2(0, 1), 0.0, -0.15109101, 0, 0, Vector2(0.5137457, 0.113755465), 0.0, 0.0, 0, 0, Vector2(1, 0.12999392), -0.12850711, 0.0, 0, 0]
 point_count = 3
 
 [sub_resource type="Curve" id="Curve_uiotd"]
@@ -183,9 +184,9 @@ shader_parameter/deep_color = Color(0.20206599, 0.4179357, 0.59971035, 1)
 shader_parameter/horizon_color = Color(0.5064845, 0.7627121, 0.8105725, 1)
 shader_parameter/metallic = 0.0
 shader_parameter/roughness = 0.04
-shader_parameter/fresnel_power = 0.1
-shader_parameter/horizon_start = 1.0
-shader_parameter/horizon_end = 800.0
+shader_parameter/fresnel_power = 0.2
+shader_parameter/horizon_start = 1000.0
+shader_parameter/horizon_end = 1200.0
 shader_parameter/foam_noise = SubResource("NoiseTexture2D_uf6pr")
 shader_parameter/foam_color = Color(1, 1, 1, 1)
 shader_parameter/foam_amount = 0.05760547
@@ -244,7 +245,7 @@ ambient_light_sky_contribution = 0.3
 ambient_light_energy = 0.0
 reflected_light_source = 2
 tonemap_mode = 2
-tonemap_exposure = 1.66
+tonemap_exposure = 3.11
 tonemap_white = 1.6
 tonemap_agx_white = 2.92
 tonemap_agx_contrast = 1.0
@@ -268,11 +269,13 @@ fog_depth_curve = 1.0717736
 fog_depth_begin = 217.2
 fog_depth_end = 760.9
 volumetric_fog_enabled = true
-volumetric_fog_density = 0.005
+volumetric_fog_density = 0.015
 volumetric_fog_albedo = Color(0.9596279, 0.98852295, 0.9998115, 1)
+volumetric_fog_anisotropy = 0.44
 volumetric_fog_length = 91.1
 volumetric_fog_detail_spread = 2.5491216
-volumetric_fog_ambient_inject = 1.05
+volumetric_fog_ambient_inject = 1.09
+volumetric_fog_temporal_reprojection_amount = 0.622
 adjustment_enabled = true
 adjustment_brightness = 1.03
 adjustment_contrast = 1.03
@@ -391,6 +394,146 @@ environment = SubResource("Environment_0ixb7")
 camera_attributes = SubResource("CameraAttributesPhysical_to28j")
 compositor = SubResource("Compositor_4n1t5")
 
+[node name="Night Lights" type="Node3D" parent="Lighting" unique_id=1477521084]
+script = ExtResource("7_nr8gw")
+
+[node name="SpotLight3D" type="SpotLight3D" parent="Lighting/Night Lights" unique_id=1211440256]
+transform = Transform3D(0.93938303, 0.16466504, -0.30074096, 0.16567124, 0.54995173, 0.81860006, 0.30018783, -0.8188032, 0.4893351, 7.8126984, 20.98048, 57.867218)
+light_color = Color(0.9301446, 0.84689915, 0.6640551, 1)
+light_energy = 20.0
+light_size = 0.02
+shadow_enabled = true
+spot_range = 39.779877
+spot_angle = 32.343746
+
+[node name="SpotLight3D4" type="SpotLight3D" parent="Lighting/Night Lights" unique_id=361494986]
+transform = Transform3D(0.99613583, -0.025366873, 0.08408236, -0.048971646, 0.6342979, 0.771536, -0.07290471, -0.7726724, 0.6306045, -2.7720265, 21.12992, 56.713406)
+light_color = Color(0.9301446, 0.84689915, 0.6640551, 1)
+light_energy = 20.0
+light_size = 0.02
+shadow_enabled = true
+spot_range = 46.08942
+spot_angle = 40.09544
+
+[node name="SpotLight3D9" type="SpotLight3D" parent="Lighting/Night Lights" unique_id=738284528]
+transform = Transform3D(0.3642527, -0.025366873, -0.93095446, 0.72565067, 0.63429785, 0.26664042, 0.58373874, -0.77267236, 0.24945214, 0.8911727, 12.699558, 60.959545)
+light_color = Color(0.9301446, 0.84689915, 0.6640551, 1)
+light_energy = 20.0
+light_size = 0.02
+shadow_enabled = true
+spot_range = 46.08942
+spot_angle = 40.09544
+
+[node name="SpotLight3D8" type="SpotLight3D" parent="Lighting/Night Lights" unique_id=1609643779]
+transform = Transform3D(0.9736064, -0.025366873, -0.22681937, 0.19104552, 0.6342979, 0.7491112, 0.12486847, -0.7726725, 0.6224026, 2.8998132, 20.851082, 56.298298)
+light_color = Color(0.9301446, 0.84689915, 0.6640551, 1)
+light_energy = 20.0
+light_size = 0.02
+shadow_enabled = true
+spot_range = 46.08942
+spot_angle = 40.09544
+
+[node name="SpotLight3D5" type="SpotLight3D" parent="Lighting/Night Lights" unique_id=1770375525]
+transform = Transform3D(0.99613583, -0.007165849, 0.08753269, -0.04897165, 0.782021, 0.6213253, -0.072904706, -0.62321097, 0.7786481, 0.10617781, 18.432062, 26.576006)
+light_color = Color(0.9301446, 0.84689915, 0.6640551, 1)
+light_energy = 20.0
+light_size = 0.02
+shadow_enabled = true
+spot_range = 51.569912
+spot_angle = 39.033554
+
+[node name="SpotLight3D6" type="SpotLight3D" parent="Lighting/Night Lights" unique_id=1241685364]
+transform = Transform3D(0.9961359, -0.087701924, 0.0046575693, -0.048971646, -0.5106432, 0.8583969, -0.072904706, -0.8553082, -0.512965, -0.84727144, 16.858759, -25.892979)
+light_color = Color(0.9301446, 0.84689915, 0.6640551, 1)
+light_energy = 20.0
+light_size = 0.02
+shadow_enabled = true
+spot_range = 27.018929
+spot_angle = 50.846947
+
+[node name="SpotLight3D7" type="SpotLight3D" parent="Lighting/Night Lights" unique_id=1298627147]
+transform = Transform3D(0.99613583, -0.07032473, 0.052609473, -0.048971646, 0.05248951, 0.99742, -0.072904706, -0.9961423, 0.048842758, 0.4796428, 16.498144, -49.627453)
+light_color = Color(0.9301446, 0.84689915, 0.6640551, 1)
+light_energy = 20.0
+light_size = 0.02
+shadow_enabled = true
+spot_range = 22.827328
+spot_angle = 46.406246
+
+[node name="SpotLight3D2" type="SpotLight3D" parent="Lighting/Night Lights" unique_id=1449057671]
+transform = Transform3D(0.9871279, -0.050040122, 0.15190297, -0.08676831, 0.6302976, 0.77148974, -0.1343495, -0.7747394, 0.6178423, -8.879656, 20.98048, 57.867218)
+light_color = Color(0.9301446, 0.84689915, 0.6640551, 1)
+light_energy = 20.0
+light_size = 0.02
+shadow_enabled = true
+spot_range = 53.933434
+spot_angle = 20.12752
+
+[node name="OmniLight3D" type="OmniLight3D" parent="Lighting/Night Lights" unique_id=1127648970]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 18.847067, -28.047901)
+light_color = Color(0.9948409, 0, 0.17758498, 1)
+light_size = 0.071
+
+[node name="OmniLight3D2" type="OmniLight3D" parent="Lighting/Night Lights" unique_id=1381079500]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 22.40142, 28.134499)
+light_color = Color(0.9948409, 0, 0.17758498, 1)
+light_size = 0.071
+
+[node name="OmniLight3D3" type="OmniLight3D" parent="Lighting/Night Lights" unique_id=333981202]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.038731, 22.40142, 62.278526)
+light_color = Color(0.9948409, 0, 0.17758498, 1)
+light_size = 0.071
+
+[node name="OmniLight3D11" type="OmniLight3D" parent="Lighting/Night Lights" unique_id=1729630388]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.7629457, 10.942606, 67.16382)
+light_color = Color(0.3064232, 0.85464454, 0, 1)
+light_energy = 2.703
+light_size = 0.071
+omni_range = 3.2965221
+
+[node name="OmniLight3D4" type="OmniLight3D" parent="Lighting/Night Lights" unique_id=1904174417]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.16204, 22.40142, 62.278526)
+light_color = Color(0.9948409, 0, 0.17758498, 1)
+light_size = 0.071
+
+[node name="OmniLight3D5" type="OmniLight3D" parent="Lighting/Night Lights" unique_id=1671378910]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.038731, 1.6820774, 22.34363)
+light_color = Color(0.9948409, 0, 0.17758498, 1)
+light_size = 0.071
+
+[node name="OmniLight3D6" type="OmniLight3D" parent="Lighting/Night Lights" unique_id=954372404]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.16204, 1.6820774, 22.34363)
+light_color = Color(0.9948409, 0, 0.17758498, 1)
+light_size = 0.071
+
+[node name="OmniLight3D7" type="OmniLight3D" parent="Lighting/Night Lights" unique_id=26869044]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.038731, 1.6820774, -9.68244)
+light_color = Color(0.9948409, 0, 0.17758498, 1)
+light_size = 0.071
+
+[node name="OmniLight3D8" type="OmniLight3D" parent="Lighting/Night Lights" unique_id=442968774]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.16204, 1.6820774, -9.68244)
+light_color = Color(0.9948409, 0, 0.17758498, 1)
+light_size = 0.071
+
+[node name="OmniLight3D9" type="OmniLight3D" parent="Lighting/Night Lights" unique_id=1390899025]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.038731, 1.6820774, -34.462147)
+light_color = Color(0.9948409, 0, 0.17758498, 1)
+light_size = 0.071
+
+[node name="OmniLight3D10" type="OmniLight3D" parent="Lighting/Night Lights" unique_id=813722150]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.16204, 1.6820774, -34.462147)
+light_color = Color(0.9948409, 0, 0.17758498, 1)
+light_size = 0.071
+
+[node name="Flashing Lights" type="Node3D" parent="Lighting/Night Lights" unique_id=864518979]
+
+[node name="OmniLight3D12" type="OmniLight3D" parent="Lighting/Night Lights/Flashing Lights" unique_id=1575823701]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 17.694885, -59.27397)
+light_color = Color(0.9948409, 0, 0.17758498, 1)
+light_size = 0.071
+omni_range = 1.2472423
+
 [node name="node3D" type="Node3D" parent="." unique_id=1483757596]
 
 [node name="NavigationRegion3D" type="NavigationRegion3D" parent="." unique_id=954165088]
@@ -453,6 +596,9 @@ draw_pass_1 = SubResource("RibbonTrailMesh_qcyk2")
 [node name="GameManager" type="Node3D" parent="." unique_id=1749829845]
 transform = Transform3D(-0.87121385, 0, 0.49090374, 0, 1, 0, -0.49090374, 0, -0.87121385, -8.431, 7.972, 75.958)
 script = ExtResource("12_yiumw")
+debug_skip_dialog = true
+debug_play_from_act_3 = true
+debug_play_from_act_7 = false
 DAY_SUN_PITCH_DEG = -72.6
 DAY_SUN_YAW_DEG = 124.3
 SUNSET_SUN_YAW_DEG = 130.0
@@ -537,5 +683,5 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.180876, 2.1194236, -47.275
 [node name="Container_Interior_Reveal" parent="." unique_id=944618827 instance=ExtResource("20_r4e2n")]
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -2.5552702, 1.9932939, -32.42649)
 
-[node name="Npc" parent="." unique_id=601889088 instance=ExtResource("21_r4e2n")]
+[node name="Npc" parent="." unique_id=1825522883 instance=ExtResource("21_r4e2n")]
 transform = Transform3D(-0.0025830676, 0, -0.99999666, 0, 1, 0, 0.99999666, 0, -0.0025830676, -6.1259036, 8.8207445, 64.1767)
