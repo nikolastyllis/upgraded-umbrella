@@ -1,0 +1,36 @@
+[gd_resource type="ShaderMaterial" format=3 uid="uid://cki1c53rhfgb4"]
+
+[ext_resource type="Material" uid="uid://sgetjvg177mb" path="res://Shaders/outline.tres" id="1_kirm6"]
+[ext_resource type="Shader" uid="uid://d266trvxphdyu" path="res://Shaders/cel-shader-base.gdshader" id="2_g5n8b"]
+[ext_resource type="Texture2D" uid="uid://d3tx6d61h1pe4" path="res://Assets/Models/Characters/Wazza/DeadWazza/char_wazzaDead_mat_Col_Alpha.png" id="3_1wn5p"]
+[ext_resource type="Texture2D" uid="uid://b8ksngk60wu5p" path="res://Assets/Models/Characters/Wazza/DeadWazza/char_wazzaDead_mat_Normal.png" id="4_kirm6"]
+[ext_resource type="Texture2D" uid="uid://dv2amh7hajmau" path="res://Assets/Models/Characters/Wazza/DeadWazza/char_wazzaDead_mat_ORM.png" id="5_g5n8b"]
+
+[resource]
+render_priority = 0
+next_pass = ExtResource("1_kirm6")
+shader = ExtResource("2_g5n8b")
+shader_parameter/emission = Color(0, 0, 0, 1)
+shader_parameter/emission_energy = 1.0
+shader_parameter/normal_scale = 0.50000078375
+shader_parameter/normal_map = ExtResource("4_kirm6")
+shader_parameter/invert_normal_y = false
+shader_parameter/alpha_cutoff = 0.5
+shader_parameter/color = Color(1, 1, 1, 1)
+shader_parameter/base_texture = ExtResource("3_1wn5p")
+shader_parameter/use_mask = false
+shader_parameter/mask_strength = 0.0
+shader_parameter/color_replace_detail = 0.0
+shader_parameter/rust_light_strength = 0.0
+shader_parameter/rust_heavy_strength = 0.0
+shader_parameter/rust_blend_sharpness = 0.10000000149012
+shader_parameter/orm_texture = ExtResource("5_g5n8b")
+shader_parameter/ao_strength = 1.0
+shader_parameter/roughness_strength = 1.0
+shader_parameter/metallic_strength = 0.0
+shader_parameter/invert_roughness = false
+shader_parameter/specular_color = Color(0.09007121, 0.11884003, 0.16652519, 1)
+shader_parameter/specular_strength = 0.0
+shader_parameter/fresnel = Color(0.45, 0.45, 0.45, 0.3019608)
+shader_parameter/uv_scale = Vector2(1, 1)
+shader_parameter/uv_offset = Vector2(0, 0)

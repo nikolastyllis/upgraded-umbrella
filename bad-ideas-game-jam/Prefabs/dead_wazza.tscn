@@ -1,0 +1,28 @@
+[gd_scene format=3 uid="uid://cegsfr3gshs18"]
+
+[ext_resource type="Script" uid="uid://dhd3ayrrkl2rn" path="res://Assets/Scripts/npc.gd" id="1_eiru1"]
+[ext_resource type="PackedScene" uid="uid://dtco08pwkeeeo" path="res://Scenes/Characters/dead_wazza_visual.tscn" id="2_eiru1"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_myya0"]
+radius = 0.15
+height = 1.7
+
+[node name="Npc" type="CharacterBody3D" unique_id=1647912674]
+floor_max_angle = 1.0471976
+script = ExtResource("1_eiru1")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1768347194]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.11376953, 0)
+shape = SubResource("CapsuleShape3D_myya0")
+
+[node name="Character" parent="." unique_id=263116558 instance=ExtResource("2_eiru1")]
+
+[node name="CharacterAnchor" type="Node3D" parent="." unique_id=669950866]
+transform = Transform3D(-1, 0, -1.509958e-07, 0, 1, 0, 1.509958e-07, 0, -1, 0, 0, 0)
+
+[node name="NavigationAgent3D" type="NavigationAgent3D" parent="." unique_id=663394382]
+path_max_distance = 10.01
+path_postprocessing = 1
+avoidance_enabled = true
+
+[connection signal="velocity_computed" from="NavigationAgent3D" to="." method="_on_navigation_agent_3d_velocity_computed"]

@@ -20,6 +20,7 @@
 [ext_resource type="PackedScene" uid="uid://dp4otnp5mmihr" path="res://Prefabs/creature.tscn" id="18_tc46g"]
 [ext_resource type="PackedScene" uid="uid://38kbp4tchkj" path="res://Assets/Models/Enviroment/Container_Interior_Starter.fbx" id="19_0ixb7"]
 [ext_resource type="PackedScene" uid="uid://dkqydnieh7ivh" path="res://Assets/Models/Enviroment/Container_Interior_Reveal.fbx" id="20_r4e2n"]
+[ext_resource type="PackedScene" uid="uid://cegsfr3gshs18" path="res://Prefabs/dead_wazza.tscn" id="21_r4e2n"]
 
 [sub_resource type="Gradient" id="Gradient_0ixb7"]
 offsets = PackedFloat32Array(0.14097744, 0.36654136, 0.4830827, 0.7838346)
@@ -537,3 +538,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.180876, 2.1194236, -47.275
 
 [node name="Container_Interior_Reveal" parent="." unique_id=944618827 instance=ExtResource("20_r4e2n")]
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -2.5552702, 1.9932939, -32.42649)
+
+[node name="Npc" parent="." unique_id=601889088 instance=ExtResource("21_r4e2n")]
+transform = Transform3D(-0.0025830676, 0, -0.99999666, 0, 1, 0, 0.99999666, 0, -0.0025830676, -6.1259036, 8.8207445, 64.1767)
