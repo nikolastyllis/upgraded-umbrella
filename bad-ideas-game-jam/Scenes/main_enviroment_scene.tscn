@@ -14,6 +14,7 @@
 [ext_resource type="Material" uid="uid://ct3phceoao5ux" path="res://Materials/Ship/bridge_windows.tres" id="8_ucy3n"]
 [ext_resource type="Material" uid="uid://bndtvqpehtb6c" path="res://Materials/Ship/ship_panel_lighter.tres" id="11_22tk6"]
 [ext_resource type="Material" uid="uid://c68gjktj7h3ie" path="res://Materials/Ship/rust_panel_simple_Grey.tres" id="12_ns4fk"]
+[ext_resource type="PackedScene" uid="uid://ck2lgtt41qqcm" path="res://Assets/Models/Enviroment/BIGJ_LifeBoat.fbx" id="15_jn3ni"]
 
 [node name="Ship Enviroment" type="Node3D" unique_id=1795795939]
 
@@ -1828,5 +1829,8 @@ light_size = 0.071
 
 [node name="LightmapProbe" type="LightmapProbe" parent="probes" unique_id=772075261]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.3812747, -43.62248)
+
+[node name="BIGJ_LifeBoat" parent="." unique_id=372647113 instance=ExtResource("15_jn3ni")]
+transform = Transform3D(1, 0, 0, 0, 0.8596384, -0.51090306, 0, 0.51090306, 0.8596384, -7.565981, 7.5045476, 69.434296)
 
 [editable path="BIGJ_Ship_03"]
