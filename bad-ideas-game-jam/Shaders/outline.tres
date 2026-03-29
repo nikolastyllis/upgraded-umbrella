@@ -3,5 +3,5 @@
 [ext_resource type="Shader" uid="uid://coy0gqqj6mnot" path="res://Shaders/outline.gdshader" id="1_qypn6"]
 
 [resource]
-render_priority = 0
+render_priority = 1
 shader = ExtResource("1_qypn6")

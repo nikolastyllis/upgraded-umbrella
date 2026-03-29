@@ -1790,6 +1790,13 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.038731, 22.40142, 62.2785
 light_color = Color(0.9948409, 0, 0.17758498, 1)
 light_size = 0.071
 
+[node name="OmniLight3D11" type="OmniLight3D" parent="Night Lights" unique_id=1159210464]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.7629457, 10.942606, 67.16382)
+light_color = Color(0.3064232, 0.85464454, 0, 1)
+light_energy = 2.703
+light_size = 0.071
+omni_range = 3.2965221
+
 [node name="OmniLight3D4" type="OmniLight3D" parent="Night Lights" unique_id=433965711]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.16204, 22.40142, 62.278526)
 light_color = Color(0.9948409, 0, 0.17758498, 1)
