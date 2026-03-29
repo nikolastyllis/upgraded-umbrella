@@ -23,6 +23,7 @@ var _ik_target_node: Node3D = null
 @onready var spark_light := $Sparks/Light
 
 @onready var torch = $SpotLight3D
+@onready var torch_omni = $Character/Armature/Skeleton3D/LeftHandAttachment2/ChestTorch_low/OmniLight3D
 
 @onready var camera := $CameraOrigin/SpringArm3D/Camera3D
 
@@ -96,6 +97,7 @@ func _ready() -> void:
 	current_camera_position = camera_position_left.position
 	camera_origin.position = current_camera_position
 	torch.light_energy = 0.0
+	torch_omni.light_energy = 0.0
 	sparks.visible = false
 	spark_light.visible = false
 	_setup_right_hand_ik()
@@ -201,9 +203,10 @@ func _physics_process(delta: float) -> void:
 		await _play_torch()
 		if torch.light_energy == 2.0:
 			torch.light_energy = 0.0
+			torch_omni.light_energy = 0.0
 		else:
 			torch.light_energy = 2.0
-			
+			torch_omni.light_energy = 0.5
 	apply_gravity(delta)
 	
 	if not movement_disabled:

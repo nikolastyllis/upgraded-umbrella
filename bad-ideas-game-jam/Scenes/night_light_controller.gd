@@ -4,7 +4,7 @@ extends Node3D
 
 # LookDriver t range is 0.0 -> 1.0
 @export_range(0.0, 1.0, 0.001) var night_start_t: float = 0.30
-@export_range(0.0, 1.0, 0.001) var night_end_t: float = 0.70
+@export_range(0.0, 1.0, 0.001) var night_end_t: float = 0.99
 @export var debug_print_state: bool = false
 
 var look_driver: Node = null
