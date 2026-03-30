@@ -752,3 +752,4 @@ transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -2.5
 
 [node name="DeadTwin2" parent="." unique_id=1825522883 instance=ExtResource("21_r4e2n")]
 transform = Transform3D(0.2174507, 0.023823107, 0.9757806, -0.050861303, 0.9986207, -0.013046388, -0.9747453, -0.04679254, 0.2183624, -8.567326, 8.951135, 63.995235)
+visible = false

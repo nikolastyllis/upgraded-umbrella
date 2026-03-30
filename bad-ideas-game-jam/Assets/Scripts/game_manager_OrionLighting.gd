@@ -149,6 +149,14 @@ var _act4_oxy_obj_state := ""   # "torch" | "infected" | ""
 var set_monster_pos_debug = false
 var played_impact_lightning = false
 
+var shown_interact_control_tip = false
+var shown_move_control_tip = false
+var shown_camera_control_tip = false
+var shown_jog_control_tip = false
+var shown_jump_control_tip = false
+var shown_drop_control_tip = false
+var shown_torch_control_tip = false
+
 var number_of_supplies = 0
 
 func play_from_act_3():
@@ -262,7 +270,13 @@ func _process(_delta: float) -> void:
 		
 	if story_increment <= 2.5:
 		_update_act_1_objective()
-
+		
+	if story_increment == 2 and not player.has_oxy_torch and not shown_move_control_tip:
+		show_control_hint("[WASD] Move", [&"left", &"right", &"up", &"down"], func(): shown_move_control_tip = true)
+		
+	if story_increment == 2 and not player.has_oxy_torch and not shown_camera_control_tip and shown_move_control_tip:
+		show_control_hint("[V] Camera", [&"camera"], func(): shown_camera_control_tip = true)
+	
 	if story_increment == 2 and player.has_oxy_torch:
 		story_increment += 0.5
 
@@ -270,6 +284,12 @@ func _process(_delta: float) -> void:
 		story_increment += 0.5
 		_remove_objective()
 		_play_act1_shift_over()
+		
+	if story_increment == 3 and not shown_jump_control_tip and shown_jog_control_tip:
+		show_control_hint("[Space] Jump", [&"jump"],  func(): shown_jump_control_tip = true)
+		
+	if story_increment == 3 and not player_has_returned_oxy_torch and _player_is_near(store_room.global_position, 3.0) and player.has_oxy_torch and not shown_drop_control_tip:
+		show_control_hint("[Q] Drop", [&"drop"], func(): shown_drop_control_tip = true)
 
 	if story_increment == 3 and not player_has_returned_oxy_torch:
 		_update_oxy_torch_return_objective()
@@ -304,6 +324,10 @@ func _process(_delta: float) -> void:
 		_remove_objective()
 		set_time_of_day(TimeOfDay.NIGHT, 120.0)
 		_play_act_3_container()
+		dead_twin_2.visible = true
+		
+	if story_increment == 6 and not shown_torch_control_tip:
+		show_control_hint("[F] Flashlight", [&"torch"], func(): shown_torch_control_tip = true)
 
 	if story_increment == 6 and _player_is_near(lifeboat.global_position):
 		story_increment += 1
@@ -453,6 +477,7 @@ func _play_act1_shift_over():
 	_update_oxy_torch_return_objective()
 	player.toggle_movement_disabled()
 	_dialogue_active = false
+	show_control_hint("[Shift] Jog", [&"shift"], func(): shown_jog_control_tip = true)
 
 func _play_act3_wake_up():
 	_dialogue_active = true
@@ -777,3 +802,22 @@ func _play_sound(sound: String) -> void:
 	static_player.play()
 	await static_player.finished
 	static_player.queue_free()
+	
+func show_control_hint(
+		hint: String,
+		clear_actions: Array[StringName],
+		on_done: Callable = Callable()
+	) -> void:
+
+	player.set_alert_text(hint)
+
+	var watched := clear_actions.duplicate()
+
+	while not watched.is_empty():
+		await get_tree().process_frame
+		watched = watched.filter(func(action): return not Input.is_action_just_pressed(action))
+
+	player.clear_alert_text()
+
+	if on_done.is_valid():
+		on_done.call()

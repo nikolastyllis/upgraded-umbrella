@@ -14,6 +14,8 @@ extends BaseCharacter
 @onready var crosshair_ui := $CameraOrigin/SpringArm3D/Camera3D/CrosshairUI
 @onready var objective_ui := $CameraOrigin/SpringArm3D/Camera3D/ObjectiveUI
 @onready var objective_ui_text := $CameraOrigin/SpringArm3D/Camera3D/ObjectiveUI/Description
+@onready var alert_text := $CameraOrigin/SpringArm3D/Camera3D/Alerts/CanvasLayer/RichTextLabel
+@onready var alert_ui := $CameraOrigin/SpringArm3D/Camera3D/Alerts
 
 @onready var skeleton: Skeleton3D = $Character/Armature/Skeleton3D
 @onready var right_hand_ik: SkeletonIK3D = $Character/Armature/Skeleton3D/RightHandIK
@@ -43,9 +45,9 @@ const SENSITIVITY_INTERACT = 0.005
 const FOV_INTERACT := 70.0
 
 var _panting_player: AudioStreamPlayer = null
-const PANTING_MIN_DB	:= 0
-const PANTING_MAX_DB	:=  10
-const PANTING_FADE_SPD :=   10.0
+const PANTING_MIN_DB	:= -80
+const PANTING_MAX_DB	:=  12
+const PANTING_FADE_SPD :=   2.0
 
 var sensitivity := 0.25
 var interaction_hold_timer := 0.0
@@ -117,6 +119,7 @@ func toggle_movement_disabled():
 	movement_disabled = not movement_disabled
 	crosshair_ui.visible = not movement_disabled
 	objective_ui.visible = not movement_disabled
+	alert_text.visible = not movement_disabled
 	tween_camera_fov(FOV_DISABLED if movement_disabled else FOV_NORMAL)
 	sensitivity = SENSITIVITY_DISABLED if movement_disabled else SENSITIVITY_NORMAL
 	can_interact = false if movement_disabled else true
@@ -436,6 +439,8 @@ func show_dialog_text(dialog: String, time: float) -> void:
 			instance.queue_free()
 	)
 	
+	
+
 const INSIDE_RAY_COUNT  := 1000
 const INSIDE_RAY_LENGTH := 100
 
@@ -472,6 +477,12 @@ func fade_out_camera(duration: float = 1.0) -> void:
 
 func set_objective_text(text: String) -> void:
 	objective_ui_text.text = text
+	
+func set_alert_text(text: String) -> void:
+	alert_text.text = text
+
+func clear_alert_text() -> void:
+	alert_text.text = ""
 
 func fade_in_camera(duration: float = 1.0) -> void:
 	var canvas_layer: CanvasLayer
@@ -494,8 +505,6 @@ func fade_in_camera(duration: float = 1.0) -> void:
 	tween.tween_property(overlay, "color:a", 0.0, duration).set_ease(Tween.EASE_IN_OUT)
 	await tween.finished
 	canvas_layer.queue_free()
-
-var _was_jogging := false
 
 func _setup_panting_player() -> void:
 	
@@ -520,22 +529,14 @@ func _update_panting(delta: float) -> void:
 		return
 
 	var exhaustion := clampf(jogging_timer / jogging_max_time, 0.0, 1.0)
-	var track_length: float = _panting_player.stream.get_length()
 
-	if is_jogging:
-		if not _was_jogging:
-			_panting_player.play(exhaustion * track_length)
-		elif not _panting_player.playing:
-			_panting_player.play(exhaustion * track_length)
-		_was_jogging = true
-	else:
-		_was_jogging = false
+	if not _panting_player.playing:
+		_panting_player.play()
+		
+	var intensity := exhaustion
 
-	if not is_jogging and _panting_player.volume_db <= PANTING_MIN_DB + 0.5:
-		_panting_player.stop()
-		_panting_player.volume_db = PANTING_MIN_DB
+	var target_db := lerpf(PANTING_MIN_DB, PANTING_MAX_DB, intensity)
 
-	var target_db := lerpf(PANTING_MIN_DB, PANTING_MAX_DB, exhaustion)
 	_panting_player.volume_db = lerpf(
 		_panting_player.volume_db,
 		target_db,
