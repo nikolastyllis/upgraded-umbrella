@@ -86,6 +86,7 @@ func _process(_delta):
 		drop()
 		dropped_at_lifeboat = true
 		game_manager.number_of_supplies += 1
+		game_manager.reset_monster_speed()
 		
 func _is_near_lifeboat() -> bool:
 	return (global_position - lifeboat.global_position).length() < 1

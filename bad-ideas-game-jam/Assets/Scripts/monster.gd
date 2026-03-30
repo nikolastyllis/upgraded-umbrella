@@ -1,7 +1,7 @@
 class_name Monster
 extends NPC
 
-const MONSTER_SPEED := 2.5
+const monster_speed := 2.5
 
 const DETECTION_DISTANCE  := 18.0
 const DETECTION_FOV_DOT   := 0.1 
@@ -15,9 +15,11 @@ const KILL_DISTANCE       := 1.5
 const KILL_CHECK_INTERVAL := 0.5
 
 const PATROL_SPEED          := 1.5
-const PATROL_WANDER_RADIUS  := 20.0
-const PATROL_WAYPOINT_COUNT := 3
-const PATROL_PLAYER_BIAS    := 0.75
+const PATROL_WANDER_RADIUS  := 40.0
+const PATROL_WAYPOINT_COUNT := 4
+const PATROL_PLAYER_BIAS    := 0.8
+
+@export var debug_enabled := false
 
 var _is_chasing        := false
 var _is_roaring        := false
@@ -70,18 +72,20 @@ func reset_state() -> void:
 	_log("reset_state — DONE %s" % _state())
 
 func _setup_debug() -> void:
+	if not debug_enabled:
+		return
 	_dbg_root = Node3D.new()
 	_dbg_root.name = "MonsterDebug_%s" % name
 	get_tree().root.call_deferred("add_child", _dbg_root)
 
 func _clear_debug() -> void:
-	if not is_instance_valid(_dbg_root):
+	if not debug_enabled or not is_instance_valid(_dbg_root):
 		return
 	for child in _dbg_root.get_children():
 		child.queue_free()
 
 func _dbg_ray(from: Vector3, to: Vector3, color: Color, hit: Variant = null) -> void:
-	if not is_instance_valid(_dbg_root):
+	if not debug_enabled or not is_instance_valid(_dbg_root):
 		return
 	var mat := _dbg_mat(color)
 	var mesh := ImmediateMesh.new()
@@ -114,7 +118,7 @@ func _dbg_ray(from: Vector3, to: Vector3, color: Color, hit: Variant = null) -> 
 	_dbg_add_mesh(mesh)
 
 func _dbg_circle(center: Vector3, radius: float, color: Color, steps := 24) -> void:
-	if not is_instance_valid(_dbg_root):
+	if not debug_enabled or not is_instance_valid(_dbg_root):
 		return
 	var mesh := ImmediateMesh.new()
 	var mat  := _dbg_mat(color)
@@ -129,7 +133,7 @@ func _dbg_circle(center: Vector3, radius: float, color: Color, steps := 24) -> v
 
 func _dbg_arc_cone(origin: Vector3, forward: Vector3, half_angle: float,
 		range_dist: float, color: Color, steps := 32) -> void:
-	if not is_instance_valid(_dbg_root):
+	if not debug_enabled or not is_instance_valid(_dbg_root):
 		return
 	var mesh := ImmediateMesh.new()
 	var mat  := _dbg_mat(color)
@@ -152,7 +156,7 @@ func _dbg_arc_cone(origin: Vector3, forward: Vector3, half_angle: float,
 	_dbg_add_mesh(mesh)
 
 func _dbg_point(pos: Vector3, color: Color) -> void:
-	if not is_instance_valid(_dbg_root):
+	if not debug_enabled or not is_instance_valid(_dbg_root):
 		return
 	var mesh := ImmediateMesh.new()
 	var mat  := _dbg_mat(color)
@@ -165,7 +169,7 @@ func _dbg_point(pos: Vector3, color: Color) -> void:
 	_dbg_add_mesh(mesh)
 
 func _dbg_line(from: Vector3, to: Vector3, color: Color) -> void:
-	if not is_instance_valid(_dbg_root):
+	if not debug_enabled or not is_instance_valid(_dbg_root):
 		return
 	var mesh := ImmediateMesh.new()
 	var mat  := _dbg_mat(color)
@@ -234,6 +238,8 @@ func _draw_debug_scene() -> void:
 				Color(0.0, 1.0, 0.3))
 
 func _log(msg: String) -> void:
+	if not debug_enabled:
+		return
 	print("[Monster][%.2f] %s" % [Time.get_ticks_msec() / 1000.0, msg])
 
 func _state() -> String:
@@ -248,12 +254,13 @@ func _ready() -> void:
 	_setup_debug()
 
 func get_speed() -> float:
-	return PATROL_SPEED if _patrol_state == PatrolState.PATROLLING else MONSTER_SPEED
+	return PATROL_SPEED if _patrol_state == PatrolState.PATROLLING else monster_speed
 
 func _process(delta: float) -> void:
 	_update_head_look_weight(delta)
-	_clear_debug()
-	_draw_debug_scene()
+	if debug_enabled:
+		_clear_debug()
+		_draw_debug_scene()
 	if _roar_cooldown_timer > 0.0:
 		_roar_cooldown_timer -= delta
 	_update_los(delta)

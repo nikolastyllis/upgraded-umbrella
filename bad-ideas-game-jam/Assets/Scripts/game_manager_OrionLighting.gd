@@ -180,6 +180,7 @@ func play_from_act_7():
 	story_increment = 7
 	
 func restart_from_act_7() -> void:
+	reset_monster_speed()
 	player.global_position = respawn.global_position
 	player.rotation = respawn.rotation
 	creature.global_position = infected_spawn.global_position
@@ -191,6 +192,9 @@ func restart_from_act_7() -> void:
 	player.is_dead = false
 	creature.reset_state()
 	creature.roar()
+
+func reset_monster_speed():
+	creature.monster_speed = 2.5 + (.15 * number_of_supplies)
 
 func play_from_act_8():
 	play_from_act_7()
