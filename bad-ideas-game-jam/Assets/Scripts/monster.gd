@@ -274,7 +274,8 @@ func _process(delta: float) -> void:
 		_roar_cooldown_timer -= delta
 	_update_los(delta)
 	_update_kill_check(delta)
-	_update_teleport(delta)
+	if game_manager.story_increment == 8:
+		_update_teleport(delta)
 
 func _physics_process(delta: float) -> void:
 	if _is_roaring:
