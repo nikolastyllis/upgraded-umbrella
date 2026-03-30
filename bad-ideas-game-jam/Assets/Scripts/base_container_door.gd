@@ -85,6 +85,9 @@ func on_interact(_player):
 	
 func can_interact(_player: Node) -> bool:
 	
+	if _player.is_holding_jerry_can:
+		return false
+	
 	if is_hero_container_1:
 		return game_manager.story_increment == 2.5 and _player.has_oxy_torch
 		

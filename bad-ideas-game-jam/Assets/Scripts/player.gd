@@ -64,6 +64,8 @@ var jogging_max_time = 35
 var jog_cooldown = false
 var jog_cooldown_time = 5
 
+var is_dead = false
+
 var _death_player: AudioStreamPlayer = null
 const DEATH_SOUND_PATH := "res://Assets/Sound/death.ogg"
 
@@ -163,6 +165,8 @@ func _process(delta: float) -> void:
 	handle_interact(delta)
 
 func die() -> void:
+	is_dead = true
+	
 	if is_instance_valid(_death_player):
 		_death_player.play()
 	

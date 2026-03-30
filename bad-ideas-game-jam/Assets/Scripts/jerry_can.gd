@@ -78,8 +78,8 @@ func on_interact(_player):
 	_held = true
 	picked_up.emit(self)
 
-func can_interact(_player: Node) -> bool:
-	return not dropped_at_lifeboat
+func can_interact(_player: Node) -> bool:	
+	return not dropped_at_lifeboat and not _player.is_holding_jerry_can
 
 func _process(_delta):
 	if _held and _is_near_lifeboat():

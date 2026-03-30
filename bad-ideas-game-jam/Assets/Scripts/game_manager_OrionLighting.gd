@@ -188,6 +188,9 @@ func restart_from_act_7() -> void:
 	_remove_objective()
 	player.set_objective_text("Search the containers for supplies to escape on the lifeboat (%s/5 Collected)" % number_of_supplies)
 	await player.fade_in_camera(1.5)
+	player.is_dead = false
+	creature.reset_state()
+	creature.roar()
 
 func play_from_act_8():
 	play_from_act_7()
@@ -320,7 +323,6 @@ func _process(_delta: float) -> void:
 
 	if story_increment == 8:
 		_update_fuel_objective()
-		creature.set_target_position(player.global_position)
 
 func _update_act_1_objective() -> void:
 	if player_has_interacted_with_container or _dialogue_active:

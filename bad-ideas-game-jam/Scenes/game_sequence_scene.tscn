@@ -21,7 +21,7 @@
 [ext_resource type="PackedScene" uid="uid://dp4otnp5mmihr" path="res://Prefabs/creature.tscn" id="18_tc46g"]
 [ext_resource type="PackedScene" uid="uid://38kbp4tchkj" path="res://Assets/Models/Enviroment/Container_Interior_Starter.fbx" id="19_0ixb7"]
 [ext_resource type="PackedScene" uid="uid://dkqydnieh7ivh" path="res://Assets/Models/Enviroment/Container_Interior_Reveal.fbx" id="20_r4e2n"]
-[ext_resource type="PackedScene" uid="uid://cegsfr3gshs18" path="res://Prefabs/dead_wazza.tscn" id="21_r4e2n"]
+[ext_resource type="PackedScene" path="res://Prefabs/dead_wazza.tscn" id="21_r4e2n"]
 
 [sub_resource type="Gradient" id="Gradient_0ixb7"]
 offsets = PackedFloat32Array(0.14097744, 0.36654136, 0.4830827, 0.7838346)
@@ -685,7 +685,7 @@ metadata/_edit_lock_ = true
 transform = Transform3D(-0.87114525, -0.27626652, -0.40593448, 0, 0.8267076, -0.5626318, 0.49102545, -0.490134, -0.7201824, 52.358, -6.0843773, 106.95354)
 
 [node name="Respawn" type="Node3D" parent="GameManager/Locations" unique_id=888515974]
-transform = Transform3D(0.99999994, 0, 0, 0, 0.99999994, 0, 0, 0, 1, 51.96664, -5.1743274, 104.09488)
+transform = Transform3D(0.99999994, 0, 0, 0, 0.99999994, 0, 0, 0, 1, 53.09616, -5.1743274, 105.74573)
 
 [node name="Container" type="Node3D" parent="GameManager/Locations" unique_id=2145291984]
 transform = Transform3D(-0.87114525, 0, -0.49102545, 0, 1, 0, 0.49102545, 0, -0.87114525, 52.696583, -5.021561, 108.17822)
@@ -756,7 +756,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.7934155, -20.827534, 54.12
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.180876, 2.1194236, -47.27563)
 
 [node name="Container_Interior_Reveal" parent="." unique_id=944618827 instance=ExtResource("20_r4e2n")]
-transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -2.5552702, 1.9932939, -32.42649)
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -2.5552702, 1.9932939, -32.65922)
 
 [node name="dead_wazza" parent="." unique_id=1825522883 instance=ExtResource("21_r4e2n")]
 transform = Transform3D(-0.002578362, -0.0001558475, -0.99999666, -0.060334273, 0.99817824, 0, 0.9981749, 0.06033407, -0.0025830676, -6.124528, 8.929073, 64.17389)
