@@ -3,10 +3,10 @@ extends NPC
 
 var monster_speed := 2.5
 
-const DETECTION_DISTANCE  := 18.0
-const DETECTION_FOV_DOT   := 0.1 
-const LOS_CHECK_INTERVAL  := 0.1
-const LOSE_SIGHT_DURATION := 10.0 
+const DETECTION_DISTANCE  := 40
+const DETECTION_FOV_DOT   := -1
+const LOS_CHECK_INTERVAL  := 0.01
+const LOSE_SIGHT_DURATION := 10
 
 const ROAR_DURATION  := 6.0
 const ROAR_COOLDOWN  := 20.0

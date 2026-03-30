@@ -13,7 +13,7 @@
 size = Vector3(2.6167486, 2.7541444, 0.3104117)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_gowdn"]
-size = Vector3(2.6167486, 0.32783473, 6.5329328)
+size = Vector3(2.6167486, 0.19320102, 6.5329328)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_uqqmb"]
 size = Vector3(0.21462429, 2.7541444, 6.5329328)
@@ -25,46 +25,43 @@ size = Vector3(0.14379883, 2.433838, 0.8388672)
 
 [node name="Container" unique_id=683553091 instance=ExtResource("1_r4cle")]
 
-[node name="Skeleton3D" parent="rigged_container" parent_id_path=PackedInt32Array(1033380858) index="0" unique_id=867957033]
+[node name="Skeleton3D" parent="rigged_container" parent_id_path=PackedInt32Array(1550209845) index="0" unique_id=294692931]
 bones/1/rotation = Quaternion(-2.6692543e-08, -2.6692543e-08, -0.7071068, 0.7071068)
 bones/2/rotation = Quaternion(0.7071063, -1.0536721e-08, 0.70710737, 1.0536705e-08)
 bones/3/rotation = Quaternion(-2.6692543e-08, 2.6692543e-08, 0.7071068, 0.7071068)
 bones/4/rotation = Quaternion(-0.7071063, 0, 0.70710737, 0)
 
-[node name="mesh_container_model" parent="rigged_container/Skeleton3D" index="0" unique_id=1214363964]
+[node name="mesh_container_model" parent="rigged_container/Skeleton3D" index="0" unique_id=1198690144]
 surface_material_override/0 = ExtResource("2_3kqmv")
 surface_material_override/1 = ExtResource("3_5miy3")
 
 [node name="PhysicalBoneSimulator3D" type="PhysicalBoneSimulator3D" parent="rigged_container/Skeleton3D" index="1" unique_id=1279182037]
 
 [node name="Physical Bone Root" type="PhysicalBone3D" parent="rigged_container/Skeleton3D/PhysicalBoneSimulator3D" index="0" unique_id=1469142241]
-transform = Transform3D(-0.93207616, 0.12639534, 0.33949712, 0, 0.937158, -0.34890544, -0.36226243, -0.32520646, -0.87350255, -0.6142057, 0.6312269, 1.5803088)
-joint_offset = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.9604645e-08, 5.9604645e-08, 1.8091632)
-body_offset = Transform3D(-0.93207616, 0.12639534, 0.33949712, 0, 0.937158, -0.34890544, -0.36226243, -0.32520646, -0.87350255, -0.6142057, 0.6312269, 1.5803088)
 bone_name = "Root"
 
 [node name="Hull1" type="CollisionShape3D" parent="rigged_container/Skeleton3D/PhysicalBoneSimulator3D/Physical Bone Root" index="0" unique_id=717573408]
-transform = Transform3D(-0.93207604, 6.944508e-09, -0.3622624, 0.12639531, 0.9371577, -0.32520643, 0.3394971, -0.3489054, -0.87350243, 1.1270928, 2.2168152, 4.078228)
+transform = Transform3D(0.9999999, -2.2351742e-08, 0, -7.450581e-09, 0.9999998, -5.9604645e-08, -2.9802322e-08, 5.9604645e-08, 0.9999999, -3.5762787e-07, 1.285817, -3.1112595)
 shape = SubResource("BoxShape3D_8ygw2")
 
 [node name="Hull6" type="CollisionShape3D" parent="rigged_container/Skeleton3D/PhysicalBoneSimulator3D/Physical Bone Root" index="1" unique_id=533940326]
-transform = Transform3D(-0.93207604, 6.944508e-09, -0.3622624, 0.12639531, 0.9371577, -0.32520643, 0.3394971, -0.3489054, -0.87350243, -0.57910955, 0.685141, -0.035839528)
+transform = Transform3D(0.9999999, -2.2351742e-08, 0, -7.450581e-09, 0.9999998, -5.9604645e-08, -2.9802322e-08, 5.9604645e-08, 0.9999999, -2.9802322e-07, 1.2858169, 1.598592)
 shape = SubResource("BoxShape3D_8ygw2")
 
 [node name="Hull2" type="CollisionShape3D" parent="rigged_container/Skeleton3D/PhysicalBoneSimulator3D/Physical Bone Root" index="2" unique_id=141642158]
-transform = Transform3D(-0.9320761, 0, -0.36226243, 0.12639531, 0.9371578, -0.32520643, 0.3394971, -0.34890544, -0.8735025, 5.9604645e-08, 2.3927615, 0.91833407)
+transform = Transform3D(0.99999994, -7.450581e-09, 0, -7.450581e-09, 0.9999999, -2.9802322e-08, -2.9802322e-08, 0, 0.99999994, -1.1920929e-07, 2.5532107, 1.1920929e-07)
 shape = SubResource("BoxShape3D_gowdn")
 
 [node name="Hull3" type="CollisionShape3D" parent="rigged_container/Skeleton3D/PhysicalBoneSimulator3D/Physical Bone Root" index="3" unique_id=463091156]
-transform = Transform3D(-0.93207586, 3.908511e-09, -0.36226243, 0.12639529, 0.9371571, -0.32520646, 0.33949706, -0.34890544, -0.87350225, 2.2020086e-07, 0.059234317, 1.7871096)
+transform = Transform3D(0.99999976, -9.685755e-08, 8.940697e-08, -2.2351742e-08, 0.9999993, -1.4901161e-07, -5.9604645e-08, 2.3841858e-07, 0.99999976, -6.556511e-07, 0.0917778, 8.34465e-07)
 shape = SubResource("BoxShape3D_gowdn")
 
 [node name="Hull4" type="CollisionShape3D" parent="rigged_container/Skeleton3D/PhysicalBoneSimulator3D/Physical Bone Root" index="4" unique_id=713821776]
-transform = Transform3D(-0.9320761, 0, -0.36226243, 0.12639531, 0.9371578, -0.32520643, 0.3394971, -0.34890544, -0.8735025, 1.1194813, 1.053205, 0.95277745)
+transform = Transform3D(0.99999994, -7.450581e-09, 0, -7.450581e-09, 0.9999999, -2.9802322e-08, -2.9802322e-08, 0, 0.99999994, -1.2010622, 1.2858171, 1.1920929e-07)
 shape = SubResource("BoxShape3D_uqqmb")
 
 [node name="Hull5" type="CollisionShape3D" parent="rigged_container/Skeleton3D/PhysicalBoneSimulator3D/Physical Bone Root" index="5" unique_id=42511905]
-transform = Transform3D(-0.9320761, 0, -0.36226243, 0.12639531, 0.9371578, -0.32520643, 0.3394971, -0.34890544, -0.8735025, -1.1073918, 1.3551829, 1.7638882)
+transform = Transform3D(0.99999994, -7.450581e-09, 0, -7.450581e-09, 0.9999999, -2.9802322e-08, -2.9802322e-08, 0, 0.99999994, 1.1880916, 1.2858171, 1.1920929e-07)
 shape = SubResource("BoxShape3D_uqqmb")
 
 [node name="Physical Bone door_left" type="PhysicalBone3D" parent="rigged_container/Skeleton3D/PhysicalBoneSimulator3D" index="1" unique_id=376903884]
@@ -108,7 +105,7 @@ transform = Transform3D(4.9999995, 0, 0, 0, 4.9999995, 0, 0, 0, 4.9999995, -0.03
 shape = SubResource("BoxShape3D_gowdn")
 
 [node name="Hull3" type="CollisionShape3D" parent="StaticBody3D" index="2" unique_id=1287357682]
-transform = Transform3D(4.9999986, 0, 0, 0, 4.999996, 0, 0, 0, 4.999999, -0.035216063, -6.1593013, -15.69599)
+transform = Transform3D(4.9999986, 0, 0, 0, 4.999996, 0, 0, 0, 4.999999, -0.035216063, -5.9423523, -15.695991)
 shape = SubResource("BoxShape3D_gowdn")
 
 [node name="Hull4" type="CollisionShape3D" parent="StaticBody3D" index="3" unique_id=1193803742]
