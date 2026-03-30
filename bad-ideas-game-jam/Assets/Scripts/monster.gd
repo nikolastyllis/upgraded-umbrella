@@ -72,7 +72,7 @@ func reset_state() -> void:
 	velocity = Vector3.ZERO
 	navigation_agent_3d.set_velocity(Vector3.ZERO)
 	if navigation_agent_3d:
-		navigation_agent_3d.target_position = global_position
+		navigation_agent_3d.target_position = get_valid_nav_position(global_position)
 	var sm = animation_tree["parameters/AnimationNodeStateMachine/playback"]
 	sm.travel("Idle")
 	animation_tree.set("parameters/KillOneShot/request", AnimationNodeOneShot.ONE_SHOT_REQUEST_ABORT)
@@ -420,7 +420,7 @@ func _begin_roar() -> void:
 
 	var dialogue_id := randi_range(80, 84)
 	_log("_begin_roar — playing dialogue id=%d" % dialogue_id)
-	play_dialogue(dialogue_id, 30, 0.5)
+	play_dialogue(dialogue_id, 30, 0.5, true)
 
 func _tick_roar(delta: float) -> void:
 	_roar_timer -= delta
@@ -605,7 +605,7 @@ func _update_teleport(delta: float) -> void:
 	global_position = _teleport_sample_position
 
 	if navigation_agent_3d:
-		navigation_agent_3d.target_position = global_position
+		navigation_agent_3d.target_position = get_valid_nav_position(global_position)
 
 	_teleport_sample_position = Vector3.ZERO
 	_teleport_sample_timer    = TELEPORT_SAMPLE_INTERVAL

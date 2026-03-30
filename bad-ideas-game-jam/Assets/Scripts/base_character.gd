@@ -107,13 +107,18 @@ func stop_climbing() -> void:
 		climb_cooldown = 0.5
 
 func update_climb_position() -> void:
-	if not current_ladder or is_finishing_climb:
+	if not current_ladder:
 		return
+	
 	var to_ladder = current_ladder.global_position - global_position
 	to_ladder.y = 0
 	if to_ladder.length() > 0.01:
 		var ladder_offset = -deg_to_rad(90) if self is NPC else deg_to_rad(90)
 		rotation.y = lerp_angle(rotation.y, current_ladder.rotation.y + ladder_offset, 0.15)
+	
+	if is_finishing_climb:
+		return
+	
 	var ladder_forward = current_ladder.global_transform.basis.x
 	var target_pos = current_ladder.global_position + ladder_forward * -.5
 	var aligned = Vector3(target_pos.x, global_position.y, target_pos.z)
@@ -166,7 +171,7 @@ func get_climb_input() -> float:
 func get_player():
 	pass
 
-func play_dialogue(id: int, volume: float = 10, pitch_scale: float = 1.0) -> void:
+func play_dialogue(id: int, volume: float = 10, pitch_scale: float = 1.0, is_roar = false) -> void:
 	if game_manager.debug_skip_dialog:
 		return
 	var path := "res://Assets/Dialogue/%d.ogg" % id
@@ -202,7 +207,7 @@ func play_dialogue(id: int, volume: float = 10, pitch_scale: float = 1.0) -> voi
 		dialogue_player.volume_db = volume
 		dialogue_player.pitch_scale = pitch_scale
 	else:
-		dialogue_player = AudioStreamPlayer.new()
+		dialogue_player = AudioStreamPlayer.new() if is_roar else AudioStreamPlayer3D.new()
 		dialogue_player.volume_db = volume
 		dialogue_player.pitch_scale = pitch_scale
 		
@@ -314,7 +319,7 @@ func _play_oxy_torch_loop() -> void:
 	var loop_player := AudioStreamPlayer.new()
 	loop_player.bus = "Sound"
 	loop_player.stream = load(LOOP_PATH)
-	loop_player.volume_db = 0
+	loop_player.volume_db = -15
 	add_child(loop_player)
 	loop_player.play()
 	_loop_player = loop_player
@@ -330,7 +335,7 @@ func _play_oxy_torch() -> void:
 	var static_player := AudioStreamPlayer.new()
 	static_player.bus = "Sound"
 	static_player.stream = load(STATIC_PATH)
-	static_player.volume_db = -30
+	static_player.volume_db = -20
 	add_child(static_player)
 	_oxy_torch_start_player = static_player
 	static_player.play()
@@ -354,6 +359,20 @@ func lerp_finish_climb_position():
 				animation_tree.set("parameters/TimeScale/scale", 1.0)
 				is_finishing_climb = false
 				stop_climbing()
+
+func toggle_hold_blend_on():
+	var tween_in = create_tween()
+	tween_in.tween_method(
+		func(v): animation_tree.set("parameters/HoldBlend/blend_amount", v),
+		0.0, 1.5, 0.2
+	)
+
+func toggle_hold_blend_off():
+	var tween_in = create_tween()
+	tween_in.tween_method(
+		func(v): animation_tree.set("parameters/HoldBlend/blend_amount", v),
+		1.5, 0.0, 0.2
+	)
 
 func _stop_oxy_torch_loop() -> void:
 	_oxy_torch_looping = false

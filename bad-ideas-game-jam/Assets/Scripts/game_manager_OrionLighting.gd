@@ -202,7 +202,6 @@ func restart_from_act_7() -> void:
 	await player.fade_in_camera(1.5)
 	player.is_dead = false
 	creature.reset_state()
-	creature.roar()
 
 func reset_monster_speed():
 	creature.monster_speed = 2.5 + (.15 * number_of_supplies)
@@ -465,7 +464,6 @@ func _play_act_4_lifeboat() -> void:
 	await dead_twin_2.play_dialogue(62)
 	player.toggle_movement_disabled()
 	_dialogue_active = false
-	_play_act_4_search()
 
 func _play_act1_shift_over():
 	_dialogue_active = true
@@ -547,24 +545,10 @@ func _play_act_3_container():
 	_play_lifeboat_reminders()
 	_dialogue_active = false
 
-func _play_act_4_search():
-	await _wait_for(5.0)
-	_play_search_noises()
-
 func add_supply():
 	number_of_supplies += 1
 	lifeboat_anim_player.play("Supply_drop")
 	_play_sound("supply_drop")
-
-func _play_search_noises() -> void:
-	var rng = RandomNumberGenerator.new()
-	rng.randomize()
-	while true:
-		var wait_time = rng.randf_range(1.0, 60.0)
-		await _wait_for(wait_time)
-		var dialogue_id = rng.randi_range(80, 91)
-		var speaker = creature
-		await speaker.play_dialogue(dialogue_id)
 
 func _play_store_room_reminders() -> void:
 	while true:

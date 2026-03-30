@@ -44,6 +44,8 @@ func on_interact(_player):
 	
 	add_to_group("interacted_boxes")
 	
+	_player.toggle_hold_blend_on()
+	
 	if idx == 0:
 		_player.play_dialogue(95)
 		
@@ -63,7 +65,7 @@ func on_interact(_player):
 	rigid_body.freeze = true
 	set_collision_enabled(false)
 
-	var right_hand_attachment = player.get_node("Character/Armature/Skeleton3D/RightHandAttachment")
+	var right_hand_attachment = player.get_node("Character/Armature/Skeleton3D/BoneAttachment3D/BoxPos")
 	get_parent().remove_child(self)
 	right_hand_attachment.add_child(self)
 	global_transform = _original_transform
@@ -92,6 +94,7 @@ func _is_near_lifeboat() -> bool:
 	return (global_position - lifeboat.global_position).length() < 1
 
 func drop():
+	player.toggle_hold_blend_off()
 	player.is_holding_jerry_can = false
 	_held = false
 	var saved_transform = global_transform
@@ -100,6 +103,7 @@ func drop():
 	global_transform = saved_transform
 	set_collision_enabled(true)
 	rigid_body.freeze = false
+	queue_free()
 
 func set_collision_enabled(enabled: bool) -> void:
 	for child in rigid_body.get_children():

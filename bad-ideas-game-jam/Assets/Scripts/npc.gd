@@ -160,6 +160,12 @@ func get_move_direction() -> Vector3:
 	dir.y = 0
 	return dir.normalized() if dir.length() > 0.01 else Vector3.ZERO
 
+func get_valid_nav_position(pos: Vector3) -> Vector3:
+	return NavigationServer3D.map_get_closest_point(
+		navigation_agent_3d.get_navigation_map(),
+		pos
+	)
+
 func get_input_dir() -> Vector2:
 	if is_climbing:
 		return Vector2(0.0, -get_climb_input())
