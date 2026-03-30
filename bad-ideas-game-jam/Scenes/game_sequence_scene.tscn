@@ -743,8 +743,8 @@ draw_pass_1 = SubResource("RibbonTrailMesh_qcyk2")
 [node name="GameManager" type="Node3D" parent="." unique_id=1749829845]
 transform = Transform3D(-0.87121385, 0, 0.49090374, 0, 1, 0, -0.49090374, 0, -0.87121385, -8.431, 7.972, 75.958)
 script = ExtResource("12_yiumw")
+debug_skip_dialog = true
 debug_play_from_act_7 = false
-debug_play_from_act_8 = true
 number_of_supplies = 5
 DAY_SUN_PITCH_DEG = -72.6
 DAY_SUN_YAW_DEG = 124.3
@@ -816,10 +816,10 @@ shape = SubResource("BoxShape3D_tc46g")
 transform = Transform3D(-0.8712137, 0, -0.49090365, 0, 1, 0, 0.49090365, 0, -0.8712137, -2.7452836, 4.346075, 20.835665)
 
 [node name="Bedroom2" type="Node3D" parent="GameManager/Locations" unique_id=2080234040]
-transform = Transform3D(-0.8712137, 0, -0.49090365, 0, 1, 0, 0.49090365, 0, -0.8712137, 0.13845241, 4.346075, 20.130865)
+transform = Transform3D(-0.8712137, 0, -0.49090365, 0, 1, 0, 0.49090365, 0, -0.8712137, 4.7652764, 4.346075, 16.245163)
 
 [node name="Bedroom3" type="Node3D" parent="GameManager/Locations" unique_id=1341632233]
-transform = Transform3D(-0.8712137, 0, -0.49090365, 0, 1, 0, 0.49090365, 0, -0.8712137, -0.6669178, 4.346075, 18.701563)
+transform = Transform3D(-0.8712137, 0, -0.49090365, 0, 1, 0, 0.49090365, 0, -0.8712137, 3.959906, 4.346075, 14.815861)
 
 [node name="Camera3D" type="Camera3D" parent="GameManager" unique_id=1487974853]
 transform = Transform3D(0.30559552, -0.5115539, 0.8030716, 0, 0.8434196, 0.5372554, -0.95216143, -0.16418284, 0.25774527, 7.094821, 3.2117147, 4.425983)
@@ -914,7 +914,7 @@ transform = Transform3D(0.2094309, -1.1175871e-08, 0.97782344, 0.11594766, 0.992
 [node name="Twin2" parent="." unique_id=1596341678 instance=ExtResource("17_yiumw")]
 transform = Transform3D(0.6066962, 0, -0.79493374, 0, 1, 0, 0.79493374, 0, 0.6066962, -2.487852, 2.91833, -42.2347)
 
-[node name="Creature" parent="." unique_id=719368376 instance=ExtResource("18_tc46g")]
+[node name="Creature" parent="." unique_id=1939856428 instance=ExtResource("18_tc46g")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.7934155, -20.827534, 54.122692)
 
 [node name="Container_Interior_Starter" parent="." unique_id=1720316576 instance=ExtResource("19_0ixb7")]

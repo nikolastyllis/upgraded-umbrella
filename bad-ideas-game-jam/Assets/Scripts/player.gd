@@ -19,6 +19,9 @@ extends BaseCharacter
 
 @onready var skeleton: Skeleton3D = $Character/Armature/Skeleton3D
 @onready var right_hand_ik: SkeletonIK3D = $Character/Armature/Skeleton3D/RightHandIK
+
+@onready var can = $Character/Armature/Skeleton3D/RightHandAttachment/Can
+
 var _ik_target_node: Node3D = null
 
 @onready var torch = $SpotLight3D
@@ -528,9 +531,29 @@ func hide_ui():
 	objective_ui.visible = false
 	objective_ui_text.visible = false
 
-func drink():
+func drink() -> void:
+	var state_machine = animation_tree["parameters/AnimationNodeStateMachine/playback"]
+	state_machine.travel("Interact")
+	
+	can.visible = true
+	var tween_in = create_tween()
+	tween_in.tween_method(
+		func(v): animation_tree.set("parameters/DrinkBlend/blend_amount", v),
+		0.0, 1.0, 1
+	)
+	await tween_in.finished
+
+	await get_tree().create_timer(3.0).timeout  # hold for 1 second
+
 	jogging_max_time *= 1.1
 	player_speed *= 1.1
+	var tween_out = create_tween()
+	tween_out.tween_method(
+		func(v): animation_tree.set("parameters/DrinkBlend/blend_amount", v),
+		1.0, 0.0, 1
+	)
+	await tween_out.finished
+	can.visible = false
 
 func _update_panting(delta: float) -> void:
 	if not is_instance_valid(_panting_player):
