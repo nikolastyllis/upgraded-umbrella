@@ -15,17 +15,30 @@ extends Camera3D
 @export var fov_lerp_speed: float = 0.35
 @export_flags_3d_physics var collision_mask: int = 1
 
+# New: focus controls
+@export var focus_target_path: NodePath = NodePath("")
+@export_range(0.0, 1.0) var focus_bias: float = 0.85
+@export var focus_random_radius: float = 10.0
+@export var min_focus_distance: float = 4.0
+@export var max_focus_distance: float = 30.0
+
 var _overlay: CanvasItem
 var _tween: Tween
 var _holding: bool = false
 var _hold_timer: float = 0.0
 var _fov_target: float = 62.0
 var _nav_regions: Array = []
+var _focus_target: Node3D
+
 
 func _ready() -> void:
 	_overlay = get_node_or_null(fade_overlay)
 	if _overlay == null:
 		push_warning("CinematicMenuCamera: fade_overlay NodePath is not set or invalid.")
+
+	_focus_target = get_node_or_null(focus_target_path) as Node3D
+	if focus_target_path != NodePath("") and _focus_target == null:
+		push_warning("CinematicMenuCamera: focus_target_path is set but invalid.")
 
 	_refresh_nav_regions()
 	fov = (fov_min + fov_max) * 0.5
@@ -38,6 +51,7 @@ func _ready() -> void:
 	_set_overlay_alpha(0.0)
 	_begin_hold()
 
+
 func _process(delta: float) -> void:
 	fov = lerpf(fov, _fov_target, fov_lerp_speed * delta)
 
@@ -47,9 +61,11 @@ func _process(delta: float) -> void:
 			_holding = false
 			_do_fade_cut()
 
+
 func _begin_hold() -> void:
 	_holding = true
 	_hold_timer = hold_duration + randf_range(-0.6, 1.0)
+
 
 func _do_fade_cut() -> void:
 	if _tween and _tween.is_valid():
@@ -61,15 +77,18 @@ func _do_fade_cut() -> void:
 	_tween.tween_method(_set_overlay_alpha, 1.0, 0.0, fade_duration).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_QUAD)
 	_tween.tween_callback(_begin_hold)
 
+
 func _cut_to_new_shot() -> void:
 	var new_pos := _safe_nav_point(global_position)
 	global_position = new_pos
 	_apply_look(_pick_look_target(new_pos), randf_range(-max_roll_deg, max_roll_deg))
 	_fov_target = randf_range(fov_min, fov_max)
 
+
 func _set_overlay_alpha(a: float) -> void:
 	if is_instance_valid(_overlay):
 		_overlay.modulate.a = a
+
 
 func _safe_nav_point(last_pos: Vector3) -> Vector3:
 	_refresh_nav_regions()
@@ -97,6 +116,7 @@ func _safe_nav_point(last_pos: Vector3) -> Vector3:
 
 	return _push_clear(_random_navmesh_point())
 
+
 func _random_navmesh_point() -> Vector3:
 	if _nav_regions.is_empty():
 		return Vector3(randf_range(-20.0, 20.0), 0.0, randf_range(-20.0, 20.0))
@@ -104,10 +124,12 @@ func _random_navmesh_point() -> Vector3:
 	var region: NavigationRegion3D = _nav_regions.pick_random()
 	return NavigationServer3D.region_get_random_point(region.get_rid(), region.navigation_layers, true)
 
+
 func _refresh_nav_regions() -> void:
 	if not _nav_regions.is_empty() or not is_inside_tree():
 		return
 	_collect_nav_regions(get_tree().root)
+
 
 func _collect_nav_regions(node: Node) -> void:
 	if node is NavigationRegion3D:
@@ -116,6 +138,7 @@ func _collect_nav_regions(node: Node) -> void:
 	for child in node.get_children():
 		_collect_nav_regions(child)
 
+
 func _push_clear(pos: Vector3) -> Vector3:
 	if _has_clearance(pos):
 		pos.y = maxf(pos.y, 15.0)
@@ -123,12 +146,12 @@ func _push_clear(pos: Vector3) -> Vector3:
 
 	var dirs: Array[Vector3] = [
 		Vector3.UP,
-		Vector3(1,1,0).normalized(), Vector3(-1,1,0).normalized(),
-		Vector3(0,1,1).normalized(), Vector3(0,1,-1).normalized(),
-		Vector3(1,0,0), Vector3(-1,0,0),
-		Vector3(0,0,1), Vector3(0,0,-1),
-		Vector3(1,1,1).normalized(), Vector3(-1,1,-1).normalized(),
-		Vector3(1,1,-1).normalized(), Vector3(-1,1,1).normalized()
+		Vector3(1, 1, 0).normalized(), Vector3(-1, 1, 0).normalized(),
+		Vector3(0, 1, 1).normalized(), Vector3(0, 1, -1).normalized(),
+		Vector3(1, 0, 0), Vector3(-1, 0, 0),
+		Vector3(0, 0, 1), Vector3(0, 0, -1),
+		Vector3(1, 1, 1).normalized(), Vector3(-1, 1, -1).normalized(),
+		Vector3(1, 1, -1).normalized(), Vector3(-1, 1, 1).normalized()
 	]
 
 	for step in range(1, max_nudge_attempts + 1):
@@ -141,6 +164,7 @@ func _push_clear(pos: Vector3) -> Vector3:
 	var result := pos + Vector3.UP * (nudge_step * float(max_nudge_attempts))
 	result.y = maxf(result.y, 15.0)
 	return result
+
 
 func _has_clearance(pos: Vector3) -> bool:
 	var space := get_world_3d().direct_space_state
@@ -157,12 +181,41 @@ func _has_clearance(pos: Vector3) -> bool:
 
 	return space.intersect_shape(params, 1).is_empty()
 
-func _pick_look_target(from: Vector3) -> Vector3:
-	var angle := randf() * TAU
-	var h_dist := randf_range(5.0, 25.0)
-	var v_drop := randf_range(-1.5, 0.5)
 
-	return from + Vector3(cos(angle) * h_dist, v_drop, sin(angle) * h_dist)
+func _pick_look_target(from: Vector3) -> Vector3:
+	var random_angle := randf() * TAU
+	var random_dist := randf_range(5.0, 25.0)
+	var random_v := randf_range(-1.5, 0.5)
+
+	var random_target := from + Vector3(
+		cos(random_angle) * random_dist,
+		random_v,
+		sin(random_angle) * random_dist
+	)
+
+	if _focus_target == null:
+		return random_target
+
+	var focus_pos := _focus_target.global_position
+	var to_focus := focus_pos - from
+	var flat_to_focus := Vector3(to_focus.x, 0.0, to_focus.z)
+	var flat_dist := flat_to_focus.length()
+
+	if flat_dist < 0.001:
+		return random_target
+
+	var dir_to_focus := flat_to_focus / flat_dist
+	var focus_dist := clampf(
+		flat_dist + randf_range(-focus_random_radius, focus_random_radius),
+		min_focus_distance,
+		max_focus_distance
+	)
+
+	var focus_height := randf_range(-1.0, 1.0)
+	var focused_target := from + dir_to_focus * focus_dist + Vector3(0.0, focus_height, 0.0)
+
+	return random_target.lerp(focused_target, focus_bias)
+
 
 func _apply_look(target: Vector3, roll_deg: float) -> void:
 	if (target - global_position).length_squared() < 0.01:
