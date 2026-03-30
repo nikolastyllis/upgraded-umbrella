@@ -31,7 +31,6 @@ var _loop_player: AudioStreamPlayer = null
 var _oxy_torch_looping = false
 
 func _ready() -> void:
-	animation_tree.animation_finished.connect(_on_animation_finished)
 	_setup_footstep_player()
 
 var footstep_streams: Array = []
@@ -68,6 +67,7 @@ func _physics_process(delta: float) -> void:
 	finish_climb_animation_cooldown_timer += delta
 	_update_footsteps(delta)
 	_update_ladder_sounds(delta)
+	lerp_finish_climb_position()
 
 func _update_footsteps(delta: float) -> void:
 	var is_walking = is_on_floor() and velocity.length() > 0.5 and not is_climbing and not is_finishing_climb
@@ -101,13 +101,13 @@ func start_climbing(ladder: Node3D) -> void:
 	is_climbing = true
 
 func stop_climbing() -> void:
-	if current_ladder:
+	if current_ladder and not is_finishing_climb:
 		current_ladder = null
 		is_climbing = false
 		climb_cooldown = 0.5
 
 func update_climb_position() -> void:
-	if not current_ladder:
+	if not current_ladder or is_finishing_climb:
 		return
 	var to_ladder = current_ladder.global_position - global_position
 	to_ladder.y = 0
@@ -115,7 +115,7 @@ func update_climb_position() -> void:
 		var ladder_offset = -deg_to_rad(90) if self is NPC else deg_to_rad(90)
 		rotation.y = lerp_angle(rotation.y, current_ladder.rotation.y + ladder_offset, 0.15)
 	var ladder_forward = current_ladder.global_transform.basis.x
-	var target_pos = current_ladder.global_position + ladder_forward * -0.4
+	var target_pos = current_ladder.global_position + ladder_forward * -.8
 	var aligned = Vector3(target_pos.x, global_position.y, target_pos.z)
 	global_position = global_position.lerp(aligned, 0.15)
 
@@ -132,8 +132,9 @@ func apply_gravity(delta: float) -> void:
 func update_movement_animation(input_dir: Vector2) -> void:
 	var state_machine = animation_tree["parameters/AnimationNodeStateMachine/playback"]
 	
-	if current_ladder and current_ladder.end_y() < global_position.y and get_climb_input() > 0 and finish_climb_animation_cooldown_timer > finish_climb_animation_cooldown:
+	if current_ladder and current_ladder.end_y() < (global_position.y+1) and get_climb_input() > 0 and finish_climb_animation_cooldown_timer > finish_climb_animation_cooldown:
 			finish_climb_animation_cooldown_timer = 0
+			animation_tree.set("parameters/TimeScale/scale", 1.8)
 			animation_tree["parameters/AnimationNodeStateMachine/playback"].travel("Finish Climbing")
 			is_finishing_climb = true
 			
@@ -155,13 +156,6 @@ func update_movement_animation(input_dir: Vector2) -> void:
 func update_character_rotation(target_rotation_y: float, delta: float) -> void:
 	rotation.y = lerp_angle(rotation.y, target_rotation_y, rotation_speed * delta)
 	character.rotation.y = lerp_angle(character.rotation.y, character_anchor.rotation.y, 3 * delta)
-
-func _on_animation_finished(anim_name: StringName) -> void:
-	if anim_name == "Finish Climbing":
-		finish_climbing_complete()
-
-func finish_climbing_complete() -> void:
-	is_finishing_climb = false
 
 func get_speed() -> float:
 	return 2.5
@@ -343,6 +337,23 @@ func _play_oxy_torch() -> void:
 	await static_player.finished
 	_oxy_torch_start_player = null
 	static_player.queue_free()
+
+func lerp_finish_climb_position():
+	if is_finishing_climb and current_ladder != null:
+		
+		var ladder_top = Vector3(current_ladder.global_position.x, current_ladder.end_y() + 0.5, current_ladder.global_position.z)
+		var forward_target = ladder_top + current_ladder.global_transform.basis.x * 1.5
+		
+		if global_position.distance_to(ladder_top) > 0.4:
+			global_position = global_position.lerp(ladder_top, 0.03)
+			
+		else:
+			global_position = global_position.lerp(forward_target, 0.04)
+			
+			if global_position.distance_to(forward_target) <= 1.5:
+				animation_tree.set("parameters/TimeScale/scale", 1.0)
+				is_finishing_climb = false
+				stop_climbing()
 
 func _stop_oxy_torch_loop() -> void:
 	_oxy_torch_looping = false

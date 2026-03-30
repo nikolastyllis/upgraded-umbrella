@@ -213,7 +213,6 @@ func _physics_process(delta: float) -> void:
 	super._physics_process(delta)
 	update_camera(delta)
 	handle_quit()
-	
 	handle_stamina(delta)
 	
 	if Input.is_action_just_pressed("ui_accept") and is_climbing:

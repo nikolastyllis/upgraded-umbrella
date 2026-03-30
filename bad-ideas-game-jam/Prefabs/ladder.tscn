@@ -6,25 +6,25 @@
 [ext_resource type="Material" uid="uid://cxpwhh6t2s1cs" path="res://Materials/Ship/ship_main_deck_mat.tres" id="4_7xmjh"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_rmtat"]
-size = Vector3(0.60860384, 0.6, 2.6000001)
+size = Vector3(0.60860384, 1, 2.6000001)
 
 [node name="Ladder" unique_id=689004252 instance=ExtResource("1_2guuy")]
 script = ExtResource("2_rmtat")
 
-[node name="ladder_curve" parent="." index="0" unique_id=1231233135]
+[node name="ladder_curve" parent="." index="0" unique_id=1470033106]
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, -1, 0)
 material_override = ExtResource("3_00kgf")
 
-[node name="ladder_plate" parent="ladder_curve" index="0" unique_id=427900334]
+[node name="ladder_plate" parent="ladder_curve" index="0" unique_id=575827598]
 material_override = ExtResource("4_7xmjh")
 
-[node name="ladder_plate_001" parent="ladder_curve" index="1" unique_id=1404205043]
+[node name="ladder_plate_001" parent="ladder_curve" index="1" unique_id=875670119]
 material_override = ExtResource("4_7xmjh")
 
-[node name="ladder_plate_002" parent="ladder_curve" index="2" unique_id=1236954111]
+[node name="ladder_plate_002" parent="ladder_curve" index="2" unique_id=1632351912]
 material_override = ExtResource("4_7xmjh")
 
-[node name="ladder_plate_003" parent="ladder_curve" index="3" unique_id=1297656098]
+[node name="ladder_plate_003" parent="ladder_curve" index="3" unique_id=875220360]
 material_override = ExtResource("4_7xmjh")
 
 [node name="Area" type="Area3D" parent="." index="1" unique_id=211856057]
@@ -33,7 +33,7 @@ collision_layer = 6
 collision_mask = 7
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area" index="0" unique_id=1274182121]
-transform = Transform3D(-1, -4.371139e-08, 1.9106855e-15, 4.371139e-08, -1, 4.371139e-08, 0, 4.371139e-08, 1, 2.2518538e-09, -0.00025889277, 0.00092971325)
+transform = Transform3D(-1, -4.371139e-08, 1.9106855e-15, 4.371139e-08, -1, 4.371139e-08, 0, 4.371139e-08, 1, 1.099413e-08, 0.1997411, 0.00092971325)
 shape = SubResource("BoxShape3D_rmtat")
 
 [node name="NavigationLink3D" type="NavigationLink3D" parent="." index="2" unique_id=2022253896]

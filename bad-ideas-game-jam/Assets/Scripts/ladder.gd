@@ -20,3 +20,6 @@ func end_y() -> float:
 	
 func start_y() -> float:
 	return navigation_link.to_global(navigation_link.start_position).y
+
+func end_pos() -> Vector3:
+	return  navigation_link.to_global(navigation_link.end_position)
