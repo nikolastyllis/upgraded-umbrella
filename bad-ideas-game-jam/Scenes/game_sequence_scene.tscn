@@ -16,19 +16,22 @@
 [ext_resource type="PackedScene" uid="uid://si3fr5t5stqy" path="res://Prefabs/hero_container.tscn" id="11_t0b6u"]
 [ext_resource type="Script" uid="uid://cr7u4jtas6no" path="res://Assets/Scripts/game_manager_OrionLighting.gd" id="12_yiumw"]
 [ext_resource type="Script" uid="uid://bpgcgf8cu0yr" path="res://Assets/Scripts/audio_manager.gd" id="14_qcyk2"]
-[ext_resource type="Script" path="res://Assets/Scripts/boat.gd" id="14_u5hjn"]
-[ext_resource type="Script" path="res://Scenes/credits.gd" id="16_3f6hp"]
+[ext_resource type="Script" uid="uid://dax422j20b8ka" path="res://Assets/Scripts/boat.gd" id="14_u5hjn"]
+[ext_resource type="Script" uid="uid://bgesjwupo43nf" path="res://Scenes/credits.gd" id="16_3f6hp"]
 [ext_resource type="FontFile" uid="uid://13oicvg0h65k" path="res://Assets/UI/Fonts/Heavy Metal Box.ttf" id="16_hy2ke"]
 [ext_resource type="PackedScene" uid="uid://clai2jixo1u8q" path="res://Prefabs/oxy_torch.tscn" id="16_t0b6u"]
 [ext_resource type="Theme" uid="uid://dsnby6q1yhtnk" path="res://Assets/UI/Text_Theme_Main.tres" id="17_jtogl"]
 [ext_resource type="PackedScene" uid="uid://cxhfllg1iige5" path="res://Prefabs/npc_02.tscn" id="17_yiumw"]
 [ext_resource type="PackedScene" uid="uid://dp4otnp5mmihr" path="res://Prefabs/creature.tscn" id="18_tc46g"]
+[ext_resource type="Texture2D" uid="uid://bc2512krxgfav" path="res://Assets/UI/youtube.png" id="18_uiotd"]
 [ext_resource type="PackedScene" uid="uid://38kbp4tchkj" path="res://Assets/Models/Enviroment/Container_Interior_Starter.fbx" id="19_0ixb7"]
+[ext_resource type="Script" uid="uid://c8xdvuxcrvn73" path="res://Scenes/youtube_link.gd" id="19_3e3ic"]
+[ext_resource type="Texture2D" uid="uid://cga8cxn6egv3q" path="res://Assets/UI/nikolasdevyt-removebg-preview.png" id="20_2xjtm"]
 [ext_resource type="PackedScene" uid="uid://dkqydnieh7ivh" path="res://Assets/Models/Enviroment/Container_Interior_Reveal.fbx" id="20_r4e2n"]
 [ext_resource type="Material" uid="uid://bqpjagn0b3g00" path="res://Materials/Containers/Container_starter_mat.tres" id="21_41wu6"]
-[ext_resource type="PackedScene" uid="uid://cegsfr3gshs18" path="res://Prefabs/dead_wazza.tscn" id="21_r4e2n"]
+[ext_resource type="PackedScene" path="res://Prefabs/dead_wazza.tscn" id="21_r4e2n"]
 [ext_resource type="Material" uid="uid://c37y0qmefyfj3" path="res://Materials/Containers/Container_goo_mat.tres" id="22_hy2ke"]
-[ext_resource type="PackedScene" path="res://Prefabs/can.tscn" id="23_n0oop"]
+[ext_resource type="PackedScene" uid="uid://bh0bv5jr5xj60" path="res://Prefabs/can.tscn" id="23_n0oop"]
 [ext_resource type="PackedScene" uid="uid://dp6k81du5pupw" path="res://Prefabs/ladder_tall.tscn" id="24_vrw5k"]
 
 [sub_resource type="Gradient" id="Gradient_0ixb7"]
@@ -816,10 +819,10 @@ shape = SubResource("BoxShape3D_tc46g")
 transform = Transform3D(-0.8712137, 0, -0.49090365, 0, 1, 0, 0.49090365, 0, -0.8712137, -2.7452836, 4.346075, 20.835665)
 
 [node name="Bedroom2" type="Node3D" parent="GameManager/Locations" unique_id=2080234040]
-transform = Transform3D(-0.8712137, 0, -0.49090365, 0, 1, 0, 0.49090365, 0, -0.8712137, 4.7652764, 4.346075, 16.245163)
+transform = Transform3D(-0.8712137, 0, -0.49090365, 0, 1, 0, 0.49090365, 0, -0.8712137, 4.7261543, 4.346075, 17.259066)
 
 [node name="Bedroom3" type="Node3D" parent="GameManager/Locations" unique_id=1341632233]
-transform = Transform3D(-0.8712137, 0, -0.49090365, 0, 1, 0, 0.49090365, 0, -0.8712137, 3.959906, 4.346075, 14.815861)
+transform = Transform3D(-0.8712137, 0, -0.49090365, 0, 1, 0, 0.49090365, 0, -0.8712137, 6.1581593, 4.346075, 16.319605)
 
 [node name="Camera3D" type="Camera3D" parent="GameManager" unique_id=1487974853]
 transform = Transform3D(0.30559552, -0.5115539, 0.8030716, 0, 0.8434196, 0.5372554, -0.95216143, -0.16418284, 0.25774527, 7.094821, 3.2117147, 4.425983)
@@ -871,6 +874,23 @@ Nikolas Tyllis - (Programming)"
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="TextureButton" type="TextureButton" parent="GameManager/Credits/CenterContainer/Credits/Label" unique_id=1693123004]
+layout_mode = 0
+offset_top = 317.0
+offset_right = 350.0
+offset_bottom = 667.0
+texture_normal = ExtResource("18_uiotd")
+script = ExtResource("19_3e3ic")
+
+[node name="TextureRect" type="TextureRect" parent="GameManager/Credits/CenterContainer/Credits/Label/TextureButton" unique_id=1826852951]
+layout_mode = 0
+offset_left = 56.5
+offset_top = -163.5
+offset_right = 540.5
+offset_bottom = 351.5
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("20_2xjtm")
+
 [node name="Back" type="Button" parent="GameManager/Credits/CenterContainer/Credits" unique_id=1778746846]
 layout_mode = 2
 size_flags_horizontal = 4
@@ -920,50 +940,50 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.7934155, -20.827534, 54.12
 [node name="Container_Interior_Starter" parent="." unique_id=1720316576 instance=ExtResource("19_0ixb7")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.180876, 2.115153, -47.68114)
 
-[node name="container_starter_mesh" parent="Container_Interior_Starter" index="0" unique_id=1920041913]
+[node name="container_starter_mesh" parent="Container_Interior_Starter" index="0" unique_id=1184518242]
 surface_material_override/0 = ExtResource("21_41wu6")
 surface_material_override/1 = ExtResource("22_hy2ke")
 
 [node name="Container_Interior_Reveal" parent="." unique_id=63978366 instance=ExtResource("20_r4e2n")]
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -2.5552702, 1.9932939, -32.65922)
 
-[node name="liquid Containers" parent="Container_Interior_Reveal" index="0" unique_id=1265027107]
+[node name="liquid Containers" parent="Container_Interior_Reveal" index="0" unique_id=264330509]
 surface_material_override/0 = ExtResource("21_41wu6")
 
-[node name="liquid Containers_001" parent="Container_Interior_Reveal" index="1" unique_id=2028265525]
+[node name="liquid Containers_001" parent="Container_Interior_Reveal" index="1" unique_id=183606159]
 surface_material_override/0 = ExtResource("21_41wu6")
 
-[node name="liquid Containers_002" parent="Container_Interior_Reveal" index="2" unique_id=241056236]
+[node name="liquid Containers_002" parent="Container_Interior_Reveal" index="2" unique_id=1694983746]
 surface_material_override/0 = ExtResource("21_41wu6")
 
-[node name="liquid Containers_003" parent="Container_Interior_Reveal" index="3" unique_id=518733737]
+[node name="liquid Containers_003" parent="Container_Interior_Reveal" index="3" unique_id=1817341419]
 surface_material_override/0 = ExtResource("21_41wu6")
 
-[node name="liquid Containers_004" parent="Container_Interior_Reveal" index="4" unique_id=824973958]
+[node name="liquid Containers_004" parent="Container_Interior_Reveal" index="4" unique_id=2143003298]
 surface_material_override/0 = ExtResource("21_41wu6")
 
-[node name="liquid Containers_005" parent="Container_Interior_Reveal" index="5" unique_id=474722243]
+[node name="liquid Containers_005" parent="Container_Interior_Reveal" index="5" unique_id=2028780449]
 surface_material_override/0 = ExtResource("21_41wu6")
 
-[node name="liquid Containers_006" parent="Container_Interior_Reveal" index="6" unique_id=67759379]
+[node name="liquid Containers_006" parent="Container_Interior_Reveal" index="6" unique_id=171987148]
 surface_material_override/0 = ExtResource("21_41wu6")
 
-[node name="liquid Containers_007" parent="Container_Interior_Reveal" index="7" unique_id=1548053909]
+[node name="liquid Containers_007" parent="Container_Interior_Reveal" index="7" unique_id=767805850]
 surface_material_override/0 = ExtResource("21_41wu6")
 
-[node name="liquid Containers_008" parent="Container_Interior_Reveal" index="8" unique_id=2040239450]
+[node name="liquid Containers_008" parent="Container_Interior_Reveal" index="8" unique_id=1690123371]
 surface_material_override/0 = ExtResource("21_41wu6")
 
-[node name="liquid Containers_009" parent="Container_Interior_Reveal" index="9" unique_id=1006781036]
+[node name="liquid Containers_009" parent="Container_Interior_Reveal" index="9" unique_id=1215050912]
 surface_material_override/0 = ExtResource("21_41wu6")
 
-[node name="liquid Containers_011" parent="Container_Interior_Reveal" index="10" unique_id=1650560389]
+[node name="liquid Containers_011" parent="Container_Interior_Reveal" index="10" unique_id=1340146553]
 surface_material_override/0 = ExtResource("21_41wu6")
 
-[node name="liquid Containers_012" parent="Container_Interior_Reveal" index="11" unique_id=643695763]
+[node name="liquid Containers_012" parent="Container_Interior_Reveal" index="11" unique_id=400888504]
 surface_material_override/0 = ExtResource("21_41wu6")
 
-[node name="liquid Containers_013" parent="Container_Interior_Reveal" index="12" unique_id=47460665]
+[node name="liquid Containers_013" parent="Container_Interior_Reveal" index="12" unique_id=1712633888]
 surface_material_override/0 = ExtResource("21_41wu6")
 
 [node name="DeadTwin2" parent="." unique_id=1825522883 instance=ExtResource("21_r4e2n")]

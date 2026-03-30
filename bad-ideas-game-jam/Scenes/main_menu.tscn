@@ -13,6 +13,9 @@
 [ext_resource type="Script" uid="uid://dp7452es0gdfx" path="res://Scenes/night_light_controller.gd" id="9_5egv6"]
 [ext_resource type="Theme" uid="uid://dsnby6q1yhtnk" path="res://Assets/UI/Text_Theme_Main.tres" id="10_vr1f0"]
 [ext_resource type="PackedScene" uid="uid://bkwpxm2ssdj8r" path="res://Scenes/main_enviroment_scene.tscn" id="11_vr1f0"]
+[ext_resource type="Texture2D" uid="uid://bc2512krxgfav" path="res://Assets/UI/youtube.png" id="13_vtepg"]
+[ext_resource type="Script" uid="uid://c8xdvuxcrvn73" path="res://Scenes/youtube_link.gd" id="14_8dnnj"]
+[ext_resource type="Texture2D" uid="uid://cga8cxn6egv3q" path="res://Assets/UI/nikolasdevyt-removebg-preview.png" id="15_m3bi6"]
 
 [sub_resource type="Gradient" id="Gradient_0ixb7"]
 offsets = PackedFloat32Array(0.14097744, 0.36654136, 0.4830827, 0.7838346)
@@ -690,6 +693,23 @@ Nico Wyatt-Smith - (Music)
 Nikolas Tyllis - (Programming)"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="TextureButton" type="TextureButton" parent="Control/CenterContainer/Credits/Label" unique_id=1991416924]
+layout_mode = 0
+offset_top = 317.0
+offset_right = 350.0
+offset_bottom = 667.0
+texture_normal = ExtResource("13_vtepg")
+script = ExtResource("14_8dnnj")
+
+[node name="TextureRect" type="TextureRect" parent="Control/CenterContainer/Credits/Label/TextureButton" unique_id=1790568941]
+layout_mode = 0
+offset_left = 56.5
+offset_top = -163.5
+offset_right = 540.5
+offset_bottom = 351.5
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("15_m3bi6")
 
 [node name="Back" type="Button" parent="Control/CenterContainer/Credits" unique_id=1535645363]
 layout_mode = 2

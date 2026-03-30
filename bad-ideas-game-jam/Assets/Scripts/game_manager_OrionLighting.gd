@@ -401,7 +401,7 @@ func escape_cut_scene():
 	lightning_strike()
 	fade_in_credits(3.0)
 	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
-	audio_manager.play_main_menu(20.0)
+	audio_manager.play_main_menu(10.0)
 	
 func _lerp_fov(cam: Camera3D, from: float, to: float, duration: float) -> void:
 	var t := 0.0
