@@ -8,6 +8,7 @@ var rain_stream:     AudioStream = preload("res://Assets/Sound/rain.ogg")
 var inside_stream:   AudioStream = preload("res://Assets/Sound/inside.ogg")
 var outside_stream:  AudioStream = preload("res://Assets/Sound/outside.ogg")
 var boss_stream:     AudioStream = preload("res://Music/boss.ogg")
+var main_menu_stream: AudioStream = preload("res://Assets/Sound/MainMenu.ogg")
 const FADE_SPEED: float = 20
 const AMBIENT_TRACKS = [Track.RAIN, Track.INSIDE, Track.OUTSIDE]
 const MUSIC_TRACKS = [Track.AMBIENT1, Track.AMBIENT2]
@@ -29,7 +30,8 @@ func _ready() -> void:
 	_players[Track.OUTSIDE]  = _create_player(outside_stream, true)
 	_players[Track.AMBIENT1] = _create_player(ambient1_stream, false, "Music")
 	_players[Track.AMBIENT2] = _create_player(ambient2_stream, false, "Music")
-	_players[Track.BOSS]     = _create_player(boss_stream,    false, "Music") 
+	_players[Track.BOSS]     = _create_player(boss_stream,    false, "Music")
+	_players["MAIN_MENU"] = _create_player(main_menu_stream, false, "Music")
 	for track in _players:
 		_targets[track] = -80.0
 	for s in _creak_streams:
@@ -103,6 +105,14 @@ func play_boss_music(target_db: float = -8) -> void:
 		return
 	fade_out_music()
 	p.volume_db = target_db 
+	p.play()
+	
+func play_main_menu(target_db: float = -10.0) -> void:
+	var p: AudioStreamPlayer = _players["MAIN_MENU"]
+	if p.playing:
+		return
+	fade_out_music()   # fade out other music
+	p.volume_db = target_db
 	p.play()
 
 func try_play_creak() -> void:

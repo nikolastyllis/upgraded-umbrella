@@ -16,7 +16,10 @@
 [ext_resource type="PackedScene" uid="uid://si3fr5t5stqy" path="res://Prefabs/hero_container.tscn" id="11_t0b6u"]
 [ext_resource type="Script" uid="uid://cr7u4jtas6no" path="res://Assets/Scripts/game_manager_OrionLighting.gd" id="12_yiumw"]
 [ext_resource type="Script" uid="uid://bpgcgf8cu0yr" path="res://Assets/Scripts/audio_manager.gd" id="14_qcyk2"]
+[ext_resource type="Script" uid="uid://dax422j20b8ka" path="res://Assets/Scripts/boat.gd" id="14_u5hjn"]
+[ext_resource type="FontFile" uid="uid://13oicvg0h65k" path="res://Assets/UI/Fonts/Heavy Metal Box.ttf" id="16_hy2ke"]
 [ext_resource type="PackedScene" uid="uid://clai2jixo1u8q" path="res://Prefabs/oxy_torch.tscn" id="16_t0b6u"]
+[ext_resource type="Theme" uid="uid://dsnby6q1yhtnk" path="res://Assets/UI/Text_Theme_Main.tres" id="17_jtogl"]
 [ext_resource type="PackedScene" uid="uid://cxhfllg1iige5" path="res://Prefabs/npc_02.tscn" id="17_yiumw"]
 [ext_resource type="PackedScene" uid="uid://dp4otnp5mmihr" path="res://Prefabs/creature.tscn" id="18_tc46g"]
 [ext_resource type="PackedScene" uid="uid://38kbp4tchkj" path="res://Assets/Models/Enviroment/Container_Interior_Starter.fbx" id="19_0ixb7"]
@@ -341,6 +344,10 @@ use_particle_trails = true
 material = SubResource("StandardMaterial3D_qcyk2")
 curve = SubResource("Curve_63acv")
 
+[sub_resource type="BoxMesh" id="BoxMesh_vrw5k"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_u5hjn"]
+
 [sub_resource type="BoxMesh" id="BoxMesh_63acv"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_63acv"]
@@ -348,6 +355,10 @@ curve = SubResource("Curve_63acv")
 [sub_resource type="BoxMesh" id="BoxMesh_yiumw"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_tc46g"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_x5fq5"]
+font = ExtResource("16_hy2ke")
+font_size = 83
 
 [node name="game_sequence_scene" type="Node3D" unique_id=1795795939]
 
@@ -731,8 +742,9 @@ draw_pass_1 = SubResource("RibbonTrailMesh_qcyk2")
 [node name="GameManager" type="Node3D" parent="." unique_id=1749829845]
 transform = Transform3D(-0.87121385, 0, 0.49090374, 0, 1, 0, -0.49090374, 0, -0.87121385, -8.431, 7.972, 75.958)
 script = ExtResource("12_yiumw")
-debug_play_from_act_6 = true
 debug_play_from_act_7 = false
+debug_play_from_act_8 = true
+number_of_supplies = 5
 DAY_SUN_PITCH_DEG = -72.6
 DAY_SUN_YAW_DEG = 124.3
 SUNSET_SUN_YAW_DEG = 130.0
@@ -757,6 +769,21 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.9505725, -3.5560427, 15.856
 
 [node name="Lifeboat" type="Node3D" parent="GameManager/Locations" unique_id=2008104808]
 transform = Transform3D(0.99999994, 0, 0, 0, 1, 0, 0, 0, 0.99999994, 3.401991, 1.4250479, 7.947661)
+
+[node name="Lifeboat2" type="Node3D" parent="GameManager/Locations" unique_id=1661503149]
+transform = Transform3D(0.99999994, 0, 0, 0, 1, 0, 0, 0, 0.99999994, 2.5390127, 1.4250479, 6.4223685)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="GameManager/Locations/Lifeboat2" unique_id=1048648042]
+script = ExtResource("14_u5hjn")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="GameManager/Locations/Lifeboat2/StaticBody3D" unique_id=476393757]
+transform = Transform3D(0.8697965, 0, 0.49341065, 0, 1, 0, -0.49341065, 0, 0.8697965, 0, 0, 0)
+visible = false
+mesh = SubResource("BoxMesh_vrw5k")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="GameManager/Locations/Lifeboat2/StaticBody3D" unique_id=376749255]
+transform = Transform3D(0.8697965, 0, 0.49341065, 0, 1, 0, -0.49341065, 0, 0.8697965, 0, 0, 0)
+shape = SubResource("BoxShape3D_u5hjn")
 
 [node name="Bed" type="StaticBody3D" parent="GameManager/Locations" unique_id=637987197]
 transform = Transform3D(0.65736836, 0, 0.82998115, 0, 0.29294226, 0, -0.3613166, 0, 1.5100423, -3.6884298, 3.6298532, 21.254187)
@@ -792,6 +819,66 @@ transform = Transform3D(-0.8712137, 0, -0.49090365, 0, 1, 0, 0.49090365, 0, -0.8
 
 [node name="Bedroom3" type="Node3D" parent="GameManager/Locations" unique_id=1341632233]
 transform = Transform3D(-0.8712137, 0, -0.49090365, 0, 1, 0, 0.49090365, 0, -0.8712137, -0.6669178, 4.346075, 18.701563)
+
+[node name="Camera3D" type="Camera3D" parent="GameManager" unique_id=1487974853]
+transform = Transform3D(0.30559552, -0.5115539, 0.8030716, 0, 0.8434196, 0.5372554, -0.95216143, -0.16418284, 0.25774527, 7.094821, 3.2117147, 4.425983)
+fov = 80.0
+
+[node name="Credits" type="Control" parent="GameManager" unique_id=247153691]
+z_index = 1
+z_as_relative = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(960, 540)
+
+[node name="Label" type="Label" parent="GameManager/Credits" unique_id=523685560]
+layout_mode = 0
+offset_top = 138.0
+offset_right = 1920.0
+offset_bottom = 524.0
+text = "A SEAMAN STORY
+"
+label_settings = SubResource("LabelSettings_x5fq5")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="CenterContainer" type="CenterContainer" parent="GameManager/Credits" unique_id=482456826]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -107.0
+offset_top = -117.5
+offset_right = 107.0
+offset_bottom = 121.5
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("17_jtogl")
+
+[node name="Credits" type="VBoxContainer" parent="GameManager/Credits/CenterContainer" unique_id=1997343699]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="Label" type="Label" parent="GameManager/Credits/CenterContainer/Credits" unique_id=443882913]
+layout_mode = 2
+theme_override_constants/line_spacing = 2
+text = "Orion Furbank-Meyer - (Art)
+
+Zach Wyatt-Smith - (Art)
+
+Chris Lucas - (Art)
+
+Nico Wyatt-Smith - (Music)
+
+Nikolas Tyllis - (Programming)"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="AudioManager" type="Node3D" parent="." unique_id=1974886538]
 script = ExtResource("14_qcyk2")

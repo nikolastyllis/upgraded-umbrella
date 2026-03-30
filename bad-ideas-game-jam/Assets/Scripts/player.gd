@@ -523,6 +523,11 @@ func _setup_panting_player() -> void:
 	_panting_player.volume_db = PANTING_MIN_DB
 	add_child(_panting_player)
 
+func hide_ui():
+	crosshair_ui.visible = false
+	objective_ui.visible = false
+	objective_ui_text.visible = false
+
 func drink():
 	jogging_max_time *= 1.1
 	player_speed *= 1.1

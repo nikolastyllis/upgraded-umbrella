@@ -207,7 +207,10 @@ func play_dialogue(id: int, volume: float = 10, pitch_scale: float = 1.0, is_roa
 		dialogue_player.volume_db = volume
 		dialogue_player.pitch_scale = pitch_scale
 	else:
-		dialogue_player = AudioStreamPlayer.new() if is_roar else AudioStreamPlayer3D.new()
+		if is_roar:
+			dialogue_player = AudioStreamPlayer.new()
+		else:
+			dialogue_player = AudioStreamPlayer3D.new()
 		dialogue_player.volume_db = volume
 		dialogue_player.pitch_scale = pitch_scale
 		
