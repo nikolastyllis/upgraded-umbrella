@@ -675,9 +675,6 @@ metadata/_edit_lock_ = true
 
 [node name="Locations" type="Node3D" parent="GameManager" unique_id=596146378]
 
-[node name="OxyTorchRespawn" type="Node3D" parent="GameManager/Locations" unique_id=1284677764]
-transform = Transform3D(-0.87114525, -0.27626652, -0.40593448, 0, 0.8267076, -0.5626318, 0.49102545, -0.490134, -0.7201824, 52.358, -6.0843773, 106.95354)
-
 [node name="Respawn" type="Node3D" parent="GameManager/Locations" unique_id=888515974]
 transform = Transform3D(0.99999994, 0, 0, 0, 0.99999994, 0, 0, 0, 1, 53.09616, -5.1743274, 105.74573)
 
@@ -738,7 +735,7 @@ script = ExtResource("14_qcyk2")
 transform = Transform3D(-0.53622466, 0, -0.84407526, 0, 1, 0, 0.84407526, 0, -0.53622466, -2.716888, 2.61306, -43.623802)
 
 [node name="OxyTorch" parent="." unique_id=1597321299 instance=ExtResource("16_t0b6u")]
-transform = Transform3D(0.8196023, -7.450581e-09, 0.5729329, 0.06793684, 0.99294484, -0.09718624, -0.56889075, 0.118577294, 0.8138199, -1.2217333, 2.2716248, -42.636673)
+transform = Transform3D(0.2094309, -1.1175871e-08, 0.97782344, 0.11594766, 0.99294484, -0.024833757, -0.97092474, 0.118577294, 0.2079533, -1.4619122, 2.2551003, -42.4983)
 
 [node name="Twin2" parent="." unique_id=1596341678 instance=ExtResource("17_yiumw")]
 transform = Transform3D(0.6066962, 0, -0.79493374, 0, 1, 0, 0.79493374, 0, 0.6066962, -2.487852, 2.91833, -42.2347)

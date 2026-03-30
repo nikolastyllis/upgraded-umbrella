@@ -188,6 +188,8 @@ func restart_from_act_7() -> void:
 	number_of_supplies = 0
 	_remove_objective()
 	player.set_objective_text("Search the containers for supplies to escape on the lifeboat (%s/5 Collected)" % number_of_supplies)
+	if not player.has_oxy_torch:
+		oxy_torch.on_interact(player)
 	await player.fade_in_camera(1.5)
 	player.is_dead = false
 	creature.reset_state()
