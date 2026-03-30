@@ -102,6 +102,7 @@ var dialog: Dictionary = {
 @onready var store_room       = $Locations/StoreRoom
 @onready var lifeboat         = $Locations/Lifeboat
 @onready var respawn         = $Locations/Respawn
+@onready var lifeboat_anim_player = $"../NavigationRegion3D/Ship Enviroment/Ship Model/BIGJ_LifeBoat/AnimationPlayer"
 
 @onready var hide1 = $Locations/HideNpcs1
 @onready var hide2 = $Locations/HideNpcs2
@@ -542,6 +543,11 @@ func _play_act_3_container():
 func _play_act_4_search():
 	await _wait_for(5.0)
 	_play_search_noises()
+
+func add_supply():
+	number_of_supplies += 1
+	lifeboat_anim_player.play("Supply_drop")
+	_play_sound("supply_drop")
 
 func _play_search_noises() -> void:
 	var rng = RandomNumberGenerator.new()

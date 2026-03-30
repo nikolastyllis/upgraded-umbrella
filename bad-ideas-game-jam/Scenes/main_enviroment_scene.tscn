@@ -715,12 +715,12 @@ metadata/_edit_lock_ = true
 
 [node name="BIGJ_Ship_Interior" parent="Ship Model" unique_id=625397025 instance=ExtResource("1_jn3ni")]
 
-[node name="Interior Walls" parent="Ship Model/BIGJ_Ship_Interior" index="0" unique_id=173632597]
+[node name="Interior Walls" parent="Ship Model/BIGJ_Ship_Interior" index="0" unique_id=419506805]
 surface_material_override/0 = ExtResource("7_0qs2n")
 
 [node name="BIGJ_Ship_03" parent="Ship Model" unique_id=1431557414 instance=ExtResource("1_l8ged")]
 
-[node name="Main Deck" parent="Ship Model/BIGJ_Ship_03" index="0" unique_id=1573100528]
+[node name="Main Deck" parent="Ship Model/BIGJ_Ship_03" index="0" unique_id=995125642]
 surface_material_override/0 = ExtResource("7_gcmii")
 surface_material_override/1 = ExtResource("3_av35p")
 surface_material_override/2 = ExtResource("2_0qs2n")
@@ -736,7 +736,7 @@ surface_material_override/9 = ExtResource("8_ucy3n")
 
 [node name="side_light" parent="Ship Model/BIGJ_Ship_03/Lights" unique_id=910317137 instance=ExtResource("15_kuj6t")]
 
-[node name="Side_port_Lights" parent="Ship Model/BIGJ_Ship_03/Lights/side_light" index="0" unique_id=1627477270]
+[node name="Side_port_Lights" parent="Ship Model/BIGJ_Ship_03/Lights/side_light" index="0" unique_id=1228759265]
 transform = Transform3D(0, -2.0861626e-05, 100, -100, 0, 0, 0, -100, -2.3841858e-05, -11.741098, 0.916932, 21.382656)
 surface_material_override/0 = ExtResource("16_2b4nk")
 surface_material_override/1 = ExtResource("12_ns4fk")
@@ -756,7 +756,7 @@ surface_material_override/1 = ExtResource("12_ns4fk")
 [node name="side_light3" parent="Ship Model/BIGJ_Ship_03/Lights" unique_id=2077927227 instance=ExtResource("15_kuj6t")]
 transform = Transform3D(-2.255, -3.4049555e-07, 0, 3.4049555e-07, -2.255, 0, 0, 0, 2.255, 11.41424, 20.22249, 61.625698)
 
-[node name="Side_port_Lights" parent="Ship Model/BIGJ_Ship_03/Lights/side_light3" index="0" unique_id=1627477270]
+[node name="Side_port_Lights" parent="Ship Model/BIGJ_Ship_03/Lights/side_light3" index="0" unique_id=1228759265]
 transform = Transform3D(9.094947e-13, -2.0861626e-05, 100, -100, 0, 9.094947e-13, 0, -100, -2.3841858e-05, 0, 0, 0.05960846)
 mesh = SubResource("ArrayMesh_jlvot")
 surface_material_override/0 = ExtResource("16_2b4nk")
@@ -771,7 +771,7 @@ surface_material_override/1 = ExtResource("12_ns4fk")
 [node name="side_light4" parent="Ship Model/BIGJ_Ship_03/Lights" unique_id=1536486753 instance=ExtResource("15_kuj6t")]
 transform = Transform3D(2.255, 3.4049555e-07, -1.9713838e-07, 3.4049555e-07, -2.255, 0, -1.9713838e-07, -2.9767065e-14, -2.255, -11.516792, 20.22249, 62.36276)
 
-[node name="Side_port_Lights" parent="Ship Model/BIGJ_Ship_03/Lights/side_light4" index="0" unique_id=1627477270]
+[node name="Side_port_Lights" parent="Ship Model/BIGJ_Ship_03/Lights/side_light4" index="0" unique_id=1228759265]
 transform = Transform3D(9.094947e-13, -2.0861626e-05, 100, -100, 0, 9.094947e-13, 0, -100, -2.3841858e-05, 0, 0, 0.05960846)
 mesh = SubResource("ArrayMesh_jlvot")
 surface_material_override/0 = ExtResource("16_2b4nk")
@@ -786,7 +786,7 @@ surface_material_override/1 = ExtResource("12_ns4fk")
 [node name="side_light2" parent="Ship Model/BIGJ_Ship_03/Lights" unique_id=942801916 instance=ExtResource("15_kuj6t")]
 transform = Transform3D(-1, -7.642742e-15, -8.742278e-08, 0, -1, 8.742278e-08, -8.742278e-08, 8.742278e-08, 1, -0.036524773, 2.2426744, 0)
 
-[node name="Side_port_Lights" parent="Ship Model/BIGJ_Ship_03/Lights/side_light2" index="0" unique_id=1627477270]
+[node name="Side_port_Lights" parent="Ship Model/BIGJ_Ship_03/Lights/side_light2" index="0" unique_id=1228759265]
 transform = Transform3D(0, -2.0861626e-05, 100, -100, 0, 0, 0, -100, -2.3841858e-05, -11.741098, 0.916932, 21.382656)
 surface_material_override/0 = ExtResource("16_2b4nk")
 surface_material_override/1 = ExtResource("12_ns4fk")
@@ -806,7 +806,7 @@ surface_material_override/1 = ExtResource("12_ns4fk")
 [node name="small_light" parent="Ship Model/BIGJ_Ship_03/Lights" unique_id=117445361 instance=ExtResource("17_v7pwh")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 20.33891, -48.129562)
 
-[node name="Small Light Top" parent="Ship Model/BIGJ_Ship_03/Lights/small_light" index="0" unique_id=228596646]
+[node name="Small Light Top" parent="Ship Model/BIGJ_Ship_03/Lights/small_light" index="0" unique_id=973090759]
 transform = Transform3D(25.990307, 0, 0, 0, -3.1962287, -25.79302, 0, 25.79302, -3.1962287, 0, 0, 0)
 surface_material_override/0 = ExtResource("16_2b4nk")
 surface_material_override/1 = ExtResource("12_ns4fk")
@@ -814,7 +814,7 @@ surface_material_override/1 = ExtResource("12_ns4fk")
 [node name="small_light3" parent="Ship Model/BIGJ_Ship_03/Lights" unique_id=1451854234 instance=ExtResource("17_v7pwh")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 35.151833, 63.282562)
 
-[node name="Small Light Top" parent="Ship Model/BIGJ_Ship_03/Lights/small_light3" index="0" unique_id=228596646]
+[node name="Small Light Top" parent="Ship Model/BIGJ_Ship_03/Lights/small_light3" index="0" unique_id=973090759]
 transform = Transform3D(25.990307, 0, 0, 0, -1.1360721e-06, 25.990301, 0, -25.990301, -1.1360721e-06, 0, -2.1791878, 2.0711517)
 surface_material_override/0 = ExtResource("16_2b4nk")
 surface_material_override/1 = ExtResource("12_ns4fk")
@@ -822,7 +822,7 @@ surface_material_override/1 = ExtResource("12_ns4fk")
 [node name="small_light2" parent="Ship Model/BIGJ_Ship_03/Lights" unique_id=2098832185 instance=ExtResource("17_v7pwh")]
 transform = Transform3D(1, 0, 0, 0, 0.96073556, 0.27746558, 0, -0.27746558, 0.96073556, 0, 20.287334, 48.4987)
 
-[node name="Small Light Top" parent="Ship Model/BIGJ_Ship_03/Lights/small_light2" index="0" unique_id=228596646]
+[node name="Small Light Top" parent="Ship Model/BIGJ_Ship_03/Lights/small_light2" index="0" unique_id=973090759]
 transform = Transform3D(25.990307, 0, 0, 0, -3.1962287, -25.79302, 0, 25.79302, -3.1962287, 0, 0, 0)
 surface_material_override/0 = ExtResource("16_2b4nk")
 surface_material_override/1 = ExtResource("12_ns4fk")
@@ -830,7 +830,7 @@ surface_material_override/1 = ExtResource("12_ns4fk")
 [node name="small_light4" parent="Ship Model/BIGJ_Ship_03/Lights" unique_id=1057997705 instance=ExtResource("17_v7pwh")]
 transform = Transform3D(1, 0, 0, 0, -4.3711392e-08, -1.0000001, 0, 1.0000001, -4.3711392e-08, 0, 4.420705, 29.380201)
 
-[node name="Small Light Top" parent="Ship Model/BIGJ_Ship_03/Lights/small_light4" index="0" unique_id=228596646]
+[node name="Small Light Top" parent="Ship Model/BIGJ_Ship_03/Lights/small_light4" index="0" unique_id=973090759]
 transform = Transform3D(16.6, 0, 0, 0, 16.6, 0, 0, 0, 16.6, 0, 0, 0)
 surface_material_override/0 = ExtResource("16_2b4nk")
 surface_material_override/1 = ExtResource("12_ns4fk")
@@ -838,7 +838,7 @@ surface_material_override/1 = ExtResource("12_ns4fk")
 [node name="small_light5" parent="Ship Model/BIGJ_Ship_03/Lights" unique_id=252545700 instance=ExtResource("17_v7pwh")]
 transform = Transform3D(1, 0, 0, 0, -4.3711392e-08, -1.0000001, 0, 1.0000001, -4.3711392e-08, 0, 4.420705, -28.348726)
 
-[node name="Small Light Top" parent="Ship Model/BIGJ_Ship_03/Lights/small_light5" index="0" unique_id=228596646]
+[node name="Small Light Top" parent="Ship Model/BIGJ_Ship_03/Lights/small_light5" index="0" unique_id=973090759]
 transform = Transform3D(16.6, 0, 0, 0, 16.6, 0, 0, 0, 16.6, 0, 0, 0)
 surface_material_override/0 = ExtResource("16_2b4nk")
 surface_material_override/1 = ExtResource("12_ns4fk")
@@ -846,7 +846,7 @@ surface_material_override/1 = ExtResource("12_ns4fk")
 [node name="small_light_tall" parent="Ship Model/BIGJ_Ship_03/Lights" unique_id=297909164 instance=ExtResource("18_xadyp")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.4630742, 26.646048, 60.132263)
 
-[node name="Small Light Top Tall" parent="Ship Model/BIGJ_Ship_03/Lights/small_light_tall" index="0" unique_id=42372925]
+[node name="Small Light Top Tall" parent="Ship Model/BIGJ_Ship_03/Lights/small_light_tall" index="0" unique_id=15902691]
 transform = Transform3D(25.990307, 0, 0, 0, -3.098286e-06, 25.990305, 0, -25.990305, -3.098286e-06, 0, 0, 0)
 surface_material_override/0 = ExtResource("16_2b4nk")
 surface_material_override/1 = ExtResource("2_0qs2n")
@@ -854,7 +854,7 @@ surface_material_override/1 = ExtResource("2_0qs2n")
 [node name="small_light_tall2" parent="Ship Model/BIGJ_Ship_03/Lights" unique_id=1350020823 instance=ExtResource("18_xadyp")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.010024786, 19.683676, -59.90503)
 
-[node name="Small Light Top Tall" parent="Ship Model/BIGJ_Ship_03/Lights/small_light_tall2" index="0" unique_id=42372925]
+[node name="Small Light Top Tall" parent="Ship Model/BIGJ_Ship_03/Lights/small_light_tall2" index="0" unique_id=15902691]
 transform = Transform3D(25.990307, 0, 0, 0, -3.098286e-06, 25.990305, 0, -25.990305, -3.098286e-06, 0, 0, 0)
 surface_material_override/0 = ExtResource("16_2b4nk")
 surface_material_override/1 = ExtResource("2_0qs2n")
@@ -862,14 +862,14 @@ surface_material_override/1 = ExtResource("2_0qs2n")
 [node name="small_light_tall3" parent="Ship Model/BIGJ_Ship_03/Lights" unique_id=1241360645 instance=ExtResource("18_xadyp")]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -8.6792755, 7.111431, 67.31274)
 
-[node name="Small Light Top Tall" parent="Ship Model/BIGJ_Ship_03/Lights/small_light_tall3" index="0" unique_id=42372925]
+[node name="Small Light Top Tall" parent="Ship Model/BIGJ_Ship_03/Lights/small_light_tall3" index="0" unique_id=15902691]
 transform = Transform3D(25.990307, 0, 0, 0, -3.098286e-06, 25.990305, 0, -25.990305, -3.098286e-06, 0, 7.7305984, 1.1625671)
 surface_material_override/0 = ExtResource("16_2b4nk")
 surface_material_override/1 = ExtResource("2_0qs2n")
 
 [node name="spot_light" parent="Ship Model/BIGJ_Ship_03/Lights" unique_id=246287746 instance=ExtResource("19_3jkke")]
 
-[node name="SpotLight" parent="Ship Model/BIGJ_Ship_03/Lights/spot_light" index="0" unique_id=1145147840]
+[node name="SpotLight" parent="Ship Model/BIGJ_Ship_03/Lights/spot_light" index="0" unique_id=1646278002]
 surface_material_override/0 = ExtResource("16_2b4nk")
 surface_material_override/1 = ExtResource("12_ns4fk")
 
@@ -894,7 +894,7 @@ surface_material_override/1 = ExtResource("12_ns4fk")
 [node name="spot_light2" parent="Ship Model/BIGJ_Ship_03/Lights" unique_id=1362806728 instance=ExtResource("19_3jkke")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 19.154564, 27.323977)
 
-[node name="SpotLight" parent="Ship Model/BIGJ_Ship_03/Lights/spot_light2" index="0" unique_id=1145147840]
+[node name="SpotLight" parent="Ship Model/BIGJ_Ship_03/Lights/spot_light2" index="0" unique_id=1646278002]
 transform = Transform3D(100, 0, 0, 0, -4.3711393e-06, 100, 0, -100.00001, -4.371139e-06, 0, 0, 0)
 mesh = SubResource("ArrayMesh_dmlor")
 surface_material_override/0 = ExtResource("16_2b4nk")
@@ -903,7 +903,7 @@ surface_material_override/1 = ExtResource("12_ns4fk")
 [node name="spot_light3" parent="Ship Model/BIGJ_Ship_03/Lights" unique_id=374001388 instance=ExtResource("19_3jkke")]
 transform = Transform3D(0.99952495, 4.888674e-10, -0.030817656, 0.01349458, 0.8990313, 0.43767673, 0.02770603, -0.4378847, 0.8986041, 0.05649078, 18.826399, -34.574295)
 
-[node name="SpotLight" parent="Ship Model/BIGJ_Ship_03/Lights/spot_light3" index="0" unique_id=1145147840]
+[node name="SpotLight" parent="Ship Model/BIGJ_Ship_03/Lights/spot_light3" index="0" unique_id=1646278002]
 transform = Transform3D(99.99999, 0, 0, 0, -4.3711384e-06, 100, 0, -99.99999, -4.371139e-06, 0, 0, 0)
 mesh = SubResource("ArrayMesh_dmlor")
 surface_material_override/0 = ExtResource("16_2b4nk")
@@ -912,7 +912,7 @@ surface_material_override/1 = ExtResource("12_ns4fk")
 [node name="spot_light4" parent="Ship Model/BIGJ_Ship_03/Lights" unique_id=209943018 instance=ExtResource("19_3jkke")]
 transform = Transform3D(-1, 0, 8.742277e-08, 3.3697564e-08, 0.9227266, 0.3854552, -8.066732e-08, 0.3854552, -0.9227265, 0.05649078, 18.894764, -26.240288)
 
-[node name="SpotLight" parent="Ship Model/BIGJ_Ship_03/Lights/spot_light4" index="0" unique_id=1145147840]
+[node name="SpotLight" parent="Ship Model/BIGJ_Ship_03/Lights/spot_light4" index="0" unique_id=1646278002]
 transform = Transform3D(99.99999, 0, 0, 0, -4.3711384e-06, 100, 0, -99.99999, -4.371139e-06, 0, 0, 0)
 mesh = SubResource("ArrayMesh_dmlor")
 surface_material_override/0 = ExtResource("16_2b4nk")
@@ -921,7 +921,7 @@ surface_material_override/1 = ExtResource("12_ns4fk")
 [node name="common_light" parent="Ship Model/BIGJ_Ship_03/Lights" unique_id=2137310385 instance=ExtResource("20_ruu2y")]
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, -2.9950514, 15.988504, 64.72213)
 
-[node name="Underside Common light" parent="Ship Model/BIGJ_Ship_03/Lights/common_light" index="0" unique_id=251958809]
+[node name="Underside Common light" parent="Ship Model/BIGJ_Ship_03/Lights/common_light" index="0" unique_id=1417359391]
 transform = Transform3D(100, 0, 0, 0, -1.1920929e-05, 99.99999, 0, -99.99999, -1.1920929e-05, 0, 0, 0)
 surface_material_override/0 = ExtResource("16_2b4nk")
 surface_material_override/1 = ExtResource("5_mtju5")
@@ -929,7 +929,7 @@ surface_material_override/1 = ExtResource("5_mtju5")
 [node name="common_light4" parent="Ship Model/BIGJ_Ship_03/Lights" unique_id=1689553387 instance=ExtResource("20_ruu2y")]
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 1.2398634, 21.014368, 64.72213)
 
-[node name="Underside Common light" parent="Ship Model/BIGJ_Ship_03/Lights/common_light4" index="0" unique_id=251958809]
+[node name="Underside Common light" parent="Ship Model/BIGJ_Ship_03/Lights/common_light4" index="0" unique_id=1417359391]
 transform = Transform3D(100, 0, 0, 0, -1.1920929e-05, 99.99999, 0, -99.99999, -1.1920929e-05, 0, 0, 0)
 surface_material_override/0 = ExtResource("16_2b4nk")
 surface_material_override/1 = ExtResource("5_mtju5")
@@ -937,7 +937,7 @@ surface_material_override/1 = ExtResource("5_mtju5")
 [node name="common_light5" parent="Ship Model/BIGJ_Ship_03/Lights" unique_id=1722922119 instance=ExtResource("20_ruu2y")]
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 1.2398634, 18.37581, 64.72213)
 
-[node name="Underside Common light" parent="Ship Model/BIGJ_Ship_03/Lights/common_light5" index="0" unique_id=251958809]
+[node name="Underside Common light" parent="Ship Model/BIGJ_Ship_03/Lights/common_light5" index="0" unique_id=1417359391]
 transform = Transform3D(100, 0, 0, 0, -1.1920929e-05, 99.99999, 0, -99.99999, -1.1920929e-05, 0, 0, 0)
 surface_material_override/0 = ExtResource("16_2b4nk")
 surface_material_override/1 = ExtResource("5_mtju5")
@@ -945,7 +945,7 @@ surface_material_override/1 = ExtResource("5_mtju5")
 [node name="common_light6" parent="Ship Model/BIGJ_Ship_03/Lights" unique_id=1065360338 instance=ExtResource("20_ruu2y")]
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 3.033383, 13.19438, 64.72213)
 
-[node name="Underside Common light" parent="Ship Model/BIGJ_Ship_03/Lights/common_light6" index="0" unique_id=251958809]
+[node name="Underside Common light" parent="Ship Model/BIGJ_Ship_03/Lights/common_light6" index="0" unique_id=1417359391]
 transform = Transform3D(100, 0, 0, 0, -1.1920929e-05, 99.99999, 0, -99.99999, -1.1920929e-05, 0, 0, 0)
 surface_material_override/0 = ExtResource("16_2b4nk")
 surface_material_override/1 = ExtResource("5_mtju5")
@@ -953,7 +953,7 @@ surface_material_override/1 = ExtResource("5_mtju5")
 [node name="common_light7" parent="Ship Model/BIGJ_Ship_03/Lights" unique_id=1382333864 instance=ExtResource("20_ruu2y")]
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 3.033383, 8.120409, 64.72213)
 
-[node name="Underside Common light" parent="Ship Model/BIGJ_Ship_03/Lights/common_light7" index="0" unique_id=251958809]
+[node name="Underside Common light" parent="Ship Model/BIGJ_Ship_03/Lights/common_light7" index="0" unique_id=1417359391]
 transform = Transform3D(100, 0, 0, 0, -1.1920929e-05, 99.99999, 0, -99.99999, -1.1920929e-05, 0, 0, 0)
 surface_material_override/0 = ExtResource("16_2b4nk")
 surface_material_override/1 = ExtResource("5_mtju5")
@@ -961,7 +961,7 @@ surface_material_override/1 = ExtResource("5_mtju5")
 [node name="common_light8" parent="Ship Model/BIGJ_Ship_03/Lights" unique_id=1257246869 instance=ExtResource("20_ruu2y")]
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 7.3467855, 4.7997403, 61.779396)
 
-[node name="Underside Common light" parent="Ship Model/BIGJ_Ship_03/Lights/common_light8" index="0" unique_id=251958809]
+[node name="Underside Common light" parent="Ship Model/BIGJ_Ship_03/Lights/common_light8" index="0" unique_id=1417359391]
 transform = Transform3D(100, 0, 0, 0, -1.1920929e-05, 99.99999, 0, -99.99999, -1.1920929e-05, 0, 0, 0)
 surface_material_override/0 = ExtResource("16_2b4nk")
 surface_material_override/1 = ExtResource("5_mtju5")
@@ -969,7 +969,7 @@ surface_material_override/1 = ExtResource("5_mtju5")
 [node name="common_light2" parent="Ship Model/BIGJ_Ship_03/Lights" unique_id=1086016706 instance=ExtResource("20_ruu2y")]
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, -2.9950514, 10.779987, 64.72213)
 
-[node name="Underside Common light" parent="Ship Model/BIGJ_Ship_03/Lights/common_light2" index="0" unique_id=251958809]
+[node name="Underside Common light" parent="Ship Model/BIGJ_Ship_03/Lights/common_light2" index="0" unique_id=1417359391]
 transform = Transform3D(100, 0, 0, 0, -1.1920929e-05, 99.99999, 0, -99.99999, -1.1920929e-05, 0, 0, 0)
 surface_material_override/0 = ExtResource("16_2b4nk")
 surface_material_override/1 = ExtResource("5_mtju5")
@@ -977,21 +977,21 @@ surface_material_override/1 = ExtResource("5_mtju5")
 [node name="common_light3" parent="Ship Model/BIGJ_Ship_03/Lights" unique_id=1932354733 instance=ExtResource("20_ruu2y")]
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, -4.3996606, 5.2296495, 64.72213)
 
-[node name="Underside Common light" parent="Ship Model/BIGJ_Ship_03/Lights/common_light3" index="0" unique_id=251958809]
+[node name="Underside Common light" parent="Ship Model/BIGJ_Ship_03/Lights/common_light3" index="0" unique_id=1417359391]
 transform = Transform3D(100, 0, 0, 0, -1.1920929e-05, 99.99999, 0, -99.99999, -1.1920929e-05, 0, 0, 0)
 surface_material_override/0 = ExtResource("16_2b4nk")
 surface_material_override/1 = ExtResource("5_mtju5")
 
 [node name="BIGJ_LifeBoat" parent="Ship Model" unique_id=1538255953 instance=ExtResource("15_jn3ni")]
 
-[node name="MIDDLE" parent="Ship Model/BIGJ_LifeBoat" index="0" unique_id=1924063272]
+[node name="MIDDLE" parent="Ship Model/BIGJ_LifeBoat" index="0" unique_id=2058607503]
 surface_material_override/0 = ExtResource("12_ns4fk")
 surface_material_override/1 = ExtResource("16_0qs2n")
 
-[node name="Skeleton3D" parent="Ship Model/BIGJ_LifeBoat/life_boat_rig" parent_id_path=PackedInt32Array(1538255953, 1272166724) index="0" unique_id=1562101051]
-bones/0/rotation = Quaternion(0.68076104, 0.013315425, 0.012378622, 0.7322799)
+[node name="Skeleton3D" parent="Ship Model/BIGJ_LifeBoat/life_boat_rig" parent_id_path=PackedInt32Array(1538255953, 152691851) index="0" unique_id=1103518689]
+bones/0/rotation = Quaternion(0.6808735, -1.5583157e-32, -5.6320537e-25, 0.732401)
 
-[node name="Cube_024" parent="Ship Model/BIGJ_LifeBoat/life_boat_rig/Skeleton3D" index="0" unique_id=1299739394]
+[node name="Cube_024" parent="Ship Model/BIGJ_LifeBoat/life_boat_rig/Skeleton3D" index="0" unique_id=1353514462]
 material_override = ExtResource("16_0qs2n")
 
 [editable path="Ship Model/BIGJ_Ship_Interior"]
