@@ -69,6 +69,9 @@ var is_dead = false
 var _death_player: AudioStreamPlayer = null
 const DEATH_SOUND_PATH := "res://Assets/Sound/death.ogg"
 
+const CREAK_CHECK_INTERVAL := 65.0
+var _creak_check_timer := 0.0
+
 func _start_right_hand_ik(hit_point) -> void:
 	_ik_target_node.global_position = hit_point
 	right_hand_ik.start()
@@ -163,6 +166,15 @@ func handle_stamina(delta: float) -> void:
 func _process(delta: float) -> void:
 	update_interactable()
 	handle_interact(delta)
+	_update_creak(delta)
+
+func _update_creak(delta: float) -> void:
+	_creak_check_timer -= delta
+	if _creak_check_timer > 0.0:
+		return
+	_creak_check_timer = CREAK_CHECK_INTERVAL
+	if not is_inside():
+		game_manager.try_play_creak()
 
 func die() -> void:
 	is_dead = true

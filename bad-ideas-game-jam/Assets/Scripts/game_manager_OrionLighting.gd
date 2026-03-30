@@ -101,7 +101,6 @@ var dialog: Dictionary = {
 @onready var store_room       = $Locations/StoreRoom
 @onready var lifeboat         = $Locations/Lifeboat
 @onready var respawn         = $Locations/Respawn
-@onready var oxy_torch_respawn = $Locations/OxyTorchRespawn
 
 @onready var hide1 = $Locations/HideNpcs1
 @onready var hide2 = $Locations/HideNpcs2
@@ -197,6 +196,9 @@ func restart_from_act_7() -> void:
 
 func reset_monster_speed():
 	creature.monster_speed = 2.5 + (.15 * number_of_supplies)
+
+func try_play_creak():
+	audio_manager.try_play_creak()
 
 func play_from_act_8():
 	play_from_act_7()

@@ -13,6 +13,14 @@ const AMBIENT_TRACKS = [Track.RAIN, Track.INSIDE, Track.OUTSIDE]
 const MUSIC_TRACKS = [Track.AMBIENT1, Track.AMBIENT2]
 var _players: Dictionary = {}
 var _targets: Dictionary = {}
+
+var _creak_streams := [
+	preload("res://Assets/Sound/creaks1.ogg"),
+	preload("res://Assets/Sound/creaks2.ogg"),
+	preload("res://Assets/Sound/creaks3.ogg"),
+]
+var _creak_players: Array[AudioStreamPlayer] = []
+
 func _ready() -> void:
 	_players[Track.THUNDER]  = _create_player(thunder_stream)
 	_players[Track.THUNDER2] = _create_player(thunder2_stream)
@@ -22,9 +30,16 @@ func _ready() -> void:
 	_players[Track.AMBIENT1] = _create_player(ambient1_stream, false, "Music")
 	_players[Track.AMBIENT2] = _create_player(ambient2_stream, false, "Music")
 	_players[Track.BOSS]     = _create_player(boss_stream,    false, "Music") 
-
 	for track in _players:
 		_targets[track] = -80.0
+	for s in _creak_streams:
+		var p := AudioStreamPlayer.new()
+		p.stream = s
+		p.volume_db = -20.0
+		p.bus = "Sound"
+		add_child(p)
+		_creak_players.append(p)
+
 func _process(delta: float) -> void:
 	for track in AMBIENT_TRACKS:
 		var p: AudioStreamPlayer = _players[track]
@@ -42,6 +57,7 @@ func _process(delta: float) -> void:
 		p.volume_db = move_toward(p.volume_db, target, delta * FADE_SPEED)
 		if p.playing and target <= -80.0 and p.volume_db <= -79.0:
 			p.stop()
+
 func _create_player(stream: AudioStream, looping: bool = false, bus: String = "Sound") -> AudioStreamPlayer:
 	if looping:
 		if stream is AudioStreamOggVorbis:
@@ -57,9 +73,11 @@ func _create_player(stream: AudioStream, looping: bool = false, bus: String = "S
 	
 func set_target(track: Track, db: float) -> void:
 	_targets[track] = db
+
 func fade_out_music() -> void:
 	for track in MUSIC_TRACKS:
 		_targets[track] = -80.0
+
 func play(track: Track, target_db: float = 0.0) -> void:
 	var p: AudioStreamPlayer
 	if track == Track.THUNDER:
@@ -86,3 +104,9 @@ func play_boss_music(target_db: float = -8) -> void:
 	fade_out_music()
 	p.volume_db = target_db 
 	p.play()
+
+func try_play_creak() -> void:
+	for p in _creak_players:
+		if p.playing:
+			return
+	_creak_players.pick_random().play()
