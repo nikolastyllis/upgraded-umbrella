@@ -21,7 +21,7 @@
 [ext_resource type="PackedScene" uid="uid://dp4otnp5mmihr" path="res://Prefabs/creature.tscn" id="18_tc46g"]
 [ext_resource type="PackedScene" uid="uid://38kbp4tchkj" path="res://Assets/Models/Enviroment/Container_Interior_Starter.fbx" id="19_0ixb7"]
 [ext_resource type="PackedScene" uid="uid://dkqydnieh7ivh" path="res://Assets/Models/Enviroment/Container_Interior_Reveal.fbx" id="20_r4e2n"]
-[ext_resource type="PackedScene" path="res://Prefabs/dead_wazza.tscn" id="21_r4e2n"]
+[ext_resource type="PackedScene" uid="uid://cegsfr3gshs18" path="res://Prefabs/dead_wazza.tscn" id="21_r4e2n"]
 
 [sub_resource type="Gradient" id="Gradient_0ixb7"]
 offsets = PackedFloat32Array(0.14097744, 0.36654136, 0.4830827, 0.7838346)
