@@ -74,14 +74,14 @@ func on_interact(_player):
 	if is_hero_container_1:
 		open_door_act1()
 		game_manager.player_has_interacted_with_container = true
-		return
 	
 	elif is_hero_container_2:
 		open_door_monster_reveal()
 		game_manager.player_has_interacted_with_infected_container = true
-		return
 	
 	else: open_door_act2()
+	
+	interact_collider.disabled = true
 	
 func can_interact(_player: Node) -> bool:
 	
@@ -110,7 +110,6 @@ func _ready():
 	if root is HeroContainer:
 		is_hero_container_1 = root.get_is_hero_container_1()
 		is_hero_container_2 = root.get_is_hero_container_2()
-	animation_player.animation_finished.connect(_on_animation_finished)
 	apply_material()
 
 func _process(_delta: float):
@@ -156,7 +155,3 @@ func open_door_monster_reveal():
 	skeleton.physical_bones_start_simulation()
 	animation_player.play("MonsterReveal")
 	play_sound("door3")
-
-func _on_animation_finished(_animation_name: String):
-	interact_collider.disabled = true
-	

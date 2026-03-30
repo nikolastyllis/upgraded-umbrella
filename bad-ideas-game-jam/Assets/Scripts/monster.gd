@@ -1,7 +1,7 @@
 class_name Monster
 extends NPC
 
-const monster_speed := 2.5
+var monster_speed := 2.5
 
 const DETECTION_DISTANCE  := 18.0
 const DETECTION_FOV_DOT   := 0.1 
