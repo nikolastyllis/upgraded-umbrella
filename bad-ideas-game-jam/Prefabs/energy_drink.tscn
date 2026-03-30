@@ -1,10 +1,10 @@
 [gd_scene format=3 uid="uid://bdcp0gsrfdyda"]
 
 [ext_resource type="PackedScene" uid="uid://cgjw1x8ihak8b" path="res://Assets/Models/Items/BIGJ_can_import.glb" id="1_0knjt"]
-[ext_resource type="Material" uid="uid://cfx0nxfmo365v" path="res://Materials/Items/can_mat.tres" id="2_uwube"]
+[ext_resource type="Material" path="res://Materials/Items/can_mat.tres" id="2_uwube"]
 
 [node name="BIGJ_can_import" unique_id=1302075040 instance=ExtResource("1_0knjt")]
 
-[node name="Can_mesh" parent="." index="0" unique_id=1120377124]
+[node name="Can_mesh" parent="." index="0" unique_id=388697007]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0020305105, -0.012813821, 0.0068674237)
 material_override = ExtResource("2_uwube")

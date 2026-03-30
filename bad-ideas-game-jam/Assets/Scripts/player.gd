@@ -35,7 +35,7 @@ const FOV_DISABLED := 50.0
 const SENSITIVITY_NORMAL = 0.25
 const SENSITIVITY_DISABLED = 0.1
 
-const PLAYER_SPEED = 1.5
+var player_speed = 1.5
 const JUMP_VELOCITY = 3
 const DIALOG_SCENE = preload("res://Prefabs/dialog.tscn")
 
@@ -246,7 +246,7 @@ func _physics_process(delta: float) -> void:
 		climb_cooldown -= delta
 
 func get_speed() -> float:
-	return PLAYER_SPEED
+	return player_speed
 
 func get_climb_input() -> float:
 	return -get_raw_input_dir().y
@@ -275,7 +275,7 @@ func apply_movement(_input_dir: Vector2) -> void:
 		apply_climbing_movement()
 		return
 	is_jogging = Input.is_action_pressed("shift") and get_move_direction().length() > 0.01 and (jogging_timer <= jogging_max_time)
-	var speed = PLAYER_SPEED * (2.0 if is_jogging else 1.0)
+	var speed = player_speed * (2.0 if is_jogging else 1.0)
 	var move_direction = get_move_direction()
 	if move_direction.length() > 0.01:
 		velocity.x = move_direction.x * speed
@@ -287,8 +287,8 @@ func apply_movement(_input_dir: Vector2) -> void:
 		camera_origin.rotation.y += old_y - rotation.y
 	else:
 		is_jogging = false
-		velocity.x = move_toward(velocity.x, 0, PLAYER_SPEED)
-		velocity.z = move_toward(velocity.z, 0, PLAYER_SPEED)
+		velocity.x = move_toward(velocity.x, 0, player_speed)
+		velocity.z = move_toward(velocity.z, 0, player_speed)
 
 func dismount_ladder() -> void:
 	if is_climbing and is_on_floor() and get_climb_input() < 0 and current_ladder.end_y() > global_position.y:
@@ -523,6 +523,10 @@ func _setup_panting_player() -> void:
 	_panting_player.stream = load(PATH)
 	_panting_player.volume_db = PANTING_MIN_DB
 	add_child(_panting_player)
+
+func drink():
+	jogging_max_time *= 1.1
+	player_speed *= 1.1
 
 func _update_panting(delta: float) -> void:
 	if not is_instance_valid(_panting_player):

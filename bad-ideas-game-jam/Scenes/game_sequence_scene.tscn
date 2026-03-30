@@ -22,6 +22,7 @@
 [ext_resource type="PackedScene" uid="uid://38kbp4tchkj" path="res://Assets/Models/Enviroment/Container_Interior_Starter.fbx" id="19_0ixb7"]
 [ext_resource type="PackedScene" uid="uid://dkqydnieh7ivh" path="res://Assets/Models/Enviroment/Container_Interior_Reveal.fbx" id="20_r4e2n"]
 [ext_resource type="PackedScene" path="res://Prefabs/dead_wazza.tscn" id="21_r4e2n"]
+[ext_resource type="PackedScene" uid="uid://bh0bv5jr5xj60" path="res://Prefabs/can.tscn" id="23_n0oop"]
 
 [sub_resource type="Gradient" id="Gradient_0ixb7"]
 offsets = PackedFloat32Array(0.14097744, 0.36654136, 0.4830827, 0.7838346)
@@ -667,6 +668,7 @@ draw_pass_1 = SubResource("RibbonTrailMesh_qcyk2")
 [node name="GameManager" type="Node3D" parent="." unique_id=1749829845]
 transform = Transform3D(-0.87121385, 0, 0.49090374, 0, 1, 0, -0.49090374, 0, -0.87121385, -8.431, 7.972, 75.958)
 script = ExtResource("12_yiumw")
+debug_skip_dialog = true
 debug_play_from_act_7 = false
 DAY_SUN_PITCH_DEG = -72.6
 DAY_SUN_YAW_DEG = 124.3
@@ -752,3 +754,6 @@ transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -2.5
 [node name="DeadTwin2" parent="." unique_id=1825522883 instance=ExtResource("21_r4e2n")]
 transform = Transform3D(0.2174507, 0.023823107, 0.9757806, -0.050861303, 0.9986207, -0.013046388, -0.9747453, -0.04679254, 0.2183624, -8.567326, 8.951135, 63.995235)
 visible = false
+
+[node name="Can" parent="." unique_id=442081520 instance=ExtResource("23_n0oop")]
+transform = Transform3D(-0.8660254, 0, 0.50000006, 0, 1, 0, -0.50000006, 0, -0.8660254, -2.041379, 2.0943034, -42.52239)

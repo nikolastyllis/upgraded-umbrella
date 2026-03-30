@@ -1,0 +1,19 @@
+[gd_scene format=3 uid="uid://bh0bv5jr5xj60"]
+
+[ext_resource type="Script" uid="uid://cjl363dc3b38g" path="res://Assets/Scripts/drink.gd" id="1_agb4q"]
+[ext_resource type="PackedScene" uid="uid://bdcp0gsrfdyda" path="res://Prefabs/energy_drink.tscn" id="2_apvv7"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_jj6d7"]
+height = 0.22962552
+radius = 0.048694257
+
+[node name="Can" type="RigidBody3D" unique_id=442081520]
+script = ExtResource("1_agb4q")
+
+[node name="Node3D" type="Node3D" parent="." unique_id=1165547465]
+
+[node name="BIGJ_can_import" parent="Node3D" unique_id=1302075040 instance=ExtResource("2_apvv7")]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=353412955]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0020305105, -0.038321823, 0.0068674237)
+shape = SubResource("CylinderShape3D_jj6d7")
