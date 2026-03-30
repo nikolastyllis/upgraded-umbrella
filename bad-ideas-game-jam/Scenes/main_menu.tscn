@@ -701,24 +701,24 @@ text = "Back
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.6854534, -9.536743e-07, -0.929554)
 navigation_mesh = SubResource("NavigationMesh_trj04")
 
-[node name="Ship Enviroment" parent="NavigationRegion3D" unique_id=807321189 instance=ExtResource("11_vr1f0")]
+[node name="Ship Enviroment" parent="NavigationRegion3D" unique_id=1388558292 instance=ExtResource("11_vr1f0")]
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="NavigationRegion3D/Ship Enviroment" unique_id=1680725049]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="NavigationRegion3D" unique_id=1680725049]
 transform = Transform3D(4.6770678, 0, 0, 0, 1, 0, 0, 0, 100, -38.94918, 1.9102764, 0)
 transparency = 1.0
 mesh = SubResource("BoxMesh_5egv6")
 
-[node name="MeshInstance3D3" type="MeshInstance3D" parent="NavigationRegion3D/Ship Enviroment" unique_id=1694545508]
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="NavigationRegion3D" unique_id=1694545508]
 transform = Transform3D(-4.2550573e-07, 0, -67.6224, 0, 1, 0, 9.734436, 0, -2.955869e-06, -6.843087, 1.9102764, 103.068924)
 transparency = 1.0
 mesh = SubResource("BoxMesh_5egv6")
 
-[node name="MeshInstance3D4" type="MeshInstance3D" parent="NavigationRegion3D/Ship Enviroment" unique_id=2050834026]
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="NavigationRegion3D" unique_id=2050834026]
 transform = Transform3D(-3.2908673e-07, 0, -100, 0, 1, 0, 7.528627, 0, -4.371139e-06, -6.8430786, 1.9102764, -92.67142)
 transparency = 1.0
 mesh = SubResource("BoxMesh_5egv6")
 
-[node name="MeshInstance3D2" type="MeshInstance3D" parent="NavigationRegion3D/Ship Enviroment" unique_id=88115168]
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="NavigationRegion3D" unique_id=88115168]
 transform = Transform3D(5.8016586, 0, 0, 0, 1, 0, 0, 0, 80.49427, 42.33747, 1.9102764, 0)
 transparency = 1.0
 mesh = SubResource("BoxMesh_5egv6")

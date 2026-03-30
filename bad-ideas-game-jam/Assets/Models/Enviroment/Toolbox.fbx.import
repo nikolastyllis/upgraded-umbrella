@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://ccsu3g16vvgwt"
-path="res://.godot/imported/side_light.fbx-83559fc7184c7e6b2341ed340e5796f6.scn"
+uid="uid://dcmqc2tk6jg2x"
+path="res://.godot/imported/Toolbox.fbx-603d19e91ded73c05e9df967e17f7cd9.scn"
 
 [deps]
 
-source_file="res://Assets/Models/Enviroment/Lights/side_light.fbx"
-dest_files=["res://.godot/imported/side_light.fbx-83559fc7184c7e6b2341ed340e5796f6.scn"]
+source_file="res://Assets/Models/Enviroment/Toolbox.fbx"
+dest_files=["res://.godot/imported/Toolbox.fbx-603d19e91ded73c05e9df967e17f7cd9.scn"]
 
 [params]
 
@@ -37,20 +37,7 @@ import_script/path=""
 materials/extract=0
 materials/extract_format=0
 materials/extract_path=""
-_subresources={
-"materials": {
-"Light Material": {
-"use_external/enabled": true,
-"use_external/fallback_path": "res://Materials/Ship/light_off.tres",
-"use_external/path": "uid://bdfj4locryww5"
-},
-"Rust Decking": {
-"use_external/enabled": true,
-"use_external/fallback_path": "res://Materials/Ship/ship_main_deck_mat.tres",
-"use_external/path": "uid://cxpwhh6t2s1cs"
-}
-}
-}
+_subresources={}
 fbx/importer=0
 fbx/allow_geometry_helper_nodes=false
 fbx/embedded_image_handling=1

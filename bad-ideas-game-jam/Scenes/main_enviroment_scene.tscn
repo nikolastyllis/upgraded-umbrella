@@ -22,20 +22,8 @@
 [ext_resource type="PackedScene" uid="uid://dxg4k0v6gf7kk" path="res://Assets/Models/Enviroment/Lights/small_light_tall.fbx" id="18_xadyp"]
 [ext_resource type="PackedScene" uid="uid://beonb8myxb7ac" path="res://Assets/Models/Enviroment/Lights/spot_light.fbx" id="19_3jkke"]
 [ext_resource type="PackedScene" uid="uid://bjuwydjirkf6j" path="res://Assets/Models/Enviroment/Lights/common_light.fbx" id="20_ruu2y"]
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vdj76"]
-resource_name = "Light Material"
-vertex_color_use_as_albedo = true
-albedo_color = Color(0.9063318, 0.9063318, 0.9063318, 1)
-emission_enabled = true
-emission = Color(1, 1, 1, 1)
-emission_energy_multiplier = 0.0
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ol6kn"]
-resource_name = "Rust Decking"
-vertex_color_use_as_albedo = true
-albedo_color = Color(0.9063318, 0.9063318, 0.9063318, 1)
-emission_enabled = true
+[ext_resource type="Material" uid="uid://chy3pn1ytkbtv" path="res://Materials/Items/tool_box1_mat.tres" id="22_v7pwh"]
+[ext_resource type="PackedScene" uid="uid://dcmqc2tk6jg2x" path="res://Assets/Models/Enviroment/Toolbox.fbx" id="23_2b4nk"]
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_l1k8l"]
 _surfaces = [{
@@ -72,7 +60,7 @@ _surfaces = [{
 "index_count": 180,
 "index_data": PackedByteArray("AgAAACIAAAAEACMAIwAiAAAAIgAjAAUABQAGACIABgAFAAcABwAIAAYAAQAiAAYAIgABAAIAJAAGAAgABgAkAAEACAAJACQAAgABACUAJQABACQAJQADAAIAJgAkAAkAJAAmACUACQAKACYACwADACUAJgAKAAwADAAnACYAJQAmACcAJwAMAA0AJQAoAAsAJwAoACUACwAoACkADQAqACcAKAAnACoAKgANAA8AKgApACgADwArACoAKQAqACsAKQAOAAsAKwAsACkADgApACwALAAQAA4AEQASABMAEwAtABEAGQARAC0ALQATAC4ALQAYABkALgAvAC0AGAAtAC8ALwAuABQALwAWABgAFAAVAC8AFgAvABUAFQAXABYAMAAgAB4AHgAxADAAMQAeAB8AMgAwADEAHwAdADEAMQAzADIAMwAxAB0AIQAyADMAHQAaADMAMwAcACEAHAAzABoAGgAbABwA"),
 "lods": [5.771854e-07, PackedByteArray("AAABAAIAAgABAAMAAAAEAAUABQAGAAAAAQAAAAYABgAFAAcABwAIAAYAAQAGAAgACAAJAAEACgABAAkAAQAKAAMAAwAKAAsADAALAAoACwAMAA0ADQAOAAsADgANAA8ADwAQAA4AEQASABMAEQATABQAFAAVABEAFgARABUAFQAXABYAEQAWABgAEQAYABkAGgAbABwAHQAaABwAHAAeAB0AHwAdAB4AHgAcACAAIQAgABwA")],
-"material": SubResource("StandardMaterial3D_vdj76"),
+"material": ExtResource("16_2b4nk"),
 "name": "Light Material",
 "primitive": 3,
 "uv_scale": Vector4(0, 0, 0, 0),
@@ -85,7 +73,7 @@ _surfaces = [{
 "index_count": 1020,
 "index_data": PackedByteArray("AgDgAOEA4QABAAIA4gDhAOAA4ADjAOIA4gDjAAMAAwDkAOIA4gDkAOUAAQDhAOYA5gDhAOIA5gDnAAEA5QDoAOIA4gDoAOYA6ADlAOkA5wDmAOoA6gDmAOgA6gDrAOcA6QDsAOgA6ADsAOoA7ADpAO0A6wDqAO4A7gDqAOwA7gAEAOsA7QDvAOwA7ADvAO4A8ADvAO0A7gDvAPAA7QAAAPAA8ACyAO4ABADuALIAsgAFAAQABgAHAPEA8QAHAAkA8QDyAAYACQAIAPEACgAGAPIACAAJAAsA8gCzAAoACwC0AAgADQAKALMAtAALABIAswAMAA0AEgAOALQADwANAAwADgASABMADADzAA8AEQAPAPMA8wAQABEAEwD0AA4A9AATABUAFQAUAPQA9QD2ABgAGAD3APUA9gD1APgA+AAXAPYAFgD4APUA+QD1APcA9QD5ABYA9wC1APkA+gD5ALUAtQAZAPoA+QD6APsAFgD5APwA+wD8APkA/AD9ABYA/AD7AP4A/QD8AP8A/gD/APwA/wAAAf0A/wD+AAEBGgAAAf8AAQECAf8A/wACARoAAgEBARsAGwC2AAIBAgG2AAMBGgACAQQBAwEEAQIBBAEDARwABAEFARoAHAAGAQQBBQEEAQYBBgEdAAUBBwEIAQkBCQEKAQcBCwEIAQcBCQEIAQwBDAEIAQsBDAHFAAkBBwHGAAsBCwENAQwBDgEHAQoBxgAHAQ4BDgE5AMYAOgA5AA4BCgHHAA4BDgEPAToADwEOAccAxwA4AA8BEAEMAQ0BxQAMARABDQE7ABABEAE7ADwAEAHEAMUAPAARARABxAAQAREBEQE3AMQAEgETARQBFAEVARIBugAUARMBEgEVAUYAEwEWAboARQC6ABYBFgEXAUUAFwEWAbwAvAAWARMBvABEABcBEwEYAbwAGAETARIBEgEZARgBuQAZARIBEgEaAbkARgAaARIBuAC5ABoBGgFGALsAuwAbARoBGgEbAbgAGwG7AEcARwAcARsBuAAbARwBHAFDALgAHQEfACAAIAAeAB0BHwAdAR4BHgAgACEAHgEnAB8AIQAiAB4AKAAnAB4BIgAhACMAHgG3ACgAIwAfASIAHwEjACUAJQAkAB8BKQAoALcAtwAmACkAKgApACYAJgArACoALAAqACsAKwAgASwALgAsACABIAEtAC4AvwAhAb4AvwAxACEBMQAiASEBIgG9ACEBvQAzACEBMwAjASEBIwEkASEBIwElASQBMADAACQBJgEwACQBLwAmASQBJQEvACQBJwEvACUBJQEyACcBwQAvACcBNQAvAMEAwQDCADUANgDCAMEAJwEoAcEAwQDDADYAwwDBACgBKAE0AMMAZgApASoBKgErAWYALAEqASkBKQHRACwBKwEqAS0BLQEuASsBLgEtAWoAagBrAC4BLwEtASoBKgEsAS8BMAFqAC0BLwEwAS0BMAFpAGoAMAFoAGkAMAFnAGgAYgBnADABMQEvASwBLwExATABMgFiADABMgFkAGIAYQBkADIBYQBlAGQAMwEyATABYQAyATMBMQEzATABYABhADMBMwE0AWAANQE0ATMBMwE2ATUBNgEzATEBYwA1ATYBNgE3AWMAMQE4ATYBNwE2ATgBLAE4ATEBOAHQADcBOAEsAdEA0QDQADgBOQFbAFwAXAA6ATkBOwE5AToBOgE8ATsBOwE8AVgAWABaADsBXABbAD0BPQE+AVwAPwE9AVsAWwBdAD8BPQE/AV4AXgBAAT0BPgE9AUABQAFfAD4BQQFaAFgAWABCAUEBWgBBAUMBQwFXAFoAVgBDAUEBQQFEAVYARAFBAUIBQgFZAEQBPQA+AEUBRQE/AD0ARgFFAT4APgBAAEYBQQBGAUAAQABCAEEARwFIAUkBRwFIAEgBSADKAEgBygBKAUgBSgFJAEgBSQDIAEgBywBHAUkBzABJAckAzABKAEkBSgBLAUkBSwFLAEkBSwDLAEkBTADLAEsASwBMAUwATQFMAUsASwDNAE0BTQBNAc0AzQBLAE4AzQDOAE0ATgDPAM0ATwDOAM0AzQDPAE8AUABRAE4BTgFTAFAAUwBOAU8BTwFUAFMAVABPAVIAUgBVAFQAUAFsANIAbABQAW4A0gDUAFABbgDTAGwAbwBsANMA0wBwAG8A1ADSANUA1QDWANQA1gDVAHEAcQBRAdYAUQFxANcA1wBtAFEB1wBxAHIAcgBzANcAdAB1AHYAdgB3AHQApABSAVMBUwHfAKQAVAFTAVIBUgGiAFQBUwFUAVUB3wBTAVYBVQFWAVMBVgHeAN8AowDeAFYBVgFXAaMAVwFWAVUBVQGlAFcBrwDYANkA2QCuAK8A2QDYALAAsACxANkArQCqANoA2gDbAK0ArADbANoA2gCrAKwApwCoAFgBWAHcAKcApgDcAFgBWAGpAKYAeAB5AFkBWQHdAHgAewDdAFkBWQF6AHsAfAB9AH4AfgB/AHwAWgGhAJ8AnwBbAVoBWgFbAVwBXAFdAVoBXQFcAaAAoACeAF0BgACBAF4BXgFfAYAAXwFeAWABYAFhAV8BYQFgAYIAggCDAGEBhACFAIYAhgCHAIQAiACJAIoAigCLAIgAjACNAI4AjgCPAIwAkACRAJIAkgCTAJAAlACVAJYAlgCXAJQAYgGZAJoAmABiAZoAmACaAJsAYgFjAZkAYwGdAJkAYwGcAJ0A"),
 "lods": [5.0591065e-05, PackedByteArray("AAABAAIAAgADAAAAAQAAALIAsgAEAAEAsgAFAAQABgAHAAgACAAHAAkACgAGAAgACAAJAAsACACzAAoACwC0AAgADQAKALMAtAALABIAswAMAA0AEgAOALQADwANAAwADAAQAA8AEQAPABAADgASABMAEwAUAA4AFAATABUAFgAXABgAGAC1ABYAtQAaABYAGgC1ALYAGQC2ALUAtgAZABsAGgC2ABwAHAAdABoAHgAfACAAHgAgACEAIQAiAB4AIgAhACMAIwAkACIAJAAjACUAHwAeALcAtwAnAB8AKAAnALcAKQAoALcAtwAmACkAKgApACYAJgArACoALAAqACsAKwAtACwALgAsAC0AuAC5AEYAugBGALkAuwC4AEYAuAC7AEcARwBDALgAuQC8ALoARQC6ALwAvABEAEUAvQAzAL4AMQC9AL4AvwAxAL4AMwAyAL4AMADAAL4ALwAwAL4AMgAvAL4AwQAvADIANQAvAMEAMgA0AMEAwQDCADUAwwDBADQANgDCAMEAwQDDADYAxADFADsAxAA7ADwAPAA3AMQAxgA7AMUAOQDGAMUAxQDHADkAOgA5AMcAxwA4ADoAPQA+AD8APgBAAD8AQQA/AEAAQABCAEEASQDIAMkAygBJAMkASADKAMkAywBIAMkAzABKAMkASgBLAMkASwDLAMkATADLAEsATQBMAEsASwDNAE0AzQDOAE0AzQBLAE4ATwDOAM0ATgDPAM0AzQDPAE8AUABRAFIAUgBTAFAAUgBUAFMAUgBVAFQAVgBXAFgAWABZAFYAWgBYAFcAWABaAFsAWwBcAFgAXQBcAFsAXABdAF4AXgBfAFwAYABhAGIAYwBgAGIAYQBlAGQAYQBkAGIAYgDQAGMA0QDQAGIAYgBmANEAYgBnAGYAZgBnAGgAZgBoAGkAZgBpAGoAawBmAGoAbgBsANIAbgDTAGwAbwBsANMA0wBwAG8A0gDUAG4A1ADSANUA1QDWANQA1gDVAHEAcQBtANYAbQBxANcA1wBxAHIAcgBzANcAdAB1AHYAdgB3AHQArwDYANkA2QCuAK8A2QDYALAAsACxANkArQCqANoA2gDbAK0ArADbANoA2gCrAKwAqADcAKcApgDcAKgAqACpAKYAeAB5AHoAegDdAHgAewDdAHoAfAB9AH4AfgB/AHwAgACBAIIAggCDAIAAhACFAIYAhgCHAIQAiACJAIoAigCLAIgAjACNAI4AjgCPAIwAkACRAJIAkgCTAJAAlACVAJYAlgCXAJQAmACZAJoAmACaAJsAmACcAJkAnACdAJkAngCfAKAAnwCeAKEAowDeAN8AogCjAN8AogClAKMAogDfAKQA"), 0.00064946525, PackedByteArray("AAABAAIAAgADAAAAAAAEAAEAAAAFAAQABgAHAAgACAAHAAkACgAGAAgACAAJAAsACAAMAAoADQAKAAwACwAOAAgADwANAAwADAAQAA8AEQAPABAADgALABIADgASABMAEwAUAA4AFAATABUAFgAXABgAGAAZABYAGQAaABYAGgAZABsAGgAbABwAHAAdABoAHgAfACAAHgAgACEAIQAiAB4AIgAhACMAIwAkACIAJAAjACUAHwAeACYAJgAnAB8AKAAnACYAKQAoACYAKgApACYAJgArACoALAAqACsAKwAtACwALgAsAC0ALwAwADEAMgAvADEAMwAyADEANAAvADIANQAvADQANAA2ADUANwA4ADkAOgA5ADgAOQA7ADcANwA7ADwAPQA+AD8APgBAAD8AQQA/AEAAQABCAEEAQwBEAEUARQBGAEMARwBDAEYASABJAEoASwBIAEoATABIAEsATQBMAEsATQBLAE4ATgBPAE0AUABRAFIAUgBTAFAAUgBUAFMAUgBVAFQAVgBXAFgAWABZAFYAWgBYAFcAWABaAFsAWwBcAFgAXQBcAFsAXABdAF4AXgBfAFwAYABhAGIAYwBgAGIAYQBkAGIAYQBlAGQAYgBmAGMAYgBnAGYAZgBnAGgAZgBoAGkAZgBpAGoAawBmAGoAbABtAG4AbwBsAG4AbgBwAG8AbQBsAHEAbQBxAHIAcgBzAG0AdAB1AHYAdgB3AHQAeAB5AHoAegB7AHgAfAB9AH4AfgB/AHwAgACBAIIAggCDAIAAhACFAIYAhgCHAIQAiACJAIoAigCLAIgAjACNAI4AjgCPAIwAkACRAJIAkgCTAJAAlACVAJYAlgCXAJQAmACZAJoAmACaAJsAmACcAJkAnACdAJkAngCfAKAAnwCeAKEAogCjAKQAogClAKMApgCnAKgAqACpAKYAqgCrAKwArACtAKoArgCvALAAsACxAK4A")],
-"material": SubResource("StandardMaterial3D_ol6kn"),
+"material": ExtResource("12_ns4fk"),
 "name": "Rust Decking",
 "primitive": 3,
 "uv_scale": Vector4(0, 0, 0, 0),
@@ -94,20 +82,6 @@ _surfaces = [{
 }]
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_l1k8l")
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_uinh6"]
-resource_name = "Light Material"
-vertex_color_use_as_albedo = true
-albedo_color = Color(0.9063318, 0.9063318, 0.9063318, 1)
-emission_enabled = true
-emission = Color(1, 1, 1, 1)
-emission_energy_multiplier = 0.0
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_h4a4i"]
-resource_name = "Rust Panel Grey 2"
-vertex_color_use_as_albedo = true
-albedo_color = Color(0.9063318, 0.9063318, 0.9063318, 1)
-emission_enabled = true
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_e446n"]
 _surfaces = [{
@@ -142,7 +116,7 @@ _surfaces = [{
 "format": 34359742487,
 "index_count": 54,
 "index_data": PackedByteArray("AAABAAIAAAADAAEAAAAEAAMABQAAAAIABgAFAAIABgACAAcACAAGAAcACAAJAAYACAAHAAoACwAMAAQACwANAAwACwAEAA4ACwAPAA0ACwAQAA8ACwAOABEAEgALABEAEgARABMAEgATABQA"),
-"material": SubResource("StandardMaterial3D_uinh6"),
+"material": ExtResource("16_2b4nk"),
 "name": "Light Material",
 "primitive": 3,
 "uv_scale": Vector4(0, 0, 0, 0),
@@ -155,7 +129,7 @@ _surfaces = [{
 "index_count": 1662,
 "index_data": PackedByteArray("ZAFlAXEAcQBlAXMAcQBmAWQBcwBnAXEAaAFkAWYBZwFzAGkBZgFyAGgBQABoAXIAcgBCAEAAaQF0AGcBdABpAUEAQQBDAHQAAAABAAIAdQACAAEAAQADAHUAagF1AAMAAwAbAGoBagEbABoAGgB9AGoBfQAaABkAGQAXAH0AAgAEAAAABQAAAAQABgAEAAIAAgBrAQYABQAEAGwBawECAHcAdwB2AGsBdgB3AG0BbQFuAXYAbwFuAW0BbQF4AG8BeQBvAXgAeAAXAHkAGAB5ABcAFwATABgAFgATABcAFwAZABYAEwAWAHABFgAVAHABcAEVABQAEwBwAXEBEgBwARQAEgBxAXABEgAPAHEBEgARAA8AfAAPABEAEQAQAHwAcgF8ABAAEAAOAHIBewByAQ4ADgANAHsAewANAAwADABzAXsAcwEMAAsACwB6AHMBegALAAoACgAHAHoABwAKAHQBCgAJAHQBBwB0AWwBdAEJAAgABQBsAXQBBQB0AQgAfgB/AIAAdQF/AH4AgAB2AX4AfgB3AXUBdgGAAHgBgwB1AXcBeAGBAHYBgQB4ATEAMQAvAIEAdwGCAIMAMgCDAIIAggAwADIAhAB5AR4AhAAeABwAhAAdAHkBhAAfAB0AIACFAIYAhgAsACAAhwCGAIUAhQB6AYcAhwB6ASEALQAsAIgAiACJAC0AiQCIAIoAigB7AYkAIQAjAIcAhwAjACQAiwAjACEAJACMAIcAIQB8AYsAjQCHAIwAiwB8AScAjAB9AY0AJwAmAIsAIgCNAH0BjgAmACcAfQElACIAJwB+AY4AIgAlAH8BjgB+AY8AfwGQACIAjwCAAY4AkAB/AZIAkQCAAY8AjwCBAZEAkQCBASgAKACCAZEAkwCCASgAKACDAZMAkwCDAZQAlAApAJMAlQApAJQAlACEAZUAlQCEASoAKgArAJUAigArACoAKgB7AYoALgArAIoAigCSAC4AkgCKAJAAMwA0ADUANQA2ADMAhQGGATkAhQE5AJYAhQGHAYYBlgA5AIgBhwE4AIYBiAE3AJYAiQE4AIcBNwCIAZcAhwE7AIkBlwCKATcAmACJATsAigGXADoAOwCLAZgAOgCMAYoBjQGYAIsBjgGMAToAiwGPAY0BOgCaAI4BjQGPAZABPACOAZoAkAE9AI0BmgCRATwAPQCQAT8AkgE8AJEBPwCTAT0AkQE+AJIBkwE/AJQBkgE+AJUBlAGZAJMBlgGSAZUBlgGZAJQBlgGVAZkAlwGcAJsAWACbAJwAnABaAFgAmwCYAZcBmQGXAZgBmAFZAJkBmQFZAJoBmgGdAJkBnQCaAZ4AngCbAZ0AmwGeAFwAXABbAJsBJAElAZwBnAGdASQBnQGcASYBJgEnAZ0BRABFAEYARgBHAEQAngGfAaABoAGhAZ4BoQGgAUoASgBIAKEBnwGeAaIBogGfAJ8BSQCfAKIBogFLAEkAZACjAaQBpAFjAGQApQGkAaMBowGmAaUBpQGmAacBpwGoAaUBqAGnAWEAYQBiAKgBqQGhAE4ATgBMAKkBoQCpAaAAoACqAaEAqgGgAKsBqwGiAKoBowCiAKsBqwGsAaMArQGjAKwBrAGuAa0BTQCtAa4BrgFPAE0ArwGwAWYAZgBoAK8BsQGwAa8BrwGyAbEBswGxAbIBsgHUALMBZQCzAdQA1ABnAGUAUABRAFIAUgBTAFAApAC0AVYApABWAFcApABVALQBpABUAFUAbQC1AbYBtgFvAG0AtgG1AbcBtwG4AbYBuQG4AbcBtwG6AbkBuQG6AXAAcABuALkBXQBeAF8AXwBgAF0AuwG8Ab0BawC7Ab0BpQBrAL0BuwG+AbwBpQC9AWoApQBqAL8BpQC/AcABwQG8Ab4BwQHCAbwBwQHDAcIBwwFsAMIBxAHBAb4BxAG+AcUBxAHFAWkAqADGAccBxwGnAKgAxgGmAMgByAHHAcYBqQCnAMcBxwHJAasAqwCqAMcBxwGqAKkAqQCqAMoBygGtAKkArQDKAawArACuAK0ArwCwALEAsQCyAK8AswDLAbUAtQC2ALMAywGzAMwBzAG0AMsBtADMAc0BzQHOAbQAzgHNAbcAtwC4AM4BuAC3AM8BzwHQAbgA0AHPAdEB0QG5ANABuQDRAboAugDSAbkA0gG6ANMB0wG7ANIBuwDTAbwAvADUAbsA1AG8ANUB1QG9ANQBvQDVAb4AvgDWAb0A1gG+ANcB1wG/ANYBwAC/ANcB1wHYAcAA2QHAANgB2AHBANkB2gHZAcEAwQDbAdoBwgDaAdsB2wHDAMIA1QDWANcA1wDYANUA2QDaANsA2wDcANkA0QDTANIA0gDcAdEA3QHRANwB3AHQAN0B3gHdAdAA0ADfAd4BzgDeAd8B3wHPAM4A4AHOAM8AzwDhAeAB4gHgAeEB4QHNAOIBzADiAc0AzQDjAcwA5AHMAOMB4wHLAOQBygDkAcsAywDlAcoA5gHKAOUB5QHJAOYBxwDmAckAyQDnAccA6AHHAOcB5wHIAOgB6AHIAMYAxgDpAegB6QHGAOoB6gHFAOkBxQDqAesB6wHsAcUA7AHrAbUAtQDEAOwB3QDtAe4B7gHfAN0A4ADuAe0B7QHeAOAA4QDiAOMA4wDkAOEA5QDmAO8B7wHwAeUA8AHvAecA5wDoAPAB6QDqAOsA6wDsAOkA7wDxAfIB8gHuAO8A7QDyAfEB8QHwAO0A8QDyAPMB+ADzAfIA8gD5APgA8wHzAPEA8QDzAPQB9AH1AfEA9AHzAPcA9wD2AfQB9QD0APQB9AH3AfUA9wH0AfgB+AH2APcB+QH6AfsB+wEEAfkB+gH5AQMBAAH7AfoB+gH8AQABAwEBAfoB+gEBAf4A/gD/APoB/gABAf0B/QECAf4AAgH9AQUBBQEGAQIB+gD7APwA/AD9APoABwH+Af8B/wEKAQcBCQH/Af4B/gEIAQkBCwEMAQ0BDQEOAQsBEQEAAg8BDwEQAREBEgEPAQACAAITARIBEgETAQECAQITARUBAQIWARIBFwEWAQECFQECAgECAQIDAhcBAwIBAgICAgIUAQMCGAEZARoBGgEbARgBHAEdAQQCBAIFAhwBBQIEAh4BHgEfAQUCIAEhASIBIgEjASABBgIHAggCBwIGAgkCCAJcAQYCCQIKAgcCXAEIAgsCCgIJAl8BCwIMAlwBXwFdAQoCDAILAl4BXQFfAQ0CXgEOAgwCDQIPAl0BEAIOAl4BDwINAhECXgESAhACEQITAg8CYAEQAhICEwIRAhQCEgIVAmABFAIWAhMCYAEVAhcCFgIUAmEBFwIYAmABYQFjARYCGQIYAhcCGgJjAWEBFwIbAhkCYQEcAhoCHQIZAhsCYgEaAhwCHAIdAmIBGwJiAR0CHgIfAiACIAIhAh4CHwIeAiICIQIgAiMCIgIkAh8CIwIpASECKAEkAiICIgIqASgBKQEjAisBKwElAikBJQIrASYCJgInAiUCJwImAigCKAIpAicCKQIoAioCKgIrAikCKwIqAi0BLQEsASsCMQEtASwCLAItAjEBLQIsAi4BLgEwAS0CLgIwAS4BLgEvAi4CMAIxAi8CLwIyAjACMwIwAjICMgI0AjMCNQI2AjQCNAI3AjUCLwE1AjcCNwIoAS8BMgEzATQBNAE1ATIBNgE3ATgBOAE5ATYBOgE7ATwBPAE9AToBOAI/ATkCOgI/ATgCOQJEATgCOAJCAToCRAE5AjsCOgJCATwCOwJGAUQBPAI9AjoCPgJGATsCPwI9AjwCOwJAAj4CPAJBAj8CPgJAAkICQwI/AkECQgJEAj4CQQJAAUMCRwFEAkICQwJAAUUCQgJIAUcBRQI+AUMCRwFIAUYCRwI+AUUCRgJIAkcBRQJBAUcCSAJGAkUBRwJBAUkCRQFKAkgCSQJLAkcCQwFKAkUBTAJLAkkCSQJDAUwCRQFMAkMBTQJLAU4CTgJLAU0BTgJPAk0CTQFQAk4CTQJPAlECUAJNAVICUQJKAU0CUgJOAVACUwJKAVECVAJOAVICUQJJAVMCUgJVAlQCUwJJAVYCVAJVAlABVgJXAlMCUAFPAVQCVwJWAlgCWQJPAVABWAJMAVcCUAFaAlkCWwJMAVgCXAJZAloCWAJdAlsCWgJeAlwCWwJdAl8CYAJcAl4CXwJSAVsCXgJTAWACYQJSAV8CYAJTAWECXwJRAWECYQJRAWACYgJXAWMCYgJkAlcBYgJlAmQCYgJjAmYCYgJmAmcCaAJiAmcCVQFoAmcCaQJVAWcCVAFpAmcCVAFnAlYBagJUAVYBawJqAlYBbAJrAlYBbAJWAW0CbgJaAW8CbgJwAloBbgJvAnECbgJxAnICcwJuAnICWQFzAnICdAJZAXICdQJ0AnICWAF1AnICdgJYAXICdgJyAncCdgJ3AlsBdgJbAXgCdgJ4AnkC"),
 "lods": [0.00060942746, PackedByteArray("cQByAHMAcwB0AHEAQABzAHIAcgBCAEAAdABzAEEAQQBDAHQAAAABAAIAdQACAAEAAQADAHUAAgAEAAAABQAAAAQABgAEAAIAAgB2AAYABQAEAAcAdgACAHcABQAHAAgAdgB3AHgABwAJAAgAeQB2AHgACgAJAAcACgAHAHoAegALAAoAegAMAAsADAB6AHsAewANAAwADgANAHsAewB8AA4AEAAOAHwAEQAQAHwAfAAPABEAEgARAA8AEgAPABMAEgATABQAEwAVABQAFgAVABMAFgATABcAFwATABgAGAB5ABcAeAAXAHkAFwAZABYAGQAXAH0AfQAaABkAfQAbABoAAwAbAH0AfQB1AAMAfgB/AIAAgACBAH4AgQCAADEAMQAvAIEAfgCCAH8AgwB/AIIAMgCDAIIAggAwADIAhAAdAB4AhAAfAB0AhAAeABwAIACFAIYAhgAsACAAhwCGAIUALQAsAIgAiACJAC0AiQCIAIoAhwCFACEAKgCJAIoAIQAjAIcAhwAjACQAiwAjACEAJACMAIcAIQAnAIsAjQCHAIwAJwAmAIsAIgCNAIwAjgAmACcAjAAlACIAJwCPAI4AJQCQACIAkQCOAI8AkAAlAJIAkQCPACgAkgCKAJAAKACTAJEAigCSAC4AKACUAJMALgArAIoAlAApAJMAigArACoAlQApAJQAKgArAJUAlAAqAJUAMwA0ADUANQA2ADMAlgA4ADkAlgA5AJcAlgA7ADgAlwA3AJYAmAA4ADsANwCXADoAmAA7AD8APwA9AJgAPwCZAD0APAA3ADoAPACZAD8AOgCaADwAPAA+AJkAmgA+ADwAmwBZAJwAWACbAJwAnABaAFgAnQCcAFkAnQBZAJ4AnQCeAFwAXABbAJ0ARABFAEYARgBHAEQASACfAEoAnwBIAEsASQCfAEsAoAChAE4ATgBMAKAAoACiAKEAowCiAKAAoABPAKMATQCjAE8AUABRAFIAUgBTAFAApABVAFYApABUAFUApABWAFcAXQBeAF8AXwBgAF0ApQBrAGoAaQBqAGsAaQBsAGoAYQBiAGMAZABhAGMApgCnAKgAqQCnAKYApgCqAKkAqwCqAKYAqQCqAKwArACtAKkArACuAK0ArwCwALEAsQCyAK8AswC0ALUAtQC2ALMAtACzALcAtwC4ALQAtwC5ALgAuQC3ALoAugC7ALkAuwC6ALwAvAC9ALsAvQC8AL4AvgC/AL0AwAC/AL4AvgDBAMAAwgDAAMEAwQDDAMIAtQDEAMUAxQDGALUAxgDFAMcAxwDIAMYAyQDIAMcAxwDKAMkAywDJAMoAygDMAMsAzQDLAMwAzADOAM0AzwDNAM4A0ADPAM4AzgDRANAA0gDQANEA0QDTANIAZQBmANQAaADUAGYA1ABnAGUA1QDWANcA1wDYANUA2QDaANsA2wDcANkA3QDeAN8A4ADfAN4A4QDiAOMA4wDkAOEA5QDmAOcA5wDoAOUA6QDqAOsA6wDsAOkA7QDuAO8A7wDwAO0A8QDyAPMA8wD0APEA9QD0APMA8wD2APUA9gDzAPcA+ADzAPIA8gD5APgA+gD7APwA/AD9APoA/gD/AAABAAEBAf4AAQECAf4AAwEBAQABAAEEAQMBAgEBAQUBBQEGAQIBBwEIAQkBCQEKAQcBCwEMAQ0BDQEOAQsBDwEQAREBEgEPAREBEQETARIBEgETARQBFAETARUBFAEWARIBFwEWARQBGAEZARoBGgEbARgBHAEdAR4BHgEfARwBbQBuAG8AbQBwAG4AIAEhASIBIgEjASABJAElASYBJgEnASQBKAEpASoBKQEoASsBKwEsASkBLAErAS0BLgEoAS8BLwEwAS4BMAEtAS4BLQEwATEBMgEzATQBNAE1ATIBNgE3ATgBOAE5ATYBOgE7ATwBPAE9AToBPgE/AUABPgFAAUEBQgFAAT8BPgFBAUMBRAFCAT8BQwFFAT4BPwFGAUQBRQFDAUcBPwFIAUYBRwFIAUUBSAFHAUYBSQFKAUsBSQFMAUoBSQFLAU0BTQFOAUkBTwFOAU0BTQFQAU8BTAFJAVEBUQFPAVABUgFMAVEBUAFTAVEBUwFSAVEBVAFVAVYBVQFXAVYBWAFZAVoBWAFaAVsBXAFdAV4BXQFcAV8BYAFcAV4BXQFfAWEBXgFiAWABYQFgAWIBYQFjAV0BYgFjAWEB"), 0.0058108703, PackedByteArray("AAABAAIAAQADAAIAAgAEAAAABQAAAAQABgAEAAIABQAEAAcABQAHAAgABwAJAAgACgAJAAcABwALAAoABwAMAAsABwANAAwADgANAAcABwAPAA4AEAAOAA8AEQAQAA8AEgARAA8AEgAPABMAEgATABQAEwAVABQAFgAVABMAFgATABcAFwATABgAFwAZABYAGAAGABcAFwAaABkABgACABcAFwAbABoAFwACAAMAAwAbABcAHAAdAB4AHAAfAB0AIAAhACIAIQAjACIAIgAjACQAJAAlACIAJgAjACEAIQAnACYAJwAoACYAKAApACYAKAAqACkAKgArACkALAArACoAKgAtACwALgArACwALAAlAC4ALwAwADEAMgAxADAAMwA0ADUANQA2ADMANwA4ADkANwA5ADoANwA7ADgAPAA3ADoAPQA4ADsAOgA+ADwAPQA7AD8APAA+AD8APwA+AD0AQABBAEIAQQBDAEIARABFAEYARgBHAEQASABJAEoASQBIAEsATABNAE4ATABPAE0AUABRAFIAUgBTAFAAVABVAFYAVABWAFcAWABZAFoAWwBaAFkAWwBZAFwAXQBeAF8AXwBgAF0AYQBiAGMAZABhAGMAZQBmAGcAaABnAGYAaQBqAGsAaQBsAGoAbQBuAG8AbQBwAG4A")],
-"material": SubResource("StandardMaterial3D_h4a4i"),
+"material": ExtResource("12_ns4fk"),
 "name": "Rust Panel Grey 2",
 "primitive": 3,
 "uv_scale": Vector4(0, 0, 0, 0),
@@ -718,6 +692,228 @@ metadata/_edit_lock_ = true
 [node name="Interior Walls" parent="Ship Model/BIGJ_Ship_Interior" index="0" unique_id=173632597]
 surface_material_override/0 = ExtResource("7_0qs2n")
 
+[node name="Lights" type="Node3D" parent="Ship Model" unique_id=1116015812]
+
+[node name="side_light" parent="Ship Model/Lights" unique_id=731681778 instance=ExtResource("15_kuj6t")]
+
+[node name="Side_port_Lights" parent="Ship Model/Lights/side_light" index="0" unique_id=1641423615]
+transform = Transform3D(0, -2.0861626e-05, 100, -100, 0, 0, 0, -100, -2.3841858e-05, -11.741098, 0.916932, 21.382656)
+surface_material_override/0 = ExtResource("16_2b4nk")
+surface_material_override/1 = ExtResource("12_ns4fk")
+
+[node name="Side_port_Lights2" type="MeshInstance3D" parent="Ship Model/Lights/side_light" unique_id=504850099]
+transform = Transform3D(0, -2.0861626e-05, 100, -100, 0, 0, 0, -100, -2.3841858e-05, -11.741098, 0.916932, -0.76490974)
+mesh = SubResource("ArrayMesh_jlvot")
+
+[node name="Side_port_Lights3" type="MeshInstance3D" parent="Ship Model/Lights/side_light" unique_id=1268054903]
+transform = Transform3D(0, -2.0861626e-05, 100, -100, 0, 0, 0, -100, -2.3841858e-05, -11.741098, 0.916932, -20.191198)
+mesh = SubResource("ArrayMesh_jlvot")
+
+[node name="side_light3" parent="Ship Model/Lights" unique_id=1854283386 instance=ExtResource("15_kuj6t")]
+transform = Transform3D(-2.255, -3.4049555e-07, 0, 3.4049555e-07, -2.255, 0, 0, 0, 2.255, 11.41424, 20.22249, 61.625698)
+
+[node name="Side_port_Lights" parent="Ship Model/Lights/side_light3" index="0" unique_id=1641423615]
+transform = Transform3D(9.094947e-13, -2.0861626e-05, 100, -100, 0, 9.094947e-13, 0, -100, -2.3841858e-05, 0, 0, 0.05960846)
+mesh = SubResource("ArrayMesh_jlvot")
+
+[node name="Side_port_Lights2" type="MeshInstance3D" parent="Ship Model/Lights/side_light3" unique_id=1167955895]
+transform = Transform3D(-3.0199157e-05, -2.0861627e-05, 100, 100, 8.742271e-06, 3.019916e-05, -8.742278e-06, 100, 2.3841856e-05, 0, 0.40004253, 0.32073784)
+mesh = SubResource("ArrayMesh_jlvot")
+
+[node name="side_light4" parent="Ship Model/Lights" unique_id=2072811108 instance=ExtResource("15_kuj6t")]
+transform = Transform3D(2.255, 3.4049555e-07, -1.9713838e-07, 3.4049555e-07, -2.255, 0, -1.9713838e-07, -2.9767065e-14, -2.255, -11.516792, 20.22249, 62.36276)
+
+[node name="Side_port_Lights" parent="Ship Model/Lights/side_light4" index="0" unique_id=1641423615]
+transform = Transform3D(9.094947e-13, -2.0861626e-05, 100, -100, 0, 9.094947e-13, 0, -100, -2.3841858e-05, 0, 0, 0.05960846)
+mesh = SubResource("ArrayMesh_jlvot")
+
+[node name="Side_port_Lights2" type="MeshInstance3D" parent="Ship Model/Lights/side_light4" unique_id=1646214128]
+transform = Transform3D(-3.0199157e-05, -2.0861627e-05, 100, 100, 8.742271e-06, 3.019916e-05, -8.742278e-06, 100, 2.3841856e-05, 0, 0.40004253, 0.32073784)
+mesh = SubResource("ArrayMesh_jlvot")
+
+[node name="side_light2" parent="Ship Model/Lights" unique_id=1437872394 instance=ExtResource("15_kuj6t")]
+transform = Transform3D(-1, -7.642742e-15, -8.742278e-08, 0, -1, 8.742278e-08, -8.742278e-08, 8.742278e-08, 1, -0.036524773, 2.2426744, 0)
+
+[node name="Side_port_Lights" parent="Ship Model/Lights/side_light2" index="0" unique_id=1641423615]
+transform = Transform3D(0, -2.0861626e-05, 100, -100, 0, 0, 0, -100, -2.3841858e-05, -11.741098, 0.916932, 21.382656)
+surface_material_override/0 = ExtResource("16_2b4nk")
+surface_material_override/1 = ExtResource("12_ns4fk")
+
+[node name="Side_port_Lights2" type="MeshInstance3D" parent="Ship Model/Lights/side_light2" unique_id=868749839]
+transform = Transform3D(0, -2.0861626e-05, 100, -100, 0, 0, 0, -100, -2.3841858e-05, -11.741098, 0.916932, -0.76490974)
+mesh = SubResource("ArrayMesh_jlvot")
+
+[node name="Side_port_Lights3" type="MeshInstance3D" parent="Ship Model/Lights/side_light2" unique_id=203587015]
+transform = Transform3D(0, -2.0861626e-05, 100, -100, 0, 0, 0, -100, -2.3841858e-05, -11.741098, 0.916932, -20.191198)
+mesh = SubResource("ArrayMesh_jlvot")
+
+[node name="small_light" parent="Ship Model/Lights" unique_id=117445361 instance=ExtResource("17_v7pwh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 20.33891, -48.129562)
+
+[node name="Small Light Top" parent="Ship Model/Lights/small_light" index="0" unique_id=228596646]
+transform = Transform3D(25.990307, 0, 0, 0, -3.1962287, -25.79302, 0, 25.79302, -3.1962287, 0, 0, 0)
+surface_material_override/0 = ExtResource("16_2b4nk")
+surface_material_override/1 = ExtResource("12_ns4fk")
+
+[node name="small_light3" parent="Ship Model/Lights" unique_id=1451854234 instance=ExtResource("17_v7pwh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 35.151833, 63.282562)
+
+[node name="Small Light Top" parent="Ship Model/Lights/small_light3" index="0" unique_id=228596646]
+transform = Transform3D(25.990307, 0, 0, 0, -1.1360721e-06, 25.990301, 0, -25.990301, -1.1360721e-06, 0, -2.1791878, 2.0711517)
+surface_material_override/0 = ExtResource("16_2b4nk")
+surface_material_override/1 = ExtResource("12_ns4fk")
+
+[node name="small_light2" parent="Ship Model/Lights" unique_id=2098832185 instance=ExtResource("17_v7pwh")]
+transform = Transform3D(1, 0, 0, 0, 0.96073556, 0.27746558, 0, -0.27746558, 0.96073556, 0, 20.287334, 48.4987)
+
+[node name="Small Light Top" parent="Ship Model/Lights/small_light2" index="0" unique_id=228596646]
+transform = Transform3D(25.990307, 0, 0, 0, -3.1962287, -25.79302, 0, 25.79302, -3.1962287, 0, 0, 0)
+surface_material_override/0 = ExtResource("16_2b4nk")
+surface_material_override/1 = ExtResource("12_ns4fk")
+
+[node name="small_light4" parent="Ship Model/Lights" unique_id=1057997705 instance=ExtResource("17_v7pwh")]
+transform = Transform3D(1, 0, 0, 0, -4.3711392e-08, -1.0000001, 0, 1.0000001, -4.3711392e-08, 0, 4.420705, 29.380201)
+
+[node name="Small Light Top" parent="Ship Model/Lights/small_light4" index="0" unique_id=228596646]
+transform = Transform3D(16.6, 0, 0, 0, 16.6, 0, 0, 0, 16.6, 0, 0, 0)
+surface_material_override/0 = ExtResource("16_2b4nk")
+surface_material_override/1 = ExtResource("12_ns4fk")
+
+[node name="small_light5" parent="Ship Model/Lights" unique_id=252545700 instance=ExtResource("17_v7pwh")]
+transform = Transform3D(1, 0, 0, 0, -4.3711392e-08, -1.0000001, 0, 1.0000001, -4.3711392e-08, 0, 4.420705, -28.348726)
+
+[node name="Small Light Top" parent="Ship Model/Lights/small_light5" index="0" unique_id=228596646]
+transform = Transform3D(16.6, 0, 0, 0, 16.6, 0, 0, 0, 16.6, 0, 0, 0)
+surface_material_override/0 = ExtResource("16_2b4nk")
+surface_material_override/1 = ExtResource("12_ns4fk")
+
+[node name="small_light_tall" parent="Ship Model/Lights" unique_id=297909164 instance=ExtResource("18_xadyp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.4630742, 26.646048, 60.132263)
+
+[node name="Small Light Top Tall" parent="Ship Model/Lights/small_light_tall" index="0" unique_id=42372925]
+transform = Transform3D(25.990307, 0, 0, 0, -3.098286e-06, 25.990305, 0, -25.990305, -3.098286e-06, 0, 0, 0)
+surface_material_override/0 = ExtResource("16_2b4nk")
+surface_material_override/1 = ExtResource("2_0qs2n")
+
+[node name="small_light_tall2" parent="Ship Model/Lights" unique_id=1350020823 instance=ExtResource("18_xadyp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.010024786, 19.683676, -59.90503)
+
+[node name="Small Light Top Tall" parent="Ship Model/Lights/small_light_tall2" index="0" unique_id=42372925]
+transform = Transform3D(25.990307, 0, 0, 0, -3.098286e-06, 25.990305, 0, -25.990305, -3.098286e-06, 0, 0, 0)
+surface_material_override/0 = ExtResource("16_2b4nk")
+surface_material_override/1 = ExtResource("2_0qs2n")
+
+[node name="small_light_tall3" parent="Ship Model/Lights" unique_id=1241360645 instance=ExtResource("18_xadyp")]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -8.6792755, 7.111431, 67.31274)
+
+[node name="Small Light Top Tall" parent="Ship Model/Lights/small_light_tall3" index="0" unique_id=42372925]
+transform = Transform3D(25.990307, 0, 0, 0, -3.098286e-06, 25.990305, 0, -25.990305, -3.098286e-06, 0, 7.7305984, 1.1625671)
+surface_material_override/0 = ExtResource("16_2b4nk")
+surface_material_override/1 = ExtResource("2_0qs2n")
+
+[node name="spot_light" parent="Ship Model/Lights" unique_id=246287746 instance=ExtResource("19_3jkke")]
+
+[node name="SpotLight" parent="Ship Model/Lights/spot_light" index="0" unique_id=1145147840]
+surface_material_override/0 = ExtResource("16_2b4nk")
+surface_material_override/1 = ExtResource("12_ns4fk")
+
+[node name="SpotLight2" type="MeshInstance3D" parent="Ship Model/Lights/spot_light" unique_id=1450816495]
+transform = Transform3D(99.968925, 2.4926605, 4.8512265e-07, -2.9802322e-06, 1.7881395e-05, 100, 2.4926605, -99.96895, 1.3319171e-05, 2.2925782, 19.951862, 57.1958)
+mesh = SubResource("ArrayMesh_dmlor")
+
+[node name="SpotLight3" type="MeshInstance3D" parent="Ship Model/Lights/spot_light" unique_id=402266658]
+transform = Transform3D(99.982315, -1.880764, 1.0670265e-06, -2.9802322e-06, 1.7881395e-05, 100, -1.8807602, -99.98233, 1.3285222e-05, -2.2767246, 19.951862, 57.1958)
+mesh = SubResource("ArrayMesh_dmlor")
+
+[node name="SpotLight4" type="MeshInstance3D" parent="Ship Model/Lights/spot_light" unique_id=1101144780]
+transform = Transform3D(91.06286, -41.322636, 6.241083e-06, -2.9802327e-06, 1.7881393e-05, 100, -41.32262, -91.06287, 1.177644e-05, -5.2833323, 19.951862, 57.495834)
+mesh = SubResource("ArrayMesh_dmlor")
+
+[node name="spot_light2" parent="Ship Model/Lights" unique_id=1362806728 instance=ExtResource("19_3jkke")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 19.154564, 27.323977)
+
+[node name="SpotLight" parent="Ship Model/Lights/spot_light2" index="0" unique_id=1145147840]
+transform = Transform3D(100, 0, 0, 0, -4.3711393e-06, 100, 0, -100.00001, -4.371139e-06, 0, 0, 0)
+mesh = SubResource("ArrayMesh_dmlor")
+
+[node name="spot_light3" parent="Ship Model/Lights" unique_id=374001388 instance=ExtResource("19_3jkke")]
+transform = Transform3D(0.99952495, 4.888674e-10, -0.030817656, 0.01349458, 0.8990313, 0.43767673, 0.02770603, -0.4378847, 0.8986041, 0.05649078, 18.826399, -34.574295)
+
+[node name="SpotLight" parent="Ship Model/Lights/spot_light3" index="0" unique_id=1145147840]
+transform = Transform3D(99.99999, 0, 0, 0, -4.3711384e-06, 100, 0, -99.99999, -4.371139e-06, 0, 0, 0)
+mesh = SubResource("ArrayMesh_dmlor")
+
+[node name="spot_light4" parent="Ship Model/Lights" unique_id=209943018 instance=ExtResource("19_3jkke")]
+transform = Transform3D(-1, 0, 8.742277e-08, 3.3697564e-08, 0.9227266, 0.3854552, -8.066732e-08, 0.3854552, -0.9227265, 0.05649078, 18.894764, -26.240288)
+
+[node name="SpotLight" parent="Ship Model/Lights/spot_light4" index="0" unique_id=1145147840]
+transform = Transform3D(99.99999, 0, 0, 0, -4.3711384e-06, 100, 0, -99.99999, -4.371139e-06, 0, 0, 0)
+mesh = SubResource("ArrayMesh_dmlor")
+
+[node name="common_light" parent="Ship Model/Lights" unique_id=2137310385 instance=ExtResource("20_ruu2y")]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, -2.9950514, 15.988504, 64.72213)
+
+[node name="Underside Common light" parent="Ship Model/Lights/common_light" index="0" unique_id=251958809]
+transform = Transform3D(100, 0, 0, 0, -1.1920929e-05, 99.99999, 0, -99.99999, -1.1920929e-05, 0, 0, 0)
+surface_material_override/0 = ExtResource("16_2b4nk")
+surface_material_override/1 = ExtResource("5_mtju5")
+
+[node name="common_light4" parent="Ship Model/Lights" unique_id=1689553387 instance=ExtResource("20_ruu2y")]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 1.2398634, 21.014368, 64.72213)
+
+[node name="Underside Common light" parent="Ship Model/Lights/common_light4" index="0" unique_id=251958809]
+transform = Transform3D(100, 0, 0, 0, -1.1920929e-05, 99.99999, 0, -99.99999, -1.1920929e-05, 0, 0, 0)
+surface_material_override/0 = ExtResource("16_2b4nk")
+surface_material_override/1 = ExtResource("5_mtju5")
+
+[node name="common_light5" parent="Ship Model/Lights" unique_id=1722922119 instance=ExtResource("20_ruu2y")]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 1.2398634, 18.37581, 64.72213)
+
+[node name="Underside Common light" parent="Ship Model/Lights/common_light5" index="0" unique_id=251958809]
+transform = Transform3D(100, 0, 0, 0, -1.1920929e-05, 99.99999, 0, -99.99999, -1.1920929e-05, 0, 0, 0)
+surface_material_override/0 = ExtResource("16_2b4nk")
+surface_material_override/1 = ExtResource("5_mtju5")
+
+[node name="common_light6" parent="Ship Model/Lights" unique_id=1065360338 instance=ExtResource("20_ruu2y")]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 3.033383, 13.19438, 64.72213)
+
+[node name="Underside Common light" parent="Ship Model/Lights/common_light6" index="0" unique_id=251958809]
+transform = Transform3D(100, 0, 0, 0, -1.1920929e-05, 99.99999, 0, -99.99999, -1.1920929e-05, 0, 0, 0)
+surface_material_override/0 = ExtResource("16_2b4nk")
+surface_material_override/1 = ExtResource("5_mtju5")
+
+[node name="common_light7" parent="Ship Model/Lights" unique_id=1382333864 instance=ExtResource("20_ruu2y")]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 3.033383, 8.120409, 64.72213)
+
+[node name="Underside Common light" parent="Ship Model/Lights/common_light7" index="0" unique_id=251958809]
+transform = Transform3D(100, 0, 0, 0, -1.1920929e-05, 99.99999, 0, -99.99999, -1.1920929e-05, 0, 0, 0)
+surface_material_override/0 = ExtResource("16_2b4nk")
+surface_material_override/1 = ExtResource("5_mtju5")
+
+[node name="common_light8" parent="Ship Model/Lights" unique_id=1257246869 instance=ExtResource("20_ruu2y")]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 7.3467855, 4.7997403, 61.779396)
+
+[node name="Underside Common light" parent="Ship Model/Lights/common_light8" index="0" unique_id=251958809]
+transform = Transform3D(100, 0, 0, 0, -1.1920929e-05, 99.99999, 0, -99.99999, -1.1920929e-05, 0, 0, 0)
+surface_material_override/0 = ExtResource("16_2b4nk")
+surface_material_override/1 = ExtResource("5_mtju5")
+
+[node name="common_light2" parent="Ship Model/Lights" unique_id=1086016706 instance=ExtResource("20_ruu2y")]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, -2.9950514, 10.779987, 64.72213)
+
+[node name="Underside Common light" parent="Ship Model/Lights/common_light2" index="0" unique_id=251958809]
+transform = Transform3D(100, 0, 0, 0, -1.1920929e-05, 99.99999, 0, -99.99999, -1.1920929e-05, 0, 0, 0)
+surface_material_override/0 = ExtResource("16_2b4nk")
+surface_material_override/1 = ExtResource("5_mtju5")
+
+[node name="common_light3" parent="Ship Model/Lights" unique_id=1932354733 instance=ExtResource("20_ruu2y")]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, -4.3996606, 5.2296495, 64.72213)
+
+[node name="Underside Common light" parent="Ship Model/Lights/common_light3" index="0" unique_id=251958809]
+transform = Transform3D(100, 0, 0, 0, -1.1920929e-05, 99.99999, 0, -99.99999, -1.1920929e-05, 0, 0, 0)
+surface_material_override/0 = ExtResource("16_2b4nk")
+surface_material_override/1 = ExtResource("5_mtju5")
+
 [node name="BIGJ_Ship_03" parent="Ship Model" unique_id=1431557414 instance=ExtResource("1_l8ged")]
 
 [node name="Main Deck" parent="Ship Model/BIGJ_Ship_03" index="0" unique_id=1573100528]
@@ -732,227 +928,17 @@ surface_material_override/7 = ExtResource("4_tlnlp")
 surface_material_override/8 = ExtResource("5_mtju5")
 surface_material_override/9 = ExtResource("8_ucy3n")
 
-[node name="Lights" type="Node3D" parent="Ship Model/BIGJ_Ship_03" unique_id=1116015812]
+[node name="Toolbox" parent="Ship Model/BIGJ_Ship_03" unique_id=1462304787 instance=ExtResource("23_2b4nk")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -7.314903, 3.7113528, 58.41831)
 
-[node name="side_light" parent="Ship Model/BIGJ_Ship_03/Lights" unique_id=910317137 instance=ExtResource("15_kuj6t")]
+[node name="BunkBed_low_006" parent="Ship Model/BIGJ_Ship_03/Toolbox" index="0" unique_id=382848717]
+surface_material_override/0 = ExtResource("22_v7pwh")
 
-[node name="Side_port_Lights" parent="Ship Model/BIGJ_Ship_03/Lights/side_light" index="0" unique_id=1627477270]
-transform = Transform3D(0, -2.0861626e-05, 100, -100, 0, 0, 0, -100, -2.3841858e-05, -11.741098, 0.916932, 21.382656)
-surface_material_override/0 = ExtResource("16_2b4nk")
-surface_material_override/1 = ExtResource("12_ns4fk")
+[node name="Toolbox2" parent="Ship Model/BIGJ_Ship_03" unique_id=1184489304 instance=ExtResource("23_2b4nk")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -5.3717103, 3.7113528, 58.41831)
 
-[node name="Side_port_Lights2" type="MeshInstance3D" parent="Ship Model/BIGJ_Ship_03/Lights/side_light" unique_id=504850099]
-transform = Transform3D(0, -2.0861626e-05, 100, -100, 0, 0, 0, -100, -2.3841858e-05, -11.741098, 0.916932, -0.76490974)
-mesh = SubResource("ArrayMesh_jlvot")
-
-[node name="Side_port_Lights3" type="MeshInstance3D" parent="Ship Model/BIGJ_Ship_03/Lights/side_light" unique_id=1268054903]
-transform = Transform3D(0, -2.0861626e-05, 100, -100, 0, 0, 0, -100, -2.3841858e-05, -11.741098, 0.916932, -20.191198)
-mesh = SubResource("ArrayMesh_jlvot")
-
-[node name="side_light3" parent="Ship Model/BIGJ_Ship_03/Lights" unique_id=2077927227 instance=ExtResource("15_kuj6t")]
-transform = Transform3D(-2.255, -3.4049555e-07, 0, 3.4049555e-07, -2.255, 0, 0, 0, 2.255, 11.41424, 20.22249, 61.625698)
-
-[node name="Side_port_Lights" parent="Ship Model/BIGJ_Ship_03/Lights/side_light3" index="0" unique_id=1627477270]
-transform = Transform3D(9.094947e-13, -2.0861626e-05, 100, -100, 0, 9.094947e-13, 0, -100, -2.3841858e-05, 0, 0, 0.05960846)
-mesh = SubResource("ArrayMesh_jlvot")
-
-[node name="Side_port_Lights2" type="MeshInstance3D" parent="Ship Model/BIGJ_Ship_03/Lights/side_light3" unique_id=1167955895]
-transform = Transform3D(-3.0199157e-05, -2.0861627e-05, 100, 100, 8.742271e-06, 3.019916e-05, -8.742278e-06, 100, 2.3841856e-05, 0, 0.40004253, 0.32073784)
-mesh = SubResource("ArrayMesh_jlvot")
-
-[node name="side_light4" parent="Ship Model/BIGJ_Ship_03/Lights" unique_id=1536486753 instance=ExtResource("15_kuj6t")]
-transform = Transform3D(2.255, 3.4049555e-07, -1.9713838e-07, 3.4049555e-07, -2.255, 0, -1.9713838e-07, -2.9767065e-14, -2.255, -11.516792, 20.22249, 62.36276)
-
-[node name="Side_port_Lights" parent="Ship Model/BIGJ_Ship_03/Lights/side_light4" index="0" unique_id=1627477270]
-transform = Transform3D(9.094947e-13, -2.0861626e-05, 100, -100, 0, 9.094947e-13, 0, -100, -2.3841858e-05, 0, 0, 0.05960846)
-mesh = SubResource("ArrayMesh_jlvot")
-
-[node name="Side_port_Lights2" type="MeshInstance3D" parent="Ship Model/BIGJ_Ship_03/Lights/side_light4" unique_id=1646214128]
-transform = Transform3D(-3.0199157e-05, -2.0861627e-05, 100, 100, 8.742271e-06, 3.019916e-05, -8.742278e-06, 100, 2.3841856e-05, 0, 0.40004253, 0.32073784)
-mesh = SubResource("ArrayMesh_jlvot")
-
-[node name="side_light2" parent="Ship Model/BIGJ_Ship_03/Lights" unique_id=942801916 instance=ExtResource("15_kuj6t")]
-transform = Transform3D(-1, -7.642742e-15, -8.742278e-08, 0, -1, 8.742278e-08, -8.742278e-08, 8.742278e-08, 1, -0.036524773, 2.2426744, 0)
-
-[node name="Side_port_Lights" parent="Ship Model/BIGJ_Ship_03/Lights/side_light2" index="0" unique_id=1627477270]
-transform = Transform3D(0, -2.0861626e-05, 100, -100, 0, 0, 0, -100, -2.3841858e-05, -11.741098, 0.916932, 21.382656)
-surface_material_override/0 = ExtResource("16_2b4nk")
-surface_material_override/1 = ExtResource("12_ns4fk")
-
-[node name="Side_port_Lights2" type="MeshInstance3D" parent="Ship Model/BIGJ_Ship_03/Lights/side_light2" unique_id=868749839]
-transform = Transform3D(0, -2.0861626e-05, 100, -100, 0, 0, 0, -100, -2.3841858e-05, -11.741098, 0.916932, -0.76490974)
-mesh = SubResource("ArrayMesh_jlvot")
-
-[node name="Side_port_Lights3" type="MeshInstance3D" parent="Ship Model/BIGJ_Ship_03/Lights/side_light2" unique_id=203587015]
-transform = Transform3D(0, -2.0861626e-05, 100, -100, 0, 0, 0, -100, -2.3841858e-05, -11.741098, 0.916932, -20.191198)
-mesh = SubResource("ArrayMesh_jlvot")
-
-[node name="small_light" parent="Ship Model/BIGJ_Ship_03/Lights" unique_id=117445361 instance=ExtResource("17_v7pwh")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 20.33891, -48.129562)
-
-[node name="Small Light Top" parent="Ship Model/BIGJ_Ship_03/Lights/small_light" index="0" unique_id=228596646]
-transform = Transform3D(25.990307, 0, 0, 0, -3.1962287, -25.79302, 0, 25.79302, -3.1962287, 0, 0, 0)
-surface_material_override/0 = ExtResource("16_2b4nk")
-surface_material_override/1 = ExtResource("12_ns4fk")
-
-[node name="small_light3" parent="Ship Model/BIGJ_Ship_03/Lights" unique_id=1451854234 instance=ExtResource("17_v7pwh")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 35.151833, 63.282562)
-
-[node name="Small Light Top" parent="Ship Model/BIGJ_Ship_03/Lights/small_light3" index="0" unique_id=228596646]
-transform = Transform3D(25.990307, 0, 0, 0, -1.1360721e-06, 25.990301, 0, -25.990301, -1.1360721e-06, 0, -2.1791878, 2.0711517)
-surface_material_override/0 = ExtResource("16_2b4nk")
-surface_material_override/1 = ExtResource("12_ns4fk")
-
-[node name="small_light2" parent="Ship Model/BIGJ_Ship_03/Lights" unique_id=2098832185 instance=ExtResource("17_v7pwh")]
-transform = Transform3D(1, 0, 0, 0, 0.96073556, 0.27746558, 0, -0.27746558, 0.96073556, 0, 20.287334, 48.4987)
-
-[node name="Small Light Top" parent="Ship Model/BIGJ_Ship_03/Lights/small_light2" index="0" unique_id=228596646]
-transform = Transform3D(25.990307, 0, 0, 0, -3.1962287, -25.79302, 0, 25.79302, -3.1962287, 0, 0, 0)
-surface_material_override/0 = ExtResource("16_2b4nk")
-surface_material_override/1 = ExtResource("12_ns4fk")
-
-[node name="small_light4" parent="Ship Model/BIGJ_Ship_03/Lights" unique_id=1057997705 instance=ExtResource("17_v7pwh")]
-transform = Transform3D(1, 0, 0, 0, -4.3711392e-08, -1.0000001, 0, 1.0000001, -4.3711392e-08, 0, 4.420705, 29.380201)
-
-[node name="Small Light Top" parent="Ship Model/BIGJ_Ship_03/Lights/small_light4" index="0" unique_id=228596646]
-transform = Transform3D(16.6, 0, 0, 0, 16.6, 0, 0, 0, 16.6, 0, 0, 0)
-surface_material_override/0 = ExtResource("16_2b4nk")
-surface_material_override/1 = ExtResource("12_ns4fk")
-
-[node name="small_light5" parent="Ship Model/BIGJ_Ship_03/Lights" unique_id=252545700 instance=ExtResource("17_v7pwh")]
-transform = Transform3D(1, 0, 0, 0, -4.3711392e-08, -1.0000001, 0, 1.0000001, -4.3711392e-08, 0, 4.420705, -28.348726)
-
-[node name="Small Light Top" parent="Ship Model/BIGJ_Ship_03/Lights/small_light5" index="0" unique_id=228596646]
-transform = Transform3D(16.6, 0, 0, 0, 16.6, 0, 0, 0, 16.6, 0, 0, 0)
-surface_material_override/0 = ExtResource("16_2b4nk")
-surface_material_override/1 = ExtResource("12_ns4fk")
-
-[node name="small_light_tall" parent="Ship Model/BIGJ_Ship_03/Lights" unique_id=297909164 instance=ExtResource("18_xadyp")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.4630742, 26.646048, 60.132263)
-
-[node name="Small Light Top Tall" parent="Ship Model/BIGJ_Ship_03/Lights/small_light_tall" index="0" unique_id=42372925]
-transform = Transform3D(25.990307, 0, 0, 0, -3.098286e-06, 25.990305, 0, -25.990305, -3.098286e-06, 0, 0, 0)
-surface_material_override/0 = ExtResource("16_2b4nk")
-surface_material_override/1 = ExtResource("2_0qs2n")
-
-[node name="small_light_tall2" parent="Ship Model/BIGJ_Ship_03/Lights" unique_id=1350020823 instance=ExtResource("18_xadyp")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.010024786, 19.683676, -59.90503)
-
-[node name="Small Light Top Tall" parent="Ship Model/BIGJ_Ship_03/Lights/small_light_tall2" index="0" unique_id=42372925]
-transform = Transform3D(25.990307, 0, 0, 0, -3.098286e-06, 25.990305, 0, -25.990305, -3.098286e-06, 0, 0, 0)
-surface_material_override/0 = ExtResource("16_2b4nk")
-surface_material_override/1 = ExtResource("2_0qs2n")
-
-[node name="small_light_tall3" parent="Ship Model/BIGJ_Ship_03/Lights" unique_id=1241360645 instance=ExtResource("18_xadyp")]
-transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -8.6792755, 7.111431, 67.31274)
-
-[node name="Small Light Top Tall" parent="Ship Model/BIGJ_Ship_03/Lights/small_light_tall3" index="0" unique_id=42372925]
-transform = Transform3D(25.990307, 0, 0, 0, -3.098286e-06, 25.990305, 0, -25.990305, -3.098286e-06, 0, 7.7305984, 1.1625671)
-surface_material_override/0 = ExtResource("16_2b4nk")
-surface_material_override/1 = ExtResource("2_0qs2n")
-
-[node name="spot_light" parent="Ship Model/BIGJ_Ship_03/Lights" unique_id=246287746 instance=ExtResource("19_3jkke")]
-
-[node name="SpotLight" parent="Ship Model/BIGJ_Ship_03/Lights/spot_light" index="0" unique_id=1145147840]
-surface_material_override/0 = ExtResource("16_2b4nk")
-surface_material_override/1 = ExtResource("12_ns4fk")
-
-[node name="SpotLight2" type="MeshInstance3D" parent="Ship Model/BIGJ_Ship_03/Lights/spot_light" unique_id=1450816495]
-transform = Transform3D(99.968925, 2.4926605, 4.8512265e-07, -2.9802322e-06, 1.7881395e-05, 100, 2.4926605, -99.96895, 1.3319171e-05, 2.2925782, 19.951862, 57.1958)
-mesh = SubResource("ArrayMesh_dmlor")
-
-[node name="SpotLight3" type="MeshInstance3D" parent="Ship Model/BIGJ_Ship_03/Lights/spot_light" unique_id=402266658]
-transform = Transform3D(99.982315, -1.880764, 1.0670265e-06, -2.9802322e-06, 1.7881395e-05, 100, -1.8807602, -99.98233, 1.3285222e-05, -2.2767246, 19.951862, 57.1958)
-mesh = SubResource("ArrayMesh_dmlor")
-
-[node name="SpotLight4" type="MeshInstance3D" parent="Ship Model/BIGJ_Ship_03/Lights/spot_light" unique_id=1101144780]
-transform = Transform3D(91.06286, -41.322636, 6.241083e-06, -2.9802327e-06, 1.7881393e-05, 100, -41.32262, -91.06287, 1.177644e-05, -5.2833323, 19.951862, 57.495834)
-mesh = SubResource("ArrayMesh_dmlor")
-
-[node name="spot_light2" parent="Ship Model/BIGJ_Ship_03/Lights" unique_id=1362806728 instance=ExtResource("19_3jkke")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 19.154564, 27.323977)
-
-[node name="SpotLight" parent="Ship Model/BIGJ_Ship_03/Lights/spot_light2" index="0" unique_id=1145147840]
-transform = Transform3D(100, 0, 0, 0, -4.3711393e-06, 100, 0, -100.00001, -4.371139e-06, 0, 0, 0)
-mesh = SubResource("ArrayMesh_dmlor")
-
-[node name="spot_light3" parent="Ship Model/BIGJ_Ship_03/Lights" unique_id=374001388 instance=ExtResource("19_3jkke")]
-transform = Transform3D(0.99952495, 4.888674e-10, -0.030817656, 0.01349458, 0.8990313, 0.43767673, 0.02770603, -0.4378847, 0.8986041, 0.05649078, 18.826399, -34.574295)
-
-[node name="SpotLight" parent="Ship Model/BIGJ_Ship_03/Lights/spot_light3" index="0" unique_id=1145147840]
-transform = Transform3D(99.99999, 0, 0, 0, -4.3711384e-06, 100, 0, -99.99999, -4.371139e-06, 0, 0, 0)
-mesh = SubResource("ArrayMesh_dmlor")
-
-[node name="spot_light4" parent="Ship Model/BIGJ_Ship_03/Lights" unique_id=209943018 instance=ExtResource("19_3jkke")]
-transform = Transform3D(-1, 0, 8.742277e-08, 3.3697564e-08, 0.9227266, 0.3854552, -8.066732e-08, 0.3854552, -0.9227265, 0.05649078, 18.894764, -26.240288)
-
-[node name="SpotLight" parent="Ship Model/BIGJ_Ship_03/Lights/spot_light4" index="0" unique_id=1145147840]
-transform = Transform3D(99.99999, 0, 0, 0, -4.3711384e-06, 100, 0, -99.99999, -4.371139e-06, 0, 0, 0)
-mesh = SubResource("ArrayMesh_dmlor")
-
-[node name="common_light" parent="Ship Model/BIGJ_Ship_03/Lights" unique_id=2137310385 instance=ExtResource("20_ruu2y")]
-transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, -2.9950514, 15.988504, 64.72213)
-
-[node name="Underside Common light" parent="Ship Model/BIGJ_Ship_03/Lights/common_light" index="0" unique_id=251958809]
-transform = Transform3D(100, 0, 0, 0, -1.1920929e-05, 99.99999, 0, -99.99999, -1.1920929e-05, 0, 0, 0)
-surface_material_override/0 = ExtResource("16_2b4nk")
-surface_material_override/1 = ExtResource("5_mtju5")
-
-[node name="common_light4" parent="Ship Model/BIGJ_Ship_03/Lights" unique_id=1689553387 instance=ExtResource("20_ruu2y")]
-transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 1.2398634, 21.014368, 64.72213)
-
-[node name="Underside Common light" parent="Ship Model/BIGJ_Ship_03/Lights/common_light4" index="0" unique_id=251958809]
-transform = Transform3D(100, 0, 0, 0, -1.1920929e-05, 99.99999, 0, -99.99999, -1.1920929e-05, 0, 0, 0)
-surface_material_override/0 = ExtResource("16_2b4nk")
-surface_material_override/1 = ExtResource("5_mtju5")
-
-[node name="common_light5" parent="Ship Model/BIGJ_Ship_03/Lights" unique_id=1722922119 instance=ExtResource("20_ruu2y")]
-transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 1.2398634, 18.37581, 64.72213)
-
-[node name="Underside Common light" parent="Ship Model/BIGJ_Ship_03/Lights/common_light5" index="0" unique_id=251958809]
-transform = Transform3D(100, 0, 0, 0, -1.1920929e-05, 99.99999, 0, -99.99999, -1.1920929e-05, 0, 0, 0)
-surface_material_override/0 = ExtResource("16_2b4nk")
-surface_material_override/1 = ExtResource("5_mtju5")
-
-[node name="common_light6" parent="Ship Model/BIGJ_Ship_03/Lights" unique_id=1065360338 instance=ExtResource("20_ruu2y")]
-transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 3.033383, 13.19438, 64.72213)
-
-[node name="Underside Common light" parent="Ship Model/BIGJ_Ship_03/Lights/common_light6" index="0" unique_id=251958809]
-transform = Transform3D(100, 0, 0, 0, -1.1920929e-05, 99.99999, 0, -99.99999, -1.1920929e-05, 0, 0, 0)
-surface_material_override/0 = ExtResource("16_2b4nk")
-surface_material_override/1 = ExtResource("5_mtju5")
-
-[node name="common_light7" parent="Ship Model/BIGJ_Ship_03/Lights" unique_id=1382333864 instance=ExtResource("20_ruu2y")]
-transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 3.033383, 8.120409, 64.72213)
-
-[node name="Underside Common light" parent="Ship Model/BIGJ_Ship_03/Lights/common_light7" index="0" unique_id=251958809]
-transform = Transform3D(100, 0, 0, 0, -1.1920929e-05, 99.99999, 0, -99.99999, -1.1920929e-05, 0, 0, 0)
-surface_material_override/0 = ExtResource("16_2b4nk")
-surface_material_override/1 = ExtResource("5_mtju5")
-
-[node name="common_light8" parent="Ship Model/BIGJ_Ship_03/Lights" unique_id=1257246869 instance=ExtResource("20_ruu2y")]
-transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 7.3467855, 4.7997403, 61.779396)
-
-[node name="Underside Common light" parent="Ship Model/BIGJ_Ship_03/Lights/common_light8" index="0" unique_id=251958809]
-transform = Transform3D(100, 0, 0, 0, -1.1920929e-05, 99.99999, 0, -99.99999, -1.1920929e-05, 0, 0, 0)
-surface_material_override/0 = ExtResource("16_2b4nk")
-surface_material_override/1 = ExtResource("5_mtju5")
-
-[node name="common_light2" parent="Ship Model/BIGJ_Ship_03/Lights" unique_id=1086016706 instance=ExtResource("20_ruu2y")]
-transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, -2.9950514, 10.779987, 64.72213)
-
-[node name="Underside Common light" parent="Ship Model/BIGJ_Ship_03/Lights/common_light2" index="0" unique_id=251958809]
-transform = Transform3D(100, 0, 0, 0, -1.1920929e-05, 99.99999, 0, -99.99999, -1.1920929e-05, 0, 0, 0)
-surface_material_override/0 = ExtResource("16_2b4nk")
-surface_material_override/1 = ExtResource("5_mtju5")
-
-[node name="common_light3" parent="Ship Model/BIGJ_Ship_03/Lights" unique_id=1932354733 instance=ExtResource("20_ruu2y")]
-transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, -4.3996606, 5.2296495, 64.72213)
-
-[node name="Underside Common light" parent="Ship Model/BIGJ_Ship_03/Lights/common_light3" index="0" unique_id=251958809]
-transform = Transform3D(100, 0, 0, 0, -1.1920929e-05, 99.99999, 0, -99.99999, -1.1920929e-05, 0, 0, 0)
-surface_material_override/0 = ExtResource("16_2b4nk")
-surface_material_override/1 = ExtResource("5_mtju5")
+[node name="BunkBed_low_006" parent="Ship Model/BIGJ_Ship_03/Toolbox2" index="0" unique_id=382848717]
+surface_material_override/0 = ExtResource("22_v7pwh")
 
 [node name="BIGJ_LifeBoat" parent="Ship Model" unique_id=826326853 instance=ExtResource("15_jn3ni")]
 
@@ -960,36 +946,35 @@ surface_material_override/1 = ExtResource("5_mtju5")
 surface_material_override/0 = ExtResource("5_mtju5")
 surface_material_override/1 = ExtResource("16_0qs2n")
 
-[node name="Skeleton3D" parent="Ship Model/BIGJ_LifeBoat/life_boat_rig" parent_id_path=PackedInt32Array(826326853, 1931350353) index="0" unique_id=1095967093]
-bones/0/rotation = Quaternion(0.6808735, -1.5583157e-32, -5.6320537e-25, 0.732401)
-
-[node name="Cube_024" parent="Ship Model/BIGJ_LifeBoat/life_boat_rig/Skeleton3D" index="0" unique_id=839208963]
+[node name="Cube_024" parent="Ship Model/BIGJ_LifeBoat/life_boat_rig/Skeleton3D" parent_id_path=PackedInt32Array(826326853, 1095967093) index="0" unique_id=839208963]
 material_override = ExtResource("16_0qs2n")
 
 [editable path="Ship Model/BIGJ_Ship_Interior"]
+[editable path="Ship Model/Lights/side_light"]
+[editable path="Ship Model/Lights/side_light3"]
+[editable path="Ship Model/Lights/side_light4"]
+[editable path="Ship Model/Lights/side_light2"]
+[editable path="Ship Model/Lights/small_light"]
+[editable path="Ship Model/Lights/small_light3"]
+[editable path="Ship Model/Lights/small_light2"]
+[editable path="Ship Model/Lights/small_light4"]
+[editable path="Ship Model/Lights/small_light5"]
+[editable path="Ship Model/Lights/small_light_tall"]
+[editable path="Ship Model/Lights/small_light_tall2"]
+[editable path="Ship Model/Lights/small_light_tall3"]
+[editable path="Ship Model/Lights/spot_light"]
+[editable path="Ship Model/Lights/spot_light2"]
+[editable path="Ship Model/Lights/spot_light3"]
+[editable path="Ship Model/Lights/spot_light4"]
+[editable path="Ship Model/Lights/common_light"]
+[editable path="Ship Model/Lights/common_light4"]
+[editable path="Ship Model/Lights/common_light5"]
+[editable path="Ship Model/Lights/common_light6"]
+[editable path="Ship Model/Lights/common_light7"]
+[editable path="Ship Model/Lights/common_light8"]
+[editable path="Ship Model/Lights/common_light2"]
+[editable path="Ship Model/Lights/common_light3"]
 [editable path="Ship Model/BIGJ_Ship_03"]
-[editable path="Ship Model/BIGJ_Ship_03/Lights/side_light"]
-[editable path="Ship Model/BIGJ_Ship_03/Lights/side_light3"]
-[editable path="Ship Model/BIGJ_Ship_03/Lights/side_light4"]
-[editable path="Ship Model/BIGJ_Ship_03/Lights/side_light2"]
-[editable path="Ship Model/BIGJ_Ship_03/Lights/small_light"]
-[editable path="Ship Model/BIGJ_Ship_03/Lights/small_light3"]
-[editable path="Ship Model/BIGJ_Ship_03/Lights/small_light2"]
-[editable path="Ship Model/BIGJ_Ship_03/Lights/small_light4"]
-[editable path="Ship Model/BIGJ_Ship_03/Lights/small_light5"]
-[editable path="Ship Model/BIGJ_Ship_03/Lights/small_light_tall"]
-[editable path="Ship Model/BIGJ_Ship_03/Lights/small_light_tall2"]
-[editable path="Ship Model/BIGJ_Ship_03/Lights/small_light_tall3"]
-[editable path="Ship Model/BIGJ_Ship_03/Lights/spot_light"]
-[editable path="Ship Model/BIGJ_Ship_03/Lights/spot_light2"]
-[editable path="Ship Model/BIGJ_Ship_03/Lights/spot_light3"]
-[editable path="Ship Model/BIGJ_Ship_03/Lights/spot_light4"]
-[editable path="Ship Model/BIGJ_Ship_03/Lights/common_light"]
-[editable path="Ship Model/BIGJ_Ship_03/Lights/common_light4"]
-[editable path="Ship Model/BIGJ_Ship_03/Lights/common_light5"]
-[editable path="Ship Model/BIGJ_Ship_03/Lights/common_light6"]
-[editable path="Ship Model/BIGJ_Ship_03/Lights/common_light7"]
-[editable path="Ship Model/BIGJ_Ship_03/Lights/common_light8"]
-[editable path="Ship Model/BIGJ_Ship_03/Lights/common_light2"]
-[editable path="Ship Model/BIGJ_Ship_03/Lights/common_light3"]
+[editable path="Ship Model/BIGJ_Ship_03/Toolbox"]
+[editable path="Ship Model/BIGJ_Ship_03/Toolbox2"]
 [editable path="Ship Model/BIGJ_LifeBoat"]
