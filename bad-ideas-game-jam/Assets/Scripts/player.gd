@@ -21,9 +21,6 @@ extends BaseCharacter
 @onready var right_hand_ik: SkeletonIK3D = $Character/Armature/Skeleton3D/RightHandIK
 var _ik_target_node: Node3D = null
 
-@onready var sparks := $Sparks
-@onready var spark_light := $Sparks/Light
-
 @onready var torch = $SpotLight3D
 @onready var torch_omni = $Character/Armature/Skeleton3D/LeftHandAttachment2/ChestTorch_low/OmniLight3D
 
@@ -75,10 +72,24 @@ const CREAK_CHECK_INTERVAL := 65.0
 var _creak_check_timer := 0.0
 
 func _start_right_hand_ik(hit_point) -> void:
+	
+	var tween = create_tween()
+	tween.tween_method(
+		func(v): animation_tree.set("parameters/CloseHandBlend/blend_amount", v),
+		0.0, 1.0, 0.2
+	)
+	
 	_ik_target_node.global_position = hit_point
 	right_hand_ik.start()
 
 func _stop_right_hand_ik() -> void:
+	
+	var tween = create_tween()
+	tween.tween_method(
+		func(v): animation_tree.set("parameters/CloseHandBlend/blend_amount", v),
+		1.0, 0.0, 0.2
+	)
+	
 	right_hand_ik.stop()
 	
 func _exit_tree() -> void: 
@@ -105,8 +116,6 @@ func _ready() -> void:
 	camera_origin.position = current_camera_position
 	torch.light_energy = 0.0
 	torch_omni.light_energy = 0.0
-	sparks.visible = false
-	spark_light.visible = false
 	_setup_right_hand_ik()
 	_setup_panting_player()
 
@@ -352,24 +361,17 @@ func advance_interact_timer(delta: float, state_machine: AnimationNodeStateMachi
 		var arbitrary = Vector3.UP if abs(normal.dot(Vector3.UP)) < 0.99 else Vector3.RIGHT
 		var z_axis   = x_axis.cross(arbitrary).normalized()
 		var y_axis   = z_axis.cross(x_axis).normalized()
-		sparks.global_transform = Transform3D(Basis(x_axis, y_axis, z_axis), hit_point)
 
 		if interactable == null or not is_interacting:
 			_stop_oxy_torch_loop()
 			_stop_right_hand_ik()
-			sparks.visible      = false
-			spark_light.visible = false
 			return
 
 		_play_oxy_torch_loop()
 		_start_right_hand_ik(hit_point)
-		sparks.visible      = true
-		spark_light.visible = true
 	else:
 		_stop_oxy_torch_loop()
 		_stop_right_hand_ik() 
-		sparks.visible      = false
-		spark_light.visible = false
 
 	interaction_hold_timer += delta
 	if not is_container_door_interaction:
@@ -390,8 +392,6 @@ func reset_interaction_state() -> void:
 		if is_container_door_interaction:
 			tween_camera_fov(FOV_NORMAL)
 		is_container_door_interaction = false
-		sparks.visible      = false
-		spark_light.visible = false
 		_stop_oxy_torch_loop()
 		_stop_right_hand_ik()
 

@@ -4,7 +4,6 @@
 [ext_resource type="Texture2D" uid="uid://g8g413indqd7" path="res://Assets/UI/Crosshair.png" id="2_2nftw"]
 [ext_resource type="Texture2D" uid="uid://bbunjwsternpj" path="res://Assets/UI/progress.png" id="3_knrd4"]
 [ext_resource type="PackedScene" uid="uid://ddbbla3ssy5fq" path="res://Scenes/Characters/player_visual.tscn" id="3_y5hcb"]
-[ext_resource type="PackedScene" uid="uid://cx3xgd26kwbxv" path="res://Prefabs/sparks.tscn" id="4_2nftw"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_myya0"]
 radius = 0.3
@@ -220,7 +219,7 @@ theme_override_font_sizes/normal_font_size = 12
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Character" parent="." unique_id=1540793539 instance=ExtResource("3_y5hcb")]
+[node name="Character" parent="." unique_id=343367487 instance=ExtResource("3_y5hcb")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.9, 0)
 
 [node name="CharacterAnchor" type="Node3D" parent="." unique_id=669950866]
@@ -240,5 +239,3 @@ light_indirect_energy = 2.0
 light_volumetric_fog_energy = 6.0
 spot_range = 8.0
 spot_angle = 32.61401
-
-[node name="Sparks" parent="." unique_id=578062511 instance=ExtResource("4_2nftw")]
