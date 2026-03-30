@@ -72,7 +72,7 @@ func reset_state() -> void:
 	velocity = Vector3.ZERO
 	navigation_agent_3d.set_velocity(Vector3.ZERO)
 	if navigation_agent_3d:
-		navigation_agent_3d.target_position = get_valid_nav_position(global_position)
+		navigation_agent_3d.target_position = global_position
 	var sm = animation_tree["parameters/AnimationNodeStateMachine/playback"]
 	sm.travel("Idle")
 	animation_tree.set("parameters/KillOneShot/request", AnimationNodeOneShot.ONE_SHOT_REQUEST_ABORT)
@@ -605,7 +605,7 @@ func _update_teleport(delta: float) -> void:
 	global_position = _teleport_sample_position
 
 	if navigation_agent_3d:
-		navigation_agent_3d.target_position = get_valid_nav_position(global_position)
+		navigation_agent_3d.target_position = global_position
 
 	_teleport_sample_position = Vector3.ZERO
 	_teleport_sample_timer    = TELEPORT_SAMPLE_INTERVAL

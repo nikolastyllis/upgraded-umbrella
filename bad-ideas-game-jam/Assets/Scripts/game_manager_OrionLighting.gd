@@ -101,6 +101,7 @@ var dialog: Dictionary = {
 @onready var oxy_torch        = $"../OxyTorch"
 @onready var store_room       = $Locations/StoreRoom
 @onready var lifeboat         = $Locations/Lifeboat
+@onready var lifeboat2         = $Locations/Lifeboat2
 @onready var respawn         = $Locations/Respawn
 @onready var lifeboat_anim_player = $"../NavigationRegion3D/Ship Enviroment/Ship Model/BIGJ_LifeBoat/AnimationPlayer"
 
@@ -114,7 +115,7 @@ var dialog: Dictionary = {
 @onready var sun_light: DirectionalLight3D = $"../Lighting/DirectionalLight3D"
 @onready var world_environment: WorldEnvironment = $"../Lighting/WorldEnvironment"
 @onready var look_driver = $"../Lighting/LookDriver"
-
+@onready var cut_scene_camera = $Camera3D
 @onready var objective_marker_prefab = "res://Prefabs/objective_marker_ui.tscn"
 
 var current_objective = null
@@ -150,6 +151,8 @@ var _act4_oxy_obj_state := ""   # "torch" | "infected" | ""
 var set_monster_pos_debug = false
 var played_impact_lightning = false
 
+var escaped = false
+
 var shown_interact_control_tip = false
 var shown_move_control_tip = false
 var shown_camera_control_tip = false
@@ -158,7 +161,7 @@ var shown_jump_control_tip = false
 var shown_drop_control_tip = false
 var shown_torch_control_tip = false
 
-var number_of_supplies = 0
+@export var number_of_supplies = 0
 
 func play_from_act_3():
 	player_has_interacted_with_container = true
@@ -216,11 +219,31 @@ func play_from_act_8():
 	played_impact_lightning = true
 	story_increment = 8
 
+func fade_in_credits(duration: float = 2.0) -> void:
+	var credits = $Credits
+	credits.visible = true
+	credits.modulate.a = 0.0
+
+	var t := 0.0
+	while t < duration:
+		await get_tree().process_frame
+		t += get_process_delta_time()
+		var alpha = clamp(t / duration, 0.0, 1.0)
+		
+		# optional smooth easing
+		alpha = alpha * alpha * (3.0 - 2.0 * alpha)
+		
+		credits.modulate.a = alpha
+	credits.modulate.a = 1.0  # ensure fully visible at the end
+
 func _ready() -> void:
 	add_to_group("game_manager")
 	lifeboat.add_to_group("lifeboat")
 	set_time_of_day(TimeOfDay.DAY, 0.0)
 	_ambient_music_loop()
+	
+	$Credits.visible = false
+	$Credits.modulate.a = 0.0
 
 	if    debug_play_from_act_8: play_from_act_8()
 	elif  debug_play_from_act_7: play_from_act_7()
@@ -356,6 +379,43 @@ func _process(_delta: float) -> void:
 
 	if story_increment == 8:
 		_update_fuel_objective()
+		
+	if number_of_supplies == 5 and story_increment == 8:
+		story_increment += 1
+		_remove_objective()
+		_spawn_objective_marker(lifeboat2, "Escape on the lifeboat")
+
+func escape_cut_scene():
+	_remove_objective()
+	player.hide_ui()
+	player.visible = false
+	cut_scene_camera.current = true
+	await _lerp_fov(cut_scene_camera, 80.0, 110.0, 1.0)
+	await _wait_for(0.2)
+	lifeboat_anim_player.play("Supply_drop")
+	await _wait_for(1.0)
+	lifeboat_anim_player.play("end_scene")
+	await _wait_for(2.0)
+	lightning_strike()
+	await _wait_for(5.0)
+	fade_in_credits(3.0)
+	audio_manager.play_main_menu(10.0)
+	
+func _lerp_fov(cam: Camera3D, from: float, to: float, duration: float) -> void:
+	var t := 0.0
+	cam.fov = from
+	
+	while t < duration:
+		await get_tree().process_frame
+		t += get_process_delta_time()
+		var alpha = clamp(t / duration, 0.0, 1.0)
+		
+		# smooth easing (feels more cinematic)
+		alpha = alpha * alpha * (3.0 - 2.0 * alpha)
+		
+		cam.fov = lerpf(from, to, alpha)
+	
+	cam.fov = to
 
 func _update_act_1_objective() -> void:
 	if player_has_interacted_with_container or _dialogue_active:
