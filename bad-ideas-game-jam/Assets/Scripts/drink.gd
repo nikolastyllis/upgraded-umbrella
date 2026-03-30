@@ -14,8 +14,8 @@ func interact_hold_time() -> float:
 func on_interact(_player):
 	visible = false
 	collider.disabled = true
-	await play_sound("drink")	
-	_player.drink()	
+	play_sound("drink")	
+	await _player.drink()	
 	queue_free()
 
 func can_interact(_player: Node) -> bool:
