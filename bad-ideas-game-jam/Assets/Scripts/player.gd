@@ -44,8 +44,8 @@ const FOV_INTERACT := 70.0
 
 var _panting_player: AudioStreamPlayer = null
 const PANTING_MIN_DB	:= 0
-const PANTING_MAX_DB	:=  20
-const PANTING_FADE_SPD :=   4.0
+const PANTING_MAX_DB	:=  10
+const PANTING_FADE_SPD :=   10.0
 
 var sensitivity := 0.25
 var interaction_hold_timer := 0.0
@@ -60,9 +60,9 @@ var dialog_hide_timer: SceneTreeTimer = null
 var movement_disabled = false
 
 var jogging_timer = 0
-var jogging_max_time = 35
+var jogging_max_time = 40
 var jog_cooldown = false
-var jog_cooldown_time = 5
+var jog_cooldown_time = 10
 
 var is_dead = false
 
@@ -120,6 +120,8 @@ func toggle_movement_disabled():
 	tween_camera_fov(FOV_DISABLED if movement_disabled else FOV_NORMAL)
 	sensitivity = SENSITIVITY_DISABLED if movement_disabled else SENSITIVITY_NORMAL
 	can_interact = false if movement_disabled else true
+	is_jogging = false
+	jogging_timer = 0.0
 	var npcs = get_tree().get_nodes_in_group("npcs")
 	if movement_disabled:
 		velocity.x = 0
@@ -493,16 +495,7 @@ func fade_in_camera(duration: float = 1.0) -> void:
 	await tween.finished
 	canvas_layer.queue_free()
 
-var _stamina_stinger_player: AudioStreamPlayer = null
-var _stinger_played := false
 var _was_jogging := false
-
-const STINGER_PATHS := [
-	"res://Assets/Dialogue/max_stamina.ogg",
-	"res://Assets/Dialogue/max_stamina2.ogg",
-	"res://Assets/Dialogue/max_stamina3.ogg",
-	"res://Assets/Dialogue/max_stamina4.ogg",
-]
 
 func _setup_panting_player() -> void:
 	
@@ -522,26 +515,12 @@ func _setup_panting_player() -> void:
 	_panting_player.volume_db = PANTING_MIN_DB
 	add_child(_panting_player)
 
-	_stamina_stinger_player = AudioStreamPlayer.new()
-	_stamina_stinger_player.bus = "Sound"
-	add_child(_stamina_stinger_player)
-
 func _update_panting(delta: float) -> void:
 	if not is_instance_valid(_panting_player):
 		return
 
 	var exhaustion := clampf(jogging_timer / jogging_max_time, 0.0, 1.0)
 	var track_length: float = _panting_player.stream.get_length()
-
-	if exhaustion >= 1.0 and not _stinger_played:
-		_stinger_played = true
-		var path = STINGER_PATHS[randi() % STINGER_PATHS.size()]
-		if ResourceLoader.exists(path):
-			_stamina_stinger_player.stream = load(path)
-			_stamina_stinger_player.volume_db = 20
-			_stamina_stinger_player.play()
-	elif exhaustion < 1.0:
-		_stinger_played = false
 
 	if is_jogging:
 		if not _was_jogging:

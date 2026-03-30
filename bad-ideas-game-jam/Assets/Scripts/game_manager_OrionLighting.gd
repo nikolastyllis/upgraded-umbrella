@@ -222,7 +222,7 @@ func _ready() -> void:
 	elif  debug_play_from_act_3: play_from_act_3()
 
 @warning_ignore("shadowed_variable_base_class")
-func _player_is_near(position: Vector3, distance: float = 2.0) -> bool:
+func _player_is_near(position: Vector3, distance: float = 1.5) -> bool:
 	return (player.global_position - position).length() < distance
 
 @warning_ignore("shadowed_variable_base_class")
