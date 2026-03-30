@@ -448,7 +448,6 @@ func is_inside() -> bool:
 		var dir   := Vector3(sin(theta) * cos(phi), sin(theta) * sin(phi), cos(theta))
 
 		var query := PhysicsRayQueryParameters3D.create(origin, origin + dir * INSIDE_RAY_LENGTH)
-		query.collision_mask = 8
 		if space.intersect_ray(query):
 			hits += 1
 
