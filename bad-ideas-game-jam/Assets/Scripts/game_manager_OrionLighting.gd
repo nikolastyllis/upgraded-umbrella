@@ -396,10 +396,11 @@ func escape_cut_scene():
 	await _wait_for(1.0)
 	lifeboat_anim_player.play("end_scene")
 	await _wait_for(2.0)
+	await _play_sound("plop")
+	await _wait_for(2.0)
 	lightning_strike()
-	await _wait_for(5.0)
 	fade_in_credits(3.0)
-	audio_manager.play_main_menu(10.0)
+	audio_manager.play_main_menu(20.0)
 	
 func _lerp_fov(cam: Camera3D, from: float, to: float, duration: float) -> void:
 	var t := 0.0
