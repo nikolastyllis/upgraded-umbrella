@@ -70,6 +70,8 @@ func _physics_process(delta: float) -> void:
 		return
 	if unstick_timer > 0:
 		unstick_timer -= delta
+		if is_on_floor():
+			velocity.y = 3
 		navigation_agent_3d.set_target_position(unstick_target)
 	else:
 		navigation_agent_3d.set_target_position(target_position)

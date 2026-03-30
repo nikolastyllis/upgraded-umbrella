@@ -613,7 +613,6 @@ is_hero_container_2 = true
 
 [node name="BIGJ_ShipCol_03" parent="NavigationRegion3D" unique_id=1068186180 instance=ExtResource("7_yiumw")]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
-visible = false
 
 [node name="Ladder" parent="NavigationRegion3D" unique_id=689004252 instance=ExtResource("11_n0oop")]
 transform = Transform3D(-2, 0, -1.7484555e-07, 0, 2, 0, 1.7484555e-07, 0, -2, 16.49635, 1.7353554, -87.01547)
@@ -650,13 +649,6 @@ bidirectional = false
 end_position = Vector3(-1.62, -5.695, -0.075)
 travel_cost = 2.0
 
-[node name="NavigationLink3D3" type="NavigationLink3D" parent="NavigationRegion3D" unique_id=1682024852]
-transform = Transform3D(0.99832773, 0, -0.057807967, 0, 1, 0, 0.057807967, 0, 0.99832773, -17.14401, 4.2135706, 38.323647)
-bidirectional = false
-start_position = Vector3(0.055, 0.18, 0)
-end_position = Vector3(-3.97, -3.115, -0.2)
-travel_cost = 2.0
-
 [node name="Player" parent="." unique_id=1647912674 instance=ExtResource("9_r4e2n")]
 transform = Transform3D(-4.3711385e-08, 0, -1, 0, 0.99999994, 0, 0.99999994, 0, -4.371139e-08, -0.47299242, 2.5669377, -43.56121)
 
@@ -674,6 +666,7 @@ draw_pass_1 = SubResource("RibbonTrailMesh_qcyk2")
 [node name="GameManager" type="Node3D" parent="." unique_id=1749829845]
 transform = Transform3D(-0.87121385, 0, 0.49090374, 0, 1, 0, -0.49090374, 0, -0.87121385, -8.431, 7.972, 75.958)
 script = ExtResource("12_yiumw")
+debug_play_from_act_7 = false
 DAY_SUN_PITCH_DEG = -72.6
 DAY_SUN_YAW_DEG = 124.3
 SUNSET_SUN_YAW_DEG = 130.0
