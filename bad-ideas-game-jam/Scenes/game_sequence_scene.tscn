@@ -613,6 +613,7 @@ is_hero_container_2 = true
 
 [node name="BIGJ_ShipCol_03" parent="NavigationRegion3D" unique_id=1068186180 instance=ExtResource("7_yiumw")]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
+visible = false
 
 [node name="Ladder" parent="NavigationRegion3D" unique_id=689004252 instance=ExtResource("11_n0oop")]
 transform = Transform3D(-2, 0, -1.7484555e-07, 0, 2, 0, 1.7484555e-07, 0, -2, 16.49635, 1.7353554, -87.01547)
