@@ -516,7 +516,6 @@ func _play_act_3_container():
 
 func _play_act_4_search():
 	await _wait_for(5.0)
-	await player.play_dialogue(74)
 	_play_search_noises()
 
 func _play_search_noises() -> void:
