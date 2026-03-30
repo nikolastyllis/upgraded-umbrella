@@ -115,7 +115,7 @@ func update_climb_position() -> void:
 		var ladder_offset = -deg_to_rad(90) if self is NPC else deg_to_rad(90)
 		rotation.y = lerp_angle(rotation.y, current_ladder.rotation.y + ladder_offset, 0.15)
 	var ladder_forward = current_ladder.global_transform.basis.x
-	var target_pos = current_ladder.global_position + ladder_forward * -.8
+	var target_pos = current_ladder.global_position + ladder_forward * -.5
 	var aligned = Vector3(target_pos.x, global_position.y, target_pos.z)
 	global_position = global_position.lerp(aligned, 0.15)
 
