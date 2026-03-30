@@ -669,7 +669,7 @@ draw_pass_1 = SubResource("RibbonTrailMesh_qcyk2")
 [node name="GameManager" type="Node3D" parent="." unique_id=1749829845]
 transform = Transform3D(-0.87121385, 0, 0.49090374, 0, 1, 0, -0.49090374, 0, -0.87121385, -8.431, 7.972, 75.958)
 script = ExtResource("12_yiumw")
-debug_skip_dialog = true
+debug_play_from_act_4 = true
 debug_play_from_act_7 = false
 DAY_SUN_PITCH_DEG = -72.6
 DAY_SUN_YAW_DEG = 124.3
@@ -697,7 +697,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.9505725, -3.5560427, 15.856
 transform = Transform3D(0.74548763, 0, 0.66651946, 0, 1, 0, -0.66651946, 0, 0.74548763, 4.5993896, 1.4250479, 9.344892)
 
 [node name="Bed" type="StaticBody3D" parent="GameManager/Locations" unique_id=637987197]
-transform = Transform3D(0.65736836, 0, 0.82998115, 0, 0.29294226, 0, -0.3613166, 0, 1.5100423, -3.6884298, 3.6109438, 21.254187)
+transform = Transform3D(0.65736836, 0, 0.82998115, 0, 0.29294226, 0, -0.3613166, 0, 1.5100423, -3.6884298, 3.6298532, 21.254187)
 script = ExtResource("11_qcyk2")
 
 [node name="Bed" type="MeshInstance3D" parent="GameManager/Locations/Bed" unique_id=464638317]
@@ -706,15 +706,6 @@ mesh = SubResource("BoxMesh_63acv")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="GameManager/Locations/Bed" unique_id=1276891746]
 shape = SubResource("BoxShape3D_63acv")
-
-[node name="Bedroom" type="Node3D" parent="GameManager/Locations" unique_id=944683596]
-transform = Transform3D(0.834473, 0, 0.5510489, 0, 1, 0, -0.5510489, 0, 0.834473, -2.613689, 3.5582924, 21.548033)
-
-[node name="Bedroom2" type="Node3D" parent="GameManager/Locations" unique_id=791009384]
-transform = Transform3D(0.834473, 0, 0.5510489, 0, 1, 0, -0.5510489, 0, 0.834473, 4.262437, 4.559143, 15.791849)
-
-[node name="Bedroom3" type="Node3D" parent="GameManager/Locations" unique_id=1985400669]
-transform = Transform3D(0.834473, 0, 0.5510489, 0, 1, 0, -0.5510489, 0, 0.834473, 3.7254417, 4.559143, 15.477532)
 
 [node name="HideNpcs1" type="Node3D" parent="GameManager/Locations" unique_id=84367275]
 transform = Transform3D(10, 0, 4.7683716e-07, 0, 9.999998, 0, -4.7683716e-07, 0, 10, 5.6865997, -32, 24.344685)
@@ -730,6 +721,15 @@ mesh = SubResource("BoxMesh_yiumw")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="GameManager/Locations/HideNpcs/StaticBody3D" unique_id=735130387]
 shape = SubResource("BoxShape3D_tc46g")
+
+[node name="Bedroom" type="Node3D" parent="GameManager/Locations" unique_id=1351178041]
+transform = Transform3D(-0.8712137, 0, -0.49090365, 0, 1, 0, 0.49090365, 0, -0.8712137, -2.7452836, 4.346075, 20.835665)
+
+[node name="Bedroom2" type="Node3D" parent="GameManager/Locations" unique_id=2080234040]
+transform = Transform3D(-0.8712137, 0, -0.49090365, 0, 1, 0, 0.49090365, 0, -0.8712137, 0.13845241, 4.346075, 20.130865)
+
+[node name="Bedroom3" type="Node3D" parent="GameManager/Locations" unique_id=1341632233]
+transform = Transform3D(-0.8712137, 0, -0.49090365, 0, 1, 0, 0.49090365, 0, -0.8712137, -0.6669178, 4.346075, 18.701563)
 
 [node name="AudioManager" type="Node3D" parent="." unique_id=1974886538]
 script = ExtResource("14_qcyk2")
@@ -757,7 +757,7 @@ transform = Transform3D(0.2174507, 0.023823107, 0.9757806, -0.050861303, 0.99862
 visible = false
 
 [node name="BIGJ_Ladder_TALL" parent="." unique_id=805119270 instance=ExtResource("24_vrw5k")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.281144, 19.419569, 64.667175)
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -3.281144, 19.468525, 64.67438)
 
 [node name="Can" parent="." unique_id=442081520 instance=ExtResource("23_n0oop")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.71669585, 22.648092, 58.90433)
