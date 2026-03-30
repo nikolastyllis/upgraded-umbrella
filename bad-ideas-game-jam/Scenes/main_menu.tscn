@@ -545,12 +545,27 @@ color = Color(0, 0, 0, 1)
 
 [node name="Label" type="Label" parent="Control" unique_id=2073826035]
 layout_mode = 0
-offset_top = 138.0
+offset_top = 155.0
 offset_right = 1920.0
-offset_bottom = 524.0
-text = "THE LORETTO PARADOX
+offset_bottom = 427.0
+text = "SALTY WATERS
 "
 label_settings = SubResource("LabelSettings_t1dhk")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label2" type="Label" parent="Control" unique_id=977125004]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 17.0
+offset_bottom = -445.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("8_vr1f0")
+theme_override_font_sizes/font_size = 25
+text = "A SEAMAN STORY"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -562,9 +577,9 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -107.0
-offset_top = -117.5
+offset_top = -90.0
 offset_right = 107.0
-offset_bottom = 121.5
+offset_bottom = 217.0
 grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("10_vr1f0")

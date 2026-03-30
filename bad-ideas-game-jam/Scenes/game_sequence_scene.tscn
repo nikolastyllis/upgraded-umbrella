@@ -17,6 +17,7 @@
 [ext_resource type="Script" uid="uid://cr7u4jtas6no" path="res://Assets/Scripts/game_manager_OrionLighting.gd" id="12_yiumw"]
 [ext_resource type="Script" uid="uid://bpgcgf8cu0yr" path="res://Assets/Scripts/audio_manager.gd" id="14_qcyk2"]
 [ext_resource type="Script" uid="uid://dax422j20b8ka" path="res://Assets/Scripts/boat.gd" id="14_u5hjn"]
+[ext_resource type="Script" uid="uid://bgesjwupo43nf" path="res://Scenes/credits.gd" id="16_3f6hp"]
 [ext_resource type="FontFile" uid="uid://13oicvg0h65k" path="res://Assets/UI/Fonts/Heavy Metal Box.ttf" id="16_hy2ke"]
 [ext_resource type="PackedScene" uid="uid://clai2jixo1u8q" path="res://Prefabs/oxy_torch.tscn" id="16_t0b6u"]
 [ext_resource type="Theme" uid="uid://dsnby6q1yhtnk" path="res://Assets/UI/Text_Theme_Main.tres" id="17_jtogl"]
@@ -25,9 +26,9 @@
 [ext_resource type="PackedScene" uid="uid://38kbp4tchkj" path="res://Assets/Models/Enviroment/Container_Interior_Starter.fbx" id="19_0ixb7"]
 [ext_resource type="PackedScene" uid="uid://dkqydnieh7ivh" path="res://Assets/Models/Enviroment/Container_Interior_Reveal.fbx" id="20_r4e2n"]
 [ext_resource type="Material" uid="uid://bqpjagn0b3g00" path="res://Materials/Containers/Container_starter_mat.tres" id="21_41wu6"]
-[ext_resource type="PackedScene" uid="uid://cegsfr3gshs18" path="res://Prefabs/dead_wazza.tscn" id="21_r4e2n"]
+[ext_resource type="PackedScene" path="res://Prefabs/dead_wazza.tscn" id="21_r4e2n"]
 [ext_resource type="Material" uid="uid://c37y0qmefyfj3" path="res://Materials/Containers/Container_goo_mat.tres" id="22_hy2ke"]
-[ext_resource type="PackedScene" path="res://Prefabs/can.tscn" id="23_n0oop"]
+[ext_resource type="PackedScene" uid="uid://bh0bv5jr5xj60" path="res://Prefabs/can.tscn" id="23_n0oop"]
 [ext_resource type="PackedScene" uid="uid://dp6k81du5pupw" path="res://Prefabs/ladder_tall.tscn" id="24_vrw5k"]
 
 [sub_resource type="Gradient" id="Gradient_0ixb7"]
@@ -356,7 +357,7 @@ curve = SubResource("Curve_63acv")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_tc46g"]
 
-[sub_resource type="LabelSettings" id="LabelSettings_x5fq5"]
+[sub_resource type="LabelSettings" id="LabelSettings_3f6hp"]
 font = ExtResource("16_hy2ke")
 font_size = 83
 
@@ -834,17 +835,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 pivot_offset = Vector2(960, 540)
-
-[node name="Label" type="Label" parent="GameManager/Credits" unique_id=523685560]
-layout_mode = 0
-offset_top = 138.0
-offset_right = 1920.0
-offset_bottom = 524.0
-text = "A SEAMAN STORY
-"
-label_settings = SubResource("LabelSettings_x5fq5")
-horizontal_alignment = 1
-vertical_alignment = 1
+script = ExtResource("16_3f6hp")
 
 [node name="CenterContainer" type="CenterContainer" parent="GameManager/Credits" unique_id=482456826]
 layout_mode = 1
@@ -853,10 +844,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -107.0
-offset_top = -117.5
-offset_right = 107.0
-offset_bottom = 121.5
+offset_left = -179.5
+offset_top = -140.0
+offset_right = 179.5
+offset_bottom = 280.0
 grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("17_jtogl")
@@ -880,6 +871,37 @@ Nikolas Tyllis - (Programming)"
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="Back" type="Button" parent="GameManager/Credits/CenterContainer/Credits" unique_id=1778746846]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Main Menu"
+
+[node name="Label" type="Label" parent="GameManager/Credits" unique_id=1463794024]
+layout_mode = 0
+offset_top = 155.0
+offset_right = 1920.0
+offset_bottom = 427.0
+text = "SALTY WATERS
+"
+label_settings = SubResource("LabelSettings_3f6hp")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label2" type="Label" parent="GameManager/Credits" unique_id=2087450605]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 17.0
+offset_bottom = -445.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("16_hy2ke")
+theme_override_font_sizes/font_size = 25
+text = "A SEAMAN STORY"
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [node name="AudioManager" type="Node3D" parent="." unique_id=1974886538]
 script = ExtResource("14_qcyk2")
 
@@ -898,50 +920,50 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.7934155, -20.827534, 54.12
 [node name="Container_Interior_Starter" parent="." unique_id=1720316576 instance=ExtResource("19_0ixb7")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.180876, 2.115153, -47.68114)
 
-[node name="container_starter_mesh" parent="Container_Interior_Starter" index="0" unique_id=1920041913]
+[node name="container_starter_mesh" parent="Container_Interior_Starter" index="0" unique_id=1184518242]
 surface_material_override/0 = ExtResource("21_41wu6")
 surface_material_override/1 = ExtResource("22_hy2ke")
 
 [node name="Container_Interior_Reveal" parent="." unique_id=63978366 instance=ExtResource("20_r4e2n")]
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -2.5552702, 1.9932939, -32.65922)
 
-[node name="liquid Containers" parent="Container_Interior_Reveal" index="0" unique_id=1265027107]
+[node name="liquid Containers" parent="Container_Interior_Reveal" index="0" unique_id=264330509]
 surface_material_override/0 = ExtResource("21_41wu6")
 
-[node name="liquid Containers_001" parent="Container_Interior_Reveal" index="1" unique_id=2028265525]
+[node name="liquid Containers_001" parent="Container_Interior_Reveal" index="1" unique_id=183606159]
 surface_material_override/0 = ExtResource("21_41wu6")
 
-[node name="liquid Containers_002" parent="Container_Interior_Reveal" index="2" unique_id=241056236]
+[node name="liquid Containers_002" parent="Container_Interior_Reveal" index="2" unique_id=1694983746]
 surface_material_override/0 = ExtResource("21_41wu6")
 
-[node name="liquid Containers_003" parent="Container_Interior_Reveal" index="3" unique_id=518733737]
+[node name="liquid Containers_003" parent="Container_Interior_Reveal" index="3" unique_id=1817341419]
 surface_material_override/0 = ExtResource("21_41wu6")
 
-[node name="liquid Containers_004" parent="Container_Interior_Reveal" index="4" unique_id=824973958]
+[node name="liquid Containers_004" parent="Container_Interior_Reveal" index="4" unique_id=2143003298]
 surface_material_override/0 = ExtResource("21_41wu6")
 
-[node name="liquid Containers_005" parent="Container_Interior_Reveal" index="5" unique_id=474722243]
+[node name="liquid Containers_005" parent="Container_Interior_Reveal" index="5" unique_id=2028780449]
 surface_material_override/0 = ExtResource("21_41wu6")
 
-[node name="liquid Containers_006" parent="Container_Interior_Reveal" index="6" unique_id=67759379]
+[node name="liquid Containers_006" parent="Container_Interior_Reveal" index="6" unique_id=171987148]
 surface_material_override/0 = ExtResource("21_41wu6")
 
-[node name="liquid Containers_007" parent="Container_Interior_Reveal" index="7" unique_id=1548053909]
+[node name="liquid Containers_007" parent="Container_Interior_Reveal" index="7" unique_id=767805850]
 surface_material_override/0 = ExtResource("21_41wu6")
 
-[node name="liquid Containers_008" parent="Container_Interior_Reveal" index="8" unique_id=2040239450]
+[node name="liquid Containers_008" parent="Container_Interior_Reveal" index="8" unique_id=1690123371]
 surface_material_override/0 = ExtResource("21_41wu6")
 
-[node name="liquid Containers_009" parent="Container_Interior_Reveal" index="9" unique_id=1006781036]
+[node name="liquid Containers_009" parent="Container_Interior_Reveal" index="9" unique_id=1215050912]
 surface_material_override/0 = ExtResource("21_41wu6")
 
-[node name="liquid Containers_011" parent="Container_Interior_Reveal" index="10" unique_id=1650560389]
+[node name="liquid Containers_011" parent="Container_Interior_Reveal" index="10" unique_id=1340146553]
 surface_material_override/0 = ExtResource("21_41wu6")
 
-[node name="liquid Containers_012" parent="Container_Interior_Reveal" index="11" unique_id=643695763]
+[node name="liquid Containers_012" parent="Container_Interior_Reveal" index="11" unique_id=400888504]
 surface_material_override/0 = ExtResource("21_41wu6")
 
-[node name="liquid Containers_013" parent="Container_Interior_Reveal" index="12" unique_id=47460665]
+[node name="liquid Containers_013" parent="Container_Interior_Reveal" index="12" unique_id=1712633888]
 surface_material_override/0 = ExtResource("21_41wu6")
 
 [node name="DeadTwin2" parent="." unique_id=1825522883 instance=ExtResource("21_r4e2n")]
@@ -953,6 +975,8 @@ transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -3.2
 
 [node name="Can" parent="." unique_id=442081520 instance=ExtResource("23_n0oop")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.71669585, 22.648092, 58.90433)
+
+[connection signal="pressed" from="GameManager/Credits/CenterContainer/Credits/Back" to="GameManager/Credits" method="_on_back_pressed"]
 
 [editable path="Container_Interior_Starter"]
 [editable path="Container_Interior_Reveal"]
