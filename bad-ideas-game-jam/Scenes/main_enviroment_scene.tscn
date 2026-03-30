@@ -920,7 +920,6 @@ surface_material_override/0 = ExtResource("16_2b4nk")
 surface_material_override/1 = ExtResource("5_mtju5")
 
 [node name="BIGJ_Ship_03" parent="Ship Model" unique_id=1431557414 instance=ExtResource("1_l8ged")]
-visible = false
 
 [node name="Main Deck" parent="Ship Model/BIGJ_Ship_03" index="0" unique_id=1573100528]
 surface_material_override/0 = ExtResource("7_gcmii")
