@@ -171,11 +171,11 @@ shader = ExtResource("2_qcyk2")
 shader_parameter/time_scale = 1.0
 shader_parameter/ocean_speed = 0.1
 shader_parameter/ocean_dir = Vector3(0, 0, -1)
-shader_parameter/macro_amp = 5.191153
-shader_parameter/macro_freq = 0.10402756
+shader_parameter/macro_amp = 2.307011
+shader_parameter/macro_freq = 0.065117925
 shader_parameter/macro_speed = 0.72
-shader_parameter/micro_amp = 1.0622714
-shader_parameter/micro_freq = 0.8734357
+shader_parameter/micro_amp = -0.017164286
+shader_parameter/micro_freq = 0.55555475
 shader_parameter/micro_speed = 1.59
 shader_parameter/wave_dir1 = Vector2(-0.545, 1.56)
 shader_parameter/wave_dir2 = Vector2(-0.21, 0.27)
@@ -185,9 +185,9 @@ shader_parameter/normal_strength = 0.2
 shader_parameter/normal_speed1 = Vector2(0, -0.1)
 shader_parameter/normal_speed2 = Vector2(0, -0.1)
 shader_parameter/normal_tiling = 0.04
-shader_parameter/shallow_color = Color(0.06325797, 0.22286668, 0.16893804, 1)
-shader_parameter/deep_color = Color(0.015951194, 0.061500818, 0.08246249, 1)
-shader_parameter/horizon_color = Color(0.18588543, 0.10807079, 0.07186085, 1)
+shader_parameter/shallow_color = Color(0.25436568, 0.49835536, 0.5682792, 1)
+shader_parameter/deep_color = Color(0.18016139, 0.39351994, 0.5622113, 1)
+shader_parameter/horizon_color = Color(0.551241, 0.733178, 0.78183377, 1)
 shader_parameter/metallic = 0.0
 shader_parameter/roughness = 0.04
 shader_parameter/fresnel_power = 0.2
@@ -195,7 +195,7 @@ shader_parameter/horizon_start = 1000.0
 shader_parameter/horizon_end = 1200.0
 shader_parameter/foam_noise = SubResource("NoiseTexture2D_uf6pr")
 shader_parameter/foam_color = Color(1, 1, 1, 1)
-shader_parameter/foam_amount = 1.1007904
+shader_parameter/foam_amount = 0.06850822
 shader_parameter/foam_scale = 0.02
 shader_parameter/foam_speed = Vector2(-0.05, 0.105)
 shader_parameter/patch_threshold = 0.065
@@ -247,7 +247,6 @@ background_mode = 2
 sky = SubResource("Sky_pdtmv")
 ambient_light_source = 3
 ambient_light_color = Color(0.0029034393, 0.26300052, 0.54436564, 1)
-ambient_light_sky_contribution = 0.28441656
 ambient_light_energy = 0.0
 reflected_light_source = 2
 tonemap_mode = 2
@@ -269,10 +268,10 @@ glow_strength = 0.31
 glow_bloom = 0.09
 fog_enabled = true
 fog_mode = 1
-fog_light_color = Color(0.23300262, 0.16686018, 0.13608173, 1)
+fog_light_color = Color(0.54355484, 0.6982013, 0.7395587, 1)
 fog_light_energy = 5.27
 fog_sun_scatter = 0.45
-fog_density = 1.7584091
+fog_density = 0.37399882
 fog_aerial_perspective = 0.48
 fog_sky_affect = 0.582
 fog_depth_curve = 1.0717736
@@ -386,12 +385,12 @@ mesh = SubResource("PlaneMesh_7xckk")
 script = ExtResource("5_yiumw")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="Lighting" unique_id=1333050787]
-transform = Transform3D(0.8202586, -0.44646192, 0.35755914, 0.13811886, -0.4520139, -0.8812538, 0.55506724, 0.7722412, -0.30910376, -0.35433406, -1.300391, -0.6189156)
-light_color = Color(0.1352768, 0.066266894, 1.9203685e-07, 1)
-light_energy = -0.92626196
+transform = Transform3D(0.8202585, 0.532886, 0.20786755, 0.13811886, -0.53718096, 0.8320826, 0.5550672, -0.65381205, -0.51422894, -0.35433406, -1.300391, -0.6189156)
+light_color = Color(0.9927078, 0.9230037, 0.8560703, 1)
+light_energy = 1.0004464
 light_indirect_energy = 1.272
 light_volumetric_fog_energy = 0.0
-light_angular_distance = 0.83140814
+light_angular_distance = 1.5076815
 shadow_enabled = true
 shadow_normal_bias = 4.319
 shadow_opacity = 0.5
@@ -420,25 +419,31 @@ metadata/_edit_lock_ = true
 [node name="Constant" type="Node3D" parent="Lighting/Night Lights" unique_id=2115008250]
 
 [node name="OmniLight3D15" type="OmniLight3D" parent="Lighting/Night Lights/Constant" unique_id=9439850]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.39030838, 15.653664, 64.47363)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.7203884, 15.957123, 64.36085)
 light_color = Color(0.9622833, 0.84922516, 0.7546219, 1)
 light_energy = 0.329
 light_size = 0.071
 
 [node name="OmniLight3D16" type="OmniLight3D" parent="Lighting/Night Lights/Constant" unique_id=1902979616]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.39030838, 18.23054, 64.47363)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.2748425, 18.393099, 64.36915)
+light_color = Color(0.9622833, 0.84922516, 0.7546219, 1)
+light_energy = 0.329
+light_size = 0.071
+
+[node name="OmniLight3D24" type="OmniLight3D" parent="Lighting/Night Lights/Constant" unique_id=1310282637]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.2748425, 20.997002, 64.36915)
 light_color = Color(0.9622833, 0.84922516, 0.7546219, 1)
 light_energy = 0.329
 light_size = 0.071
 
 [node name="OmniLight3D17" type="OmniLight3D" parent="Lighting/Night Lights/Constant" unique_id=1437073644]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.39030838, 12.957249, 64.47363)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.1184564, 13.195106, 64.37807)
 light_color = Color(0.9622833, 0.84922516, 0.7546219, 1)
 light_energy = 0.329
 light_size = 0.071
 
 [node name="SpotLight3D" type="SpotLight3D" parent="Lighting/Night Lights/Constant" unique_id=1211440256]
-transform = Transform3D(0.88888645, 0.164665, -0.42751187, 0.27706495, 0.54995173, 0.7879011, 0.36485064, -0.8188031, 0.44322175, 8.315602, 18.75491, 57.521755)
+transform = Transform3D(0.96042526, 0.16466501, -0.22465265, 0.099674925, 0.54995173, 0.8292274, 0.26009285, -0.81880313, 0.51177454, 5.999879, 19.850357, 56.649788)
 light_color = Color(0.9301446, 0.84689915, 0.6640551, 1)
 light_energy = 20.0
 light_size = 0.02
@@ -447,7 +452,7 @@ spot_range = 69.82814
 spot_angle = 21.8089
 
 [node name="SpotLight3D4" type="SpotLight3D" parent="Lighting/Night Lights/Constant" unique_id=361494986]
-transform = Transform3D(0.9961359, -0.025366873, 0.08408236, -0.04897165, 0.6342979, 0.77153605, -0.07290472, -0.7726724, 0.6306047, -2.9216752, 19.75675, 55.591064)
+transform = Transform3D(0.9961359, -0.025366873, 0.08408236, -0.04897165, 0.6342979, 0.77153605, -0.07290472, -0.7726724, 0.6306047, -2.1195002, 19.90153, 56.114803)
 light_color = Color(0.9301446, 0.84689915, 0.6640551, 1)
 light_energy = 20.0
 light_size = 0.02
@@ -465,7 +470,7 @@ spot_range = 46.08942
 spot_angle = 40.09544
 
 [node name="SpotLight3D8" type="SpotLight3D" parent="Lighting/Night Lights/Constant" unique_id=1609643779]
-transform = Transform3D(0.97360647, -0.025366873, -0.22681944, 0.19104554, 0.6342979, 0.74911135, 0.124868475, -0.7726725, 0.6224027, 3.25585, 18.971758, 56.397575)
+transform = Transform3D(0.97360647, -0.025366873, -0.22681944, 0.19104554, 0.6342979, 0.74911135, 0.124868475, -0.7726725, 0.6224027, 2.4141035, 19.853317, 56.15573)
 light_color = Color(0.9301446, 0.84689915, 0.6640551, 1)
 light_energy = 20.0
 light_size = 0.02
@@ -474,7 +479,7 @@ spot_range = 46.08942
 spot_angle = 40.09544
 
 [node name="SpotLight3D5" type="SpotLight3D" parent="Lighting/Night Lights/Constant" unique_id=1770375525]
-transform = Transform3D(0.9961359, -0.04840008, 0.07328542, -0.048971646, 0.38657537, 0.92095673, -0.07290471, -0.9209869, 0.3827114, 0.007227987, 18.207802, 25.374641)
+transform = Transform3D(0.9961359, -0.04840008, 0.07328542, -0.048971646, 0.38657537, 0.92095673, -0.07290471, -0.9209869, 0.3827114, 0.11750655, 19.050512, 26.31537)
 light_color = Color(0.9301446, 0.84689915, 0.6640551, 1)
 light_energy = 10.0
 light_size = 0.02
@@ -484,7 +489,7 @@ spot_angle = 33.3937
 spot_angle_attenuation = 0.5176325
 
 [node name="SpotLight3D6" type="SpotLight3D" parent="Lighting/Night Lights/Constant" unique_id=1241685364]
-transform = Transform3D(0.99613595, -0.08312663, 0.02834222, -0.04897164, -0.25784445, 0.9649446, -0.072904706, -0.9626039, -0.26091895, 0.019522369, 16.816147, -25.956417)
+transform = Transform3D(0.99613595, -0.08692477, 0.0125460755, -0.048971638, -0.43116745, 0.90094197, -0.072904706, -0.8980751, -0.43375823, 0.2502978, 18.544197, -26.63639)
 light_color = Color(0.9301446, 0.84689915, 0.6640551, 1)
 light_energy = 20.0
 light_size = 0.02
@@ -494,7 +499,7 @@ spot_angle = 36.33
 spot_angle_attenuation = 0.34151006
 
 [node name="SpotLight3D7" type="SpotLight3D" parent="Lighting/Night Lights/Constant" unique_id=1298627147]
-transform = Transform3D(0.9961359, -0.07032471, 0.05260946, -0.04897165, 0.052489504, 0.99742, -0.07290471, -0.9961422, 0.04884276, 0.4796428, 16.498144, -49.627453)
+transform = Transform3D(0.9961359, -0.027098872, 0.08354024, -0.04897165, 0.6182201, 0.784478, -0.07290472, -0.7855378, 0.6145042, 0.18112251, 18.687433, -35.393745)
 light_color = Color(0.9301446, 0.84689915, 0.6640551, 1)
 light_energy = 20.0
 light_size = 0.02
@@ -503,7 +508,7 @@ spot_range = 22.827328
 spot_angle = 46.406246
 
 [node name="SpotLight3D2" type="SpotLight3D" parent="Lighting/Night Lights/Constant" unique_id=1449057671]
-transform = Transform3D(0.9051778, -0.050040077, 0.42207727, -0.2991996, 0.6302976, 0.716383, -0.30188215, -0.77473927, 0.5555594, -6.6698456, 18.935509, 58.85374)
+transform = Transform3D(0.9051778, -0.050040077, 0.42207727, -0.2991996, 0.6302976, 0.716383, -0.30188215, -0.77473927, 0.5555594, -5.261156, 19.86287, 56.5877)
 light_color = Color(0.9301446, 0.84689915, 0.6640551, 1)
 light_energy = 20.0
 light_size = 0.02
@@ -513,88 +518,134 @@ spot_angle = 30.478914
 spot_angle_attenuation = 0.43527535
 
 [node name="OmniLight3D5" type="OmniLight3D" parent="Lighting/Night Lights/Constant" unique_id=1671378910]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.038731, 1.6820774, 22.34363)
-light_color = Color(0.9948409, 0, 0.17758498, 1)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.694951, 1.0946822, 20.747498)
+light_color = Color(0.76, 0, 0, 1)
 light_size = 0.071
+shadow_enabled = true
 
-[node name="OmniLight3D6" type="OmniLight3D" parent="Lighting/Night Lights/Constant" unique_id=954372404]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.16204, 1.6820774, 22.34363)
-light_color = Color(0.9948409, 0, 0.17758498, 1)
+[node name="OmniLight3D18" type="OmniLight3D" parent="Lighting/Night Lights/Constant" unique_id=2021141630]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.694951, 1.0946822, -1.5725117)
+light_color = Color(0.76, 0, 0, 1)
 light_size = 0.071
+shadow_enabled = true
 
-[node name="OmniLight3D7" type="OmniLight3D" parent="Lighting/Night Lights/Constant" unique_id=26869044]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.038731, 1.6820774, -9.68244)
-light_color = Color(0.9948409, 0, 0.17758498, 1)
+[node name="OmniLight3D19" type="OmniLight3D" parent="Lighting/Night Lights/Constant" unique_id=1524407426]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.694951, 1.0946822, -20.913004)
+light_color = Color(0.8912475, 0.0003724839, 0.00020445943, 1)
 light_size = 0.071
+shadow_enabled = true
 
-[node name="OmniLight3D8" type="OmniLight3D" parent="Lighting/Night Lights/Constant" unique_id=442968774]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.16204, 1.6820774, -9.68244)
-light_color = Color(0.9948409, 0, 0.17758498, 1)
+[node name="OmniLight3D20" type="OmniLight3D" parent="Lighting/Night Lights/Constant" unique_id=1911400022]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.694951, 19.927969, 60.56243)
+light_color = Color(0.76, 0, 0, 1)
+light_energy = 3.735
 light_size = 0.071
+shadow_enabled = true
+omni_range = 8.325
+omni_attenuation = 0.678
 
-[node name="OmniLight3D9" type="OmniLight3D" parent="Lighting/Night Lights/Constant" unique_id=1390899025]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.038731, 1.6820774, -34.462147)
-light_color = Color(0.9948409, 0, 0.17758498, 1)
+[node name="OmniLight3D25" type="OmniLight3D" parent="Lighting/Night Lights/Constant" unique_id=2078758642]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.3621123, 27.067923, 59.519035)
+light_color = Color(0.76, 0, 0, 1)
+light_energy = 5.026
 light_size = 0.071
+omni_range = 2.489
+omni_attenuation = 0.659
 
-[node name="OmniLight3D10" type="OmniLight3D" parent="Lighting/Night Lights/Constant" unique_id=813722150]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.16204, 1.6820774, -34.462147)
-light_color = Color(0.9948409, 0, 0.17758498, 1)
+[node name="OmniLight3D6" type="OmniLight3D" parent="Lighting/Night Lights/Constant" unique_id=848529693]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.083594, 1.1091461, 20.604483)
+light_color = Color(2.4065375e-06, 0.7649296, 0.09048321, 1)
 light_size = 0.071
+shadow_enabled = true
+
+[node name="OmniLight3D21" type="OmniLight3D" parent="Lighting/Night Lights/Constant" unique_id=651908986]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.083594, 1.1091461, -1.5012116)
+light_color = Color(2.4065375e-06, 0.7649296, 0.09048321, 1)
+light_size = 0.071
+shadow_enabled = true
+
+[node name="OmniLight3D22" type="OmniLight3D" parent="Lighting/Night Lights/Constant" unique_id=815521791]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.0418825, 1.1091461, -20.95061)
+light_color = Color(2.4065375e-06, 0.7649296, 0.09048321, 1)
+light_size = 0.071
+shadow_enabled = true
+
+[node name="OmniLight3D23" type="OmniLight3D" parent="Lighting/Night Lights/Constant" unique_id=1362425612]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.083594, 19.709162, 60.57419)
+light_color = Color(2.4065375e-06, 0.7649296, 0.09048321, 1)
+light_energy = 2.342
+light_size = 0.071
+shadow_enabled = true
+omni_range = 8.325
+omni_attenuation = 0.384
 
 [node name="OmniLight3D11" type="OmniLight3D" parent="Lighting/Night Lights/Constant" unique_id=1994821989]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.39030838, 10.045114, 64.47363)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.8117032, 10.674327, 64.27941)
 light_color = Color(0.9622833, 0.84922516, 0.7546219, 1)
 light_energy = 0.329
 light_size = 0.071
 
 [node name="OmniLight3D12" type="OmniLight3D" parent="Lighting/Night Lights/Constant" unique_id=1417020541]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.8469677, 8.026077, 63.16504)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.2005463, 8.151314, 64.211464)
 light_color = Color(0.9622833, 0.84922516, 0.7546219, 1)
 light_energy = 0.329
 light_size = 0.071
 
 [node name="OmniLight3D13" type="OmniLight3D" parent="Lighting/Night Lights/Constant" unique_id=505410849]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.8469677, 5.0549154, 63.910797)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.340161, 5.2064524, 64.55167)
 light_color = Color(0.9622833, 0.84922516, 0.7546219, 1)
 light_energy = 0.329
-light_size = 0.071
-
-[node name="OmniLight3D14" type="OmniLight3D" parent="Lighting/Night Lights/Constant" unique_id=1729630388]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.3291006, 11.005188, 65.808784)
-light_color = Color(0.3064232, 0.85464454, 0, 1)
-light_energy = 2.703
-light_size = 0.071
-omni_range = 3.2965221
-
-[node name="OmniLight3D4" type="OmniLight3D" parent="Lighting/Night Lights/Constant" unique_id=1904174417]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.680018, 22.40142, 62.278526)
-light_color = Color(0.9948409, 0, 0.17758498, 1)
 light_size = 0.071
 
 [node name="Flashing Lights" type="Node3D" parent="Lighting/Night Lights" unique_id=864518979]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.51797867, 0, 0)
 
 [node name="OmniLight3D12" type="OmniLight3D" parent="Lighting/Night Lights/Flashing Lights" unique_id=1575823701]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 17.694885, -59.27397)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.3806036, 20.178608, -60.524258)
+light_energy = 4.91
+light_indirect_energy = 1.445
+light_size = 0.148
+light_specular = 4.026
+omni_range = 1.756
+omni_attenuation = 0.1
+omni_shadow_mode = 0
+
+[node name="OmniLight3D14" type="OmniLight3D" parent="Lighting/Night Lights/Flashing Lights" unique_id=1187948536]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.4186465, 33.28199, 64.77678)
+light_energy = 5.335
+light_size = 0.071
+omni_range = 3.02
+omni_attenuation = 0.783
+
+[node name="OmniLight3D13" type="OmniLight3D" parent="Lighting/Night Lights/Flashing Lights" unique_id=444435870]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.45075005, 19.894388, -48.810574)
 light_color = Color(0.9948409, 0, 0.17758498, 1)
 light_size = 0.071
-omni_range = 1.2472423
+omni_range = 2.715
 
 [node name="OmniLight3D" type="OmniLight3D" parent="Lighting/Night Lights/Flashing Lights" unique_id=1127648970]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 18.847067, -28.047901)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5104779, 4.3152323, -28.979856)
 light_color = Color(0.9948409, 0, 0.17758498, 1)
 light_size = 0.071
+shadow_enabled = true
+
+[node name="OmniLight3D3" type="OmniLight3D" parent="Lighting/Night Lights/Flashing Lights" unique_id=151478129]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.40890068, 4.2536545, 28.781384)
+light_color = Color(0.9948409, 0, 0.17758498, 1)
+light_size = 0.071
+shadow_enabled = true
 
 [node name="OmniLight3D2" type="OmniLight3D" parent="Lighting/Night Lights/Flashing Lights" unique_id=1381079500]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 22.40142, 28.134499)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 19.886303, 47.985252)
 light_color = Color(0.9948409, 0, 0.17758498, 1)
 light_size = 0.071
 
-[node name="OmniLight3D3" type="OmniLight3D" parent="Lighting/Night Lights/Flashing Lights" unique_id=333981202]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.038731, 22.40142, 62.278526)
-light_color = Color(0.9948409, 0, 0.17758498, 1)
+[node name="OmniLight3D15" type="OmniLight3D" parent="Lighting/Night Lights/Flashing Lights" unique_id=1729630388]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.888424, 11.120676, 66.67444)
+light_color = Color(0.99999994, 0.6191763, 0.088755466, 1)
+light_energy = 2.703
 light_size = 0.071
+omni_range = 3.2965221
 
 [node name="node3D" type="Node3D" parent="." unique_id=1483757596]
 
