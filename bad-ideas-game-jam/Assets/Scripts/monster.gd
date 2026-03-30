@@ -15,9 +15,13 @@ const KILL_DISTANCE       := 1.5
 const KILL_CHECK_INTERVAL := 0.5
 
 const PATROL_SPEED          := 1.5
-const PATROL_WANDER_RADIUS  := 40.0
-const PATROL_WAYPOINT_COUNT := 4
-const PATROL_PLAYER_BIAS    := 0.8
+const PATROL_WANDER_RADIUS  := 15
+const PATROL_WAYPOINT_COUNT := 2
+const PATROL_PLAYER_BIAS    := 0.75
+
+const TELEPORT_SAMPLE_INTERVAL := 30.0
+const TELEPORT_MOVE_THRESHOLD  := 20.0
+const TELEPORT_PLAYER_FOV_DOT  := 0.3
 
 @export var debug_enabled := false
 
@@ -40,6 +44,9 @@ var _patrol_state     := PatrolState.IDLE
 var _patrol_waypoints : Array[Vector3] = []
 var _patrol_index     := 0
 
+var _teleport_sample_timer    := TELEPORT_SAMPLE_INTERVAL
+var _teleport_sample_position := Vector3.ZERO
+
 var _dbg_root : Node3D = null
 
 func reset_state() -> void:
@@ -60,6 +67,8 @@ func reset_state() -> void:
 	_patrol_state     = PatrolState.IDLE
 	_patrol_waypoints.clear()
 	_patrol_index     = 0
+	_teleport_sample_timer    = TELEPORT_SAMPLE_INTERVAL
+	_teleport_sample_position = Vector3.ZERO
 	velocity = Vector3.ZERO
 	navigation_agent_3d.set_velocity(Vector3.ZERO)
 	if navigation_agent_3d:
@@ -546,6 +555,58 @@ func _stop_patrol() -> void:
 	_patrol_waypoints.clear()
 	target_position = Vector3.ZERO
 	_has_target     = false
+	
+func _is_in_player_view() -> bool:
+	var player = get_player()
+	if not is_instance_valid(player):
+		return false
+
+	var to_monster = global_position - player.global_position
+	to_monster.y   = 0.0
+	if to_monster.length() < 0.001:
+		return true
+
+	var player_fwd = -player.global_transform.basis.z
+	player_fwd.y   = 0.0
+	if player_fwd.length() < 0.001:
+		return false
+
+	return player_fwd.normalized().dot(to_monster.normalized()) >= TELEPORT_PLAYER_FOV_DOT
+
+
+func _update_teleport(delta: float) -> void:
+	var player = get_player()
+	if not is_instance_valid(player) or player.is_dead:
+		return
+
+	_teleport_sample_timer -= delta
+
+	if _teleport_sample_timer <= 0.0:
+		_teleport_sample_position = player.global_position
+		_teleport_sample_timer    = TELEPORT_SAMPLE_INTERVAL
+		_log("_update_teleport — snapshot %s" % _teleport_sample_position)
+		return
+
+	if _teleport_sample_position == Vector3.ZERO:
+		return
+
+	if _is_in_player_view():
+		return
+
+	var dist_from_sample = player.global_position.distance_to(_teleport_sample_position)
+	if dist_from_sample <= TELEPORT_MOVE_THRESHOLD:
+		return
+
+	_log("_update_teleport — TELEPORT  sample=%s  player_drift=%.1f" % [
+			_teleport_sample_position, dist_from_sample])
+
+	global_position = _teleport_sample_position
+
+	if navigation_agent_3d:
+		navigation_agent_3d.target_position = global_position
+
+	_teleport_sample_position = Vector3.ZERO
+	_teleport_sample_timer    = TELEPORT_SAMPLE_INTERVAL
 
 func apply_movement() -> void:
 	if is_climbing:
