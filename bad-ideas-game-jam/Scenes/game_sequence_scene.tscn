@@ -21,8 +21,8 @@
 [ext_resource type="PackedScene" uid="uid://dp4otnp5mmihr" path="res://Prefabs/creature.tscn" id="18_tc46g"]
 [ext_resource type="PackedScene" uid="uid://38kbp4tchkj" path="res://Assets/Models/Enviroment/Container_Interior_Starter.fbx" id="19_0ixb7"]
 [ext_resource type="PackedScene" uid="uid://dkqydnieh7ivh" path="res://Assets/Models/Enviroment/Container_Interior_Reveal.fbx" id="20_r4e2n"]
-[ext_resource type="PackedScene" path="res://Prefabs/dead_wazza.tscn" id="21_r4e2n"]
-[ext_resource type="PackedScene" uid="uid://bh0bv5jr5xj60" path="res://Prefabs/can.tscn" id="23_n0oop"]
+[ext_resource type="PackedScene" uid="uid://cegsfr3gshs18" path="res://Prefabs/dead_wazza.tscn" id="21_r4e2n"]
+[ext_resource type="PackedScene" path="res://Prefabs/can.tscn" id="23_n0oop"]
 [ext_resource type="PackedScene" uid="uid://dp6k81du5pupw" path="res://Prefabs/ladder_tall.tscn" id="24_vrw5k"]
 
 [sub_resource type="Gradient" id="Gradient_0ixb7"]
@@ -171,11 +171,11 @@ shader = ExtResource("2_qcyk2")
 shader_parameter/time_scale = 1.0
 shader_parameter/ocean_speed = 0.1
 shader_parameter/ocean_dir = Vector3(0, 0, -1)
-shader_parameter/macro_amp = 2.307011
-shader_parameter/macro_freq = 0.065117925
+shader_parameter/macro_amp = 5.0289903
+shader_parameter/macro_freq = 0.10185783
 shader_parameter/macro_speed = 0.72
-shader_parameter/micro_amp = -0.017164286
-shader_parameter/micro_freq = 0.55555475
+shader_parameter/micro_amp = 0.99620855
+shader_parameter/micro_freq = 0.87210107
 shader_parameter/micro_speed = 1.59
 shader_parameter/wave_dir1 = Vector2(-0.545, 1.56)
 shader_parameter/wave_dir2 = Vector2(-0.21, 0.27)
@@ -185,9 +185,9 @@ shader_parameter/normal_strength = 0.2
 shader_parameter/normal_speed1 = Vector2(0, -0.1)
 shader_parameter/normal_speed2 = Vector2(0, -0.1)
 shader_parameter/normal_tiling = 0.04
-shader_parameter/shallow_color = Color(0.25436568, 0.49835536, 0.5682792, 1)
-shader_parameter/deep_color = Color(0.18016139, 0.39351994, 0.5622113, 1)
-shader_parameter/horizon_color = Color(0.551241, 0.733178, 0.78183377, 1)
+shader_parameter/shallow_color = Color(0.065049015, 0.23818386, 0.17607771, 1)
+shader_parameter/deep_color = Color(0.017237417, 0.06576975, 0.0884445, 1)
+shader_parameter/horizon_color = Color(0.22087353, 0.12841234, 0.08538681, 1)
 shader_parameter/metallic = 0.0
 shader_parameter/roughness = 0.04
 shader_parameter/fresnel_power = 0.2
@@ -195,7 +195,7 @@ shader_parameter/horizon_start = 1000.0
 shader_parameter/horizon_end = 1200.0
 shader_parameter/foam_noise = SubResource("NoiseTexture2D_uf6pr")
 shader_parameter/foam_color = Color(1, 1, 1, 1)
-shader_parameter/foam_amount = 0.06850822
+shader_parameter/foam_amount = 1.0816903
 shader_parameter/foam_scale = 0.02
 shader_parameter/foam_speed = Vector2(-0.05, 0.105)
 shader_parameter/patch_threshold = 0.065
@@ -247,6 +247,7 @@ background_mode = 2
 sky = SubResource("Sky_pdtmv")
 ambient_light_source = 3
 ambient_light_color = Color(0.0029034393, 0.26300052, 0.54436564, 1)
+ambient_light_sky_contribution = 0.3278598
 ambient_light_energy = 0.0
 reflected_light_source = 2
 tonemap_mode = 2
@@ -268,10 +269,10 @@ glow_strength = 0.31
 glow_bloom = 0.09
 fog_enabled = true
 fog_mode = 1
-fog_light_color = Color(0.54355484, 0.6982013, 0.7395587, 1)
+fog_light_color = Color(0.26274252, 0.18415049, 0.14757879, 1)
 fog_light_energy = 5.27
 fog_sun_scatter = 0.45
-fog_density = 0.37399882
+fog_density = 1.7157283
 fog_aerial_perspective = 0.48
 fog_sky_affect = 0.582
 fog_depth_curve = 1.0717736
@@ -385,12 +386,12 @@ mesh = SubResource("PlaneMesh_7xckk")
 script = ExtResource("5_yiumw")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="Lighting" unique_id=1333050787]
-transform = Transform3D(0.8202585, 0.532886, 0.20786755, 0.13811886, -0.53718096, 0.8320826, 0.5550672, -0.65381205, -0.51422894, -0.35433406, -1.300391, -0.6189156)
-light_color = Color(0.9927078, 0.9230037, 0.8560703, 1)
-light_energy = 1.0004464
+transform = Transform3D(0.8202583, 0.5328859, 0.20786761, -0.1076248, 0.500704, -0.8589019, -0.56177664, 0.68214995, 0.46805838, -0.35433412, -1.300391, -0.6189156)
+light_color = Color(0.16073906, 0.07873991, 2.2818278e-07, 1)
+light_energy = -0.897524
 light_indirect_energy = 1.272
 light_volumetric_fog_energy = 0.0
-light_angular_distance = 1.5076815
+light_angular_distance = 0.8266022
 shadow_enabled = true
 shadow_normal_bias = 4.319
 shadow_opacity = 0.5
