@@ -216,7 +216,11 @@ func play_dialogue(id: int, volume: float = 10, pitch_scale: float = 1.0) -> voi
 	dialogue_player.stream = load(path)
 	
 	add_child(dialogue_player)
-	animation_tree.set("parameters/TalkAdd/add_amount", 1.0)
+	var tween_in_talk = create_tween()
+	tween_in_talk.tween_method(
+		func(v): animation_tree.set("parameters/TalkBlend/blend_amount", v),
+		0.0, 1.0, 0.2
+	)
 	if use_radio or use_blip:
 		var tween_in = create_tween()
 		tween_in.tween_method(
@@ -232,8 +236,11 @@ func play_dialogue(id: int, volume: float = 10, pitch_scale: float = 1.0) -> voi
 			func(v): animation_tree.set("parameters/RadioBlend/blend_amount", v),
 			1.0, 0.0, 0.3
 		)
-	animation_tree.set("parameters/TalkAdd/add_amount", 0.0)
-
+	var tween_out_talk = create_tween()
+	tween_out_talk.tween_method(
+		func(v): animation_tree.set("parameters/TalkBlend/blend_amount", v),
+		1.0, 0.0, 0.2
+	)
 	var tween := create_tween()
 	tween.tween_property(dialogue_player, "volume_db", -80.0, 0.1)
 	await tween.finished

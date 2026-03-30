@@ -493,17 +493,15 @@ func _play_act_2_store_room():
 
 func _play_act_3_container():
 	_dialogue_active = true
-	await _wait_for(10.0)
+	await _wait_for(5.0)
 	await player.play_dialogue(70)
-	await _wait_for(10.0)
+	await _wait_for(5.0)
 	await player.play_dialogue(71)
-	await _wait_for(10.0)
+	await _wait_for(5.0)
 	await player.play_dialogue(72)
-	await _wait_for(10.0)
+	await _wait_for(5.0)
 	await player.play_dialogue(73)
-	await _wait_for(10.0)
-	await twin_1.play_dialogue(79)
-	await _wait_for(2.0)
+	await _wait_for(5.0)
 	await player.play_dialogue(74)
 	await _wait_for(1.0)
 	await player.play_dialogue(75)
