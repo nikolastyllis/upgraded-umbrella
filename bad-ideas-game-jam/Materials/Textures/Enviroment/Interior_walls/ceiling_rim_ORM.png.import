@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://d0vs44aeo8yux"
-path.s3tc="res://.godot/imported/Toolbox_toolbox_mat_BaseColor.1001.png-e4d12d4b9fb7821609377c96440c4fd2.s3tc.ctex"
+uid="uid://p5k36861ccoo"
+path.s3tc="res://.godot/imported/ceiling_rim_ORM.png-b34d919b7cc5a7171482dee68e535b36.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://Materials/Textures/SightboxRon/Toolbox_toolbox_mat_BaseColor.1001.png"
-dest_files=["res://.godot/imported/Toolbox_toolbox_mat_BaseColor.1001.png-e4d12d4b9fb7821609377c96440c4fd2.s3tc.ctex"]
+source_file="res://Materials/Textures/Enviroment/Interior_walls/ceiling_rim_ORM.png"
+dest_files=["res://.godot/imported/ceiling_rim_ORM.png-b34d919b7cc5a7171482dee68e535b36.s3tc.ctex"]
 
 [params]
 

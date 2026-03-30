@@ -6,7 +6,9 @@
 [ext_resource type="PackedScene" uid="uid://ctj0n3n6mmc2r" path="res://Prefabs/container.tscn" id="2_4ftm2"]
 [ext_resource type="Material" uid="uid://c1hik4d12rpb4" path="res://Materials/Ship/ship_greebly_mat.tres" id="3_av35p"]
 [ext_resource type="Material" uid="uid://0ujctbwowsms" path="res://Materials/Ship/grey_Panel_rust.tres" id="3_tlnlp"]
+[ext_resource type="Material" uid="uid://b0ca805bio3ok" path="res://Materials/Ship/Interior_floor.tres" id="4_ruu2y"]
 [ext_resource type="Material" uid="uid://cvdlxl52307wq" path="res://Materials/Ship/ship_hull_mat.tres" id="4_tlnlp"]
+[ext_resource type="Material" uid="uid://y6cxpqfxtnxv" path="res://Materials/Ship/Interior_ceiling.tres" id="5_gebxy"]
 [ext_resource type="Material" uid="uid://bolm5xo6weej3" path="res://Materials/Ship/rust_panel_simple_white.tres" id="5_mtju5"]
 [ext_resource type="Material" uid="uid://bea2b3oeci11q" path="res://Materials/Ship/Window_Door.tres" id="5_ns4fk"]
 [ext_resource type="Material" uid="uid://c51ek0v8ig1jv" path="res://Materials/Ship/ship_grill_mat.tres" id="6_tlnlp"]
@@ -24,6 +26,7 @@
 [ext_resource type="PackedScene" uid="uid://bjuwydjirkf6j" path="res://Assets/Models/Enviroment/Lights/common_light.fbx" id="20_ruu2y"]
 [ext_resource type="Material" uid="uid://chy3pn1ytkbtv" path="res://Materials/Items/tool_box1_mat.tres" id="22_v7pwh"]
 [ext_resource type="PackedScene" uid="uid://dcmqc2tk6jg2x" path="res://Assets/Models/Enviroment/Toolbox.fbx" id="23_2b4nk"]
+[ext_resource type="Material" uid="uid://bp4awwywni8f2" path="res://Materials/Items/tool_box2_mat.tres" id="23_xadyp"]
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_l1k8l"]
 _surfaces = [{
@@ -687,10 +690,12 @@ transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 2.63
 [node name="Ship Model" type="Node3D" parent="." unique_id=888447321]
 metadata/_edit_lock_ = true
 
-[node name="BIGJ_Ship_Interior" parent="Ship Model" unique_id=625397025 instance=ExtResource("1_jn3ni")]
+[node name="BIGJ_Ship_Interior" parent="Ship Model" unique_id=593754638 instance=ExtResource("1_jn3ni")]
 
-[node name="Interior Walls" parent="Ship Model/BIGJ_Ship_Interior" index="0" unique_id=173632597]
+[node name="Interior Walls" parent="Ship Model/BIGJ_Ship_Interior" index="0" unique_id=1390936916]
 surface_material_override/0 = ExtResource("7_0qs2n")
+surface_material_override/1 = ExtResource("4_ruu2y")
+surface_material_override/2 = ExtResource("5_gebxy")
 
 [node name="Lights" type="Node3D" parent="Ship Model" unique_id=1116015812]
 
@@ -915,6 +920,7 @@ surface_material_override/0 = ExtResource("16_2b4nk")
 surface_material_override/1 = ExtResource("5_mtju5")
 
 [node name="BIGJ_Ship_03" parent="Ship Model" unique_id=1431557414 instance=ExtResource("1_l8ged")]
+visible = false
 
 [node name="Main Deck" parent="Ship Model/BIGJ_Ship_03" index="0" unique_id=1573100528]
 surface_material_override/0 = ExtResource("7_gcmii")
@@ -938,6 +944,8 @@ surface_material_override/0 = ExtResource("22_v7pwh")
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -5.3717103, 3.7113528, 58.41831)
 
 [node name="BunkBed_low_006" parent="Ship Model/BIGJ_Ship_03/Toolbox2" index="0" unique_id=382848717]
+transform = Transform3D(5.474772e-05, -55.383156, -6.354507e-06, 1.5560239e-18, -1.3204373e-05, 53.30547, -183.70287, -1.8156014e-05, -2.7105054e-20, 0, 0, 1.2581916)
+material_override = ExtResource("23_xadyp")
 surface_material_override/0 = ExtResource("22_v7pwh")
 
 [node name="BIGJ_LifeBoat" parent="Ship Model" unique_id=826326853 instance=ExtResource("15_jn3ni")]

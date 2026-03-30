@@ -2,12 +2,10 @@
 
 [ext_resource type="Material" uid="uid://sgetjvg177mb" path="res://Shaders/outline.tres" id="1_n8acb"]
 [ext_resource type="Shader" uid="uid://d266trvxphdyu" path="res://Shaders/cel-shader-base.gdshader" id="2_oaqx1"]
-[ext_resource type="Texture2D" uid="uid://bo5kgd7ng5041" path="res://Materials/Textures/Enviroment/Ex Steel Panel/Hull_Walls_Grey_Base.png" id="3_50eha"]
+[ext_resource type="Texture2D" uid="uid://il5pmhjwb73m" path="res://Materials/Textures/Enviroment/Interior_walls/wall_trim_Col_Alpha.png" id="3_i18a2"]
 [ext_resource type="Texture2D" uid="uid://2qdpb06ouf6e" path="res://Materials/Textures/Enviroment/Ex Steel Panel/Hull_Walls_Grey_Paint_mask.png" id="4_mpq0m"]
-[ext_resource type="Texture2D" uid="uid://dtpojy5i8xo73" path="res://Materials/Textures/Enviroment/Ex Steel Panel/Hull_Walls_Grey_Normal.png" id="5_yqos4"]
-[ext_resource type="Texture2D" uid="uid://76hd7b0nmymw" path="res://Materials/Textures/Enviroment/Ex Steel Panel/Hull_Walls_Grey_ORM.png" id="6_js6j5"]
-[ext_resource type="Texture2D" uid="uid://c46ev1g6t8dm3" path="res://Materials/Textures/Enviroment/Ex Steel Panel/Hull_Walls_Grey_Rust_heavy.png" id="7_qund0"]
-[ext_resource type="Texture2D" uid="uid://31t07cmgclgr" path="res://Materials/Textures/Enviroment/Ex Steel Panel/Hull_Walls_Grey_Rust_light.png" id="8_4jeoy"]
+[ext_resource type="Texture2D" uid="uid://dbhx7njcsdd2d" path="res://Materials/Textures/Enviroment/Interior_walls/wall_trim_Normal.png" id="5_7pl3l"]
+[ext_resource type="Texture2D" uid="uid://cia3n1yu6v6ja" path="res://Materials/Textures/Enviroment/Interior_walls/wall_trim_ORM.png" id="6_n8acb"]
 
 [resource]
 render_priority = 0
@@ -16,21 +14,19 @@ shader = ExtResource("2_oaqx1")
 shader_parameter/emission = Color(0, 0, 0, 1)
 shader_parameter/emission_energy = 1.0
 shader_parameter/normal_scale = 1.0
-shader_parameter/normal_map = ExtResource("5_yqos4")
+shader_parameter/normal_map = ExtResource("5_7pl3l")
 shader_parameter/invert_normal_y = false
 shader_parameter/alpha_cutoff = 0.5
-shader_parameter/color = Color(0.8270657, 0.7908901, 0.7930132, 1)
-shader_parameter/base_texture = ExtResource("3_50eha")
+shader_parameter/color = Color(1, 1, 1, 1)
+shader_parameter/base_texture = ExtResource("3_i18a2")
 shader_parameter/mask_texture = ExtResource("4_mpq0m")
 shader_parameter/use_mask = false
 shader_parameter/mask_strength = 0.0
 shader_parameter/color_replace_detail = 0.5
-shader_parameter/rust_light_texture = ExtResource("8_4jeoy")
-shader_parameter/rust_heavy_texture = ExtResource("7_qund0")
 shader_parameter/rust_light_strength = 0.0
 shader_parameter/rust_heavy_strength = 0.0
 shader_parameter/rust_blend_sharpness = 1.0
-shader_parameter/orm_texture = ExtResource("6_js6j5")
+shader_parameter/orm_texture = ExtResource("6_n8acb")
 shader_parameter/ao_strength = 1.0
 shader_parameter/roughness_strength = 1.0
 shader_parameter/metallic_strength = 0.0
