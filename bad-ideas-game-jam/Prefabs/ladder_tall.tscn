@@ -1,0 +1,29 @@
+[gd_scene format=3 uid="uid://dp6k81du5pupw"]
+
+[ext_resource type="PackedScene" uid="uid://3xxxjfwkcovi" path="res://Assets/Models/Enviroment/BIGJ_Ladder_TALL.glb" id="1_0ebho"]
+[ext_resource type="Material" uid="uid://nn3ewwhgb1a3" path="res://Materials/Ship/ship_handrail_A_mat.tres" id="2_jnp4m"]
+[ext_resource type="Script" uid="uid://415q51ya5s0a" path="res://Assets/Scripts/ladder.gd" id="2_mugn3"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_0ebho"]
+size = Vector3(0.7, 4.235199, 0.53820884)
+
+[node name="BIGJ_Ladder_TALL" unique_id=805119270 instance=ExtResource("1_0ebho")]
+script = ExtResource("2_mugn3")
+
+[node name="ladder_curve_002" parent="." index="0" unique_id=483600460]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0, 0)
+material_override = ExtResource("2_jnp4m")
+
+[node name="Area" type="Area3D" parent="." index="1" unique_id=842562896]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 0, 0, 0)
+collision_layer = 6
+collision_mask = 7
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area" index="0" unique_id=74915218]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -0.0004234314, 2.1175995, 0.09678736)
+shape = SubResource("BoxShape3D_0ebho")
+
+[node name="NavigationLink3D" type="NavigationLink3D" parent="." index="2" unique_id=1561911061]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 2, 0)
+start_position = Vector3(1, -1.9, 0)
+end_position = Vector3(-1, 1.7, 0)
