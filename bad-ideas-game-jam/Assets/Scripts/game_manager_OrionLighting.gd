@@ -87,6 +87,7 @@ var dialog: Dictionary = {
 
 @onready var twin_1 = $"../Twin1"
 @onready var twin_2 = $"../Twin2"
+@onready var dead_twin_2 = $"../DeadTwin2"
 @onready var player = $"../Player"
 @onready var creature = $"../Creature"
 
@@ -424,7 +425,12 @@ func _play_act_1_start() -> void:
 func _play_act_4_lifeboat() -> void:
 	player.toggle_movement_disabled()
 	_dialogue_active = true
-	await _wait_for(10)
+	await _play_sound("dead_wazza_reveal")
+	await dead_twin_2.play_dialogue(62)
+	await player.play_dialogue(101)
+	await dead_twin_2.play_dialogue(62)
+	await player.play_dialogue(101)
+	await dead_twin_2.play_dialogue(62)
 	player.toggle_movement_disabled()
 	_dialogue_active = false
 	_play_act_4_search()

@@ -748,5 +748,5 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.180876, 2.1194236, -47.275
 [node name="Container_Interior_Reveal" parent="." unique_id=944618827 instance=ExtResource("20_r4e2n")]
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -2.5552702, 1.9932939, -32.65922)
 
-[node name="dead_wazza" parent="." unique_id=1825522883 instance=ExtResource("21_r4e2n")]
+[node name="DeadTwin2" parent="." unique_id=1825522883 instance=ExtResource("21_r4e2n")]
 transform = Transform3D(-0.002578362, -0.0001558475, -0.99999666, -0.060334273, 0.99817824, 0, 0.9981749, 0.06033407, -0.0025830676, -6.124528, 8.929073, 64.17389)
