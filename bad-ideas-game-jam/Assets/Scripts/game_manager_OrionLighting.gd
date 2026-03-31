@@ -379,7 +379,6 @@ func _process(_delta: float) -> void:
 			audio_manager.play_boss_music()
 			lightning_strike()
 			player.toggle_movement_disabled()
-			creature.roar()
 			await _wait_for(6.0)
 			player.toggle_movement_disabled()
 			player.play_dialogue(97)
