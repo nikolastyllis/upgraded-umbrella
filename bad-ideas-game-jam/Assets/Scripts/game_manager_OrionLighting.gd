@@ -520,10 +520,10 @@ func _play_act_4_lifeboat() -> void:
 	player.toggle_movement_disabled()
 	_dialogue_active = true
 	await _play_sound("dead_wazza_reveal")
-	await dead_twin_2.play_dialogue(108)
 	await player.play_dialogue(103)
-	await dead_twin_2.play_dialogue(109)
+	await dead_twin_2.play_dialogue(108)
 	await player.play_dialogue(104)
+	await dead_twin_2.play_dialogue(109)
 	await dead_twin_2.play_dialogue(110)
 	await player.play_dialogue(105)
 	await dead_twin_2.play_dialogue(111)
