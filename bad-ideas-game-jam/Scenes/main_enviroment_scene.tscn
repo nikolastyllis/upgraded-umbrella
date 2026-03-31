@@ -8,6 +8,7 @@
 [ext_resource type="Material" uid="uid://c1hik4d12rpb4" path="res://Materials/Ship/ship_greebly_mat.tres" id="3_av35p"]
 [ext_resource type="Material" uid="uid://cbqlv4leqabnr" path="res://Materials/Items/posters.tres" id="3_ruu2y"]
 [ext_resource type="Material" uid="uid://0ujctbwowsms" path="res://Materials/Ship/grey_Panel_rust.tres" id="3_tlnlp"]
+[ext_resource type="PackedScene" uid="uid://k3msivedunbq" path="res://Assets/Models/Enviroment/BIGJ_moors.glb" id="4_gebxy"]
 [ext_resource type="Material" uid="uid://b0ca805bio3ok" path="res://Materials/Ship/Interior_floor.tres" id="4_ruu2y"]
 [ext_resource type="Material" uid="uid://cvdlxl52307wq" path="res://Materials/Ship/ship_hull_mat.tres" id="4_tlnlp"]
 [ext_resource type="Material" uid="uid://y6cxpqfxtnxv" path="res://Materials/Ship/Interior_ceiling.tres" id="5_gebxy"]
@@ -580,6 +581,12 @@ material_override = ExtResource("3_ruu2y")
 [node name="Ship Model" type="Node3D" parent="." unique_id=888447321]
 metadata/_edit_lock_ = true
 
+[node name="BIGJ_moors" parent="Ship Model" unique_id=1156445672 instance=ExtResource("4_gebxy")]
+
+[node name="Moors" parent="Ship Model/BIGJ_moors" index="0" unique_id=1196499165]
+surface_material_override/0 = ExtResource("3_tlnlp")
+surface_material_override/1 = ExtResource("3_tlnlp")
+
 [node name="BIGJ_Ship_Interior" parent="Ship Model" unique_id=593754638 instance=ExtResource("1_jn3ni")]
 
 [node name="Interior Walls" parent="Ship Model/BIGJ_Ship_Interior" index="0" unique_id=1617111990]
@@ -629,6 +636,7 @@ surface_material_override/1 = ExtResource("16_0qs2n")
 material_override = ExtResource("16_0qs2n")
 
 [editable path="posters2"]
+[editable path="Ship Model/BIGJ_moors"]
 [editable path="Ship Model/BIGJ_Ship_Interior"]
 [editable path="Ship Model/BIGJ_Ship_Interior/Toolbox"]
 [editable path="Ship Model/BIGJ_Ship_Interior/Toolbox2"]
