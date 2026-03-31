@@ -37,7 +37,7 @@ func _ready() -> void:
 	for s in _creak_streams:
 		var p := AudioStreamPlayer.new()
 		p.stream = s
-		p.volume_db = -20.0
+		p.volume_db = -25.0
 		p.bus = "Sound"
 		add_child(p)
 		_creak_players.append(p)

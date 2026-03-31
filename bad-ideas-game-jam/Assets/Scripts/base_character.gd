@@ -54,13 +54,13 @@ func _setup_footstep_player() -> void:
 func _play_footstep() -> void:
 	footstep_player.stream = footstep_streams[randi() % footstep_streams.size()]
 	footstep_player.pitch_scale = randf_range(0.8, 1.2)
-	footstep_player.volume_db = randf_range(-10.0, 0.0)
+	footstep_player.volume_db = randf_range(-15.0, -5.0)
 	footstep_player.play()
 
 func _play_ladder_step() -> void:
 	ladder_player.stream = ladder_streams[randi() % ladder_streams.size()]
 	ladder_player.pitch_scale = randf_range(0.8, 1.2)
-	ladder_player.volume_db = randf_range(-10.0, 0.0)
+	ladder_player.volume_db = randf_range(-15.0, -5.0)
 	ladder_player.play()
 
 func _physics_process(delta: float) -> void:
@@ -171,7 +171,7 @@ func get_climb_input() -> float:
 func get_player():
 	pass
 
-func play_dialogue(id: int, volume: float = 20, pitch_scale: float = 1.0, is_roar = false) -> void:
+func play_dialogue(id: int, volume: float = 10, pitch_scale: float = 1.0, is_roar = false) -> void:
 	if game_manager.debug_skip_dialog:
 		return
 	var path := "res://Assets/Dialogue/%d.ogg" % id
@@ -211,7 +211,7 @@ func play_dialogue(id: int, volume: float = 20, pitch_scale: float = 1.0, is_roa
 			dialogue_player = AudioStreamPlayer.new()
 		else:
 			dialogue_player = AudioStreamPlayer3D.new()
-		dialogue_player.volume_db = volume
+		dialogue_player.volume_db = volume * 1.5
 		dialogue_player.pitch_scale = pitch_scale
 		
 	dialogue_player.bus = "Radio" if use_radio else "Sound"
