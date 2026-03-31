@@ -393,6 +393,10 @@ func _can_see_player(player: Node3D) -> bool:
 		return false
 
 func _start_chase(player: Node3D) -> void:
+	
+	if not game_manager.player_has_interacted_with_infected_container:
+		return
+	
 	if _roar_cooldown_timer <= 0.0:
 		_log("_start_chase — roar ready → roaring first")
 		_begin_roar()
@@ -435,6 +439,9 @@ func _end_roar() -> void:
 	_is_roaring = false
 
 func roar() -> void:
+	if not game_manager.player_has_interacted_with_infected_container:
+		return
+	
 	_begin_roar()
 
 func _update_kill_check(delta: float) -> void:

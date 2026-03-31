@@ -171,7 +171,7 @@ func get_climb_input() -> float:
 func get_player():
 	pass
 
-func play_dialogue(id: int, volume: float = 10, pitch_scale: float = 1.0, is_roar = false) -> void:
+func play_dialogue(id: int, volume: float = 20, pitch_scale: float = 1.0, is_roar = false) -> void:
 	if game_manager.debug_skip_dialog:
 		return
 	var path := "res://Assets/Dialogue/%d.ogg" % id
