@@ -276,9 +276,9 @@ func rebake():
 
 func _update_audio_and_rain() -> void:
 	var inside = player.is_inside()
-	audio_manager.set_target(audio_manager.Track.INSIDE,   -10.0  if inside                  else -40.0)
-	audio_manager.set_target(audio_manager.Track.OUTSIDE,  -10.0  if not inside              else -40.0)
-	audio_manager.set_target(audio_manager.Track.RAIN,     -13.0  if _is_night and not inside else -40.0)
+	audio_manager.set_target(audio_manager.Track.INSIDE,   -15.0  if inside                  else -40.0)
+	audio_manager.set_target(audio_manager.Track.OUTSIDE,  -15.0  if not inside              else -40.0)
+	audio_manager.set_target(audio_manager.Track.RAIN,     -20.0  if _is_night and not inside else -40.0)
 	rain.visible = _is_night and not inside
 
 func _ambient_music_loop() -> void:
@@ -840,12 +840,12 @@ func lightning_strike() -> void:
 	sun_light.rotation = original_rotation
 
 	await _wait_for(1.0)
-	audio_manager.play(audio_manager.Track.THUNDER, -10.0 if player.is_inside() else 0.0)
+	audio_manager.play(audio_manager.Track.THUNDER, -15.0 if player.is_inside() else -5.0)
 
 func _start_night_lightning() -> void:
 	_is_night = true
 	while _is_night:
-		var wait_time = randf_range(0.0, 100.0)
+		var wait_time = randf_range(0.0, 200.0)
 		await _wait_for(wait_time)
 		if _is_night:
 			lightning_strike()
