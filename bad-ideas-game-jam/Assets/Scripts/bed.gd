@@ -15,4 +15,4 @@ func on_interact(_player):
 	game_manager.player_has_slept = true
 		
 func can_interact(_player: Node) -> bool:
-	return not game_manager.player_has_slept
+	return not game_manager.player_has_slept and game_manager.player_has_returned_oxy_torch
