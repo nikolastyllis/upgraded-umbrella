@@ -555,10 +555,10 @@ func _play_act1_shift_over():
 
 func _play_act3_wake_up():
 	_dialogue_active = true
-	await _wait_for(2)
+	player.toggle_movement_disabled()
+	await _wait_for(1.0)
 	twin_1.set_target_position(player.global_position)
 	twin_2.set_target_position(player.global_position)
-	player.toggle_movement_disabled()
 	await _play_sound("bell")
 	await twin_1.play_dialogue(36)
 	await player.play_dialogue(37)

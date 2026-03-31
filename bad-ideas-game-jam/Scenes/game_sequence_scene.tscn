@@ -42,6 +42,7 @@
 [ext_resource type="PackedScene" uid="uid://dp6k81du5pupw" path="res://Prefabs/ladder_tall.tscn" id="24_vrw5k"]
 [ext_resource type="PackedScene" uid="uid://dba2iab0imain" path="res://Prefabs/Lights/small_light_tall_white.tscn" id="39_pdtmv"]
 [ext_resource type="PackedScene" uid="uid://bey4d0hveyph8" path="res://Prefabs/storageracks.tscn" id="42_bjte3"]
+[ext_resource type="PackedScene" uid="uid://5tt38esofn3k" path="res://Assets/Models/Bed/Bed_low.fbx" id="43_baisk"]
 
 [sub_resource type="Gradient" id="Gradient_0ixb7"]
 offsets = PackedFloat32Array(0.14097744, 0.36654136, 0.4830827, 0.7838346)
@@ -361,9 +362,8 @@ curve = SubResource("Curve_63acv")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_u5hjn"]
 
-[sub_resource type="BoxMesh" id="BoxMesh_63acv"]
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_63acv"]
+[sub_resource type="BoxShape3D" id="BoxShape3D_q4wla"]
+size = Vector3(0.9161377, 2.2951508, 2.1903992)
 
 [sub_resource type="BoxMesh" id="BoxMesh_yiumw"]
 
@@ -634,9 +634,8 @@ draw_pass_1 = SubResource("RibbonTrailMesh_qcyk2")
 [node name="GameManager" type="Node3D" parent="." unique_id=1749829845]
 transform = Transform3D(-0.87121385, 0, 0.49090374, 0, 1, 0, -0.49090374, 0, -0.87121385, -8.431, 7.972, 75.958)
 script = ExtResource("12_yiumw")
+debug_play_from_act_3 = true
 debug_play_from_act_7 = false
-debug_play_from_act_8 = true
-number_of_supplies = 5
 DAY_SUN_PITCH_DEG = -72.6
 DAY_SUN_YAW_DEG = 124.3
 SUNSET_SUN_YAW_DEG = 130.0
@@ -678,15 +677,15 @@ transform = Transform3D(0.8697965, 0, 0.49341065, 0, 1, 0, -0.49341065, 0, 0.869
 shape = SubResource("BoxShape3D_u5hjn")
 
 [node name="Bed" type="StaticBody3D" parent="GameManager/Locations" unique_id=637987197]
-transform = Transform3D(0.65736836, 0, 0.82998115, 0, 0.29294226, 0, -0.3613166, 0, 1.5100423, -3.6884298, 3.6298532, 21.254187)
+transform = Transform3D(0.87634873, 0, 0.48167717, 0, 1, 0, -0.48167717, 0, 0.87634873, -3.6884298, 3.6298532, 21.254187)
 script = ExtResource("11_qcyk2")
 
-[node name="Bed" type="MeshInstance3D" parent="GameManager/Locations/Bed" unique_id=464638317]
-transform = Transform3D(1, 0, 1.4901161e-08, 0, 1, 0, 0, 0, 1.0000001, 4.7683716e-06, 0, -7.6293945e-06)
-mesh = SubResource("BoxMesh_63acv")
+[node name="Bed_low" parent="GameManager/Locations/Bed" unique_id=2035492518 instance=ExtResource("43_baisk")]
+transform = Transform3D(-0.89994985, 0, -0.009503147, 0, 0.9, 0, 0.009503147, 0, -0.89994985, 1.1691003, -0.15316296, 1.4894524)
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="GameManager/Locations/Bed" unique_id=1276891746]
-shape = SubResource("BoxShape3D_63acv")
+[node name="CollisionShape3D" type="CollisionShape3D" parent="GameManager/Locations/Bed" unique_id=1212645326]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.041932106, 1.0706406, 0.061203003)
+shape = SubResource("BoxShape3D_q4wla")
 
 [node name="HideNpcs1" type="Node3D" parent="GameManager/Locations" unique_id=84367275]
 transform = Transform3D(10, 0, 4.7683716e-07, 0, 9.999998, 0, -4.7683716e-07, 0, 10, 5.6865997, -32, 24.344685)
