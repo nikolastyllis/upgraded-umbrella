@@ -2,20 +2,21 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://d22bf8ccoifx0"
-path="res://.godot/imported/Toolbox_toolbox_mat_Roughness.1001.png-f765795089ef9e1a73e30a04a7cb0d41.ctex"
+uid="uid://xkwuc2bkkril"
+path.s3tc="res://.godot/imported/toolbox_ronnie_mat_ORM.png-1b4270a14ad7e6a92095f1a7359ed577.s3tc.ctex"
 metadata={
-"vram_texture": false
+"imported_formats": ["s3tc_bptc"],
+"vram_texture": true
 }
 
 [deps]
 
-source_file="res://Materials/Textures/SightboxRon/Toolbox_toolbox_mat_Roughness.1001.png"
-dest_files=["res://.godot/imported/Toolbox_toolbox_mat_Roughness.1001.png-f765795089ef9e1a73e30a04a7cb0d41.ctex"]
+source_file="res://Materials/Textures/SightboxRon/toolbox_ronnie_mat_ORM.png"
+dest_files=["res://.godot/imported/toolbox_ronnie_mat_ORM.png-1b4270a14ad7e6a92095f1a7359ed577.s3tc.ctex"]
 
 [params]
 
-compress/mode=0
+compress/mode=2
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/uastc_level=0
@@ -23,7 +24,7 @@ compress/rdo_quality_loss=0.0
 compress/hdr_compression=1
 compress/normal_map=0
 compress/channel_pack=0
-mipmaps/generate=false
+mipmaps/generate=true
 mipmaps/limit=-1
 roughness/mode=0
 roughness/src_normal=""
@@ -37,4 +38,4 @@ process/normal_map_invert_y=false
 process/hdr_as_srgb=false
 process/hdr_clamp_exposure=false
 process/size_limit=0
-detect_3d/compress_to=1
+detect_3d/compress_to=0

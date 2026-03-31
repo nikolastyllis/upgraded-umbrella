@@ -3,9 +3,8 @@
 [ext_resource type="Material" uid="uid://sgetjvg177mb" path="res://Shaders/outline.tres" id="1_08se2"]
 [ext_resource type="Shader" uid="uid://d266trvxphdyu" path="res://Shaders/cel-shader-base.gdshader" id="2_6yfec"]
 [ext_resource type="Texture2D" uid="uid://dg3sckhv25lkk" path="res://Materials/Textures/Enviroment/Interior_walls/floor_trim_Col_Alpha.png" id="3_08se2"]
-[ext_resource type="Texture2D" uid="uid://2qdpb06ouf6e" path="res://Materials/Textures/Enviroment/Ex Steel Panel/Hull_Walls_Grey_Paint_mask.png" id="4_484ni"]
+[ext_resource type="Texture2D" uid="uid://do7pkpcgy4a2x" path="res://Materials/Textures/Enviroment/Interior_walls/floor_trim_Normal.png" id="4_xtsme"]
 [ext_resource type="Texture2D" uid="uid://b6jthv2r6a52g" path="res://Materials/Textures/Enviroment/Interior_walls/floor_trim_ORM.png" id="5_6yfec"]
-[ext_resource type="Texture2D" uid="uid://76hd7b0nmymw" path="res://Materials/Textures/Enviroment/Ex Steel Panel/Hull_Walls_Grey_ORM.png" id="6_mf5wi"]
 
 [resource]
 render_priority = 0
@@ -13,23 +12,22 @@ next_pass = ExtResource("1_08se2")
 shader = ExtResource("2_6yfec")
 shader_parameter/emission = Color(0, 0, 0, 1)
 shader_parameter/emission_energy = 1.0
-shader_parameter/normal_scale = 7.599999989338357e-07
-shader_parameter/normal_map = ExtResource("5_6yfec")
+shader_parameter/normal_scale = 0.20000076950000079
+shader_parameter/normal_map = ExtResource("4_xtsme")
 shader_parameter/invert_normal_y = false
-shader_parameter/alpha_cutoff = 0.5
+shader_parameter/alpha_cutoff = 0.0
 shader_parameter/color = Color(1, 1, 1, 1)
 shader_parameter/base_texture = ExtResource("3_08se2")
-shader_parameter/mask_texture = ExtResource("4_484ni")
 shader_parameter/use_mask = false
 shader_parameter/mask_strength = 0.0
 shader_parameter/color_replace_detail = 0.5
 shader_parameter/rust_light_strength = 0.0
 shader_parameter/rust_heavy_strength = 0.0
 shader_parameter/rust_blend_sharpness = 0.10000000149012
-shader_parameter/orm_texture = ExtResource("6_mf5wi")
+shader_parameter/orm_texture = ExtResource("5_6yfec")
 shader_parameter/ao_strength = 1.0
-shader_parameter/roughness_strength = 0.0
-shader_parameter/metallic_strength = 0.0
+shader_parameter/roughness_strength = 0.3650000173375
+shader_parameter/metallic_strength = 1.0
 shader_parameter/invert_roughness = false
 shader_parameter/specular_color = Color(0.15967038, 0.15967038, 0.1596703, 1)
 shader_parameter/specular_strength = 0.7750000368125

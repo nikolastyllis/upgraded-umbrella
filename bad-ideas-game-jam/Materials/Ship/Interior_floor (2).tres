@@ -1,0 +1,36 @@
+[gd_resource type="ShaderMaterial" format=3 uid="uid://cbswrq2n1p24f"]
+
+[ext_resource type="Material" uid="uid://sgetjvg177mb" path="res://Shaders/outline.tres" id="1_flgcf"]
+[ext_resource type="Shader" uid="uid://d266trvxphdyu" path="res://Shaders/cel-shader-base.gdshader" id="2_p4vvt"]
+[ext_resource type="Texture2D" uid="uid://cipnrnqmeognv" path="res://Materials/Textures/Enviroment/Interior_walls/floor_trim02_Col_Alpha.png" id="3_428pa"]
+[ext_resource type="Texture2D" uid="uid://cmfoj7sibtsut" path="res://Materials/Textures/Enviroment/Interior_walls/floor_trim02_Normal.png" id="4_flgcf"]
+[ext_resource type="Texture2D" uid="uid://c04le57yhm5vj" path="res://Materials/Textures/Enviroment/Interior_walls/floor_trim02_ORM.png" id="5_p4vvt"]
+
+[resource]
+render_priority = 0
+next_pass = ExtResource("1_flgcf")
+shader = ExtResource("2_p4vvt")
+shader_parameter/emission = Color(0, 0, 0, 1)
+shader_parameter/emission_energy = 1.0
+shader_parameter/normal_scale = 7.599999989338357e-07
+shader_parameter/normal_map = ExtResource("4_flgcf")
+shader_parameter/invert_normal_y = false
+shader_parameter/alpha_cutoff = 0.5
+shader_parameter/color = Color(1, 1, 1, 1)
+shader_parameter/base_texture = ExtResource("3_428pa")
+shader_parameter/use_mask = false
+shader_parameter/mask_strength = 0.0
+shader_parameter/color_replace_detail = 0.0
+shader_parameter/rust_light_strength = 0.0
+shader_parameter/rust_heavy_strength = 0.0
+shader_parameter/rust_blend_sharpness = 0.10000000149012
+shader_parameter/orm_texture = ExtResource("5_p4vvt")
+shader_parameter/ao_strength = 1.0
+shader_parameter/roughness_strength = 0.510000024225
+shader_parameter/metallic_strength = 0.0
+shader_parameter/invert_roughness = false
+shader_parameter/specular_color = Color(0.15967038, 0.15967038, 0.1596703, 1)
+shader_parameter/specular_strength = 0.7750000368125
+shader_parameter/fresnel = Color(0.25565878, 0.25565878, 0.25565878, 0.3019608)
+shader_parameter/uv_scale = Vector2(1, 1)
+shader_parameter/uv_offset = Vector2(0, 0)
