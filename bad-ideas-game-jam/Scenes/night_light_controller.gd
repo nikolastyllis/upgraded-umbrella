@@ -2,12 +2,12 @@ extends Node3D
 
 @export var look_driver_path: NodePath = ^"../LookDriver"
 
-# LookDriver t range is 0.0 -> 1.0
 @export_range(0.0, 1.0, 0.001) var night_start_t: float = 0.30
 @export_range(0.0, 1.0, 0.001) var night_end_t: float = 0.70
 
 @export var steady_group_path: NodePath = ^"Steady"
 @export var flashing_group_path: NodePath = ^"Flashing"
+@export var always_on_group_path: NodePath = ^"AlwaysOn"
 
 @export var flashing_enabled: bool = true
 @export var flash_speed: float = 4.0
@@ -20,12 +20,15 @@ var look_driver: Node = null
 
 var steady_lights: Array[Light3D] = []
 var flashing_lights: Array[Light3D] = []
+var always_on_lights: Array[Light3D] = []
 
 var steady_original_energies: Dictionary = {}
 var flashing_original_energies: Dictionary = {}
+var always_on_original_energies: Dictionary = {}
 
 var steady_original_visibility: Dictionary = {}
 var flashing_original_visibility: Dictionary = {}
+var always_on_original_visibility: Dictionary = {}
 
 var is_setup: bool = false
 var flash_timer: float = 0.0
@@ -39,6 +42,7 @@ func _ready() -> void:
 
 	var steady_root: Node = get_node_or_null(steady_group_path)
 	var flashing_root: Node = get_node_or_null(flashing_group_path)
+	var always_on_root: Node = get_node_or_null(always_on_group_path)
 
 	if steady_root != null:
 		_collect_lights(steady_root, steady_lights)
@@ -48,6 +52,11 @@ func _ready() -> void:
 		_collect_lights(flashing_root, flashing_lights)
 		_store_light_values(flashing_lights, flashing_original_energies, flashing_original_visibility)
 
+	if always_on_root != null:
+		_collect_lights(always_on_root, always_on_lights)
+		_store_light_values(always_on_lights, always_on_original_energies, always_on_original_visibility)
+		_apply_always_on()
+
 	is_setup = true
 	_apply_state(0.0)
 
@@ -55,6 +64,8 @@ func _ready() -> void:
 		print("Night Lights ready")
 		print("Steady lights: ", steady_lights.size())
 		print("Flashing lights: ", flashing_lights.size())
+		print("Always On lights: ", always_on_lights.size())
+
 
 func _process(delta: float) -> void:
 	if not is_setup:
@@ -76,6 +87,7 @@ func _apply_state(_delta: float) -> void:
 		_apply_flashing_night()
 	else:
 		_apply_all_day()
+
 
 func _apply_steady_night() -> void:
 	for light: Light3D in steady_lights:
@@ -126,6 +138,16 @@ func _apply_all_day() -> void:
 		light.visible = false
 		light.light_energy = 0.0
 		_set_parent_emission(light, false)
+		
+	_apply_always_on()
+
+func _apply_always_on() -> void:
+	for light: Light3D in always_on_lights:
+		if not is_instance_valid(light):
+			continue
+		light.visible = bool(always_on_original_visibility.get(light, true))
+		light.light_energy = float(always_on_original_energies.get(light, 1.0))
+		_set_parent_emission(light, true)
 
 
 func _get_look_t() -> float:
@@ -138,11 +160,13 @@ func _get_look_t() -> float:
 
 	return 0.0
 
+
 func _collect_lights(root: Node, out_array: Array[Light3D]) -> void:
 	for child: Node in root.get_children():
 		if child is Light3D:
 			out_array.append(child as Light3D)
 		_collect_lights(child, out_array)
+
 
 func _set_parent_emission(light: Light3D, enabled: bool) -> void:
 	var parent := light.get_parent()
@@ -152,6 +176,7 @@ func _set_parent_emission(light: Light3D, enabled: bool) -> void:
 			(mat as StandardMaterial3D).emission_enabled = enabled
 		elif mat is ShaderMaterial:
 			(mat as ShaderMaterial).set_shader_parameter("emission_enabled", enabled)
+
 
 func _store_light_values(
 	source_lights: Array[Light3D],

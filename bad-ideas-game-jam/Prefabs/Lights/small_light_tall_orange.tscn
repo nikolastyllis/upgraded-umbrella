@@ -23,6 +23,6 @@ light_energy = 4.91
 light_indirect_energy = 1.445
 light_size = 0.148
 light_specular = 4.026
-omni_range = 4.346162
+omni_range = 3.0
 omni_attenuation = 0.1
 omni_shadow_mode = 0

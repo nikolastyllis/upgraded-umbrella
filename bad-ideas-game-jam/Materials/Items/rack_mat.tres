@@ -1,30 +1,30 @@
-[gd_resource type="ShaderMaterial" format=3 uid="uid://bp4awwywni8f2"]
+[gd_resource type="ShaderMaterial" format=3 uid="uid://dtcdd8vvvp54x"]
 
-[ext_resource type="Material" uid="uid://sgetjvg177mb" path="res://Shaders/outline.tres" id="1_f1u86"]
-[ext_resource type="Shader" uid="uid://d266trvxphdyu" path="res://Shaders/cel-shader-base.gdshader" id="2_x2jjj"]
-[ext_resource type="Texture2D" uid="uid://ccsit6umkn2r6" path="res://Assets/Models/Enviroment/s_racks_mat_Col_Alpha.png" id="3_f1u86"]
-[ext_resource type="Texture2D" uid="uid://bvwjcn6qirbqy" path="res://Assets/Models/Enviroment/s_racks_mat_Normal.png" id="4_x2jjj"]
-[ext_resource type="Texture2D" uid="uid://c0j242gwbkgar" path="res://Assets/Models/Enviroment/s_racks_mat_ORM.png" id="5_vw3nw"]
+[ext_resource type="Material" uid="uid://sgetjvg177mb" path="res://Shaders/outline.tres" id="1_5nxit"]
+[ext_resource type="Shader" uid="uid://d266trvxphdyu" path="res://Shaders/cel-shader-base.gdshader" id="2_n8t2i"]
+[ext_resource type="Texture2D" uid="uid://c8tp70c3wdju" path="res://Materials/Textures/SightboxWazz/Toolbox_toolbox_wazza_mat_BaseColor.png" id="3_85ue0"]
+[ext_resource type="Texture2D" uid="uid://b72ybt0xlhcui" path="res://Materials/Textures/SightboxWazz/Toolbox_toolbox_mat_Normal.1001.png" id="4_oos5w"]
+[ext_resource type="Texture2D" uid="uid://cp5t71x0lksxc" path="res://Materials/Textures/SightboxWazz/toolbox_mat_wazza_ORM.png" id="5_vjufm"]
 
 [resource]
 render_priority = 0
-next_pass = ExtResource("1_f1u86")
-shader = ExtResource("2_x2jjj")
+next_pass = ExtResource("1_5nxit")
+shader = ExtResource("2_n8t2i")
 shader_parameter/emission = Color(0, 0, 0, 1)
 shader_parameter/emission_energy = 1.0
 shader_parameter/normal_scale = 0.2000007695000008
-shader_parameter/normal_map = ExtResource("4_x2jjj")
+shader_parameter/normal_map = ExtResource("4_oos5w")
 shader_parameter/invert_normal_y = false
 shader_parameter/alpha_cutoff = 0.0
 shader_parameter/color = Color(1, 1, 1, 1)
-shader_parameter/base_texture = ExtResource("3_f1u86")
+shader_parameter/base_texture = ExtResource("3_85ue0")
 shader_parameter/use_mask = false
 shader_parameter/mask_strength = 0.0
 shader_parameter/color_replace_detail = 0.0
 shader_parameter/rust_light_strength = 0.0
 shader_parameter/rust_heavy_strength = 0.0
 shader_parameter/rust_blend_sharpness = 0.10000000149012
-shader_parameter/orm_texture = ExtResource("5_vw3nw")
+shader_parameter/orm_texture = ExtResource("5_vjufm")
 shader_parameter/ao_strength = 1.0
 shader_parameter/roughness_strength = 1.0
 shader_parameter/metallic_strength = 1.0

@@ -575,7 +575,7 @@ metadata/_edit_lock_ = true
 
 [node name="BIGJ_Ship_Interior" parent="Ship Model" unique_id=593754638 instance=ExtResource("1_jn3ni")]
 
-[node name="Interior Walls" parent="Ship Model/BIGJ_Ship_Interior" index="0" unique_id=1617111990]
+[node name="Interior Walls" parent="Ship Model/BIGJ_Ship_Interior" index="0" unique_id=1975131406]
 surface_material_override/0 = ExtResource("7_0qs2n")
 surface_material_override/1 = ExtResource("4_ruu2y")
 surface_material_override/2 = ExtResource("5_gebxy")
@@ -583,23 +583,23 @@ surface_material_override/3 = ExtResource("6_v7pwh")
 surface_material_override/4 = ExtResource("7_xadyp")
 surface_material_override/5 = ExtResource("8_3jkke")
 
-[node name="Toolbox" parent="Ship Model/BIGJ_Ship_Interior" unique_id=1462304787 instance=ExtResource("23_2b4nk")]
+[node name="Toolbox" parent="Ship Model/BIGJ_Ship_Interior" unique_id=1789964356 instance=ExtResource("23_2b4nk")]
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -7.7244735, 3.7113528, 59.83093)
 
-[node name="BunkBed_low_006" parent="Ship Model/BIGJ_Ship_Interior/Toolbox" index="0" unique_id=382848717]
+[node name="BunkBed_low_006" parent="Ship Model/BIGJ_Ship_Interior/Toolbox" index="0" unique_id=1537034504]
 surface_material_override/0 = ExtResource("22_v7pwh")
 
-[node name="Toolbox2" parent="Ship Model/BIGJ_Ship_Interior" unique_id=1184489304 instance=ExtResource("23_2b4nk")]
+[node name="Toolbox2" parent="Ship Model/BIGJ_Ship_Interior" unique_id=1478285729 instance=ExtResource("23_2b4nk")]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -5.311519, 3.7113528, 58.41831)
 
-[node name="BunkBed_low_006" parent="Ship Model/BIGJ_Ship_Interior/Toolbox2" index="0" unique_id=382848717]
+[node name="BunkBed_low_006" parent="Ship Model/BIGJ_Ship_Interior/Toolbox2" index="0" unique_id=1537034504]
 transform = Transform3D(5.474772e-05, -55.383156, -6.354507e-06, 1.5560239e-18, -1.3204373e-05, 53.30547, -183.70287, -1.8156014e-05, -2.7105054e-20, 0, 0, 1.2581916)
 material_override = ExtResource("23_xadyp")
 surface_material_override/0 = ExtResource("22_v7pwh")
 
 [node name="BIGJ_Ship_03" parent="Ship Model" unique_id=1431557414 instance=ExtResource("1_l8ged")]
 
-[node name="Main Deck" parent="Ship Model/BIGJ_Ship_03" index="0" unique_id=1573100528]
+[node name="Main Deck" parent="Ship Model/BIGJ_Ship_03" index="0" unique_id=995125642]
 surface_material_override/0 = ExtResource("7_gcmii")
 surface_material_override/1 = ExtResource("3_av35p")
 surface_material_override/2 = ExtResource("2_0qs2n")
@@ -612,13 +612,12 @@ surface_material_override/8 = ExtResource("5_mtju5")
 surface_material_override/9 = ExtResource("8_ucy3n")
 
 [node name="BIGJ_LifeBoat" parent="Ship Model" unique_id=826326853 instance=ExtResource("15_jn3ni")]
-visible = false
 
-[node name="dada" parent="Ship Model/BIGJ_LifeBoat" index="0" unique_id=2118010741]
+[node name="dada" parent="Ship Model/BIGJ_LifeBoat" index="0" unique_id=1617361252]
 surface_material_override/0 = ExtResource("5_mtju5")
 surface_material_override/1 = ExtResource("16_0qs2n")
 
-[node name="Cube_024" parent="Ship Model/BIGJ_LifeBoat/life_boat_rig/Skeleton3D" parent_id_path=PackedInt32Array(826326853, 1095967093) index="0" unique_id=839208963]
+[node name="Cube_024" parent="Ship Model/BIGJ_LifeBoat/life_boat_rig/Skeleton3D" parent_id_path=PackedInt32Array(826326853, 675228460) index="0" unique_id=647522270]
 material_override = ExtResource("16_0qs2n")
 
 [editable path="Ship Model/BIGJ_Ship_Interior"]

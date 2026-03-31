@@ -41,6 +41,7 @@
 [ext_resource type="PackedScene" uid="uid://bh0bv5jr5xj60" path="res://Prefabs/can.tscn" id="23_n0oop"]
 [ext_resource type="PackedScene" uid="uid://dp6k81du5pupw" path="res://Prefabs/ladder_tall.tscn" id="24_vrw5k"]
 [ext_resource type="PackedScene" uid="uid://dba2iab0imain" path="res://Prefabs/Lights/small_light_tall_white.tscn" id="39_pdtmv"]
+[ext_resource type="PackedScene" uid="uid://bey4d0hveyph8" path="res://Prefabs/storageracks.tscn" id="42_bjte3"]
 
 [sub_resource type="Gradient" id="Gradient_0ixb7"]
 offsets = PackedFloat32Array(0.14097744, 0.36654136, 0.4830827, 0.7838346)
@@ -442,9 +443,32 @@ flash_max_multiplier = 5.0
 use_smooth_flash = true
 metadata/_edit_lock_ = true
 
+[node name="AlwaysOn" type="Node3D" parent="Lighting/Night Lights" unique_id=279275196]
+
+[node name="common_light" parent="Lighting/Night Lights/AlwaysOn" unique_id=1569446636 instance=ExtResource("8_3e3ic")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.743264, 5.92644, 58.611046)
+
+[node name="common_light2" parent="Lighting/Night Lights/AlwaysOn" unique_id=534985533 instance=ExtResource("8_3e3ic")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.3611581, 5.92644, 60.70993)
+
+[node name="common_light4" parent="Lighting/Night Lights/AlwaysOn" unique_id=2066163622 instance=ExtResource("8_3e3ic")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.98988795, 5.92644, 60.70993)
+
+[node name="common_light3" parent="Lighting/Night Lights/AlwaysOn" unique_id=228442567 instance=ExtResource("8_3e3ic")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 2.595192, 5.92644, 62.948124)
+
+[node name="common_light5" parent="Lighting/Night Lights/AlwaysOn" unique_id=1880374397 instance=ExtResource("8_3e3ic")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -4.077646, 13.704211, 59.564068)
+
+[node name="common_light6" parent="Lighting/Night Lights/AlwaysOn" unique_id=483036720 instance=ExtResource("8_3e3ic")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.499712, 13.704211, 60.613033)
+
+[node name="common_light7" parent="Lighting/Night Lights/AlwaysOn" unique_id=1213958606 instance=ExtResource("8_3e3ic")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 2.7240248, 13.704211, 58.301384)
+
 [node name="Constant" type="Node3D" parent="Lighting/Night Lights" unique_id=2115008250]
 
-[node name="common_light" parent="Lighting/Night Lights/Constant" unique_id=1569446636 instance=ExtResource("8_3e3ic")]
+[node name="common_light" parent="Lighting/Night Lights/Constant" unique_id=1656267754 instance=ExtResource("8_3e3ic")]
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, -2.7203884, 15.957123, 64.14806)
 
 [node name="common_light5" parent="Lighting/Night Lights/Constant" unique_id=1574935267 instance=ExtResource("8_3e3ic")]
@@ -535,7 +559,7 @@ transform = Transform3D(0.3, 0, 0, 0, -0.3, 4.5298744e-08, 0, -4.5298744e-08, -0
 transform = Transform3D(0.3, 0, 0, 0, -0.3, 4.5298744e-08, 0, -4.5298744e-08, -0.3, -0.40890068, 4.4795475, 28.627434)
 
 [node name="small_light_tall" parent="Lighting/Night Lights/Flashing Lights" unique_id=1966750417 instance=ExtResource("15_bjte3")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.473631, 12.900982, 67.34928)
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -9.327373, 10.962282, 67.34928)
 
 [node name="node3D" type="Node3D" parent="." unique_id=1483757596]
 
@@ -593,9 +617,6 @@ bidirectional = false
 end_position = Vector3(-1.62, -5.695, -0.075)
 travel_cost = 2.0
 
-[node name="Can" parent="NavigationRegion3D" unique_id=442081520 instance=ExtResource("23_n0oop")]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -10.129318, 7.5962954, 115.828896)
-
 [node name="Player" parent="." unique_id=1647912674 instance=ExtResource("9_r4e2n")]
 transform = Transform3D(-4.3711385e-08, 0, -1, 0, 0.99999994, 0, 0.99999994, 0, -4.371139e-08, -0.47299242, 2.5669377, -43.56121)
 
@@ -613,7 +634,7 @@ draw_pass_1 = SubResource("RibbonTrailMesh_qcyk2")
 [node name="GameManager" type="Node3D" parent="." unique_id=1749829845]
 transform = Transform3D(-0.87121385, 0, 0.49090374, 0, 1, 0, -0.49090374, 0, -0.87121385, -8.431, 7.972, 75.958)
 script = ExtResource("12_yiumw")
-debug_play_from_act_7 = false
+debug_skip_dialog = true
 DAY_SUN_PITCH_DEG = -72.6
 DAY_SUN_YAW_DEG = 124.3
 SUNSET_SUN_YAW_DEG = 130.0
@@ -690,7 +711,7 @@ transform = Transform3D(-0.8712137, 0, -0.49090365, 0, 1, 0, 0.49090365, 0, -0.8
 transform = Transform3D(-0.8712137, 0, -0.49090365, 0, 1, 0, 0.49090365, 0, -0.8712137, 5.5403247, 4.346075, 16.667736)
 
 [node name="Camera3D" type="Camera3D" parent="GameManager" unique_id=1487974853]
-transform = Transform3D(0.30559552, -0.5115539, 0.8030716, 0, 0.8434196, 0.5372554, -0.95216143, -0.16418284, 0.25774527, 7.094821, 3.2117147, 4.425983)
+transform = Transform3D(0.30559552, -0.5115539, 0.8030716, 0, 0.8434196, 0.5372554, -0.95216143, -0.16418284, 0.25774527, 10.056137, 6.3087335, 5.376415)
 fov = 80.0
 
 [node name="Credits" type="Control" parent="GameManager" unique_id=247153691]
@@ -860,6 +881,21 @@ transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -3.2
 
 [node name="Can" parent="." unique_id=1905628724 instance=ExtResource("23_n0oop")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.71669585, 22.648092, 58.90433)
+
+[node name="storageracks" parent="." unique_id=1677079046 instance=ExtResource("42_bjte3")]
+transform = Transform3D(0.7, 0, 0, 0, 0.7, 0, 0, 0, 0.7, 4.055749, 3.7882638, 64.10604)
+
+[node name="Can2" parent="." unique_id=442081520 instance=ExtResource("23_n0oop")]
+transform = Transform3D(-0.091067135, 0, -0.9958448, 0, 1, 0, 0.9958448, 0, -0.091067135, 2.962799, 4.1253066, 64.29654)
+
+[node name="Can3" parent="." unique_id=1852873829 instance=ExtResource("23_n0oop")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.4634242, 0.36269987, 64.01887)
+
+[node name="Can4" parent="." unique_id=55397248 instance=ExtResource("23_n0oop")]
+transform = Transform3D(-0.036643688, 0, -0.9993284, 0, 1, 0, 0.9993284, 0, -0.036643688, -2.5830193, 0.36269975, 63.51092)
+
+[node name="Can5" parent="." unique_id=1049447832 instance=ExtResource("23_n0oop")]
+transform = Transform3D(-0.06322603, -0.99799925, 0, 0.99799925, -0.06322603, 0, 0, 0, 1, -2.9450543, 0.27811342, 63.97918)
 
 [connection signal="pressed" from="GameManager/Credits/CenterContainer/Credits/Back" to="GameManager/Credits" method="_on_back_pressed"]
 

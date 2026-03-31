@@ -24,7 +24,7 @@ var dialog: Dictionary = {
 	22: "[Wazza] Leave Quentin Tarantino alone.",
 	23: "[Wazza] Pop Fiction! Hahaha.",
 	24: "[Ronnie] Aahahaha... haha. Alright, cut it out, we have work to do.",
-	25: "[Wazza] That bell signals tools down, mate. Put them down.",
+	25: "[Wazza] That bell signals beer O'clock mate, that's it, that'll do it for the day.",
 	26: "[Gilbert] Are we seriously gonna finish now?",
 	27: "[Ronnie] Listen, Rice Bubbles, you're new to this game and I don't know what they taught you at school. But here in the real world, we have a saying.",
 	28: "[Ronnie] Why do today what you can do tomorrow!",
