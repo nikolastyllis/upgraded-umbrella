@@ -30,6 +30,8 @@ var _is_roaring        := false
 var _is_killing        := false
 var _is_killing_locked := false
 
+var _is_first_chase = true
+
 var _los_timer           := 0.0
 var _lose_sight_timer    := 0.0
 var _roar_timer          := 0.0
@@ -397,9 +399,15 @@ func _start_chase(player: Node3D) -> void:
 	if not game_manager.player_has_interacted_with_infected_container:
 		return
 	
+	var dialogue_id = 0	
+	if _is_first_chase:
+		dialogue_id = 91
+	
+	_is_first_chase = false
+	
 	if _roar_cooldown_timer <= 0.0:
 		_log("_start_chase — roar ready → roaring first")
-		_begin_roar()
+		_begin_roar(dialogue_id)
 	else:
 		_log("_start_chase — roar on cooldown (%.2fs) → chase directly" % _roar_cooldown_timer)
 		_is_chasing     = true
@@ -413,7 +421,7 @@ func _stop_chase() -> void:
 	target_position = Vector3.ZERO
 	_has_target     = false
 
-func _begin_roar() -> void:
+func _begin_roar(dialogue_id: int = 0) -> void:
 	_log("_begin_roar — duration=%.1f  cooldown=%.1f" % [ROAR_DURATION, ROAR_COOLDOWN])
 	_is_roaring          = true
 	_roar_timer          = ROAR_DURATION
@@ -421,10 +429,12 @@ func _begin_roar() -> void:
 	
 	animation_tree.set("parameters/RoarOneShot/request",
 				AnimationNodeOneShot.ONE_SHOT_REQUEST_FIRE)
-
-	var dialogue_id := randi_range(80, 84)
+	
+	if dialogue_id == 0:
+		dialogue_id = randi_range(80, 84)
+		
 	_log("_begin_roar — playing dialogue id=%d" % dialogue_id)
-	play_dialogue(dialogue_id, 30, 0.5, true)
+	play_dialogue(dialogue_id, 20, 0.8, true)
 
 func _tick_roar(delta: float) -> void:
 	_roar_timer -= delta
@@ -437,12 +447,6 @@ func _tick_roar(delta: float) -> void:
 
 func _end_roar() -> void:
 	_is_roaring = false
-
-func roar() -> void:
-	if not game_manager.player_has_interacted_with_infected_container:
-		return
-	
-	_begin_roar()
 
 func _update_kill_check(delta: float) -> void:
 	if _is_killing:
@@ -498,7 +502,6 @@ func _begin_kill(player: Node3D) -> void:
 			player.die()
 			_is_chasing = false
 			_has_target = false
-			roar()
 		else:
 			_log("_begin_kill — player escaped, resuming chase")
 			target_position = cur.global_position  # keep chasing

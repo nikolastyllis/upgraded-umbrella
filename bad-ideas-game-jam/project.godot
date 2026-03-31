@@ -28,6 +28,10 @@ window/size/viewport_height=1080
 window/size/mode=4
 window/stretch/mode="canvas_items"
 
+[editor]
+
+movie_writer/movie_file="C:/Users/nikol/OneDrive/Desktop/Video3/movie.avi"
+
 [gui]
 
 fonts/dynamic_fonts/use_oversampling=false
