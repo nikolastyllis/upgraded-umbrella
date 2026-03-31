@@ -1,8 +1,0 @@
-[gd_resource type="StandardMaterial3D" format=3 uid="uid://d3akm4mckqms"]
-
-[resource]
-resource_name = "WyattSmith_Zachary_Showcase_Poster2_CMYK"
-transparency = 4
-cull_mode = 2
-roughness = 0.5
-texture_repeat = false
