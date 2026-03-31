@@ -83,6 +83,17 @@ var dialog: Dictionary = {
 	93: "[Ronnie] Come and see us at the lifeboat.",
 	266: "[Ronnie] Yeah, mate, end of the day. Put the tools down and let's get out of here.",
 	433: "[Wazza] Around five-fifty at the servo.",
+	108: "[Wazza] Ronnie is that you mate? Oh... oh it's just you Gilbert.",
+	109: "[Wazza] There was some kind of crazy fish monster waiting for us in that container from yestie. Ronnie and I made a break for the lifeboat, but we couldn’t launch it ’cause the rats had gotten into all the supplies.",
+	110: "[Wazza] Ronnie went off to look for more, but then he came back as some half-Ronnie hybrid monster. It ate me arms and me legs… and me bloody tattoos.",
+	111: "[Wazza] Listen up, Bubbles. The only way you’re getting out of here is if you grab that oxy torch and cut open all the crates to find the supplies. I reckon up near where that thing came from is a good place to start. Stockpile it all back here, and once you’ve got enough, peel off and get out. Don’t worry, I’ll keep my eye on… oh, mate! I think my goose is cooked! I can see the light! Quickly, Bubbles! Grant a dying man one last wish!",
+	112: "[Wazza] Get me a suck worth from the lock-up!",
+	113: "[Wazza] You tell me, sugar lips!",
+	103: "[Gilbert] Wazza, what’s happened? Are you okay?",
+	104: "[Gilbert] Wa... what's happened.",
+	105: "[Gilbert] You… you were gonna go without me?",
+	106: "[Gilbert] Eh... any.. anything.",
+	107: "[Gilbert] Okay, sure… but Wazza, what’s a suck worth?"
 }
 
 @onready var twin_1 = $"../Twin1"
@@ -509,18 +520,17 @@ func _play_act_4_lifeboat() -> void:
 	player.toggle_movement_disabled()
 	_dialogue_active = true
 	await _play_sound("dead_wazza_reveal")
-	await player.play_dialogue(102)
-	await dead_twin_2.play_dialogue(62)
+	await dead_twin_2.play_dialogue(108)
 	await player.play_dialogue(103)
-	await dead_twin_2.play_dialogue(62)
+	await dead_twin_2.play_dialogue(109)
 	await player.play_dialogue(104)
-	await dead_twin_2.play_dialogue(62)
+	await dead_twin_2.play_dialogue(110)
 	await player.play_dialogue(105)
-	await dead_twin_2.play_dialogue(62)
+	await dead_twin_2.play_dialogue(111)
 	await player.play_dialogue(106)
-	await dead_twin_2.play_dialogue(62)
+	await dead_twin_2.play_dialogue(112)
 	await player.play_dialogue(107)
-	await dead_twin_2.play_dialogue(62)
+	await dead_twin_2.play_dialogue(113)
 	player.toggle_movement_disabled()
 	_dialogue_active = false
 
