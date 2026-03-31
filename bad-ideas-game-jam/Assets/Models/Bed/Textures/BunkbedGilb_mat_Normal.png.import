@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dkmis0bi2wkgd"
-path.s3tc="res://.godot/imported/Bunkbed_twins_mat_Normal.png-4cc900754c25bb763122d072e294484a.s3tc.ctex"
+uid="uid://pqnnd4eaokk6"
+path.s3tc="res://.godot/imported/BunkbedGilb_mat_Normal.png-112a15625f985aa84087c450089225dc.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://Assets/Models/Bed/Textures/Bunkbed_twins_mat_Normal.png"
-dest_files=["res://.godot/imported/Bunkbed_twins_mat_Normal.png-4cc900754c25bb763122d072e294484a.s3tc.ctex"]
+source_file="res://Assets/Models/Bed/Textures/BunkbedGilb_mat_Normal.png"
+dest_files=["res://.godot/imported/BunkbedGilb_mat_Normal.png-112a15625f985aa84087c450089225dc.s3tc.ctex"]
 
 [params]
 

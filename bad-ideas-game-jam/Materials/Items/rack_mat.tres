@@ -1,4 +1,4 @@
-[gd_resource type="ShaderMaterial" format=3 uid="uid://dtcdd8vvvp54x"]
+[gd_resource type="ShaderMaterial" format=3 uid="uid://djpdlgsgpfynk"]
 
 [ext_resource type="Material" uid="uid://sgetjvg177mb" path="res://Shaders/outline.tres" id="1_5nxit"]
 [ext_resource type="Shader" uid="uid://d266trvxphdyu" path="res://Shaders/cel-shader-base.gdshader" id="2_n8t2i"]

@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://5tt38esofn3k"
-path="res://.godot/imported/Bed_low.fbx-8c2c8f56346f8a008db941b08408e4ed.scn"
+uid="uid://bqw814txmdpgd"
+path="res://.godot/imported/posters.glb-c3f9d40888b6305ee08715b5cdae96eb.scn"
 
 [deps]
 
-source_file="res://Assets/Models/Bed/Bed_low.fbx"
-dest_files=["res://.godot/imported/Bed_low.fbx-8c2c8f56346f8a008db941b08408e4ed.scn"]
+source_file="res://Assets/Models/Enviroment/posters.glb"
+dest_files=["res://.godot/imported/posters.glb-c3f9d40888b6305ee08715b5cdae96eb.scn"]
 
 [params]
 
@@ -30,23 +30,13 @@ meshes/force_disable_compression=false
 skins/use_named_skins=true
 animation/import=true
 animation/fps=30
-animation/trimming=true
+animation/trimming=false
 animation/remove_immutable_tracks=true
 animation/import_rest_as_RESET=false
 import_script/path=""
 materials/extract=0
 materials/extract_format=0
 materials/extract_path=""
-_subresources={
-"materials": {
-"Bunkbed_mat": {
-"use_external/enabled": true,
-"use_external/fallback_path": "res://Materials/Items/bed_Gilb.tres",
-"use_external/path": "uid://uhxxhvpo1pox"
-}
-}
-}
-fbx/importer=0
-fbx/allow_geometry_helper_nodes=false
-fbx/embedded_image_handling=1
-fbx/naming_version=2
+_subresources={}
+gltf/naming_version=2
+gltf/embedded_image_handling=0
