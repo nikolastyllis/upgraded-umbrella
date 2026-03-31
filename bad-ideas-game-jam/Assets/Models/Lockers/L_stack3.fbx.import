@@ -41,7 +41,7 @@ _subresources={
 "nodes": {
 "PATH:locker_stack2": {
 "generate/physics": true,
-"physics/shape_type": 3
+"physics/shape_type": 2
 }
 }
 }
