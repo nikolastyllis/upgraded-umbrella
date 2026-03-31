@@ -29,6 +29,12 @@ var _ik_target_node: Node3D = null
 
 @onready var camera := $CameraOrigin/SpringArm3D/Camera3D
 
+@onready var quit_menu := $CameraOrigin/SpringArm3D/Camera3D/QuitMenuLayer
+@onready var confirm_button := $CameraOrigin/SpringArm3D/Camera3D/QuitMenuLayer/Background/VBoxContainer/HBoxContainer/ConfirmButton
+@onready var cancel_button := $CameraOrigin/SpringArm3D/Camera3D/QuitMenuLayer/Background/VBoxContainer/HBoxContainer/CancelButton
+
+var quit_menu_open := false
+
 const FOV_NORMAL := 80.0
 const FOV_DISABLED := 50.0
 
@@ -121,8 +127,14 @@ func _ready() -> void:
 	torch_omni.light_energy = 0.0
 	_setup_right_hand_ik()
 	_setup_panting_player()
+	quit_menu.visible = false
+	quit_menu.process_mode = Node.PROCESS_MODE_ALWAYS
+	confirm_button.process_mode = Node.PROCESS_MODE_ALWAYS
+	cancel_button.process_mode = Node.PROCESS_MODE_ALWAYS
 
 func _input(event: InputEvent) -> void:
+	if quit_menu_open:
+		return
 	if not event is InputEventMouseMotion:
 		return
 	handle_mouse_look(event)
@@ -184,6 +196,7 @@ func _process(delta: float) -> void:
 	update_interactable()
 	handle_interact(delta)
 	_update_creak(delta)
+	handle_quit()
 
 func _update_creak(delta: float) -> void:
 	_creak_check_timer -= delta
@@ -224,7 +237,6 @@ func die() -> void:
 func _physics_process(delta: float) -> void:
 	super._physics_process(delta)
 	update_camera(delta)
-	handle_quit()
 	handle_stamina(delta)
 	
 	if Input.is_action_just_pressed("ui_accept") and is_climbing:
@@ -326,7 +338,23 @@ func handle_mouse_look(event: InputEventMouseMotion) -> void:
 
 func handle_quit() -> void:
 	if Input.is_action_just_pressed("quit"):
-		get_tree().quit()
+		if quit_menu_open:
+			return
+		quit_menu_open = true
+		quit_menu.visible = true
+		movement_disabled = true
+		Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
+		get_tree().paused = true
+
+func _on_quit_confirmed() -> void:
+	get_tree().quit()
+
+func _on_quit_cancelled() -> void:
+	quit_menu_open = false
+	quit_menu.visible = false
+	movement_disabled = false
+	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
+	get_tree().paused = false
 
 func handle_interact(delta: float) -> void:
 	if not can_interact:
@@ -573,3 +601,9 @@ func _update_panting(delta: float) -> void:
 		target_db,
 		1.0 - exp(-PANTING_FADE_SPD * delta)
 	)
+
+func _on_confirm_button_pressed() -> void:
+	_on_quit_confirmed()
+
+func _on_cancel_button_pressed() -> void:
+	_on_quit_cancelled()

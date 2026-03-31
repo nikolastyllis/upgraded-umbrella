@@ -219,6 +219,55 @@ theme_override_font_sizes/normal_font_size = 12
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="QuitMenuLayer" type="CanvasLayer" parent="CameraOrigin/SpringArm3D/Camera3D" unique_id=1873088328]
+layer = 10000000
+
+[node name="Background" type="ColorRect" parent="CameraOrigin/SpringArm3D/Camera3D/QuitMenuLayer" unique_id=782715981]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.6901961)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CameraOrigin/SpringArm3D/Camera3D/QuitMenuLayer/Background" unique_id=1961541847]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="QuitLabel" type="Label" parent="CameraOrigin/SpringArm3D/Camera3D/QuitMenuLayer/Background/VBoxContainer" unique_id=1890590290]
+layout_mode = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 12
+text = "Are you sure you want to quit?"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CameraOrigin/SpringArm3D/Camera3D/QuitMenuLayer/Background/VBoxContainer" unique_id=1915762536]
+layout_mode = 2
+alignment = 1
+
+[node name="ConfirmButton" type="Button" parent="CameraOrigin/SpringArm3D/Camera3D/QuitMenuLayer/Background/VBoxContainer/HBoxContainer" unique_id=2023499161]
+layout_mode = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 12
+text = "Quit"
+
+[node name="CancelButton" type="Button" parent="CameraOrigin/SpringArm3D/Camera3D/QuitMenuLayer/Background/VBoxContainer/HBoxContainer" unique_id=1583804565]
+layout_mode = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 12
+text = "Cancel"
+
 [node name="Character" parent="." unique_id=1559664275 instance=ExtResource("3_y5hcb")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.9, 0)
 
@@ -239,3 +288,6 @@ light_indirect_energy = 2.0
 light_volumetric_fog_energy = 6.0
 spot_range = 8.0
 spot_angle = 32.61401
+
+[connection signal="pressed" from="CameraOrigin/SpringArm3D/Camera3D/QuitMenuLayer/Background/VBoxContainer/HBoxContainer/ConfirmButton" to="." method="_on_confirm_button_pressed"]
+[connection signal="pressed" from="CameraOrigin/SpringArm3D/Camera3D/QuitMenuLayer/Background/VBoxContainer/HBoxContainer/CancelButton" to="." method="_on_cancel_button_pressed"]
