@@ -25,12 +25,12 @@ var dialog: Dictionary = {
 	23: "[Wazza] Pop Fiction! Hahaha.",
 	24: "[Ronnie] Aahahaha... haha. Alright, cut it out, we have work to do.",
 	25: "[Wazza] That bell signals beer O'clock mate, that's it, that'll do it for the day.",
+	255: "[Ronnie] Yeah Wazza's right, that'll do it for today.",
 	26: "[Gilbert] Are we seriously gonna finish now?",
 	27: "[Ronnie] Listen, Rice Bubbles, you're new to this game and I don't know what they taught you at school. But here in the real world, we have a saying.",
 	28: "[Ronnie] Why do today what you can do tomorrow!",
 	29: "[Wazza] Why do today what you can do tomorrow!",
-	30: "[Wazza] Go on, pick up the tools.",
-	31: "[Ronnie] Go on, mate. These tools won't pick themselves up. Let's get out of here.",
+	31: "[Ronnie] Garn, take those tools back to the lock-up. Me and Waz have a couple of frothies to polish off.",
 	32: "[Ronnie] Pick up the oxy torch, mate. Pick up the oxy torch.",
 	33: "[Ronnie] We've got to, uh, oxy the door, mate. Just what I said, oxy the door.",
 	34: "[Ronnie] What did I just tell you, mate? Are your ears painted on? Oxy the door.",
@@ -530,12 +530,11 @@ func _play_act1_shift_over():
 	await _play_sound("bell")
 	player.toggle_movement_disabled()
 	await twin_2.play_dialogue(25)
-	await twin_1.play_dialogue(266)
+	await twin_1.play_dialogue(255)
 	await player.play_dialogue(26)
 	await twin_1.play_dialogue(27)
 	twin_1.play_dialogue(28)
 	await twin_2.play_dialogue(29)
-	await twin_2.play_dialogue(30)
 	await twin_1.play_dialogue(31)
 	twin_2.set_target_position(bedroom3.global_position)
 	twin_1.set_target_position(bedroom2.global_position)
