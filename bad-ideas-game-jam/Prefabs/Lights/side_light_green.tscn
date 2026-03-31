@@ -1,0 +1,16 @@
+[gd_scene format=3 uid="uid://bwi42v5ejsyia"]
+
+[ext_resource type="PackedScene" uid="uid://ccsu3g16vvgwt" path="res://Assets/Models/Enviroment/Lights/side_light.fbx" id="1_n0epl"]
+[ext_resource type="Material" uid="uid://bnae0dvnhmm1" path="res://Materials/Ship/light_off_test.tres" id="2_e6d4r"]
+
+[node name="side_light" unique_id=57296793 instance=ExtResource("1_n0epl")]
+
+[node name="Side_port_Lights" parent="." index="0" unique_id=898896261]
+transform = Transform3D(7.12149e-13, -1.6292068e-05, 100, -100, -4.371139e-06, 0, 4.371139e-06, -100, -1.6292068e-05, 0, 0, 0)
+surface_material_override/0 = ExtResource("2_e6d4r")
+
+[node name="Light" type="OmniLight3D" parent="Side_port_Lights" index="0" unique_id=359197997]
+transform = Transform3D(7.121489e-17, -0.01, 4.371139e-10, -1.6292068e-09, -4.371139e-10, -0.01, 0.01, 6.938894e-24, -1.6292068e-09, -0.0019617053, 8.836072e-11, -0.0010686769)
+light_color = Color(2.4065375e-06, 0.7649296, 0.09048321, 1)
+light_size = 0.071
+shadow_enabled = true

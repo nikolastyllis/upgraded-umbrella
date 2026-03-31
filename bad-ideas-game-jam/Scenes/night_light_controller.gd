@@ -56,7 +56,6 @@ func _ready() -> void:
 		print("Steady lights: ", steady_lights.size())
 		print("Flashing lights: ", flashing_lights.size())
 
-
 func _process(delta: float) -> void:
 	if not is_setup:
 		return
@@ -78,31 +77,28 @@ func _apply_state(_delta: float) -> void:
 	else:
 		_apply_all_day()
 
-
 func _apply_steady_night() -> void:
 	for light: Light3D in steady_lights:
 		if not is_instance_valid(light):
 			continue
-
 		light.visible = bool(steady_original_visibility.get(light, true))
 		light.light_energy = float(steady_original_energies.get(light, 1.0))
+		_set_parent_emission(light, true)
 
 
 func _apply_flashing_night() -> void:
 	for light: Light3D in flashing_lights:
 		if not is_instance_valid(light):
 			continue
-
 		light.visible = bool(flashing_original_visibility.get(light, true))
-
 		var base_energy: float = float(flashing_original_energies.get(light, 1.0))
 
 		if not flashing_enabled:
 			light.light_energy = base_energy
+			_set_parent_emission(light, true)
 			continue
 
 		var multiplier: float = 1.0
-
 		if use_smooth_flash:
 			multiplier = lerpf(
 				flash_min_multiplier,
@@ -110,12 +106,10 @@ func _apply_flashing_night() -> void:
 				(sin(flash_timer * flash_speed) + 1.0) * 0.5
 			)
 		else:
-			if sin(flash_timer * flash_speed) > 0.0:
-				multiplier = flash_max_multiplier
-			else:
-				multiplier = flash_min_multiplier
+			multiplier = flash_max_multiplier if sin(flash_timer * flash_speed) > 0.0 else flash_min_multiplier
 
 		light.light_energy = base_energy * multiplier
+		_set_parent_emission(light, multiplier > 0.0)
 
 
 func _apply_all_day() -> void:
@@ -124,12 +118,14 @@ func _apply_all_day() -> void:
 			continue
 		light.visible = false
 		light.light_energy = 0.0
+		_set_parent_emission(light, false)
 
 	for light: Light3D in flashing_lights:
 		if not is_instance_valid(light):
 			continue
 		light.visible = false
 		light.light_energy = 0.0
+		_set_parent_emission(light, false)
 
 
 func _get_look_t() -> float:
@@ -142,13 +138,20 @@ func _get_look_t() -> float:
 
 	return 0.0
 
-
 func _collect_lights(root: Node, out_array: Array[Light3D]) -> void:
 	for child: Node in root.get_children():
 		if child is Light3D:
 			out_array.append(child as Light3D)
 		_collect_lights(child, out_array)
 
+func _set_parent_emission(light: Light3D, enabled: bool) -> void:
+	var parent := light.get_parent()
+	if parent is MeshInstance3D:
+		var mat := (parent as MeshInstance3D).get_surface_override_material(0)
+		if mat is StandardMaterial3D:
+			(mat as StandardMaterial3D).emission_enabled = enabled
+		elif mat is ShaderMaterial:
+			(mat as ShaderMaterial).set_shader_parameter("emission_enabled", enabled)
 
 func _store_light_values(
 	source_lights: Array[Light3D],

@@ -1,0 +1,26 @@
+[gd_scene format=3 uid="uid://duo2u8l4irdhv"]
+
+[ext_resource type="PackedScene" uid="uid://beonb8myxb7ac" path="res://Assets/Models/Enviroment/Lights/spot_light.fbx" id="1_ylv50"]
+[ext_resource type="Material" uid="uid://c68gjktj7h3ie" path="res://Materials/Ship/rust_panel_simple_Grey.tres" id="2_ysnbc"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_uhgjk"]
+albedo_color = Color(0.9301446, 0.84689915, 0.6640551, 1)
+emission_enabled = true
+emission = Color(0.9301446, 0.84689915, 0.6640551, 1)
+emission_energy_multiplier = 2.0
+
+[node name="spot_light" unique_id=327538311 instance=ExtResource("1_ylv50")]
+
+[node name="SpotLight" parent="." index="0" unique_id=1646278002]
+transform = Transform3D(100, 0, 0, 0, -4.3711393e-06, 100, 0, -100.00001, -4.371139e-06, 0, 0, 0)
+surface_material_override/0 = SubResource("StandardMaterial3D_uhgjk")
+surface_material_override/1 = ExtResource("2_ysnbc")
+
+[node name="Light" type="SpotLight3D" parent="SpotLight" index="0" unique_id=574664944]
+transform = Transform3D(0.01, 0, 0, 0, 0.004403152, -0.008978431, 0, 0.008978432, 0.0044031525, 0, 0.0030166989, -0.0010621808)
+light_color = Color(0.9301446, 0.84689915, 0.6640551, 1)
+light_energy = 10.0
+light_size = 0.02
+shadow_enabled = true
+spot_range = 90.29669
+spot_angle = 40.09544

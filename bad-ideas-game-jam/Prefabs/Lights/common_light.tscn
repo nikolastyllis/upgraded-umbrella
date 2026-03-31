@@ -1,0 +1,42 @@
+[gd_scene format=3 uid="uid://urk04lkdhk3k"]
+
+[ext_resource type="PackedScene" uid="uid://bjuwydjirkf6j" path="res://Assets/Models/Enviroment/Lights/common_light.fbx" id="1_0imbg"]
+[ext_resource type="Material" uid="uid://bolm5xo6weej3" path="res://Materials/Ship/rust_panel_simple_white.tres" id="2_uy2wd"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0imbg"]
+albedo_color = Color(0.6120363, 0.61203635, 0.6120363, 1)
+emission_enabled = true
+emission = Color(1, 1, 1, 1)
+emission_energy_multiplier = 2.0
+
+[sub_resource type="GDScript" id="GDScript_uy2wd"]
+script/source = "extends MeshInstance3D
+
+func _ready() -> void:
+	add_to_group(\"prefab_lights\")
+
+func emission_on() -> void:
+	for i in range(4):
+		var mat := get_surface_override_material(i)
+		if mat:
+			mat.emission_enabled = true
+
+func emission_off() -> void:
+	for i in range(4):
+		var mat := get_surface_override_material(i)
+		if mat:
+			mat.emission_enabled = false
+"
+
+[node name="common_light" unique_id=1569446636 instance=ExtResource("1_0imbg")]
+
+[node name="Underside Common light" parent="." index="0" unique_id=1417359391]
+transform = Transform3D(100, 0, 0, 0, -1.1920929e-05, 99.99999, 0, -99.99999, -1.1920929e-05, 0, 0, 0)
+surface_material_override/0 = SubResource("StandardMaterial3D_0imbg")
+surface_material_override/1 = ExtResource("2_uy2wd")
+script = SubResource("GDScript_uy2wd")
+
+[node name="Light" type="OmniLight3D" parent="Underside Common light" index="0" unique_id=1187362859]
+transform = Transform3D(0.010000001, 0, 0, 0, -1.1920932e-09, -0.010000002, 0, 0.010000002, -1.1920932e-09, 0, 1.0670369e-10, -0.0008950953)
+light_energy = 0.329
+light_size = 0.071

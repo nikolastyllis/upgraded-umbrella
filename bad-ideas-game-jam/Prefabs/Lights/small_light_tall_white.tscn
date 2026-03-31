@@ -1,0 +1,26 @@
+[gd_scene format=3 uid="uid://dba2iab0imain"]
+
+[ext_resource type="PackedScene" uid="uid://dxg4k0v6gf7kk" path="res://Assets/Models/Enviroment/Lights/small_light_tall.fbx" id="1_x3y8l"]
+[ext_resource type="Material" uid="uid://up8gx5wy0kmh" path="res://Materials/Ship/rust_panel_flute_dark.tres" id="2_3xv8a"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_03wm5"]
+emission_enabled = true
+emission = Color(1, 1, 1, 1)
+emission_energy_multiplier = 2.0
+
+[node name="small_light_tall" unique_id=2063739 instance=ExtResource("1_x3y8l")]
+
+[node name="Small Light Top Tall" parent="." index="0" unique_id=15902691]
+transform = Transform3D(25.990307, 0, 0, 0, -3.098286e-06, 25.990305, 0, -25.990305, -3.098286e-06, 0.5480157, -0.21291524, -0.15886176)
+surface_material_override/0 = SubResource("StandardMaterial3D_03wm5")
+surface_material_override/1 = ExtResource("2_3xv8a")
+
+[node name="Light" type="OmniLight3D" parent="Small Light Top Tall" index="0" unique_id=209217237]
+transform = Transform3D(0.038475882, 0, 0, 0, 0.038475882, 0, 0, 0, 0.038475882, 0, -1.6519477e-09, 0.01385754)
+light_energy = 4.91
+light_indirect_energy = 1.445
+light_size = 0.148
+light_specular = 4.026
+omni_range = 4.085381
+omni_attenuation = 0.1
+omni_shadow_mode = 0
