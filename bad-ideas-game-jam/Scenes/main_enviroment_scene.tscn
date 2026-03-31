@@ -11,15 +11,23 @@
 [ext_resource type="PackedScene" uid="uid://k3msivedunbq" path="res://Assets/Models/Enviroment/BIGJ_moors.glb" id="4_gebxy"]
 [ext_resource type="Material" uid="uid://b0ca805bio3ok" path="res://Materials/Ship/Interior_floor.tres" id="4_ruu2y"]
 [ext_resource type="Material" uid="uid://cvdlxl52307wq" path="res://Materials/Ship/ship_hull_mat.tres" id="4_tlnlp"]
+[ext_resource type="PackedScene" uid="uid://cjbikty512xyy" path="res://Assets/Models/Lockers/L_stack1.fbx" id="4_wlvdm"]
+[ext_resource type="PackedScene" uid="uid://cqkde7khi3c2m" path="res://Assets/Models/Lockers/L_stack3.fbx" id="5_54tsn"]
 [ext_resource type="Material" uid="uid://y6cxpqfxtnxv" path="res://Materials/Ship/Interior_ceiling.tres" id="5_gebxy"]
 [ext_resource type="Material" uid="uid://bolm5xo6weej3" path="res://Materials/Ship/rust_panel_simple_white.tres" id="5_mtju5"]
 [ext_resource type="Material" uid="uid://bea2b3oeci11q" path="res://Materials/Ship/Window_Door.tres" id="5_ns4fk"]
+[ext_resource type="Material" uid="uid://cgl5qexe2yplt" path="res://Materials/Items/lockerA.tres" id="5_s27tk"]
+[ext_resource type="PackedScene" uid="uid://d0fueophm5f6v" path="res://Assets/Models/Lockers/L_stack5.fbx" id="6_lkm1f"]
 [ext_resource type="Material" uid="uid://c51ek0v8ig1jv" path="res://Materials/Ship/ship_grill_mat.tres" id="6_tlnlp"]
+[ext_resource type="Material" uid="uid://htej2l4pdjao" path="res://Materials/Items/lockerB.tres" id="6_txc0u"]
 [ext_resource type="Material" uid="uid://b1w8id81skqst" path="res://Materials/Ship/InteriorWalls (2).tres" id="6_v7pwh"]
 [ext_resource type="Material" uid="uid://386rl4fymu66" path="res://Materials/Ship/InteriorWalls.tres" id="7_0qs2n"]
+[ext_resource type="PackedScene" uid="uid://d2hdyvywmoteu" path="res://Assets/Models/Lockers/L_stack4.fbx" id="7_8mbt1"]
 [ext_resource type="Material" uid="uid://cxpwhh6t2s1cs" path="res://Materials/Ship/ship_main_deck_mat.tres" id="7_gcmii"]
+[ext_resource type="Material" uid="uid://c22buarn2pnm3" path="res://Materials/Items/lockerC.tres" id="7_j8wc7"]
 [ext_resource type="Material" uid="uid://cbswrq2n1p24f" path="res://Materials/Ship/Interior_floor (2).tres" id="7_xadyp"]
 [ext_resource type="Material" uid="uid://cbds71h3imoo4" path="res://Materials/Ship/Interior_ceiling (2).tres" id="8_3jkke"]
+[ext_resource type="Material" uid="uid://dj4agc5e7brqb" path="res://Materials/Items/lockerLock.tres" id="8_hqnoq"]
 [ext_resource type="Material" uid="uid://ct3phceoao5ux" path="res://Materials/Ship/bridge_windows.tres" id="8_ucy3n"]
 [ext_resource type="Material" uid="uid://c68gjktj7h3ie" path="res://Materials/Ship/rust_panel_simple_Grey.tres" id="12_ns4fk"]
 [ext_resource type="Material" uid="uid://djpdlgsgpfynk" path="res://Materials/Items/rack_mat.tres" id="13_3jkke"]
@@ -573,19 +581,51 @@ transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -2.6
 [node name="@Node3D@263650" parent="Containers/container_array 10" unique_id=1695253439 instance=ExtResource("2_4ftm2")]
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 2.6348426, 0.09125495, 6.4811974)
 
-[node name="posters2" parent="." unique_id=1204569502 instance=ExtResource("2_3jkke")]
+[node name="posters2" parent="." unique_id=1560928267 instance=ExtResource("2_3jkke")]
 
-[node name="posters" parent="posters2" index="0" unique_id=342744235]
+[node name="posters" parent="posters2" index="0" unique_id=1879182482]
 material_override = ExtResource("3_ruu2y")
 
 [node name="Ship Model" type="Node3D" parent="." unique_id=888447321]
 metadata/_edit_lock_ = true
 
-[node name="BIGJ_moors" parent="Ship Model" unique_id=1156445672 instance=ExtResource("4_gebxy")]
+[node name="L_stack1" parent="Ship Model" unique_id=1739938584 instance=ExtResource("4_wlvdm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.854469, 3.6428475, 58.093075)
 
-[node name="Moors" parent="Ship Model/BIGJ_moors" index="0" unique_id=1196499165]
-surface_material_override/0 = ExtResource("3_tlnlp")
-surface_material_override/1 = ExtResource("3_tlnlp")
+[node name="locker_stack1" parent="Ship Model/L_stack1" index="0" unique_id=54039673]
+surface_material_override/0 = ExtResource("5_s27tk")
+surface_material_override/1 = ExtResource("6_txc0u")
+surface_material_override/2 = ExtResource("7_j8wc7")
+surface_material_override/3 = ExtResource("8_hqnoq")
+
+[node name="L_stack3" parent="Ship Model" unique_id=621404196 instance=ExtResource("5_54tsn")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -7.9644423, 3.656324, 60.439293)
+
+[node name="locker_stack2" parent="Ship Model/L_stack3" index="0" unique_id=348099676]
+transform = Transform3D(100, 0, 0, 0, -2.3841858e-05, 99.99999, 0, -99.99999, -2.3841858e-05, 0, 0.008462429, 0.0066833496)
+surface_material_override/0 = ExtResource("5_s27tk")
+surface_material_override/1 = ExtResource("6_txc0u")
+surface_material_override/2 = ExtResource("7_j8wc7")
+surface_material_override/3 = ExtResource("8_hqnoq")
+
+[node name="L_stack5" parent="Ship Model" unique_id=1323366231 instance=ExtResource("6_lkm1f")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.2784325, 11.49132, 58.0078)
+
+[node name="locker_stack3" parent="Ship Model/L_stack5" index="0" unique_id=345980279]
+transform = Transform3D(-4.3711393e-06, -100.00001, -2.3841858e-05, 0, -2.3841858e-05, 100.00001, -100.000015, 4.371139e-06, 1.0421608e-12, -0.33059287, 0, 2.0647202)
+surface_material_override/0 = ExtResource("5_s27tk")
+surface_material_override/1 = ExtResource("6_txc0u")
+surface_material_override/2 = ExtResource("7_j8wc7")
+surface_material_override/3 = ExtResource("8_hqnoq")
+
+[node name="L_stack4" parent="Ship Model" unique_id=217482243 instance=ExtResource("7_8mbt1")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -5.2821918, 11.482812, 62.296383)
+
+[node name="locker_stack4" parent="Ship Model/L_stack4" index="0" unique_id=1401827353]
+surface_material_override/0 = ExtResource("5_s27tk")
+surface_material_override/1 = ExtResource("6_txc0u")
+surface_material_override/2 = ExtResource("7_j8wc7")
+surface_material_override/3 = ExtResource("8_hqnoq")
 
 [node name="BIGJ_Ship_Interior" parent="Ship Model" unique_id=593754638 instance=ExtResource("1_jn3ni")]
 
@@ -612,9 +652,9 @@ transform = Transform3D(5.474772e-05, -55.383156, -6.354507e-06, 1.5560239e-18, 
 material_override = ExtResource("13_3jkke")
 surface_material_override/0 = ExtResource("22_v7pwh")
 
-[node name="BIGJ_Ship_03" parent="Ship Model" unique_id=1431557414 instance=ExtResource("1_l8ged")]
+[node name="BIGJ_Ship_03" parent="Ship Model" unique_id=323976343 instance=ExtResource("1_l8ged")]
 
-[node name="Main Deck" parent="Ship Model/BIGJ_Ship_03" index="0" unique_id=1573100528]
+[node name="Main Deck" parent="Ship Model/BIGJ_Ship_03" index="0" unique_id=2080373299]
 surface_material_override/0 = ExtResource("7_gcmii")
 surface_material_override/1 = ExtResource("3_av35p")
 surface_material_override/2 = ExtResource("2_0qs2n")
@@ -626,6 +666,12 @@ surface_material_override/7 = ExtResource("4_tlnlp")
 surface_material_override/8 = ExtResource("5_mtju5")
 surface_material_override/9 = ExtResource("8_ucy3n")
 
+[node name="BIGJ_moors" parent="Ship Model/BIGJ_Ship_03" unique_id=1685114142 instance=ExtResource("4_gebxy")]
+
+[node name="Moors" parent="Ship Model/BIGJ_Ship_03/BIGJ_moors" index="0" unique_id=462726608]
+surface_material_override/0 = ExtResource("3_tlnlp")
+surface_material_override/1 = ExtResource("3_tlnlp")
+
 [node name="BIGJ_LifeBoat" parent="Ship Model" unique_id=826326853 instance=ExtResource("15_jn3ni")]
 
 [node name="dada" parent="Ship Model/BIGJ_LifeBoat" index="0" unique_id=2118010741]
@@ -636,9 +682,13 @@ surface_material_override/1 = ExtResource("16_0qs2n")
 material_override = ExtResource("16_0qs2n")
 
 [editable path="posters2"]
-[editable path="Ship Model/BIGJ_moors"]
+[editable path="Ship Model/L_stack1"]
+[editable path="Ship Model/L_stack3"]
+[editable path="Ship Model/L_stack5"]
+[editable path="Ship Model/L_stack4"]
 [editable path="Ship Model/BIGJ_Ship_Interior"]
 [editable path="Ship Model/BIGJ_Ship_Interior/Toolbox"]
 [editable path="Ship Model/BIGJ_Ship_Interior/Toolbox2"]
 [editable path="Ship Model/BIGJ_Ship_03"]
+[editable path="Ship Model/BIGJ_Ship_03/BIGJ_moors"]
 [editable path="Ship Model/BIGJ_LifeBoat"]
