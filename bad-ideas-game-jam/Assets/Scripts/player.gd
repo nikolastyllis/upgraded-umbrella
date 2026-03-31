@@ -342,7 +342,6 @@ func handle_quit() -> void:
 			return
 		quit_menu_open = true
 		quit_menu.visible = true
-		movement_disabled = true
 		Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 		get_tree().paused = true
 
@@ -352,7 +351,6 @@ func _on_quit_confirmed() -> void:
 func _on_quit_cancelled() -> void:
 	quit_menu_open = false
 	quit_menu.visible = false
-	movement_disabled = false
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 	get_tree().paused = false
 
