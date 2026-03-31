@@ -634,7 +634,9 @@ draw_pass_1 = SubResource("RibbonTrailMesh_qcyk2")
 [node name="GameManager" type="Node3D" parent="." unique_id=1749829845]
 transform = Transform3D(-0.87121385, 0, 0.49090374, 0, 1, 0, -0.49090374, 0, -0.87121385, -8.431, 7.972, 75.958)
 script = ExtResource("12_yiumw")
-debug_skip_dialog = true
+debug_play_from_act_7 = false
+debug_play_from_act_8 = true
+number_of_supplies = 5
 DAY_SUN_PITCH_DEG = -72.6
 DAY_SUN_YAW_DEG = 124.3
 SUNSET_SUN_YAW_DEG = 130.0
@@ -756,7 +758,7 @@ Chris Lucas - (Art)
 
 Nico Wyatt-Smith - (Music)
 
-Nikolas Tyllis - (Programming)"
+Nik - (Programming)"
 horizontal_alignment = 1
 vertical_alignment = 1
 

@@ -4,7 +4,7 @@ extends BaseCharacter
 @onready var navigation_agent_3d := $NavigationAgent3D
 
 const NPC_SPEED = 1.5
-const STOP_DISTANCE = 1.0
+const STOP_DISTANCE = 1.5
 const STUCK_TIME_THRESHOLD = 2.5
 const STUCK_DISTANCE_THRESHOLD = 0.3
 const STUCK_SAMPLE_INTERVAL = 0.5
