@@ -610,6 +610,7 @@ draw_pass_1 = SubResource("RibbonTrailMesh_qcyk2")
 [node name="GameManager" type="Node3D" parent="." unique_id=1749829845]
 transform = Transform3D(-0.87121385, 0, 0.49090374, 0, 1, 0, -0.49090374, 0, -0.87121385, -8.431, 7.972, 75.958)
 script = ExtResource("12_yiumw")
+debug_play_from_act_7 = false
 DAY_SUN_PITCH_DEG = -72.6
 DAY_SUN_YAW_DEG = 124.3
 SUNSET_SUN_YAW_DEG = 130.0
@@ -680,10 +681,10 @@ shape = SubResource("BoxShape3D_tc46g")
 transform = Transform3D(-0.8712137, 0, -0.49090365, 0, 1, 0, 0.49090365, 0, -0.8712137, -2.7452836, 4.346075, 20.835665)
 
 [node name="Bedroom2" type="Node3D" parent="GameManager/Locations" unique_id=2080234040]
-transform = Transform3D(-0.8712137, 0, -0.49090365, 0, 1, 0, 0.49090365, 0, -0.8712137, 4.7261543, 4.346075, 17.259066)
+transform = Transform3D(-0.8712137, 0, -0.49090365, 0, 1, 0, 0.49090365, 0, -0.8712137, 4.2886024, 4.346075, 17.505613)
 
 [node name="Bedroom3" type="Node3D" parent="GameManager/Locations" unique_id=1341632233]
-transform = Transform3D(-0.8712137, 0, -0.49090365, 0, 1, 0, 0.49090365, 0, -0.8712137, 6.1581593, 4.346075, 16.319605)
+transform = Transform3D(-0.8712137, 0, -0.49090365, 0, 1, 0, 0.49090365, 0, -0.8712137, 5.5403247, 4.346075, 16.667736)
 
 [node name="Camera3D" type="Camera3D" parent="GameManager" unique_id=1487974853]
 transform = Transform3D(0.30559552, -0.5115539, 0.8030716, 0, 0.8434196, 0.5372554, -0.95216143, -0.16418284, 0.25774527, 7.094821, 3.2117147, 4.425983)

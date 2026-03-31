@@ -348,9 +348,6 @@ func _process(_delta: float) -> void:
 		set_time_of_day(TimeOfDay.NIGHT, 120.0)
 		_play_act_3_container()
 		dead_twin_2.visible = true
-		
-	if story_increment == 6 and not shown_torch_control_tip:
-		show_control_hint("[F] Flashlight", [&"torch"], func(): shown_torch_control_tip = true)
 
 	if story_increment == 6 and _player_is_near(lifeboat.global_position):
 		story_increment += 1
@@ -605,6 +602,7 @@ func _play_act_3_container():
 	await player.play_dialogue(778)
 	_spawn_objective_marker(lifeboat, "Meet Ronnie at the lifeboat")
 	_play_lifeboat_reminders()
+	show_control_hint("[F] Flashlight", [&"torch"], func(): shown_torch_control_tip = true)
 	_dialogue_active = false
 
 func add_supply():
