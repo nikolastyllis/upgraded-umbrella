@@ -92,7 +92,7 @@ var dialog: Dictionary = {
 	103: "[Gilbert] Wazza, what’s happened? Are you okay?",
 	104: "[Gilbert] Wa... what's happened.",
 	105: "[Gilbert] You… you were gonna go without me?",
-	106: "[Gilbert] For Sure... anything you want...",
+	106: "[Gilbert] For Sure... anything you want.",
 	107: "[Gilbert] Okay, sure… but Wazza, what’s a suck worth?"
 }
 
