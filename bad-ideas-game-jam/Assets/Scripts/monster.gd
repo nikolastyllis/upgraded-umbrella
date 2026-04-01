@@ -394,6 +394,11 @@ func _can_see_player(player: Node3D) -> bool:
 			result.collider.name if result.collider else "?", dist])
 		return false
 
+func roar():
+	if _is_roaring:
+		return
+	_begin_roar()
+
 func _start_chase(player: Node3D) -> void:
 	
 	if not game_manager.player_has_interacted_with_infected_container:
